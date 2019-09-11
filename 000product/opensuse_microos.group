@@ -59,7 +59,7 @@
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libhogweed4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libhogweed5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libjson-c4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -70,7 +70,7 @@
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="libnettle6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libnettle7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->

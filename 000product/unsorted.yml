@@ -943,6 +943,7 @@ unsorted:
   - bazel 
   - bazel-gazelle 
   - bazel-gazelle-source 
+  - bazel-rules-cc-source 
   - bazel-rules-foreign-cc-source 
   - bazel-rules-go-source 
   - bazel-rules-proto-source 
@@ -1571,6 +1572,7 @@ unsorted:
   - clisp-doc 
   - cln 
   - cln-devel 
+  - clojure 
   - clone-master-clean-up 
   - cloud-init: [i586] 
   - cloud-init-config-MicroOS: [i586] 
@@ -2452,6 +2454,7 @@ unsorted:
   - emacs-el 
   - emacs-scheme48 
   - emacs-semi 
+  - embree-devel-static: [x86_64] 
   - embryo 
   - emf2svg-conv 
   - emil 
@@ -2857,6 +2860,7 @@ unsorted:
   - firebird-examples 
   - firebird-server 
   - firebird-utils 
+  - firecracker: [x86_64] 
   - firefox-uget-integrator: [i586] 
   - firehol 
   - firehol-doc 
@@ -4589,9 +4593,14 @@ unsorted:
   - grsync 
   - grsync-lang 
   - grub 
+  - grub2: [i586] 
+  - grub2-branding-openSUSE: [i586] 
   - grub2-branding-upstream 
   - grub2-i386-efi: [i586] 
+  - grub2-i386-pc: [i586] 
   - grub2-i386-xen: [i586] 
+  - grub2-snapper-plugin: [i586] 
+  - grub2-systemd-sleep-plugin 
   - grub2-theme-breeze 
   - grubby 
   - gsequencer 
@@ -4684,8 +4693,6 @@ unsorted:
   - gtk-sharp3-gapi-devel 
   - gtk-vnc-devel 
   - gtk-vnc-tools 
-  - gtk-xfce-engine 
-  - gtk-xfce-engine-32bit: [x86_64] 
   - gtk2-branding-upstream 
   - gtk2-devel 
   - gtk2-devel-32bit: [x86_64] 
@@ -5314,6 +5321,7 @@ unsorted:
   - infinoted 
   - influxdb 
   - influxdb-devel 
+  - info2html 
   - info4 
   - infos-creator-rpm 
   - ini4j 
@@ -5837,7 +5845,7 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] 
+  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - katacontainers-image-initrd: [x86_64] 
   - kate4-parts 
   - kauth-devel 
@@ -6635,6 +6643,7 @@ unsorted:
   - leechcraft-xtazy 
   - leechcraft-zalil 
   - legion-devel 
+  - leiningen 
   - lekha: [x86_64] 
   - lemonbar 
   - lensfun-devel 
@@ -8692,7 +8701,7 @@ unsorted:
   - libgloox17 
   - libgloox17-32bit: [x86_64] 
   - libglpk40 
-  - libglslang-suse6 
+  - libglslang-suse7 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -9341,18 +9350,18 @@ unsorted:
   - libkea-dhcp_ddns1 
   - libkea-dhcpsrv16 
   - libkea-dns++3 
-  - libkea-eval10 
+  - libkea-eval11 
   - libkea-exceptions0 
   - libkea-hooks7 
   - libkea-http6 
-  - libkea-log3 
+  - libkea-log4 
   - libkea-mysql1 
   - libkea-pgsql0 
   - libkea-process4 
   - libkea-stats3 
   - libkea-threads2 
   - libkea-util-io0 
-  - libkea-util6 
+  - libkea-util7 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
@@ -10398,9 +10407,8 @@ unsorted:
   - libpq5-32bit: [x86_64] 
   - libpqos-devel 
   - libpqos3 
-  - libpqxx-5_0 
+  - libpqxx-6_4 
   - libpqxx-devel 
-  - libpqxx-doc 
   - libprelude-devel 
   - libprelude-devel-bindings 
   - libprelude-doc 
@@ -14812,6 +14820,7 @@ unsorted:
   - os-autoinst 
   - os-autoinst-distri-opensuse-deps 
   - os-autoinst-openvswitch 
+  - os-prober 
   - os-service-types-doc 
   - osc-plugin-collab 
   - osc-plugin-cycle: [x86_64] 
@@ -17730,6 +17739,7 @@ unsorted:
   - python2-certbot-dns-dnsimple 
   - python2-certbot-dns-dnsmadeeasy 
   - python2-certbot-dns-google 
+  - python2-certbot-dns-linode 
   - python2-certbot-dns-luadns 
   - python2-certbot-dns-nsone 
   - python2-certbot-dns-rfc2136 
@@ -17967,6 +17977,7 @@ unsorted:
   - python2-efl-doc 
   - python2-efl-examples 
   - python2-elasticsearch 
+  - python2-elementpath 
   - python2-email_validator 
   - python2-emoji 
   - python2-empy 
@@ -18326,6 +18337,7 @@ unsorted:
   - python2-libvshadow 
   - python2-libvslvm 
   - python2-libxml2-python 
+  - python2-license-expression 
   - python2-limnoria 
   - python2-line_profiler 
   - python2-linecache2 
@@ -18856,6 +18868,7 @@ unsorted:
   - python2-pytest-shutil 
   - python2-pytest-socket 
   - python2-pytest-spec 
+  - python2-pytest-sphinx 
   - python2-pytest-subtesthack 
   - python2-pytest-sugar 
   - python2-pytest-super-check 
@@ -19382,6 +19395,7 @@ unsorted:
   - python2-xlrd 
   - python2-xlwt 
   - python2-xmldiff 
+  - python2-xmlschema 
   - python2-xmlsec 
   - python2-xmltodict 
   - python2-xpybutil 
@@ -19754,6 +19768,7 @@ unsorted:
   - python3-avocado-plugins-varianter-yaml-to-mux 
   - python3-avocado-plugins-vt 
   - python3-avro 
+  - python3-awpa 
   - python3-aws-sam-translator 
   - python3-aws-xray-sdk 
   - python3-aws-xray-sdk-Django 
@@ -19985,6 +20000,7 @@ unsorted:
   - python3-certbot-dns-dnsimple 
   - python3-certbot-dns-dnsmadeeasy 
   - python3-certbot-dns-google 
+  - python3-certbot-dns-linode 
   - python3-certbot-dns-luadns 
   - python3-certbot-dns-nsone 
   - python3-certbot-dns-rfc2136 
@@ -20253,6 +20269,7 @@ unsorted:
   - python3-efl-doc 
   - python3-efl-examples 
   - python3-elasticsearch 
+  - python3-elementpath 
   - python3-eliot 
   - python3-email_validator 
   - python3-emoji 
@@ -20481,6 +20498,8 @@ unsorted:
   - python3-imageio-ffmpeg 
   - python3-imagesize 
   - python3-imbox 
+  - python3-img-proof 
+  - python3-img-proof-tests 
   - python3-img2pdf 
   - python3-iminuit 
   - python3-immutables 
@@ -20680,6 +20699,7 @@ unsorted:
   - python3-libvoikko 
   - python3-libvshadow 
   - python3-libvslvm 
+  - python3-license-expression 
   - python3-lilv 
   - python3-limnoria 
   - python3-line_profiler 
@@ -21253,6 +21273,7 @@ unsorted:
   - python3-pytest-shutil 
   - python3-pytest-socket 
   - python3-pytest-spec 
+  - python3-pytest-sphinx 
   - python3-pytest-subtesthack 
   - python3-pytest-subtests 
   - python3-pytest-sugar 
@@ -21819,6 +21840,7 @@ unsorted:
   - python3-xlrd 
   - python3-xlwt 
   - python3-xmldiff 
+  - python3-xmlschema 
   - python3-xmlsec 
   - python3-xmltodict 
   - python3-xpybutil 
@@ -21901,7 +21923,6 @@ unsorted:
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
   - qgit 
-  - qgo 
   - qgroundcontrol 
   - qhexedit2 
   - qhexedit2-devel 
@@ -22142,7 +22163,6 @@ unsorted:
   - redsea 
   - redshift 
   - redshift-gtk 
-  - reg: [x86_64] 
   - regexp 
   - reiser4progs 
   - reiser4progs-devel 
@@ -23888,7 +23908,6 @@ unsorted:
   - swing-worker-javadoc 
   - swingx 
   - swingx-javadoc 
-  - swipl 
   - switch_sles_sle-hpc 
   - switchboard 
   - switchboard-devel 
@@ -32388,7 +32407,6 @@ unsorted:
   - webkit-jsc-4 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
-  - webkit2gtk3-plugin-process-gtk2 
   - websocketpp-devel 
   - webvfx 
   - webvfx-devel 
@@ -32624,7 +32642,6 @@ unsorted:
   - xfburn-lang 
   - xfce4-calculator-plugin 
   - xfce4-calculator-plugin-lang 
-  - xfce4-icon-theme 
   - xfce4-mixer 
   - xfce4-mixer-lang 
   - xfce4-mixer-plugin 
@@ -32645,8 +32662,6 @@ unsorted:
   - xfce4-stopwatch-plugin-lang 
   - xfce4-time-out-plugin 
   - xfce4-time-out-plugin-lang 
-  - xfce4-volumed 
-  - xfce4-volumed-pulse 
   - xfd 
   - xfdashboard 
   - xfdashboard-devel 

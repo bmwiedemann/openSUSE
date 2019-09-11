@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  1 09:34:38 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libuv 1.31.0:
+  * unix,win: add uv_fs_statfs()
+  * test: avoid AF_LOCAL
+  * add ability to retrieve all env variables
+  * doc: add %p to valgrind log-file arg
+  * doc: fix typo in basics.rst
+  * unix: clear UV_HANDLE_READING flag before callback
+- add project signing keyring and verify source signature
+
+-------------------------------------------------------------------
 Wed Jul  3 08:28:41 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 1.30.1:

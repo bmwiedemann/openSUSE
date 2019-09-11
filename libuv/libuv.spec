@@ -18,17 +18,16 @@
 
 %define somajor 1
 Name:           libuv
-Version:        1.30.1
+Version:        1.31.0
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://libuv.org
-# Using URL from upstream project fails due to ipv6 redirect
-# Source0:      http://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
-# Source1:      http://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz.sign
-# Source2:      %{name}.keyring
-Source0:        https://github.com/libuv/libuv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://libuv.org
+Source0:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
+Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz.sign
+# https://github.com/libuv/libuv/blob/v1.x/MAINTAINERS.md
+Source2:        %{name}.keyring
 Patch1:         fix_tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -63,7 +62,7 @@ primarily developed for use by Node.js, but it is also used by
 Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 %patch1 -p1
 
 %build
@@ -83,6 +82,7 @@ make %{?_smp_mflags} check
 %postun -n libuv%{somajor} -p /sbin/ldconfig
 
 %files -n libuv%{somajor}
+%license LICENSE
 %{_libdir}/libuv.so.%{somajor}*
 
 %files devel

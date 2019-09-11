@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20190909" schemaversion="4.1">
+<image name="OBS__openSUSE___20190911" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20190909</productvar>
+      <productvar name="VERSION">20190911</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20190909,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20190911,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20190909/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20190911/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -882,12 +882,6 @@
       <repopackage name="groff"/>
       <repopackage name="groff-full"/>
       <repopackage name="gromit"/>
-      <repopackage name="grub2"/>
-      <repopackage name="grub2-branding-openSUSE"/>
-      <repopackage name="grub2-i386-pc"/>
-      <repopackage name="grub2-snapper-plugin"/>
-      <repopackage name="grub2-systemd-sleep-plugin"/>
-      <repopackage name="grub2-x86_64-efi" arch="x86_64"/>
       <repopackage name="grub2-x86_64-xen" arch="x86_64"/>
       <repopackage name="gsettings-backend-dconf"/>
       <repopackage name="gsettings-desktop-schemas"/>
@@ -1078,7 +1072,6 @@
       <repopackage name="indent"/>
       <repopackage name="indic-fonts"/>
       <repopackage name="info"/>
-      <repopackage name="info2html"/>
       <repopackage name="initviocons"/>
       <repopackage name="inkscape"/>
       <repopackage name="inkscape-extensions-extra"/>
@@ -2040,8 +2033,8 @@
       <repopackage name="libharfbuzz0-32bit" arch="x86_64"/>
       <repopackage name="libhavege1"/>
       <repopackage name="libhivex0" arch="x86_64"/>
-      <repopackage name="libhogweed4"/>
-      <repopackage name="libhogweed4-32bit" arch="x86_64"/>
+      <repopackage name="libhogweed5"/>
+      <repopackage name="libhogweed5-32bit" arch="x86_64"/>
       <repopackage name="libhttp_parser2_7_1"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libHX28"/>
@@ -2459,8 +2452,8 @@
       <repopackage name="libnetcontrol0"/>
       <repopackage name="libnetfilter_conntrack3"/>
       <repopackage name="libnetpbm11"/>
-      <repopackage name="libnettle6"/>
-      <repopackage name="libnettle6-32bit" arch="x86_64"/>
+      <repopackage name="libnettle7"/>
+      <repopackage name="libnettle7-32bit" arch="x86_64"/>
       <repopackage name="libnewt0_52"/>
       <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs13"/>
@@ -2654,7 +2647,7 @@
       <repopackage name="libqgpgme7"/>
       <repopackage name="libqmi-glib5"/>
       <repopackage name="libqmi-tools"/>
-      <repopackage name="libqpdf21"/>
+      <repopackage name="libqpdf26"/>
       <repopackage name="libqqwing2"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="libqt5-qdbus"/>
@@ -3643,7 +3636,6 @@
       <repopackage name="oprofile"/>
       <repopackage name="orca"/>
       <repopackage name="orca-lang"/>
-      <repopackage name="os-prober"/>
       <repopackage name="osc"/>
       <repopackage name="osinfo-db"/>
       <repopackage name="ovmf"/>
@@ -3703,10 +3695,8 @@
       <repopackage name="patterns-base-x11_enhanced"/>
       <repopackage name="patterns-desktop-books"/>
       <repopackage name="patterns-desktop-imaging"/>
-      <repopackage name="patterns-desktop-imaging_opt"/>
       <repopackage name="patterns-desktop-laptop"/>
       <repopackage name="patterns-desktop-multimedia"/>
-      <repopackage name="patterns-desktop-multimedia_opt"/>
       <repopackage name="patterns-desktop-technical_writing"/>
       <repopackage name="patterns-devel-base-devel_basis"/>
       <repopackage name="patterns-devel-base-devel_kernel"/>
@@ -5660,7 +5650,6 @@
       <repopackage name="xfwm4"/>
       <repopackage name="xfwm4-branding-openSUSE"/>
       <repopackage name="xfwm4-lang"/>
-      <repopackage name="xfwm4-themes"/>
       <repopackage name="xhost"/>
       <repopackage name="xhtml-dtd"/>
       <repopackage name="xinetd"/>
