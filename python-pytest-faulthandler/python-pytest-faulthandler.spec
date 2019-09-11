@@ -30,10 +30,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-faulthandler
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 4.0
+Requires:       python-pytest < 5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module pytest-mock >= 0.6}
 # /SECTION
 %ifpython2

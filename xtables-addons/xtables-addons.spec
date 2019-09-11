@@ -17,12 +17,12 @@
 
 
 Name:           xtables-addons
-Version:        3.3
+Version:        3.5
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://xtables-addons.sf.net/
+URL:            http://xtables-addons.sf.net/
 
 #Git-Clone:	git://xtables-addons.git.sf.net/gitroot/xtables-addons/xtables-addons
 #Git-Web:	http://xtables-addons.git.sf.net/
@@ -30,7 +30,6 @@ Source:         http://downloads.sf.net/%name/%name-%version.tar.xz
 Source2:        http://downloads.sf.net/%name/%name-%version.tar.asc
 Source3:        %name-preamble
 Source4:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-syms >= 4.15
 BuildRequires:  pkg-config >= 0.21
@@ -70,7 +69,7 @@ contains extensions that were not, or are not yet, accepted in the
 main kernel/iptables packages.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 pushd ../
@@ -98,12 +97,11 @@ find "$b/%_libdir" -maxdepth 1 -type l -iname "*.so" -delete
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_mandir/man*/*
 %_sbindir/*
 %_libdir/*.so.*
 %xtlibdir/
 %_libexecdir/xtables-addons/
-%doc LICENSE
+%license LICENSE
 
 %changelog

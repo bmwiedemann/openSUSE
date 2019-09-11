@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.1.3
+Version:        1.1.6
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
@@ -28,8 +28,9 @@ Source0:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.changes
 Source4:        logrotate.ntp
-Source7:        ntp.firewall
 Source8:        ntp.conf
+# PATCH-FIX-UPSTREAM https://gitlab.com/NTPsec/ntpsec/merge_requests/1012
+Patch0:         ntpsec-1.1.6-update-waf.patch
 BuildRequires:  asciidoc
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  bison
@@ -88,6 +89,7 @@ The ntpsec utilities relying on the python module of ntp
 
 %prep
 %setup -q
+%patch0 -p1
 # Fix python shebangs
 sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:' \
     ntpclients/*
@@ -99,6 +101,7 @@ sed -i -e 's:, condition="ver >= num(3, 18)"::' \
 # We use the date from the changes file
 epoch=`date --date "@\`stat --format %%Y %{SOURCE3}\`" +"%%s"`
 
+%global _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export CCFLAGS="%{optflags}"
 python3 ./waf configure \
@@ -109,12 +112,13 @@ python3 ./waf configure \
     --python=%{_bindir}/python3 \
     --pythonarchdir=%{python3_sitearch} \
     --pythondir=%{python3_sitearch} \
+    --sbindir=%{_sbindir} \
+    --bindir=%{_bindir} \
     --enable-seccomp \
     --enable-debug-gdb \
     --enable-early-droproot \
     --enable-leap-smear \
     --enable-mssntp \
-    --enable-lockclock \
     --refclock=all
 python3 ./waf build --verbose %{?_smp_mflags}
 
@@ -128,10 +132,12 @@ sed -i "s|bin|sbin|g" etc/ntpd.service
 install -pm 0644 -D etc/ntpd.service %{buildroot}/%{_unitdir}/ntpd.service
 install -pm 0644 -D etc/ntp-wait.service %{buildroot}/%{_unitdir}/ntp-wait.service
 ln -s service %{buildroot}%{_sbindir}/rcntpd
+ln -s service %{buildroot}%{_sbindir}/rcntplogtemp
+ln -s service %{buildroot}%{_sbindir}/rcntpviz-daily
+ln -s service %{buildroot}%{_sbindir}/rcntpviz-weekly
 ln -s service %{buildroot}%{_sbindir}/rcntp-wait
 
 install -pm 0644 -D %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/ntp
-install -pm 0644 -D %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/ntp
 install -pm 0644 -D %{SOURCE8} %{buildroot}%{_sysconfdir}/ntp.conf
 
 %fdupes -s %{buildroot}
@@ -146,28 +152,28 @@ getent passwd ntp >/dev/null || useradd -u 74 -r -g ntp -d %{_localstatedir}/lib
 exit 0
 
 %pre utils
-%service_add_pre ntp-wait.service
+%service_add_pre ntp-wait.service ntplogtemp.service ntpviz-daily.service ntpviz-weekly.service
 
 %post
 %service_add_post ntpd.service
 
 %post utils
-%service_add_post ntp-wait.service
+%service_add_post ntp-wait.service ntplogtemp.service ntpviz-daily.service ntpviz-weekly.service
 
 %preun
 %service_del_preun ntpd.service
 
 %preun utils
-%service_del_preun ntp-wait.service
+%service_del_preun ntp-wait.service ntplogtemp.service ntpviz-daily.service ntpviz-weekly.service
 
 %postun
 %service_del_postun ntpd.service
 
 %postun utils
-%service_del_postun ntp-wait.service
+%service_del_postun ntp-wait.service ntplogtemp.service ntpviz-daily.service ntpviz-weekly.service
 
 %files -n python3-ntp
-%{python3_sitearch}/ntp
+%{python3_sitearch}/ntp*
 
 %files utils
 %{_bindir}/ntploggps
@@ -193,7 +199,12 @@ exit 0
 %{_mandir}/man1/ntplogtemp.1%{?ext_man}
 %{_mandir}/man8/ntpsnmpd.8%{?ext_man}
 %{_sbindir}/rcntp-wait
+%{_sbindir}/rcntplogtemp
+%{_sbindir}/rcntpviz-daily
+%{_sbindir}/rcntpviz-weekly
 %{_unitdir}/ntp-wait.service
+%{_unitdir}/ntplogtemp.*
+%{_unitdir}/ntpviz-*
 
 %files
 %license LICENSE
@@ -211,7 +222,6 @@ exit 0
 %{_mandir}/man8/ntpleapfetch.8%{?ext_man}
 %{_mandir}/man8/ntptime.8%{?ext_man}
 %config %{_sysconfdir}/logrotate.d/ntp
-%config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/ntp
 %{_unitdir}/ntpd.service
 
 %changelog

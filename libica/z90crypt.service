@@ -1,0 +1,13 @@
+[Unit]
+Description=Activate any cryptographic hardware
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/usr/lib/systemd/scripts/z90crypt start
+ExecStop=/usr/lib/systemd/scripts/z90crypt stop
+
+[Install]
+WantedBy=default.target

@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        19.2.0
+Version:        19.2.1
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        MIT AND BSD-3-Clause
@@ -27,6 +27,8 @@ Group:          System/Libraries
 URL:            https://github.com/intel/media-driver
 Source:         https://github.com/intel/media-driver/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
+Patch0:         Werror-implicit-function-not-valid-for-C++.patch
+Patch1:         Werror-initialize-in-right-order.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -202,6 +204,10 @@ libigfxcmrt%{so_ver}.
 %setup -q -c -a 0
 mv media-driver-* media-driver
 chmod -x media-driver/*.md
+pushd media-driver
+%patch0 -p1
+%patch1 -p1
+popd
 
 %define __sourcedir media-driver
 

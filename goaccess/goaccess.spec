@@ -2,7 +2,7 @@
 #
 # spec file for package goaccess
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://goaccess.io/
 Source:         http://tar.goaccess.io/goaccess-%{version}.tar.gz
+Patch0:         bin2c.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -42,6 +43,7 @@ for system administrators that require a visual report on the fly.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \

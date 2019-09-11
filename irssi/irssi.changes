@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 29 00:29:56 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.2.2
+  - Fix a use after free issue when receiving IRCv3 CAP
+    information from the server (GL#34) CVE-2019-15717
+  - Fix a crash during startup when windows weren't fully
+    initialised yet (#1114, bdo#935813)
+
+-------------------------------------------------------------------
 Fri Jun 28 21:27:15 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - update to 1.2.1

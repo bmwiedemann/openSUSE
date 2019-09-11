@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 26 04:22:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.14.1
+  * Fix a two-finger interaction (click + drag) was interpreted
+    as scroll event instead of the intended action
+  * The RollerMouse v3 now has debouncing disabled so the
+    double-click button works.
+
+-------------------------------------------------------------------
+Sun Aug 11 15:39:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop conditionals for wacom support, all current releases of
+  openSUSE have wacom support available.
+- Update git-urls to current gitlab home.
+
+-------------------------------------------------------------------
 Sun Aug 11 06:30:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.14

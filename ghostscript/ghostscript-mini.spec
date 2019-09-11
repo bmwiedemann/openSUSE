@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,15 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  update-alternatives
 BuildRequires:  zlib-devel
 %if 0%{?suse_version} >= 1500
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 Requires:       apparmor-abstractions
 %endif
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 Summary:        Minimal Ghostscript for minimal build requirements
 License:        AGPL-3.0-only
 Group:          System/Libraries
@@ -321,19 +324,35 @@ set -x
 install -m 644 catalog.devices $DOCDIR
 install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/ghostscript
 
+# Move /usr/bin/gs to /usr/bin/gs.bin to be able to use update-alternatives
+install -d %buildroot%{_sysconfdir}/alternatives
+mv %{buildroot}%{_bindir}/gs %{buildroot}%{_bindir}/gs.bin
+ln -sf %{_bindir}/gs.bin %{buildroot}%{_sysconfdir}/alternatives/gs
+ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
+
 %post
 /sbin/ldconfig
 %if 0%{?suse_version} >= 1500
 %apparmor_reload /etc/apparmor.d/ghostscript
 %endif
+%{_sbindir}/update-alternatives \
+  --install %{_bindir}/gs gs %{_bindir}/gs.bin 15
 
 %postun -p /sbin/ldconfig
 
+%preun
+if test $1 -eq 0 ; then
+    %{_sbindir}/update-alternatives \
+    --remove gs %{_bindir}/gs.bin
+fi
+
 %files
 %defattr(-, root, root)
+%ghost %config %{_sysconfdir}/alternatives/gs
 %{_bindir}/dvipdf
 %{_bindir}/eps2eps
 %{_bindir}/gs
+%{_bindir}/gs.bin
 %{_bindir}/gsbj
 %{_bindir}/gsdj
 %{_bindir}/gsdj500

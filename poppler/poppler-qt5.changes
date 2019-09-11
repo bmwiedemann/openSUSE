@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Fri Aug  2 21:19:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.79.0:
+  + core:
+    - Fix regression on TextSelectionPainter.
+    - Fix parsing of DefaultAppearance.
+    - Fix memory leak in PostScriptFunction.
+    - Fix crashes in fuzzed files.
+  + qt5:
+    - Implemented support for setIcon by changing appearance.
+    - Added option to set the form available to print.
+    - QString::null is deprecated, use QString().
+    - Replace deprecated qStableSort with std::stable_sort.
+  + build system: Turn README into README.md and expand it.
+
+-------------------------------------------------------------------
+Fri Jun 28 22:40:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.78.0:
+  + core:
+    - Fix line annotation arrows for usage in dimensioning.
+    - Handle Ink annots without an InkList but with an AP.
+    - Fix typos preventing parsing of Movie start and duration.
+    - Fix crash on malformed files.
+  + glib:
+    - Add poppler_document_create_dests_tree().
+    - Don't use the deprecated g_type_class_add_private().
+    - Document the differences between render() and
+      render_for_printing().
+    - Fix introspection for poppler_document_new_from_data.
+    - Don't create PopplerInputStream with length 0.
+    - Document G_IO_ERROR as a possible error condition.
+    - Docs: Add index for API new in 0.78.
+  + build system:
+    - Fixes cross compilation of gir in Void Linux.
+    - Add -Wshadow to the default warning flags.
+    - Install pkg-config pc files if pkg-config is found.
+- Bump poppler_sover following upstream changes.
+
+-------------------------------------------------------------------
+Sat May 25 00:04:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.77.0:
+  + core:
+    - Fix crash on signature handling. Issue #766
+    - Fix small memory leak in SignatureHandler::getCertificateInfo
+    - Splash: Restrict filling of overlapping boxes. Issue #750
+    - Fix crash on malformed files
+  + qt5: Fix optional content handling with exclusive layers
+  + cpp: Make render_page thread-safe
+  + utils:
+    - pdfsig: Fix small memory leak
+    - pdftotext: Fix typo in manpage
+- Changes from version 0.76.1:
+  + core:
+    - Make the mul tables be calculated at compile time with constexpr.
+    - splash: Fix compile with SPLASH_CMYK enabled
+    - Some typo fixing in error messages
+  + qt5: Fix regression in annotation handling
+  + build system: Fix some typos in build system output and comments
+- Changes from version 0.76.0:
+  + core:
+    - Fix regression on case-insensitive search. Issue #743
+    - Remove GooList, use std::vector instead
+    - Fix radiobutton reporting wrong state. Issue #159
+    - Handle UTF16-LE strings
+    - Don't error out if there's no DA in FreeText annotation
+    - cairo:
+      . Compute correct coverage values for box filter.
+      . Constrain number of cycles in rescale filter.
+    - Read more fields from ViewerPreferences
+      . Introduce and use Ref::INVALID
+      . Fix crashes in broken files
+      . Fix mismatched free/delete
+      . Add missing include guards
+  + utils: pdftohtml: Properly initialize HtmlOutputDev::page to
+    avoid SIGSEGV upon error exit.
+- Changes from version 0.75.0:
+  + core:
+    - Fix rendering of some annotations
+    - Fix crashes in broken files
+    - Small internal code improvements
+  + cpp:
+    - Improve documentation
+    - tests: Add showing version information to poppler-dump
++ utils:
+  - pdfattach: new util
+  - pdftohtml: add -dataurls parameter
+  - pdftoppm: add -sep and -forcenum parameters
+  - pdftohtml: make singleHtml and stout not mutually exclusive
+  - pdfsig: fix use after free
+- Bump poppler_sover following upstream changes.
+
+-------------------------------------------------------------------
+Sun Feb 10 09:46:32 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.74.0:
+  + core:
+    - Remove support for obsolete systems.
+    - Include timezone in timeToDateString().
+    - Fix/silence some warnings.
+    - Fix issues with broken files.
+  + build system:
+    - Fix linking in FreeBSD.
+    - Fix fseeko configure check on Android for API level < 24.
+    - Remove unused MacroPushRequiredVars.cmake.
+  + qt5:
+    - Add API that lazily builds an outline by wrapping the
+      internal objects.
+    - Demo: Use new API to build Table Of Contents lazily.
+  + glib:
+    - Improve documentation.
+    - Fix cast from 'GTime *' (aka 'int *') to 'time_t *'
+      (aka 'long *').
+  + utils: pdfsig: add -nssdir option.
+  + cpp: Add a way to get all the named destinations in a document.
+- Bump poppler_sover following upstream changes.
+
+-------------------------------------------------------------------
+Mon Jan 14 10:22:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.73.0:
+  + core:
+    - Fix regression reading some encrypted files.
+    - Add X509CertificateInfo classes.
+    - Add new 'IgnoreDiacritics' option to ::findText().
+    - Open files with CLOEXEC flag set.
+    - Remove Gulong, Guint, Gushort, Guchar typedefs.
+    - Fix handling of some broken files.
+  + qt5:
+    - Expose X509CertificateInfo.
+    - Add the possibility of getting version.
+    - Add new 'IgnoreDiacritics' search flag.
+    - Make initialization of globalParams threadsafe.
+    - ArthurOutputDev: Remove all Splash code usage.
+  + cpp:
+    - Make initialization of globalParams threadsafe.
+    - Fix page::text_list encoding issue.
+    - Improve handling of UTF-16 by considering Endianess.
+    - Add API to specify a custom data directory.
+  + glib:
+    - add new 'POPPLER_FIND_IGNORE_DIACRITICS' find flag.
+    - Fix named destinations.
+    - Make PrintScaling preference available in API.
+  + build system:
+    - Rename ENABLE_XPDF_HEADERS to
+      ENABLE_UNSTABLE_API_ABI_HEADERS.
+    - support enabling NSS on mingw.
+    - Windows: only set SOVERSION for shared libs.
+- Bump poppler_sover following upstream changes.
+- Pass ENABLE_UNSTABLE_API_ABI_HEADERS=on to cmake, replacing
+  ENABLE_XPDF_HEADERS=on we had before.
+
+-------------------------------------------------------------------
 Wed Dec 12 12:14:07 UTC 2018 - alarrosa@suse.com
 
 - Update to version 0.72.0:

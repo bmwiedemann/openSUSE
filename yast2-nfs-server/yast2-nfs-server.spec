@@ -20,7 +20,7 @@ Name:           yast2-nfs-server
 Summary:        YaST2 - NFS Server Configuration
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 URL:            https://github.com/yast/yast-nfs-server
 

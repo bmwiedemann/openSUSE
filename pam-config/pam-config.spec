@@ -17,9 +17,9 @@
 
 
 Name:           pam-config
-Version:        1.1
+Version:        1.2
 Release:        0
-Summary:        Modify common PAM configuration files
+Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/SUSE/pam-config

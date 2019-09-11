@@ -68,6 +68,7 @@ syspref's capture format.
 %autosetup -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %meson
 %meson_build
 

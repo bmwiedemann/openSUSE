@@ -80,7 +80,7 @@ BuildRequires:  pkgconfig(krb5)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        9.6.14
+Version:        9.6.15
 Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
 Source1:        baselibs.conf
@@ -340,6 +340,7 @@ find src/test/ -name '*.orig' -delete
 find -name .gitignore -delete
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 PACKAGE_TARNAME=%name %configure \
         --bindir=%pgbindir \
         --libdir=%pglibdir \

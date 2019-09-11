@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kde-user-manager
-Version:        5.16.4
+Version:        5.16.5
 Release:        0
 Summary:        KDE System Settings module to manage users
 License:        GPL-2.0-or-later

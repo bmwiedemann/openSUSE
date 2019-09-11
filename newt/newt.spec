@@ -154,6 +154,7 @@ providing a python API for creating text mode interfaces.
 %patch0 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # gpm support seems to smash the stack
 # --with-gpm-support
 %configure --without-tcl

@@ -17,9 +17,9 @@
 
 
 Name:           iproute2
-Version:        5.1
+Version:        5.2
 Release:        0
-%define rversion 5.1.0
+%define rversion 5.2.0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
@@ -97,11 +97,12 @@ bash command line completion support for iproute.
 find . -name *.orig -delete
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # build with -fPIC. For details see
 # https://bugzilla.novell.com/show_bug.cgi?id=388021
 xt_libdir="$(pkg-config xtables --variable=xtlibdir)"
 xt_cflags="$(pkg-config xtables --cflags)"
-make %{?_smp_mflags} CCOPTS="-D_GNU_SOURCE %optflags -Wstrict-prototypes -Wno-error -fPIC -DXT_LIB_DIR=\\\"$xt_libdir\\\" $xt_cflags"
+%make_build CCOPTS="-D_GNU_SOURCE %optflags -Wstrict-prototypes -Wno-error -fPIC -DXT_LIB_DIR=\\\"$xt_libdir\\\" $xt_cflags"
 
 %install
 b="%buildroot"

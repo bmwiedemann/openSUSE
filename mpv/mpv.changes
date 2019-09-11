@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Sep 02 12:10:21 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1567376743.6d90517275:
+  * external_files: add .lrc subtitle extension
+  * demux: ignore forced demuxer type for directories
+  * stream_dvb: Increase timeout of streaming read.
+  * stream_dvb: Adapt to VDR channel config format.
+  * osc: improve look of seekranges
+  * cocoa-cb: remove an unused variable
+  * ao_opensles: fix delayed audio
+  * travis: rework scripts to re-enable macOS
+  * vo/gpu: vulkan: Pass the device name option through to libplacebo
+
+-------------------------------------------------------------------
+Thu Aug 22 06:58:51 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Reintroduce _mpv_ver since subpackages have different versions
+  and need to depend on _mpv_ver when appropriate.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:11:42 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Disable set_version so that the bash-completion subpackage
+  gets the correct version.
+
+-------------------------------------------------------------------
+Tue Aug 20 08:31:52 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1566288741.80552ab28e:
+  * vo_gpu: d3d11: fix storage lifetime of compound literals
+  * encode: set sample_aspect_ratio on AVStream struct
+  * vo_gpu: fix taking screenshots of rotated videos
+  * vo_gpu: hwdec_vaapi: Synchronise after exporting VA surface
+  * DOCS/compile-windows: remove angleproject-git from deps
+  * TOOLS/travis-rebuild-website: update condition after docker transition
+  * cocoa-cb: migrate to swift 5 with swift 4 fallback
+  * cocoa-cb: fix optional cases on macOS 10.12
+  * build: fix build with older command line tools
+  * build: make macOS SDK path and version configurable via env vars
+
+-------------------------------------------------------------------
 Thu Nov 22 09:13:55 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add vulkan dependency per bsc#1115120

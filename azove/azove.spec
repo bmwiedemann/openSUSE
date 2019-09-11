@@ -1,7 +1,7 @@
 #
 # spec file for package azove
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,16 @@ Name:           azove
 Version:        2.0
 Release:        0
 Summary:        Another Zero One Vertex Enumeration tool
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://www.mpi-inf.mpg.de/~behle/azove.html
+URL:            https://www.mpi-inf.mpg.de/~behle/azove.html
 
-Source:         http://www.mpi-inf.mpg.de/~behle/azove-2.0.tar.gz
+# without a cookie, mpi-inf.mpg.de presents a landing page, failing the download check :(
+#Source:         https://www.mpi-inf.mpg.de/~behle/%name-%version.tar.gz
+Source:         %name-%version.tar.gz
 Patch1:         azove-cpp.diff
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 azove is a tool designed for counting (without explicit enumeration)
@@ -43,20 +44,18 @@ the vertex enumeration problem. In fact, it can also solve the 0/1
 knapsack problem and the 0/1 subset sum problem.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} COMPILER_FLAGS="%optflags"
 
 %install
-c="%buildroot/%_bindir";
+c="%buildroot/%_bindir"
 mkdir -p "$c"
 install -pm0755 azove2 "$c"
 
 %files
-%defattr(-,root,root)
 %_bindir/azove2
-%doc COPYING
+%license COPYING
 
 %changelog

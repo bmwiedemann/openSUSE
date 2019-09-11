@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Cairo-GObject
-Version:        1.004
+Version:        1.005
 Release:        0
 %define cpan_name Cairo-GObject
 Summary:        Integrate Cairo into the Glib type system
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Cairo-GObject/
-Source0:        http://www.cpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -32,12 +33,14 @@ BuildRequires:  perl(Cairo) >= 1.080
 BuildRequires:  perl(ExtUtils::Depends) >= 0.2
 BuildRequires:  perl(ExtUtils::PkgConfig) >= 1.000000
 BuildRequires:  perl(Glib) >= 1.224
-BuildRequires:  pkgconfig(cairo-gobject)
 Requires:       perl(Cairo) >= 1.080
 Requires:       perl(ExtUtils::Depends) >= 0.2
 Requires:       perl(ExtUtils::PkgConfig) >= 1.000000
 Requires:       perl(Glib) >= 1.224
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  pkgconfig(cairo-gobject)
+# MANUAL END
 
 %description
 Integrate Cairo into the Glib type system
@@ -46,11 +49,11 @@ Integrate Cairo into the Glib type system
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

@@ -26,6 +26,7 @@ Url:            https://pagure.io/tmpwatch
 #Source0:        https://pagure.io/tmpwatch/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}.daily
+BuildRequires:  cron
 BuildRequires:  psmisc
 Requires:       cron
 Requires:       psmisc

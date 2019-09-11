@@ -64,6 +64,7 @@ Summary:        For Distributed Compile in the Network
 Group:          Development/Tools/Building
 Requires:       libcap-ng-devel
 Requires:       libstdc++-devel
+Requires:       lzo-devel
 
 %description -n libicecream-devel
 icecream is the next generation distcc.
@@ -84,6 +85,7 @@ cp %{SOURCE8} suse/
 # DO NOT ADD PATCHES without github reference
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
 %configure \
   --enable-clang-rewrite-includes \

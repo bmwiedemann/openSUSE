@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:04:33 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qttools.git/plain/dist/changes-5.13.1/?h=v5.13.1
+
+-------------------------------------------------------------------
+Tue Sep  3 13:05:02 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Split qcollectiongenerator and qhelpgenerator into a subpackage
+  which is required by the Qt5Help cmake module
+
+-------------------------------------------------------------------
+Thu Aug 29 17:41:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove the accidental dependency from the devel package on the
+  Qt Designer example plugins, referenced in the cmake files.
+- Move the example plugins to a separate subpackage.
+
+-------------------------------------------------------------------
+Thu Aug 29 14:12:56 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require libqt5-qttools again. This is causing multiple build issues.
+- Clean the spec file.
+
+-------------------------------------------------------------------
+Thu Aug 29 10:47:17 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop some not unnecessary library runtime Requires: libQt5Designer5,
+  libQt5DesignerComponents5, libQt5Help5, pulled in automatically.
+- Change libqt5-qttools and libqt5-qttools-doc Requires in devel
+  subpackage to Recommends, as the tools are not required for building.
+- Make some Summaries and Descriptions more useful.
+- Correct requires for matching Clang headers, the headers are part
+  of the libclang package for current Clang versions
+
+-------------------------------------------------------------------
 Tue Jul  2 13:47:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Link from Qt bindir into %_bindir, not the other way around to fix

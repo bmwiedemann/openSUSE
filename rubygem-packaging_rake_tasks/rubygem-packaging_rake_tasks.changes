@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:58:25 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Unified spec_version (bsc#1149618)
+- 1.4.10
+
+-------------------------------------------------------------------
+Wed Aug  7 14:07:12 UTC 2019 - Martin Vidner <mvidner@suse.com>
+
+- Reduce verbosity of tarball making (bsc#1146310)
+- 1.4.9
+
+-------------------------------------------------------------------
+Wed Jun 12 13:15:05 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added git helpers and support for git version tags (bsc#1133435)
+- 1.4.8
+
+-------------------------------------------------------------------
 Fri May 10 10:49:59 UTC 2019 - David Diaz <dgonzalez@suse.com>
 
 - Add support for SUSE's Jira tags (bsc#1134704)

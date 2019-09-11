@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcddb
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
@@ -80,6 +80,7 @@ This package includes the libkcddb widgets library.
 %package -n libKF5Cddb5
 Summary:        CDDB library for KDE Applications
 Group:          System/Libraries
+Recommends:     %{name}
 
 %description -n libKF5Cddb5
 The KDE Compact Disc DataBase library provides an API for

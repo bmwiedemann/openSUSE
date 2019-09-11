@@ -36,16 +36,16 @@
 %endif
 
 Name:           libqt5-qtbase
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtbase-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtbase-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
@@ -76,25 +76,13 @@ Patch23:        0003-Revert-White-list-more-recent-Mesa-version-for-multi.patch
 Patch24:        fix-fixqt4headers.patch
 # Revert to restore compatibility with akonadi and possibly other applications
 Patch30:        0001-Revert-Always-escape-the-table-names-when-creating-t.patch
-# Reverting some commits in the hope to avoid QTBUG-76255
-Patch50:        0001-Revert-Fix-QMAKE_PRL_INSTALL_REPLACE-for-macOS.patch
-Patch51:        0002-Revert-Replace-absolute-Qt-lib-dir-in-.prl-files.patch
-Patch52:        0003-Revert-Fix-prl-replacements-if-libdir-is-in-QMAKE_DE.patch
-Patch53:        0001-Revert-qmake-link-qt-libraries-by-full-path.patch
-# Workaround for QTBUG-76742, boo#1140084
-Patch60:        0001-Decrease-focusInTimer-timer-from-400-to-200.patch
 # patches 1000-2000 and above from upstream 5.13 branch #
-Patch1000:      0003-Add-an-ID-for-recognition-of-UGEE-tablets.patch
 # patches 2000-3000 and above from upstream 5.14/dev branch #
 Patch2000:      0001-Fix-notification-of-QDockWidget-when-it-gets-undocke.patch
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
-# PATCH-FIX-UPSTREAM https://code.qt.io/cgit/qt/qtbase.git/patch/?id=60136b1a846ca5aedeb588edaa178927abb002ec -- https://bugreports.qt.io/browse/QTBUG-75901
-PATCH3000:      0001-Fix-meta-file-replacements-if-matches-are-empty.patch
-# PATCH-FIX-UPSTREAM https://code.qt.io/cgit/qt/qtbase.git/patch/?id=c64f8ca232cc1f2131282d9eb6279ef9b565be88 -- https://bugreports.qt.io/browse/QTBUG-75901
-PATCH3001:      0002-Do-not-write-Libs-into-.pc-files-if-TEMPLATE-is-not-.patch
-# PATCH-FIX-UPSTREAM https://code.qt.io/cgit/qt/qtbase.git/patch/?id=4da47d0fba04e5d50bf6b63e73bc0de986560f42 -- https://bugreports.qt.io/browse/QTBUG-75901
-PATCH3002:      0003-Make-sure-.pc-.prl-and-.la-files-are-created-for-hea.patch
+# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/273050
+Patch2002:      0001-Fix-CMake-config-files-for-libdir-different-from-lib.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
@@ -1246,10 +1234,13 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %{libqt5_libdir}/libQt5Gui.prl
 %{libqt5_libdir}/libQt5EglFSDeviceIntegration.so
 %{libqt5_libdir}/libQt5EglFSDeviceIntegration.prl
+%{libqt5_libdir}/cmake/Qt5EglFSDeviceIntegration/
 %{libqt5_libdir}/libQt5EglFsKmsSupport.prl
 %{libqt5_libdir}/libQt5EglFsKmsSupport.so
+%{libqt5_libdir}/cmake/Qt5EglFsKmsSupport/
 %{libqt5_libdir}/libQt5XcbQpa.so
 %{libqt5_libdir}/libQt5XcbQpa.prl
+%{libqt5_libdir}/cmake/Qt5XcbQpa/
 %{libqt5_libdir}/cmake/Qt5Gui/
 %{libqt5_libdir}/pkgconfig/Qt5Gui.pc
 %{libqt5_includedir}/QtGui/
@@ -1308,7 +1299,7 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %doc *.txt
 %{libqt5_libdir}/libQt5Bootstrap.a
 %{libqt5_libdir}/libQt5Bootstrap.prl
-#{libqt5_libdir}/pkgconfig/Qt5Bootstrap.pc
+%{libqt5_libdir}/cmake/Qt5Bootstrap/
 
 %files -n libQt5OpenGLExtensions-devel-static
 %license LICENSE.*
@@ -1324,37 +1315,52 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %doc *.txt
 %{libqt5_libdir}/libQt5XkbCommonSupport.a
 %{libqt5_libdir}/libQt5XkbCommonSupport.prl
+%{libqt5_libdir}/cmake/Qt5XkbCommonSupport/
 %{libqt5_libdir}/libQt5AccessibilitySupport.a
 %{libqt5_libdir}/libQt5AccessibilitySupport.prl
+%{libqt5_libdir}/cmake/Qt5AccessibilitySupport/
 %{libqt5_libdir}/libQt5DeviceDiscoverySupport.a
 %{libqt5_libdir}/libQt5DeviceDiscoverySupport.prl
+%{libqt5_libdir}/cmake/Qt5DeviceDiscoverySupport/
 %{libqt5_libdir}/libQt5EglSupport.a
 %{libqt5_libdir}/libQt5EglSupport.prl
+%{libqt5_libdir}/cmake/Qt5EglSupport/
 %{libqt5_libdir}/libQt5EventDispatcherSupport.a
 %{libqt5_libdir}/libQt5EventDispatcherSupport.prl
+%{libqt5_libdir}/cmake/Qt5EventDispatcherSupport/
 %{libqt5_libdir}/libQt5FbSupport.a
 %{libqt5_libdir}/libQt5FbSupport.prl
+%{libqt5_libdir}/cmake/Qt5FbSupport/
 %{libqt5_libdir}/libQt5FontDatabaseSupport.a
 %{libqt5_libdir}/libQt5FontDatabaseSupport.prl
+%{libqt5_libdir}/cmake/Qt5FontDatabaseSupport/
 %ifnarch %arm aarch64
 %{libqt5_libdir}/libQt5GlxSupport.a
 %{libqt5_libdir}/libQt5GlxSupport.prl
+%{libqt5_libdir}/cmake/Qt5GlxSupport/
 %endif
 %{libqt5_libdir}/libQt5InputSupport.a
 %{libqt5_libdir}/libQt5InputSupport.prl
+%{libqt5_libdir}/cmake/Qt5InputSupport/
 %{libqt5_libdir}/libQt5LinuxAccessibilitySupport.a
 %{libqt5_libdir}/libQt5LinuxAccessibilitySupport.prl
+%{libqt5_libdir}/cmake/Qt5LinuxAccessibilitySupport/
 %{libqt5_libdir}/libQt5PlatformCompositorSupport.a
 %{libqt5_libdir}/libQt5PlatformCompositorSupport.prl
+%{libqt5_libdir}/cmake/Qt5PlatformCompositorSupport/
 %{libqt5_libdir}/libQt5ServiceSupport.a
 %{libqt5_libdir}/libQt5ServiceSupport.prl
+%{libqt5_libdir}/cmake/Qt5ServiceSupport/
 %{libqt5_libdir}/libQt5ThemeSupport.a
 %{libqt5_libdir}/libQt5ThemeSupport.prl
+%{libqt5_libdir}/cmake/Qt5ThemeSupport/
 %{libqt5_libdir}/libQt5EdidSupport.a
 %{libqt5_libdir}/libQt5EdidSupport.prl
+%{libqt5_libdir}/cmake/Qt5EdidSupport/
 %if %{vulkan}
 %{libqt5_libdir}/libQt5VulkanSupport.a
 %{libqt5_libdir}/libQt5VulkanSupport.prl
+%{libqt5_libdir}/cmake/Qt5VulkanSupport/
 %endif
 %{libqt5_includedir}/QtAccessibilitySupport/
 %{libqt5_includedir}/QtDeviceDiscoverySupport/
@@ -1398,6 +1404,7 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %doc *.txt
 %{libqt5_libdir}/libQt5KmsSupport.a
 %{libqt5_libdir}/libQt5KmsSupport.prl
+%{libqt5_libdir}/cmake/Qt5KmsSupport/
 %exclude %{libqt5_includedir}/QtKmsSupport/%{so_version}/
 %{libqt5_includedir}/QtKmsSupport/
 

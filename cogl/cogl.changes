@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 07 08:26:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.22.4+8:
+  + Add fallback for semi-private symbols in Pango.
+  + Updated translations.
+- Use PARENT_TAG and TAG_OFFSET in service file.
+
+-------------------------------------------------------------------
 Tue Apr 23 16:23:50 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 1.22.4+20190423.9bc253e9:

@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -89,6 +89,7 @@ Release:        0
 Summary:        Auxiliary package
 Group:          System/Daemons
 Requires:       %{name} = %{cronie_version}-%{release}
+Requires(post): permissions
 
 %description -n cron
 Auxiliary package, needed for proper update from vixie-cron 4.1 to cronie 1.4.4
@@ -104,7 +105,7 @@ The default settings execute regular jobs by anacron, however this could be
 overloaded in settings.
 
 %prep
-%setup -q -n %{name}-%{name}-%{cronie_version} 
+%setup -q -n %{name}-%{name}-%{cronie_version}
 %patch3 -p1
 %patch4
 %patch5 -p1
@@ -147,6 +148,12 @@ mkdir -p %{buildroot}%{_localstatedir}/spool/anacron
 mv %{buildroot}%{_sbindir}/crond %{buildroot}%{_sbindir}/cron
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{SOURCE9} %{buildroot}%{_fillupdir}/
+
+mkdir -p %{buildroot}%{_sysconfdir}/cron.d
+mkdir -p %{buildroot}%{_sysconfdir}/cron.hourly
+mkdir -p %{buildroot}%{_sysconfdir}/cron.daily
+mkdir -p %{buildroot}%{_sysconfdir}/cron.weekly
+mkdir -p %{buildroot}%{_sysconfdir}/cron.monthly
 
 touch %{buildroot}%{_localstatedir}/spool/anacron/cron.daily
 touch %{buildroot}%{_localstatedir}/spool/anacron/cron.weekly
@@ -194,6 +201,20 @@ exit 0
 [ -e %{_localstatedir}/spool/anacron/cron.weekly ] || touch %{_localstatedir}/spool/anacron/cron.weekly
 [ -e %{_localstatedir}/spool/anacron/cron.monthly ] || touch %{_localstatedir}/spool/anacron/cron.monthly
 
+%verifyscript -n cron
+%verify_permissions -e /etc/cron.d
+%verify_permissions -e /etc/cron.daily
+%verify_permissions -e /etc/cron.hourly
+%verify_permissions -e /etc/cron.monthly
+%verify_permissions -e /etc/cron.weekly
+
+%post -n cron
+%set_permissions /etc/cron.d
+%set_permissions /etc/cron.daily
+%set_permissions /etc/cron.hourly
+%set_permissions /etc/cron.monthly
+%set_permissions /etc/cron.weekly
+
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING README ChangeLog
@@ -231,5 +252,10 @@ exit 0
 %files -n cron
 %defattr(-,root,root,-)
 %doc cron_to_cronie.README
+%dir %attr(755,root,root) %{_sysconfdir}/cron.d
+%dir %attr(755,root,root) %{_sysconfdir}/cron.hourly
+%dir %attr(755,root,root) %{_sysconfdir}/cron.daily
+%dir %attr(755,root,root) %{_sysconfdir}/cron.weekly
+%dir %attr(755,root,root) %{_sysconfdir}/cron.monthly
 
 %changelog

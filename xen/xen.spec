@@ -159,6 +159,14 @@ Source57:       xen-utils-0.1.tar.bz2
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         5d419d49-x86-spec-ctrl-report-proper-status.patch
+Patch2:         5d43253c-x86-ucode-always-collect_cpu_info-at-boot.patch
+Patch3:         5d4aa36f-x86-apic-enable-x2APIC-mode-earlier.patch
+Patch4:         5d4afa7a-credit2-fix-memory-leak.patch
+Patch5:         5d4d850a-introduce-bss-percpu-page-aligned.patch
+Patch6:         5d516531-x86-xpti-dont-leak-TSS-adjacent-data.patch
+Patch7:         5d5bf475-x86-PV-fix-handling-of-iommu-mappings.patch
+Patch8:         5d6524ca-x86-mm-correctly-init-M2P-entries.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -357,6 +365,14 @@ Authors:
 %prep
 %setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
 # Upstream patches
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -1158,6 +1174,17 @@ if [ -x /sbin/update-bootloader ]; then
 fi
 
 %pre tools
+for empty_config_file in \
+	logrotate.d/xen \
+	modprobe.d/xen_loop.conf \
+	pam.d/xen-api \
+	xen/cpupool \
+	xen/xenapiusers \
+	xen/xl.conf
+do
+  test -f /etc/${empty_config_file}.rpmsave && mv -v /etc/${empty_config_file}.rpmsave /etc/${empty_config_file}.rpmsave.old ||:
+done
+
 %service_add_pre xencommons.service
 %service_add_pre xendomains.service
 %service_add_pre xen-watchdog.service
@@ -1228,6 +1255,18 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun xenconsoled.service
 %service_del_postun xen-init-dom0.service
 %service_del_postun xen-qemu-dom0-disk-backend.service
+
+%posttrans tools
+for empty_config_file in \
+	logrotate.d/xen \
+	modprobe.d/xen_loop.conf \
+	pam.d/xen-api \
+	xen/cpupool \
+	xen/xenapiusers \
+	xen/xl.conf
+do
+  test -f /etc/${empty_config_file}.rpmsave && mv -v /etc/${empty_config_file}.rpmsave /etc/${empty_config_file}
+done
 
 %endif
 

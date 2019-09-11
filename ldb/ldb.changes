@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  1 10:57:34 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.5.5
+  + LDAP_REFERRAL_SCHEME_OPAQUE was added to ldb_module.h; (bso#12478);
+  + Skip @ records early in a search full scan; (bso#13893);
+
+-------------------------------------------------------------------
 Tue Mar  5 16:30:16 UTC 2019 - David Mulder <dmulder@suse.com>
 
 - Update to 1.5.4

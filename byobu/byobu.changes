@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 24 19:17:05 UTC 2019 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 5.129
+  + see https://bazaar.launchpad.net/~kirkland/byobu/trunk/view/head:/debian/changelog
+
+-------------------------------------------------------------------
 Tue Jan 15 20:28:33 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Require python3-newt, fixes bsc#1121502

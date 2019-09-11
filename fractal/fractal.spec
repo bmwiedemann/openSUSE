@@ -28,7 +28,6 @@ Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/ad6a483327c3e9ef5
 Patch0:         fractal-drop-gst-bad-video-dep.patch
 
 BuildRequires:  cargo
-BuildRequires:  cargo-vendor
 BuildRequires:  gmp-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig

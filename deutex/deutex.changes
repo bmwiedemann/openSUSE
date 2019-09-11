@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 23 17:57:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 5.2.1
+  * DeuTex supports textures in TX_START and TX_END markers
+    (introduced in ZDoom in 2003). These are used by certain
+    editors/engines for textures, with support for storing PNG and
+    JPEG files directly in the WAD. Extraction is likewise handled
+    for all formats.
+
+-------------------------------------------------------------------
 Sun Sep 16 18:07:30 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 5.1.2

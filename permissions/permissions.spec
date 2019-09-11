@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION 20190711
+%define VERSION 20190830
 
 Name:           permissions
 Version:        %{VERSION}

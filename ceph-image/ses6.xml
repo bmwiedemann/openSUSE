@@ -28,4 +28,10 @@
   		<value>%BUILDTIME%</value>
   	</label>
   </labels>
+  <packages_image>
+    <package>
+      <name>patterns-ses-ceph_base</name>
+    </package>
+  </packages_image>
+
 </param>

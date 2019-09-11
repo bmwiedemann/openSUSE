@@ -17,7 +17,7 @@
 
 
 Name:           gnome-photos
-Version:        3.32.0
+Version:        3.32.1
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later

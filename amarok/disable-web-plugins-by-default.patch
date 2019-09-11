@@ -2,11 +2,11 @@ From: Fabian Vogt <fabian@ritter-vogt.de>
 Subject: Disable plugins which cause automatic network requests by default
 References: boo#1070899
 
-Index: amarok-2.8.0/src/services/lastfm/amarok_service_lastfm.desktop
-===================================================================
---- amarok-2.8.0.orig/src/services/lastfm/amarok_service_lastfm.desktop
-+++ amarok-2.8.0/src/services/lastfm/amarok_service_lastfm.desktop
-@@ -119,6 +119,6 @@ X-KDE-PluginInfo-Email=kde@dontletsstart
+diff --git a/src/services/lastfm/amarok_service_lastfm.desktop b/src/services/lastfm/amarok_service_lastfm.desktop
+index 9f02d0e578..1c7276cfaa 100644
+--- a/src/services/lastfm/amarok_service_lastfm.desktop
++++ b/src/services/lastfm/amarok_service_lastfm.desktop
+@@ -117,6 +117,6 @@ X-KDE-PluginInfo-Email=kde@dontletsstart.com
  X-KDE-PluginInfo-Version=1.0
  X-KDE-PluginInfo-Category=Service
  X-KDE-PluginInfo-License=GPL
@@ -14,11 +14,11 @@ Index: amarok-2.8.0/src/services/lastfm/amarok_service_lastfm.desktop
 +X-KDE-PluginInfo-EnabledByDefault=false
  X-KDE-Library=amarok_service_lastfm
  X-KDE-PluginInfo-Name=amarok_service_lastfm
-Index: amarok-2.8.0/src/services/magnatune/amarok_service_magnatunestore.desktop
-===================================================================
---- amarok-2.8.0.orig/src/services/magnatune/amarok_service_magnatunestore.desktop
-+++ amarok-2.8.0/src/services/magnatune/amarok_service_magnatunestore.desktop
-@@ -126,7 +126,7 @@ X-KDE-PluginInfo-Email=nhnFreespirit@gma
+diff --git a/src/services/magnatune/amarok_service_magnatunestore.desktop b/src/services/magnatune/amarok_service_magnatunestore.desktop
+index 98fec83d53..5a3d4754e7 100644
+--- a/src/services/magnatune/amarok_service_magnatunestore.desktop
++++ b/src/services/magnatune/amarok_service_magnatunestore.desktop
+@@ -123,7 +123,7 @@ X-KDE-PluginInfo-Email=nhnFreespirit@gmail.com
  X-KDE-PluginInfo-Version=2.0
  X-KDE-PluginInfo-Category=Service
  X-KDE-PluginInfo-License=GPL

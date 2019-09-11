@@ -57,7 +57,7 @@ BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
 Url:            https://ldb.samba.org/
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later

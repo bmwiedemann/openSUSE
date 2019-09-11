@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 29 17:32:59 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 0.7.0
+  * Changed
+    - Force repo URL to HTTPS
+  * Fixed
+    - Ctrl + C handling of spinner
+
+-------------------------------------------------------------------
 Sun Aug 18 22:53:14 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 0.6.0

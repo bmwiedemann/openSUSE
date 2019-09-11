@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Glib-Object-Introspection
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           perl-Glib-Object-Introspection
-Version:        0.046
+Version:        0.047
 Release:        0
+#Upstream:  This library is free software; you can redistribute it and/or modify it under the terms of the Lesser General Public License (LGPL). For more information, see http://www.fsf.org/licenses/lgpl.txt
 %define cpan_name Glib-Object-Introspection
-Summary:        GObject Introspection bindings for Perl
-License:        LGPL-2.1-or-later
+Summary:        Dynamically create Perl language bindings
+License:        LGPL-2.1-only
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan-name}
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -32,19 +33,17 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Depends) >= 0.3
 BuildRequires:  perl(ExtUtils::PkgConfig) >= 1
 BuildRequires:  perl(Glib) >= 1.32
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Requires:       perl(ExtUtils::Depends) >= 0.3
 Requires:       perl(ExtUtils::PkgConfig) >= 1
 Requires:       perl(Glib) >= 1.32
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+# MANUAL END
 
 %description
-This package provides perl bindings for GObject Introspection.
-Glib::Object::Introspection uses the gobject-introspection and
-libffi projects to dynamically create Perl bindings for a wide
-variety of libraries.
-Examples include GTK+, WebKit, libsoup and many more.
+Dynamically create Perl language bindings
 
 %prep
 %setup -q -n %{cpan_name}-%{version}

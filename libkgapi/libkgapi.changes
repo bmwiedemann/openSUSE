@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:01:15 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Include KDE* cmake macros before any others
+
+-------------------------------------------------------------------
+Tue Aug 27 11:46:09 UTC 2019 - wbauer@tmo.at
+
+- Temporarily disable LTO to avoid crash when using gdrive
+  (boo#1148217)
+
+-------------------------------------------------------------------
 Fri Aug  9 08:32:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.08.0

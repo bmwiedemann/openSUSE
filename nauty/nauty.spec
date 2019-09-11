@@ -1,7 +1,7 @@
 #
 # spec file for package nauty
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_6_11
-%define fuv      26r11
-Version:        2.6.11
+%define lname   libnauty-2_7_rc2
+%define fuv      27rc2
+Version:        2.7~rc2
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0
@@ -33,7 +33,6 @@ BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  libtool >= 2
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 nauty and Traces are programs for computing automorphism groups of
@@ -68,8 +67,7 @@ This subpackage contains the header files for developing
 applications that want to make use of libnauty.
 
 %prep
-%setup -qn nauty%fuv
-%patch -P 1 -P 2 -p1
+%autosetup -p1 -n nauty%fuv
 
 %build
 rm -f makefile
@@ -86,16 +84,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/*
-%doc COPYRIGHT
+%doc changes24-27.txt
+%license COPYRIGHT
 
 %files -n %lname
-%defattr(-,root,root)
-%_libdir/libnauty*-2.6.11.so
+%_libdir/libnauty*-2.7.rc2.so
 
 %files devel
-%defattr(-,root,root)
 %_includedir/nauty/
 %_libdir/libnauty.so
 %_libdir/libnautyA1.so

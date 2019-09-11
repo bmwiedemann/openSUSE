@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 27 05:24:24 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.030
+   see /usr/share/doc/packages/perl-Perl-Critic-Freenode/Changes
+
+  0.030     2019-08-26 11:27:15 EDT
+    - Allow signature_enablers to be configured for Prototypes policy (#34)
+
+-------------------------------------------------------------------
 Sun Apr 28 05:29:23 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.029

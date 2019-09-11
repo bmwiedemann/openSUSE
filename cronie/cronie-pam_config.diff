@@ -1,8 +1,8 @@
-Index: cronie-cronie-1.5.3/pam/crond
+Index: cronie-cronie-1.5.4/pam/crond
 ===================================================================
---- cronie-cronie-1.5.3.orig/pam/crond
-+++ cronie-cronie-1.5.3/pam/crond
-@@ -4,8 +4,9 @@
+--- cronie-cronie-1.5.4.orig/pam/crond
++++ cronie-cronie-1.5.4/pam/crond
+@@ -4,8 +4,10 @@
  #
  # Although no PAM authentication is called, auth modules
  # are used for credential setting
@@ -16,4 +16,5 @@ Index: cronie-cronie-1.5.3/pam/crond
 +auth     include        common-auth
 +account  include        common-account
 +password include        common-password
++session  optional       pam_keyinit.so force revoke
 +session  include        common-session

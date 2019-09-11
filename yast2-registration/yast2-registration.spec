@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.2.6
+Version:        4.2.7
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -31,9 +31,9 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 4.0.63
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-slp >= 3.1.9
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(suse-connect) >= 0.3.11
-BuildRequires:  rubygem(yast-rake) >= 0.2.5
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:suse-connect) >= 0.3.11
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.5
 # updated product renames
 BuildRequires:  yast2-packager >= 4.0.40
 BuildRequires:  yast2-update >= 3.1.36
@@ -45,7 +45,7 @@ Requires:       yast2-pkg-bindings >= 3.1.34
 # N_() method
 Requires:       yast2-ruby-bindings >= 3.1.12
 # SUSE::Connect::YaST.list_installer_updates
-Requires:       rubygem(suse-connect) >= 0.2.37
+Requires:       rubygem(%{rb_default_ruby_abi}:suse-connect) >= 0.2.37
 # NOTE: Workaround for bsc#947482, SUSEConnect is actually not needed by the
 # YaST registration module, it is used just to install the Connect dependencies.
 #

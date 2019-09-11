@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpat
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         FcSolveSolver-cleanup-ressources.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freecell-solver-devel
 BuildRequires:  kcompletion-devel
@@ -81,6 +83,7 @@ more. The game has nice graphics and many different carddecks.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build

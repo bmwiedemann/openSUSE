@@ -2,7 +2,7 @@
 # spec file for package rust
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Luke Jones, jones_ld@protonmail.com
+# Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 #
 
 
-%global version_current 1.36.0
-%global version_previous 1.35.0
+%global version_current 1.37.0
+%global version_previous 1.36.0
 %global version_bootstrap 1.36.0
 # some sub-packages are versioned independantly
 %global rustfmt_version 1.0.3
@@ -293,6 +293,8 @@ Requires:       %{name} = %{version}
 Obsoletes:      cargo < %{version}
 Conflicts:      cargo < %{version}
 Provides:       rustc:%{_bindir}/cargo = %{version}
+Obsoletes:      cargo-vendor < %{version}
+Conflicts:      cargo-vendor < %{version}
 
 %description -n cargo
 Cargo downloads dependencies of Rust projects and compiles it.

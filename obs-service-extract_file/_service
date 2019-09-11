@@ -3,7 +3,7 @@
     <param name="url">git@github.com:openSUSE/obs-service-extract_file.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="version">0.3</param>
+    <param name="version">0.4</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>

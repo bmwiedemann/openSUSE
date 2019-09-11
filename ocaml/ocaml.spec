@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -55,19 +55,15 @@ Url:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
 Source1:        ocaml-findlib.rpm.prov_req.attr.sh
 Source2:        rpmlintrc
-Patch0:         ocaml-3.00-camldebug_el.patch
 Patch1:         ocamldoc-man-th.patch
-Patch2:         ocaml-3.04-ocamltags--no-site-start.patch
 # FIX-UPSTREAM pass RPM_OPT_FLAGS to build
 Patch4:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 Patch5:         ocaml-3.08.3-gcc4.patch
-Patch7:         ocaml-3.09-emacs_localcompile.patch
 Patch8:         ocaml-4.05.0-CVE-2018-9838.patch
 # FIX-UPSTREAM backport 'AArch64 GOT fixed' - https://github.com/ocaml/ocaml/pull/1330
 Patch9:         ocaml-fix_aarch64_build.patch
 # This gets ocamlobjinfo to work with .cmxs files
 BuildRequires:  binutils-devel
-BuildRequires:  emacs-nox
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -148,20 +144,6 @@ programming language from the ML family of languages.
 
 This package contains a documentation generator for OCaml.
 
-%package emacs
-Summary:        Emacs mode for OCaml
-License:        GPL-2.0-or-later
-Group:          Development/Languages/OCaml
-Requires:       emacs
-Requires:       ocaml = %{version}
-Provides:       caml-mode
-
-%description emacs
-OCaml is a high-level, strongly-typed, functional and object-oriented
-programming language from the ML family of languages.
-
-This package provides Emacs mode for OCaml.
-
 %package compiler-libs
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
@@ -232,20 +214,6 @@ then
 	%{buildroot}%{_libdir}/ocaml/libasmrun_pic.a \
 	%{buildroot}%{_libdir}/ocaml/libasmrun.a
 fi
-EMACS_SITE_LISP=%{_datadir}/emacs/site-lisp
-pushd emacs
-  make install DESTDIR=%{buildroot} EMACSDIR=%{buildroot}${EMACS_SITE_LISP}
-  make install-ocamltags SCRIPTDIR=%{buildroot}${EMACS_SITE_LISP}
-popd
-
-# fix bnc#411232
-echo '(load "ocaml.el" nil t t)' >%{buildroot}${EMACS_SITE_LISP}/suse-start-ocaml.el
-tee %{buildroot}${EMACS_SITE_LISP}/%{name}.el <<EOF
-(autoload 'caml-mode "caml" "Caml editing mode" t)
-(add-hook 'caml-mode-hook 'font-lock-mode)
-(add-to-list 'auto-mode-alist '("\\\\.mli?$" . caml-mode))
-EOF
-#' # restore highlighting context in vim
 
 export EXCLUDE_FROM_STRIP="ocamldebug ocamlbrowser"
 
@@ -279,9 +247,9 @@ find %{buildroot} \( \
 	\) -type f -exec chmod -v a-x "{}" \;
 
 # install OCaml macros
-mkdir -vp %{buildroot}%{_sysconfdir}/rpm
-tee %{buildroot}%{_sysconfdir}/rpm/macros.%{name} <<'_EOF_'
-# get rid of /usr/lib/rpm/find-debuginfo.sh
+mkdir -vp %{buildroot}%{_rpmconfigdir}/macros.d
+tee %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{name} <<'_EOF_'
+# get rid of %{_rpmconfigdir}/find-debuginfo.sh
 # strip kills the bytecode part of ELF binaries
 #
 # provide empty _find_debuginfo_dwz_opts
@@ -418,8 +386,7 @@ tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
 %exclude %{_libdir}/ocaml/ocamldoc
 
 %files rpm-macros
-%dir %{_sysconfdir}/rpm
-%config %{_sysconfdir}/rpm/*
+%config %{_rpmconfigdir}/macros.d
 
 %files runtime
 %{_bindir}/ocamlrun
@@ -453,12 +420,6 @@ tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
 %{_bindir}/ocamldoc*
 %{_libdir}/ocaml/ocamldoc
 %doc ocamldoc/Changes.txt
-
-%files emacs
-%doc emacs/README
-%dir %{_datadir}/emacs
-%dir %{_datadir}/emacs/site-lisp
-%{_datadir}/emacs/site-lisp/*
 
 %files compiler-libs
 %license LICENSE

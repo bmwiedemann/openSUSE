@@ -21,7 +21,7 @@
  19 files changed, 246 insertions(+), 78 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2019-07-01 07:36:31.909290868 +0000
++++ aclocal.m4	2019-08-12 08:07:59.755015362 +0000
 @@ -580,7 +580,7 @@ AC_MSG_CHECKING([for size of bool])
  AC_CACHE_VAL(cf_cv_type_of_bool,[
  	rm -f cf_test.out
@@ -150,7 +150,7 @@
  esac
  done
 --- configure
-+++ configure	2019-07-01 07:36:31.913290795 +0000
++++ configure	2019-08-12 08:07:59.759015287 +0000
 @@ -5487,7 +5487,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -287,7 +287,7 @@
  	# the next lines are needed for linking libtic over libncurses
  	TINFO_NAME=${LIB_NAME}
 --- include/curses.h.in
-+++ include/curses.h.in	2019-07-01 07:36:31.913290795 +0000
++++ include/curses.h.in	2019-08-12 08:07:59.759015287 +0000
 @@ -177,6 +177,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
  typedef @cf_cv_typeof_mmask_t@ mmask_t;
  #endif
@@ -299,7 +299,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2019-07-01 07:36:31.913290795 +0000
++++ include/termcap.h.in	2019-08-12 08:07:59.759015287 +0000
 @@ -46,6 +46,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -310,7 +310,7 @@
  
  #undef  NCURSES_OSPEED 
 --- include/tic.h
-+++ include/tic.h	2019-07-01 07:36:31.913290795 +0000
++++ include/tic.h	2019-08-12 08:07:59.759015287 +0000
 @@ -236,12 +236,12 @@ struct user_table_entry
   */
  
@@ -327,7 +327,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames
-+++ man/man_db.renames	2019-07-01 07:36:31.913290795 +0000
++++ man/man_db.renames	2019-08-12 08:16:08.454002432 +0000
 @@ -163,6 +163,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -336,16 +336,16 @@
  tic.1m				tic.1
  toe.1m				toe.1
  tput.1				tput.1
-@@ -172,6 +173,7 @@ wresize.3x			wresize.3ncurses
+@@ -171,6 +172,7 @@ user_caps.5			user_caps.5
+ wresize.3x			wresize.3ncurses
  #
  # Other:
- tabs.1m				tabs.1
 +tack.1				tack.1
  tack.1m				tack.1
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2019-07-01 07:36:31.913290795 +0000
++++ man/ncurses.3x	2019-08-12 08:07:59.759015287 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fR(\*n) for further details.]
  .SS Datatypes
@@ -358,7 +358,7 @@
  called \fIwindows\fR, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2019-07-01 07:36:31.913290795 +0000
++++ misc/gen-pkgconfig.in	2019-08-12 08:07:59.759015287 +0000
 @@ -77,7 +77,7 @@ if test "$includedir" != "/usr/include"
  fi
  
@@ -398,7 +398,7 @@
  
  	if test $name = $MAIN_LIBRARY
 --- misc/terminfo.src
-+++ misc/terminfo.src	2019-07-01 07:57:07.950348014 +0000
++++ misc/terminfo.src	2019-08-12 08:17:44.604230936 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -486,7 +486,7 @@
  	dl1=\E[M, ech=\E[%p1%dX, ed=\E[J, el=\E[K, el1=\E[1K,
  	flash=\E[?5h$<200/>\E[?5l, hpa=\E[%i%p1%dG,
  	il=\E[%p1%dL, il1=\E[L, kdch1=\E[3~, kf1=\E[11~,
-@@ -4394,6 +4406,7 @@ xterm-old|antique xterm version,
+@@ -4400,6 +4412,7 @@ xterm-old|antique xterm version,
  	use=xterm-r6,
  # This is the base xterm entry for the xterm supplied with XFree86 3.2 & up.
  # The name has been changed and some aliases have been removed.
@@ -494,7 +494,7 @@
  xterm-xf86-v32|xterm terminal emulator (XFree86 3.2 Window System),
  	OTbs, am, bce, km, mir, msgr, xenl, XT,
  	cols#80, it#8, lines#24, ncv@,
-@@ -4403,7 +4416,7 @@ xterm-xf86-v32|xterm terminal emulator (
+@@ -4409,7 +4422,7 @@ xterm-xf86-v32|xterm terminal emulator (
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
@@ -503,7 +503,7 @@
  	ech=\E[%p1%dX, ed=\E[J, el=\E[K, el1=\E[1K, enacs=\E(B\E)0,
  	flash=\E[?5h$<100/>\E[?5l, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=\E[@, il=\E[%p1%dL,
-@@ -5040,8 +5053,26 @@ xterm-noapp|xterm with cursor keys in no
+@@ -5046,8 +5059,26 @@ xterm-noapp|xterm with cursor keys in no
  xterm-24|vs100|xterms|xterm terminal emulator (X Window System),
  	lines#24, use=xterm-old,
  
@@ -530,7 +530,7 @@
  	use=xterm-new,
  
  # This entry assumes that xterm's handling of VT100 SI/SO is disabled by
-@@ -5385,7 +5416,7 @@ xterms-sun|small (80x24) xterm with sunF
+@@ -5391,7 +5422,7 @@ xterms-sun|small (80x24) xterm with sunF
  
  #### GNOME (VTE)
  # this describes the alpha-version of Gnome terminal shipped with Redhat 6.0
@@ -539,7 +539,7 @@
  	bce,
  	kdch1=^?, kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
  	use=xterm-color,
-@@ -5636,10 +5667,14 @@ mgt|Multi GNOME Terminal,
+@@ -5642,10 +5673,14 @@ mgt|Multi GNOME Terminal,
  #### KDE
  # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
  # or not is debatable).
@@ -555,7 +555,7 @@
  # Konsole 1.0.1 (2001/11/25)
  # (formerly known as kvt)
  #
-@@ -5851,14 +5886,14 @@ mlterm3|multi lingual terminal emulator,
+@@ -5857,14 +5892,14 @@ mlterm3|multi lingual terminal emulator,
  mlterm2|multi lingual terminal emulator,
  	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
  	colors#8, cols#80, it#8, lines#24, pairs#64,
@@ -573,7 +573,7 @@
  	home=\E[H, hpa=\E[%i%p1%dG, ht=^I, hts=\EH, ich=\E[%p1%d@,
  	ich1=\E[@, il=\E[%p1%dL, il1=\E[L, ind=\n,
  	is2=\E7\E[r\E[m\E[?7h\E[?1;3;4;6l\E[4l\E8\E>, kbs=^?,
-@@ -5915,6 +5950,7 @@ mlterm-256color|mlterm 3.0 with xterm 25
+@@ -5921,6 +5956,7 @@ mlterm-256color|mlterm 3.0 with xterm 25
  # rxvt is normally configured to look for "xterm" or "xterm-color" as $TERM.
  # Since rxvt is not really compatible with xterm, it should be configured as
  # "rxvt" or "rxvt-color".
@@ -581,7 +581,7 @@
  #
  # removed dch/dch1 because they are inconsistent with bce/ech -TD
  # remove km as per tack test -TD
-@@ -5926,13 +5962,14 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -5932,13 +5968,14 @@ rxvt-basic|rxvt terminal base (X Window
  	clear=\E[H\E[2J, cnorm=\E[?25h, cr=\r,
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
@@ -599,7 +599,7 @@
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=\E>, rmso=\E[27m,
  	rmul=\E[24m,
  	rs1=\E>\E[1;3;4;5;6l\E[?7h\E[m\E[r\E[2J\E[H,
-@@ -5943,7 +5980,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -5949,7 +5986,7 @@ rxvt-basic|rxvt terminal base (X Window
  	    %p9%t\016%e\017%;,
  	sgr0=\E[0m\017, smacs=^N, smcup=\E7\E[?47h, smir=\E[4h,
  	smkx=\E=, smso=\E[7m, smul=\E[4m, tbc=\E[3g, use=vt100+enq,
@@ -608,7 +608,7 @@
  # Key Codes from rxvt reference:
  #
  # Note: Shift + F1-F10 generates F11-F20
-@@ -6026,8 +6063,8 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6032,8 +6069,8 @@ rxvt-basic|rxvt terminal base (X Window
  # Removed kDN6, etc (control+shift) since rxvt does not implement this -TD
  rxvt+pcfkeys|fragment for PC-style fkeys,
  	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
@@ -619,7 +619,7 @@
  	kend=\E[8~, kf1=\E[11~, kf10=\E[21~, kf11=\E[23~,
  	kf12=\E[24~, kf13=\E[25~, kf14=\E[26~, kf15=\E[28~,
  	kf16=\E[29~, kf17=\E[31~, kf18=\E[32~, kf19=\E[33~,
-@@ -6118,6 +6155,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -6124,6 +6161,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -658,7 +658,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -6164,7 +6233,7 @@ mrxvt-256color|multitabbed rxvt with 256
+@@ -6170,7 +6239,7 @@ mrxvt-256color|multitabbed rxvt with 256
  # Eterm 0.9.3
  #
  # removed kf0 which conflicts with kf10 -TD
@@ -667,7 +667,7 @@
  # Eterm does not implement control/shift cursor keys such as kDN6, or kPRV/kNXT
  # but does otherwise follow the rxvt+pcfkeys model -TD
  # remove nonworking flash -TD
-@@ -6178,13 +6247,13 @@ Eterm|Eterm-color|Eterm with xterm-style
+@@ -6184,13 +6253,13 @@ Eterm|Eterm-color|Eterm with xterm-style
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\E[B, cuf=\E[%p1%dC, cuf1=\E[C,
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
@@ -683,7 +683,7 @@
  	kc1=\E[8~, kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M,
  	mc4=\E[4i, mc5=\E[5i, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O,
  	rmam=\E[?7l, rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=,
-@@ -7100,7 +7169,7 @@ pty|4bsd pseudo teletype,
+@@ -7114,7 +7183,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -692,7 +692,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, clear=\E[H\E[J, cr=\r,
-@@ -7113,6 +7182,13 @@ eterm|gnu emacs term.el terminal emulati
+@@ -7127,6 +7196,13 @@ eterm|gnu emacs term.el terminal emulati
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmso=\E[m, rmul=\E[m,
  	sgr0=\E[m, smcup=\E7\E[?47h, smir=\E[4h, smso=\E[7m,
  	smul=\E[4m,
@@ -706,16 +706,16 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -7235,7 +7311,7 @@ screen|VT 100/ANSI X3.64 virtual termina
+@@ -7255,7 +7331,7 @@ screen|VT 100/ANSI X3.64 virtual termina
  	dl=\E[%p1%dM, dl1=\E[M, ed=\E[J, el=\E[K, el1=\E[1K,
  	enacs=\E(B\E)0, flash=\Eg, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L,
--	ind=\n, is2=\E)0, kbs=^H, kcbt=\E[Z, kcub1=\EOD, kcud1=\EOB,
-+	ind=\n, is2=\E)0, kbs=^?, kcbt=\E[Z, kcub1=\EOD, kcud1=\EOB,
- 	kcuf1=\EOC, kcuu1=\EOA, kdch1=\E[3~, kend=\E[4~, kf1=\EOP,
- 	kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, kf2=\EOQ, kf3=\EOR,
- 	kf4=\EOS, kf5=\E[15~, kf6=\E[17~, kf7=\E[18~, kf8=\E[19~,
-@@ -7356,6 +7432,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
+-	ind=\n, indn=\E[%p1%dS, is2=\E)0, kbs=^H, kcbt=\E[Z,
++	ind=\n, indn=\E[%p1%dS, is2=\E)0, kbs=^?, kcbt=\E[Z,
+ 	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA,
+ 	kdch1=\E[3~, kend=\E[4~, kf1=\EOP, kf10=\E[21~,
+ 	kf11=\E[23~, kf12=\E[24~, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
+@@ -7376,6 +7452,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	use=xterm+x11mouse, use=xterm-new,
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -729,7 +729,7 @@
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
  screen.xterm-r6|screen customized for X11R6 xterm,
-@@ -7443,7 +7526,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
+@@ -7463,7 +7546,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
  	dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M, ed=\E[J,
  	el=\E[K, ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=, il=\E[%p1%dL,
@@ -738,7 +738,7 @@
  	kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU, kf4=\EV,
  	kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I, khome=\EH,
  	nel=\r\n, rc=\E8, ri=\EM, rmir=\E[4l, rmso=\E[23m,
-@@ -9346,7 +9429,7 @@ hp700-wy|HP700/41 emulating wyse30,
+@@ -9366,7 +9449,7 @@ hp700-wy|HP700/41 emulating wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -747,7 +747,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -12576,6 +12659,7 @@ msk22714|mskermit22714|UCB MS-DOS Kermit
+@@ -12596,6 +12679,7 @@ msk22714|mskermit22714|UCB MS-DOS Kermit
  # at support for the VT320 itself.
  # Please send changes with explanations to bug-gnu-emacs@prep.ai.mit.edu.
  # (vt320-k3: I added <rmam>/<smam> based on the init string -- esr)
@@ -755,7 +755,7 @@
  vt320-k3|MS-Kermit 3.00's vt320 emulation,
  	am, eslok, hs, km, mir, msgr, xenl,
  	cols#80, it#8, lines#49, pb#9600, vt#3,
-@@ -12585,7 +12669,7 @@ vt320-k3|MS-Kermit 3.00's vt320 emulatio
+@@ -12605,7 +12689,7 @@ vt320-k3|MS-Kermit 3.00's vt320 emulatio
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
@@ -764,7 +764,7 @@
  	dsl=\E[0$~, ech=\E[%p1%dX, ed=\E[J, el=\E[K,
  	flash=\E[?5h$<100/>\E[?5l\E[?5h$<100/>\E[?5l\E[?5h$<100/>\E[
  	      ?5l,
-@@ -17001,7 +17085,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -17021,7 +17105,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
  	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
@@ -773,7 +773,7 @@
  	is2=\E S, rmacs=\E>B, rmcup=\E>B, rs2=\E S, s0ds=\E>B,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -17259,7 +17343,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -17279,7 +17363,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.
@@ -783,7 +783,7 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2019-07-01 07:43:17.653787717 +0000
++++ ncurses/Makefile.in	2019-08-12 08:07:59.763015214 +0000
 @@ -222,7 +222,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
@@ -794,8 +794,8 @@
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/curses.priv.h
-+++ ncurses/curses.priv.h	2019-07-01 07:36:31.917290721 +0000
-@@ -2246,6 +2246,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
++++ ncurses/curses.priv.h	2019-08-12 08:07:59.763015214 +0000
+@@ -2248,6 +2248,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
  extern NCURSES_EXPORT(char *) _nc_tracemouse (SCREEN *, MEVENT const *);
  extern NCURSES_EXPORT(char *) _nc_trace_mmask_t (SCREEN *, mmask_t);
  extern NCURSES_EXPORT(int) _nc_access (const char *, int);
@@ -805,7 +805,7 @@
  extern NCURSES_EXPORT(int) _nc_freewin (WINDOW *);
  extern NCURSES_EXPORT(int) _nc_getenv_num (const char *);
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2019-07-01 07:36:31.917290721 +0000
++++ ncurses/run_cmd.sh	2019-08-12 08:07:59.763015214 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -819,7 +819,7 @@
 +
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2019-07-01 07:44:43.332194169 +0000
++++ ncurses/tinfo/MKfallback.sh	2019-08-12 08:07:59.763015214 +0000
 @@ -71,6 +71,12 @@ else
  	tmp_info=
  fi
@@ -834,7 +834,7 @@
  /* This file was generated by $0 */
  
 --- ncurses/tinfo/access.c
-+++ ncurses/tinfo/access.c	2019-07-01 07:36:31.917290721 +0000
++++ ncurses/tinfo/access.c	2019-08-12 08:07:59.767015140 +0000
 @@ -30,6 +30,10 @@
   *  Author: Thomas E. Dickey                                                *
   ****************************************************************************/
@@ -878,8 +878,8 @@
  _nc_access(const char *path, int mode)
  {
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2019-07-01 07:36:31.917290721 +0000
-@@ -599,6 +599,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
++++ ncurses/tinfo/lib_setup.c	2019-08-12 08:07:59.767015140 +0000
+@@ -600,6 +600,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
      } else if ((env = getenv("TERM")) != 0) {
@@ -890,7 +890,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- ncurses/tinfo/read_entry.c
-+++ ncurses/tinfo/read_entry.c	2019-07-01 07:36:31.917290721 +0000
++++ ncurses/tinfo/read_entry.c	2019-08-12 08:07:59.767015140 +0000
 @@ -551,6 +551,7 @@ _nc_read_file_entry(const char *const fi
      FILE *fp = 0;
      int code;
@@ -908,7 +908,7 @@
      return (code);
  }
 --- ncurses/tinfo/read_termcap.c
-+++ ncurses/tinfo/read_termcap.c	2019-07-01 07:36:31.917290721 +0000
++++ ncurses/tinfo/read_termcap.c	2019-08-12 08:07:59.767015140 +0000
 @@ -322,14 +322,18 @@ _nc_getent(
  	     */
  	    if (fd >= 0) {
@@ -955,7 +955,7 @@
      }
      if (copied != 0)
 --- progs/Makefile.in
-+++ progs/Makefile.in	2019-07-01 07:36:31.917290721 +0000
++++ progs/Makefile.in	2019-08-12 08:07:59.767015140 +0000
 @@ -100,7 +100,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS)
  CFLAGS_DEBUG	= $(CCFLAGS) @CC_G_OPT@ -DTRACE
@@ -975,7 +975,7 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2019-07-01 07:36:31.917290721 +0000
++++ test/test.priv.h	2019-08-12 08:07:59.767015140 +0000
 @@ -993,12 +993,12 @@ extern char * _nc_strstr (const char *,
  #endif
  

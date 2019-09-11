@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:44:26 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.10.0:
+  * deps:
+    + update npm to 6.10.3
+  * fs:
+    + Add recursive option to rmdir()
+    + Allow passing true to emitClose option
+    + Add *timeNs properties to BigInt Stats objects
+  * net:
+    + Allow reading data into a static buffer
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Mon Aug 26 14:33:48 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.9.0:
+  * crypto: Added an oaepHash option to asymmetric encryption which
+    allows users to specify a hash function when using OAEP padding
+  * deps: Updated V8 to 7.6.303.29
+    + Improves the performance of various APIs such as JSON.parse
+      and methods called on frozen arrays.
+    + Adds the Promise.allSettled method.
+    + Improves support of BigInt in Intl methods.
+    + For more information: https://v8.dev/blog/v8-release-76
+  * fs: Added fs.writev, fs.writevSync and filehandle.writev
+    (promise version) methods.
+  * http: Added three properties to OutgoingMessage.prototype:
+    writableObjectMode, writableLength and writableHighWaterMark
+  * stream:
+    + Added an new property 'readableEnded' to readable streams.
+    + Added an new property 'writableEnded' to writable streams.
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
+Fri Aug 16 14:33:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.8.1:
+  Security update regarding HTTP/2 Denial of Service vulnerabilities
+  For details see,
+  https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.8.1
+  https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md
+  (CVE-2019-9511, CVE-2019-9512, CVE-2019-9513, CVE-2019-9514,
+   bsc#1146091, bsc#1146099, bsc#1146094, bsc#1146095,
+   CVE-2019-9515, CVE-2019-9516, CVE-2019-9517, CVE-2019-9518,
+   bsc#1146100, bsc#1146090, bsc#1146097, bsc#1146093)
+
+-------------------------------------------------------------------
+Fri Aug 16 11:36:48 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Minimum ICU version is 64. Use in-tree ICU copy for older
+  distributions
+
+-------------------------------------------------------------------
+Mon Aug 12 08:12:27 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- dont_return_garbage.patch: dropped and turn off unnecessary
+  errors about it during compilation
+
+-------------------------------------------------------------------
+Fri Aug  9 14:40:09 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.8.0:
+  * crypto:
+    + The outputLength option is added to crypto.createHash
+    + The maxmem range is increased from 32 to 53 bits
+  * n-api: Added APIs for per-instance state management
+  * report: Network interfaces get included in the report
+  * src: v8.getHeapCodeStatistics() is now exported
+
+-------------------------------------------------------------------
+Wed Jul 24 10:44:10 UTC 2019 - Adam Majer <amajer@suse.com>
+
+- Update to 12.7.0:
+  * deps:
+    + Updated nghttp2 to 1.39.1
+    + Updated npm to 6.10.0 (bsc#1140290, CVE-2019-13173)
+  * esm: Implemented experimental "pkg-exports" proposal.
+  * http:
+    + Added response.writableFinished
+    + Exposed headers, rawHeaders and other fields on an
+      http.ClientRequest "information" event
+  * inspector: Added inspector.waitForDebugger()
+  * policy: Added --policy-integrity=sri CLI option to mitigate
+    policy tampering
+  * readline,tty: Exposed stream API
+  * src: Use cgroups to get memory limits.
+
+- Changes in version 12.6.0:
+  * child_process: The promisified versions of child_process.exec
+    and child_process.execFile now both return a Promise which
+    has the child instance attached to their child property
+  * deps: Updated libuv to 1.30.1
+  * process: A new method, process.resourceUsage() was added
+  * stream: Added a writableFinished property to writable streams.
+  * worker: Fixed an issue that prevented worker threads to listen
+    for data on stdin
+
+- Changes in version 12.5.0:
+  * build: Improve startup time by enabling V8 snapshots by default
+  * deps: Updated V8 to 7.5.288.22
+  * inspector: The --inspect-publish-uid flag was added to specify
+    ways of the inspector web socket url exposure
+  * n-api: Accessors on napi_define_* are now ECMAScript-compliant
+  * report: The cpu info got added to the report output
+  * src: Restore the original state of the stdio file descriptors
+    on exit to prevent leaving stdio in raw or non-blocking mode
+  * worker: worker.terminate() now returns a promise
+
+- refreshed patches: dont_return_garbage.patch, fix_ci_tests.patch,
+  nodejs-libpath.patch, versioned.patch
+
+-------------------------------------------------------------------
 Tue Jun 11 12:38:25 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to 12.4.0:

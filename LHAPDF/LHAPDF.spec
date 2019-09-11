@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_name libLHAPDF-6_2_1
+%define so_name libLHAPDF-6_2_3
 %define execname lhapdf
 
 Name:           LHAPDF
-Version:        6.2.1
+Version:        6.2.3
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
@@ -28,8 +28,6 @@ Group:          Development/Libraries/C and C++
 Url:            https://lhapdf.hepforge.org/
 Source:         http://www.hepforge.org/archive/lhapdf/%{name}-%{version}.tar.gz
 Patch1:         sover.diff
-# PATCH-FIX-UPSTREAM LHAPDF-pdfset-download-url-update.patch bdshah400@gmail.com -- Update to upstream server's changed URL for downloading pdfsets; patch taken from upstream mercurial repository
-Patch2:         LHAPDF-pdfset-download-url-update.patch 
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
@@ -99,7 +97,6 @@ This package provides the python wrapper for %{name}.
 %prep
 %setup -q
 %patch -P 1 -p1
-%patch2 -p1
 
 %build
 autoreconf -fi
@@ -108,6 +105,9 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+
+sed -E -i "s|#! /usr/bin/env python|#! /usr/bin/python%{py_ver}|" %{buildroot}%{_bindir}/lhapdf
+sed -E -i "s|#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/lhapdf-config
 
 find %{buildroot}%{_libdir}/ -name "*.la" -delete
 

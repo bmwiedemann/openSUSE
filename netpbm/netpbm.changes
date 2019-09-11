@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  4 06:25:03 UTC 2019 - mvetter@suse.com
+
+- bsc#1144255 - Drop jasper dependency from netpbm due to removal
+  of jasper. Disables JPEG2000 support and stops shipping programs
+  like pamtojpeg2k and jpeg2ktopam
+- Add netpbm-disable-jasper.patch
+
+-------------------------------------------------------------------
 Mon Jul  8 07:49:42 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - signed-char.patch: fix bad use of plain char

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-# Test the SUSE mysql package using the MySQL testsuite
+# Test the SUSE mariadb package using the mysql-test framework
 
 my $id = getpwnam("mysql") or die "can't find user \"mysql\": $!";
 my $dir = "/usr/share/mysql-test/";

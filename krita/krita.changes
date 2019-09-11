@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:43:33 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.6:
+  * See https://krita.org/en/item/krita-4-2-6-released/
+  * Add new layer from visible to layer right-click context menu
+  * Allow selection overlay to be reset to default (kde#410470)
+  * Set date for bundle creation to use ISO-Date (kde#410490)
+  * Fix freeze with 32bit float tiff by using our own tiff reader
+    for the thumbnails (kde#408731)
+  * Ensure filter mask button is disabled appropriately depending
+    on whether the filter supports it (kde#410374)
+  * Enable the small color selector if opengles is available as
+    well (kde#410602)
+  * Ensure that checkboxes are shown in menus even when using the
+    fusion theme
+  * Isolate Layer Crash (kde#408785)
+  * Properly fix font resetting when all the text in the editor
+    removed (kde#409243)
+  * Fix lags in Move Tool when using tablet device (kde#410838)
+  * Fix Shift and Alt modifiers in Outline Selection Tool
+    (kde#410532)
+  * Ensure Convert group to Animated Layer shows text in the
+    toolbar (kde#410500)
+  * Allow 'Add Clone Layer' to Work on Multiple Layers (kde#373338)
+  * Fix saving animated transparency masks created through
+    conversion (kde#409895)
+  * Partially fix the curve change despite 'Share curve across all
+    settings' checked (kde#383909)
+  * Try harder to make sure that the swap location is writable
+  * Properly handle timezones in bundles
+  * Make sure all the settings dialogs pages are always shown in
+    the same order
+  * Make the settings dialog fit in low-res screens (kde#410793)
+  * Remove misleading 'px' suffix for 'move amount' shortcut
+    setting
+  * Make string for reasons for image export problems translatable
+    (kde#406973)
+  * Fix crash when creating a bezier curve (kde#410572)
+  * Fix deadlocks in KoShapeManager (kde#410909, kde#410572)
+  * Fix a deadlock when using broken Wacom drivers on Linux
+    (kde#410797)
+  * Fix absolute brush rotation on rotated canvas (kde#292726)
+  * Fix deadlock when removing reference image (kde#411212)
+  * Fix a deadlock in handling of vector objects (kde#411365)
+  * Fix autosave saving only once (kde#411631)
+
+-------------------------------------------------------------------
 Mon Aug  5 10:44:27 UTC 2019 - wbauer@tmo.at
 
 - Update to 4.2.5:

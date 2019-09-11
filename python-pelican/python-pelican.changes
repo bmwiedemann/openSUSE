@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 24 20:22:20 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.1.1:
+  * Add AutoPub to auto-publish releases on PR merge
+  * Add CSS classes for reStructuredText figures
+  * Pass argv to Pelican main entrypoint
+  * Set default content status to a blank string rather than None
+- drop hidden macos files removal: deleted by upstream
+
+-------------------------------------------------------------------
 Sun Jul 14 16:48:05 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.1.0:
-  * Live browser reload upon changed files (provided via Invoke
-    task)
+  * Live browser reload upon changed files (provided via Invoke
+    task)
   * Add pyproject.toml, managed by Poetry
   * Support for invoking python -m pelican
   * Add relative source path attribute to content

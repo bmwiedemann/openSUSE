@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.1.1
+Version:        2.3.3
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -34,14 +34,8 @@ Source0:        http://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils
 Source1:        nfs.doc.tar.bz2
 Source4:        sysconfig.nfs
 Source6:        README.NFSv4
-Source7:        fw-client
-Source8:        fw-server
 Source11:       idmapd.conf
 Source13:       nfs-utils.rpmlintrc
-Source15:       nfsserver.service
-Source16:       nfs.service
-Source17:       nfs-server.nfsserver.conf
-Source18:       nfs-client.nfs.conf
 Source20:       nfs-mountd.options.conf
 Source21:       nfs-server.options.conf
 Source22:       rpc-gssd.options.conf
@@ -51,24 +45,24 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-conffile-ignore-empty-environment-variables.patch
-Patch2:         0002-mount-call-setgroups-before-setuid.patch
-Patch3:         0003-nfs-server-generator-handle-noauto-mounts-correctly.patch
-Patch4:         nsm-headers.patch
-Patch5:         sysmacros.patch
+Patch1:         0001-nfs.conf-allow-empty-assignments.patch
+Patch2:         0002-Let-systemd-know-when-rpc.statd-is-needed.patch
+Patch3:         0003-systemd-run-statd-notify-even-when-nfs-client-isn-t-.patch
+Patch4:         0004-nfsidmap-honour-with-pluginpath-for-instalation.patch
+Patch5:         0005-nfs.conf-fail-to-disable-major-NFS-version-4-using-v.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  rpcgen
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libevent)
-BuildRequires:  pkgconfig(libnfsidmap) >= 0.24
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(sqlite3)
@@ -116,6 +110,30 @@ tune the number of server threads via the sysconfig variable
 USE_KERNEL_NFSD_NUMBER. For quota over NFS support, install the quota
 package.
 
+%package -n libnfsidmap1
+Summary:        NFSv4 ID Mapping Library
+Group:          Productivity/Networking/NFS
+Version:        1.0
+Release:        0
+Obsoletes:      nfsidmap
+
+%package -n nfsidmap-devel
+Summary:        NFSv4 ID Mapping Library development libraries
+Group:          Development/Libraries/C and C++
+Version:        1.0
+Release:        0
+Requires:       libnfsidmap1 = %{version}
+
+%description -n libnfsidmap1
+In NFSv4, identities of users are conveyed by names rather than user ID
+and group ID. Both the NFS server and client code in the kernel need to
+translate these to numeric IDs.
+
+%description -n nfsidmap-devel
+In NFSv4, identities of users are conveyed by names rather than user ID
+and group ID. Both the NFS server and client code in the kernel need to
+translate these to numeric IDs.
+
 %package -n nfs-doc
 Summary:        Support Utilities for NFS
 Group:          Productivity/Networking/NFS
@@ -150,6 +168,8 @@ export LDFLAGS="-pie"
 	--enable-nfsdcltrack \
 	--enable-mount \
 	--enable-libmount-mount \
+	--disable-static \
+	--with-pluginpath=%{_libdir}/libnfsidmap-1.0.0 \
 	--enable-mountconfig
 make %{?_smp_mflags}
 cd nfs
@@ -163,10 +183,7 @@ done
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
-install -D -m 644 %{SOURCE15} %{buildroot}%{_unitdir}/nfsserver.service
-install -D -m 644 %{SOURCE16} %{buildroot}%{_unitdir}/nfs.service
-install -D -m 644 %{SOURCE17} %{buildroot}%{_unitdir}/nfs-server.service.d/nfsserver.conf
-install -D -m 644 %{SOURCE18} %{buildroot}%{_unitdir}/nfs-client.target.d/nfs.conf
+find %{buildroot} -type f -name '*.la' -delete -print
 install -D -m 644 %{SOURCE20} %{buildroot}%{_unitdir}/nfs-mountd.service.d/options.conf
 install -D -m 644 %{SOURCE21} %{buildroot}%{_unitdir}/nfs-server.service.d/options.conf
 install -D -m 644 %{SOURCE22} %{buildroot}%{_unitdir}/rpc-gssd.service.d/options.conf
@@ -175,9 +192,7 @@ install -D -m 644 %{SOURCE24} %{buildroot}%{_unitdir}/rpc-statd-notify.service.d
 install -D -m 644 %{SOURCE25} %{buildroot}%{_unitdir}/rpc-svcgssd.service.d/options.conf
 install -D -m 644 %{SOURCE26} %{buildroot}%{_sysconfdir}/nfs.conf
 install -D -m 644 %{SOURCE27} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfsserver
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-server
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-client
 # sysconfig-data
 mkdir -p %{buildroot}%{_fillupdir}
@@ -191,8 +206,6 @@ mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/sm
 mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/sm.bak
 touch %{buildroot}%{_localstatedir}/lib/nfs/state
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
-install -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nfs-client
-install -m 0644 %{SOURCE8} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nfs-kernel-server
 install -m 644 utils/mount/nfsmount.conf %{buildroot}%{_sysconfdir}/nfsmount.conf
 #
 # hack to avoid automatic python dependency
@@ -202,7 +215,7 @@ chmod 644 %{buildroot}%{_sbindir}/{mountstats,nfsiostat}
 /usr/bin/getent passwd statd >/dev/null || \
 	/usr/sbin/useradd -r -c 'NFS statd daemon' \
 	-s /sbin/nologin -d %{_localstatedir}/lib/nfs -g nogroup statd
-%service_add_pre nfs.service auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
+%service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client
 chown statd:nogroup %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
@@ -221,22 +234,24 @@ fi
 %{fillup_only -n nfs nfs}
 #
 %set_permissions /sbin/mount.nfs
-%service_add_post nfs.service auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
+/sbin/ldconfig
+%service_add_post auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %preun -n nfs-client
-%service_del_preun nfs.service auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
+%service_del_preun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %postun -n nfs-client
-%service_del_postun nfs.service auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
+/sbin/ldconfig
+%service_del_postun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %verifyscript -n nfs-client
 %verify_permissions -e /sbin/mount.nfs
 
 %pre -n nfs-kernel-server
-%service_add_pre nfsserver.service nfs-svcgssd.service nfs-mountd.service nfs-server.service
+%service_add_pre nfs-svcgssd.service nfs-mountd.service nfs-server.service
 
 %preun -n nfs-kernel-server
-%service_del_preun nfsserver.service nfs-svcgssd.service nfs-mountd.service nfs-server.service
+%service_del_preun nfs-svcgssd.service nfs-mountd.service nfs-server.service
 
 %post -n nfs-kernel-server
 ### migrate from /var/lock/subsys
@@ -248,12 +263,12 @@ if [ -f %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd ]; then
 	mv %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd /run/nfs
 fi
 ###
-%service_add_post nfsserver.service nfs-mountd.service nfs-server.service
+%service_add_post nfs-mountd.service nfs-server.service
 %tmpfiles_create nfs-kernel-server.conf
 %set_permissions /var/lib/nfs/rmtab
 
 %postun -n nfs-kernel-server
-%service_del_postun nfsserver.service nfs-mountd.service nfs-server.service
+%service_del_postun nfs-mountd.service nfs-server.service
 
 %verifyscript -n nfs-kernel-server
 %verify_permissions -e /var/lib/nfs/rmtab
@@ -272,7 +287,6 @@ fi
 %attr(0755,root,root) %{_sbindir}/nfsiostat
 %{_sbindir}/nfsidmap
 %{_sbindir}/nfsstat
-%{_sbindir}/rcnfs
 %{_sbindir}/rcnfs-client
 %{_sbindir}/rpc.gssd
 %{_sbindir}/rpc.idmapd
@@ -283,6 +297,7 @@ fi
 %{_sbindir}/start-statd
 %{_sbindir}/blkmapd
 %{_sbindir}/rpc.svcgssd
+%{_sbindir}/nfsconf
 %{_unitdir}/auth-rpcgss-module.service
 %{_unitdir}/nfs-blkmap.service
 %{_unitdir}/nfs-client.target
@@ -290,29 +305,26 @@ fi
 %{_unitdir}/nfs-utils.service
 %{_unitdir}/rpc-gssd.service
 %{_unitdir}/rpc-gssd.service.d
-%{_unitdir}/rpc-gssd.service.d/options.conf
+%{_unitdir}/rpc_pipefs.target
 %{_unitdir}/rpc-statd-notify.service
 %{_unitdir}/rpc-statd-notify.service.d
-%{_unitdir}/rpc-statd-notify.service.d/options.conf
 %{_unitdir}/rpc-statd.service
 %{_unitdir}/rpc-statd.service.d
-%{_unitdir}/rpc-statd.service.d/options.conf
 %{_unitdir}/rpc-svcgssd.service
 %{_unitdir}/rpc-svcgssd.service.d
-%{_unitdir}/rpc-svcgssd.service.d/options.conf
 %{_unitdir}/var-lib-nfs-rpc_pipefs.mount
-%{_unitdir}/nfs.service
-%dir %{_unitdir}/nfs-client.target.d
-%{_unitdir}/nfs-client.target.d/nfs.conf
 %dir /usr/lib/systemd/system-generators
 /usr/lib/systemd/system-generators/nfs-server-generator
+/usr/lib/systemd/system-generators/rpc-pipefs-generator
 %{_mandir}/man5/nfsmount.conf.5%{ext_man}
 %{_mandir}/man5/nfs.conf.5%{ext_man}
 %{_mandir}/man5/nfs.5%{ext_man}
+%{_mandir}/man5/idmapd.conf.5%{ext_man}
 %{_mandir}/man7/nfs.systemd.7%{ext_man}
 %{_mandir}/man8/mount.nfs.8%{ext_man}
 %{_mandir}/man8/nfsidmap.8%{ext_man}
 %{_mandir}/man8/nfsstat.8%{ext_man}
+%{_mandir}/man8/nfsconf.8%{ext_man}
 %{_mandir}/man8/rpc.sm-notify.8%{ext_man}
 %{_mandir}/man8/showmount.8%{ext_man}
 %{_mandir}/man8/sm-notify.8%{ext_man}
@@ -336,22 +348,16 @@ fi
 %attr(0700,statd,nogroup) %dir %{_localstatedir}/lib/nfs/sm
 %attr(0700,statd,nogroup) %dir %{_localstatedir}/lib/nfs/sm.bak
 %attr(0700,statd,nogroup) %ghost %{_localstatedir}/lib/nfs/state
-%config %attr(0644,root,root) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nfs-client
 
 %files -n nfs-kernel-server
 %defattr(-,root,root)
 %{_unitdir}/nfs-mountd.service
 %{_unitdir}/nfs-mountd.service.d
-%{_unitdir}/nfs-mountd.service.d/options.conf
 %{_unitdir}/nfs-server.service
 %{_unitdir}/nfs-server.service.d
-%{_unitdir}/nfs-server.service.d/options.conf
 %{_unitdir}/proc-fs-nfsd.mount
-%{_unitdir}/nfsserver.service
-%{_unitdir}/nfs-server.service.d/nfsserver.conf
 %{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 %{_sbindir}/exportfs
-%{_sbindir}/rcnfsserver
 %{_sbindir}/rcnfs-server
 %{_sbindir}/rpc.mountd
 %{_sbindir}/rpc.nfsd
@@ -366,7 +372,17 @@ fi
 %{_mandir}/man8/nfsdcltrack.8%{ext_man}
 %config(noreplace) %{_localstatedir}/lib/nfs/etab
 %config(noreplace) %{_localstatedir}/lib/nfs/rmtab
-%config %attr(0644,root,root) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nfs-kernel-server
+
+%files -n libnfsidmap1
+%{_libdir}/libnfsidmap-1.0.0/
+%{_libdir}/libnfsidmap.so.1*
+
+%files -n nfsidmap-devel
+%{_libdir}/libnfsidmap.so
+%{_includedir}/*.h
+%{_libdir}/pkgconfig/libnfsidmap.pc
+%{_mandir}/man3/*
+%doc support/nfsidmap/README
 
 %files -n nfs-doc
 %defattr(-,root,root)

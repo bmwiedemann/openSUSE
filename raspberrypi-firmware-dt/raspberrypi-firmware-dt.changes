@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:48:17 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to c00d518f3a69 (2019-08-17)
+  * add overlays: act-led, disable-bt, disable-wifi, i2c0, i2c1,
+    miniuart-bt, 
+
+-------------------------------------------------------------------
 Thu Jun 27 11:58:01 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 534913e878 (2019-06-18):

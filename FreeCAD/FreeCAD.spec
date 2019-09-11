@@ -27,7 +27,7 @@
 %endif
 
 Name:           FreeCAD
-Version:        0.18.1
+Version:        0.18.3
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -39,11 +39,13 @@ Source0:        %{name}-%version.tar.xz
 Source1:        FreeCAD.sh
 Source2:        FreeCADCmd.sh
 Source3:        FreeCAD_shared_mimeinfo
-Patch2:         0001-find-openmpi2-include-files.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch -- Fix build with shiboken2/pyside2 >= 5.12.1
+Patch1:         0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
 
+BuildRequires:  Coin-devel
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_filesystem-devel >= 1.55
 BuildRequires:  libboost_graph-devel >= 1.55
@@ -70,25 +72,23 @@ BuildRequires:  freeglut-devel
 BuildRequires:  gcc-fortran
 BuildRequires:  git
 BuildRequires:  glew-devel
-BuildRequires:  hdf5-openmpi-devel
+BuildRequires:  graphviz
+BuildRequires:  hdf5-devel
 # We use the internal smesh version with fixes atm
 #BuildRequires:  smesh-devel
 BuildRequires:  libXerces-c-devel
+BuildRequires:  libXi-devel
 BuildRequires:  libmed-devel
-BuildRequires:  netgen-devel
-
 BuildRequires:  libspnav-devel
 BuildRequires:  make
+BuildRequires:  netgen-devel
 # we use upstream OpenCASCADE instead of oce-devel atm
-BuildRequires:  Coin-devel
-BuildRequires:  libXi-devel
 BuildRequires:  occt-devel
 BuildRequires:  opencv-devel
 BuildRequires:  pkg-config
 
 %if 0%{?suse_version} >= 1330
 # Qt5 & python3
-BuildRequires:  openmpi2-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-pyside2-devel
@@ -169,7 +169,7 @@ This package contains the files needed for development with FreeCAD.
 mv %_sourcedir/%name-%version %_builddir/%name-%version
 %setup -q -D -T 0
 %endif
-%patch2 -p1
+%autopatch -p1
 
 # fix env-script-interpreter
 sed -i '1c#!%{__python2}' \

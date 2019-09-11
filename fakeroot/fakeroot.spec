@@ -1,7 +1,7 @@
 #
 # spec file for package fakeroot
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fakeroot
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        Gives a fake root environment
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 Url:            http://fakeroot.alioth.debian.org/
-Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.bz2#/%{name}-%{version}.tar.bz2
+Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.xz#/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         %{name}-1.20-lib32.patch
 Patch2:         %{name}-1.20-eglibc-fts-without-LFS.patch

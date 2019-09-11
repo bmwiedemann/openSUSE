@@ -1,7 +1,7 @@
 #
 # spec file for package gtkpod
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gtkpod
-Summary:        A platform independent GUI for the Apple® iPod®
-License:        GPL-2.0+
+Summary:        A platform independent GUI for the Apple iPod
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Version:        2.1.5
 Release:        0
-Url:            http://gtkpod.sourceforge.net/
+URL:            http://gtkpod.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/gtkpod/gtkpod/gtkpod-2.1.5/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE gtkpod-pref.patch -- Preferences to mountpoint and some tag preferences
 Patch0:         gtkpod-pref.patch
@@ -49,7 +49,6 @@ BuildRequires:  pkgconfig(libdiscid) >= 0.2.2
 BuildRequires:  pkgconfig(libmusicbrainz5) >= 5.0.1
 BuildRequires:  pkgconfig(vorbisfile) >= 1.3.1
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %glib2_gsettings_schema_requires
 
 %description
@@ -60,7 +59,7 @@ songs, allows offline modification of the database with later
 synchronization, and more.
 
 %package devel
-Summary:        A platform independent GUI for the Apple® iPod® - Development Files
+Summary:        Development files for gtkpod, a GUI for Apple iPods
 Group:          Development/Libraries/C and C++
 Requires:       libatomicparsley0 = %{version}
 Requires:       libgtkpod1 = %{version}
@@ -94,7 +93,7 @@ Group:          System/Libraries
 %description -n libatomicparsley0
 This is the core library for atomic parsley of mp4 files in gtkpod.
 Library including read/write lyric support for the first time and
-write metadata function. 
+write metadata function.
 
 %lang_package
 %prep
@@ -111,9 +110,6 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 %suse_update_desktop_file %name Utility SyncUtility
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
-
-%clean
-rm -rf  %{buildroot}
 
 %if 0%{?suse_version} > 1130
 
@@ -140,7 +136,6 @@ rm -rf  %{buildroot}
 %postun -n libatomicparsley0 -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %doc README NEWS INSTALL COPYING ChangeLog AUTHORS
 %{_bindir}/gtkpod
 %{_datadir}/gtkpod/
@@ -153,17 +148,14 @@ rm -rf  %{buildroot}
 %{_mandir}/*/%{name}.*
 
 %files -n libgtkpod1
-%defattr(-, root, root)
 %{_libdir}/libgtkpod.so.*
 
 %files -n libatomicparsley0
-%defattr(-,root,root)
 %{_libdir}/libatomicparsley.so.*
 
 %files lang -f %{name}.lang
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/gtkpod/
 %{_libdir}/libatomicparsley.so
 %{_libdir}/libgtkpod.so

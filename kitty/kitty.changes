@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  2 09:42:28 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.4:
+  * hints kitten: Add a kitty +kitten hints --alphabet option to
+    control what alphabets are used for hints (#1879)
+  * hints kitten: Allow specifying kitty +kitten hints --program
+    multiple times to run multiple programs (#1879)
+  * Add a kitten_alias option that can be used to alias kitten
+    invocation for brevity and to change kitten option defaults globally (#1879)
+  * When running kittens, use the colorscheme of the current window
+    rather than the configured colorscheme (#1906)
+  * Don't fail to start if running the shell to read the EDITOR
+    env var fails (#1869)
+  * Disable the liga and dlig OpenType features for broken
+    fonts such as Nimbus Mono.
+  * Fix a regression that broke setting background_opacity
+    via remote control (#1895)
+  * Fix piping PNG images into the icat kitten not working (#1920)
+  * When the OS returns a fallback font that does not actually
+    contain glyphs for the text, do not exhaust the list of fallback fonts (#1918)
+  * Fix formatting attributes not reset across line boundaries
+    when passing buffer as ANSI (#1924)
+
+-------------------------------------------------------------------
 Mon Jul 29 05:59:15 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.3:

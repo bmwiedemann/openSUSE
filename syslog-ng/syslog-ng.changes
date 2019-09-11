@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:53:13 UTC 2019 - peter czanik <peter@czanik.hu>
+
+- updated to 3.23.1 to resolve bnc#1143190
+- removed 2482.patch as it was merged upstream
+- add wensense & netskope parsers
+- add collectd support
+- update syslog-ng.conf due to an undocumented include
+  syntax used in the config was removed by uspstream
+- add SCL to support Elasticsearch destination using
+  the http() destination driver
+- add SCL to parse junos and checkpoint logs
+- changed the location of debuggercli files 
+- disabled native connector (Rust support)
+- "ExcludeArch: i586 s390x" as workaround until bison is fixed
+
+-------------------------------------------------------------------
 Fri Apr 12 10:30:10 UTC 2019 - root <peter@czanik.hu>
 
 - oops, forgot to update version in syslog-ng.conf again...

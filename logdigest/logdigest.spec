@@ -1,7 +1,7 @@
 #
 # spec file for package logdigest
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           logdigest
 Version:        0.2.4
 Release:        0
 Summary:        Mail Digests of System Log Files to the System Administrator
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
 Url:            http://sourceforge.net/projects/logdigest
 Source:         http://dfn.dl.sourceforge.net/sourceforge/logdigest/logdigest-%{version}.tar.bz2
@@ -102,11 +102,14 @@ done
 
 %files
 %defattr(-,root,root)
-%doc README AUTHORS COPYING ChangeLog TODO VERSION
+%license COPYING
+%doc README AUTHORS ChangeLog TODO VERSION
 %dir %{_sysconfdir}/logdigest
 %config(noreplace) %{_sysconfdir}/logdigest/*
 %{_localstatedir}/lib/logdigest
+%dir %{_sysconfdir}/cron.daily
 %{_sysconfdir}/cron.daily/logdigest
+%dir %{_sysconfdir}/cron.d
 %config %attr(640,root,root) %{_sysconfdir}/cron.d/logdigest-all-ignores-autogeneration
 %dir %{_datadir}/logdigest
 %attr(755,root,root) %{_datadir}/logdigest/logdigest-all-ignores-autogeneration

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-caasp
-Version:        4.2.0
+Version:        4.2.2
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -37,8 +37,8 @@ Requires:       yast2-network   >= 4.1.11
 BuildRequires:  yast2-network   >= 4.1.11
 
 BuildRequires:  yast2-devtools     >= 3.1.39
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake) >= 0.2.13
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.13
 
 BuildArch:      noarch
 

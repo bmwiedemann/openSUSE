@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 06:41:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.3
+  * Improve SIMD decoding of 24 bit files
+- Drop flac-CVE-2017-6888.patch (merged upstream)
+
+-------------------------------------------------------------------
 Wed Jan 23 10:15:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove useless --with-pic (only useful for --enable-static).
@@ -81,7 +88,7 @@ Fri Mar 20 15:22:04 UTC 2015 - mpluskal@suse.com
 - Cleanup spec file with spec-cleaner
 - Update url
 - Remove no longer needed patches
-  * flac-fix-CVE-2014-8962.patch 
+  * flac-fix-CVE-2014-8962.patch
   * flac-fix-CVE-2014-9028.patch
   * 0001-getopt_long-not-broken-here.patch
 - Remove following as benefit of using openssl is small
@@ -90,24 +97,24 @@ Fri Mar 20 15:22:04 UTC 2015 - mpluskal@suse.com
 - Use doxygen to build documentation
 - Split documentation to separate package
 - Update to 1.3.1
-  * Improved decoding efficiency of all bit depths but especially 
+  * Improved decoding efficiency of all bit depths but especially
     so for 24 bits for IA32 architecture (lvqcl and Miroslav Lichvar).
   * Faster encoding using SSE and AVX (lvqcl).
   * Fixed bartlett, bartlett_hann and triangle functions.
-  * New apodization functions partial_tukey and punchout_tukey for 
+  * New apodization functions partial_tukey and punchout_tukey for
     improved compression (Martijn van Beurden).
-  * Retuned compression presets to incorporate new apodization 
+  * Retuned compression presets to incorporate new apodization
     functions (Martijn van Beurden).
-  * Fix -Wcast-align warnings on armhf architecture (Erik de 
+  * Fix -Wcast-align warnings on armhf architecture (Erik de
     Castro Lopo).
   * Help output documentation improvements.
-  * I/O buffering improvements on Windows to reduce disk 
+  * I/O buffering improvements on Windows to reduce disk
     fragmentation when writing files.
   * Only write vorbis-comments if they are non-empty.
   * Fix symbol visibility in XMMS plugin.
   * Many fixes and improvements across all the build systems.
-  * Fix CVE-2014-9028 (heap write overflow) and CVE-2014-8962 
-    (heap read overflow) 
+  * Fix CVE-2014-9028 (heap write overflow) and CVE-2014-8962
+    (heap read overflow)
 
 -------------------------------------------------------------------
 Wed Nov 26 09:56:05 CET 2014 - tiwai@suse.de
@@ -134,7 +141,7 @@ Sun May 26 04:09:21 UTC 2013 - crrodriguez@opensuse.org
  messing with RPM versioning)
  * Mostly non-linux related bugfixes plus autotools fixes
 
- - flac-openssl.patch --> 0001-Allow-use-of-openSSL.patch 
+ - flac-openssl.patch --> 0001-Allow-use-of-openSSL.patch
  - remove flac-1.2.1-automake1_13.patch, fixed in upstream.
  - add 0001-getopt_long-not-broken-here.patch, FLAC bundles
    GNU-compatible getopt_long for broken OS, but we do have
@@ -160,7 +167,7 @@ Tue Dec 18 11:24:17 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Sat Dec  8 23:48:01 UTC 2012 - crrodriguez@opensuse.org
 
-- add xz buildrequires for old distros. 
+- add xz buildrequires for old distros.
 
 -------------------------------------------------------------------
 Sat Dec  8 21:46:21 UTC 2012 - crrodriguez@opensuse.org
@@ -221,7 +228,7 @@ Tue Jan 24 16:01:40 UTC 2012 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Sun Nov 20 03:45:44 UTC 2011 - crrodriguez@opensuse.org
 
-- Use O_CLOEXEC in all library code. 
+- Use O_CLOEXEC in all library code.
 
 -------------------------------------------------------------------
 Sat Oct  1 05:39:06 UTC 2011 - coolo@suse.com
@@ -231,8 +238,8 @@ Sat Oct  1 05:39:06 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Wed Sep 28 03:27:46 UTC 2011 - crrodriguez@opensuse.org
 
-- Build with --enable-sse, this only disables runtime 
-  checking if the *OS* supports SSE, which registers a 
+- Build with --enable-sse, this only disables runtime
+  checking if the *OS* supports SSE, which registers a
   SIGILL signal handler then tries to execute SSE code...
   it still tests the running *CPU* though.
 
@@ -247,7 +254,7 @@ Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
 Sat Aug  6 04:00:28 UTC 2011 - crrodriguez@opensuse.org
 
 - Do not build with -fno-strict-aliasing since is no longer
-  required. 
+  required.
 - Impoer two patches from redhat, one speeds up decoding and
   the other enables the working ASM optimizations.
 
@@ -255,7 +262,7 @@ Sat Aug  6 04:00:28 UTC 2011 - crrodriguez@opensuse.org
 Wed Dec  8 13:19:48 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - run make check, but only the basic test suite, complete
-  one takes hours. 
+  one takes hours.
 
 -------------------------------------------------------------------
 Wed Dec 16 10:22:22 CET 2009 - jengelh@medozas.de
@@ -292,7 +299,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Thu Dec 13 01:33:43 CET 2007 - crrodriguez@suse.de
 
-- disable static libraries 
+- disable static libraries
 - remove uneeded dependency on libogg-devel in the -devel package
 - remove "la" files
 
@@ -329,7 +336,7 @@ Fri Jun  8 14:12:16 CEST 2007 - tiwai@suse.de
 -------------------------------------------------------------------
 Tue Jun  5 16:40:03 CEST 2007 - tiwai@suse.de
 
-- split to packages libFLAC8 and libFLAC++6 to follow more the 
+- split to packages libFLAC8 and libFLAC++6 to follow more the
   library packaging policy.
 
 -------------------------------------------------------------------
@@ -407,12 +414,12 @@ Sat Jan 10 16:03:44 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Wed May 28 00:44:04 CEST 2003 - ro@suse.de
 
-- remove unpackaged files from buildroot 
+- remove unpackaged files from buildroot
 
 -------------------------------------------------------------------
 Tue Apr  1 10:29:49 CEST 2003 - ro@suse.de
 
-- added xmms-devel to neededforbuild 
+- added xmms-devel to neededforbuild
 
 -------------------------------------------------------------------
 Thu Feb 13 17:24:53 CET 2003 - tiwai@suse.de
@@ -473,4 +480,3 @@ Tue May 21 17:39:00 CEST 2002 - tiwai@suse.de
 Tue May 21 17:02:20 CEST 2002 - tiwai@suse.de
 
 - initial version: 1.0.2.
-

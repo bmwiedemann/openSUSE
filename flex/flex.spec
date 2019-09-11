@@ -1,7 +1,7 @@
 #
 # spec file for package flex
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ Release:        0
 Summary:        Fast Lexical Analyzer Generator
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
-Url:            http://flex.sourceforge.net/
+URL:            http://flex.sourceforge.net/
 Source:         https://github.com/westes/flex/releases/download/v%{version}/flex-%{version}.tar.gz
 Source1:        lex-wrapper.sh
 Source2:        README.SUSE
 Source3:        baselibs.conf
-Patch:          use-extensions.patch
+Patch0:         use-extensions.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -39,7 +39,6 @@ Requires:       libfl-devel = %{version}
 Requires:       m4
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 FLEX is a tool for generating scanners: programs that recognize lexical
@@ -68,18 +67,24 @@ This package contains libraries for using flex.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 autoreconf -fi
 %configure \
   --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%if 0%{?do_profiling}
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  # do not run profiling in parallel for reproducible builds (boo#1040589 boo#1102408)
+  make CFLAGS="%{optflags} %{cflags_profile_generate}" check
+  make %{?_smp_mflags} clean
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+%else
+  make %{?_smp_mflags} CFLAGS="%{optflags}"
+%endif
 
 %check
-%if !0%{?qemu_user_space_build:1}
 make %{?_smp_mflags} check
-%endif
 
 %install
 %make_install
@@ -100,25 +105,25 @@ ln -s flex.1%{ext_man} %{buildroot}/%{_mandir}/man1/lex.1%{ext_man}
 %postun -n libfl%{somajor} -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS ONEWS README.md THANKS
+%license COPYING
+%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
 %{_bindir}/flex
 %{_bindir}/flex++
 %{_bindir}/lex
-%{_mandir}/man1/flex.1%{ext_man}
-%{_mandir}/man1/lex.1%{ext_man}
+%{_mandir}/man1/flex.1%{?ext_man}
+%{_mandir}/man1/lex.1%{?ext_man}
 %{_infodir}/flex*
 %{_docdir}/%{name}
 
 %files -n libfl-devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS ONEWS README.md THANKS
+%license COPYING
+%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
 %{_includedir}/FlexLexer.h
 %{_libdir}/libfl.so
 
 %files -n libfl%{somajor}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS ONEWS README.md THANKS
+%license COPYING
+%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
 %{_libdir}/libfl.so.%{somajor}*
 
 %changelog

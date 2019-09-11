@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Sep  4 00:32:59 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add designer plugin directory to directories owned by the devel
+  package, as libqt5-qttools is no longer pulled in.
+
+-------------------------------------------------------------------
+Fri Aug 30 11:34:34 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.11.0:
+  * Features
+    + New phononsettings application for advanced users to control
+      PulseAudio device preference by-category and Phonon backend
+      selection. This application is an advanced utility and you
+      shouldn't need to visit it if you aren't very certain that
+      something needs changing. This replaces the previously
+      available System Settings module for Phonon.
+  * Changes
+    + The backends Phonon VLC 0.11+ or Phonon GStreamer 4.10+ are
+      required to build with this version of libphonon! Older
+      versions will no longer build because of aggressive clean up
+      of legacy compatibility code in the build system.
+    + Qt4 support has been removed. Qt5 is now the default. If you
+      still need the Qt4 version for whatever reason it's
+      recommended that you port to Qt5 quickly seeing as Qt4 is
+      getting really long in the tooth. Since the Qt4 and Qt5
+      version are fully co-installable you can continue to use
+      4.10 for Qt4 while using 4.11 for Qt5 should it be necessary.
+    + CMake 3.5 is now required for building
+    + Installation paths are now controlled by the KDEInstallDirs
+      CMake include instead of the GNUInstallDirs one
+    + CCFlag and CMake settings are now shared with other KDE
+      software as per the extra-cmake-modules framework
+    + PHONON_BUILD_DESCRIPTOR option no longer supported.
+    + PHONON_BUILD_DECLARATIVE_PLUGIN option no longer supported.
+      It made little to no sense on Qt5.
+    + PHONON_INSTALL_QT_COMPAT_HEADERS option no longer supported.
+      It made no sense on Qt5.
+    + PHONON_NO_DBUS option no longer supported. The DBus interface
+      was only used to communicate with the settings interface in
+      Plasma, but hasn't been used in many years. This effectively
+      removes QtDBus as dependency.
+    + PHONON_ASSERT_STATES option no longer supported. The state
+      machine is now always enabled unless Q_ASSERTs as a whole are
+      disabled (i.e. the build is not a Debug-ish build).
+    + PHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT option no longer
+      supported. Replaced by ECM's KDE_USE_QT_SYS_PATHS.
+  * Bug Fixes
+    + The default preference of backends is now properly
+      implemented. This was previously reversed.
+
+-------------------------------------------------------------------
 Mon Jul 22 14:50:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the -lang package dependency.

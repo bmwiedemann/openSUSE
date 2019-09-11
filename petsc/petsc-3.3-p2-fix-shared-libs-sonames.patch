@@ -4,7 +4,7 @@
 
 --- a/config/PETSc/Configure.py
 +++ b/config/PETSc/Configure.py
-@@ -322,6 +322,7 @@ prepend-path PATH %s
+@@ -339,6 +339,7 @@ prepend-path PATH "%s"
        self.addDefine('SLSUFFIX','""')
      else:
        self.addMakeMacro('SL_LINKER_SUFFIX', self.setCompilers.sharedLibraryExt)

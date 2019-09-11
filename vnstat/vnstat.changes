@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 26 22:44:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4
+  Fixed
+  * Daemon didn't correctly wait when acquiring database lock for
+    data write which could result in unnecessary errors and even
+    process exit if an external database read operation had exactly
+    the same timing as the daemon write operation
+  * Move vnstatd man page from section 1 to section 8
+  New
+  * Add --rename for renaming interfaces already existing the
+    database
+
+-------------------------------------------------------------------
 Wed Jul 10 19:17:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3

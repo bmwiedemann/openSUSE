@@ -1,7 +1,7 @@
 #
 # spec file for package WindowMaker-applets
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -48,7 +48,7 @@ Version:        1.0.1
 Release:        0
 Summary:        Window Maker Applets
 #
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 %define wmcdplay_version	1.0-beta1
 #http://www.geocities.com/SiliconValley/Vista/2471/wmcdplay.html
@@ -238,54 +238,9 @@ Patch48:        wmswallow-%{wmswallow_version}-ld_fix.diff
 Patch49:        wmcliphist-%{wmcliphist_version}-ld_fix.diff
 # PATCH-FIX-UPSTREAM mvetter@suse.com boo#707539 - ImageMagick convert parameter changed
 Patch50:        wmgrabimage-0.70-boo-707539-fix-GrabImage.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Some small applications for Window Maker.
-
-
-
-Authors:
---------
-    Bryan Chan <bryan.chan@utoronto.ca>
-    Michael G. Henderson <mghenderson@lanl.gov>
-    Edward H. Flora <ehflora@ksu.edu>
-    Sam Hawker <shawkie@geocities.com>
-    Robert Kling <robkli-8@student.luth.se>
-    Antti Takala <fragment@nic.fi>
-    Martijn Pieterse <pieterse@xs4all.nl>
-    Zinx Verituse <zinx@linuxfreak.com>
-    Jerome Dumonteil <jerome.dumonteil@capway.com>
-    Nicolas Chauvat <nico@caesium.fr>
-    Antoine Nulle <warp@xs4all.nl>
-    Dave Clark <clarkd@skynet.ca>
-    Sébastien Liénard <slienard@worldnet.fr>
-    Sam Hawker <shawkie@geocities.com>
-    Patrick Crosby <xb@dotfiles.com>
-    Jesse B. Off <joff@iastate.edu>
-    <robertle@cube.net>
-    Anthony Quinn <southgat@frontiernet.net>
-    Josh King <jking@dwave.net>
-    <soren@linuxwarez.com>
-    Michael Pearson <alcaron@ozemail.com.au>
-    Pontus Klang <c96pkg@cs.umu.se>
-    Philippe Vigneron <vigneron@free.fr>
-    Alexander Kourakos <alexander@kourakos.com>
-    <lempinen@iki.fi>
-    Gennady Belyakov <gb@ccat.elect.ru>
-    Beat Christen <bchriste@iiic.ethz.ch>
-    Pierre Olivier <pblumo@free.fr>
-    <robertle@cube.net>
-    Malcolm Cowe <malk@bruhaha.demon.co.uk>
-    Friedrich Delgado Friedrichs <friedel@nomaden.org>
-    Dan Piponi <dan@tanelorn.demon.co.uk>
-    <wliang@tartarus.uwa.edu.au>
-    <red_seb@yahoo.com>
-    Casey Harkins <charkins@pobox.com>
-    Reed Lai <reed@wingeer.org>
-    Marco Goetze, <gomar@mindless.com>
-    Michal Krause <michal@krause.cz>
-    Thomas Ribbrock <emgaron@ribbrock.org>
 
 %prep
 %setup -n wmcdplay -b 1 -b 2 -b 3 -b 4 -b 5 -b 6 -b 7 -b 8 -b 9 -b 10 -b 11 -b 12 -b 13 -b 14 -b 15 -b 16 -b 18 -b 19 -b 20 -b 21 -b 22 -b 23 -b 24 -b 26 -b 27 -b 28 -b 29 -b 30 -b 31 -b 32 -b 33 -b 34 -b 35 -b 36 -b 37 -b 38 -b 39 -b 40 -b 41 -b 42
@@ -359,7 +314,7 @@ cd ../wmGrabImage-%{wmGrabImage_version}/wmGrabImage
 %patch50 -p2
 
 %build
-RPM_OPT_FLAGS+=" -fgnu89-inline"
+RPM_OPT_FLAGS="%{optflags} -fgnu89-inline"
 xmkmf -a
 make CXXFLAGS="$RPM_OPT_FLAGS"
 cd ../wmload-%{wmload_version}
@@ -375,7 +330,7 @@ make CFLAGS="$RPM_OPT_FLAGS"
 #wmmail uses proplist-compat.h needs to be fixed
 #cd ../WMMail.app-%{WMMail_version}
 #autoreconf --force --install -v
-#CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr/ --with-appspath=/usr/lib/GNUstep/Applications
+#CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix="%{_prefix}" --with-appspath=/usr/lib/GNUstep/Applications
 #make
 cd ../wmmount-%{wmmount_version}
 xmkmf -a
@@ -399,7 +354,7 @@ make FLAGS="-Wall -ansi $RPM_OPT_FLAGS" \
      LINK="-lX11 -lXpm -lXext"
 cd ../wmmp3-%{wmmp3_version}
 autoreconf --force --install -v
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr/
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix="%{_prefix}"
 make
 cd ../wmmon.app/wmmon
 make CFLAGS="$RPM_OPT_FLAGS"
@@ -411,15 +366,15 @@ cd ../../wmifs.app/wmifs
 make  CFLAGS="$RPM_OPT_FLAGS"
 #wmgmon uses proplist-compat.h needs to be fixed
 #cd ../../wmgmon.app/src
-#make FLAGS="$RPM_OPT_FLAGS -Wall -I/usr/include"
+#make FLAGS="$RPM_OPT_FLAGS -Wall -I%{_includedir}"
 cd ../../wmfire-%{wmfire_version}
 autoreconf -fi
-CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" ./configure --prefix=/usr/
+CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" ./configure --prefix="%{_prefix}"
 make
 cd ../wmcube/wmcube
 make CFLAGS="$RPM_OPT_FLAGS -DLINUX"
 cd ../../wmbutton-%{wmbutton_version}
-make FLAGS="$RPM_OPT_FLAGS -I/usr/include/X11"
+make FLAGS="$RPM_OPT_FLAGS -I%{_includedir}/X11"
 cd ../wmMatrix-%{wmMatrix_version}
 rm -f *.o
 make CFLAGS="$RPM_OPT_FLAGS"
@@ -432,7 +387,7 @@ cd ..
 cd ../wmweather-%{wmWeather_version}/src
 autoreconf --force --install
 CFLAGS="$RPM_OPT_FLAGS" \
-  ./configure --prefix=/usr/
+  ./configure --prefix="%{_prefix}"
 make
 cd ..
 cd ../wmswallow
@@ -452,7 +407,7 @@ make CFLAGS="$RPM_OPT_FLAGS"
 cd ../wmtv
 make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 cd ../wmbiff-%{wmbiff_version}
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr/ --mandir=%{_mandir}
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix="%{_prefix}" --mandir="%{_mandir}"
 make
 cd ../pclock-%{pclock_version}
 make CFLAGS="$RPM_OPT_FLAGS"
@@ -461,7 +416,7 @@ make CFLAGS="$RPM_OPT_FLAGS"
 cd ../wmSMPmon-%{wmSMPmon_version}/wmSMPmon
 make CFLAGS="$RPM_OPT_FLAGS"
 cd ../../wmappl-%{wmappl_version}
-make CFLAGS="$RPM_OPT_FLAGS -I/usr/include/X11"
+make CFLAGS="$RPM_OPT_FLAGS -I%{_includedir}/X11"
 cd ../wmnd_%{wmnd_version}
 make CFLAGS="$RPM_OPT_FLAGS"
 cd ../wmpinboard-%{wmpinboard_version}
@@ -474,229 +429,229 @@ cd ../wmisdn-%{wmisdn_version}
 make CFLAGS="$RPM_OPT_FLAGS"
 
 %install
-mkdir -p $RPM_BUILD_ROOT/{%{_mandir}/man1,etc,usr/{lib/GNUstep/Applications,bin},usr/%_lib/xmms/Visualization}
+mkdir -p %{buildroot}/{%{_mandir}/man1,etc,usr/{lib/GNUstep/Applications,bin},usr/%_lib/xmms/Visualization}
 #rm -f ../wmappsfiles
 #touch ../wmappsfiles
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmbutton
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcalclock
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcdplay
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcube
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmload
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmnet
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmbutton
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmcalclock
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmcdplay
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmcube
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmload
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmnet
 %ifarch %ix86 x86_64 alpha ia64 %arm
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtune
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmtune
 %endif
 #wmmail uses proplist-compat.h needs to be fixed
-#install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmail
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmand
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmount
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmatrix
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmixer
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmfire
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtimer
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtime
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmppp
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmpalm
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmp3
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmon
+#install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmail
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmand
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmount
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmatrix
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmixer
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmfire
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmtimer
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmtime
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmppp
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmpalm
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmp3
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmmon
 #wmgmon uses proplist-compat.h needs to be fixed
-#install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmgmon
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmint
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wminet
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmifs
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmweather
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmampmenu
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmswallow
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtop
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmgrabimage
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmspaceweather
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmsun
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmrecord
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtv
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmbiff
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/pclock
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmnetscapekiller
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmsmpmon
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmappl
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmnd
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmpinboard
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcliphist
-install -d -m 755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmisdn
+#install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmgmon
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmint
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wminet
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmifs
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmweather
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmampmenu
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmswallow
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmtop
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmgrabimage
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmspaceweather
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmsun
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmrecord
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmtv
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmbiff
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/pclock
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmnetscapekiller
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmsmpmon
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmappl
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmnd
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmpinboard
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmcliphist
+install -d -m 755 %{buildroot}/%{_defaultdocdir}/%{name}/wmisdn
 #
-install -m 0644 ${RPM_SOURCE_DIR}/README.SuSE $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}
+install -m 0644 %{_sourcedir}/README.SuSE %{buildroot}/%{_defaultdocdir}/%{name}
 #
-install -m 0755 wmcdplay $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 ARTWORK COPYING README $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcdplay
+install -m 0755 wmcdplay %{buildroot}/%{_bindir}/
+install -m 0644 ARTWORK COPYING README %{buildroot}/%{_defaultdocdir}/%{name}/wmcdplay
 cd ../wmload-%{wmload_version}
-install -m 0755 wmload $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 README INSTALL $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmload
+install -m 0755 wmload %{buildroot}/%{_bindir}/
+install -m 0644 README INSTALL %{buildroot}/%{_defaultdocdir}/%{name}/wmload
 cd ../wmnet-%{wmnet_version}
-install -m 0755 wmnet $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 wmnet.man $RPM_BUILD_ROOT%{_mandir}/man1/wmnet.1
-install -m 0644 README Changelog $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmnet
+install -m 0755 wmnet %{buildroot}/%{_bindir}/
+install -m 0644 wmnet.man %{buildroot}/%{_mandir}/man1/wmnet.1
+install -m 0644 README Changelog %{buildroot}/%{_defaultdocdir}/%{name}/wmnet
 %ifarch %ix86 x86_64 alpha ia64 %arm
 cd ../wmtune-1.0.1-combined
-install -m 0755 wmtune $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 README COPYING sample.wmtunerc $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtune/
-install -m 0644 sample.wmtunerc $RPM_BUILD_ROOT/etc/wmtunerc
+install -m 0755 wmtune %{buildroot}/%{_bindir}/
+install -m 0644 README COPYING sample.wmtunerc %{buildroot}/%{_defaultdocdir}/%{name}/wmtune/
+install -m 0644 sample.wmtunerc %{buildroot}/etc/wmtunerc
 %endif
 #wmmail uses proplist-compat.h needs to be fixed
 #cd ../WMMail.app-%{WMMail_version}
-#make DESTDIR=$RPM_BUILD_ROOT install
+#%%make_install
 #install -m 0644 AUTHORS COPYING ChangeLog INSTALL README NEWS \
-#		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmail/
-#SAVE=$PWD; cd $RPM_BUILD_ROOT/usr/bin; rm -f wmmail; ln -s ../lib/GNUstep/Applications/WMMail.app/WMMail wmmail; cd $SAVE
+#		%{buildroot}/%{_defaultdocdir}/%{name}/wmmail/
+#SAVE=$PWD; cd %{buildroot}/%{_bindir}; rm -f wmmail; ln -s ../lib/GNUstep/Applications/WMMail.app/WMMail wmmail; cd $SAVE
 cd ../wmmount-%{wmmount_version}
-install -d -m 0755 $RPM_BUILD_ROOT/usr/lib/X11/wmmount
-install -m 0755 wmmount $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 COPYING README $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmount
-install -m 0644 wmmount.SuSE $RPM_BUILD_ROOT/etc/wmmount
+install -d -m 0755 %{buildroot}/usr/lib/X11/wmmount
+install -m 0755 wmmount %{buildroot}/%{_bindir}/
+install -m 0644 COPYING README %{buildroot}/%{_defaultdocdir}/%{name}/wmmount
+install -m 0644 wmmount.SuSE %{buildroot}/etc/wmmount
 cd lib
 for i in * ; do
-  install -m 0644 $i $RPM_BUILD_ROOT/usr/lib/X11/wmmount/
+  install -m 0644 $i %{buildroot}/usr/lib/X11/wmmount/
 done
 cd ../../wmmixer
-install -m 0755 wmmixer $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 home.wmmixer COPYING README $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmixer
+install -m 0755 wmmixer %{buildroot}/%{_bindir}/
+install -m 0644 home.wmmixer COPYING README %{buildroot}/%{_defaultdocdir}/%{name}/wmmixer
 cd ../wmtimer-%{wmtimer_version}/wmtimer
-install -m 0755 wmtimer $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmtimer %{buildroot}/%{_bindir}/
 cd ..
 install -m 0644 COPYING CREDITS Changelog INSTALL README \
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtimer
+                %{buildroot}/%{_defaultdocdir}/%{name}/wmtimer
 cd ../wmtime.app/wmtime
-install -m 0755 wmtime $RPM_BUILD_ROOT/usr/bin
+install -m 0755 wmtime %{buildroot}/%{_bindir}
 cd ..
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README TODO \
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtime
+                %{buildroot}/%{_defaultdocdir}/%{name}/wmtime
 cd ../wmppp.app/wmppp
-install -m 0755 wmppp $RPM_BUILD_ROOT/usr/bin
-install -m 0644 system.wmppprc user.wmppprc $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmppp
-install -d -m 0755 $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmppp/example-scripts
-install -m 0644 example-scripts/* $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmppp/example-scripts
+install -m 0755 wmppp %{buildroot}/%{_bindir}
+install -m 0644 system.wmppprc user.wmppprc %{buildroot}/%{_defaultdocdir}/%{name}/wmppp
+install -d -m 0755 %{buildroot}/%{_defaultdocdir}/%{name}/wmppp/example-scripts
+install -m 0644 example-scripts/* %{buildroot}/%{_defaultdocdir}/%{name}/wmppp/example-scripts
 cd ..
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README TODO \
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmppp
+                %{buildroot}/%{_defaultdocdir}/%{name}/wmppp
 cd ../wmpalm-%{wmpalm_version}
-install -m 0755 wmpalm $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 README $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmpalm
+install -m 0755 wmpalm %{buildroot}/%{_bindir}/
+install -m 0644 README %{buildroot}/%{_defaultdocdir}/%{name}/wmpalm
 cd ../wmmp3-%{wmmp3_version}
-install -m 0755 wmmp3 $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmmp3 %{buildroot}/%{_bindir}/
 install -m 0644 AUTHORS COPYING ChangeLog INSTALL NEWS README TODO sample.wmmp3\
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmp3
+                %{buildroot}/%{_defaultdocdir}/%{name}/wmmp3
 cd ../wmmon.app/wmmon
-install -m 0755 wmmon $RPM_BUILD_ROOT/usr/bin
+install -m 0755 wmmon %{buildroot}/%{_bindir}
 cd ..
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmon
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmmon
 cd ../wmint.app/wmint
-install -m 0755 wmint $RPM_BUILD_ROOT/usr/bin
+install -m 0755 wmint %{buildroot}/%{_bindir}
 cd ..
 install -m 0644 BUGS COPYING HINTS INSTALL README TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmint
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmint
 cd ../wminet.app/wminet
-install -m 0755 wminet $RPM_BUILD_ROOT/usr/bin
-install -m 0644 wminetrc $RPM_BUILD_ROOT/etc/
+install -m 0755 wminet %{buildroot}/%{_bindir}
+install -m 0644 wminetrc %{buildroot}/etc/
 cd ..
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README TODO \
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wminet
+                %{buildroot}/%{_defaultdocdir}/%{name}/wminet
 cd ../wmifs.app/wmifs
-install -m 0755 wmifs $RPM_BUILD_ROOT/usr/bin
-install -m 0644 sample.wmifsrc $RPM_BUILD_ROOT/etc/wmifsrc
-install -m 0644 sample.wmifsrc $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmifs
+install -m 0755 wmifs %{buildroot}/%{_bindir}
+install -m 0644 sample.wmifsrc %{buildroot}/etc/wmifsrc
+install -m 0644 sample.wmifsrc %{buildroot}/%{_defaultdocdir}/%{name}/wmifs
 cd ..
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README TODO \
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmifs
+                %{buildroot}/%{_defaultdocdir}/%{name}/wmifs
 #wmgmon uses proplist-compat.h needs to be fixed
 #cd ../wmgmon.app/src
-#install -m 0755 wmgmon $RPM_BUILD_ROOT/usr/bin
+#install -m 0755 wmgmon %{buildroot}/%{_bindir}
 #cd ..
-#install -m 0644 README $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmgmon
-#install -d $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmgmon/doc
-#install -m 0644 doc/* $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmgmon/doc
+#install -m 0644 README %{buildroot}/%{_defaultdocdir}/%{name}/wmgmon
+#install -d %{buildroot}/%{_defaultdocdir}/%{name}/wmgmon/doc
+#install -m 0644 doc/* %{buildroot}/%{_defaultdocdir}/%{name}/wmgmon/doc
 cd ../wmfire-%{wmfire_version}
-install -m 0755 wmfire $RPM_BUILD_ROOT/usr/bin
-install -m 0755 fireload_cpu $RPM_BUILD_ROOT/usr/bin
-install -m 0755 fireload_file $RPM_BUILD_ROOT/usr/bin
+install -m 0755 wmfire %{buildroot}/%{_bindir}
+install -m 0755 fireload_cpu %{buildroot}/%{_bindir}
+install -m 0755 fireload_file %{buildroot}/%{_bindir}
 install -m 0644 AUTHORS COPYING CREDITS ChangeLog NEWS README \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmfire
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmfire
 cd ../wmcube/wmcube
-install -m 0755 wmcube $RPM_BUILD_ROOT/usr/bin
+install -m 0755 wmcube %{buildroot}/%{_bindir}
 cd ..
-install -m 0644 COPYING INSTALL README TODO $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcube
-install -d $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcube/3dObjects
-install -m 0644 3dObjects/*  $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcube/3dObjects
+install -m 0644 COPYING INSTALL README TODO %{buildroot}/%{_defaultdocdir}/%{name}/wmcube
+install -d %{buildroot}/%{_defaultdocdir}/%{name}/wmcube/3dObjects
+install -m 0644 3dObjects/*  %{buildroot}/%{_defaultdocdir}/%{name}/wmcube/3dObjects
 cd ../wmbutton-%{wmbutton_version}
-install -m 0755 wmbutton $RPM_BUILD_ROOT/usr/bin
-install -m 0644 .wmbutton $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmbutton/sample.wmbutton
-install -m 0644 COPYING README $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmbutton
+install -m 0755 wmbutton %{buildroot}/%{_bindir}
+install -m 0644 .wmbutton %{buildroot}/%{_defaultdocdir}/%{name}/wmbutton/sample.wmbutton
+install -m 0644 COPYING README %{buildroot}/%{_defaultdocdir}/%{name}/wmbutton
 cd ../wmMatrix-%{wmMatrix_version}
-install -m 0755 wmMatrix $RPM_BUILD_ROOT/usr/bin/wmmatrix
+install -m 0755 wmMatrix %{buildroot}/%{_bindir}/wmmatrix
 cd ../wmMand-%{wmMand_version}/wmMand
-install -m 0755 wmMand $RPM_BUILD_ROOT/usr/bin/wmmand
+install -m 0755 wmMand %{buildroot}/%{_bindir}/wmmand
 cd ..
-install -m 0644 BUGS CHANGES COPYING $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmmand
+install -m 0644 BUGS CHANGES COPYING %{buildroot}/%{_defaultdocdir}/%{name}/wmmand
 cd ../wmCalClock-%{wmCalClock_version}/Src
-install -m 0755 wmCalClock $RPM_BUILD_ROOT/usr/bin/wmcalclock
-install -m 0644 wmCalClock.1 $RPM_BUILD_ROOT%{_mandir}/man1/wmcalclock.1
+install -m 0755 wmCalClock %{buildroot}/%{_bindir}/wmcalclock
+install -m 0644 wmCalClock.1 %{buildroot}/%{_mandir}/man1/wmcalclock.1
 cd ..
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcalclock
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmcalclock
 cd ../wmweather-%{wmWeather_version}/src
-install -m 0755 wmweather $RPM_BUILD_ROOT/usr/bin/wmweather
-install -m 0644 wmweather.1 $RPM_BUILD_ROOT%{_mandir}/man1/wmweather.1
+install -m 0755 wmweather %{buildroot}/%{_bindir}/wmweather
+install -m 0644 wmweather.1 %{buildroot}/%{_mandir}/man1/wmweather.1
 cd ..
 install -m 0644 CHANGES COPYING README \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmweather
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmweather
 cd ../wmampmenu/src
-install -m 0755 mp3launch wmampmenu $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 mp3launch wmampmenu %{buildroot}/%{_bindir}/
 cd ..
 install -m 0644 COPYING Changes README  \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmampmenu
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmampmenu
 cd ../wmswallow
-install -m 0755 wmswallow $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmswallow %{buildroot}/%{_bindir}/
 install -m 0644 CHANGELOG LICENCE README  \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmswallow
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmswallow
 cd ../wmtop-%{wmtop_version}
-install -m 0755 wmtop $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 wmtop.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install -m 0755 wmtop %{buildroot}/%{_bindir}/
+install -m 0644 wmtop.1 %{buildroot}/%{_mandir}/man1/
 install -m 0644 BUGS CHANGES COPYING README TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtop
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmtop
 cd ../wmGrabImage-%{wmGrabImage_version}
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmgrabimage
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmgrabimage
 cd wmGrabImage
-install -m 0755 wmGrabImage $RPM_BUILD_ROOT/usr/bin/wmgrabimage
-install -m 0755 GrabImage $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 wmGrabImage.1 $RPM_BUILD_ROOT%{_mandir}/man1/wmgrabimage.1
+install -m 0755 wmGrabImage %{buildroot}/%{_bindir}/wmgrabimage
+install -m 0755 GrabImage %{buildroot}/%{_bindir}/
+install -m 0644 wmGrabImage.1 %{buildroot}/%{_mandir}/man1/wmgrabimage.1
 cd ../../wmSpaceWeather-%{wmSpaceWeather_version}
 install -m 0644 BUGS CHANGES COPYING HINTS INSTALL README \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmspaceweather
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmspaceweather
 cd wmSpaceWeather
-install -m 0755 wmSpaceWeather $RPM_BUILD_ROOT/usr/bin/wmspaceweather
-install -m 0755 GetKp $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 wmSpaceWeather.1 $RPM_BUILD_ROOT%{_mandir}/man1/wmspaceweather.1
+install -m 0755 wmSpaceWeather %{buildroot}/%{_bindir}/wmspaceweather
+install -m 0755 GetKp %{buildroot}/%{_bindir}/
+install -m 0644 wmSpaceWeather.1 %{buildroot}/%{_mandir}/man1/wmspaceweather.1
 cd ../../wmSun-%{wmSun_version}
 install -m 0644 BUGS COPYING TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmsun
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmsun
 cd wmSun
-install -m 0755 wmSun $RPM_BUILD_ROOT/usr/bin/wmsun
-install -m 0644 wmSun.1 $RPM_BUILD_ROOT%{_mandir}/man1/wmsun.1
+install -m 0755 wmSun %{buildroot}/%{_bindir}/wmsun
+install -m 0644 wmSun.1 %{buildroot}/%{_mandir}/man1/wmsun.1
 cd ../../wmrecord-%{wmrecord_version}
 install -m 0644 COPYING INSTALL README TODO  \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmrecord
-install -m 0755 wmrecord $RPM_BUILD_ROOT/usr/bin/
-install -m 0644 man/wmrecord.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmrecord
+install -m 0755 wmrecord %{buildroot}/%{_bindir}/
+install -m 0644 man/wmrecord.1 %{buildroot}/%{_mandir}/man1/
 cd ../wmtv
 install -m 0644 COPYING CHANGES CREDITS README wmtvrc.sample \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmtv
-install -m 0755 wmtv $RPM_BUILD_ROOT/usr/bin/
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmtv
+install -m 0755 wmtv %{buildroot}/%{_bindir}/
 cd ../wmbiff-%{wmbiff_version}
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 install -m 0644 README ChangeLog NEWS TODO README.licq wmbiff/sample.wmbiffrc \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmbiff
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmbiff
 cd ../pclock-%{pclock_version}/src
-install -m 0755 pclock $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 pclock %{buildroot}/%{_bindir}/
 cd ..
 for i in demos/* ; do
   mv $i $i.orig
@@ -707,52 +662,48 @@ chmod 755 demos/*
 chmod 644 XPM/*
 chmod 755 {demos,XPM}
 install -m 0644 CHANGES COPYING CREDITS README TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/pclock
-cp -pr demos XPM $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/pclock
+		%{buildroot}/%{_defaultdocdir}/%{name}/pclock
+cp -pr demos XPM %{buildroot}/%{_defaultdocdir}/%{name}/pclock
 cd ../wmNetscapeKiller-%{wmNetscapeKiller_version}
-install -m 0755 wmNetscapeKiller $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmNetscapeKiller %{buildroot}/%{_bindir}/
 install -m 0644 CHANGELOG README \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmnetscapekiller
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmnetscapekiller
 cd ../wmSMPmon-%{wmSMPmon_version}/wmSMPmon
-install -m 0755 wmSMPmon $RPM_BUILD_ROOT/usr/bin/wmSMPmon
-install -m 0644 wmSMPmon.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install -m 0755 wmSMPmon %{buildroot}/%{_bindir}/wmSMPmon
+install -m 0644 wmSMPmon.1 %{buildroot}/%{_mandir}/man1/
 cd ..
 install -m 0644 COPYING GREETINGS LISEZ-MOI Changelog \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmsmpmon
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmsmpmon
 cd ../wmappl-%{wmappl_version}
-install -m 0755 wmappl $RPM_BUILD_ROOT/usr/bin/
-install -d $RPM_BUILD_ROOT/usr/share/icons/wmappl
-install -m 644 -c icons/*.xpm $RPM_BUILD_ROOT/usr/share/icons/wmappl
+install -m 0755 wmappl %{buildroot}/%{_bindir}/
+install -d %{buildroot}/%{_datadir}/icons/wmappl
+install -m 644 -c icons/*.xpm %{buildroot}/%{_datadir}/icons/wmappl
 install -m 0644 LICENSE README sample.wmapplrc \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmappl
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmappl
 cd ../wmnd_%{wmnd_version}
-install -m 0755 wmnd $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmnd %{buildroot}/%{_bindir}/
 install -m 0644 wmndrc CHANGELOGS COPYING HINTS INSTALL README TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmnd
-install -m 0644 man/wmnd.1 $RPM_BUILD_ROOT%{_mandir}/man1
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmnd
+install -m 0644 man/wmnd.1 %{buildroot}/%{_mandir}/man1
 cd ../wmpinboard-%{wmpinboard_version}
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 install -m 0644 AUTHORS COPYING CREDITS NEWS README ChangeLog TODO \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmpinboard
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmpinboard
 cd ../wmcliphist
-install -m 0755 wmcliphist $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmcliphist %{buildroot}/%{_bindir}/
 install -m 0644 COPYING README ChangeLog wmcliphistrc \
-		$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmcliphist
+		%{buildroot}/%{_defaultdocdir}/%{name}/wmcliphist
 cd ../wmisdn-%{wmisdn_version}
-install -m 0755 wmisdn $RPM_BUILD_ROOT/usr/bin/
+install -m 0755 wmisdn %{buildroot}/%{_bindir}/
 install -m 0644 README CHANGES COPYING \
-                $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}/wmisdn
+                %{buildroot}/%{_defaultdocdir}/%{name}/wmisdn
 #
-mkdir -p $RPM_BUILD_ROOT/etc/X11/WindowMaker
-install -m 644 %{S:200} $RPM_BUILD_ROOT/etc/X11/WindowMaker/SuSE_wmapps
+mkdir -p %{buildroot}/etc/X11/WindowMaker
+install -m 644 %{S:200} %{buildroot}/etc/X11/WindowMaker/SuSE_wmapps
 #
-%fdupes $RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%fdupes %{buildroot}/%{_defaultdocdir}/%{name}
 
 %files
-%defattr(-,root,root)
 /usr/lib/X11/wmmount/
 %docdir %{_defaultdocdir}/%{name}
 %{_defaultdocdir}/%{name}
@@ -764,61 +715,61 @@ rm -rf $RPM_BUILD_ROOT
 %dir /usr/lib/GNUstep/Applications
 #wmmail uses proplist-compat.h needs to be fixed
 #/usr/lib/GNUstep/Applications/WMMail.app
-#/usr/bin/wmmail
-/usr/bin/wmmand
-/usr/bin/wmmatrix
-/usr/bin/wmbutton
-/usr/bin/wmcdplay
-/usr/bin/wmcube
-/usr/bin/wmcalclock
-/usr/bin/wmload
-/usr/bin/wmfire
-/usr/bin/fireload_cpu
-/usr/bin/fireload_file
-/usr/bin/wmint
-/usr/bin/wmifs
-/usr/bin/wminet
-/usr/bin/wmnet
-/usr/bin/wmmon
+#%{_bindir}/wmmail
+%{_bindir}/wmmand
+%{_bindir}/wmmatrix
+%{_bindir}/wmbutton
+%{_bindir}/wmcdplay
+%{_bindir}/wmcube
+%{_bindir}/wmcalclock
+%{_bindir}/wmload
+%{_bindir}/wmfire
+%{_bindir}/fireload_cpu
+%{_bindir}/fireload_file
+%{_bindir}/wmint
+%{_bindir}/wmifs
+%{_bindir}/wminet
+%{_bindir}/wmnet
+%{_bindir}/wmmon
 #wmgmon uses proplist-compat.h needs to be fixed
-#/usr/bin/wmgmon
-/usr/bin/wmmount
-/usr/bin/wmmp3
-/usr/bin/wmmixer
-/usr/bin/wmtimer
-/usr/bin/wmtime
-/usr/bin/wmpalm
-/usr/bin/wmppp
+#%{_bindir}/wmgmon
+%{_bindir}/wmmount
+%{_bindir}/wmmp3
+%{_bindir}/wmmixer
+%{_bindir}/wmtimer
+%{_bindir}/wmtime
+%{_bindir}/wmpalm
+%{_bindir}/wmppp
 %ifarch %ix86 x86_64 alpha ia64 %arm
-/usr/bin/wmtune
+%{_bindir}/wmtune
 %config /etc/wmtunerc
 %endif
 %config /etc/wminetrc
 %config /etc/wmifsrc
 %config /etc/wmmount
-/usr/bin/wmweather
-/usr/bin/mp3launch
-/usr/bin/wmampmenu
-/usr/bin/wmswallow
-/usr/bin/wmtop
-/usr/bin/wmgrabimage
-/usr/bin/GrabImage
-/usr/bin/wmspaceweather
-/usr/bin/GetKp
-/usr/bin/wmsun
-/usr/bin/wmrecord
-/usr/bin/wmtv
-/usr/bin/wmbiff
-/usr/share/wmbiff
-/usr/bin/pclock
-/usr/bin/wmNetscapeKiller
-/usr/bin/wmSMPmon
-/usr/bin/wmappl
-/usr/share/icons/wmappl
-/usr/bin/wmnd
-/usr/bin/wmpinboard
-/usr/bin/wmcliphist
-/usr/bin/wmisdn
+%{_bindir}/wmweather
+%{_bindir}/mp3launch
+%{_bindir}/wmampmenu
+%{_bindir}/wmswallow
+%{_bindir}/wmtop
+%{_bindir}/wmgrabimage
+%{_bindir}/GrabImage
+%{_bindir}/wmspaceweather
+%{_bindir}/GetKp
+%{_bindir}/wmsun
+%{_bindir}/wmrecord
+%{_bindir}/wmtv
+%{_bindir}/wmbiff
+%{_datadir}/wmbiff
+%{_bindir}/pclock
+%{_bindir}/wmNetscapeKiller
+%{_bindir}/wmSMPmon
+%{_bindir}/wmappl
+%{_datadir}/icons/wmappl
+%{_bindir}/wmnd
+%{_bindir}/wmpinboard
+%{_bindir}/wmcliphist
+%{_bindir}/wmisdn
 %doc %{_mandir}/man1/wmweather.1.gz
 %doc %{_mandir}/man1/wmtop.1.gz
 %doc %{_mandir}/man1/wmgrabimage.1.gz

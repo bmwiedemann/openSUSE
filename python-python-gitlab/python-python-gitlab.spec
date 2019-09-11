@@ -18,27 +18,26 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-gitlab
-Version:        1.9.0
+Version:        1.11.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/python-gitlab/python-gitlab
+URL:            https://github.com/python-gitlab/python-gitlab
 Source:         https://files.pythonhosted.org/packages/source/p/python-gitlab/python-gitlab-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-requests >= 2.4.2
+Requires:       python-setuptools
+Requires:       python-six
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 2.4.2}
 BuildRequires:  %{python_module six}
 # /SECTION
-Requires:       python-requests >= 2.4.2
-Requires:       python-setuptools
-Requires:       python-six
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

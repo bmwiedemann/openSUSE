@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  9 17:42:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop faulty requires from documentation subpackage.
+
+-------------------------------------------------------------------
+Fri Aug  9 20:36:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.5.5:
+  * Development version using Qt5.
+  * Large code refactoring
+  * Many bugs fixed
+- Check https://wiki.scribus.net/canvas/1.5.5_Release for more information
+- Drop hunspell.patch
+- Add 0001-Make-sure-information-displayed-on-the-about-window-.patch
+
+-------------------------------------------------------------------
 Sat Nov 24 16:26:56 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Rewrite hunspell-1.6.patch into hunspell.patch to cover all hunspell
@@ -54,7 +70,7 @@ Thu Jan  4 17:18:39 UTC 2018 - wbauer@tmo.at
 -------------------------------------------------------------------
 Fri Aug 11 08:34:10 UTC 2017 - pgajdos@suse.com
 
-- remove dependency on aspell, scribus seem to use hunspell  
+- remove dependency on aspell, scribus seem to use hunspell
   [bsc#1052965]
 
 -------------------------------------------------------------------
@@ -84,12 +100,12 @@ Thu Jul 28 16:16:26 UTC 2016 - badshah400@gmail.com
 
 - Add scribus.appdata.xml file and install it to the appdata dir;
   this makes scribus appear in appstores like GNOME Software and
-  KDE Discover. 
+  KDE Discover.
 
 -------------------------------------------------------------------
 Fri Mar 18 10:38:55 UTC 2016 - alarrosa@suse.com
 
-- Added an fdupes call to symlink duplicate files installed 
+- Added an fdupes call to symlink duplicate files installed
   under /usr/share/. This reduces the installed size in around 20 Mb.
 
 -------------------------------------------------------------------
@@ -102,11 +118,11 @@ Mon Jan 11 17:26:06 UTC 2016 - plinnell@opensuse.org
 Thu May 29 04:23:31 UTC 2014 - plinnell@opensuse.org
 
 - Update to 1.4.4
-- Drop python-version.diff it is upstream. 
+- Drop python-version.diff it is upstream.
  + PDF/X-1a export.
 
 + The Barcode plug-in has been updated to reflect
-  the latest changes in the underlying Barcode Writer 
+  the latest changes in the underlying Barcode Writer
   in Pure PostScript (BWIPP).
 
 + The Autoquote script has been rewritten and enhanced.
@@ -116,16 +132,16 @@ Thu May 29 04:23:31 UTC 2014 - plinnell@opensuse.org
 + A script to align images in frames has been added.
 
 + Full support of the OpenICC Directory Proposal
-  (http://www.oyranos.org/wiki/index.php?title=OpenIccDirectoryProposal). 
+  (http://www.oyranos.org/wiki/index.php?title=OpenIccDirectoryProposal).
 
 + The handling of transparencies in Photoshop-generated TIFF files
   has been improved.
 
-+ Page borders can now act as guides (and thus be used for 
++ Page borders can now act as guides (and thus be used for
   snapping of items).
 
 + The CMYK color palette created by the Newspaper Association
-  of America  (NAA) for newspaper advertisements has been 
+  of America  (NAA) for newspaper advertisements has been
   integrated into Scribus.
 
 + A new color palette for professional geographers has been added.
@@ -137,7 +153,7 @@ Thu May 29 04:23:31 UTC 2014 - plinnell@opensuse.org
 
 + Adjustments for Windows 8.x.
 
-+ An issue with the spellchecker, resulting in a crash, 
++ An issue with the spellchecker, resulting in a crash,
   has been resolved.
 
 + Documentation and translation updates and improvements.
@@ -159,15 +175,15 @@ Thu Aug 22 03:30:39 UTC 2013 - mrdocs@opensuse.org
      barcodes, including QR.
    + The Galaxy Gauge™ color matching system and color tools have
      been included.
-   + New color palettes from government agencies (Canada, 
+   + New color palettes from government agencies (Canada,
      Germany, The Netherlands, United Kingdom) have been included.
    + More Open Source color palettes have been included.
    + Improvements to the build system.
    + Improvements to the Preflight Verifier.
-   + The A4 page size limit of TeX-rendered graphics in Render 
+   + The A4 page size limit of TeX-rendered graphics in Render
      Frames has been removed.
    + The Short Words plug-in now supports Danish.
-   +  Many updates to the Online Manual. 
+   +  Many updates to the Online Manual.
 
 -  Most important bugfixes:
 - Disabled hyphenation on some Linux distributions is working again.
@@ -178,7 +194,7 @@ Thu Aug 22 03:30:39 UTC 2013 - mrdocs@opensuse.org
   been optimized.
 - Issues with the Clang compiler have been fixed.
 - Scribus now supports Pillow as an alternative to the Python Imaging Library.
-- Many translation updates. 
+- Many translation updates.
 
 -------------------------------------------------------------------
 Mon Jan 14 04:22:20 UTC 2013 - mrdocs@opensuse.org
@@ -187,13 +203,13 @@ Mon Jan 14 04:22:20 UTC 2013 - mrdocs@opensuse.org
   - New feature - hunspell based spell checker
   - UI and Document Updates and translation updates
   - Scribus will look for existing dictionaries on the system
-    it is installed already installed by hunspell packages or 
+    it is installed already installed by hunspell packages or
     LibreOffice. New dictionaries are downloadable directly from
-    within Scribus Preferences via freedesktop.org. 
-    The spellchecker now also works within the Story Editor. 
+    within Scribus Preferences via freedesktop.org.
+    The spellchecker now also works within the Story Editor.
   - Stability and other minor fixes
-  - Complete versioned changelog: 
-    http://bugs.scribus.net/changelog_page.php?version_id=84  
+  - Complete versioned changelog:
+    http://bugs.scribus.net/changelog_page.php?version_id=84
 
 -------------------------------------------------------------------
 Fri Jul  6 15:16:37 UTC 2012 - dmueller@suse.com
@@ -216,7 +232,7 @@ Wed May 23 08:42:03 UTC 2012 - badshah400@gmail.com
 -------------------------------------------------------------------
 Wed May 23 01:57:45 UTC 2012 - mrdocs@opensuse.org
 
-- drop fdupes in %datashare it breaks the help browser 
+- drop fdupes in %datashare it breaks the help browser
 - shorten the -devel description
 
 -------------------------------------------------------------------
@@ -282,7 +298,7 @@ Wed Oct 19 04:57:23 UTC 2011 - mrdocs@opensuse.org
  +documentation updates, bug fixes and translation updates
  +http://scribus.net/svn/Scribus/branches/Version135/Scribus/ChangeLog
   for versioned changelog
- 
+
 -------------------------------------------------------------------
 Mon Aug 15 13:49:58 UTC 2011 - idonmez@novell.com
 
@@ -302,7 +318,7 @@ Sat Jun 18 19:13:42 UTC 2011 - mrdocs@opensuse.org
  + more bug fixes and translation updates
   see http://bugs.scribus.net/changelog_page.php?version_id=68
   for versioned changelog
- 
+
 
 -------------------------------------------------------------------
 Sun Apr 10 16:16:16 UTC 2011 - mrdocs@opensuse.org
@@ -310,20 +326,20 @@ Sun Apr 10 16:16:16 UTC 2011 - mrdocs@opensuse.org
 -update to 1.4.0.rc3
  + more bug fixes and translation updates
   see http://bugs.scribus.net/changelog_page.php?version_id=68
-  for versioned changelog 
+  for versioned changelog
 
 -------------------------------------------------------------------
 Tue Mar  8 01:49:59 UTC 2011 - mrdocs@opensuse.org
 
 -update to 1.4.0.rc2
- + more bug fixes and translation updates 
+ + more bug fixes and translation updates
   see http://bugs.scribus.net/changelog_page.php?version_id=68
   for versioned changelog
 
 -------------------------------------------------------------------
 Fri Feb 18 15:16:13 UTC 2011 - mrdocs@opensuse.org
 
--remove some old versioning cruft from spec file 
+-remove some old versioning cruft from spec file
 
 -------------------------------------------------------------------
 Fri Feb 18 14:30:37 UTC 2011 - mrdocs@opensuse.org
@@ -331,7 +347,7 @@ Fri Feb 18 14:30:37 UTC 2011 - mrdocs@opensuse.org
 - update to 1.4.0.rc1 1.4.0 is new stable branch
   +40+ bugs fixed see:
    http://bugs.scribus.net/changelog_page.php?version_id=68 for
-   versioned change log details 
+   versioned change log details
 - Add Obsoletes/Provides for scribus-templates for those upgrading
   from 1.3.3.14, former stable.  1.4.0 has new
   and many additional templates included by default
@@ -346,7 +362,7 @@ Fri Jan 16 00:00:00 CET 2011 - mrdocs@opensuse.org
 -------------------------------------------------------------------
 Mon Dec 27 17:20:00 CET 2010 - dmueller@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Tue Dec 14 10:08:30 UTC 2010 - mrdocs@opensuse.org
@@ -362,7 +378,7 @@ Thu Dec  9 20:22:40 UTC 2010 - mrdocs@opensuse.org
 -------------------------------------------------------------------
 Thu Mar 25 23:12:01 UTC 2010 - mrdocs@opensuse.org
 
-- update to 1.3.3.14 
+- update to 1.3.3.14
 - drop the implicit patch as its now upstream
 
 -------------------------------------------------------------------
@@ -396,7 +412,7 @@ Thu Oct  9 11:28:54 CEST 2008 - meissner@suse.de
 -------------------------------------------------------------------
 Tue Jun  3 00:54:07 CEST 2008 - crrodriguez@suse.de
 
-- needs fno-strict-aliasing 
+- needs fno-strict-aliasing
 
 -------------------------------------------------------------------
 Wed Apr 16 15:18:04 CEST 2008 - dmueller@suse.de
@@ -415,7 +431,7 @@ Mon Apr 14 20:02:25 CEST 2008 - dmueller@suse.de
 Sun Jan 13 22:34:08 CET 2008 - dmueller@suse.de
 
 - update to 1.3.3.11:
-  * Special characters in plain text files aren't imported 
+  * Special characters in plain text files aren't imported
   correctly
   * Change text string in PDF export dialog
 
@@ -453,7 +469,7 @@ Mon Apr 23 10:37:37 CEST 2007 - pgajdos@suse.cz
 Mon Mar 12 09:54:04 CET 2007 - pgajdos@suse.cz
 
 - fixed gcc warnings in beta version:
-    * program uses possibly exploitable format strings 
+    * program uses possibly exploitable format strings
       (format-not-literal.patch)
     * program compares a char* pointer with string literal
       (string-literal-comparsion.patch)
@@ -671,7 +687,7 @@ Tue Aug 12 16:35:40 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Jun 12 01:29:09 CEST 2003 - ro@suse.de
 
-- add doc-dir to filelist 
+- add doc-dir to filelist
 
 -------------------------------------------------------------------
 Mon Mar 31 02:14:03 CEST 2003 - ro@suse.de
@@ -695,4 +711,3 @@ Wed Nov 20 16:29:48 CET 2002 - sbrabec@suse.cz
 - FHS fixes.
 - Aufoconf fixes.
 - KDE autoconf fixes.
-

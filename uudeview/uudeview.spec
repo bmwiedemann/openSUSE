@@ -1,7 +1,7 @@
 #
 # spec file for package uudeview
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Provides:       sharutils:/usr/bin/uudeview
 Version:        0.5.20
 Release:        0
 Summary:        The Nice and Friendly Decoder
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Utilities
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         %{name}.patch
@@ -46,6 +46,7 @@ uuencode utilities.
 %patch1 -p2
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoconf
 CFLAGS="$RPM_OPT_FLAGS -fPIC -DUSE_NON_CONST" \
 ./configure --prefix=%_prefix \

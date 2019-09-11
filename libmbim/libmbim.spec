@@ -23,8 +23,12 @@ Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Networking/System
-URL:            http://www.freedesktop.org/wiki/Software/libmbim/
-Source:         http://www.freedesktop.org/software/libmbim/%{name}-%{version}.tar.xz
+URL:            https://www.freedesktop.org/wiki/Software/libmbim/
+Source:         https://www.freedesktop.org/software/libmbim/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libmbim-fix-build-commits.patch -- Fix build with new glib2
+Patch0:         libmbim-fix-build-commits.patch
+
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(gio-2.0)
@@ -68,22 +72,24 @@ Supplements:    packageand(%{name}:bash-completion)
 This package contain de bash completion command for mbimcli tools.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Do not rely on env for choosing python
 sed -i "s|env python|python3|g" build-aux/mbim-codegen/*
+autoreconf -fiv
 %configure \
-  --with-udev \
-  --disable-static
-make %{?_smp_mflags}
+	--with-udev \
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libmbim-glib4 -p /sbin/ldconfig
 %postun -n libmbim-glib4 -p /sbin/ldconfig

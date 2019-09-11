@@ -161,6 +161,7 @@ mv %{buildroot}%{_libqt5_docdir}/qwt6/man/man3 \
 %{_libqt5_libdir}/libqwt.so.*
 
 %files designer
+%dir %{_libqt5_plugindir}/designer/
 %{_libqt5_plugindir}/designer/*.so
 
 %files devel

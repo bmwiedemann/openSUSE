@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
@@ -41,8 +41,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python-unittest2
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest >= 3.5}
 %endif
+Requires:       python-more-itertools
 %python_subpackages
 
 %description

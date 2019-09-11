@@ -1,0 +1,67 @@
+From 35863f31210b597045b24e8d08f4740a4426fc09 Mon Sep 17 00:00:00 2001
+From: geoffthemedio <geoffthemedio@gmail.com>
+Date: Fri, 26 Oct 2018 09:06:46 +0200
+Subject: [PATCH] Remove all references to signals library from CMakeLists.txt
+
+
+--
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+
+Trivial rebase to apply on 0.48: In CMakeLists.txt, hunk #4, add "-vc90-mt-1_44"
+suffix to dlls.
+
+---
+ CMakeLists.txt    | 5 -----
+ GG/CMakeLists.txt | 2 +-
+ 2 files changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d61970734a..5b5bc42623 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -204,7 +204,6 @@ find_package(Boost ${MINIMUM_BOOST_VERSION}
+         log_setup
+         regex
+         serialization
+-        signals
+         system
+         thread
+     REQUIRED)
+@@ -356,7 +355,6 @@ target_link_libraries(freeorioncommon
+     ${Boost_LOG_SETUP_LIBRARY}
+     ${Boost_REGEX_LIBRARY}
+     ${Boost_SERIALIZATION_LIBRARY}
+-    ${Boost_SIGNALS_LIBRARY}
+     ${Boost_SYSTEM_LIBRARY}
+     ${Boost_THREAD_LIBRARY}
+     ${ZLIB_LIBRARIES}
+@@ -667,8 +665,6 @@ if(APPLE)
+            ${CMAKE_COMMAND} -E copy_if_different "${Boost_PYTHON_LIBRARY}" "$<TARGET_FILE_DIR:freeorion>/../SharedSupport"
+         COMMAND
+            ${CMAKE_COMMAND} -E copy_if_different "${Boost_SERIALIZATION_LIBRARY}" "$<TARGET_FILE_DIR:freeorion>/../SharedSupport"
+-        COMMAND
+-           ${CMAKE_COMMAND} -E copy_if_different "${Boost_SIGNALS_LIBRARY}" "$<TARGET_FILE_DIR:freeorion>/../SharedSupport"
+         COMMAND
+            ${CMAKE_COMMAND} -E copy_if_different "${Boost_SYSTEM_LIBRARY}" "$<TARGET_FILE_DIR:freeorion>/../SharedSupport"
+         COMMAND
+@@ -772,7 +768,6 @@ if(WIN32)
+         boost_python-vc90-mt-1_44.dll
+         boost_regex-vc90-mt-1_44.dll
+         boost_serialization-vc90-mt-1_44.dll
+-        boost_signals-vc90-mt-1_44.dll
+         boost_system-vc90-mt-1_44.dll
+         boost_thread-vc90-mt-1_44.dll
+         glew32.dll
+diff --git a/GG/CMakeLists.txt b/GG/CMakeLists.txt
+index 1e5f29d93a..238cc44d00 100644
+--- a/GG/CMakeLists.txt
++++ b/GG/CMakeLists.txt
+@@ -91,7 +91,7 @@ if(NOT USE_STATIC_LIBS)
+ endif()
+ 
+ set(Boost_USE_STATIC_LIBS ${USE_STATIC_LIBS})
+-find_package(Boost ${MINIMUM_BOOST_VERSION} COMPONENTS date_time filesystem regex signals system thread log REQUIRED)
++find_package(Boost ${MINIMUM_BOOST_VERSION} COMPONENTS date_time filesystem regex system thread log REQUIRED)
+ 
+ find_package(OpenGL REQUIRED)
+ find_package(GLEW REQUIRED)

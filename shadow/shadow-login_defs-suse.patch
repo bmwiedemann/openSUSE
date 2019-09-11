@@ -118,18 +118,16 @@ Index: etc/login.defs
  
  #
  # If set to MD5, MD5-based algorithm will be used for encrypting password
-@@ -210,8 +203,8 @@ CHFN_RESTRICT		rwh
+@@ -210,7 +203,7 @@ CHFN_RESTRICT		rwh
  # Note: If you use PAM, it is recommended to use a value consistent with
  # the PAM modules configuration.
  #
 -#ENCRYPT_METHOD DES
--#ENCRYPT_METHOD_NIS DES
 +ENCRYPT_METHOD SHA512
-+ENCRYPT_METHOD_NIS DES
  
  #
  # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
-@@ -272,7 +265,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
+@@ -268,7 +261,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
  #
  # This also enables userdel(8) to remove user groups if no members exist.
  #

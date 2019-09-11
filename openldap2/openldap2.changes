@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:16:46 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Thu Jul 25 11:08:46 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

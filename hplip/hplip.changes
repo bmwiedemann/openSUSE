@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Thu Aug 29 20:33:04 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Renamed "hplip-scan" to "hplip-scan-utils" to express the
+  purpose of the package more clearly in the name.
+  "hplip-scan" has never been in public repos.
+
+-------------------------------------------------------------------
+Thu Aug 29 20:24:48 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Added conditional BuildRequires on "cups-rpm-helper".
+  Recently a bug in python-pycups was fixed that had prevented
+  autogeneration of Provides: tags in printer drivers by means
+  of "BuildRequires: python3-cups". See OBS sr#726727. This
+  dependency must be conditional for now, as cups-rpm-helper
+  is not available in every project yet.
+- Ran spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Aug 28 21:32:04 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Removed compatibility code for SLE12/Leap42 and earlier
+  As we are now using rpm 4.13 (A and B) syntax, we can't support
+  these any more anyway. 
+
+-------------------------------------------------------------------
+Tue Aug 27 10:48:46 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Moved hp-scan and hp-uiscan to a separate package "hp-scan".
+  These tools pull in PIL and python3-scikit-image, which causes
+  a rather big dependency list, which is only available in openSUSE.
+  This allows us also to get rid of the non-functional "hp-scan" tool
+  in SLE.
+- Fixed --with-htmldir so that documentation is packaged
+- Improved package descriptions and summaries
+  * Clarified the relationship of hplip-hpijs, hplip-sane, and hplip
+  * Shortened the descriptions
+  * Removed reference to HTML documention in package description
+- Added -devel dependencies as required by post-build-checks
+- Minor spec file cleanup (macro usage)
+- Fixed build failures on non-standard architectures by adding BuildIgnore
+  These failures are actually caused by some ports catching up
+  slowly with package updates. But our BuildIgnores are helpful
+  nonetheless, making the build environment leaner.
+
+-------------------------------------------------------------------
+Mon Aug 12 12:53:35 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- updated to 3.19.6
+  Added support for the following new Printers:
+  * HP Color LaserJet Enterprise M751dn
+  * HP Color LaserJet Enterprise M751n 
+  * HP Color LaserJet Managed E75245dn
+  * HP Color LaserJet Pro M453cdn
+  * HP Color LaserJet Pro M453cdw
+  * HP Color LaserJet Pro M454cdn
+  * HP Color LaserJet Pro M454cdw
+  * HP Color LaserJet Pro M454dn
+  * HP Color LaserJet Pro M454dw
+  * HP Color LaserJet Pro M454nw
+  * HP Color LaserJet Pro MFP M478fcdn
+  * HP Color LaserJet Pro MFP M478fcdw
+  * HP Color LaserJet Pro MFP M479dw
+  * HP Color LaserJet Pro MFP M479fcdn
+  * HP Color LaserJet Pro MFP M479fcdw
+  * HP Color LaserJet Pro MFP M479fdn
+  * HP Color LaserJet Pro MFP M479fdw
+  * HP Color LaserJet Pro MFP M479fnw
+  * HP DesignJet T2600dr Postscript MFP
+  * HP DesignJet XL 3600 PS MFP
+  * HP Laser NS 1020
+  * HP Laser NS 1020w
+  * HP Laser NS MFP 1005
+  * HP Laser NS MFP 1005w
+  * HP LaserJet Enterprise Flow MFP M528c
+  * HP LaserJet Enterprise Flow MFP M528z
+  * HP LaserJet Enterprise M507dn
+  * HP LaserJet Enterprise M507dng
+  * HP LaserJet Enterprise M507n 
+  * HP LaserJet Enterprise M507x  
+  * HP LaserJet Enterprise MFP M528dn
+  * HP LaserJet Enterprise MFP M528f
+  * HP LaserJet Managed E50145dn
+  * HP LaserJet Managed E50145x
+  * HP LaserJet Managed Flow MFP E52645c
+  * HP LaserJet Managed MFP E52645dn
+  * HP LaserJet Pro M404c1
+  * HP LaserJet Pro M404c2
+  * HP LaserJet Pro M404c3
+  * HP LaserJet Pro M404c4
+  * HP LaserJet Pro M404d
+  * HP LaserJet Pro M404dn
+  * HP LaserJet Pro M404dw
+  * HP LaserJet Pro M404m
+  * HP LaserJet Pro M404n
+  * HP LaserJet Pro M405d
+  * HP LaserJet Pro M405dn
+  * HP LaserJet Pro M405dw
+  * HP LaserJet Pro M405n
+  * HP LaserJet Pro MFP M428c1
+  * HP LaserJet Pro MFP M428c2
+  * HP LaserJet Pro MFP M428c3
+  * HP LaserJet Pro MFP M428c4
+  * HP LaserJet Pro MFP M428dw
+  * HP LaserJet Pro MFP M428fdn
+  * HP LaserJet Pro MFP M428fdw
+  * HP LaserJet Pro MFP M428m
+  * HP LaserJet Pro MFP M429dw
+  * HP LaserJet Pro MFP M429fdn
+  * HP LaserJet Pro MFP M429fdw
+  * HP Neverstop Laser 1000a
+  * HP Neverstop Laser 1000w
+  * HP Neverstop Laser MFP 1200a
+  * HP Neverstop Laser MFP 1200w
+  * HP OfficeJet 8010 All  * in  * One Printer series
+  * HP OfficeJet 8020 All  * in  * One Printer Series
+  * HP OfficeJet Pro 8020 All  * in  * One Printer series
+  * HP OfficeJet Pro 8030 All  * in  * One Printer series  
+  * HP PageWide XL 3900PS MFP
+  * HP Smart Tank 500 series
+  * HP Smart Tank 510
+  * HP Smart Tank 530 series 
+  * HP Smart Tank 610
+  * HP Smart Tank Plus 550
+  * HP Smart Tank Plus 570 series
+  * HP Smart Tank Plus 650
+
+-------------------------------------------------------------------
 Tue Jul 16 07:52:48 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable -Werror=return-type for now.

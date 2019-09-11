@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 13:34:19 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec-file with spec-cleaner
+
+-------------------------------------------------------------------
 Fri Apr 26 10:31:34 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils

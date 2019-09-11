@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unify
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Tool to modify strings to use the same quotes
 License:        MIT
@@ -29,13 +29,13 @@ Source9:        README.suse
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-untokenize
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module untokenize}
 # /SECTION
-Requires:       python-setuptools
 %python_subpackages
 
 %description
@@ -61,6 +61,7 @@ cp %{SOURCE9} .
 mv %{buildroot}%{_bindir}/unify %{buildroot}%{_bindir}/unify_quotes
 
 %files %{python_files}
+%license LICENSE
 %doc README.rst README.suse
 %python3_only %{_bindir}/unify_quotes
 %{python_sitelib}/*

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 21 08:06:55 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.243:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase existing patches to apply cleanly.
+
+-------------------------------------------------------------------
 Fri May  3 12:49:40 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.240:

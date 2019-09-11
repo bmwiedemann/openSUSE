@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Aug 25 08:01:22 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.18.1
+  * New features:
+    - Added fz::buffer::resize
+
+- Changes from 0.18.0
+  * New features:
+    - Added fz::spawn_detached_process
+    - Add operator+ to fz::duration
+    - *nix: If available, use eventfd instead of a self-pipe
+    - fz::to_integral and fz::hex_decode now work with string
+      literals
+    - Added fz::listen_socket::fast_accept that only returns
+      a descriptor instead of a fully-initialized fz::socket for 
+      use in a tight accept-and-dispatch loop
+    - Functions in libfilezilla/iputils.hpp now take string_view as
+      arguments
+    - Added fz::socket::set_flags which can atomically enable or 
+      disable flags
+  * Bugfixes and minor changes:
+    - fz::socket not returns an error instead of silently failing 
+      in case of file descriptor exhaustion
+    - Fix socket errors sometimes not being forwarded in 
+      fz::tls_layer when when writing fails in the underlying layer
+    - Fix double-closing of socket descriptios if connection 
+      establishment fails
+    - fz::tls_layer now fails the handshake instead of waiting 
+      indefinitely if started on a layer that has progressed passed
+      the connected state
+    - Small compile-time improvements to fz::sprintf
+
+-------------------------------------------------------------------
 Sat Jun 29 08:16:28 UTC 2019 - ecsos@opensuse.org
 
 - Update to 0.17.1

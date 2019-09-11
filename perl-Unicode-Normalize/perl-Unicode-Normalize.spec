@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Unicode-Normalize
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Unicode-Normalize
-Version:        1.25
+Version:        1.26
 Release:        0
 %define cpan_name Unicode-Normalize
 Summary:        Unicode Normalization Forms
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Unicode-Normalize/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KH/KHW/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         perl526.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -35,8 +34,7 @@ BuildRequires:  perl-macros
 %description
 Parameters:
 
-'$string' is used as a string under character semantics (see
-_perlunicode_).
+'$string' is used as a string under character semantics (see perlunicode).
 
 '$code_point' should be an unsigned integer representing a Unicode code
 point.
@@ -48,14 +46,13 @@ floating point nor a negative sign in '$code_point'.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -64,7 +61,7 @@ floating point nor a negative sign in '$code_point'.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes disableXS enableXS MANIFEST.N mkheader Normalize.pmN README
+%doc Changes mkheader README
 %license LICENSE
 
 %changelog

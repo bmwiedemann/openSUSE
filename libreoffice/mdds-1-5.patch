@@ -1,0 +1,245 @@
+From 56ffe3c0a1261cd98a3d42b8b08d5f8eb013ead4 Mon Sep 17 00:00:00 2001
+From: Kohei Yoshida <kohei@libreoffice.org>
+Date: Mon, 12 Aug 2019 13:57:34 -0400
+Subject: Switch mdds to 1.5.0 and liborcus to 0.15.0.
+
+Change-Id: Ibff9a5e0f0771e4cf12b4dc3985661a01195e265
+Reviewed-on: https://gerrit.libreoffice.org/77482
+Tested-by: Jenkins
+Reviewed-by: Kohei Yoshida <kohei@libreoffice.org>
+---
+ RepositoryExternal.mk                              |  4 ++--
+ configure.ac                                       |  4 ++--
+ download.lst                                       |  8 +++----
+ .../0001-Prevent-unsigned-integer-underflow.patch  | 27 ----------------------
+ external/liborcus/ExternalPackage_liborcus.mk      |  8 +++----
+ external/liborcus/ExternalProject_liborcus.mk      |  4 ++--
+ external/liborcus/Library_orcus-parser.mk          |  2 ++
+ external/liborcus/Library_orcus.mk                 |  7 ++++++
+ external/liborcus/UnpackedTarball_liborcus.mk      |  3 ---
+ external/liborcus/version.patch.0                  | 11 ---------
+ sc/inc/mtvelements.hxx                             |  8 +++----
+ sc/inc/orcusxml.hxx                                |  1 +
+ sc/qa/unit/dataproviders_test.cxx                  |  1 +
+ sc/source/core/tool/scmatrix.cxx                   |  8 +++----
+ sc/source/filter/inc/orcusinterface.hxx            |  2 ++
+ sc/source/filter/orcus/interface.cxx               |  8 +++++--
+ sc/source/filter/orcus/orcusfiltersimpl.cxx        |  4 ++--
+ sc/source/filter/orcus/xmlcontext.cxx              |  9 +++++++-
+ sc/source/ui/xmlsource/xmlsourcedlg.cxx            |  6 +++++
+ svl/source/misc/gridprinter.cxx                    |  2 +-
+ 20 files changed, 58 insertions(+), 69 deletions(-)
+ delete mode 100644 external/liborcus/0001-Prevent-unsigned-integer-underflow.patch
+ delete mode 100644 external/liborcus/version.patch.0
+
+diff --git a/configure.ac b/configure.ac
+index 1510daf..d0e6759 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9291,7 +9291,7 @@ AC_SUBST(SYSTEM_BOOST)
+ dnl ===================================================================
+ dnl Check for system mdds
+ dnl ===================================================================
+-libo_CHECK_SYSTEM_MODULE([mdds], [MDDS], [mdds-1.4 >= 1.4.1], ["-I${WORKDIR}/UnpackedTarball/mdds/include"])
++libo_CHECK_SYSTEM_MODULE([mdds], [MDDS], [mdds-1.5 >= 1.5.0], ["-I${WORKDIR}/UnpackedTarball/mdds/include"])
+ 
+ dnl ===================================================================
+ dnl Check for system glm
+@@ -9597,7 +9597,7 @@ AC_SUBST(ENABLE_FUZZERS)
+ dnl ===================================================================
+ dnl Orcus
+ dnl ===================================================================
+-libo_CHECK_SYSTEM_MODULE([orcus],[ORCUS],[liborcus-0.14 >= 0.14.0])
++libo_CHECK_SYSTEM_MODULE([orcus],[ORCUS],[liborcus-0.15 >= 0.15.0])
+ if test "$with_system_orcus" != "yes"; then
+     if test "$SYSTEM_BOOST" = "TRUE"; then
+         # ===========================================================
+diff --git a/sc/inc/mtvelements.hxx b/sc/inc/mtvelements.hxx
+index 407f039..382fb4d 100644
+--- a/sc/inc/mtvelements.hxx
++++ b/sc/inc/mtvelements.hxx
+@@ -52,9 +52,9 @@ const mdds::mtv::element_t element_type_formula = mdds::mtv::element_type_user_s
+ const mdds::mtv::element_t element_type_cellnote = mdds::mtv::element_type_user_start + 5;
+ 
+ /// Mapped standard element types (for convenience).
+-const mdds::mtv::element_t element_type_numeric = mdds::mtv::element_type_numeric;
++const mdds::mtv::element_t element_type_numeric = mdds::mtv::element_type_double;
+ const mdds::mtv::element_t element_type_empty = mdds::mtv::element_type_empty;
+-const mdds::mtv::element_t element_type_uint16 = mdds::mtv::element_type_ushort;
++const mdds::mtv::element_t element_type_uint16 = mdds::mtv::element_type_uint16;
+ 
+ /// Custom element blocks.
+ 
+@@ -66,8 +66,8 @@ typedef mdds::mtv::noncopyable_managed_element_block<element_type_edittext, Edit
+ typedef mdds::mtv::noncopyable_managed_element_block<element_type_formula, ScFormulaCell> formula_block;
+ 
+ /// Mapped standard element blocks (for convenience).
+-typedef mdds::mtv::numeric_element_block numeric_block;
+-typedef mdds::mtv::ushort_element_block uint16_block;
++typedef mdds::mtv::double_element_block numeric_block;
++typedef mdds::mtv::uint16_element_block uint16_block;
+ 
+ /// This needs to be in the same namespace as CellTextAttr.
+ MDDS_MTV_DEFINE_ELEMENT_CALLBACKS(CellTextAttr, element_type_celltextattr, CellTextAttr(), celltextattr_block)
+diff --git a/sc/inc/orcusxml.hxx b/sc/inc/orcusxml.hxx
+index ced991e..5db292c 100644
+--- a/sc/inc/orcusxml.hxx
++++ b/sc/inc/orcusxml.hxx
+@@ -69,6 +69,7 @@ struct ScOrcusImportXMLParam
+     {
+         ScAddress maPos;
+         std::vector<OString> maFieldPaths;
++        std::vector<OString> maRowGroups;
+     };
+ 
+     typedef std::vector<CellLink> CellLinksType;
+diff --git a/sc/qa/unit/dataproviders_test.cxx b/sc/qa/unit/dataproviders_test.cxx
+index 1e9cf97..a9b6b11 100644
+--- a/sc/qa/unit/dataproviders_test.cxx
++++ b/sc/qa/unit/dataproviders_test.cxx
+@@ -156,6 +156,7 @@ void ScDataProvidersTest::testXMLImport()
+     aRangeLink.maPos = ScAddress(0,0,0);
+     aRangeLink.maFieldPaths.push_back("/bookstore/book/title");
+     aRangeLink.maFieldPaths.push_back("/bookstore/book/author");
++    aRangeLink.maRowGroups.push_back("/bookstore/book");
+     aParam.maRangeLinks.push_back(aRangeLink);
+ 
+     createFileURL("test1.", "xml", aFileURL);
+diff --git a/sc/source/core/tool/scmatrix.cxx b/sc/source/core/tool/scmatrix.cxx
+index 04660ab..2c03fe0 100644
+--- a/sc/source/core/tool/scmatrix.cxx
++++ b/sc/source/core/tool/scmatrix.cxx
+@@ -1935,8 +1935,8 @@ public:
+         {
+             case mdds::mtm::element_numeric:
+             {
+-                numeric_element_block::const_iterator it = numeric_element_block::begin(*node.data);
+-                numeric_element_block::const_iterator itEnd = numeric_element_block::end(*node.data);
++                double_element_block::const_iterator it = double_element_block::begin(*node.data);
++                double_element_block::const_iterator itEnd = double_element_block::end(*node.data);
+                 for (; it != itEnd; ++it, ++miPos)
+                     *miPos = *it;
+             }
+@@ -2012,8 +2012,8 @@ public:
+         {
+             case mdds::mtm::element_numeric:
+             {
+-                numeric_element_block::const_iterator it = numeric_element_block::begin(*node.data);
+-                numeric_element_block::const_iterator itEnd = numeric_element_block::end(*node.data);
++                double_element_block::const_iterator it = double_element_block::begin(*node.data);
++                double_element_block::const_iterator itEnd = double_element_block::end(*node.data);
+                 for (; it != itEnd; ++it, ++miPos)
+                 {
+                     if (GetDoubleErrorValue(*miPos) == FormulaError::ElementNaN)
+diff --git a/sc/source/filter/inc/orcusinterface.hxx b/sc/source/filter/inc/orcusinterface.hxx
+index 9d090b7..7c7c4f2 100644
+--- a/sc/source/filter/inc/orcusinterface.hxx
++++ b/sc/source/filter/inc/orcusinterface.hxx
+@@ -332,6 +332,8 @@ public:
+ 
+     virtual orcus::spreadsheet::range_size_t get_sheet_size() const override;
+ 
++    virtual void fill_down_cells(orcus::spreadsheet::row_t row, orcus::spreadsheet::col_t col, orcus::spreadsheet::row_t range_size) override;
++
+     SCTAB getIndex() const { return mnTab; }
+ 
+     const sc::SharedFormulaGroups& getSharedFormulaGroups() const;
+diff --git a/sc/source/filter/orcus/interface.cxx b/sc/source/filter/orcus/interface.cxx
+index 833fb27..23f17a1 100644
+--- a/sc/source/filter/orcus/interface.cxx
++++ b/sc/source/filter/orcus/interface.cxx
+@@ -61,8 +61,7 @@ formula::FormulaGrammar::Grammar getCalcGrammarFromOrcus( os::formula_grammar_t
+         case orcus::spreadsheet::formula_grammar_t::ods:
+             eGrammar = formula::FormulaGrammar::GRAM_ODFF;
+             break;
+-        case orcus::spreadsheet::formula_grammar_t::xlsx_2007:
+-        case orcus::spreadsheet::formula_grammar_t::xlsx_2010:
++        case orcus::spreadsheet::formula_grammar_t::xlsx:
+             eGrammar = formula::FormulaGrammar::GRAM_OOXML;
+             break;
+         case orcus::spreadsheet::formula_grammar_t::gnumeric:
+@@ -1188,6 +1187,11 @@ orcus::spreadsheet::range_size_t ScOrcusSheet::get_sheet_size() const
+     return ret;
+ }
+ 
++void ScOrcusSheet::fill_down_cells(os::row_t /*row*/, os::col_t /*col*/, os::row_t /*range_size*/)
++{
++    // TODO : implement this.
++}
++
+ const sc::SharedFormulaGroups& ScOrcusSheet::getSharedFormulaGroups() const
+ {
+     return maFormulaGroups;
+diff --git a/sc/source/filter/orcus/orcusfiltersimpl.cxx b/sc/source/filter/orcus/orcusfiltersimpl.cxx
+index cdfb70d..8e9b0b1 100644
+--- a/sc/source/filter/orcus/orcusfiltersimpl.cxx
++++ b/sc/source/filter/orcus/orcusfiltersimpl.cxx
+@@ -139,10 +139,10 @@ bool ScOrcusFiltersImpl::importODS_Styles(ScDocument& rDoc, OUString& aPath) con
+ 
+     try
+     {
+-        std::string content = orcus::load_file_content(path);
++        orcus::file_content content(path);
+         ScOrcusFactory aFactory(rDoc);
+         ScOrcusStyles aStyles(aFactory);
+-        orcus::import_ods::read_styles(content.c_str(), content.size(), &aStyles);
++        orcus::import_ods::read_styles(content.data(), content.size(), &aStyles);
+     }
+     catch (const std::exception& e)
+     {
+diff --git a/sc/source/filter/orcus/xmlcontext.cxx b/sc/source/filter/orcus/xmlcontext.cxx
+index 2548f5b..71c44bc 100644
+--- a/sc/source/filter/orcus/xmlcontext.cxx
++++ b/sc/source/filter/orcus/xmlcontext.cxx
+@@ -269,10 +269,17 @@ void ScOrcusXMLContextImpl::importXML(const ScOrcusImportXMLParam& rParam)
+ 
+             std::for_each(rLink.maFieldPaths.begin(), rLink.maFieldPaths.end(), InsertFieldPath(filter));
+ 
++            std::for_each(rLink.maRowGroups.begin(), rLink.maRowGroups.end(),
++                [&filter] (const OString& rRowGroup)
++                {
++                    filter.set_range_row_group(rRowGroup.getStr());
++                }
++            );
++
+             filter.commit_range();
+         }
+ 
+-        std::string content = orcus::load_file_content(path);
++        orcus::file_content content(path);
+         filter.read_stream(content.data(), content.size());
+ 
+         aFactory.finalize();
+diff --git a/sc/source/ui/xmlsource/xmlsourcedlg.cxx b/sc/source/ui/xmlsource/xmlsourcedlg.cxx
+index 95e8006..26b0cbc 100644
+--- a/sc/source/ui/xmlsource/xmlsourcedlg.cxx
++++ b/sc/source/ui/xmlsource/xmlsourcedlg.cxx
+@@ -533,6 +533,12 @@ void ScXMLSourceDlg::OkPressed()
+             // Go through all its child elements.
+             getFieldLinks(aRangeLink, aParam.maNamespaces, *mxLbTree, *rEntry);
+ 
++            // Add the anchor node as a grouping node, which will be used as a
++            // row position increment point.
++            OUString aThisEntry = getXPath(*mxLbTree, *rEntry, aParam.maNamespaces);
++            aRangeLink.maRowGroups.push_back(
++                OUStringToOString(aThisEntry, RTL_TEXTENCODING_UTF8));
++
+             aParam.maRangeLinks.push_back(aRangeLink);
+         }
+     }
+diff --git a/svl/source/misc/gridprinter.cxx b/svl/source/misc/gridprinter.cxx
+index e129457..4f013d4 100644
+--- a/svl/source/misc/gridprinter.cxx
++++ b/svl/source/misc/gridprinter.cxx
+@@ -29,7 +29,7 @@ typedef mdds::mtv::default_element_block<element_type_string, OUString> string_b
+ struct matrix_trait
+ {
+     typedef string_block string_element_block;
+-    typedef mdds::mtv::ushort_element_block integer_element_block;
++    typedef mdds::mtv::uint16_element_block integer_element_block;
+ 
+     typedef mdds::mtv::custom_block_func1<string_block> element_block_func;
+ };
+-- 
+cgit v1.1
+

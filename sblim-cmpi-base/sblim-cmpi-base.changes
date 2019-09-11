@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 05:10:29 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable parallel make because of broken build system deps
+
+-------------------------------------------------------------------
 Tue May 15 07:05:58 UTC 2018 - kkaempf@suse.com
 
 - Fix missing dependencies in Makefile.am

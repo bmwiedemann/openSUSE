@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycdio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           python-pycdio
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Python Bindings for the CDIO Library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Source:         https://pypi.python.org/packages/source/p/pycdio/pycdio-%{version}.tar.gz
-Url:            http://pypi.python.org/pypi/pycdio/
+URL:            https://pypi.python.org/pypi/pycdio/
+Source:         https://files.pythonhosted.org/packages/source/p/pycdio/pycdio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  libcdio-devel >= 2.0.0
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
@@ -47,10 +48,11 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license COPYING
 %doc ChangeLog README.rst THANKS
-%{python_sitearch}
+%{python_sitearch}/*
 
 %changelog

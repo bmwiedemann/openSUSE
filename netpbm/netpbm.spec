@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -45,8 +45,9 @@ Patch7:         makeman-py3.patch
 Patch8:         signed-char.patch
 # PATCH-FIX-UPSTREAM fix dependency on byte order
 Patch9:         big-endian.patch
+# bsc#1144255 disable jpeg2k support due to removal of jasper
+Patch10:        netpbm-disable-jasper.patch
 BuildRequires:  flex
-BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
@@ -100,6 +101,7 @@ source package.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 mkdir pnmtopalm # for %%doc pnmtopalm
 cp -p converter/other/pnmtopalm/{LICENSE,README} pnmtopalm
 

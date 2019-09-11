@@ -1,7 +1,7 @@
 #
 # spec file for package jq
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -28,6 +28,7 @@ BuildRequires:  chrpath
 BuildRequires:  flex
 BuildRequires:  oniguruma-devel
 BuildRequires:  valgrind
+Requires:       libjq1 = %{version}
 
 %description
 A lightweight and flexible command-line JSON processor. jq is like sed for

@@ -43,6 +43,6 @@ install -m644 %{S:0} %{buildroot}%{macrodir}/
 
 %files
 %defattr(-,root,root)
-%config %{macrodir}/macros.apparmor
+%{macrodir}/macros.apparmor
 
 %changelog

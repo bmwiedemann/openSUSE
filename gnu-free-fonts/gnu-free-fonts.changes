@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 15:18:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix building with fontforge 20190801
+  Add make_ff_version_check_forward_compatible.patch
+- Use license for COPYING
+
+-------------------------------------------------------------------
 Thu Jan 11 16:11:28 UTC 2018 - tchvatal@suse.com
 
 - Format with spec-cleaner

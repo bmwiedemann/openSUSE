@@ -3,8 +3,8 @@
 		<param name="scm">git</param>
 		<param name="url">git://git.osmocom.org/libasn1c</param>
 		<param name="revision">master</param>
-		<param name="parent-tag">0.9.31</param>
-		<param name="versionformat">0.9.31</param>
+		<param name="parent-tag">0.9.32</param>
+		<param name="versionformat">0.9.32</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

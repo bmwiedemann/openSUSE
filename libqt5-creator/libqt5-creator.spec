@@ -16,17 +16,8 @@
 #
 
 
-%define have_qdoc 0%{?suse_version} >= 1500
-
-%if 0%{?suse_version} < 1500
-# Leap 42.x only has botan1
-%bcond_with system_botan
-%else
-%bcond_without system_botan
-%endif
-
 Name:           libqt5-creator
-Version:        4.9.2
+Version:        4.10.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -38,24 +29,21 @@ Summary:        Integrated Development Environment targeting Qt apps
 License:        GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only) AND GPL-3.0-only AND LGPL-3.0-only AND MIT AND BSD-3-Clause
 Group:          Development/Tools/IDE
 Url:            https://www.qt.io/ide/
-%define major_ver 4.9
-%define qt5_version 5.9.0
-%define tar_version 4.9.2
+%define major_ver 4.10
+%define qt5_version 5.11.0
+%define tar_version 4.10.0
 Source:         http://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE
-Patch1:         fix-build-isystem.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         fix-application-output.patch
 BuildRequires:  gdb
 BuildRequires:  libQt5Sql5-sqlite >= %{qt5_version}
-%if %{with system_botan}
 BuildRequires:  libbotan-devel
-%endif
 BuildRequires:  libqt5-qtbase-devel >= %{qt5_version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{qt5_version}
 BuildRequires:  libqt5-qtquickcontrols >= %{qt5_version}
 BuildRequires:  libqt5-qtscript-devel >= %{qt5_version}
+BuildRequires:  libqt5-qttools-doc
 BuildRequires:  libqt5-qttools-private-headers-devel >= %{qt5_version}
 %ifnarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  libqt5-qtwebengine-devel >= %{qt5_version}
@@ -63,20 +51,12 @@ BuildRequires:  libqt5-qtwebengine-devel >= %{qt5_version}
 BuildRequires:  libqt5-qtx11extras-devel >= %{qt5_version}
 # Needs an internal patched version :-/
 # BuildRequires:  cmake(KF5SyntaxHighlighting)
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} <= 120200
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
-# Enable the clangcodemodel plugin on openSUSE TW and Leap 15.1+, which have LLVM >= 6.0.
+# Enable the clangcodemodel plugin on openSUSE TW and Leap 15.2+, which have LLVM >= 8.0.
 %ifarch %arm aarch64 %ix86 x86_64
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150100
-BuildRequires:  llvm-clang-devel >= 6.0
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+BuildRequires:  llvm-clang-devel >= 8.0
 # clangcodemodel hardcodes clang include paths: QTCREATORBUG-21972
-%requires_eq    clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
+%requires_eq    libclang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
 %endif
 %endif
 BuildRequires:  update-desktop-files
@@ -128,26 +108,12 @@ opts="LLVM_INSTALL_DIR=%{_prefix}"
 %endif
 %endif
 opts="$opts IDE_LIBRARY_BASENAME=%{_lib}"
-%if %{with system_botan}
 opts="$opts CONFIG+=use_system_botan"
-%endif
-
-makeopts=""
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} <= 120200
-makeopts="$makeopts CC=gcc-6 CXX=g++-6"
-%else
-makeopts="$makeopts CC=gcc-7 CXX=g++-7"
-%endif
-%endif
 
 %qmake5 $opts
-make %{?_smp_mflags} $makeopts
-%if %{have_qdoc}
-	make qch_docs
-	make html_docs
-%endif
+make %{?_smp_mflags}
+make qch_docs
+make html_docs
 
 %install
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}%{_libdir}"
@@ -159,13 +125,11 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 # Only relevant for macOS, needs python2
 rm -r %{buildroot}%{_libdir}/qtcreator/libexec/dmgbuild
 
-%if %{have_qdoc}
 mkdir -p %{buildroot}%{_datadir}/doc/packages/qt5
 cp share/doc/qtcreator/qtcreator.qch %{buildroot}%{_datadir}/doc/packages/qt5/
 
 mkdir -p %{buildroot}%{_datadir}/doc/packages/qt5/qtcreator
 cp -a doc/qtcreator/* %{buildroot}%{_datadir}/doc/packages/qt5/qtcreator/
-%endif
 
 %suse_update_desktop_file -i org.qt-project.qtcreator Development Qt IDE
 
@@ -201,11 +165,9 @@ EOF
 %{_datadir}/applications/org.qt-project.qtcreator.desktop
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.qt-project.qtcreator.appdata.xml
-%if %{have_qdoc}
 %dir %{_datadir}/doc/packages/qt5
 %{_datadir}/doc/packages/qt5/qtcreator/
 %{_datadir}/doc/packages/qt5/qtcreator.qch
-%endif
 
 %files plugin-devel
 %license *GPL*

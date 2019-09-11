@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue May 28 04:38:14 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.4.0
+  + Rename export_moks as export_db_keys
+  + Add support for exporting other keys
+  + add new --mok argument
+  + set list-enrolled command as default for some arguments
+  + Add more info to --sb-state: show when we're in SetupMode or
+    with shim validation disabled
+  + Correct help: --set-timeout is really --timeout
+  + generate_hash() / generate_pw_hash(): don't use strlen() for
+    strncpy bounds
+  + Add the type casting to silence the warning
+  + Add a way for mokutil to configure a timeout for MokManager's
+    prompt
+  + list_keys_in_var(): check errno correctly, not ret twice
+  + Fix typo in error message when the system lacks Secure Boot
+    support
+  + Add bash completion file
+  + mokutil: be explicit about file modes in all cases
+  + Make all efi_guid_t const
+  + Don't allow sha1 on the mokutil command line
+  + Build with -fshort-wchar so toggle passwords work right
+  + Fix the 32bit signedness comparison
+  + Fix the potential buffer overflow
+- Add mokutil-remove-shebang-from-bash-completion-file.patch to
+  remove shebang from bash-completion/mokutil
+- Drop upstreamed patches
+  + mokutil-constify-efi-guid.patch
+  + mokutil-fix-overflow.patch
+  + mokutil-fshort-wchar.patch
+  + mokutil-set-efi-variable-file-mode.patch
+- Refresh mokutil-support-revoke-builtin-cert.patch
+- Install bash-completion/mokutil
+
+-------------------------------------------------------------------
+Thu Mar 21 02:39:46 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add modhash to calculate the hash of kernel module (SLE-5661)
+  + Also add openssl to Requires since the script needs it
+
+-------------------------------------------------------------------
 Fri Nov 23 08:58:24 UTC 2018 - glin@suse.com
 
 - Enable AArch64 build (bsc#1119769, fate#326541)

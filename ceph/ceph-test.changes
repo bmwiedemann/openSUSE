@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:17:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.2-354-g8878cf2360: 
+  + rgw: Move upload_info declaration out of conditional (bsc#1137189,
+    https://github.com/SUSE/ceph/pull/325)
+
+-------------------------------------------------------------------
+Wed Aug 14 14:54:26 UTC 2019 - Abhishek Lekshmanan <abhishek@suse.com>
+
+- Update to 14.2.2.349+g6716a1e448:
+  + rgw: fix for CVE-2019-10222/bsc#1145093 for the beast frontend
+    ("rgw: asio: check the remote endpoint before processing requests")
+
+-------------------------------------------------------------------
 Thu Jul 25 11:48:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 14.2.2-348-gf6da3d1d18:

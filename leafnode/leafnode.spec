@@ -1,7 +1,7 @@
 #
 # spec file for package leafnode
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           leafnode
 Version:        1.11.11
 Release:        0
 Summary:        A Leaf Site NNTP Server
-License:        LGPL-2.1+ AND SUSE-Public-Domain AND MIT
+License:        LGPL-2.1-or-later AND SUSE-Public-Domain AND MIT
 Group:          Productivity/Networking/News/Servers
 Url:            http://sourceforge.net/projects/leafnode/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
@@ -34,6 +34,7 @@ Source6:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source7:        leafnode.keyring
 Source8:        leafnode.socket
 Patch0:         leafnode-1.11.6-spooldir-permissions.diff
+BuildRequires:  cron
 BuildRequires:  pcre-devel >= 2.06
 BuildRequires:  systemd-rpm-macros
 Requires:       cron
@@ -104,7 +105,8 @@ cp %{SOURCE5} examples
 %attr(640,root,news) %config(noreplace) %{_sysconfdir}/%{name}/filters
 %attr(755,root,root) %config(noreplace) %{_sysconfdir}/cron.daily/%{name}
 %attr(750,root,news) %dir %{_sysconfdir}/%{name}
-%doc ChangeLog COPYING CREDITS NEWS FAQ.txt FAQ.pdf
+%license COPYING
+%doc ChangeLog CREDITS NEWS FAQ.txt FAQ.pdf
 %doc README README.SUSE README-FQDN
 %doc filters.example
 %doc ADD-ONS KNOWNBUGS

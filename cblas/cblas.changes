@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:53:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
 Mon Jun  6 16:04:02 UTC 2016 - jengelh@inai.de
 
 - Correct position of the u-a requirements to be with the package

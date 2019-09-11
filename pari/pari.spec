@@ -22,7 +22,7 @@
 
 Name:           pari
 %define sover  6
-%define lname   libpari-gmp%sover
+%define lname   libpari-gmp-tls%sover
 Version:        2.11.2
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
@@ -95,7 +95,8 @@ functions.
 ./Configure --prefix="%_prefix" \
 	--bindir="%_bindir" --includedir="%_includedir" \
 	--libdir="%_libdir" \
-	--sysdatadir="%_libdir" --datadir="%_datadir/%name"
+	--sysdatadir="%_libdir" --datadir="%_datadir/%name" \
+	--mt=pthread
 make %{?_smp_mflags} all \
 	CFLAGS="%optflags -fno-strict-aliasing" \
 	STRIP=true
@@ -107,7 +108,6 @@ make %{?_smp_mflags} all \
 %postun -n %lname -p /sbin/ldconfig
 
 %files gp
-%license AUTHORS COPYING
 %_bindir/*
 %_datadir/%name
 %_libdir/%name.cfg
@@ -117,14 +117,13 @@ make %{?_smp_mflags} all \
 %if 0%{?sle_version} <= 150000 && !0%{?is_opensuse}
 %dir %_licensedir
 %endif
-%license AUTHORS COPYING
-%doc CHANGES CHANGES-* NEW README
-%doc examples/
-%_libdir/libpari-gmp.so.%version
-%_libdir/libpari-gmp.so.%sover
+%license COPYING
+%_libdir/libpari-gmp-tls.so.%version
+%_libdir/libpari-gmp-tls.so.%sover
 
 %files devel
-%license AUTHORS COPYING
+%doc examples/
+%doc CHANGES CHANGES-* NEW README
 %_includedir/pari/
 %_libdir/libpari.so
 

@@ -20,7 +20,7 @@
 Name:           python-furl
 Version:        2.0.0
 Release:        0
-Summary:        URL manipulation made simple
+Summary:        A Python URL manipulation library
 License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/gruns/furl
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module six >= 1.8.0}
 %python_subpackages
 
 %description
-URL manipulation made simple.
+furl is a Python library for parsing and manipulating URLs.
 
 %prep
 %setup -q -n furl-%{version}

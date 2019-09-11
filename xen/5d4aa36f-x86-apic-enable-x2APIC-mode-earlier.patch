@@ -1,0 +1,50 @@
+# Commit 260940578de348c38f18cadc6fa53f499e57919c
+# Date 2019-08-07 12:09:51 +0200
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/apic: enable x2APIC mode before doing any setup
+
+Current code calls apic_x2apic_probe which does some initialization
+and setup before having enabled x2APIC mode (if it's not already
+enabled by the firmware).
+
+This can lead to issues if the APIC ID doesn't match the x2APIC ID, as
+apic_x2apic_probe calls init_apic_ldr_x2apic_cluster which depending
+on the APIC mode might set cpu_2_logical_apicid using the APIC ID
+instead of the x2APIC ID (because x2APIC might not be enabled yet).
+
+Fix this by enabling x2APIC before calling apic_x2apic_probe.
+
+As a remark, this was discovered while I was trying to figure out why
+one of my test boxes didn't report any iommu faults. The root cause
+was that the iommu MSI address field was set using the stale value in
+cpu_2_logical_apicid, and thus the iommu fault interrupt would get
+lost. Even if the MSI address field gets sets to a correct value
+afterwards as soon as a single iommu fault is pending no further
+interrupts would get injected, so losing a single iommu fault
+interrupt is fatal.
+
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/apic.c
++++ b/xen/arch/x86/apic.c
+@@ -946,15 +946,15 @@ void __init x2apic_bsp_setup(void)
+ 
+     force_iommu = 1;
+ 
+-    genapic = *apic_x2apic_probe();
+-    printk("Switched to APIC driver %s.\n", genapic.name);
+-
+     if ( !x2apic_enabled )
+     {
+         x2apic_enabled = true;
+         __enable_x2apic();
+     }
+ 
++    genapic = *apic_x2apic_probe();
++    printk("Switched to APIC driver %s\n", genapic.name);
++
+ restore_out:
+     restore_IO_APIC_setup(ioapic_entries);
+     unmask_8259A();

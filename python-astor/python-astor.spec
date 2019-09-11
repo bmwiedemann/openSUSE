@@ -17,24 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-astor
 Version:        0.8
 Release:        0
 Summary:        Read/rewrite/write Python ASTs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/berkerpeksag/astor
+URL:            https://github.com/berkerpeksag/astor
 Source:         https://github.com/berkerpeksag/astor/archive/%{version}.tar.gz#/astor-%{version}.tar.gz
+Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module nose}
 BuildRequires:  python2-unittest2
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,6 +62,7 @@ There are some other similar libraries, but astor focuses on the following areas
 
 %prep
 %setup -q -n astor-%{version}
+%patch0 -p1
 # ugly fix for the use of /usr/bin/env
 sed -i 's@env @@' astor/rtrip.py
 
@@ -80,7 +80,7 @@ sed -i 's@env @@' astor/rtrip.py
 
 %files %{python_files}
 %doc AUTHORS README.rst docs/*.rst
-%license LICENSE 
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog

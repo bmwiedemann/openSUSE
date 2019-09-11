@@ -19,14 +19,13 @@
 %define srcname gast
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gast
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Python AST that abstracts the underlying Python version
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/serge-sans-paille/gast/
 Source:         https://github.com/serge-sans-paille/gast/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -56,7 +55,6 @@ as produced by ``ast.parse`` from the standard ``ast`` module.
 %python_exec setup.py test
 
 %files %{python_files}
-
 %{python_sitelib}/*
 %doc README.rst
 %license LICENSE

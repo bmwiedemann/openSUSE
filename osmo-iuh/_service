@@ -2,8 +2,8 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">git://git.osmocom.org/osmo-iuh</param>
-		<param name="revision">0.4.0</param>
-	        <param name="versionformat">0.4.0</param>
+		<param name="revision">0.5.0</param>
+	        <param name="versionformat">0.5.0</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

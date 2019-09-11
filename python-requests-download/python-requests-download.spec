@@ -20,7 +20,7 @@
 Name:           python-requests-download
 Version:        0.1.2
 Release:        0
-Summary:        Download files using requests and save them to a target path
+Summary:        Python module to download and save files using python-requests
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.github.com/takluyver/requests_download
@@ -35,7 +35,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Download files using requests and save them to a target path.
+This module downloads files using requests and saves them to a target path.
 
 %prep
 %setup -q -n requests_download-%{version}

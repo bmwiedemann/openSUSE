@@ -20,7 +20,7 @@
 # Project name when using go tooling.
 %define project go.universe.tf/metallb
 Name:           metallb
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Load Balancer for bare metal Kubernetes clusters
 License:        Apache-2.0

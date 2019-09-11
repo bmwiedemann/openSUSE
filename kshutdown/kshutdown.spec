@@ -17,13 +17,13 @@
 #
 
 Name:             kshutdown
-Version:          5.0
+Version:          5.1
 Release:          0
 Summary:          Graphical shutdown utility
 License:          GPL-2.0-or-later
-Url:              https://kshutdown.sourceforge.net/
+Url:              https://kshutdown.sourceforge.io/
 Group:            System/GUI/KDE
-Source0:          %{name}-source-%{version}.zip
+Source0:          %{name}-source-%{version}-beta.zip
 Requires(post):   hicolor-icon-theme
 Requires(post):   update-desktop-files
 Requires(postun): hicolor-icon-theme
@@ -53,10 +53,10 @@ various time and delay options, command-line support,
 and notifications.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-beta
 
 %build
-%cmake_kf5 -d build -- -DKS_KF5=ON
+%cmake_kf5 -d build -- -DKS_KF5=ON -DCMAKE_CXX_STANDARD=14
 %make_jobs
 
 %install

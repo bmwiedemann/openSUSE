@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:00:07 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * D23219: Fix jenkins build of kajongg by allowing spaces in folder/file names
+
+-------------------------------------------------------------------
 Fri Aug  9 08:30:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.08.0

@@ -1,7 +1,7 @@
 #
 # spec file for package prun-ohpc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           prun-ohpc
-Version:        1.0
+Version:        1.2
 Release:        0
 Summary:        Convenience utility for parallel job launch
-License:        BSD-3-Clause
+License:        Apache-2.0
 Group:          Productivity/Clustering/Computing
 BuildArch:      noarch
-Url:            https://github.com/openhpc/ohpc
+URL:            https://github.com/openhpc/ohpc
 Source1:        prun
 Source2:        LICENSE
 Patch1:         prun-Add-user-config.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 prun provides a unified, script-based wrapper for launching parallel jobs
@@ -52,8 +51,7 @@ install -D -m 0644 prunrc %{buildroot}%{_sysconfdir}/prunrc
 install -D -m 0644 prunrc %{buildroot}%{_sysconfdir}/skel/.prunrc
 
 %files
-%defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %{_bindir}/prun
 %config %{_sysconfdir}/prunrc
 %config %{_sysconfdir}/skel/.prunrc

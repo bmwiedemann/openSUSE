@@ -9,7 +9,7 @@ so check for the name here in all lower case too.
 
 --- a/config/BuildSystem/config/package.py
 +++ b/config/BuildSystem/config/package.py
-@@ -139,7 +139,10 @@ class Package(config.base.Configure):
+@@ -153,7 +153,10 @@ class Package(config.base.Configure):
      self.PACKAGE          = self.name.upper()
      self.package          = self.name.lower()
      self.downloadname     = self.name

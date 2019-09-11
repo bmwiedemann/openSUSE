@@ -19,9 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define base_pname scotch
-%define vers 6.0.6
-%define _vers 6_0_6
+%define vers 6.0.7
+%define _vers 6_0_7
 %define so_ver 0
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
 %undefine DisOMPI1

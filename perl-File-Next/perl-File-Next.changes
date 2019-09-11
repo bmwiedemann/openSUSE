@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 28 05:09:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-File-Next/Changes
+
+  1.18 Tue Aug 27 17:08:38 CDT 2019
+      [SPEEDUP]
+      Updated the internals to minimize the number of times that stat()
+      gets called on each file or directory.
+  
+      [FIXES]
+      t/from_file.t would fail under Windows because File::Temp would
+      put a backslash in front of the name of the tempfile.  Thanks,
+      Varadinsky. (GH#32)
+  
+      Had to specify a minimum version of File::Temp.  Thanks, Justin Mohr.
+      (GH#29)
+
+-------------------------------------------------------------------
 Sat Jul  9 05:17:44 UTC 2016 - coolo@suse.com
 
 - updated to 1.16

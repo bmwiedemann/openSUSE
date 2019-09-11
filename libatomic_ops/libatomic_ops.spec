@@ -55,6 +55,7 @@ that involves minimum overhead across a variety of architectures.
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
 %configure --docdir="%_docdir/%name"
 make %{?_smp_mflags}

@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/sekrit-twc/zimg.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">release([0-9\.]*)</param>
+    <param name="revision">release-2.9.2</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+      <param name="file">*.tar</param>
+      <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

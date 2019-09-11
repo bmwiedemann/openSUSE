@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 23 18:06:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundant metadata from summary.
+
+-------------------------------------------------------------------
+Thu Aug 15 09:05:22 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- version update to 2.4.41 with security fixes:
+  * low: Limited cross-site scripting in mod_proxy
+    error page (CVE-2019-10092)
+  * low: mod_rewrite potential open redirect (CVE-2019-10098)
+  * moderate: mod_http2, read-after-free in h2
+    connection shutdown (CVE-2019-10082)
+  * moderate: mod_http2, memory corruption on
+    early pushes (CVE-2019-10081)
+  * moderate: mod_http2, DoS attack by exhausting
+    h2 workers. (CVE-2019-9517)
+  * moderate: mod_remoteip: Stack buffer overflow and
+    NULL pointer dereference (CVE-2019-10097)
+
+-------------------------------------------------------------------
 Wed Jun 26 07:34:16 UTC 2019 - pgajdos@suse.com
 
 - fix typo

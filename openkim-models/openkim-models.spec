@@ -16,8 +16,8 @@
 #
 
 Name:           openkim-models
-Version:        2019.03.31
-%define         uversion 2019-03-31
+Version:        2019.07.25
+%define         uversion 2019-07-25
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models
 License:        CDDL-1.0 and Apache-2.0 and MPL-2.0 and GPL-3.0-only and LGPL-3.0-only
@@ -27,7 +27,7 @@ Source0:        https://s3.openkim.org/archives/collection/openkim-models-%{uver
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  cmake >= 3.4
-BuildRequires:  kim-api-devel >= 2.0.2
+BuildRequires:  kim-api-devel >= 2.1.2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -52,8 +52,9 @@ This package contains the models from openkim.org.
 %defattr(-,root,root,-)
 # Each model-driver and model is licensed separately.
 # About 2/3 are CDDL-1.0, 1/4 public domain, and 1/12 GPL/LGPL
-%license LICENSE.CDDL
+%license LICENSE
 %{_libdir}/kim-api/model-drivers/
-%{_libdir}/kim-api/models/
+%{_libdir}/kim-api/portable-models/
+%{_libdir}/kim-api/simulator-models/
 
 %changelog

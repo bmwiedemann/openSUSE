@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  3 15:01:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.16.2:
+  * Security improvements and bugfixes
+- Use ninja to for build 
+
+-------------------------------------------------------------------
 Mon Jan  7 15:18:11 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.16.0:

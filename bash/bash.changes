@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 15 13:43:55 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch bash50-008
+  When HISTSIZE is set to 0, history expansion can leave the history length
+  set to an incorrect value, leading to subsequent attempts to access invalid
+  memory.
+- Add official patch bash50-009 
+  The history file reading code doesn't close the file descriptor open to
+  the history file when it encounters a zero-length file.
+
+-------------------------------------------------------------------
 Tue Apr 23 12:58:16 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add official patch bash50-004

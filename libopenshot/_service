@@ -2,8 +2,9 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/OpenShot/libopenshot.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.2.2</param>
-    <param name="version">0.2.2</param>
+    <param name="revision">develop</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service mode="disabled" name="set_version" />
 

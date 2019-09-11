@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Apache2-AuthCookieDBI
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Apache2-AuthCookieDBI
-Version:        2.17
+Version:        2.18
 Release:        0
 %define cpan_name Apache2-AuthCookieDBI
-Summary:        An AuthCookie module backed by a DBI database.
-License:        LGPL-2.1+
+Summary:        An AuthCookie module backed by a DBI database
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Apache2-AuthCookieDBI/
-Source:         http://www.cpan.org/authors/id/M/MA/MATISSE/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MATISSE/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -37,14 +38,8 @@ BuildRequires:  perl(Crypt::CBC) >= 2.13
 BuildRequires:  perl(DBI) >= 1.4
 BuildRequires:  perl(Date::Calc)
 BuildRequires:  perl(Digest::SHA) >= 5.47
-BuildRequires:  perl(Module::Build) >= 0.4000
+BuildRequires:  perl(Module::Build) >= 0.420000
 BuildRequires:  perl(mod_perl2) >= 1.999022
-#BuildRequires: perl(Apache)
-#BuildRequires: perl(Apache2::Log)
-#BuildRequires: perl(Apache2::Log::Request)
-#BuildRequires: perl(Mock::Tieable)
-#BuildRequires: perl(SSL)
-#BuildRequires: perl(Text::TagTemplate)
 Requires:       perl(Apache2::AuthCookie) >= 3.08
 Requires:       perl(Apache2::Const)
 Requires:       perl(Apache2::RequestRec)
@@ -106,7 +101,7 @@ browser and the login form is shown again.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -118,6 +113,7 @@ browser and the login form is shown again.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes eg generic_reg_auth_scheme.txt LICENSE README schema.sql techspec.txt
+%doc Changes generic_reg_auth_scheme.txt README schema.sql techspec.txt
+%license LICENSE
 
 %changelog

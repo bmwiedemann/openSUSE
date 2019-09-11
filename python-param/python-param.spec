@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://param.pyviz.org/
 Source0:        https://github.com/ioam/param/archive/v%{version}.tar.gz
+Source100:      python-param-rpmlintrc
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -48,6 +49,7 @@ as part of other projects.
 %prep
 %setup -q -n param-%{version}
 sed -i -e 's:version=get_setup_version("param"):version="%{version}":g' setup.py
+echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.version
 
 %build
 %python_build

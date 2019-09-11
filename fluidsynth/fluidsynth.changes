@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 19 15:06:39 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.0.6
+  * fix an uninitialized memory access, which could have led to NULL
+    dereference or heap corruption in an out-of-memory situation
+  * fix a use-after-free when calling `fluid_player_stop()`
+  * fix the MIDI player not outputting any sound after stopping and
+    restarting the playback
+
+-------------------------------------------------------------------
 Fri Apr 19 07:59:57 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.0.5

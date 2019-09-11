@@ -1,17 +1,15 @@
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 2f766f7..1b339e7 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -3,6 +3,8 @@ project (hypre)
+--- hypre-2.17.0.orig/src/CMakeLists.txt
++++ hypre-2.17.0/src/CMakeLists.txt
+@@ -8,6 +8,8 @@ project (hypre)
  
  # The version number.
- set (HYPRE_VERSION 2.15.1)
+ set (HYPRE_VERSION 2.17.0)
 +set (HYPRE_MAJOR 0)
 +set (HYPRE_MINOR 0.2.6)
- set (HYPRE_DATE    2018/10/19)
+ set (HYPRE_DATE    2019/06/10)
  set (HYPRE_TIME    00:00:00)
  set (HYPRE_BUGS    hypre-support@llnl.gov)
-@@ -775,19 +777,6 @@ else ()
+@@ -783,19 +785,6 @@ else ()
    set (BUILD_SHARED_LIBS OFF CACHE INTERNAL "" FORCE)
  endif ()
  
@@ -31,7 +29,7 @@ index 2f766f7..1b339e7 100644
  # Set OpenMP compile flags
  if (HYPRE_USING_OPENMP)
    find_package (OpenMP)
-@@ -832,9 +821,25 @@ if (HYPRE_USING_FEI)
+@@ -840,9 +829,25 @@ if (HYPRE_USING_FEI)
  endif ()
  
  add_library (HYPRE ${HYPRE_SOURCES} ${FEI_LIBS})

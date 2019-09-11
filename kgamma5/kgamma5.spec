@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kgamma5
-Version:        5.16.4
+Version:        5.16.5
 Release:        0
 Summary:        Display gamma configuration
 License:        GPL-2.0-or-later

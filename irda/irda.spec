@@ -1,7 +1,7 @@
 #
 # spec file for package irda
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ Name:           irda
 Version:        0.9.18
 Release:        0
 Summary:        Necessary Tools for Using the Infrared Port
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
 Url:            http://irda.sourceforge.net
 Source:         http://sourceforge.net/projects/irda/files/irda-utils/%{version}/irda-utils-%{version}.tar.gz
@@ -49,6 +49,7 @@ Patch12:        irda-exit_on_error.diff
 Patch13:        irda-irdaping_no_strict_aliasing.diff
 Patch14:        irda-no_std_paths.diff
 Patch15:        irda-parseoldasssysconfig.patch
+Patch16:        irda-fix_build_with_recent_kernels.diff
 BuildRequires:  glib2-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  pciutils-devel
@@ -97,6 +98,7 @@ variables IRDA_PORT and IRDA_IRQ in the configuration file
 %patch13
 %patch14
 %patch15
+%patch16 -p1
 
 %build
 make %{?_smp_mflags} V=1 RPM_OPT_FLAGS="%{optflags} -fgnu89-inline -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64" INITD=%{_sysconfdir}/init.d ROOT=%{buildroot} all

@@ -65,6 +65,7 @@ memory management (malloc and free), and shared library linking.
 %setup -n nspr-%{version} -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 pushd nspr
 # set buildtime to "last-modification-time"
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{S:99}")"

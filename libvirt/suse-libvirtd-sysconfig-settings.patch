@@ -1,19 +1,21 @@
 Adjust libvirtd sysconfig file to conform to SUSE standards
 
-Index: libvirt-5.6.0/src/remote/libvirtd.sysconf
+Index: libvirt-5.7.0/src/remote/libvirtd.sysconf
 ===================================================================
---- libvirt-5.6.0.orig/src/remote/libvirtd.sysconf
-+++ libvirt-5.6.0/src/remote/libvirtd.sysconf
-@@ -1,13 +1,18 @@
+--- libvirt-5.7.0.orig/src/remote/libvirtd.sysconf
++++ libvirt-5.7.0/src/remote/libvirtd.sysconf
+@@ -1,5 +1,9 @@
 +## Path: System/Virtualization/libvirt
  # Customizations for the libvirtd.service systemd unit
  
--# Listen for TCP/IP connections. This is not required if using systemd
--# socket activation.
--# NB. must setup TLS/SSL keys prior to using this
 +## Type: string
-+## Default: --listen
++## Default: "--timeout 120"
 +# Arguments to pass to libvirtd. Not required if using systemd socket activation.
+ # Default behaviour is for libvirtd.service to start on boot
+ # so that VM autostart can be performed. We then want it to
+ # shutdown again if nothing was started and rely on systemd
+@@ -11,9 +15,13 @@ LIBVIRTD_ARGS="--timeout 120"
+ # can be used to listen on TCP/TLS sockets
  #LIBVIRTD_ARGS="--listen"
  
 +## Type: string

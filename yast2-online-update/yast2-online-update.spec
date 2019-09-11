@@ -17,7 +17,7 @@
 
 
 Name:           yast2-online-update
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/yast/yast-online-update
 Summary:        YaST2 - Online Update (YOU)
@@ -29,8 +29,8 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-packager
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 # Product EOL tag
 Requires:       yast2-pkg-bindings >= 3.1.6

@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20190314
+Version:        0.20190823
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
@@ -27,12 +27,8 @@ Group:          Development/Tools/IDE
 
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-# FIXME: drop this on the next upstream release
-# PATCH-FIX-UPSTREAM 0001-Only-add-include-directories-for-LLVM-clang-rapidjso.patch
-# This fixes compilation failures with libstdc++ from gcc9
-Patch0:         0001-Only-add-include-directories-for-LLVM-clang-rapidjso.patch
 
-BuildRequires:  clang-devel >= 5.0
+BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
 BuildRequires:  gcc-c++ >= 7.2
 BuildRequires:  llvm-devel >= 7.0

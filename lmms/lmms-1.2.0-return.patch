@@ -1,0 +1,11 @@
+diff -urN lmms-1.1.0.old/plugins/midi_import/portsmf/allegro.cpp lmms-1.1.0/plugins/midi_import/portsmf/allegro.cpp
+--- lmms-1.2.0.old/plugins/MidiImport/portsmf/allegro.cpp	2019-06-18 00:00:39.000000000 +0100
++++ lmms-1.1.0/plugins/MidiImport/portsmf/allegro.cpp	2019-06-18 11:44:25.376352912 +0100
+@@ -2302,6 +2302,7 @@
+         tr++;
+     }
+ 	assert(false); // out of bounds
++	exit(EXIT_FAILURE);
+ }
+ 
+ 

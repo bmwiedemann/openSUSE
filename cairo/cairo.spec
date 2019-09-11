@@ -1,7 +1,7 @@
 #
 # spec file for package cairo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,10 @@ Source99:       baselibs.conf
 Patch0:         cairo-xlib-endianness.patch
 # PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
+# PATCH-FIX-UPSTREAM cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch -- ft: Use FT_Done_MM_Var instead of free when available in cairo_ft_apply_variations
+Patch2:         cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
+# PATCH-FIX-UPSTREAM cairo-composite_color_glyphs.patch -- Fix a thinko in composite_color_glyphs
+Patch3:         cairo-composite_color_glyphs.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
@@ -138,9 +142,7 @@ This package contains all files necessary to build binaries using
 cairo.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure \

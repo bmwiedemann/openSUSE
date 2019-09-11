@@ -15,7 +15,7 @@ override it via postgresql.conf.)
 
 --- src/bin/pg_upgrade/test.sh.orig
 +++ src/bin/pg_upgrade/test.sh
-@@ -150,6 +150,12 @@ done
+@@ -163,6 +163,12 @@ done
  EXTRA_REGRESS_OPTS="$EXTRA_REGRESS_OPTS --port=$PGPORT"
  export EXTRA_REGRESS_OPTS
  
@@ -25,8 +25,8 @@ override it via postgresql.conf.)
 +
 +POSTMASTER_OPTS="$POSTMASTER_OPTS -c unix_socket_directories='$PGHOST'"
 +
- # enable echo so the user can see what is being executed
- set -x
+ standard_initdb "$oldbindir"/initdb
+ "$oldbindir"/pg_ctl start -l "$logdir/postmaster1.log" -o "$POSTMASTER_OPTS" -w
  
 --- src/backend/utils/misc/guc.c.orig
 +++ src/backend/utils/misc/guc.c
@@ -41,7 +41,7 @@ override it via postgresql.conf.)
  #endif
 --- src/bin/initdb/initdb.c.orig
 +++ src/bin/initdb/initdb.c
-@@ -1105,7 +1105,7 @@ setup_config(void)
+@@ -1110,7 +1110,7 @@ setup_config(void)
  
  #ifdef HAVE_UNIX_SOCKETS
  	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = '%s'",

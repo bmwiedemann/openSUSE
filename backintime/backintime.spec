@@ -17,7 +17,7 @@
 
 
 Name:           backintime
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 License:        GPL-2.0-or-later

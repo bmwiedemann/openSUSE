@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 22 18:36:29 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix build with boost 1.69: Add freeorion-0.4.8-remove-boost-signals.patch.
+- Refresh spec file.
+
+-------------------------------------------------------------------
 Sat Nov 17 08:15:56 MST 2018 - buckyballreaction@gmail.com
 
 - Added cmake_boost_python.patch: Fix detection of boost_python on Tumbleweed

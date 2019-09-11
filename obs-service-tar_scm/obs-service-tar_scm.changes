@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 22 11:25:57 UTC 2019 - FSchreiner@suse.com
+
+- Update to version 0.10.10.1566390389.9f923f8:
+  * Revert "Merge pull request #323 from e4t/master"
+  * Make service 'tar' work with a cachedir as well
+  * Fix unit tests for modified scm directory handling
+  * Append '_service' to repository directory
+  * separate language and encoding
+  * git: really print the error message
+  * tar_scm.service: fix exclude documentation
+  * Don`t break testsuite if cwd contains colons
+  * disabling hg tests in travis
+
+-------------------------------------------------------------------
 Wed Jun 05 14:47:42 UTC 2019 - FSchreiner@suse.com
 
 - Update to version 0.10.9.1559745964.22c86cd:

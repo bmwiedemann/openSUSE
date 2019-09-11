@@ -19,7 +19,7 @@ Index: spirv-tools-2019.4~git33/source/CMakeLists.txt
  spvtools_pch(SPIRV_SOURCES pch_source)
  
  add_library(${SPIRV_TOOLS} ${SPIRV_SOURCES})
-+set_target_properties(${SPIRV_TOOLS} PROPERTIES SOVERSION suse12)
++set_target_properties(${SPIRV_TOOLS} PROPERTIES SOVERSION suse13)
  spvtools_default_compile_options(${SPIRV_TOOLS})
  target_include_directories(${SPIRV_TOOLS}
    PUBLIC ${spirv-tools_SOURCE_DIR}/include
@@ -27,7 +27,7 @@ Index: spirv-tools-2019.4~git33/source/CMakeLists.txt
  add_dependencies( ${SPIRV_TOOLS} core_tables enum_string_mapping extinst_tables )
  
  add_library(${SPIRV_TOOLS}-shared SHARED ${SPIRV_SOURCES})
-+set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES SOVERSION suse12)
++set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES SOVERSION suse13)
  spvtools_default_compile_options(${SPIRV_TOOLS}-shared)
  target_include_directories(${SPIRV_TOOLS}-shared
    PUBLIC ${spirv-tools_SOURCE_DIR}/include
@@ -39,7 +39,7 @@ Index: spirv-tools-2019.4~git33/source/fuzz/CMakeLists.txt
    spvtools_pch(SPIRV_TOOLS_FUZZ_SOURCES pch_source_fuzz)
  
    add_library(SPIRV-Tools-fuzz ${SPIRV_TOOLS_FUZZ_SOURCES})
-+  set_target_properties(SPIRV-Tools-fuzz PROPERTIES SOVERSION suse12)
++  set_target_properties(SPIRV-Tools-fuzz PROPERTIES SOVERSION suse13)
  
    spvtools_default_compile_options(SPIRV-Tools-fuzz)
    target_compile_definitions(SPIRV-Tools-fuzz PUBLIC -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_USE_UNALIGNED=0)
@@ -51,7 +51,7 @@ Index: spirv-tools-2019.4~git33/source/link/CMakeLists.txt
  add_library(SPIRV-Tools-link
    linker.cpp
  )
-+set_target_properties(SPIRV-Tools-link PROPERTIES SOVERSION suse12)
++set_target_properties(SPIRV-Tools-link PROPERTIES SOVERSION suse13)
  
  spvtools_default_compile_options(SPIRV-Tools-link)
  target_include_directories(SPIRV-Tools-link
@@ -63,7 +63,7 @@ Index: spirv-tools-2019.4~git33/source/opt/CMakeLists.txt
  
  add_library(SPIRV-Tools-opt ${SPIRV_TOOLS_OPT_SOURCES})
  
-+set_target_properties(SPIRV-Tools-opt PROPERTIES SOVERSION suse12)
++set_target_properties(SPIRV-Tools-opt PROPERTIES SOVERSION suse13)
  spvtools_default_compile_options(SPIRV-Tools-opt)
  target_include_directories(SPIRV-Tools-opt
    PUBLIC ${spirv-tools_SOURCE_DIR}/include
@@ -75,7 +75,7 @@ Index: spirv-tools-2019.4~git33/source/reduce/CMakeLists.txt
    PUBLIC ${SPIRV_HEADER_INCLUDE_DIR}
    PRIVATE ${spirv-tools_BINARY_DIR}
  )
-+set_target_properties(SPIRV-Tools-reduce PROPERTIES SOVERSION suse12)
++set_target_properties(SPIRV-Tools-reduce PROPERTIES SOVERSION suse13)
  # The reducer reuses a lot of functionality from the SPIRV-Tools library.
  target_link_libraries(SPIRV-Tools-reduce
    PUBLIC ${SPIRV_TOOLS}

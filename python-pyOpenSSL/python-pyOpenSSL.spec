@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyca/pyopenssl
 Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpenSSL-%{version}.tar.gz
 Patch1:         skip-networked-test.patch
+Patch2:         fix-compilation-2020.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography >= 2.3.0}
 BuildRequires:  %{python_module flaky}

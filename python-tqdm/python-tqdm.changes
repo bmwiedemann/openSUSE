@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 25 17:53:16 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.35.0:
+  * add {bar} format specifier (#623 -> #799)
+      [width][type]
+  * add tests and documentation
+  * update performance tests
+
+- changes from version 4.34.0:
+  * add leave=None convenience option for leave = position == 0
+  * ensure nested completed bars respect leave=True (#230)
+  * ensure nested bars are cleared before being moved up (#795)
+  * support both and = syntax for CLI options (#761 -> #774)
+  * misc documentation updates (#778, #782)
+  * fix/update tests
+  * update GitHub docker package deployment
+
+-------------------------------------------------------------------
 Fri Aug  9 19:37:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - update to version 4.33.0:

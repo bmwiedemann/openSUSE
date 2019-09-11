@@ -1,7 +1,7 @@
 #
 # spec file for package libdevil
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 # SONAME Version tags (*.so.$NUM)
 %define libIL 1
-
-Summary:        A full featured cross platform image library
-License:        LGPL-2.1
-Group:          System/Libraries
 Name:           libdevil
 Version:        1.7.8
-Release:        1.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://openil.sourceforge.net/
+Release:        0
+Summary:        A full featured cross platform image library
+License:        LGPL-2.1-only
+Group:          System/Libraries
+URL:            http://openil.sourceforge.net/
 Source:         http://sourceforge.net/projects/openil/files/DevIL/1.7.8/DevIL-%{version}.tar.gz
 Patch0:         DevIL-%{version}-return-random-data.patch
 # From Gentoo
@@ -43,11 +41,11 @@ BuildRequires:  SDL-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
-BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmng-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -73,10 +71,9 @@ Windows GDI, SDL, DirectX and Allegro. Compilers that can compile
 DevIL or use it include Djgpp, MSVC++, Linux gcc, Delphi, Visual
 Basic, Power Basic and Dev-C++.
 
-
 %package tools
 Summary:        Tools that can be used when using DevIL libraries
-License:        LGPL-2.1 and GPL-3.0+
+License:        LGPL-2.1-only AND GPL-3.0-or-later
 Group:          System/Libraries
 Requires:       libIL%{libIL} = %{version}
 
@@ -85,14 +82,14 @@ Tools that can be used to work with DevIL libraries and convert various
 formats.
 
 %package -n libIL%{libIL}
+Summary:        A full featured cross platform image library
+License:        LGPL-2.1-only
+Group:          System/Libraries
 Provides:       libdevil1 = %{version}
 Obsoletes:      libdevil1 < %{version}
-Summary:        A full featured cross platform image library
-License:        LGPL-2.1
-Group:          System/Libraries
 %if 0%{?suse_version}
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 %endif
 
 %description -n  libIL%{libIL}
@@ -116,7 +113,7 @@ Basic, Power Basic and Dev-C++.
 
 %package -n DevIL-devel
 Summary:        Development package
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       libIL%{libIL} = %{version}
 Provides:       libdevil-devel = %{version}
@@ -166,8 +163,8 @@ This package contains the development libraries and headers.
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot}
-rm -f %{buildroot}%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %preun -n libIL%{libIL}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/DevIL_manual.info.gz
@@ -179,19 +176,17 @@ rm -f %{buildroot}%{_libdir}/*.la
 %postun -n libIL%{libIL} -p /sbin/ldconfig
 
 %files -n libIL%{libIL}
-%defattr(-,root,root)
 %{_libdir}/lib*.so.*
-%doc AUTHORS COPYING CREDITS NEWS README README.unix TODO
-%{_infodir}/DevIL_manual.info.*
+%license COPYING
+%doc AUTHORS CREDITS NEWS README README.unix TODO
+%{_infodir}/DevIL_manual.info%{?ext_info}
 
 %files -n DevIL-devel
-%defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_includedir}/IL
 %{_libdir}/pkgconfig/IL*.pc
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/ilur
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs12
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 ###########################################################
 #
 #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
@@ -25,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.4.0
+Version:        12.10.0
 Release:        0
 
 %define node_version_number 12
@@ -46,7 +47,7 @@ Release:        0
 %define _libexecdir %{_exec_prefix}/lib
 %endif
 
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120400
+%if 0%{?suse_version} >= 1550 || (0%{?sle_version} >= 120500 && 0%{?sle_version} < 150000) || 0%{?sle_version} >= 150200
 %bcond_with    intree_openssl
 %else
 %bcond_without intree_openssl
@@ -58,7 +59,7 @@ Release:        0
 %bcond_without intree_cares
 %endif
 
-%if 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1550
 %bcond_with    intree_icu
 %else
 %bcond_without intree_icu
@@ -120,8 +121,6 @@ Source20:       bash_output_helper.bash
 ## Patches not distribution specific
 Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
-Patch9:         dont_return_garbage.patch
-
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -155,11 +154,11 @@ BuildRequires:  binutils-gold
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:   gcc5-c++
+BuildRequires:  gcc5-c++
 %define cc_exec  gcc-5
 %define cpp_exec g++-5
 %else
-BuildRequires:   gcc48-c++
+BuildRequires:  gcc48-c++
 %define cc_exec  gcc-4.8
 %define cpp_exec g++-4.8
 %endif # node >= 8
@@ -167,7 +166,7 @@ BuildRequires:   gcc48-c++
 
 # Use GCC 7, since it is in SLE-12:Update
 %if %node_version_number >= 8 && 0%{?suse_version} == 1315
-BuildRequires:   gcc7-c++
+BuildRequires:  gcc7-c++
 %define cc_exec  gcc-7
 %define cpp_exec g++-7
 %endif # node >= 8 and sle == 12
@@ -178,7 +177,6 @@ BuildRequires:  gcc-c++
 %endif
 
 BuildRequires:  fdupes
-BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -189,14 +187,14 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
+BuildRequires:  user(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
 
 %if %node_version_number >= 8
-BuildRequires:  openssl-devel >= %{openssl_req_ver}
+BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 %else # older node doesn't support OpenSSL 1.1
 
 %if 0%{?suse_version} >= 1330
@@ -213,15 +211,15 @@ BuildRequires:  pkgconfig(libcares) >= 1.10.0
 %endif
 
 %if ! 0%{with intree_icu}
-BuildRequires:  pkgconfig(icu-i18n) >= 57
+BuildRequires:  pkgconfig(icu-i18n) >= 64
 %endif
 
 %if ! 0%{with intree_nghttp2}
-BuildRequires: libnghttp2-devel >= 1.34.0
+BuildRequires:  libnghttp2-devel >= 1.39.2
 %endif
 
 %if 0%{with valgrind_tests}
-BuildRequires: valgrind
+BuildRequires:  valgrind
 %endif
 
 Requires(post): update-alternatives
@@ -251,7 +249,7 @@ Requires:       openssl1
 %endif
 
 # Building Node.js only makes sense on V8 architectures.
-ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc ppc64 ppc64le s390 s390x
+ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -274,12 +272,12 @@ Group:          Development/Languages/NodeJS
 Requires:       %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 6.5.0
 Provides:       npm = %{version}
+Provides:       npm(npm) = 6.10.3
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       user(nobody)
 Requires:       group(nobody)
+Requires:       user(nobody)
 %endif
 Recommends:     python2
 %else
@@ -317,7 +315,6 @@ tar Jxvf %{SOURCE11}
 %if ! 0%{with intree_openssl}
 %endif
 %patch7 -p1
-%patch9 -p1
 %if 0%{with valgrind_tests}
 %endif
 %patch101 -p1
@@ -364,7 +361,7 @@ find -name *.md.orig -delete
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -Wno-class-memaccess"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}

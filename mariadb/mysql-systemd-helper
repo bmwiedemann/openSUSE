@@ -20,7 +20,7 @@ read_config() {
 
 	# Read options - important for multi setup
 	if [[ -n "$INSTANCE" ]]; then
-		opts="$(/usr/bin/my_print_defaults mysqld mysqld_multi "$INSTANCE")"
+		opts="$(/usr/bin/my_print_defaults mysqld mysqld_multi "$INSTANCE" --defaults-extra-file=/etc/my${INSTANCE}.cnf)"
 		tmp_opts="$opts"
 		config="/etc/my${INSTANCE}.cnf"
 	else
@@ -52,9 +52,10 @@ read_config() {
 mysql_install() {
 	if [[ ! -d "$datadir/mysql" ]]; then
 		echo "Creating MySQL privilege database... "
-		mysql_install_db --user="$mysql_daemon_user" --datadir="$datadir" || \
-		die "Creation of MySQL databse in $datadir failed"
+		mysql_install_db --rpm --user="$mysql_daemon_user" --datadir="$datadir" || \
+		die "Creation of MySQL database in $datadir failed"
 		echo -n "$MYSQLVER" > "$datadir"/mysql_upgrade_info
+		chmod 640 "$datadir/mysql_upgrade_info"
 	fi
 }
 
@@ -118,18 +119,26 @@ mysql_upgrade() {
 			rm -f "$datadir/.run-mysql_upgrade"
 			[[ $(grep -q "^$MYSQLVER" "$datadir/mysql_upgrade_info" 2> /dev/null) ]] || \
 				echo -n "$MYSQLVER" > "$datadir/mysql_upgrade_info"
+				chmod 640 "$datadir/mysql_upgrade_info"
 		else
 			echo "Upgrade failed"
 			up_ok="false"
 		fi
 
 		# Shut down MySQL
-		echo "Shuting down protected MySQL"
-		kill "$(cat "$protected/mysqld.pid")"
+		echo "Shutting down protected MySQL"
+		protected_pid=$(cat "$protected/mysqld.pid")
+		kill $protected_pid
 		for i in {1..30}; do
-			/usr/bin/mysqladmin --socket="$protected/mysql.sock" ping > /dev/null 2>&1 || break
+			/usr/bin/mysqladmin --socket="$protected/mysql.sock" ping > /dev/null 2>&1
+			# Check both ping response and the pid in a process list as it can take some time till the process is terminated.
+			# Otherwise it can lead to "found left-over process" situation when regular mariadb is started.
+			if [[ $? -eq 1 ]] && ! ps -p $protected_pid > /dev/null 2>&1; then
+		        break
+			fi
+			sleep 1
 		done
-		/usr/bin/mysqladmin --socket="$protected/mysql.sock" ping > /dev/null 2>&1 && kill -9 "$(cat "$protected/mysqld.pid")"
+		/usr/bin/mysqladmin --socket="$protected/mysql.sock" ping > /dev/null 2>&1 && kill -9 $protected_pid
 
 		# Cleanup
 		echo "Final cleanup"
@@ -166,9 +175,6 @@ mysql_start() {
 
 # We rely on output in english at some points
 LC_ALL=C
-
-# set the default umask bsc#1020976
-umask 077
 
 INSTANCE="$2"
 read_config

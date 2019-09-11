@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 10:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Bump to 5.8.0:
+  * use prompt_toolkit >= 2.0
+  * various tests/documentation improvements
+  * Removed legacy loadbalancer command
+
+-------------------------------------------------------------------
 Tue May  7 07:27:35 UTC 2019 - pgajdos@suse.com
 
 - version update to 5.7.2

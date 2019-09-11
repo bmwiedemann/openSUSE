@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 13:48:30 UTC 2019 - ro@suse.com
+
+- Update to version 84.87+git20190822.82a17f1:
+  * add sysctl.d/51-network.conf to tighten network security a bit
+    see also (boo#1146866) (jira#SLE-9132)
+
+-------------------------------------------------------------------
 Thu Jul 25 12:46:13 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Drop /bin/login requirement

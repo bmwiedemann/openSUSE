@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:03:38 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.13.1/?h=v5.13.1
+
+-------------------------------------------------------------------
 Fri Aug 16 07:25:24 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - QtQuick.LocalStorage needs libQt5Sql5-sqlite
+
+-------------------------------------------------------------------
+Wed Jul  3 10:02:23 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Link from Qt bindir into %_bindir, not the other way around to fix
+  applicationDirPath called from Qt binaries
+- Add -qt5 suffix to all binaries in %_bindir
 
 -------------------------------------------------------------------
 Wed Jun 19 11:19:49 UTC 2019 - fabian@ritter-vogt.de

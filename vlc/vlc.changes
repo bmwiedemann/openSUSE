@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Aug 23 06:49:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add conditional pkgconfig(libmfx) BuildRequires: Build with Intel
+  Media SDK support.
+
+-------------------------------------------------------------------
+Tue Aug 20 07:55:46 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.8 'vetinari':
+  + Fix stuttering for low framerate videos
+  + Improve adaptive streaming
+  + Improve audio output for external audio devices on macOS/iOS
+  + Fix hardware acceleration with Direct3D11 for some AMD drivers
+  + Fix WebVTT subtitles rendering
+  + Vetinari is a major release changing a lot in the media engine of VLC.
+    It is one of the largest release we've ever done.
+    Notably, it:
+     - activates hardware decoding on all platforms, of H.264 & H.265, 8 & 10bits,
+       allowing 4K60 or even 8K decoding with little CPU consumption,
+     - merges all the code from the mobile ports into the same codebase with
+       common numbering and releases,
+     - supports 360 video and 3D audio, and prepares for VR content,
+     - supports direct HDR and HDR tone-mapping,
+     - updates the audio passthrough for HD Audio codecs,
+     - allows browsing of local network drives like SMB, FTP, SFTP, NFS...
+     - stores the passwords securely,
+     - brings a new subtitle rendering engine, supporting ComplexTextLayout
+       and font fallback to support multiple languages and fonts,
+     - supports ChromeCast with the new renderer framework,
+     - adds support for numerous new formats and codecs, including WebVTT,
+       AV1, TTML, HQX, 708, Cineform, and many more,
+     - improves Bluray support with Java menus, aka BD-J,
+     - updates the macOS interface with major cleaning and improvements,
+     - support HiDPI UI on Windows, with the switch to Qt5,
+     - prepares the experimental support for Wayland on Linux, and
+       switches to OpenGL by default on Linux.
+- Drop vlc-CVE-2019-13962.patch, vlc-CVE-2019-13602_1.patch and
+  vlc-CVE-2019-13602_2.patch: fixed upstream.
+- Disbale mod-plug for the time being: libmodplug 0.8.9 is not yet
+  available.
+
+-------------------------------------------------------------------
 Sun Aug  4 01:44:44 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Disable SDL_image (SDL 1.2) based codec. It is only a wrapper around some

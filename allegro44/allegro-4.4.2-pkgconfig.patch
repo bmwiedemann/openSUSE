@@ -1,0 +1,108 @@
+Index: misc/allegrogl.pc.in
+===================================================================
+--- misc/allegrogl.pc.in.orig
++++ misc/allegrogl.pc.in
+@@ -8,7 +8,7 @@ suffix=@lib_type@@lib_linkage@
+ Name: allegrogl
+ Description: OpenGL addon for Allegro game programming library
+ Version: ${version}
+-# always statically linked
+-Libs: -L${libdir} -lalleggl${suffix} @link_with@
+-Requires: allegro${suffix} >= ${version}
++Libs: -L${libdir} -lalleggl${suffix}
++Libs.private: @link_with@
++Requires.private: allegro${suffix} >= ${version}
+ Cflags: -I${includedir}
+Index: misc/jpgalleg.pc.in
+===================================================================
+--- misc/jpgalleg.pc.in.orig
++++ misc/jpgalleg.pc.in
+@@ -8,7 +8,7 @@ suffix=@lib_type@@lib_linkage@
+ Name: JPGalleg
+ Description: JPEG addon for Allegro game programming library
+ Version: ${version}
+-# always statically linked
+-Libs: -L${libdir} -ljpgalleg${suffix} @link_with@
+-Requires: allegro${suffix} >= ${version}
++Libs: -L${libdir} -ljpgalleg${suffix}
++Libs.private: @link_with@
++Requires.private: allegro${suffix} >= ${version}
+ Cflags: -I${includedir}
+Index: misc/loadpng.pc.in
+===================================================================
+--- misc/loadpng.pc.in.orig
++++ misc/loadpng.pc.in
+@@ -8,7 +8,7 @@ suffix=@lib_type@@lib_linkage@
+ Name: loadpng
+ Description: PNG addon for Allegro game programming library
+ Version: ${version}
+-# always statically linked
+-Libs: -L${libdir} -lloadpng${suffix} @link_with@
+-Requires: allegro${suffix} >= ${version}
++Libs: -L${libdir} -lloadpng${suffix}
++Libs.private: @link_with@
++Requires.private: allegro${suffix} >= ${version}
+ Cflags: -I${includedir}
+Index: misc/logg.pc.in
+===================================================================
+--- misc/logg.pc.in.orig
++++ misc/logg.pc.in
+@@ -8,7 +8,7 @@ suffix=@lib_type@@lib_linkage@
+ Name: logg
+ Description: Ogg Vorbis addon for Allegro game programming library
+ Version: ${version}
+-# always statically linked
+-Libs: -L${libdir} -llogg${suffix} @link_with@
+-Requires: allegro${suffix} >= ${version}
++Libs: -L${libdir} -llogg${suffix}
++Libs.private: @link_with@
++Requires.private: allegro${suffix} >= ${version}
+ Cflags: -I${includedir}
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -445,20 +445,18 @@ if(ALLEGRO_WITH_XWINDOWS)
+     include_directories(SYSTEM ${X11_INCLUDE_DIR})
+     list(APPEND PLATFORM_SOURCES ${ALLEGRO_SRC_X_FILES})
+     list(APPEND PLATFORM_LIBS ${X11_LIBRARIES})
++    SET(PKGCONF_DEPS "x11 xproto")
+ 
+     if(X11_XShm_FOUND)
+         set(ALLEGRO_XWINDOWS_WITH_SHM 1)
+         list(APPEND PLATFORM_LIBS ${X11_Xext_LIB})
++        SET(PKGCONF_DEPS "${PKGCONF_DEPS} xext")
+     endif()
+ 
+     if(X11_Xcursor_FOUND)
+         set(ALLEGRO_XWINDOWS_WITH_XCURSOR 1)
+         list(APPEND PLATFORM_LIBS ${X11_Xcursor_LIB})
+-    endif()
+-
+-    if(X11_Xcursor_FOUND)
+-        set(ALLEGRO_XWINDOWS_WITH_XCURSOR 1)
+-        list(APPEND PLATFORM_LIBS ${X11_Xcursor_LIB})
++        SET(PKGCONF_DEPS "${PKGCONF_DEPS} xcursor")
+     endif()
+ 
+     if(X11_Xpm_FOUND)
+@@ -471,6 +469,7 @@ if(ALLEGRO_WITH_XWINDOWS)
+     if(X11_xf86vmode_FOUND)
+         set(ALLEGRO_XWINDOWS_WITH_XF86VIDMODE 1)
+         list(APPEND PLATFORM_LIBS ${X11_Xxf86vm_LIB})
++        SET(PKGCONF_DEPS "${PKGCONF_DEPS} xxf86vm")
+     endif()
+ 
+     check_library_exists(X11 XOpenIM "${X11_LIB_SEARCH_PATH}" XIM_FOUND)
+Index: misc/allegro.pc.in
+===================================================================
+--- misc/allegro.pc.in.orig
++++ misc/allegro.pc.in
+@@ -8,6 +8,7 @@ suffix=@lib_type@@lib_linkage@
+ Name: allegro
+ Description: Allegro game programming library
+ Version: ${version}
++Requires.private: @PKGCONF_DEPS@
+ Libs: -L${libdir} -lalleg${suffix}
+ Libs.private: @link_with@
+ Cflags: -I${includedir}

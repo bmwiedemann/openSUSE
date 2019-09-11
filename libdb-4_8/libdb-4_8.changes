@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 27 00:06:09 UTC 2019 - William Brown <william.brown@suse.com>
+
+- Add opd deadlock patch as found and documented by Red Hat.
+  (bsc#1148244)
+  * 0001-OPD-deadlock-RH-BZ-1349779.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 06:59:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the getpatches as it does not work at all, oracle
+  removed the pages
+- Use spec-cleaner
+- Fix stripped debuginfo to make sure we can debug with libdb
+
+-------------------------------------------------------------------
 Thu Dec 20 12:41:18 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the license to match up really what is in there

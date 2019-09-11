@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 27 13:54:23 MDT 2019 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942)
+  0c223ab2-guest-Dont-set-default-uefi-if-firmware-is-set.patch
+  414ffa5e-virt-install-Use-minutes-instead-of-seconds-on-get_time_string.patch
+  53245827-urlfetcher-Force-a-flush-after-writing-to-a-file.patch
+  3009888a-urlfetcher-Dont-override-fullurl-when-its-explicitly-set.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 13:22:56 MDT 2019 - carnold@suse.com
 
 - bsc#1143315 - virt-manager: Fix detection for SLE15

@@ -1,7 +1,7 @@
 #
 # spec file for package python-resampy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-resampy
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Signal resampling in Python
 License:        ISC
 Group:          Development/Languages/Python
-Url:            https://github.com/bmcfee/resampy
+URL:            https://github.com/bmcfee/resampy
 Source:         https://files.pythonhosted.org/packages/source/r/resampy/resampy-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-numba >= 0.32
+Requires:       python-numpy >= 1.10
+Requires:       python-scipy >= 0.13
+Requires:       python-six >= 1.3
+Suggests:       python-numpydoc
+Suggests:       python-sphinx
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numba >= 0.32}
 BuildRequires:  %{python_module numpy >= 1.10}
@@ -36,15 +43,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.13}
 BuildRequires:  %{python_module six >= 1.3}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-numba >= 0.32
-Requires:       python-numpy >= 1.10
-Requires:       python-scipy >= 0.13
-Requires:       python-six >= 1.3
-Suggests:       python-sphinx
-Suggests:       python-numpydoc
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -71,6 +69,6 @@ sed -i -e '/^#!\//, 1d' */*.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/resampy*
 
 %changelog

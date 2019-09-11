@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 19 19:56:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-video-effects-meson-pkgconfig-fix.patch: Various meson
+  improvements and fixes. Fixes a warning and a regression against
+  autotools packaging.
+
+-------------------------------------------------------------------
 Sat Aug 10 09:25:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.5.0:

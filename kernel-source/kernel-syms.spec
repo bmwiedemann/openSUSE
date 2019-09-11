@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.2.8
+Version:        5.2.13
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gbf37e83
+Release:        <RELEASE>.gacd8e88
 %else
 Release:        0
 %endif
@@ -50,12 +50,9 @@ Requires:       kernel-lpae-devel = %version-%source_rel
 %ifarch %ix86
 Requires:       kernel-pae-devel = %version-%source_rel
 %endif
-%ifarch s390x
-Requires:       kernel-zfcpdump-devel = %version-%source_rel
-%endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-bf37e832d7a7b657aff6ae194b1fd62fe9a44f12
+Provides:       %name-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel

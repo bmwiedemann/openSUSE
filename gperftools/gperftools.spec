@@ -94,6 +94,7 @@ applications that use the gperftools package.
 %patch4 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fi
 %ifnarch s390
 VALGRIND_FL=`pkg-config --cflags valgrind`

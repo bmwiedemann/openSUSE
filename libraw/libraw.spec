@@ -37,7 +37,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libtool
@@ -107,6 +106,7 @@ against LibRaw. LibRaw does not provide dynamic libraries.
 %patch2 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CXXFLAGS="%{optflags} -fPIC -DUSE_ZLIB"
 %if %{debug_build}
 export CXXFLAGS="$CXXFLAGS -O0"

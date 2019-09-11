@@ -17,9 +17,9 @@
 
 
 Name:           shutdownscheduler
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
-Summary:        Simple Shutdown Scheduler
+Summary:        Shutdown Scheduler
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/bcedu
@@ -40,8 +40,8 @@ BuildRequires:  pkgconfig(unity)
 Recommends:     %{name}-lang
 
 %description
-ShutdownSheduler is an extremely simple program used to shutdown the computer 
-in a specific date time.
+ShutdownSheduler is a program used to shutdown the computer 
+in a specific date time. It requires GTK just to achieve this.
 
 %lang_package
 

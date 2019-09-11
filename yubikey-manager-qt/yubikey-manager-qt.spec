@@ -18,7 +18,7 @@
 
 %define bname ykman-gui
 Name:           yubikey-manager-qt
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Graphical application for configuring a YubiKey
 License:        BSD-2-Clause
@@ -62,6 +62,7 @@ install -p -m 0644 resources/icons/ykman.png %{buildroot}%{_datadir}/pixmaps/
 
 %files
 %doc NEWS README
+%license COPYING
 %{_bindir}/%{bname}
 %{_datadir}/applications/%{bname}.desktop
 %{_datadir}/pixmaps/ykman.png

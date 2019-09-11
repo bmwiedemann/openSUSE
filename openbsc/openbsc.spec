@@ -1,7 +1,7 @@
 #
 # spec file for package openbsc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define _lto_cflags %nil
+
 Name:           openbsc
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Base station controller for a GSM stack
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,8 +33,8 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  python
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbi)
-BuildRequires:  pkgconfig(libasn1c)
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.5
 BuildRequires:  pkgconfig(libosmo-netif) >= 0.4.0
@@ -44,8 +47,8 @@ BuildRequires:  pkgconfig(libosmovty) >= 1.0.1
 BuildRequires:  pkgconfig(libsmpp34) >= 1.13.0
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       libdbi-drivers-dbd-sqlite3
-Provides:       osmocom-nitb
 Provides:       osmocom-bsc-sccplite
+Provides:       osmocom-nitb
 
 %description
 An implementation of the minimal subset of the major backend
@@ -62,6 +65,7 @@ OsmoBSC can run in one of two modes:
 Summary:        Command line utilities for Siemens BS-11 BTS
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
+Conflicts:      osmo-bsc-bs11-utils
 
 %description bs11-utils
 There is a tool in this package for configuring the Siemens BS-11 BTS.
@@ -110,7 +114,7 @@ rm -rf %buildroot/%_includedir/%name
 
 %check
 pushd openbsc/
-make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
+make %{?_smp_mflags} check || find . -name testsuite.log -exec cat {} +
 popd
 
 %pre

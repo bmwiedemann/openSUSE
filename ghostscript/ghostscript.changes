@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 12:38:45 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Use update-alternatives to get the real ghostscript binary from
+  /usr/bin/gs to /usr/bin/gs.bin and allow the gswrap package to
+  use this with ist wrapper script 
+
+-------------------------------------------------------------------
 Wed May  8 08:46:43 UTC 2019 - jsegitz@suse.com
 
 - Set AA profile to complain and added fixes for ps2epsi (boo#1134327)

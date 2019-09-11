@@ -1,7 +1,7 @@
 #
 # spec file for package sharutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GNU shar utilities
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
-Url:            http://www.gnu.org/software/sharutils
+Url:            http://www.gnu.org/software/sharutils/
 Source0:        ftp://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
@@ -30,7 +30,6 @@ Patch0:         sharutils-testsuite.diff
 Patch1:         sharutils-CVE-2018-1000097-fix_buffer_overflow.patch
 Patch2:         gnulib-libio.patch
 BuildRequires:  libopenssl-devel
-BuildRequires:  mailx
 BuildRequires:  xz
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  coreutils
@@ -49,9 +48,6 @@ archives after reception.
 uuencode prepares a file for transmission over an electronic channel
 which ignores or otherwise mangles the eight bit (high order bit) of
 bytes.	uudecode does the converse transformation.
-
-remsync allows for remote synchronization of directory trees, using
-e-mail.  This part of sharutils is still alpha.
 
 %{?lang_package}
 

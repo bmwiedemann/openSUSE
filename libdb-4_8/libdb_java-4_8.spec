@@ -1,7 +1,7 @@
 #
 # spec file for package libdb_java-4_8
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,9 @@ Release:        0
 Summary:        Java Bindings for the Berkeley DB
 License:        BSD-3-Clause
 Group:          Productivity/Databases/Servers
-Url:            http://oracle.com/technetwork/products/berkeleydb/
+URL:            https://oracle.com/technetwork/products/berkeleydb/
 Source:         http://download.oracle.com/berkeley-db/db-%{version}.tar.gz
 Source1:        %{name}.changes
-Source9:        getpatches
 Patch0:         db-%{version}.patch
 # PATCH-FIX-OPENSUSE Fix compilation with Java 10 (10-internal)
 Patch1:         libdb_java-4_8-fix-java10-comp.patch
@@ -41,7 +40,6 @@ BuildRequires:  unzip
 Requires:       libdb-%{major}_%{minor} = %{version}
 Conflicts:      libdb_java-4_5
 Provides:       db-java = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 These are the Java bindings for the Berkeley DB. They are needed for
@@ -83,12 +81,14 @@ export CFLAGS CXXFLAGS CC
 #
 mkdir ../build_nptl
 cd ../build_nptl
-../dist/configure --prefix=%{_prefix} \
-        --libdir=%{_libdir} --enable-compat185 --disable-dump185 \
-        --enable-shared --disable-static --enable-cxx \
+%define _configure ../dist/configure
+%configure \
+        --enable-compat185 --disable-dump185 \
+        --enable-shared --disable-static \
+        --enable-cxx \
         --with-mutex="POSIX/pthreads/library" \
         --enable-java JAVACFLAGS="-source 1.6 -target 1.6" \
-%ifarch %arm
+%ifarch %{arm}
         %{_target_cpu}-suse-linux-gnueabi
 %else
         %{_target_cpu}-suse-linux
@@ -106,7 +106,7 @@ make %{?_smp_mflags} LIBSO_LIBS='$(LIBS)' LIBXSO_LIBS='$(LIBS)'" -L%{_libdir} -l
 mkdir -p %{buildroot}%{_includedir}/db4
 mkdir -p %{buildroot}%{_libdir}
 cd build_nptl
-make prefix=%{buildroot}%{_prefix} libdir=%{buildroot}%{_libdir} strip=true install
+%make_install STRIP=true
 cd ..
 # make ldd happy:
 chmod 755 %{buildroot}%{_libdir}/libdb*.so
@@ -148,12 +148,10 @@ ln -sf %{_javadir}/db-%{version}.jar %{buildroot}/%{_javadir}/db.jar
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_javadir}/*
 %{_libdir}/libdb_java-%{major}.%{minor}.so
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*_g.so
 %{_libdir}/libdb_java.so
 %{_libdir}/libdb_java-%{major}.so

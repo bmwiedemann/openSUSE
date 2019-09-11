@@ -17,28 +17,25 @@
 
 
 Name:           trace-cmd
-Url:            http://elinux.org/Ftrace
+Version:        2.8.3
+Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Tools/Debuggers
-Version:        2.8.3
-Release:        0
+URL:            https://elinux.org/Ftrace
 Source0:        trace-cmd-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source1:        trace-cmd-rpmlintrc
+Patch1:         makefile-lib64.patch
+Patch2:         makefile-bash.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  docbook-xsl-stylesheets
-## BuildRequires:  gtk2-devel
-## BuildRequires:  libxml2-devel
 BuildRequires:  swig
 %if 0%{?suse_version} > 1200
 BuildRequires:  xsltproc
 %else
 BuildRequires:  libxslt
 %endif
-Source1:        trace-cmd-rpmlintrc
-Patch1:         makefile-lib64.patch
-Patch2:         makefile-bash.patch
 
 %description
 trace-cmd is a command-line tool for configuring Ftrace.
@@ -50,21 +47,20 @@ trace-cmd is a command-line tool for configuring Ftrace.
 
 %build
 make %{?_smp_mflags} prefix=%{_prefix} trace-cmd
-make %{?_smp_mflags} MANPAGE_DOCBOOK_XSL=/usr/share/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
+make %{?_smp_mflags} MANPAGE_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
 
 %install
-%makeinstall prefix=%{_prefix} install_cmd
-%makeinstall prefix=%{_prefix} install_doc
-rm $RPM_BUILD_ROOT/%{_mandir}/man1/kernelshark.1
-rm -rf $RPM_BUILD_ROOT/%{_prefix}/share/kernelshark
+%make_install prefix=%{_prefix} install_cmd
+%make_install prefix=%{_prefix} install_doc
+rm %{buildroot}/%{_mandir}/man1/kernelshark.1
+rm -rf %{buildroot}/%{_datadir}/kernelshark
 
 %files
-%defattr(-,root,root)
 %{_bindir}/trace-cmd
 %{_libdir}/trace-cmd
 %{_mandir}/man1/trace-cmd*
 %{_mandir}/man5/trace-cmd.dat*
 %{_datadir}/bash-completion/completions/trace-cmd.bash
-%doc COPYING
+%license COPYING
 
 %changelog

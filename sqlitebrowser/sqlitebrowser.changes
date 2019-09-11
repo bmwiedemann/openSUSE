@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  1 15:17:49 UTC 2019 - Stephan Barth <stephan.barth@suse.com>
+
+- Added dependencies on Qt5Concurrent and Qt5Xml
+- Update to version 3.11.2:
+  * Added Korean translation updates from PR #1600
+  * Italian translation for v3.11.x
+  * Regenerate translation files for the v3.11.x branch
+  * Updated German translation for 3.11.x
+  * Updated Brazilian Portuguese translation
+  * Fix editing encryption when using SQLCipher 4
+  * Fix transaction detection in SQL import
+
+-------------------------------------------------------------------
 Fri Jul 27 14:03:16 UTC 2018 - jengelh@inai.de
 
 - Use noun phrase in summary.

@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Sat Aug 31 04:34:30 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.8:
+  * orm
+    + Fixed bug where Load objects were not pickleable due to
+      mapper/relationship state in the internal context
+      dictionary. These objects are now converted to picklable using
+      similar techniques as that of other elements within the loader
+      option system that have long been serializable.  References:
+      #4823
+    + Added support for the use of an Enum datatype using Python
+      pep-435 enumeration objects as values for use as a primary key
+      column mapped by the ORM. As these values are not inherently
+      sortable, as required by the ORM for primary keys, a new
+      TypeEngine.sort_key_function attribute is added to the typing
+      system which allows any SQL type to implement a sorting for
+      Python objects of its type which is consulted by the unit of
+      work. The Enum type then defines this using the database value
+      of a given enumeration. The sorting scheme can be also be
+      redefined by passing a callable to the Enum.sort_key_function
+      parameter. Pull request courtesy Nicolas Caniart.  References:
+      #4285
+  * engine
+    + Added new parameter create_engine.hide_parameters which when set
+      to True will cause SQL parameters to no longer be logged, nor
+      rendered in the string representation of a StatementError
+      object.  References: #4815
+    + Fixed an issue whereby if the dialect “initialize” process which
+      occurs on first connect would encounter an unexpected exception,
+      the initialize process would fail to complete and then no longer
+      attempt on subsequent connection attempts, leaving the dialect
+      in an un-initialized, or partially initialized state, within the
+      scope of parameters that need to be established based on
+      inspection of a live connection. The “invoke once” logic in the
+      event system has been reworked to accommodate for this
+      occurrence using new, private API features that establish an
+      “exec once” hook that will continue to allow the initializer to
+      fire off on subsequent connections, until it completes without
+      raising an exception. This does not impact the behavior of the
+      existing once=True flag within the event system.  References:
+      #4807
+  * postgresql
+    + Revised the approach for the just added support for the psycopg2
+      “execute_values()” feature added in 1.3.7 for #4623. The
+      approach relied upon a regular expression that would fail to
+      match for a more complex INSERT statement such as one which had
+      subqueries involved. The new approach matches exactly the string
+      that was rendered as the VALUES clause.  References: #4623
+    + Fixed bug where Postgresql operators such as
+      postgresql.ARRAY.Comparator.contains() and
+      postgresql.ARRAY.Comparator.contained_by() would fail to
+      function correctly for non-integer values when used against a
+      postgresql.array object, due to an erroneous assert statement.
+      References: #4822
+    + Added support for reflection of CHECK constraints that include
+      the special PostgreSQL qualifier “NOT VALID”, which can be
+      present for CHECK constraints that were added to an exsiting
+      table with the directive that they not be applied to existing
+      data in the table. The PostgreSQL dictionary for CHECK
+      constraints as returned by Inspector.get_check_constraints() may
+      include an additional entry dialect_options which within will
+      contain an entry "not_valid": True if this symbol is
+      detected. Pull request courtesy Bill Finn.  References: #4824
+  * sqlite
+    + Fixed bug where a FOREIGN KEY that was set up to refer to the
+      parent table by table name only without the column names would
+      not correctly be reflected as far as setting up the “referred
+      columns”, since SQLite’s PRAGMA does not report on these columns
+      if they weren’t given explicitly. For some reason this was
+      harcoded to assume the name of the local column, which might
+      work for some cases but is not correct. The new approach
+      reflects the primary key of the referred table and uses the
+      constraint columns list as the referred columns list, if the
+      remote column(s) aren’t present in the reflected pragma
+      directly.  References: #4810
+
+-------------------------------------------------------------------
+Sun Aug 25 17:59:04 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.7:
+  * orm
+    + Fixed regression caused by new selectinload for many-to-one
+      logic where a primaryjoin condition not based on real foreign
+      keys would cause KeyError if a related object did not exist for
+      a given key value on the parent object.  References: #4777
+    + Fixed bug where using Query.first() or a slice expression in
+      conjunction with a query that has an expression based “offset”
+      applied would raise TypeError, due to an “or” conditional
+      against “offset” that did not expect it to be a SQL expression
+      as opposed to an integer or None.  References: #4803
+  * sql
+    + Fixed issue where Index object which contained a mixture of
+      functional expressions which were not resolvable to a particular
+      column, in combination with string-based column names, would
+      fail to initialize its internal state correctly leading to
+      failures during DDL compilation.  References: #4778
+    + Fixed bug where TypeEngine.column_expression() method would not
+      be applied to subsequent SELECT statements inside of a UNION or
+      other CompoundSelect, even though the SELECT statements are
+      rendered at the topmost level of the statement. New logic now
+      differentiates between rendering the column expression, which is
+      needed for all SELECTs in the list, vs. gathering the returned
+      data type for the result row, which is needed only for the first
+      SELECT.  References: #4787
+    + Fixed issue where internal cloning of SELECT constructs could
+      lead to a key error if the copy of the SELECT changed its state
+      such that its list of columns changed. This was observed to be
+      occurring in some ORM scenarios which may be unique to 1.3 and
+      above, so is partially a regression fix.  References: #4780
+  * postgresql
+    + Added new dialect flag for the psycopg2 dialect,
+      executemany_mode which supersedes the previous experimental
+      use_batch_mode flag. executemany_mode supports both the “execute
+      batch” and “execute values” functions provided by psycopg2, the
+      latter which is used for compiled insert() constructs. Pull
+      request courtesy Yuval Dinari.  See also: Psycopg2 Fast
+      Execution Helpers; References: #4623
+  * mysql
+    + The MySQL dialects will emit “SET NAMES” at the start of a
+      connection when charset is given to the MySQL driver, to appease
+      an apparent behavior observed in MySQL 8.0 that raises a
+      collation error when a UNION includes string columns unioned
+      against columns of the form CAST(NULL AS CHAR(..)), which is
+      what SQLAlchemy’s polymorphic_union function does. The issue
+      seems to have affected PyMySQL for at least a year, however has
+      recently appeared as of mysqlclient 1.4.4 based on changes in
+      how this DBAPI creates a connection. As the presence of this
+      directive impacts three separate MySQL charset settings which
+      each have intricate effects based on their presense, SQLAlchemy
+      will now emit the directive on new connections to ensure correct
+      behavior.  References: #4804
+    + Added another fix for an upstream MySQL 8 issue where a case
+      sensitive table name is reported incorrectly in foreign key
+      constraint reflection, this is an extension of the fix first
+      added for #4344 which affects a case sensitive column name. The
+      new issue occurs through MySQL 8.0.17, so the general logic of
+      the 88718 fix remains in place.  See also:
+      https://bugs.mysql.com/bug.php?id=96365 - upstream bug;
+      References: #4751
+    + Added reserved words ARRAY and MEMBER to the MySQL reserved
+      words list, as MySQL 8.0 has now made these reserved.
+      References: #4783
+  * sqlite
+    + The dialects that support json are supposed to take arguments
+      json_serializer and json_deserializer at the create_engine()
+      level, however the SQLite dialect calls them _json_serilizer and
+      _json_deserilalizer. The names have been corrected, the old
+      names are accepted with a change warning, and these parameters
+      are now documented as create_engine.json_serializer and
+      create_engine.json_deserializer.  References: #4798
+    + Fixed bug where usage of “PRAGMA table_info” in SQLite dialect
+      meant that reflection features to detect for table existence,
+      list of table columns, and list of foreign keys, would default
+      to any table in any attached database, when no schema name was
+      given and the table did not exist in the base schema. The fix
+      explicitly runs PRAGMA for the ‘main’ schema and then the ‘temp’
+      schema if the ‘main’ returned no rows, to maintain the behavior
+      of tables + temp tables in the “no schema” namespace, attached
+      tables only in the “schema” namespace.  References: #4793
+  * mssql
+    + Added new mssql.try_cast() construct for SQL Server which emits
+      “TRY_CAST” syntax. Pull request courtesy Leonel Atencio.
+      References: #4782
+  * misc
+    + Fixed issue in event system where using the once=True flag with
+      dynamically generated listener functions would cause event
+      registration of future events to fail if those listener
+      functions were garbage collected after they were used, due to an
+      assumption that a listened function is strongly referenced. The
+      “once” wrapped is now modified to strongly reference the inner
+      function persistently, and documentation is updated that using
+      “once” does not imply automatic de-registration of listener
+      functions.  References: #4794
+
+-------------------------------------------------------------------
 Mon Jul 22 16:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - update to version 1.3.6
@@ -443,7 +618,7 @@ Wed Mar  6 13:27:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Wed Mar  6 10:29:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to versrion 1.3.0:
+- Update to versrion 1.3.0 (bsc#1124593, CVE-2019-7164, CVE-2019-7548):
   * See https://docs.sqlalchemy.org/en/latest/changelog/migration_13.html
     for deprecation list with this version
   * For the changes see https://docs.sqlalchemy.org/en/latest/changelog/changelog_13.html

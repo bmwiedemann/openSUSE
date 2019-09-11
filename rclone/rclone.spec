@@ -18,7 +18,7 @@
 
 
 Name:           rclone
-Version:        1.48.0
+Version:        1.49.2
 Release:        0
 Summary:        Rsync for cloud storage
 License:        MIT

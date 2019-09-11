@@ -1,7 +1,7 @@
 #
 # spec file for package x3270
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch105:       x3270-missing-include.patch
 Patch106:       x3270-missing-file.patch
 Patch107:       reproducible.patch
 Patch108:       mkversion.patch
+Patch109:       x3270-fix-build.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -108,6 +109,7 @@ x026 is a fun toy which emulates an x026 puncher.
 %patch105 -p1
 %patch106 -p1
 %patch107 -p1
+%patch109 -p1
 for d in x3270 c3270 s3270 tcl3270 pr3287 ; do
 (cd $d
 %patch108 -p2

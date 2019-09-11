@@ -12,9 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# workaround for bison bug
+ExcludeArch:    i586 s390x
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -30,7 +33,7 @@ Name:           syslog-ng
 %endif
 %define         syslog_ng_sockets_cfg	%{syslog_ng_rundir}/additional-log-sockets.conf
 
-Version:        3.19.1
+Version:        3.23.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -41,7 +44,6 @@ Source1:        syslog-ng.sysconfig
 Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
-Patch0:         2482.patch
 
 %global		py_ver	 %(rpm -qf %{_bindir}/python3 --qf "%%{version}" | awk -F. '{print $1"."$2}')
 
@@ -57,7 +59,7 @@ Patch0:         2482.patch
 %endif
 
 # missing dependencies on SLES 15
-%if 0%{?sle_version} == 150000 && !0%{?is_opensuse}
+%if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
 %bcond_with	dbi
 %bcond_with	java
 %bcond_with	geoip
@@ -118,7 +120,7 @@ BuildRequires:  libdbi-devel
 %endif
 
 %if %{with java}
-BuildRequires:  java-devel < 1.9
+BuildRequires:  java-devel < 1.11
 %endif
 
 %if %{with python}
@@ -133,7 +135,7 @@ Requires(pre):  user(news)
 Requires(pre):  group(news)
 %endif
 
-Requires:       libevtlog-3_19-0
+Requires:       libevtlog-3_23-0
 
 Obsoletes:      syslog-ng-json
 
@@ -157,11 +159,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_19-0
+%package -n libevtlog-3_23-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_19-0
+%description -n libevtlog-3_23-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -245,7 +247,6 @@ This package provides files necessary for syslog-ng development.
 
 %prep
 %setup -q -n syslog-ng-%{version}
-%patch0 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
@@ -292,6 +293,7 @@ export AM_YFLAGS=-d
 	--datadir="%{_datadir}"	\
 	--without-compile-date			\
 	--enable-ssl				\
+	--disable-native			\
 %if %{with smtp}
         --with-libesmtp=/usr/lib                \
 %endif
@@ -379,7 +381,7 @@ ln -sf %{_sbindir}/syslog-ng %{buildroot}/sbin/
 rm %{buildroot}/usr/bin/update-patterndb
 
 # delete java destination related files
-rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/elasticsearch/
+rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/elasticsearch/plugin.conf
 rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/hdfs/
 rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/kafka/
 
@@ -469,9 +471,9 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_19-0 -p /sbin/ldconfig
+%post -n libevtlog-3_23-0 -p /sbin/ldconfig
 
-%postun -n libevtlog-3_19-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_23-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -489,6 +491,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_bindir}/loggen
 %attr(755,root,root) %{_bindir}/pdbtool
 %attr(755,root,root) %{_bindir}/dqtool
+%attr(755,root,root) %{_bindir}/persist-tool
 %{_mandir}/man5/syslog-ng.conf.5*
 %{_mandir}/man8/syslog-ng.8*
 %{_mandir}/man1/pdbtool.1*
@@ -507,7 +510,6 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/rewrite
 %dir %{_datadir}/syslog-ng/include/scl/syslogconf
 %dir %{_datadir}/syslog-ng/include/scl/system
-%dir %{_datadir}/syslog-ng/include/scl/cim
 %dir %{_datadir}/syslog-ng/include/scl/solaris
 %dir %{_datadir}/syslog-ng/include/scl/mbox/
 %dir %{_datadir}/syslog-ng/include/scl/apache/
@@ -525,6 +527,11 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/sudo/
 %dir %{_datadir}/syslog-ng/include/scl/graylog2/
 %dir %{_datadir}/syslog-ng/include/scl/linux-audit/
+%dir %{_datadir}/syslog-ng/include/scl/websense/
+%dir %{_datadir}/syslog-ng/include/scl/collectd/
+%dir %{_datadir}/syslog-ng/include/scl/netskope/
+%dir %{_datadir}/syslog-ng/include/scl/junos/
+%dir %{_datadir}/syslog-ng/include/scl/checkpoint/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -611,9 +618,14 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/sudo/sudo.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graylog2/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/linux-audit/linux-audit.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/websense/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/collectd/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/netskope/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/junos/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/checkpoint/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_19-0
+%files -n libevtlog-3_23-0
 %{_libdir}/libevtlog-*.so.*
 
 %if %{with curl}
@@ -624,6 +636,8 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/telegram/telegram.conf
 %dir %{_datadir}/syslog-ng/include/scl/slack/
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/slack/slack.conf
+%dir %{_datadir}/syslog-ng/include/scl/elasticsearch/
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/elasticsearch/elastic-http.conf
 
 %endif
 
@@ -659,19 +673,18 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/tools/cfg-grammar.y
 %attr(644,root,root) %{_datadir}/syslog-ng/tools/lex-rules.am
 %attr(755,root,root) %{_datadir}/syslog-ng/tools/system-expand.sh
-%attr(644,root,root) %{_libdir}/libsyslog-ng-native-connector.a
-%attr(644,root,root) %{_libdir}/pkgconfig/syslog-ng-native-connector.pc
 
 %if %{with python}
 
 %files python
 %attr(755,root,root) %{_libdir}/syslog-ng/libmod-python.so
 %defattr(-,root,root)
-/usr/lib/python%{py_ver}/site-packages/syslogng-1.0-py%{py_ver}.egg-info
-%dir /usr/lib/python%{py_ver}/site-packages/syslogng
-%dir /usr/lib/python%{py_ver}/site-packages/syslogng/debuggercli
-/usr/lib/python%{py_ver}/site-packages/syslogng/*
-/usr/lib/python%{py_ver}/site-packages/syslogng/debuggercli/*
+%{_libdir}/syslog-ng/python/syslogng-1.0-py%{py_ver}.egg-info
+%dir %{_libdir}/syslog-ng/python
+%dir %{_libdir}/syslog-ng/python/syslogng
+%dir %{_libdir}/syslog-ng/python/syslogng/debuggercli
+%{_libdir}/syslog-ng/python/syslogng/*
+%{_libdir}/syslog-ng/python/syslogng/debuggercli/*
 
 %endif
 

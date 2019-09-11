@@ -1,7 +1,7 @@
 #
 # spec file for package termcap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ cd ../curses-bsd4.4
 %patch1 -p0
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 mkdir termcap
 ln -sf ../termcap.h termcap/
 make -j1 lib=%{_lib} CC="%{__cc}"

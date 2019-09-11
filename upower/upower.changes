@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  3 15:31:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.99.11:
+  + New Features:
+    - Add code of conduct document.
+    - build: Migrate from intltool to gettext.
+    - rules: Split off HID++ udev rules.
+    - Harden systemd service.
+    - Let systemd create /var/lib/upower.
+    - Move D-Bus policy file to /usr/share/dbus-1/system.d/.
+  + Bug fixes:
+    - Fix endless loop burning 100% CPU on keyboard plugout with
+      external backlight.
+    - linux:
+      . Start polling for unknown device batteries too.
+      . Retry to get a battery type if it's unknown.
+      . Don't treat device batteries like laptop batteries.
+    - Replace use of G_TYPE_INSTANCE_GET_PRIVATE and
+      g_type_class_add_private().
+
+-------------------------------------------------------------------
 Fri Mar 15 17:28:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to source service, so we do not have to deal with ever

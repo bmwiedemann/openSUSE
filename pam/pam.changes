@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Aug 22 20:29:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old $RPM_* shell vars by macros.
+- Avoid unnecessary invocation of subshells.
+- Shorten recipe for constructing securetty contents on s390.
+
+-------------------------------------------------------------------
+Mon Aug 19 14:45:43 CEST 2019 - kukuk@suse.de
+
+- usr-etc-support.patch: Add support for /usr/etc/pam.d
+
+-------------------------------------------------------------------
+Mon Aug 19 13:33:49 CEST 2019 - kukuk@suse.de
+
+- encryption_method_nis.diff: obsolete, NIS clients shouldn't
+  require DES anymore.
+- etc.environment: removed, the sources contain the same
+
+-------------------------------------------------------------------
+Mon Aug 19 11:28:31 UTC 2019 - kukuk@suse.com
+
+- Update to version 1.3.1+git20190807.e31dd6c:
+  * pam_tty_audit: Manual page clarification about password logging
+  * pam_get_authtok_verify: Avoid duplicate password verification
+  * Mention that ./autogen.sh is needeed to be run if you check out the sources from git
+  * pam_unix: Correct MAXPASS define name in the previous two commits.
+  * Restrict password length when changing password
+  * Trim password at PAM_MAX_RESP_SIZE chars
+  * pam_succeed_if: Request user data only when needed
+  * pam_tally2: Remove unnecessary fsync()
+  * Fixed a grammer mistake
+  * Fix documentation for pam_wheel
+  * Fix a typo in the documentation
+  * pam_lastlog: Improve silent option documentation
+  * pam_lastlog: Respect PAM_SILENT flag
+  * Fix regressions from the last commits.
+  * Replace strndupa with strncpy
+  * build: ignore pam_lastlog when logwtmp is not available.
+  * build: ignore pam_rhosts if neither ruserok nor ruserok_af is available.
+  * pam_motd: Cleanup the code and avoid unnecessary logging
+  * pam_lastlog: Limit lastlog file use by LASTLOG_UID_MAX option in login.defs.
+  * Move the duplicated search_key function to pam_modutil.
+  * pam_unix: Use pam_syslog instead of helper_log_err.
+  * pam_unix: Report unusable hashes found by checksalt to syslog.
+  * Revert "pam_unix: Add crypt_default method, if supported."
+  * pam_unix: Add crypt_default method, if supported.
+  * Revert part of the commit 4da9febc
+  * pam_unix: Add support for (gost-)yescrypt hashing methods.
+  * pam_unix: Fix closing curly brace. (#77)
+  * pam_unix: Add support for crypt_checksalt, if libcrypt supports it.
+  * pam_unix: Prefer a gensalt function, that supports auto entropy.
+  * pam_motd: Fix segmentation fault when no motd_dir specified (#76)
+  * pam_motd: Support multiple motd paths specified, with filename overrides (#69)
+  * pam_unix: Use bcrypt b-variant for computing new hashes.
+  * pam_tally, pam_tally2: fix grammar and spelling (#54)
+  * Fix grammar of messages printed via pam_prompt
+  * pam_stress: do not mark messages for translation
+  * pam_unix: remove obsolete _UNIX_AUTHTOK, _UNIX_OLD_AUTHTOK, and _UNIX_NEW_AUTHTOK macros
+  * pam_unix: remove obsolete _unix_read_password prototype
+
+-------------------------------------------------------------------
 Thu May  2 23:55:30 CEST 2019 - sbrabec@suse.com
 
 - Add virtual symbols for login.defs compatibility (bsc#1121197).

@@ -18,16 +18,15 @@
 
 Name:           libt3highlight
 %define lname	libt3highlight2
-Version:        0.4.6
+Version:        0.4.8
 Release:        0
 Summary:        The Tilde Toolkit's syntax highlighting library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://os.ghalkes.nl/t3/libt3highlight.html
+URL:            https://os.ghalkes.nl/t3/libt3highlight.html
 
 #Git-Clone:	git://github.com/gphalkes/t3highlight
-Source:         http://os.ghalkes.nl/dist/%name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
@@ -70,7 +69,7 @@ highlighting different types of text files.
 This subpackage contains the T3 highlighting utility.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CC=gcc
@@ -86,13 +85,11 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -p /sbin/ldconfig -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libt3highlight.so.2*
-%doc COPYING
 %_datadir/%lname/
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/t3/
 %_libdir/libt3highlight.so
 %_libdir/pkgconfig/libt3highlight.pc
@@ -100,7 +97,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %exclude %_docdir/%name/COPYING
 
 %files utils
-%defattr(-,root,root)
 %_bindir/t3*
 %_mandir/man1/t3*.1*
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 12:34:00 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add mailsync-gcc9.diff to fix build in Factory
+
+-------------------------------------------------------------------
 Mon Jul  3 18:18:54 UTC 2017 - mpluskal@suse.com
 
 - Cleanup with spec-cleaner:

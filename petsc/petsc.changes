@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 21 08:20:23 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 3.11.3
+  - https://www.mcs.anl.gov/petsc/documentation/changes/311.html
+  - Binaries have changed path from bin/ to lib/petsc/bin/
+- Patches removed, merged by upstream
+  * Python-Fix-a-number-of-scripts-to-by-Python-3-compliant.patch
+  * petsc-fix-nonmpi.patch
+- Patches refreshed
+  * petsc-3.3-p2-fix-shared-libs-sonames.patch
+  * petsc-3.3-p2-no-rpath.patch
+  * petsc-3.3-p2-dont-check-for-option-mistakes.patch
+  * petsc-3.3-fix-error-detection-in-makefile.patch
+  * petsc-3.7-fix-pastix-detection.patch
+- Set -fPIC also on x86_64
+
+-------------------------------------------------------------------
 Fri Jul 19 16:15:44 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Upped memory constraints to 6G for non-ppc systems as well,

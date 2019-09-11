@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sassc
-Version:        2.0.1
+Version:        2.2.0
 Release:        0
 %define mod_name sassc
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ Release:        0
 BuildRequires:  gcc-c++
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.3.3}
+BuildRequires:  %{rubydevel >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 Url:            https://github.com/sass/sassc-ruby

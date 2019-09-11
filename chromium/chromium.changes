@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:52:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 76.0.3809.132 bsc#1149143 CVE-2019-5869:
+  * CVE-2019-5869: Use-after-free in Blink
+  * Various fixes from internal audits, fuzzing and other initiatives
+- Refresh patch chromium-76-gcc-ambiguous-nodestructor.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 17:44:00 UTC 2019 - Jan Ritzerfeld <suse@bugs.jan.ritzerfeld.org>
+
+- Added patch chromium-vaapi-fix.patch to fix boo#1146219
+
+-------------------------------------------------------------------
 Mon Aug 12 10:25:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 76.0.3809.100 bsc#1145242:

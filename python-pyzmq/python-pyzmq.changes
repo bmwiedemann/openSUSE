@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 25 17:54:53 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 18.1.0:
+  * Compatibility with Python 3.8 release candidate by regenerating
+    Cython courses with Cython 0.29.13
+  * bump bundled libzmq to 4.3.2
+  * handle cancelled futures in asyncio
+  * make :meth:`zmq.Context.instance` fork-safe
+  * fix errors in :meth:`zmq.Context.destroy` when opening and closing
+    many sockets
+
+-------------------------------------------------------------------
 Sat Jul  6 21:31:05 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 18.0.2:

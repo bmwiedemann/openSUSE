@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -245,6 +245,7 @@ popd
 %patch51 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # This package failed when testing with -Wl,-as-needed being default.
 # So we disable it here, if you want to retest, just delete this comment and the line below.
 export SUSE_ASNEEDED=0

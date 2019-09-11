@@ -1,7 +1,7 @@
 #
 # spec file for package bwm-ng
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bwm-ng
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Realtime Bandwidth Monitor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://www.gropp.org/?id=projects&sub=bwm-ng
+URL:            https://www.gropp.org/?id=projects&sub=bwm-ng
 Source0:        https://github.com/vgropp/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
-Patch1:         bwm-ng-fix_gcc7_inline.patch
-%if 0%{?suse_version}
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-%endif
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  glibc-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libstatgrab-devel >= 0.91
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  net-tools
-#BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Bandwidth Monitor NG is a small and simple console-based live bandwidth monitor
-for Linux, BSD, Solaris, Mac OS X and others.
+Bandwidth Monitor NG is a console-based live bandwidth monitor.
 
-Short list of features:
 - supports /proc/net/dev, netstat, getifaddr, sysctl, kstat and libstatgrab
 - unlimited number of interfaces supported
 - interfaces are added or removed dynamically from list
@@ -56,13 +46,12 @@ Short list of features:
 
 %prep
 %setup -q -a 1
-%patch1
 
 %build
 autoreconf -fi
 
 %configure \
-%ifarch amd64 x86_64 ia32e ppc64 s390x
+%ifarch x86_64 ppc64 s390x
 	--enable-64bit \
 %endif
 	--enable-configfile \
@@ -92,13 +81,9 @@ done
 # install Desktop file
 install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
-
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS bwm-ng.css bwm-ng.conf-example
+%doc AUTHORS ChangeLog NEWS README THANKS bwm-ng.css bwm-ng.conf-example
+%license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_datadir}/applications/%{name}.desktop

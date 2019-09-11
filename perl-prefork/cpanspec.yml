@@ -7,8 +7,8 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  fix-build.diff: -p1
+#patches:
+#  fix-build.diff: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

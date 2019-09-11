@@ -18,21 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testinfra
-Version:        3.0.6
+Version:        3.1.0
 Release:        0
-Summary:        Test infrastructures
+Summary:        Python module to test infrastructures
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://github.com/philpep/testinfra
 Source:         https://files.pythonhosted.org/packages/source/t/testinfra/testinfra-%{version}.tar.gz
-BuildRequires:  ansible > 2.8
-BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pywinrm}
 BuildRequires:  %{python_module salt}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4}
+BuildRequires:  ansible > 2.8
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -41,12 +40,12 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-With Testinfra you can write unit tests in Python to test actual state of
-your servers configured by managements tools like Salt, Ansible, Puppet,
-Chef and so on.
+With Testinfra, one can write unit tests in Python to test the actual
+state of servers configured by managements tools like Salt, Ansible,
+Puppet, Chef and so on.
 
-Testinfra aims to be a Serverspec equivalent in python and is written as
-a plugin to the Pytest test engine
+Testinfra is like a Serverspec equivalent in Python, and is written
+as a plugin to the Pytest test engine.
 
 %prep
 %setup -q -n testinfra-%{version}

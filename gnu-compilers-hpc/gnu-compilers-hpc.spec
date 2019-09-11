@@ -31,8 +31,20 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %endif
 
+%if "%flavor" == "gnu6-hpc"
+%define c_f_ver 6
+%endif
+
 %if "%flavor" == "gnu7-hpc"
 %define c_f_ver 7
+%endif
+
+%if "%flavor" == "gnu8-hpc"
+%define c_f_ver 8
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%define c_f_ver 9
 %endif
 
 # Keep in sync with macros.hpc-gnu
@@ -45,6 +57,7 @@ ExclusiveArch:  do_not_build
                     [ ${HPC_CF_FULL_VERSION%%%%.*} -lt 5 ] && \
                     echo ${HPC_CF_FULL_VERSION%%.*} || \
                     echo ${HPC_CF_FULL_VERSION%%%%.*} )
+%global hpc_prov_version %{!?c_f_ver:%(var=%hpc_gnu_dep_version; echo ${var/./_})}
 %global hpc_gnu_pack_version %{?c_f_ver}
 %if 0%{!?leap_version:1} && 0%{!?sle_version:1}
 %global hpc_rolling_release_version %(echo %hpc_gnu_dep_version | tr -d '.')
@@ -67,6 +80,9 @@ Source3:        _multibuild
 BuildRequires:  gcc%{?c_f_ver}
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
+%{!?c_f_ver: #
+Provides:       %{compiler_family}%{?hpc_prov_version}-compilers-hpc = %version-%release
+}
 Requires:       lua-lmod
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -80,6 +96,9 @@ Provides HPC-compatible setup and configuration for the GNU compiler toolchain.
 Summary:        Devel package for HPC GNU compiler environment
 Group:          Development/Tools/Other
 BuildArch:      noarch
+%{!?c_f_ver: #
+Provides:       %{compiler_family}%{?hpc_prov_version}-compilers-hpc-devel = %version-%release
+}
 Requires:       %{name} = %{version}
 Requires:       gcc%{hpc_cf_pack_version} 
 Requires:       gcc%{hpc_cf_pack_version}-c++ 
@@ -99,6 +118,9 @@ Group:          Development/Tools/Other
 Provides:       %{pname}-hpc-macros-devel = %{version}
 Conflicts:      otherproviders(%{pname}-hpc-macros-devel)
 BuildArch:      noarch
+%{!?c_f_ver: #
+Provides:       %{compiler_family}%{?hpc_prov_version}-compilers-hpc-macros-devel = %version-%release
+}
 Requires:       %{name}-devel = %{version}
 
 %description macros-devel
@@ -107,6 +129,10 @@ Provides macros for building HPC compliant RPM with the GNU compiler toolchain.
 %prep
 
 %build
+echo "hpc_gnu_full_version: %hpc_gnu_full_version"
+echo "hpc_gnu_dep_version: %hpc_gnu_dep_version"
+echo "hpc_gnu_bin_version: %hpc_gnu_bin_version"
+%{!?c_f_ver:echo "hpc_prov_version: %hpc_prov_version"}
 
 %{__cat} <<EOF > %{meta}
 %{name}-devel is a meta package to ensure installation of the 

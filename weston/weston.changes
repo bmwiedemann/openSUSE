@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 24 04:06:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7
+  * New internal debug scopes and logging framework
+  * Improved documentation
+  * HDCP support
+  * A new PipeWire plugin
+
+-------------------------------------------------------------------
 Mon Jul 22 14:08:32 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Enable simple-dmabuf-drm=intel option only on x86* since it 
+- Enable simple-dmabuf-drm=intel option only on x86* since it
   requires libdrm_intel, only available on x86*
 
 -------------------------------------------------------------------
@@ -163,34 +172,34 @@ Tue Mar 10 12:04:57 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.7.0
   * Improve the look of shadows for small (<128 pixel wide or high)
-    clients.  This resulted in observable dark lines in menus with 
+    clients.  This resulted in observable dark lines in menus with
     fewer than 3 items.
   * A handful of fixes for xwm/Xwayland oddities, including better
-    handling of popups/tooltips that to be top level, and better 
-    sizing of fullscreened X apps to not include the border in 
+    handling of popups/tooltips that to be top level, and better
+    sizing of fullscreened X apps to not include the border in
     their height and
     width calculations.
   * An optimization to gl-renderer reduces the geometry needed for
     representing complex scenes, by utilizing pixman's y-x banded
     rectangles.
-  * Memory allocation is cleaned up and standardized internally, to 
-    better demonstrate best practices in avoiding common leaks and 
+  * Memory allocation is cleaned up and standardized internally, to
+    better demonstrate best practices in avoiding common leaks and
     crashes.
   * Doubleclicking on a window title bar now maximizes it.
-  * Several fixes to glitches found during mode switching or 
-    restoring back to native.  And refactor the mode switching code 
-    into several specialized routines, so further mode switch 
+  * Several fixes to glitches found during mode switching or
+    restoring back to native.  And refactor the mode switching code
+    into several specialized routines, so further mode switch
     handling can be done more flexibly.
-  * Fix logind-util to do DRM-device synchronization only on DRM, 
-    and to pass the Activate signal immediately for other 
+  * Fix logind-util to do DRM-device synchronization only on DRM,
+    and to pass the Activate signal immediately for other
     compositor backends.
-  * Fix a couple problematic tests in the testsuite to skip in 
+  * Fix a couple problematic tests in the testsuite to skip in
     situations they're always going to fail.
-  * Fix hang when closing the output if colord plugin is enabled 
-    due to an incorrect GMutex value in the mutex lock output 
+  * Fix hang when closing the output if colord plugin is enabled
+    due to an incorrect GMutex value in the mutex lock output
     notifier handler.
-  * Multiple keyboard and pointer button events are better 
-    handled; we only forward the first and less press and 
+  * Multiple keyboard and pointer button events are better
+    handled; we only forward the first and less press and
     release events, and suppress extraneous ones.
 
 -------------------------------------------------------------------

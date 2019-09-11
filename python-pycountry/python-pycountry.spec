@@ -26,6 +26,8 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/pycountry/
 Source:         https://pypi.io/packages/source/p/%{real_name}/%{real_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pycountry-19.7.15-fix-reading-description.patch buschmann23@opensuse.org -- fix wrong enconding
+Patch0:         pycountry-19.7.15-fix-reading-description.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,6 +47,7 @@ Translation files for the various strings are included as well.
 
 %prep
 %setup -q -n %{real_name}-%{version}
+%patch0 -p1
 
 %build
 %python_build

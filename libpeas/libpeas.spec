@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -59,7 +59,6 @@ Summary:        GObject-based Plugin Engine
 # We provide %%{name} to make the lang package installable
 Group:          System/Libraries
 Recommends:     %{name}-lang
-Recommends:     %{name}-loader-python
 Recommends:     %{name}-loader-python3
 Provides:       %{name} = %{version}
 # The gjs loader is officially no longer supported upstream (removed from git).

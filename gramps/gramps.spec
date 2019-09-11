@@ -13,13 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -28,6 +28,8 @@ Url:            http://www.gramps-project.org/
 Source:         https://github.com/gramps-project/gramps/archive/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gramps-no-translations-check.patch boo#941490 dimstar@opensuse.org -- Do not warn on missing translations
 Patch0:         gramps-no-translations-check.patch
+# PATCH-FIX-UPSTREAM gramps-5.1.0-remove_false_nonrelease_warning.patch gramps-bug#11274 schubert.seb@gmail.com -- Remove false non-release warning
+Patch1:         gramps-5.1.0-remove_false_nonrelease_warning.patch
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
@@ -47,6 +49,8 @@ Recommends:     graphviz
 Recommends:     ghostscript
 Recommends:     python3-Pillow
 Recommends:     python3-PyICU
+# python3-fontconfig is required for the Genealogical Symbols option; currently no package available
+#Recommends:     python3-fontconfig
 Suggests:       python3-networkx
 Suggests:       python3-pygraphviz
 Suggests:       python3-numpy
@@ -64,6 +68,7 @@ organized, searchable and as precise as you need it to be.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 python3 setup.py build

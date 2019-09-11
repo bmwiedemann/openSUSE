@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:24:13 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Move texindex.awk to package texinfo as texindex(1) is part of
+  and use this awk script
+
+-------------------------------------------------------------------
+Tue Aug 27 13:52:33 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Port the texinfo-zlib.patch to new version 6.6 to solve build problems 
+
+-------------------------------------------------------------------
+Tue Aug 27 07:03:03 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.6:
+  * Language:
+    . new commands @&, @ampchar{}
+    . @cropmarks command removed
+    . @ctrl is no longer recognised (it was a way to insert literal
+      control characters in Info files, but deprecated since the
+      time of Texinfo version 2)
+    . \usebracesinindexestrue is no longer recommended for using braces in
+      index entries, and has been a no-op for some time
+  * texi2any
+    . extension modules fixed to work with the "thread-safe locales" of
+      Perl 5.28 and newer
+    . some code changed to stop warnings being given by newer versions of Perl
+    . for HTML output, use `id' to define link targets instead of the `name'
+      attribute on <a>
+    . A native-code implementation of the Texinfo parser has been included
+      on an experimental basis, which makes texi2any a lot faster.  Set the
+      `TEXINFO_XS_PARSER' environment variable to 1 to use.
+    . changes to HTML output:
+      . omit colon after node name in menus by default (use
+        `MENU_ENTRY_COLON' to add it back)
+      . no special CSS for commands like @smallexample
+      . new customization variable `SECTION_NAME_IN_TITLE' to use the
+        section name as the document <title>
+      . use section names instead of node names in generated menus
+    . pass on flags set with -D to TeX
+    . useless static libraries are not installed
+    . the newline after an @insertcopying is not output
+    . warning given for @multitable prototypes not in braces
+    . @indent and @noindent are not allowed inside the arguments to
+      commands where they are not meaningful
+    . @quote-arg and @allow-recursion are not recognised (these two used
+      to be recognised by makeinfo in macro definitions but were never
+      implemented in texinfo.tex)
+    . `FIX_TEXINFO' removed as a customization variable
+    . do not recognise or warn about obsolete customization variables
+  * info
+    . debugging output with -x is not diverted to a separate infodebug file
+  * Development:
+    . switch from Subversion to git
+      - https://savannah.gnu.org/git/?group=texinfo
+    . automake 1.16
+- Drop no longer needed patch:
+  * perl-5.28-fixes.patch
+
+-------------------------------------------------------------------
 Tue Dec 11 11:49:21 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update perl-5.28-fixes.patch: Update locale handling for Perl 5.28.

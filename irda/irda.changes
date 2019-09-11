@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 26 22:15:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add irda-fix_build_with_recent_kernels.diff
+
+-------------------------------------------------------------------
 Thu Nov 23 13:40:12 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

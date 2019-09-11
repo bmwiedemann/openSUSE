@@ -21,12 +21,12 @@
 %define libsoname %{name}20
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://directory.fsf.org/wiki/Libgcrypt
+URL:            https://directory.fsf.org/wiki/Libgcrypt
 Source:         ftp://ftp.gnupg.org/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2
 Source1:        ftp://ftp.gnupg.org/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
@@ -70,6 +70,7 @@ BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.25
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 
 %description
 Libgcrypt is a general purpose library of cryptographic building
@@ -222,6 +223,7 @@ mv %{buildroot}%{_bindir}/drbg_test %{buildroot}%{cavs_dir}
 %{_libdir}/%{name}.so
 %{_includedir}/gcrypt*.h
 %{_datadir}/aclocal/%{name}.m4
+%{_libdir}/pkgconfig/libgcrypt.pc
 
 %if 0%{?separate_hmac256_binary}
 %files hmac256

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-vpn
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/yast/yast-vpn
 Source0:        %{name}-%{version}.tar.bz2
@@ -29,8 +29,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-ruby-bindings
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 PreReq:         %fillup_prereq
 Requires:       yast2

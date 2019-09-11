@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:53:31 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Thu May  9 12:54:52 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop unused BuildRequires: zip+unzip

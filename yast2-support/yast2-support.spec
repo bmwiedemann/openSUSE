@@ -20,7 +20,7 @@ Name:           yast2-support
 Summary:        YaST2 - Support Inquiries
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/yast/yast-support
 
@@ -29,7 +29,7 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 BuildArch:      noarch
 

@@ -21,16 +21,16 @@
 %define libname libQt5DataVisualization5
 
 Name:           libqt5-qtdatavis3d
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt5 Data Visualization 3D
 License:        GPL-3.0
 Group:          Development/Libraries/X11
 Url:            http://doc.qt.io/qt-5/qtdatavisualization-index.html
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtdatavis3d-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtdatavis3d-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
 BuildRequires:  fdupes

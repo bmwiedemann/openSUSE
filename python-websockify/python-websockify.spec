@@ -18,47 +18,33 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-websockify
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        WebSocket to TCP proxy/bridge
 License:        LGPL-3.0-only AND MPL-2.0 AND BSD-2-Clause AND BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/novnc/websockify
 Source:         https://github.com/novnc/websockify/archive/v%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM u_Add-support-for-inetd.patch fate#323880 msrb@suse.com -- https://github.com/novnc/websockify/pull/293
-Patch1:         u_Add-support-for-inetd.patch
-# PATCH-FEATURE-UPSTREAM u_Fix-inetd-mode-on-python-2.patch fate#323880 msrb@suse.com -- https://github.com/novnc/websockify/pull/293
-Patch2:         u_Fix-inetd-mode-on-python-2.patch
-# PATCH-FEATURE-ALMOST-UPSTREAM u_added_jwt_tokens_capability.patch fate#325762 cbosdonnat@suse.com -- https://github.com/novnc/websockify/pull/372
-Patch3:         u_added_jwt_tokens_capability.patch
-# PATCH-FIX-OPENSUSE PyJWT-token-plugin.patch fate#325762 cbosdonnat@suse.com -- use PyJWT if jwcrypto is missing
-Patch4:         PyJWT-token-plugin.patch
-# PATCH-FROM-UPSTREAM:
-Patch5:         fix-tests-py3.6.patch
-BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module mox3}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
-Requires:       python-numpy
+BuildRequires:  %{python_module simplejson}
 BuildRequires:  fdupes
+BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
+Requires:       python-numpy
 Requires:       python-setuptools
-Requires:       python-websockify-common = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version}
-# SLES 12 and up to 15SP1 doesn't have python-jwcrypto package and will fallback to
-# the PyJWT implementation. However opensuse has jwcrypto since 42.3: use this one
-# since it also provides support for JWE (encrypted JWT).
-%if 0%{?sle_version}
-Recommends:     python-PyJWT
-Recommends:     python-cryptography
-%else
 Recommends:     python-jwcrypto
-%endif
+Recommends:     python-redis
+Recommends:     python-simplejson
 %endif
 %python_subpackages
 
@@ -89,16 +75,8 @@ This package contains common files.
 
 %prep
 %setup -q -n websockify-%{version}
-%autopatch -p1
-
 # remove unwanted shebang
-sed -i '1 { /^#!/ d }' websockify/websocket*.py
-# drop unneeded executable bit
-chmod -x include/web-socket-js/web_socket.js
-# fix mox3 import
-sed -e 's:import stubout:from mox3 import stubout:g' \
-    -i tests/test_websocketproxy.py \
-    -i tests/test_websocket.py
+sed -i '1 { /^#!/ d }' websockify/websock*.py
 
 %build
 %python_build
@@ -118,13 +96,9 @@ sed -e 's:import stubout:from mox3 import stubout:g' \
 %python_uninstall_alternative websockify
 
 %files %{python_files}
-%license LICENSE.txt
+%license COPYING
 %doc CHANGES.txt README.md
 %python_alternative %{_bindir}/websockify
 %{python_sitelib}/*
-
-%files -n python-websockify-common
-%license LICENSE.txt
-%{_datadir}/websockify
 
 %changelog

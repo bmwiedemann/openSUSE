@@ -1,7 +1,7 @@
 #
 # spec file for package lmms
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,30 +20,39 @@
 %global __requires_exclude_from ^%{_libdir}/lmms/.*\\.so$
 %bcond_without  carla
 %bcond_without  crippled_stk
+#Vst plugins need wine but this causes build failure.
+%bcond_with     wine
+#This is only needed because 1.2.0rc was used. Remove with next sane update (See also prep)
+%define rversion 1.2.0
 Name:           lmms
-Version:        1.2.0rc7+git20180925.a2685c1cc
+Version:        1.2.0.9
 Release:        0
 Summary:        Linux MultiMedia Studio
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://lmms.io/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{rversion}.tar.xz
 # PATCH-FIX-OPENSUSE Patch for providing proper return code in a function
-Patch0:         lmms-1.1.0-return.patch
+Patch0:         lmms-1.2.0-return.patch
+%if %{with crippled_stk}
 # PATCH-FIX-OPENSUSE Some parts cannot be build because stk misses some files due to legal issues (bnc#761147)
 Patch1:         lmms-1.2.0-crippled_stk.patch
-# PATCH-FIX-UPSTREAM Fix fluidsynth sf2 player compilation, backport from git (gh#LMMS/lmms#4678)
-Patch2:         lmms-fluidsynth.patch
+%endif
 # PATCH-FIX-UPSTREAM Fix plugin library search path, testing an upstream proposal
 Patch3:         lmms-1.2.0-libdir.patch
+#Patches From git fixes after 1.2.0 release
+Patch4:         0001-Update-.mailmap-5037.patch
+Patch5:         0001-Better-French-translations-in-the-menu-item-file-471.patch
+Patch6:         0001-Fix-invalid-MIDI-Program-Change-decoding-5154.patch
+Patch7:         0001-Make-splash-screen-text-white-5149.patch
+Patch8:         0001-show-BBEditor-on-clicking-the-TrackLabelButton-5060.patch
 
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fltk-devel
-BuildRequires:  fluidsynth
-BuildRequires:  gcc-c++-32bit
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libmp3lame-devel
@@ -51,9 +60,6 @@ BuildRequires:  libqt5-qttools
 BuildRequires:  libstk-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
-BuildRequires:  wine
-BuildRequires:  wine-devel
-BuildRequires:  wine-devel-32bit
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
@@ -76,7 +82,13 @@ BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     wine
+%if %{with wine}
+BuildRequires:  gcc-c++-32bit
+BuildRequires:  wine
+BuildRequires:  wine-devel
+BuildRequires:  wine-devel-32bit
+Suggests:       wine
+%endif
 ExclusiveArch:  x86_64
 %if %{with carla}
 # also needed (contains libcarla_standalone2 library)
@@ -99,21 +111,22 @@ Headers that provide access to the LMMS features. Install it if you plan to
 create a LMMS plugin.
 
 %prep
-%setup -q
-%patch0 -p1
-%if %{with crippled_stk}
-%patch1 -p1
-%endif
-%patch2 -p1
-%patch3 -p1
+%setup -q -n %{name}-%{rversion}
+%autopatch -p1
 
 %build
 %cmake \
+%if %{with wine}
+  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -D__WIDL_objidl_generated_name_0000000C=""" \
+%else
+  -DWANT_VST_NOWINE:BOOL=ON \
+%endif
   -DWANT_QT5=ON \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
+  -DCMAKE_EXE_LINKER_FLAGS:STRING="$LDFLAGS -pie" \
   -DCMAKE_SKIP_RPATH=OFF \
   -Wno-dev
-%make_jobs
+%make_jobs || make
 
 %install
 %cmake_install

@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,6 @@ Group:          Productivity/Networking/DNS/Servers
 Version:        2.80
 Release:        0
 Provides:       dns_daemon
-PreReq:         /usr/sbin/useradd /bin/mkdir
 Url:            http://www.thekelleys.org.uk/dnsmasq/
 Source0:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz
 Source1:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz.asc
@@ -34,6 +33,8 @@ Source5:        rc.dnsmasq-suse
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
 Patch1:         0001-fix-build-after-y2038-changes-in-glibc.patch
+# PATCH-FIX-UPSTREAM -- http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commit;h=ab73a746a0d6fcac2e682c5548eeb87fb9c9c82e
+Patch2:         Fix-build-with-libnettle-3.5.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
@@ -42,11 +43,9 @@ BuildRequires:  libnettle-devel
 BuildRequires:  lua-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libnetfilter_conntrack)
-Requires(pre):  group(nogroup)
-%if 0%{?suse_version} >= 1210
 BuildRequires:  pkgconfig(systemd)
-%endif
 Requires(pre):  group(nogroup)
+Requires(pre):  /usr/sbin/useradd
 
 %description
 Dnsmasq provides network infrastructure for small networks: DNS,
@@ -69,6 +68,7 @@ server's leases.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies
@@ -82,7 +82,7 @@ sed -i -e 's|\(PREFIX *= *\)/usr/local|\1/usr|;
 	   s|$(LDFLAGS)|$(CFLAGS) $(LDFLAGS)|' \
 	Makefile
 
-# use lua5.3 instead of lua5.3
+# use lua5.3 instead of lua5.2
 sed -i -e 's|lua5.2|lua5.3|' Makefile
 
 # SED-FIX-UPSTREAM -- Fix man page
@@ -170,7 +170,6 @@ rm -rf contrib/MacOSX-launchd
 %find_lang %{name} --with-man
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %license COPYING COPYING-v3
 %doc CHANGELOG FAQ doc.html setup.html dnsmasq.conf.example contrib dbus
 %config(noreplace) %{_sysconfdir}/dnsmasq.conf
@@ -187,7 +186,6 @@ rm -rf contrib/MacOSX-launchd
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
 
 %files utils
-%defattr(-,root,root,-)
 %{_bindir}/dhcp_*
 %{_mandir}/man1/dhcp_*
 

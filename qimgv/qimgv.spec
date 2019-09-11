@@ -17,28 +17,37 @@
 
 
 Name:           qimgv
-Version:        0.7.3
+Version:        0.8.2
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/easymodo/qimgv
 Source0:        https://github.com/easymodo/qimgv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE qimgv-nosharedlib.patch # aloisio@gmx.com build helper library statically
+Patch0:         qimgv-nosharedlib.patch
 BuildRequires:  cmake
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc8-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
+BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(mpv) >= 1.22.0
 
 %description
 Qt5 image viewer with webm support.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+export CXX=g++
+test -x "$(type -p g++-8)" && export CXX=g++-8
 %cmake
 make %{?_smp_mflags}
 

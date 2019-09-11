@@ -38,6 +38,15 @@ Patch1:         SDL_sdl_endian.patch
 Patch2:         sdl-lfs.patch
 Patch3:         libsdl-1.2.15-resizing.patch
 Patch4:         SDL-1.2.15-Use-system-glext.h.patch
+Patch5:         CVE-2019-7577.patch
+Patch6:         CVE-2019-7575.patch
+Patch7:         CVE-2019-7574.patch
+Patch8:         CVE-2019-7572.patch
+Patch9:         CVE-2019-7578.patch
+Patch10:        CVE-2019-7635.patch
+Patch11:        CVE-2019-7636.patch
+Patch12:        CVE-2019-7637.patch
+Patch13:        CVE-2019-13616.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  nasm
@@ -100,12 +109,7 @@ This package contains files needed for development with the SDL
 library.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch -P 3 -p1
-%patch4 -p1
+%autosetup -p1
 # remove the file to provide sufficient evidence that we are
 # not using this file during the build [bnc#508111]
 rm -f src/joystick/darwin/10.3.9-FIX/IOHIDLib.h
@@ -132,6 +136,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
+rm "%buildroot/%_libdir"/libSDLmain.a
 sed -i -e '/^Libs.private/d' "%buildroot/%_libdir/pkgconfig/sdl.pc"
 
 %post   -n %lname -p /sbin/ldconfig
@@ -148,7 +153,6 @@ sed -i -e '/^Libs.private/d' "%buildroot/%_libdir/pkgconfig/sdl.pc"
 %doc docs/index.html docs/html/ docs/images/
 %_bindir/sdl-config
 %_libdir/libSDL.so
-%_libdir/libSDLmain.a
 %_includedir/SDL/
 %_datadir/aclocal/
 %_mandir/man3/*.3*

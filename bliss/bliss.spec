@@ -1,7 +1,7 @@
 #
 # spec file for package bliss
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           bliss
 Version:        0.73
 Release:        0
 Summary:        A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Productivity/Scientific/Math
-Url:            http://www.tcs.hut.fi/Software/bliss/
+URL:            http://www.tcs.hut.fi/Software/bliss/
 
 Source:         http://www.tcs.hut.fi/Software/bliss/%name-%version.zip
 Patch1:         bliss-am.diff
@@ -33,7 +33,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 bliss is a tool for computing automorphism groups and canonical forms
@@ -61,8 +60,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of the Bliss library.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -77,17 +75,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING*
+%license COPYING*
 %_bindir/bliss*
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libbliss-0.73.so
 %_libdir/libbliss_gmp-0.73.so
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libbliss.so
 %_libdir/libbliss_gmp.so
 %_includedir/bliss/

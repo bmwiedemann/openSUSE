@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Source:         http://downloads.webmproject.org/releases/webp/%name-%version.ta
 Source2:        http://downloads.webmproject.org/releases/webp/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  freeglut-devel
 BuildRequires:  giflib-devel
 BuildRequires:  libjpeg-devel
@@ -129,7 +128,7 @@ developers can use WebP to compress, archive and distribute digital
 images more efficiently.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static \
@@ -149,40 +148,31 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n libwebpmux3 -p /sbin/ldconfig
 %post   -n libwebpdecoder3 -p /sbin/ldconfig
 %postun -n libwebpdecoder3 -p /sbin/ldconfig
-%if %{with extras}
 %post   -n libwebpextras0 -p /sbin/ldconfig
 %postun -n libwebpextras0 -p /sbin/ldconfig
-%endif
 
 %files -n libwebp-tools
-%defattr(-,root,root)
 %_bindir/*
 %_mandir/man*/*
 
 %files -n libwebp7
-%defattr(-,root,root)
 %_libdir/libwebp.so.*
 
 %files -n libwebpdemux2
-%defattr(-,root,root)
 %_libdir/libwebpdemux.so.*
 
 %files -n libwebpmux3
-%defattr(-,root,root)
 %_libdir/libwebpmux.so.*
 
 %files -n libwebpdecoder3
-%defattr(-,root,root)
 %_libdir/libwebpdecoder.so.*
 
 %if %{with extras}
 %files -n libwebpextras0
-%defattr(-,root,root)
 %_libdir/libwebpextras.so.*
 %endif
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libwebp*.so
 %_includedir/webp/
 %_libdir/pkgconfig/libwebp*.pc

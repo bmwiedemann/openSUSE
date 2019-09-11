@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 26 04:44:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream release 4.1.1
+  * Implemented IRCv3.2 enhanced capability negotiation
+    ("CAP LS 302").
+  * Implemented support for receiving and sending IRCv3 message
+    tags.
+  * Implemented IRCv3.2 capabilities: account-tag, echo-message,
+    invite-notify, sasl, server-time.
+  * Feature from ircd-seven: Implement a channel mode that
+    disallows kicking IRC operators (+M).
+  * DNS, ident, and blacklist lookups have been moved to a
+    dedicated daemon known as authd. Some cosmetic changes to
+    blacklist statistics and rejection notices have resulted.
+  * Support for WebSocket has been added.
+  * Added the ability to strip color codes from topics
+    unconditionally.
+  * SCTP is now supported for server and user connections.
+- Remove charybdis-ratbox.diff, charybdis-werror.diff (no longer
+  needed), charybdis-repro.diff (solved differently upstream).
+
+-------------------------------------------------------------------
 Tue Jan 10 12:49:32 UTC 2017 - jengelh@inai.de
 
 - Add charybdis-repro.diff, throw out buildtime-dependent

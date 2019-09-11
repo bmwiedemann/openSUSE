@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbfread
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Test directories messed up by python_expand
-%bcond_without  test
 Name:           python-dbfread
 Version:        2.0.7
 Release:        0
 Summary:        DBF file reader for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/olemb/dbfread
+URL:            https://github.com/olemb/dbfread
 Source:         https://files.pythonhosted.org/packages/source/d/dbfread/dbfread-%{version}.tar.gz
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-%endif
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,17 +48,10 @@ batch jobs and one-off scripts.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-rm -rf build
-rm -rf _build.*
-%{python_expand rm -rf build
-py.test-%{$python_bin_suffix}
-}
-%endif
+%pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*

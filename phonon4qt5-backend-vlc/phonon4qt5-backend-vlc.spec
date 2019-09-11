@@ -17,25 +17,24 @@
 
 
 %define filename phonon-backend-vlc
-%define _phonon4qt5_version 4.7.0
+%define _phonon4qt5_version 4.10.60
+%bcond_without lang
 Name:           phonon4qt5-backend-vlc
-Version:        0.10.3
+Version:        0.11.0
 Release:        0
 Summary:        Phonon VLC Backend
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://phonon.kde.org/
 Source:         https://download.kde.org/stable/phonon/%{filename}/%{version}/%{filename}-%{version}.tar.xz
-BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  kf5-filesystem
-BuildRequires:  pkgconfig
 BuildRequires:  vlc-devel >= 2.1.0
+BuildRequires:  cmake(Phonon4Qt5) >= %{_phonon4qt5_version}
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(phonon4qt5) >= %{_phonon4qt5_version}
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       libphonon4qt5 >= %{_phonon4qt5_version}
 Requires:       vlc-noX >= %( echo `rpm -q --queryformat '%%{VERSION}' vlc-devel`)
 Conflicts:      vlc-noX > %( echo `rpm -q --queryformat '%%{VERSION}' vlc-devel | cut -f -2 -d .`.99)
@@ -52,16 +51,18 @@ This is the VLC backend for Phonon
 %lang_package
 
 %prep
-%setup -q -n phonon-vlc-%{version}
+%setup -q -n phonon-backend-vlc-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DPHONON_BUILD_PHONON4QT5=ON
+  %cmake_kf5 -d build
   %make_jobs
 
 %install
   %kf5_makeinstall -C build
 
+%if %{with lang}
   %find_lang phonon_vlc %{name}.lang --with-qt
+%endif
 
 %post
 %if 0%{?suse_version} >= 1500
@@ -76,6 +77,8 @@ This is the VLC backend for Phonon
 %dir %{_kf5_plugindir}/phonon4qt5_backend
 %{_kf5_plugindir}/phonon4qt5_backend/phonon_vlc.so
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog

@@ -17,9 +17,9 @@
 
 
 Name:           python-flask-jwt-extended
-Version:        3.21.0
+Version:        3.22.0
 Release:        0
-Summary:        An open source Flask extension that provides JWT support
+Summary:        A Flask extension that provides JWT support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/vimalloc/flask-jwt-extended
@@ -42,8 +42,8 @@ BuildArch:      noarch
 
 %description
 Flask-JWT-Extended not only adds support for using JSON Web Tokens
-(JWT) to Flask for protecting views, but also many helpful
-(and optional) features built in to make working with JSON
+(JWT) to Flask for protecting views, but also many
+(optional) features built in to make working with JSON
 Web Tokens easier. These include:
 
 - Support for adding custom claims to JSON Web Tokens

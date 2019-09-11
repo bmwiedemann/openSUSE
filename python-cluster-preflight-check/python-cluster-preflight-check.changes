@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Jul 29 08:08:18 UTC 2019 - Xin Liang <XLiang@suse.com>
+
+- version 0.0.29(jsc#4024)
+- Rename cluster-test-tool to cluster-preflight-check
+- Improve scenarios for blocking corosync ports to simulate split brain
+- Improve for:
+  * fix regrex mismatch/None results
+  * reinforce testcase enter condition
+  * more docstring and comments
+
+-------------------------------------------------------------------
+Mon Jul 8 10:07:00 UTC 2019 - Xin Liang <XLiang@suse.com>
+
+- version 0.0.28
+- Improve logging
+- Add unittest codes
+- Add docs for functions
+- Using shell to wrap python2&3 entry
+- Make split brain by blocking corosync ports
+- Check firewall
+
+-------------------------------------------------------------------
+Thu Jun 6 18:08:01 UTC 2019 - Xin Liang <XLiang@suse.com>
+
+- version 0.0.23
+- Add log to record internal operations
+- Add json output for each test case
+- Add report for killing test case
+
+-------------------------------------------------------------------
+Mon May 27 15:30:01 UTC 2019 - Xin Liang <XLiang@suse.com>
+
+- Version 0.0.20
+- Python3 only
+- Check environment: hostname resolvable
+- Check environment: time service 
+- Check environment: watchdog
+- Check cluster: cluster service
+- Check cluster: stonith configuration
+- Check cluster: nodes status
+- Check cluster: resources status
+- Kill sbd daemon
+- Kill corosync daemon
+- Kill pacemakerd daemon
+- Kill process in loop
+- Fence specific node

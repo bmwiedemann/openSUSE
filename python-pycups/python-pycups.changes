@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 28 19:22:11 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Package /usr/lib/rpm/postscriptdriver.prov again, in the
+  new "cups-rpm-helper" subpackage (bsc#735865). The file hasn't
+  been packaged any more after the switch from python-cups to 
+  python-pycups (sr#502741).
+  * removed revert-postscriptdriver.prov-py3.patch
+    (we use python3 now)
+
+-------------------------------------------------------------------
 Tue May 14 20:43:51 UTC 2019 - svasudevan@suse.com
 
 - Update to version 1.9.74

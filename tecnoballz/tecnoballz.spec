@@ -20,7 +20,7 @@
 Name:           tecnoballz
 Version:        0.93.1
 Release:        0
-Summary:        An exciting Brick Breaker
+Summary:        A brick breaking game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Breakout
 URL:            http://linux.tlk.fr/games/TecnoballZ/
@@ -43,10 +43,10 @@ BuildRequires:  update-desktop-files
 %endif
 
 %description
-A exciting Brick Breaker with 50 levels of game and 11 special levels,
+A brick breaker with 50 levels of game and 11 special levels,
 distributed on the 2 modes of game to give the player a sophisticated system
-of attack weapons with an enormous power of fire that can be build by
-gaining bonuses.  Numerous decors, musics and sounds complete this great
+of attack weapons with an enormous firepower that can be built by
+gaining bonuses.  Numerous decors, music and sounds complete this
 game. This game was ported from the Commodore Amiga.
 
 %prep
@@ -56,7 +56,7 @@ game. This game was ported from the Commodore Amiga.
 %endif
 
 # Fix games path to %{_bindir} instead of /usr/games
-find -name Makefile.am -exec sed -i -e "s|^gamesdir =.*$|gamesdir = %{_bindir}|g" \{\} \;
+find -name Makefile.am -exec sed -i -e "s|^gamesdir =.*$|gamesdir = %{_bindir}|g" \{\} +
 
 sed -i -e "s|^CXXFLAGS=\"\(.*\)\"|CXXFLAGS=\"\1 %{optflags}\"|" configure.ac
 
@@ -66,7 +66,7 @@ autoreconf -fi
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install-strip
+%make_install
 install -Dm 0644 man/%{name}.fr.6 %{buildroot}%{_mandir}/fr/man6/%{name}.6
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/%{name}.png

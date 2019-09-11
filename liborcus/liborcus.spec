@@ -12,29 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libname liborcus-0_14-0
+%define libname liborcus-0_15-0
 Name:           liborcus
-Version:        0.14.1
+Version:        0.15.1
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            https://gitlab.com/orcus/orcus/
+URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
 BuildRequires:  coreutils
-BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(libixion-0.14)
-BuildRequires:  pkgconfig(mdds-1.4)
+BuildRequires:  pkgconfig(libixion-0.15)
+BuildRequires:  pkgconfig(mdds-1.5)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1325
+%if 0%{?suse_version} >= 1500
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc8
+BuildRequires:  gcc8-c++
+%endif
+%if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
@@ -86,6 +91,10 @@ Python 3 bindings for %{name}.
 %setup -q
 
 %build
+%if 0%{?suse_version} < 1500
+export CC=gcc-8
+export CXX=g++-8
+%endif
 %configure \
 	--disable-silent-rules \
 	--disable-static \
@@ -95,7 +104,9 @@ Python 3 bindings for %{name}.
 make %{?_smp_mflags}
 
 %check
+%if 0%{?suse_version} >= 1500
 make check %{?_smp_mflags}
+%endif
 
 %install
 %make_install

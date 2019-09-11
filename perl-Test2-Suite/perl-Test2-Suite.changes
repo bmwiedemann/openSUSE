@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Aug 29 05:42:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000126
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000126  2019-08-28 12:44:59-07:00 America/Los_Angeles
+  
+      - Mention HUGE caveat in Test2::Plugin::Times
+      - Make Test2::Util::Times::render_duration support 1 arg form
+
+-------------------------------------------------------------------
+Wed Aug 21 05:32:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000125
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000125  2019-08-19 10:40:20-07:00 America/Los_Angeles
+  
+      - Add harness_job_fields to Times plugin
+
+-------------------------------------------------------------------
+Sat Aug 17 05:31:58 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.000124
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000124  2019-08-16 14:54:25-07:00 America/Los_Angeles
+  
+      - Make Times plugin use INFO facets for display
+  
+  0.000123  2019-08-16 13:21:29-07:00 America/Los_Angeles
+  
+      - Fix double-load bug on Plugin::Times
+
+-------------------------------------------------------------------
 Sun May 19 05:28:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.000122

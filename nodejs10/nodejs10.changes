@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 16 14:33:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 10.16.3:
+  Security update regarding HTTP/2 Denial of Service vulnerabilities
+  For details see,
+  https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.8.1
+  https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md
+  (CVE-2019-9511, CVE-2019-9512, CVE-2019-9513, CVE-2019-9514,
+   bsc#1146091, bsc#1146099, bsc#1146094, bsc#1146095,
+   CVE-2019-9515, CVE-2019-9516, CVE-2019-9517, CVE-2019-9518,
+   bsc#1146100, bsc#1146090, bsc#1146097, bsc#1146093)
+
+- Changes in 10.16.2:
+  * fix OpenSSL upgrade to 1.1.1c that causes intermittent hangs in
+    machines that have low entropy.
+
+-------------------------------------------------------------------
 Thu Aug  1 15:01:02 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 10.16.1

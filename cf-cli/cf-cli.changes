@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Wed Jul 10 00:18:02 UTC 2019 - Alfred Jenkins <thardeck@suse.com>
+Mon Aug 26 21:29:43 UTC 2019 - thardeck@suse.com
+
+- update to version 6.46.1
+  ### Bugs
+  - Fixes an issue where `update-user-provided-service` can unset existing
+  credentials associated with a service even when the `-p` flags is not specified [story](https://www.pivotaltracker.com/story/show/167220606)
+
+-------------------------------------------------------------------
+Wed Jul 10 00:18:02 UTC 2019 - thardeck@suse.com
 
 - update to version 6.46.0
   ### Bugs
@@ -9,19 +17,19 @@ Wed Jul 10 00:18:02 UTC 2019 - Alfred Jenkins <thardeck@suse.com>
   - Targeting a space for `cf copy-source` is no longer case sensitive [story](https://www.pivotaltracker.com/story/show/166110649)
 
 -------------------------------------------------------------------
-Tue Jun  4 23:59:03 UTC 2019 - Alfred Jenkins <thardeck@suse.com>
+Tue Jun  4 23:59:03 UTC 2019 - thardeck@suse.com
 
 - update to version 6.45.0
   ### Bug Fixes
   - Fixes a regression for `v3-push` whilst viewing logs when authenticated as a client. Now you are able to see logs if you are logged in as a client and you attempt to view logs (cf logs for example).
 
 -------------------------------------------------------------------
-Wed May  8 23:14:36 UTC 2019 - root <thardeck@suse.com>
+Wed May  8 23:14:36 UTC 2019 - thardeck@suse.com
 
 - update to version 6.44.1
 
 -------------------------------------------------------------------
-Wed May  8 19:13:23 UTC 2019 - root <thardeck@suse.com>
+Wed May  8 19:13:23 UTC 2019 - thardeck@suse.com
 
 - update to version 6.44.0
   ### Enhancements
@@ -38,7 +46,7 @@ Wed May  8 19:13:23 UTC 2019 - root <thardeck@suse.com>
   - Now the CLI checks the expiration time of an access token and refreshes it automatically before making a call the CF API [story](https://github.com/cloudfoundry/cli/pull/1594)
 
 -------------------------------------------------------------------
-Wed May  8 11:42:52 UTC 2019 - root <thardeck@suse.com>
+Wed May  8 11:42:52 UTC 2019 - thardeck@suse.com
 
 - update to version 6.43.0
   ### Enhancements 
@@ -55,7 +63,7 @@ Wed May  8 11:42:52 UTC 2019 - root <thardeck@suse.com>
   - `rename-service` updated to no longer fail if a plan has been removed from the catalog [story](https://www.pivotaltracker.com/story/show/162550421)
 
 -------------------------------------------------------------------
-Thu May  2 00:37:14 UTC 2019 - root <thardeck@suse.com>
+Thu May  2 00:37:14 UTC 2019 - thardeck@suse.com
 
 - update to version 6.44.0
   ## Enhancements

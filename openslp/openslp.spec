@@ -29,7 +29,6 @@ Source2:        README.SUSE
 Source3:        openslp.desktop
 Source4:        openslp-devel.desktop
 Source5:        openslp.logrotate
-Source7:        openslp.SuSEfirewall2
 Source8:        baselibs.conf
 Source9:        slpd.service
 Source10:       openslp.logrotate.systemd
@@ -188,7 +187,6 @@ install -m 0644 %{SOURCE3} \
 mkdir -p %{buildroot}%{_datadir}/susehelp/meta/Development/Libraries/
 install -m 0644 %{SOURCE4} \
 	%{buildroot}%{_datadir}/susehelp/meta/Development/Libraries/
-install -D -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/openslp
 
 install -D -m 644 %{SOURCE9} %{buildroot}%{_unitdir}/slpd.service
 
@@ -242,7 +240,6 @@ getent passwd openslp >/dev/null || useradd -r -g daemon -d %{_localstatedir}/li
 %{_sbindir}/slpd
 %config(noreplace) %{_sysconfdir}/slp.reg
 %config(noreplace) %{_sysconfdir}/logrotate.d/openslp-server
-%config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/openslp
 %{_unitdir}/slpd.service
 
 %files devel

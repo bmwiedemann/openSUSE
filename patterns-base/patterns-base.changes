@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  4 09:02:58 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- minimal_base: remove dracut. Only useful when there is also a
+  kernel and the kernel requires it anyways.
+- base:
+  * remove bootloader packages. They are only required on real
+    hardware or VMs. YaST will add them.
+  * remove btrfsprogs. Has supplemements on btrfs so will be auto
+    installed when on btrfs. Also yast installs it.
+  * remove snapper (supplements btrfsprogs)
+  * move openssh to enhanced_base
+- enhanced_base:
+  * iproute2 already in minimal_base
+  * remove explicit grub and plymouth branding. They are pulled
+    via supplements
+- documentation:
+  * remove info2html, old tool not useful today.
+  * susehelp and sled manuals no longer exist
+  * Use minimal_base as Basesystem is just an alias
+- sw_management:
+  * require zypper also on TW
+
+-------------------------------------------------------------------
+Wed Aug 28 15:42:20 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use obsolete_legacy_pattern macro for readability
+- drop _opt patterns and integrate them into main patterns to reduce complexity
+
+-------------------------------------------------------------------
 Wed Aug 14 13:48:25 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - use journal by default (boo#1143144)

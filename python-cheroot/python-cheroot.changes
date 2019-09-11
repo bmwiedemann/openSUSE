@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:09:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add cheroot_fix_so_peercred_ppc.patch
+  to solve python 2.7 tests failures for PowerPC, boo#1147151
+
+-------------------------------------------------------------------
+Mon Sep  2 18:49:49 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Drop dependency on backports.functools_lru_cache for the python3 subpackage
+  This fixes bsc#1149124
+
+-------------------------------------------------------------------
 Sun Jun  2 21:15:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description.

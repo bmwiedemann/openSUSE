@@ -361,6 +361,12 @@ unsorted:
   - alevt 
   - alevtd 
   - alex 
+  - allegro44 
+  - allegro44-dga2-plugin 
+  - allegro44-dga2-plugin-32bit: [x86_64] 
+  - allegro44-jack-plugin 
+  - allegro44-jack-plugin-32bit: [x86_64] 
+  - allegro44-tools 
   - almanah 
   - almanah-lang 
   - alpine-branding-openSUSE 
@@ -1057,8 +1063,6 @@ unsorted:
   - blogbench 
   - blogc 
   - blosc-devel 
-  - blueberry 
-  - blueberry-lang 
   - bluefish 
   - blueman 
   - blueman-lang 
@@ -1072,7 +1076,6 @@ unsorted:
   - bluez-devel-32bit: [x86_64] 
   - bluez-qt-devel 
   - bluez-test 
-  - bluez-tools 
   - bmake 
   - bmon 
   - bnd-maven-plugin 
@@ -1143,6 +1146,7 @@ unsorted:
   - bpython-doc 
   - branding-upstream 
   - brasero-devel 
+  - breeze4-style 
   - brevity 
   - bridge-utils 
   - bridge-utils-devel 
@@ -1203,6 +1207,7 @@ unsorted:
   - bumblebee-status-module-redshift 
   - bumpversion 
   - busybox 
+  - busybox-container 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1222,10 +1227,6 @@ unsorted:
   - bzr-test 
   - bzrtp-devel 
   - c-ares-devel 
-  - c-dvar-devel 
-  - c-list-devel 
-  - c-rbtree-devel 
-  - c-sundry-devel 
   - c-toxcore 
   - c-toxcore-daemon 
   - c-toxcore-devel 
@@ -1366,8 +1367,6 @@ unsorted:
   - casync: [x86_64] 
   - catatonit: [i586] 
   - catcodec 
-  - catfish 
-  - catfish-lang 
   - cava 
   - cblas-devel 
   - cblas-devel-32bit: [x86_64] 
@@ -1408,22 +1407,16 @@ unsorted:
   - celt 
   - celt051 
   - celt051-devel 
-  - ceph: [x86_64] 
-  - ceph-base: [x86_64] 
   - ceph-csi: [x86_64] 
   - ceph-dashboard-e2e: [x86_64] 
   - ceph-fuse: [x86_64] 
   - ceph-grafana-dashboards: [x86_64] 
   - ceph-iscsi: [x86_64] 
-  - ceph-mds: [x86_64] 
-  - ceph-mgr: [x86_64] 
-  - ceph-mgr-dashboard: [x86_64] 
-  - ceph-mgr-diskprediction-cloud: [x86_64] 
-  - ceph-mgr-diskprediction-local: [x86_64] 
-  - ceph-mgr-rook: [x86_64] 
+  - ceph-mgr-dashboard: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - ceph-mgr-diskprediction-cloud: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - ceph-mgr-diskprediction-local: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - ceph-mgr-rook: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - ceph-mgr-ssh: [x86_64] 
-  - ceph-mon: [x86_64] 
-  - ceph-osd: [x86_64] 
   - ceph-prometheus-alerts: [x86_64] 
   - ceph-radosgw: [x86_64] 
   - ceph-resource-agents: [x86_64] 
@@ -1453,6 +1446,9 @@ unsorted:
   - cgit 
   - cglib 
   - cglib-javadoc 
+  - cgns 
+  - cgns-devel 
+  - cgns-devel-static 
   - chafa 
   - chafa-devel 
   - chafa-doc 
@@ -1541,6 +1537,7 @@ unsorted:
   - clamav-devel 
   - clamtk 
   - clamtk-lang 
+  - clamz 
   - clang 
   - clang-checker 
   - clang-devel 
@@ -1720,6 +1717,7 @@ unsorted:
   - conky 
   - conky-doc 
   - conman 
+  - conmon: [i586] 
   - connman 
   - connman-client 
   - connman-devel 
@@ -1783,8 +1781,6 @@ unsorted:
   - cpp7 
   - cpp8 
   - cppcheck-gui 
-  - cppdb-devel 
-  - cppdb-doc 
   - cppi 
   - cppi-lang 
   - cppreference-doc 
@@ -1976,7 +1972,7 @@ unsorted:
   - ctris 
   - cttop 
   - cudd-devel 
-  - cuishark: [x86_64] 
+  - cuishark 
   - culmus-ancient-semitic-fonts 
   - culmus-fonts 
   - cuneiform 
@@ -1988,6 +1984,7 @@ unsorted:
   - cups-devel-32bit: [x86_64] 
   - cups-filters-devel 
   - cups-pdf 
+  - cups-rpm-helper 
   - cura: [x86_64] 
   - cura-engine: [x86_64] 
   - cura-engine-lulzbot: [x86_64] 
@@ -2069,6 +2066,8 @@ unsorted:
   - dav1d 
   - dav1d-devel 
   - davfs2 
+  - davix 
+  - davix-devel 
   - db48-doc 
   - dbench 
   - dbench4 
@@ -2375,6 +2374,7 @@ unsorted:
   - dvdisaster-docs 
   - dvgt 
   - dwarves 
+  - dwz-testsuite 
   - dxflib-devel 
   - dynamic-wallpapers-11x 
   - dynamips 
@@ -2434,7 +2434,6 @@ unsorted:
   - elementary-icon-theme-gimp-palette 
   - elementary-icon-theme-inkscape-palette 
   - elementary-wallpapers 
-  - elementary-xfce-icon-theme 
   - elemines 
   - elftoaout 
   - elib 
@@ -2483,8 +2482,6 @@ unsorted:
   - engauge-digitizer-devel-doc 
   - engauge-digitizer-doc 
   - engdic 
-  - engrampa 
-  - engrampa-lang 
   - enigmail 
   - enlightenment 
   - enlightenment-branding-openSUSE 
@@ -2499,6 +2496,7 @@ unsorted:
   - enlightenment-theme-openSUSE-oliveleaf 
   - enlightenment-theme-upstream 
   - enlightenment-x-dark-icon-theme 
+  - enscript 
   - entangle 
   - entangle-doc 
   - entangle-lang 
@@ -2614,6 +2612,7 @@ unsorted:
   - exiv2 
   - exiv2-lang 
   - exmh 
+  - exo-branding-upstream 
   - exo-devel 
   - exodusii-devel 
   - expect-devel 
@@ -2682,7 +2681,6 @@ unsorted:
   - fcitx-m17n 
   - fcitx-pinyin-tools 
   - fcitx-pylogger 
-  - fcitx-qt4-32bit: [x86_64] 
   - fcitx-qt5-32bit: [x86_64] 
   - fcitx-qt5-devel 
   - fcitx-quwei 
@@ -2893,6 +2891,7 @@ unsorted:
   - flatbuffers-devel 
   - flatpak-devel 
   - flatpak-zsh-completion 
+  - flawfinder 
   - fldigi 
   - fldigi-lang 
   - flexdock 
@@ -2963,6 +2962,7 @@ unsorted:
   - fparser-devel 
   - fpc 
   - fpc-doc 
+  - fpc-examples 
   - fpc-src 
   - fping 
   - fplll 
@@ -2994,6 +2994,8 @@ unsorted:
   - freeipmi-devel 
   - freeipmi-ipmidetectd 
   - freeipmi-ipmiseld 
+  - freeorion 
+  - freeorion-data 
   - freeradius-client 
   - freeradius-client-devel 
   - freeradius-client-libs 
@@ -3009,7 +3011,6 @@ unsorted:
   - freeradius-server-python 
   - freeradius-server-sqlite 
   - freeradius-server-utils 
-  - freerdp 
   - freerdp-devel 
   - freerdp-server 
   - freerdp-wayland 
@@ -3102,101 +3103,13 @@ unsorted:
   - fzf-zsh-completion 
   - fzy 
   - g3utils 
+  - g810-led 
   - gaa 
   - gajim 
   - gajim-lang 
   - gajim-plugin-omemo 
   - galaxis 
   - gama 
-  - gambas3 
-  - gambas3-devel 
-  - gambas3-gb-args 
-  - gambas3-gb-cairo 
-  - gambas3-gb-chart 
-  - gambas3-gb-clipper 
-  - gambas3-gb-complex 
-  - gambas3-gb-compress 
-  - gambas3-gb-compress-bzlib2 
-  - gambas3-gb-compress-zlib 
-  - gambas3-gb-crypt 
-  - gambas3-gb-data 
-  - gambas3-gb-db 
-  - gambas3-gb-db-form 
-  - gambas3-gb-db-mysql 
-  - gambas3-gb-db-odbc 
-  - gambas3-gb-db-postgresql 
-  - gambas3-gb-db-sqlite3 
-  - gambas3-gb-dbus 
-  - gambas3-gb-desktop 
-  - gambas3-gb-eval-highlight 
-  - gambas3-gb-form 
-  - gambas3-gb-form-dialog 
-  - gambas3-gb-form-editor 
-  - gambas3-gb-form-mdi 
-  - gambas3-gb-form-stock 
-  - gambas3-gb-form-terminal 
-  - gambas3-gb-geom 
-  - gambas3-gb-gmp 
-  - gambas3-gb-gsl 
-  - gambas3-gb-gtk 
-  - gambas3-gb-gtk-opengl 
-  - gambas3-gb-gtk3 
-  - gambas3-gb-gui 
-  - gambas3-gb-httpd 
-  - gambas3-gb-image 
-  - gambas3-gb-image-effect 
-  - gambas3-gb-image-imlib 
-  - gambas3-gb-image-io 
-  - gambas3-gb-inotify 
-  - gambas3-gb-jit 
-  - gambas3-gb-libxml 
-  - gambas3-gb-logging 
-  - gambas3-gb-maps 
-  - gambas3-gb-markdown 
-  - gambas3-gb-media 
-  - gambas3-gb-memcached 
-  - gambas3-gb-mime 
-  - gambas3-gb-mysql 
-  - gambas3-gb-ncurses 
-  - gambas3-gb-net 
-  - gambas3-gb-net-curl 
-  - gambas3-gb-net-pop3 
-  - gambas3-gb-net-smtp 
-  - gambas3-gb-openal 
-  - gambas3-gb-opengl 
-  - gambas3-gb-opengl-glsl 
-  - gambas3-gb-opengl-glu 
-  - gambas3-gb-opengl-sge 
-  - gambas3-gb-openssl 
-  - gambas3-gb-option 
-  - gambas3-gb-pcre 
-  - gambas3-gb-pdf 
-  - gambas3-gb-qt5 
-  - gambas3-gb-qt5-ext 
-  - gambas3-gb-qt5-opengl 
-  - gambas3-gb-qt5-webkit 
-  - gambas3-gb-report 
-  - gambas3-gb-report2 
-  - gambas3-gb-scanner 
-  - gambas3-gb-sdl 
-  - gambas3-gb-sdl-sound 
-  - gambas3-gb-settings 
-  - gambas3-gb-signal 
-  - gambas3-gb-term 
-  - gambas3-gb-term-form 
-  - gambas3-gb-util 
-  - gambas3-gb-util-web 
-  - gambas3-gb-v4l 
-  - gambas3-gb-vb 
-  - gambas3-gb-web 
-  - gambas3-gb-web-feed 
-  - gambas3-gb-web-form 
-  - gambas3-gb-xml 
-  - gambas3-gb-xml-rpc 
-  - gambas3-gb-xml-xslt 
-  - gambas3-ide 
-  - gambas3-runtime 
-  - gambas3-script 
   - gamemoded 
   - gamin-devel 
   - gammaray 
@@ -3348,7 +3261,6 @@ unsorted:
   - gdbserver 
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
-  - gdk-pixbuf-loader-libopenraw 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
   - gdl-devel 
@@ -3407,7 +3319,6 @@ unsorted:
   - gedit-plugin-textsize 
   - gedit-plugin-translate 
   - gedit-plugin-wordcompletion 
-  - gedit-plugin-zeitgeist 
   - gedit-theme-adapta 
   - gedit-theme-plata 
   - geekodoc 
@@ -4267,6 +4178,10 @@ unsorted:
   - gmp-devel-32bit: [x86_64] 
   - gmp-ecm 
   - gmp-ecm-devel 
+  - gmsh 
+  - gmsh-demos 
+  - gmsh-devel 
+  - gmsh-doc 
   - gmusicbrowser 
   - gmusicbrowser-lang 
   - gn 
@@ -4308,6 +4223,8 @@ unsorted:
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
   - gnome-epub-thumbnailer 
+  - gnome-firmware-updater 
+  - gnome-firmware-updater-lang 
   - gnome-font-viewer 
   - gnome-font-viewer-lang 
   - gnome-games 
@@ -4641,6 +4558,9 @@ unsorted:
   - graphviz-smyrna 
   - graphviz-tcl 
   - graphviz-x11 
+  - grass 
+  - grass-devel 
+  - grass-doc 
   - grc 
   - grfcodec 
   - gri 
@@ -4688,11 +4608,11 @@ unsorted:
   - gsl-gnu-hpc 
   - gsl-gnu-hpc-devel 
   - gsl-gnu-hpc-doc 
-  - gsl_2_5-gnu-hpc 
-  - gsl_2_5-gnu-hpc-devel 
-  - gsl_2_5-gnu-hpc-doc 
-  - gsl_2_5-gnu-hpc-examples 
-  - gsl_2_5-gnu-hpc-module 
+  - gsl_2_6-gnu-hpc 
+  - gsl_2_6-gnu-hpc-devel 
+  - gsl_2_6-gnu-hpc-doc 
+  - gsl_2_6-gnu-hpc-examples 
+  - gsl_2_6-gnu-hpc-module 
   - gsmartcontrol 
   - gsoap-devel 
   - gsoap-doc 
@@ -4738,6 +4658,7 @@ unsorted:
   - gstreamer-validate-devel 
   - gstreamermm-devel 
   - gstreamermm-doc 
+  - gswrap 
   - gtest 
   - gthumb-devel 
   - gti 
@@ -4799,7 +4720,6 @@ unsorted:
   - gtk2-metatheme-elementary 
   - gtk2-metatheme-equinox 
   - gtk2-metatheme-greybird 
-  - gtk2-metatheme-greybird-geeko 
   - gtk2-metatheme-mint 
   - gtk2-metatheme-nimbus 
   - gtk2-metatheme-numix 
@@ -4833,7 +4753,6 @@ unsorted:
   - gtk3-metatheme-e17gtk 
   - gtk3-metatheme-elementary 
   - gtk3-metatheme-greybird 
-  - gtk3-metatheme-greybird-geeko 
   - gtk3-metatheme-mint 
   - gtk3-metatheme-numix 
   - gtk3-metatheme-paper 
@@ -4896,9 +4815,7 @@ unsorted:
   - guava20 
   - guava20-javadoc 
   - guava20-testlib 
-  - gucharmap 
   - gucharmap-devel 
-  - gucharmap-lang 
   - gudev-sharp 
   - gudev-sharp-devel 
   - guestfs-tools: [x86_64] 
@@ -5045,31 +4962,31 @@ unsorted:
   - hdf5-openmpi3-devel 
   - hdf5-openmpi3-devel-32bit: [x86_64] 
   - hdf5-openmpi3-devel-static 
-  - hdf5_1_10_4-gnu-hpc 
-  - hdf5_1_10_4-gnu-hpc-devel 
-  - hdf5_1_10_4-gnu-hpc-devel-static 
-  - hdf5_1_10_4-gnu-hpc-module 
-  - hdf5_1_10_4-gnu-mpich-hpc 
-  - hdf5_1_10_4-gnu-mpich-hpc-devel 
-  - hdf5_1_10_4-gnu-mpich-hpc-devel-static 
-  - hdf5_1_10_4-gnu-mpich-hpc-module 
-  - hdf5_1_10_4-gnu-mvapich2-hpc 
-  - hdf5_1_10_4-gnu-mvapich2-hpc-devel 
-  - hdf5_1_10_4-gnu-mvapich2-hpc-devel-static 
-  - hdf5_1_10_4-gnu-mvapich2-hpc-module 
-  - hdf5_1_10_4-gnu-openmpi1-hpc 
-  - hdf5_1_10_4-gnu-openmpi1-hpc-devel 
-  - hdf5_1_10_4-gnu-openmpi1-hpc-devel-static 
-  - hdf5_1_10_4-gnu-openmpi1-hpc-module 
-  - hdf5_1_10_4-gnu-openmpi2-hpc 
-  - hdf5_1_10_4-gnu-openmpi2-hpc-devel 
-  - hdf5_1_10_4-gnu-openmpi2-hpc-devel-static 
-  - hdf5_1_10_4-gnu-openmpi2-hpc-module 
-  - hdf5_1_10_4-gnu-openmpi3-hpc 
-  - hdf5_1_10_4-gnu-openmpi3-hpc-devel 
-  - hdf5_1_10_4-gnu-openmpi3-hpc-devel-static 
-  - hdf5_1_10_4-gnu-openmpi3-hpc-module 
-  - hdf5_1_10_4-hpc-examples 
+  - hdf5_1_10_5-gnu-hpc 
+  - hdf5_1_10_5-gnu-hpc-devel 
+  - hdf5_1_10_5-gnu-hpc-devel-static 
+  - hdf5_1_10_5-gnu-hpc-module 
+  - hdf5_1_10_5-gnu-mpich-hpc 
+  - hdf5_1_10_5-gnu-mpich-hpc-devel 
+  - hdf5_1_10_5-gnu-mpich-hpc-devel-static 
+  - hdf5_1_10_5-gnu-mpich-hpc-module 
+  - hdf5_1_10_5-gnu-mvapich2-hpc 
+  - hdf5_1_10_5-gnu-mvapich2-hpc-devel 
+  - hdf5_1_10_5-gnu-mvapich2-hpc-devel-static 
+  - hdf5_1_10_5-gnu-mvapich2-hpc-module 
+  - hdf5_1_10_5-gnu-openmpi1-hpc 
+  - hdf5_1_10_5-gnu-openmpi1-hpc-devel 
+  - hdf5_1_10_5-gnu-openmpi1-hpc-devel-static 
+  - hdf5_1_10_5-gnu-openmpi1-hpc-module 
+  - hdf5_1_10_5-gnu-openmpi2-hpc 
+  - hdf5_1_10_5-gnu-openmpi2-hpc-devel 
+  - hdf5_1_10_5-gnu-openmpi2-hpc-devel-static 
+  - hdf5_1_10_5-gnu-openmpi2-hpc-module 
+  - hdf5_1_10_5-gnu-openmpi3-hpc 
+  - hdf5_1_10_5-gnu-openmpi3-hpc-devel 
+  - hdf5_1_10_5-gnu-openmpi3-hpc-devel-static 
+  - hdf5_1_10_5-gnu-openmpi3-hpc-module 
+  - hdf5_1_10_5-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-pae: [i586] 
@@ -5088,6 +5005,7 @@ unsorted:
   - heimdall 
   - heimdall-frontend 
   - hello 
+  - hello-kubic: [x86_64] 
   - hello-lang 
   - helm: [i586] 
   - helm-mirror 
@@ -5151,6 +5069,7 @@ unsorted:
   - hping 
   - hping-doc 
   - hplip-devel 
+  - hplip-scan-utils 
   - hpx 
   - hpx-devel 
   - hpx-devel-static 
@@ -5199,8 +5118,6 @@ unsorted:
   - hyphen 
   - hyphen-devel 
   - hypre-devel 
-  - hypre-doc 
-  - hypre-examples 
   - hypre-gnu-mpich-hpc-devel 
   - hypre-gnu-mvapich2-hpc-devel 
   - hypre-gnu-openmpi1-hpc-devel 
@@ -5210,11 +5127,11 @@ unsorted:
   - hypre-mvapich2-devel 
   - hypre-openmpi-devel 
   - hypre-openmpi2-devel 
-  - hypre_2_15_1-gnu-mpich-hpc-devel 
-  - hypre_2_15_1-gnu-mvapich2-hpc-devel 
-  - hypre_2_15_1-gnu-openmpi1-hpc-devel 
-  - hypre_2_15_1-gnu-openmpi2-hpc-devel 
-  - hypre_2_15_1-gnu-openmpi3-hpc-devel 
+  - hypre_2_17_0-gnu-mpich-hpc-devel 
+  - hypre_2_17_0-gnu-mvapich2-hpc-devel 
+  - hypre_2_17_0-gnu-openmpi1-hpc-devel 
+  - hypre_2_17_0-gnu-openmpi2-hpc-devel 
+  - hypre_2_17_0-gnu-openmpi3-hpc-devel 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -5313,6 +5230,7 @@ unsorted:
   - icns-utils 
   - ico 
   - icon-naming-utils 
+  - icoutils 
   - icu 
   - icu4j-charset 
   - icu4j-javadoc 
@@ -5333,6 +5251,7 @@ unsorted:
   - igerman98-doc 
   - ignition 
   - ignition-config-transpiler 
+  - ignition-dracut 
   - ignuit 
   - iio-sensor-proxy-doc 
   - ikiwiki 
@@ -5361,11 +5280,11 @@ unsorted:
   - imb-openmpi 
   - imb-openmpi2 
   - imb-openmpi3 
-  - imb_2019_1-gnu-mpich-hpc 
-  - imb_2019_1-gnu-mvapich2-hpc 
-  - imb_2019_1-gnu-openmpi1-hpc 
-  - imb_2019_1-gnu-openmpi2-hpc 
-  - imb_2019_1-gnu-openmpi3-hpc 
+  - imb_2019_3-gnu-mpich-hpc 
+  - imb_2019_3-gnu-mvapich2-hpc 
+  - imb_2019_3-gnu-openmpi1-hpc 
+  - imb_2019_3-gnu-openmpi2-hpc 
+  - imb_2019_3-gnu-openmpi3-hpc 
   - imgen 
   - imgp 
   - imgp-bash-completion 
@@ -5412,6 +5331,7 @@ unsorted:
   - input-pad-devel 
   - input-pad-eek 
   - input-pad-xtest 
+  - insighttoolkit-devel 
   - inspectrum 
   - install-initrd-Kubic: [x86_64] # suggested by dvd:suggested:patterns-gnome-gnome 
   - install-initrd-MicroOS: [x86_64] # suggested by dvd:suggested:patterns-gnome-gnome 
@@ -5445,7 +5365,6 @@ unsorted:
   - intlfonts-phonetic-bitmap-fonts 
   - intlfonts-ttf-fonts 
   - intlfonts-type1-fonts 
-  - intltool 
   - inwee 
   - iodbc 
   - iodbc-admin 
@@ -5794,6 +5713,7 @@ unsorted:
   - jupyter-ipydatawidgets 
   - jupyter-ipydatawidgets-jupyterlab 
   - jupyter-ipykernel 
+  - jupyter-ipykernel-python2 
   - jupyter-ipyleaflet 
   - jupyter-ipympl 
   - jupyter-ipympl-jupyterlab 
@@ -5824,13 +5744,10 @@ unsorted:
   - jupyter-jupyter_nbextensions_configurator 
   - jupyter-jupyterbgnotify 
   - jupyter-jupyterlab 
-  - jupyter-jupyterlab-discovery 
   - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
-  - jupyter-jupyterlab-launcher 
   - jupyter-jupyterlab-server 
-  - jupyter-jupyterlab-widgets 
   - jupyter-jupyterlab_github 
   - jupyter-jupyterlab_templates 
   - jupyter-jupytext 
@@ -5969,13 +5886,16 @@ unsorted:
   - kdbusaddons-devel-32bit: [x86_64] 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
+  - kde4-filesystem 
   - kde4-kgreeter-plugins 
+  - kdebase4-runtime 
   - kdebase4-runtime-devel 
   - kdebase4-workspace 
   - kdebase4-workspace-addons 
   - kdebase4-workspace-devel 
   - kdebase4-workspace-liboxygenstyle 
   - kdebase4-workspace-liboxygenstyle-32bit: [x86_64] 
+  - kdebase4-workspace-libs 
   - kdebase4-workspace-libs-32bit: [x86_64] 
   - kdebugsettings 
   - kdebugsettings-lang 
@@ -5985,6 +5905,9 @@ unsorted:
   - kdeclarative-tools 
   - kded-devel 
   - kdegames-carddecks-other 
+  - kdelibs4 
+  - kdelibs4-branding-upstream 
+  - kdelibs4-core 
   - kdelibs4-doc 
   - kdelibs4support-32bit: [x86_64] 
   - kdelibs4support-devel 
@@ -6027,6 +5950,9 @@ unsorted:
   - kdoctools-devel-32bit: [x86_64] 
   - kdstatemachineeditor-devel 
   - kdumpid 
+  - kea 
+  - kea-devel 
+  - kea-hooks 
   - keditbookmarks 
   - keditbookmarks-lang 
   - keepalived 
@@ -6043,6 +5969,36 @@ unsorted:
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-docs-html 
+  - kernel-firmware-all 
+  - kernel-firmware-amdgpu 
+  - kernel-firmware-ath10k 
+  - kernel-firmware-atheros 
+  - kernel-firmware-bluetooth 
+  - kernel-firmware-bnx2 
+  - kernel-firmware-brcm 
+  - kernel-firmware-chelsio 
+  - kernel-firmware-dpaa2 
+  - kernel-firmware-i915 
+  - kernel-firmware-intel 
+  - kernel-firmware-iwlwifi 
+  - kernel-firmware-liquidio 
+  - kernel-firmware-marvell 
+  - kernel-firmware-media 
+  - kernel-firmware-mediatek 
+  - kernel-firmware-mellanox 
+  - kernel-firmware-mwifiex 
+  - kernel-firmware-network 
+  - kernel-firmware-nfp 
+  - kernel-firmware-nvidia 
+  - kernel-firmware-platform 
+  - kernel-firmware-qlogic 
+  - kernel-firmware-radeon 
+  - kernel-firmware-realtek 
+  - kernel-firmware-serial 
+  - kernel-firmware-sound 
+  - kernel-firmware-ti 
+  - kernel-firmware-ueagle 
+  - kernel-firmware-usb-network 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
   - kernel-obs-build 
@@ -6217,6 +6173,8 @@ unsorted:
   - kldap-devel 
   - klee 
   - klee-uclibc-devel-static 
+  - klettres 
+  - klettres-lang 
   - klfbackend-devel 
   - klftools-devel 
   - klickety 
@@ -6687,7 +6645,6 @@ unsorted:
   - leveldb 
   - leveldb-devel 
   - leveldb-devel-static 
-  - lhasa 
   - lhasa-devel 
   - lib3270-5_1 
   - lib3270-devel 
@@ -6771,11 +6728,11 @@ unsorted:
   - libHYPRE0-openmpi-32bit: [x86_64] 
   - libHYPRE0-openmpi2 
   - libHYPRE0-openmpi2-32bit: [x86_64] 
-  - libHYPRE_2_15_1-gnu-mpich-hpc 
-  - libHYPRE_2_15_1-gnu-mvapich2-hpc 
-  - libHYPRE_2_15_1-gnu-openmpi1-hpc 
-  - libHYPRE_2_15_1-gnu-openmpi2-hpc 
-  - libHYPRE_2_15_1-gnu-openmpi3-hpc 
+  - libHYPRE_2_17_0-gnu-mpich-hpc 
+  - libHYPRE_2_17_0-gnu-mvapich2-hpc 
+  - libHYPRE_2_17_0-gnu-openmpi1-hpc 
+  - libHYPRE_2_17_0-gnu-openmpi2-hpc 
+  - libHYPRE_2_17_0-gnu-openmpi3-hpc 
   - libHalf24-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
@@ -6887,7 +6844,7 @@ unsorted:
   - libKReport3-4 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_2_1 
+  - libLHAPDF-6_2_3 
   - libLLVM6 
   - libLLVM6-32bit: [x86_64] 
   - libLLVM7 
@@ -7112,7 +7069,7 @@ unsorted:
   - libQtAssistantClient4-32bit: [x86_64] 
   - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
-  - libRivet-2_6_0 
+  - libRivet-2_7_2 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL-devel 
   - libSDL-devel-32bit: [x86_64] 
@@ -7172,13 +7129,13 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSM-devel-32bit: [x86_64] 
   - libSM6-32bit: [x86_64] 
-  - libSPIRV-Tools-suse12 
-  - libSPIRV-Tools-suse12-32bit: [x86_64] 
+  - libSPIRV-Tools-suse13 
+  - libSPIRV-Tools-suse13-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2018_3_2 
+  - libSimGearCore-2018_3_4 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoapySDR0_7 
@@ -7260,7 +7217,6 @@ unsorted:
   - libXpm-tools 
   - libXpm4-32bit: [x86_64] 
   - libXpresent-devel 
-  - libXpresent1 
   - libXprintAppUtil-devel 
   - libXprintAppUtil-devel-32bit: [x86_64] 
   - libXprintAppUtil1 
@@ -7296,7 +7252,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_7_4 
+  - libYODA-1_7_7 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -7351,6 +7307,12 @@ unsorted:
   - libalac0 
   - libalkimia5-7 
   - libalkimia5-devel 
+  - liballeg44-devel 
+  - liballeg4_4 
+  - liballeg4_4-32bit: [x86_64] 
+  - liballeggl44-devel 
+  - liballeggl4_4 
+  - liballeggl4_4-32bit: [x86_64] 
   - liballegro-doc 
   - liballegro5_2 
   - liballegro5_2-devel 
@@ -7430,7 +7392,7 @@ unsorted:
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
   - libasn1c-devel 
-  - libasn1c0 
+  - libasn1c1 
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
@@ -7462,6 +7424,7 @@ unsorted:
   - libatspi0-32bit: [x86_64] 
   - libattica-devel 
   - libattica-devel-32bit: [x86_64] 
+  - libattica0_4 
   - libattica0_4-32bit: [x86_64] 
   - libattr-devel 
   - libattr-devel-32bit: [x86_64] 
@@ -7615,6 +7578,7 @@ unsorted:
   - libblacs2_2_0_2-gnu-openmpi3-hpc-devel 
   - libblacs2_2_0_2-gnu-openmpi3-hpc-devel-static 
   - libbladeRF2 
+  - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
   - libbliss-0_73 
   - libblkid-devel-32bit: [x86_64] 
@@ -7758,7 +7722,7 @@ unsorted:
   - libboost_wave1_69_0 
   - libboost_wave1_69_0-32bit: [x86_64] 
   - libboost_wave1_69_0-devel 
-  - libboringssl0 
+  - libboringssl1 
   - libbotan-2-10 
   - libbotan-2-10-32bit: [x86_64] 
   - libbotan-devel 
@@ -7766,6 +7730,7 @@ unsorted:
   - libbraille 
   - libbraille-devel 
   - libbraille-fake 
+  - libbreezecommon4-5 
   - libbrotli-devel 
   - libbrotlicommon1-32bit: [x86_64] 
   - libbrotlidec1-32bit: [x86_64] 
@@ -7821,7 +7786,8 @@ unsorted:
   - libcamd-doc 
   - libcamel-1_2-62-32bit: [x86_64] 
   - libcamera-devel 
-  - libcamera-suse0 
+  - libcamera-suse1 
+  - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk3-0-32bit: [x86_64] 
@@ -7878,14 +7844,13 @@ unsorted:
   - libcdr-devel 
   - libcdr-devel-doc 
   - libcdr-tools 
-  - libcdvar0 
   - libcec-devel 
   - libcec4 
   - libcelt-devel 
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -7895,6 +7860,7 @@ unsorted:
   - libcfg6-32bit: [x86_64] 
   - libcfile-devel 
   - libcfile1 
+  - libcgns3_4 
   - libchafa0 
   - libchamplain-devel 
   - libchardet-devel 
@@ -7942,7 +7908,6 @@ unsorted:
   - libclang7-32bit: [x86_64] 
   - libclang8-32bit: [x86_64] 
   - libclastfm-devel 
-  - libclastfm0 
   - libclaw-devel 
   - libclaw-doc 
   - libclaw1 
@@ -7990,7 +7955,7 @@ unsorted:
   - libcollection-devel 
   - libcollection-devel-32bit: [x86_64] 
   - libcollection4-32bit: [x86_64] 
-  - libcolm-0_13_0_6 
+  - libcolm-0_13_0_7 
   - libcolord-devel 
   - libcolord-gtk-devel 
   - libcolord-gtk1-32bit: [x86_64] 
@@ -8025,11 +7990,6 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcppdb0 
-  - libcppdb_mysql0 
-  - libcppdb_odbc0 
-  - libcppdb_postgresql0 
-  - libcppdb_sqlite3-0 
   - libcpprest2_10 
   - libcppunit-1_14-0 
   - libcppunit-1_14-0-32bit: [x86_64] 
@@ -8040,7 +8000,6 @@ unsorted:
   - libcpuid14 
   - libcpuset-devel 
   - libcpuset1 
-  - libcrbtree0 
   - libcreaterepo_c-devel 
   - libcriu2: [x86_64] 
   - libcroco 
@@ -8134,6 +8093,7 @@ unsorted:
   - libdataquay0 
   - libdatrie-devel 
   - libdav1d2-32bit: [x86_64] 
+  - libdavix0 
   - libdazzle 
   - libdazzle-devel 
   - libdb-4_8-devel-32bit: [x86_64] 
@@ -8164,6 +8124,7 @@ unsorted:
   - libdbusmenu-jsonloader-devel 
   - libdbusmenu-jsonloader4 
   - libdbusmenu-qt-devel 
+  - libdbusmenu-qt2 
   - libdbusmenu-qt2-32bit: [x86_64] 
   - libdbusmenu-qt5-2-32bit: [x86_64] 
   - libdbusmenu-qt5-devel 
@@ -8294,6 +8255,9 @@ unsorted:
   - libechonest5-2_3 
   - libechonest5-2_3-32bit: [x86_64] 
   - libecm1 
+  - libeconf-devel 
+  - libeconf0 
+  - libeconf0-32bit: [x86_64] 
   - libecore1 
   - libecpg6-32bit: [x86_64] 
   - libecryptfs1 
@@ -8374,13 +8338,13 @@ unsorted:
   - libevas1 
   - libevdev2-32bit: [x86_64] 
   - libevemu3 
-  - libevent-2_1-6-32bit: [x86_64] 
+  - libevent-2_1-7-32bit: [x86_64] 
   - libevent-devel 
   - libevent-devel-static 
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_19-0 
+  - libevtlog-3_23-0: [x86_64] 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -8504,8 +8468,6 @@ unsorted:
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
   - libflatbuffers1 
-  - libfli-devel 
-  - libfli1 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
@@ -8544,6 +8506,7 @@ unsorted:
   - libframe6 
   - libframe6-32bit: [x86_64] 
   - libfreebl3-32bit: [x86_64] 
+  - libfreebl3-hmac-32bit: [x86_64] 
   - libfreefare-devel 
   - libfreefare-tools 
   - libfreefare0 
@@ -8602,13 +8565,9 @@ unsorted:
   - libganesha_nfsd-devel: [x86_64] 
   - libganesha_nfsd2_8: [x86_64] 
   - libganglia0 
-  - libgarcon-1-0 
-  - libgarcon-branding-openSUSE 
   - libgarcon-branding-upstream 
-  - libgarcon-data 
   - libgarcon-devel 
   - libgarcon-doc 
-  - libgarcon-lang 
   - libgasnet-1_30_0 
   - libgavl-devel 
   - libgbm-devel 
@@ -8744,7 +8703,6 @@ unsorted:
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
-  - libglyr1 
   - libglyr1-32bit: [x86_64] 
   - libgme-devel 
   - libgme0-32bit: [x86_64] 
@@ -8752,6 +8710,7 @@ unsorted:
   - libgmime-2_6-0-32bit: [x86_64] 
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4-32bit: [x86_64] 
+  - libgmsh4_4 
   - libgnome 
   - libgnome-32bit: [x86_64] 
   - libgnome-desktop-2-17 
@@ -8764,7 +8723,6 @@ unsorted:
   - libgnome-keyring-devel 
   - libgnome-keyring0-32bit: [x86_64] 
   - libgnome-lang 
-  - libgnome-menu-3-0 
   - libgnome-menu-3-0-32bit: [x86_64] 
   - libgnomecanvas-2-0 
   - libgnomecanvas-2-0-32bit: [x86_64] 
@@ -8864,9 +8822,9 @@ unsorted:
   - libgsf-devel 
   - libgsf-tools 
   - libgsl-gnu-hpc 
-  - libgsl_2_5-gnu-hpc 
+  - libgsl_2_6-gnu-hpc 
   - libgslcblas-gnu-hpc 
-  - libgslcblas_2_5-gnu-hpc 
+  - libgslcblas_2_6-gnu-hpc 
   - libgsm-devel 
   - libgsm-devel-32bit: [x86_64] 
   - libgsm-utils 
@@ -8933,10 +8891,9 @@ unsorted:
   - libgtop-devel 
   - libgtop-doc 
   - libgtp-devel 
-  - libgtp4 
+  - libgtp5 
   - libgtpnl-devel 
   - libgtpnl0 
-  - libgucharmap_2_90-7 
   - libgudev-1_0-0-32bit: [x86_64] 
   - libgudev-1_0-devel 
   - libguess-devel 
@@ -8971,7 +8928,6 @@ unsorted:
   - libgwengui-fox16-0 
   - libgwengui-gtk2-0 
   - libgwengui-gtk3-0 
-  - libgwengui-qt4-0 
   - libgwengui-qt5-0 
   - libgwenhywfar60 
   - libgwenhywfar60-plugins 
@@ -9017,12 +8973,12 @@ unsorted:
   - libhdf5-gnu-openmpi1-hpc 
   - libhdf5-gnu-openmpi2-hpc 
   - libhdf5-gnu-openmpi3-hpc 
-  - libhdf5_1_10_4-gnu-hpc 
-  - libhdf5_1_10_4-gnu-mpich-hpc 
-  - libhdf5_1_10_4-gnu-mvapich2-hpc 
-  - libhdf5_1_10_4-gnu-openmpi1-hpc 
-  - libhdf5_1_10_4-gnu-openmpi2-hpc 
-  - libhdf5_1_10_4-gnu-openmpi3-hpc 
+  - libhdf5_1_10_5-gnu-hpc 
+  - libhdf5_1_10_5-gnu-mpich-hpc 
+  - libhdf5_1_10_5-gnu-mvapich2-hpc 
+  - libhdf5_1_10_5-gnu-openmpi1-hpc 
+  - libhdf5_1_10_5-gnu-openmpi2-hpc 
+  - libhdf5_1_10_5-gnu-openmpi3-hpc 
   - libhdf5_cpp-gnu-hpc 
   - libhdf5_cpp-gnu-mpich-hpc 
   - libhdf5_cpp-gnu-mvapich2-hpc 
@@ -9039,34 +8995,29 @@ unsorted:
   - libhdf5_cpp103-openmpi2-32bit: [x86_64] 
   - libhdf5_cpp103-openmpi3 
   - libhdf5_cpp103-openmpi3-32bit: [x86_64] 
-  - libhdf5_cpp_1_10_4-gnu-hpc 
-  - libhdf5_cpp_1_10_4-gnu-mpich-hpc 
-  - libhdf5_cpp_1_10_4-gnu-mvapich2-hpc 
-  - libhdf5_cpp_1_10_4-gnu-openmpi1-hpc 
-  - libhdf5_cpp_1_10_4-gnu-openmpi2-hpc 
-  - libhdf5_cpp_1_10_4-gnu-openmpi3-hpc 
+  - libhdf5_cpp_1_10_5-gnu-hpc 
+  - libhdf5_cpp_1_10_5-gnu-mpich-hpc 
+  - libhdf5_cpp_1_10_5-gnu-mvapich2-hpc 
+  - libhdf5_cpp_1_10_5-gnu-openmpi1-hpc 
+  - libhdf5_cpp_1_10_5-gnu-openmpi2-hpc 
+  - libhdf5_cpp_1_10_5-gnu-openmpi3-hpc 
   - libhdf5_fortran-gnu-hpc 
   - libhdf5_fortran-gnu-mpich-hpc 
   - libhdf5_fortran-gnu-mvapich2-hpc 
   - libhdf5_fortran-gnu-openmpi1-hpc 
   - libhdf5_fortran-gnu-openmpi2-hpc 
   - libhdf5_fortran-gnu-openmpi3-hpc 
-  - libhdf5_fortran100 
-  - libhdf5_fortran100-32bit: [x86_64] 
-  - libhdf5_fortran100-mvapich2 
-  - libhdf5_fortran100-mvapich2-32bit: [x86_64] 
-  - libhdf5_fortran100-openmpi 
-  - libhdf5_fortran100-openmpi-32bit: [x86_64] 
-  - libhdf5_fortran100-openmpi2 
-  - libhdf5_fortran100-openmpi2-32bit: [x86_64] 
-  - libhdf5_fortran100-openmpi3 
-  - libhdf5_fortran100-openmpi3-32bit: [x86_64] 
-  - libhdf5_fortran_1_10_4-gnu-hpc 
-  - libhdf5_fortran_1_10_4-gnu-mpich-hpc 
-  - libhdf5_fortran_1_10_4-gnu-mvapich2-hpc 
-  - libhdf5_fortran_1_10_4-gnu-openmpi1-hpc 
-  - libhdf5_fortran_1_10_4-gnu-openmpi2-hpc 
-  - libhdf5_fortran_1_10_4-gnu-openmpi3-hpc 
+  - libhdf5_fortran102 
+  - libhdf5_fortran102-mvapich2 
+  - libhdf5_fortran102-openmpi 
+  - libhdf5_fortran102-openmpi2 
+  - libhdf5_fortran102-openmpi3 
+  - libhdf5_fortran_1_10_5-gnu-hpc 
+  - libhdf5_fortran_1_10_5-gnu-mpich-hpc 
+  - libhdf5_fortran_1_10_5-gnu-mvapich2-hpc 
+  - libhdf5_fortran_1_10_5-gnu-openmpi1-hpc 
+  - libhdf5_fortran_1_10_5-gnu-openmpi2-hpc 
+  - libhdf5_fortran_1_10_5-gnu-openmpi3-hpc 
   - libhdf5_hl-gnu-hpc 
   - libhdf5_hl-gnu-mpich-hpc 
   - libhdf5_hl-gnu-mvapich2-hpc 
@@ -9083,12 +9034,12 @@ unsorted:
   - libhdf5_hl100-openmpi2-32bit: [x86_64] 
   - libhdf5_hl100-openmpi3 
   - libhdf5_hl100-openmpi3-32bit: [x86_64] 
-  - libhdf5_hl_1_10_4-gnu-hpc 
-  - libhdf5_hl_1_10_4-gnu-mpich-hpc 
-  - libhdf5_hl_1_10_4-gnu-mvapich2-hpc 
-  - libhdf5_hl_1_10_4-gnu-openmpi1-hpc 
-  - libhdf5_hl_1_10_4-gnu-openmpi2-hpc 
-  - libhdf5_hl_1_10_4-gnu-openmpi3-hpc 
+  - libhdf5_hl_1_10_5-gnu-hpc 
+  - libhdf5_hl_1_10_5-gnu-mpich-hpc 
+  - libhdf5_hl_1_10_5-gnu-mvapich2-hpc 
+  - libhdf5_hl_1_10_5-gnu-openmpi1-hpc 
+  - libhdf5_hl_1_10_5-gnu-openmpi2-hpc 
+  - libhdf5_hl_1_10_5-gnu-openmpi3-hpc 
   - libhdf5_hl_cpp-gnu-hpc 
   - libhdf5_hl_cpp-gnu-mpich-hpc 
   - libhdf5_hl_cpp-gnu-mvapich2-hpc 
@@ -9105,12 +9056,12 @@ unsorted:
   - libhdf5_hl_cpp100-openmpi2-32bit: [x86_64] 
   - libhdf5_hl_cpp100-openmpi3 
   - libhdf5_hl_cpp100-openmpi3-32bit: [x86_64] 
-  - libhdf5_hl_cpp_1_10_4-gnu-hpc 
-  - libhdf5_hl_cpp_1_10_4-gnu-mpich-hpc 
-  - libhdf5_hl_cpp_1_10_4-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp_1_10_4-gnu-openmpi1-hpc 
-  - libhdf5_hl_cpp_1_10_4-gnu-openmpi2-hpc 
-  - libhdf5_hl_cpp_1_10_4-gnu-openmpi3-hpc 
+  - libhdf5_hl_cpp_1_10_5-gnu-hpc 
+  - libhdf5_hl_cpp_1_10_5-gnu-mpich-hpc 
+  - libhdf5_hl_cpp_1_10_5-gnu-mvapich2-hpc 
+  - libhdf5_hl_cpp_1_10_5-gnu-openmpi1-hpc 
+  - libhdf5_hl_cpp_1_10_5-gnu-openmpi2-hpc 
+  - libhdf5_hl_cpp_1_10_5-gnu-openmpi3-hpc 
   - libhdf5_hl_fortran-gnu-hpc 
   - libhdf5_hl_fortran-gnu-mpich-hpc 
   - libhdf5_hl_fortran-gnu-mvapich2-hpc 
@@ -9127,17 +9078,17 @@ unsorted:
   - libhdf5hl_fortran100-openmpi2-32bit: [x86_64] 
   - libhdf5hl_fortran100-openmpi3 
   - libhdf5hl_fortran100-openmpi3-32bit: [x86_64] 
-  - libhdf5hl_fortran_1_10_4-gnu-hpc 
-  - libhdf5hl_fortran_1_10_4-gnu-mpich-hpc 
-  - libhdf5hl_fortran_1_10_4-gnu-mvapich2-hpc 
-  - libhdf5hl_fortran_1_10_4-gnu-openmpi1-hpc 
-  - libhdf5hl_fortran_1_10_4-gnu-openmpi2-hpc 
-  - libhdf5hl_fortran_1_10_4-gnu-openmpi3-hpc 
+  - libhdf5hl_fortran_1_10_5-gnu-hpc 
+  - libhdf5hl_fortran_1_10_5-gnu-mpich-hpc 
+  - libhdf5hl_fortran_1_10_5-gnu-mvapich2-hpc 
+  - libhdf5hl_fortran_1_10_5-gnu-openmpi1-hpc 
+  - libhdf5hl_fortran_1_10_5-gnu-openmpi2-hpc 
+  - libhdf5hl_fortran_1_10_5-gnu-openmpi3-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libheimdal 
   - libheimdal-devel 
-  - libhfst49 
+  - libhfst52 
   - libhfstospell10 
   - libhfstospell10-32bit: [x86_64] 
   - libhidapi-devel 
@@ -9249,6 +9200,7 @@ unsorted:
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
+  - libinsighttoolkit4 
   - libinstpatch-1_0-0 
   - libinstpatch-devel 
   - libiodbc-devel 
@@ -9323,6 +9275,9 @@ unsorted:
   - libjpeg8-devel 
   - libjpeg8-devel-32bit: [x86_64] 
   - libjpegxr0 
+  - libjpgalleg44-devel 
+  - libjpgalleg4_4 
+  - libjpgalleg4_4-32bit: [x86_64] 
   - libjq-devel 
   - libjq1 
   - libjreen-qt5-1 
@@ -9338,6 +9293,7 @@ unsorted:
   - libjxrglue0 
   - libkaccounts1-32bit: [x86_64] 
   - libkactivities-devel 
+  - libkactivities6 
   - libkactivities6-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -9348,29 +9304,25 @@ unsorted:
   - libkcapi0 
   - libkcarchiver0 
   - libkcarchivercore0 
-  - libkcddb 
   - libkcddb-devel 
-  - libkcddb-lang 
-  - libkcddb4 
-  - libkcddb4-devel 
   - libkcfreebusy0 
   - libkcicalmapi0 
   - libkcinetmapi0 
   - libkcompactdisc-devel 
-  - libkcompactdisc4 
-  - libkcompactdisc4-devel 
   - libkcpyplug0 
   - libkcrosie0 
   - libkcserver0 
   - libkcsoap0 
   - libkcutil0 
   - libkdcraw-devel 
+  - libkde4 
   - libkde4-32bit: [x86_64] 
   - libkde4-devel 
   - libkdecoration2-devel 
   - libkdecoration2-devel-32bit: [x86_64] 
   - libkdecorations2-5-32bit: [x86_64] 
   - libkdecorations2private6-32bit: [x86_64] 
+  - libkdecore4 
   - libkdecore4-32bit: [x86_64] 
   - libkdecore4-devel 
   - libkdegames-devel 
@@ -9379,12 +9331,33 @@ unsorted:
   - libkdstatemachineeditor_view1_2_5 
   - libkdumpfile-devel 
   - libkdumpfile7 
+  - libkea-asiodns0 
+  - libkea-asiolink7 
+  - libkea-cc8 
+  - libkea-cfgclient7 
+  - libkea-cryptolink4 
+  - libkea-database3 
+  - libkea-dhcp++13 
+  - libkea-dhcp_ddns1 
+  - libkea-dhcpsrv16 
+  - libkea-dns++3 
+  - libkea-eval10 
+  - libkea-exceptions0 
+  - libkea-hooks7 
+  - libkea-http6 
+  - libkea-log3 
+  - libkea-mysql1 
+  - libkea-pgsql0 
+  - libkea-process4 
+  - libkea-stats3 
+  - libkea-threads2 
+  - libkea-util-io0 
+  - libkea-util6 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
   - libkexiv2-devel 
-  - libkeybinder-3_0-0 
   - libkgapi-devel 
   - libkgeomap 
   - libkgeomap-devel 
@@ -9430,6 +9403,7 @@ unsorted:
   - libksi1 
   - libksieve-devel 
   - libksuseinstall-devel 
+  - libksuseinstall1 
   - libksuseinstall1-32bit: [x86_64] 
   - libksysguard5-32bit: [x86_64] 
   - libksysguard5-devel 
@@ -9449,7 +9423,6 @@ unsorted:
   - liblapack3-32bit: [x86_64] 
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
-  - liblastfm-devel 
   - liblastfm-qt5-devel 
   - liblastfm5-1 
   - liblastfm5-1-32bit: [x86_64] 
@@ -9495,8 +9468,7 @@ unsorted:
   - liblegion1 
   - liblept5 
   - liblept5-32bit: [x86_64] 
-  - libleveldb1 
-  - liblhasa0 
+  - libleveldb1: [i586] 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
@@ -9537,6 +9509,9 @@ unsorted:
   - liblo7 
   - liblo7-32bit: [x86_64] 
   - libloader-javadoc 
+  - libloadpng44-devel 
+  - libloadpng4_4 
+  - libloadpng4_4-32bit: [x86_64] 
   - liblockdev1-32bit: [x86_64] 
   - liblodepng-r84 
   - liblog4c-devel 
@@ -9549,11 +9524,15 @@ unsorted:
   - liblog4cxx10 
   - liblog4shib-devel 
   - liblog4shib2 
+  - liblogg44-devel 
+  - liblogg4_4 
+  - liblogg4_4-32bit: [x86_64] 
   - liblogging-devel 
   - liblognorm-devel 
   - libloki-devel 
   - libloki-doc 
   - libloki0_1_7 
+  - libloudmouth-1-0 
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
@@ -9612,6 +9591,7 @@ unsorted:
   - libmariadb-devel 
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
+  - libmariadbd-devel 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -9778,7 +9758,6 @@ unsorted:
   - libmpcdec5-32bit: [x86_64] 
   - libmpcdec6-32bit: [x86_64] 
   - libmpd-devel 
-  - libmpd1 
   - libmpd1-32bit: [x86_64] 
   - libmpdclient-devel 
   - libmpdclient2 
@@ -9833,15 +9812,16 @@ unsorted:
   - libmumps5-mvapich2: [x86_64] 
   - libmumps5-openmpi: [x86_64] 
   - libmumps5-openmpi2: [x86_64] 
-  - libmumps_5_1_2-gnu-mpich-hpc: [x86_64] 
-  - libmumps_5_1_2-gnu-mvapich2-hpc: [x86_64] 
-  - libmumps_5_1_2-gnu-openmpi1-hpc: [x86_64] 
-  - libmumps_5_1_2-gnu-openmpi2-hpc: [x86_64] 
-  - libmumps_5_1_2-gnu-openmpi3-hpc: [x86_64] 
+  - libmumps_5_2_1-gnu-mpich-hpc: [x86_64] 
+  - libmumps_5_2_1-gnu-mvapich2-hpc: [x86_64] 
+  - libmumps_5_2_1-gnu-openmpi1-hpc: [x86_64] 
+  - libmumps_5_2_1-gnu-openmpi2-hpc: [x86_64] 
+  - libmumps_5_2_1-gnu-openmpi3-hpc: [x86_64] 
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
   - libmuparser2_2_6 
   - libmuparser2_2_6-32bit: [x86_64] 
+  - libmuparserx4_0_8 
   - libmusicbrainz-devel 
   - libmusicbrainz4-32bit: [x86_64] 
   - libmusicbrainz5-1-32bit: [x86_64] 
@@ -9850,8 +9830,6 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
-  - libmygpo-qt-devel 
-  - libmygpo-qt5-1 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -9862,10 +9840,9 @@ unsorted:
   - libmysqlcppconn7 
   - libmysqlcppconn8-1 
   - libmysqlcppconn8-devel 
-  - libmysqld-devel 
   - libnanomsg5 
   - libnautilus-extension1-32bit: [x86_64] 
-  - libnauty-2_6_11 
+  - libnauty-2_7_rc2 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -9896,28 +9873,28 @@ unsorted:
   - libnetcdf-fortran-gnu-openmpi1-hpc 
   - libnetcdf-fortran-gnu-openmpi2-hpc 
   - libnetcdf-fortran-gnu-openmpi3-hpc 
-  - libnetcdf-fortran_4_4_4-gnu-mpich-hpc 
-  - libnetcdf-fortran_4_4_4-gnu-openmpi1-hpc 
-  - libnetcdf-fortran_4_4_4-gnu-openmpi2-hpc 
-  - libnetcdf-fortran_4_4_4-gnu-openmpi3-hpc 
+  - libnetcdf-fortran_4_4_5-gnu-mpich-hpc 
+  - libnetcdf-fortran_4_4_5-gnu-openmpi1-hpc 
+  - libnetcdf-fortran_4_4_5-gnu-openmpi2-hpc 
+  - libnetcdf-fortran_4_4_5-gnu-openmpi3-hpc 
   - libnetcdf-gnu-hpc 
   - libnetcdf-gnu-mpich-hpc 
   - libnetcdf-gnu-mvapich2-hpc 
   - libnetcdf-gnu-openmpi1-hpc 
   - libnetcdf-gnu-openmpi2-hpc 
   - libnetcdf-gnu-openmpi3-hpc 
-  - libnetcdf13 
-  - libnetcdf13-32bit: [x86_64] 
-  - libnetcdf13-openmpi 
-  - libnetcdf13-openmpi-32bit: [x86_64] 
-  - libnetcdf13-openmpi2 
-  - libnetcdf13-openmpi2-32bit: [x86_64] 
-  - libnetcdf_4_6_1-gnu-hpc 
-  - libnetcdf_4_6_1-gnu-mpich-hpc 
-  - libnetcdf_4_6_1-gnu-mvapich2-hpc 
-  - libnetcdf_4_6_1-gnu-openmpi1-hpc 
-  - libnetcdf_4_6_1-gnu-openmpi2-hpc 
-  - libnetcdf_4_6_1-gnu-openmpi3-hpc 
+  - libnetcdf15 
+  - libnetcdf15-32bit: [x86_64] 
+  - libnetcdf15-openmpi 
+  - libnetcdf15-openmpi-32bit: [x86_64] 
+  - libnetcdf15-openmpi2 
+  - libnetcdf15-openmpi2-32bit: [x86_64] 
+  - libnetcdf_4_7_0-gnu-hpc 
+  - libnetcdf_4_7_0-gnu-mpich-hpc 
+  - libnetcdf_4_7_0-gnu-mvapich2-hpc 
+  - libnetcdf_4_7_0-gnu-openmpi1-hpc 
+  - libnetcdf_4_7_0-gnu-openmpi2-hpc 
+  - libnetcdf_4_7_0-gnu-openmpi3-hpc 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -9956,6 +9933,7 @@ unsorted:
   - libnfnetlink-devel 
   - libnfnetlink0-32bit: [x86_64] 
   - libnfs-devel 
+  - libnfsidmap-sss 
   - libnfsjunct0 
   - libnftnl-devel 
   - libnghttp2-14-32bit: [x86_64] 
@@ -9987,7 +9965,7 @@ unsorted:
   - libnm-util2 
   - libnm-util2-32bit: [x86_64] 
   - libnma-devel 
-  - libnormaliz0 
+  - libnormaliz3 
   - libnoson1 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
@@ -10108,14 +10086,13 @@ unsorted:
   - libopenmpt_modplug1-32bit: [x86_64] 
   - libopenobex2 
   - libopenraw-devel 
-  - libopenraw1 
   - libopenraw1-32bit: [x86_64] 
   - libopenscap25 
   - libopenscap_sce25 
   - libopenshot-audio-devel 
   - libopenshot-audio6 
   - libopenshot-devel 
-  - libopenshot16 
+  - libopenshot17 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -10171,15 +10148,15 @@ unsorted:
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client5 
   - libosmo-mgcp-devel 
-  - libosmo-mtp-1_0_0 
+  - libosmo-mtp-1_1_0 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
   - libosmo-ranap2 
-  - libosmo-sccp-1_0_0 
+  - libosmo-sccp-1_1_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran3 
-  - libosmo-xua-1_0_0 
+  - libosmo-xua-1_1_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis6 
@@ -10194,11 +10171,11 @@ unsorted:
   - libosmoctrl0 
   - libosmodsp0 
   - libosmogb-devel 
-  - libosmogb6 
+  - libosmogb9 
   - libosmogsm-devel 
-  - libosmogsm11 
+  - libosmogsm13 
   - libosmonetif-devel 
-  - libosmonetif6 
+  - libosmonetif8 
   - libosmosdr0 
   - libosmosim-devel 
   - libosmosim0 
@@ -10208,6 +10185,7 @@ unsorted:
   - libosmovty4 
   - libosmvendor5 
   - libosmvendor5-32bit: [x86_64] 
+  - libossim1 
   - libossp-uuid++16 
   - libossp-uuid16 
   - libossp-uuid_dce16 
@@ -10261,9 +10239,9 @@ unsorted:
   - libpapi 
   - libpapi-32bit: [x86_64] 
   - libpapi_5_7_0-hpc 
-  - libpari-gmp6 
+  - libpari-gmp-tls6 
   - libparlatype-devel 
-  - libparlatype1 
+  - libparlatype2 
   - libparpack2-openmpi 
   - libparpack2-openmpi-32bit: [x86_64] 
   - libparserutils-devel 
@@ -10319,11 +10297,11 @@ unsorted:
   - libpetsc-gnu-openmpi3-hpc 
   - libpetsc3 
   - libpetsc3-openmpi 
-  - libpetsc_3_8_3-gnu-mpich-hpc 
-  - libpetsc_3_8_3-gnu-mvapich2-hpc 
-  - libpetsc_3_8_3-gnu-openmpi1-hpc 
-  - libpetsc_3_8_3-gnu-openmpi2-hpc 
-  - libpetsc_3_8_3-gnu-openmpi3-hpc 
+  - libpetsc_3_11_3-gnu-mpich-hpc 
+  - libpetsc_3_11_3-gnu-mvapich2-hpc 
+  - libpetsc_3_11_3-gnu-openmpi1-hpc 
+  - libpetsc_3_11_3-gnu-openmpi2-hpc 
+  - libpetsc_3_11_3-gnu-openmpi3-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -10341,6 +10319,7 @@ unsorted:
   - libphodav-2_0-0 
   - libphonenumber-devel 
   - libphonenumber8 
+  - libphonon4 
   - libphonon4-32bit: [x86_64] 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
@@ -10399,6 +10378,7 @@ unsorted:
   - libpocketsphinx1 
   - libpocl2 
   - libpodofo-devel 
+  - libpolkit-qt-1-1 
   - libpolkit-qt-1-1-32bit: [x86_64] 
   - libpolkit-qt-1-devel 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
@@ -10411,7 +10391,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler83-32bit: [x86_64] 
+  - libpoppler89-32bit: [x86_64] 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libpostproc55-32bit: [x86_64] 
@@ -10447,13 +10427,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite19-32bit: [x86_64] 
+  - libprotobuf-lite20-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf19-32bit: [x86_64] 
-  - libprotoc19 
-  - libprotoc19-32bit: [x86_64] 
+  - libprotobuf20-32bit: [x86_64] 
+  - libprotoc20 
+  - libprotoc20-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -10488,11 +10468,11 @@ unsorted:
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi 
   - libptscotch0-openmpi2 
-  - libptscotch_6_0_6-gnu-mpich-hpc 
-  - libptscotch_6_0_6-gnu-mvapich2-hpc 
-  - libptscotch_6_0_6-gnu-openmpi1-hpc 
-  - libptscotch_6_0_6-gnu-openmpi2-hpc 
-  - libptscotch_6_0_6-gnu-openmpi3-hpc 
+  - libptscotch_6_0_7-gnu-mpich-hpc 
+  - libptscotch_6_0_7-gnu-mvapich2-hpc 
+  - libptscotch_6_0_7-gnu-openmpi1-hpc 
+  - libptscotch_6_0_7-gnu-openmpi2-hpc 
+  - libptscotch_6_0_7-gnu-openmpi3-hpc 
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
@@ -10520,6 +10500,7 @@ unsorted:
   - libqca-qt5-devel 
   - libqca-qt5-devel-32bit: [x86_64] 
   - libqca-qt5-plugins-32bit: [x86_64] 
+  - libqca2 
   - libqca2-32bit: [x86_64] 
   - libqca2-devel 
   - libqca2-plugin-cyrus-sasl 
@@ -10544,6 +10525,7 @@ unsorted:
   - libqjack-devel 
   - libqjack0 
   - libqjson-devel 
+  - libqjson0 
   - libqjson0-32bit: [x86_64] 
   - libqmatrixclient-devel 
   - libqmi-devel 
@@ -10562,18 +10544,23 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla_qt5-devel 
+  - libqt4 
   - libqt4-32bit: [x86_64] 
   - libqt4-devel 
   - libqt4-devel-32bit: [x86_64] 
   - libqt4-linguist 
   - libqt4-private-headers-devel 
+  - libqt4-qt3support 
   - libqt4-qt3support-32bit: [x86_64] 
+  - libqt4-sql 
   - libqt4-sql-32bit: [x86_64] 
   - libqt4-sql-postgresql 
   - libqt4-sql-postgresql-32bit: [x86_64] 
+  - libqt4-sql-sqlite 
   - libqt4-sql-sqlite-32bit: [x86_64] 
   - libqt4-sql-unixODBC 
   - libqt4-sql-unixODBC-32bit: [x86_64] 
+  - libqt4-x11 
   - libqt4-x11-32bit: [x86_64] 
   - libqt5-creator 
   - libqt5-creator-plugin-devel 
@@ -10674,8 +10661,10 @@ unsorted:
   - libqt5-qttools-devel 
   - libqt5-qttools-devel-32bit: [x86_64] 
   - libqt5-qttools-doc 
+  - libqt5-qttools-example-plugins 
   - libqt5-qttools-examples 
   - libqt5-qttools-private-headers-devel 
+  - libqt5-qttools-qhelpgenerator 
   - libqt5-qtvirtualkeyboard-devel 
   - libqt5-qtvirtualkeyboard-examples 
   - libqt5-qtvirtualkeyboard-private-headers-devel 
@@ -10747,9 +10736,10 @@ unsorted:
   - libqxp-tools 
   - libqxtglobalshortcut0 
   - libradcli4 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
-  - libradosstriper-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradosstriper-devel: [x86_64] # devel package of dvd:librbd1 
+  - libraft0 
   - libragel0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -10771,7 +10761,7 @@ unsorted:
   - librawstudio-2_1 
   - librawstudio-devel 
   - libraylib2 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -10953,7 +10943,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -11179,6 +11169,8 @@ unsorted:
   - libsofia-sip-ua-glib3 
   - libsofia-sip-ua0 
   - libsoftokn3-32bit: [x86_64] 
+  - libsoftokn3-hmac-32bit: [x86_64] 
+  - libsolarus-gui1 
   - libsolarus1 
   - libsolv-demo 
   - libsord-0-0-32bit: [x86_64] 
@@ -11268,7 +11260,7 @@ unsorted:
   - libstorage-ng-integration-tests 
   - libstorage-ng-python3 
   - libstorage-ng-utils 
-  - libstoragemgmt 
+  - libstoragemgmt: [i586] 
   - libstoragemgmt-arcconf-plugin 
   - libstoragemgmt-devel 
   - libstoragemgmt-hpsa-plugin 
@@ -11281,7 +11273,7 @@ unsorted:
   - libstoragemgmt-smis-plugin 
   - libstoragemgmt-targetd-plugin 
   - libstoragemgmt-udev 
-  - libstoragemgmt1 
+  - libstoragemgmt1: [i586] 
   - libstp2_3 
   - libstroke 
   - libstroke-devel 
@@ -11335,7 +11327,7 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtbbmalloc2 
-  - libtcmalloc4 
+  - libtcmalloc4: [i586] 
   - libtcmu2 
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
@@ -11376,7 +11368,6 @@ unsorted:
   - libthrift_c_glib0 
   - libthriftnb-0_12_0 
   - libthriftz-0_12_0 
-  - libthunarx-3-0 
   - libtidy-devel 
   - libtidyp-1_04-0 
   - libtidyp-devel 
@@ -11435,9 +11426,9 @@ unsorted:
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos12: [x86_64] 
   - libtrilinos12-openmpi2: [x86_64] 
-  - libtrilinos_12_10_1-gnu-mpich-hpc: [x86_64] 
-  - libtrilinos_12_10_1-gnu-mvapich2-hpc: [x86_64] 
-  - libtrilinos_12_10_1-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos_12_14_1-gnu-mpich-hpc: [x86_64] 
+  - libtrilinos_12_14_1-gnu-mvapich2-hpc: [x86_64] 
+  - libtrilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
   - libtsan0-gcc8: [x86_64] 
@@ -11460,7 +11451,6 @@ unsorted:
   - libttf2 
   - libttf2-32bit: [x86_64] 
   - libttsmimic0 
-  - libtumbler-1-0 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -11607,7 +11597,7 @@ unsorted:
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
-  - libvapoursynth-46 
+  - libvapoursynth-47 
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
@@ -11693,7 +11683,6 @@ unsorted:
   - libvmmalloc-devel: [x86_64] # devel package of dvd:pmdk 
   - libvmmalloc1: [x86_64] 
   - libvmtools-devel 
-  - libvncclient1 
   - libvncserver1 
   - libvoikko-devel 
   - libvoikko1 
@@ -11739,7 +11728,6 @@ unsorted:
   - libwacom-tools 
   - libwacom2-32bit: [x86_64] 
   - libwaffle-1-0 
-  - libwaltham0 
   - libwapcaplet-devel 
   - libwapcaplet0 
   - libwavpack1-32bit: [x86_64] 
@@ -11769,9 +11757,11 @@ unsorted:
   - libwebsockets-devel 
   - libwebsockets13 
   - libwebvfx1 
-  - libweston-6 
-  - libweston-6-0 
-  - libweston-desktop-6-0 
+  - libweston-7 
+  - libweston-7-0 
+  - libweston-desktop-7-0 
+  - libwget-devel 
+  - libwget0 
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
@@ -11891,12 +11881,11 @@ unsorted:
   - libxapian-devel 
   - libxapian30-32bit: [x86_64] 
   - libxapp-devel 
-  - libxapp1 
   - libxar-devel 
   - libxar1 
   - libxatracker-devel 
   - libxbase64-1 
-  - libxbrz-1_6 
+  - libxbrz-1_7 
   - libxbsql0 
   - libxc-devel 
   - libxc5 
@@ -11943,15 +11932,13 @@ unsorted:
   - libxdg-basedir1 
   - libxerces-c-3_2-32bit: [x86_64] 
   - libxerces-c-devel 
-  - libxfce4panel-1_0-4 
-  - libxfce4panel-2_0-4 
+  - libxfce4ui-branding-upstream 
   - libxfce4ui-devel 
   - libxfce4ui-doc 
   - libxfce4util-devel 
   - libxfce4util-tools 
   - libxfconf-devel 
   - libxfdashboard0 
-  - libxfsm-4_6-0 
   - libxine-devel 
   - libxine2 
   - libxine2-32bit: [x86_64] 
@@ -12019,8 +12006,6 @@ unsorted:
   - libxplayer-plparser-mini18-32bit: [x86_64] 
   - libxplayer-plparser18 
   - libxplayer-plparser18-32bit: [x86_64] 
-  - libxreaderdocument3 
-  - libxreaderview3 
   - libxshmfence-devel 
   - libxshmfence1-32bit: [x86_64] 
   - libxslt-devel 
@@ -12098,14 +12083,13 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_8_0 
+  - libzbc-5_8_2 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
   - libzck-devel 
   - libzeitgeist-1_0-1 
   - libzeitgeist-1_0-1-32bit: [x86_64] 
-  - libzeitgeist-2_0-0 
   - libzeitgeist-devel 
   - libzen-devel 
   - libzen0 
@@ -12150,8 +12134,6 @@ unsorted:
   - light-locker-lang 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
-  - lightdm-gtk-greeter-settings 
-  - lightdm-gtk-greeter-settings-lang 
   - lightdm-qt5-devel 
   - lightdm-slick-greeter 
   - lightdm-slick-greeter-branding-openSUSE 
@@ -12918,8 +12900,8 @@ unsorted:
   - mda-lv2 
   - mdbtools 
   - mdbtools-devel 
-  - mdds-1_2-devel 
   - mdds-1_4-devel 
+  - mdds-1_5-devel 
   - mdtest 
   - meabo 
   - meanwhile-devel 
@@ -12953,7 +12935,6 @@ unsorted:
   - memprof 
   - memprof-lang 
   - menu-cache-devel 
-  - menulibre 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
@@ -12979,7 +12960,6 @@ unsorted:
   - metatheme-e17gtk-common 
   - metatheme-elementary-common 
   - metatheme-greybird-common 
-  - metatheme-greybird-geeko-common 
   - metatheme-mint-common 
   - metatheme-numix-common 
   - metatheme-paper-common 
@@ -13101,6 +13081,7 @@ unsorted:
   - modulemd-validator 
   - moe 
   - moinmoin-wiki 
+  - mojave-gtk-theme 
   - mojo-parent 
   - moka-icon-theme 
   - molsketch 
@@ -13205,8 +13186,6 @@ unsorted:
   - motoya-lcedar-fonts 
   - motoya-lmaru-fonts 
   - motv 
-  - mousepad 
-  - mousepad-lang 
   - movit-devel 
   - movit8-data 
   - mozaddon-devel 
@@ -13422,26 +13401,26 @@ unsorted:
   - mumps-scotch-devel: [x86_64] 
   - mumps-scotch-devel-static: [x86_64] 
   - mumps-scotch-examples: [x86_64] 
-  - mumps_5_1_2-gnu-mpich-hpc-devel: [x86_64] 
-  - mumps_5_1_2-gnu-mpich-hpc-devel-static: [x86_64] 
-  - mumps_5_1_2-gnu-mpich-hpc-doc: [x86_64] 
-  - mumps_5_1_2-gnu-mpich-hpc-examples: [x86_64] 
-  - mumps_5_1_2-gnu-mvapich2-hpc-devel: [x86_64] 
-  - mumps_5_1_2-gnu-mvapich2-hpc-devel-static: [x86_64] 
-  - mumps_5_1_2-gnu-mvapich2-hpc-doc: [x86_64] 
-  - mumps_5_1_2-gnu-mvapich2-hpc-examples: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi1-hpc-devel: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi1-hpc-devel-static: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi1-hpc-doc: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi1-hpc-examples: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi2-hpc-devel: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi2-hpc-devel-static: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi2-hpc-doc: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi2-hpc-examples: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi3-hpc-devel: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi3-hpc-devel-static: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi3-hpc-doc: [x86_64] 
-  - mumps_5_1_2-gnu-openmpi3-hpc-examples: [x86_64] 
+  - mumps_5_2_1-gnu-mpich-hpc-devel: [x86_64] 
+  - mumps_5_2_1-gnu-mpich-hpc-devel-static: [x86_64] 
+  - mumps_5_2_1-gnu-mpich-hpc-doc: [x86_64] 
+  - mumps_5_2_1-gnu-mpich-hpc-examples: [x86_64] 
+  - mumps_5_2_1-gnu-mvapich2-hpc-devel: [x86_64] 
+  - mumps_5_2_1-gnu-mvapich2-hpc-devel-static: [x86_64] 
+  - mumps_5_2_1-gnu-mvapich2-hpc-doc: [x86_64] 
+  - mumps_5_2_1-gnu-mvapich2-hpc-examples: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi1-hpc-devel: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi1-hpc-devel-static: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi1-hpc-doc: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi1-hpc-examples: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi2-hpc-devel-static: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi2-hpc-doc: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi2-hpc-examples: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi3-hpc-devel: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi3-hpc-doc: [x86_64] 
+  - mumps_5_2_1-gnu-openmpi3-hpc-examples: [x86_64] 
   - munge 
   - munge-devel 
   - munge-devel-32bit: [x86_64] 
@@ -13451,6 +13430,7 @@ unsorted:
   - munin-node 
   - muparser-devel 
   - muparser-devel-32bit: [x86_64] 
+  - muparserx-devel 
   - mupdf 
   - mupdf-devel-static 
   - museic 
@@ -13765,18 +13745,18 @@ unsorted:
   - netcdf-fortran-gnu-openmpi2-hpc-devel 
   - netcdf-fortran-gnu-openmpi3-hpc 
   - netcdf-fortran-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran_4_4_4-gnu-mpich-hpc 
-  - netcdf-fortran_4_4_4-gnu-mpich-hpc-devel 
-  - netcdf-fortran_4_4_4-gnu-mpich-hpc-devel-static 
-  - netcdf-fortran_4_4_4-gnu-openmpi1-hpc 
-  - netcdf-fortran_4_4_4-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran_4_4_4-gnu-openmpi1-hpc-devel-static 
-  - netcdf-fortran_4_4_4-gnu-openmpi2-hpc 
-  - netcdf-fortran_4_4_4-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran_4_4_4-gnu-openmpi2-hpc-devel-static 
-  - netcdf-fortran_4_4_4-gnu-openmpi3-hpc 
-  - netcdf-fortran_4_4_4-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran_4_4_4-gnu-openmpi3-hpc-devel-static 
+  - netcdf-fortran_4_4_5-gnu-mpich-hpc 
+  - netcdf-fortran_4_4_5-gnu-mpich-hpc-devel 
+  - netcdf-fortran_4_4_5-gnu-mpich-hpc-devel-static 
+  - netcdf-fortran_4_4_5-gnu-openmpi1-hpc 
+  - netcdf-fortran_4_4_5-gnu-openmpi1-hpc-devel 
+  - netcdf-fortran_4_4_5-gnu-openmpi1-hpc-devel-static 
+  - netcdf-fortran_4_4_5-gnu-openmpi2-hpc 
+  - netcdf-fortran_4_4_5-gnu-openmpi2-hpc-devel 
+  - netcdf-fortran_4_4_5-gnu-openmpi2-hpc-devel-static 
+  - netcdf-fortran_4_4_5-gnu-openmpi3-hpc 
+  - netcdf-fortran_4_4_5-gnu-openmpi3-hpc-devel 
+  - netcdf-fortran_4_4_5-gnu-openmpi3-hpc-devel-static 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
   - netcdf-gnu-mpich-hpc 
@@ -13795,25 +13775,25 @@ unsorted:
   - netcdf-openmpi2 
   - netcdf-openmpi2-devel 
   - netcdf-openmpi2-devel-static 
-  - netcdf_4_6_1-gnu-hpc 
-  - netcdf_4_6_1-gnu-hpc-devel 
-  - netcdf_4_6_1-gnu-hpc-devel-data 
-  - netcdf_4_6_1-gnu-hpc-devel-static 
-  - netcdf_4_6_1-gnu-mpich-hpc 
-  - netcdf_4_6_1-gnu-mpich-hpc-devel 
-  - netcdf_4_6_1-gnu-mpich-hpc-devel-static 
-  - netcdf_4_6_1-gnu-mvapich2-hpc 
-  - netcdf_4_6_1-gnu-mvapich2-hpc-devel 
-  - netcdf_4_6_1-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_6_1-gnu-openmpi1-hpc 
-  - netcdf_4_6_1-gnu-openmpi1-hpc-devel 
-  - netcdf_4_6_1-gnu-openmpi1-hpc-devel-static 
-  - netcdf_4_6_1-gnu-openmpi2-hpc 
-  - netcdf_4_6_1-gnu-openmpi2-hpc-devel 
-  - netcdf_4_6_1-gnu-openmpi2-hpc-devel-static 
-  - netcdf_4_6_1-gnu-openmpi3-hpc 
-  - netcdf_4_6_1-gnu-openmpi3-hpc-devel 
-  - netcdf_4_6_1-gnu-openmpi3-hpc-devel-static 
+  - netcdf_4_7_0-gnu-hpc 
+  - netcdf_4_7_0-gnu-hpc-devel 
+  - netcdf_4_7_0-gnu-hpc-devel-data 
+  - netcdf_4_7_0-gnu-hpc-devel-static 
+  - netcdf_4_7_0-gnu-mpich-hpc 
+  - netcdf_4_7_0-gnu-mpich-hpc-devel 
+  - netcdf_4_7_0-gnu-mpich-hpc-devel-static 
+  - netcdf_4_7_0-gnu-mvapich2-hpc 
+  - netcdf_4_7_0-gnu-mvapich2-hpc-devel 
+  - netcdf_4_7_0-gnu-mvapich2-hpc-devel-static 
+  - netcdf_4_7_0-gnu-openmpi1-hpc 
+  - netcdf_4_7_0-gnu-openmpi1-hpc-devel 
+  - netcdf_4_7_0-gnu-openmpi1-hpc-devel-static 
+  - netcdf_4_7_0-gnu-openmpi2-hpc 
+  - netcdf_4_7_0-gnu-openmpi2-hpc-devel 
+  - netcdf_4_7_0-gnu-openmpi2-hpc-devel-static 
+  - netcdf_4_7_0-gnu-openmpi3-hpc 
+  - netcdf_4_7_0-gnu-openmpi3-hpc-devel 
+  - netcdf_4_7_0-gnu-openmpi3-hpc-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -14256,7 +14236,6 @@ unsorted:
   - ocaml-dune 
   - ocaml-easy-format 
   - ocaml-easy-format-devel 
-  - ocaml-emacs 
   - ocaml-extlib 
   - ocaml-extlib-devel 
   - ocaml-facile 
@@ -14474,6 +14453,7 @@ unsorted:
   - odp-devel: [x86_64] 
   - odp-libs: [x86_64] 
   - odt2txt 
+  - officecodepro-fonts 
   - offlineimap 
   - offlineimap-htmldoc 
   - ofono 
@@ -14563,7 +14543,6 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
-  - openSUSE-xfce-icon-theme 
   - openafs-authlibs 
   - openafs-authlibs-devel 
   - openafs-devel 
@@ -14879,6 +14858,9 @@ unsorted:
   - osmo-trx-usrp1 
   - osmosdr 
   - osmosdr-devel 
+  - ossim 
+  - ossim-devel 
+  - ossim-sample-data 
   - osslsigncode 
   - ossp-uuid 
   - oto 
@@ -14926,8 +14908,6 @@ unsorted:
   - pacemaker-remote 
   - packETH 
   - package-translations 
-  - package-update-indicator 
-  - package-update-indicator-lang 
   - packit 
   - paexec 
   - paexec-examples 
@@ -15050,9 +15030,7 @@ unsorted:
   - parkverbot 
   - parlatype 
   - parlatype-lang 
-  - parole 
   - parole-devel 
-  - parole-lang 
   - parpack-openmpi 
   - parpack-openmpi-devel 
   - parpack-openmpi-devel-32bit: [x86_64] 
@@ -15130,10 +15108,6 @@ unsorted:
   - patterns-server-mail_server-32bit 
   - patterns-server-printing-32bit 
   - patterns-server-xen_tools: [x86_64] 
-  - patterns-xfce-xfce 
-  - patterns-xfce-xfce_basis 
-  - patterns-xfce-xfce_laptop 
-  - patterns-xfce-xfce_office 
   - patterns-yast-devel_yast 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
@@ -15213,7 +15187,6 @@ unsorted:
   - pcp-pmda-nutcracker 
   - pcp-pmda-nvidia-gpu 
   - pcp-pmda-oracle 
-  - pcp-pmda-papi 
   - pcp-pmda-pdns 
   - pcp-pmda-perfevent 
   - pcp-pmda-postfix 
@@ -15524,6 +15497,7 @@ unsorted:
   - perl-Devel-TakeHashArgs 
   - perl-Devel-Trace 
   - perl-Device-SerialPort 
+  - perl-Device-Yeelight 
   - perl-Digest-CRC 
   - perl-Digest-JHash 
   - perl-Digest-MD5 
@@ -16289,16 +16263,16 @@ unsorted:
   - petsc-gnu-openmpi2-hpc-devel 
   - petsc-gnu-openmpi3-hpc-devel 
   - petsc-openmpi-devel 
-  - petsc_3_8_3-gnu-mpich-hpc-devel 
-  - petsc_3_8_3-gnu-mpich-hpc-saws 
-  - petsc_3_8_3-gnu-mvapich2-hpc-devel 
-  - petsc_3_8_3-gnu-mvapich2-hpc-saws 
-  - petsc_3_8_3-gnu-openmpi1-hpc-devel 
-  - petsc_3_8_3-gnu-openmpi1-hpc-saws 
-  - petsc_3_8_3-gnu-openmpi2-hpc-devel 
-  - petsc_3_8_3-gnu-openmpi2-hpc-saws 
-  - petsc_3_8_3-gnu-openmpi3-hpc-devel 
-  - petsc_3_8_3-gnu-openmpi3-hpc-saws 
+  - petsc_3_11_3-gnu-mpich-hpc-devel 
+  - petsc_3_11_3-gnu-mpich-hpc-saws 
+  - petsc_3_11_3-gnu-mvapich2-hpc-devel 
+  - petsc_3_11_3-gnu-mvapich2-hpc-saws 
+  - petsc_3_11_3-gnu-openmpi1-hpc-devel 
+  - petsc_3_11_3-gnu-openmpi1-hpc-saws 
+  - petsc_3_11_3-gnu-openmpi2-hpc-devel 
+  - petsc_3_11_3-gnu-openmpi2-hpc-saws 
+  - petsc_3_11_3-gnu-openmpi3-hpc-devel 
+  - petsc_3_11_3-gnu-openmpi3-hpc-saws 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -16316,6 +16290,7 @@ unsorted:
   - phobos-devel 
   - phobos-devel-static 
   - phodav-devel 
+  - phonon-backend-gstreamer 
   - phonon-backend-vlc 
   - phonon-devel 
   - phonon4qt5-backend-vlc 
@@ -16396,6 +16371,10 @@ unsorted:
   - pidgin-plugin-privacy-please-lang 
   - pidgin-plugin-xmpp-receipts 
   - piglit: [x86_64] 
+  - pijul 
+  - pijul-bash-completion 
+  - pijul-fish-completion 
+  - pijul-zsh-completion 
   - pilot 
   - pilot-link 
   - pimcommon-devel 
@@ -16580,6 +16559,8 @@ unsorted:
   - pocketsphinx-devel 
   - pocl 
   - pocl-devel 
+  - podman: [i586] 
+  - podman-cni-config: [i586] 
   - podofo 
   - poedit 
   - poedit-lang 
@@ -16633,12 +16614,12 @@ unsorted:
   - postgresql11-pgagent 
   - postgresql11-plperl 
   - postgresql11-plpython 
+  - postgresql11-plr 
+  - postgresql11-plr-doc 
   - postgresql11-pltcl 
   - postgresql11-server-devel 
   - postgresql11-test 
   - postgresql11-timescaledb 
-  - postgresql93-plr 
-  - postgresql93-plr-doc 
   - postgresql94 
   - postgresql94-contrib 
   - postgresql94-devel 
@@ -16710,9 +16691,6 @@ unsorted:
   - pps-tools 
   - pps-tools-devel 
   - praat 
-  - pragha 
-  - pragha-lang 
-  - pragha-plugins 
   - pragha-plugins-devel 
   - prboom-plus 
   - prelude-correlator-core 
@@ -16853,21 +16831,21 @@ unsorted:
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi-devel 
   - ptscotch-parmetis-openmpi2-devel 
-  - ptscotch_6_0_6-gnu-mpich-hpc 
-  - ptscotch_6_0_6-gnu-mpich-hpc-devel 
-  - ptscotch_6_0_6-gnu-mpich-hpc-devel-static 
-  - ptscotch_6_0_6-gnu-mvapich2-hpc 
-  - ptscotch_6_0_6-gnu-mvapich2-hpc-devel 
-  - ptscotch_6_0_6-gnu-mvapich2-hpc-devel-static 
-  - ptscotch_6_0_6-gnu-openmpi1-hpc 
-  - ptscotch_6_0_6-gnu-openmpi1-hpc-devel 
-  - ptscotch_6_0_6-gnu-openmpi1-hpc-devel-static 
-  - ptscotch_6_0_6-gnu-openmpi2-hpc 
-  - ptscotch_6_0_6-gnu-openmpi2-hpc-devel 
-  - ptscotch_6_0_6-gnu-openmpi2-hpc-devel-static 
-  - ptscotch_6_0_6-gnu-openmpi3-hpc 
-  - ptscotch_6_0_6-gnu-openmpi3-hpc-devel 
-  - ptscotch_6_0_6-gnu-openmpi3-hpc-devel-static 
+  - ptscotch_6_0_7-gnu-mpich-hpc 
+  - ptscotch_6_0_7-gnu-mpich-hpc-devel 
+  - ptscotch_6_0_7-gnu-mpich-hpc-devel-static 
+  - ptscotch_6_0_7-gnu-mvapich2-hpc 
+  - ptscotch_6_0_7-gnu-mvapich2-hpc-devel 
+  - ptscotch_6_0_7-gnu-mvapich2-hpc-devel-static 
+  - ptscotch_6_0_7-gnu-openmpi1-hpc 
+  - ptscotch_6_0_7-gnu-openmpi1-hpc-devel 
+  - ptscotch_6_0_7-gnu-openmpi1-hpc-devel-static 
+  - ptscotch_6_0_7-gnu-openmpi2-hpc 
+  - ptscotch_6_0_7-gnu-openmpi2-hpc-devel 
+  - ptscotch_6_0_7-gnu-openmpi2-hpc-devel-static 
+  - ptscotch_6_0_7-gnu-openmpi3-hpc 
+  - ptscotch_6_0_7-gnu-openmpi3-hpc-devel 
+  - ptscotch_6_0_7-gnu-openmpi3-hpc-devel-static 
   - puddletag 
   - pugixml-devel 
   - pulseaudio-equalizer 
@@ -16918,6 +16896,7 @@ unsorted:
   - python-M2Crypto-doc 
   - python-OpenColorIO 
   - python-OpenColorIO-devel 
+  - python-PyMuPDF-doc 
   - python-PyWavelets-doc 
   - python-Rivet 
   - python-SHERPA-MC 
@@ -17215,7 +17194,6 @@ unsorted:
   - python-watcherclient-doc 
   - python-weakrefmethod 
   - python-web.py 
-  - python-websockify-common 
   - python-wxWidgets-3_0-devel 
   - python-xapian 
   - python-xmms2 
@@ -17292,6 +17270,7 @@ unsorted:
   - python2-GeoIP 
   - python2-GitPython 
   - python2-Glances 
+  - python2-Gloo 
   - python2-GooCalendar 
   - python2-GridDataFormats 
   - python2-HeapDict 
@@ -17324,6 +17303,7 @@ unsorted:
   - python2-Paste 
   - python2-PasteDeploy 
   - python2-PasteScript 
+  - python2-Paver 
   - python2-PeakUtils 
   - python2-Pebble 
   - python2-Pillow-tk 
@@ -17699,6 +17679,7 @@ unsorted:
   - python2-bobodoctestumentation 
   - python2-bokeh 
   - python2-boltons 
+  - python2-boolean.py 
   - python2-boost_parallel_mpi1_69_0 
   - python2-boto 
   - python2-boto3 
@@ -17733,6 +17714,7 @@ unsorted:
   - python2-cassowary 
   - python2-castellan 
   - python2-casttube 
+  - python2-catkin-pkg 
   - python2-cbor 
   - python2-cbor2 
   - python2-cdecimal 
@@ -17770,6 +17752,7 @@ unsorted:
   - python2-cl 
   - python2-cli-helpers 
   - python2-click 
+  - python2-click-aliases 
   - python2-click-completion 
   - python2-click-didyoumean 
   - python2-click-help-colors 
@@ -17784,6 +17767,7 @@ unsorted:
   - python2-cloudflare 
   - python2-cloudpickle 
   - python2-cluster 
+  - python2-cluster-preflight-check 
   - python2-clustershell 
   - python2-cmarkgfm 
   - python2-cmd2 
@@ -17962,6 +17946,7 @@ unsorted:
   - python2-dominate 
   - python2-dparse 
   - python2-dpkt 
+  - python2-dragonmapper 
   - python2-drf-jwt-knox 
   - python2-drf-nested-routers 
   - python2-drms 
@@ -18019,7 +18004,6 @@ unsorted:
   - python2-fastcluster 
   - python2-fasteners 
   - python2-fastimport 
-  - python2-fastnumbers 
   - python2-fastparquet 
   - python2-fb-re2 
   - python2-fedmsg 
@@ -18042,6 +18026,7 @@ unsorted:
   - python2-flake8-future-import 
   - python2-flake8-import-order 
   - python2-flake8-imports 
+  - python2-flake8-pep3101 
   - python2-flake8-polyfill 
   - python2-flake8-quotes 
   - python2-flaky 
@@ -18049,6 +18034,7 @@ unsorted:
   - python2-flask-jwt-extended 
   - python2-flask-mongoengine: [x86_64] 
   - python2-flask-peewee 
+  - python2-flask-restplus 
   - python2-flatbuffers 
   - python2-flex 
   - python2-flexmock 
@@ -18144,6 +18130,7 @@ unsorted:
   - python2-h2 
   - python2-h5py 
   - python2-hankel 
+  - python2-hanzidentifier 
   - python2-happybase 
   - python2-hawkauthlib 
   - python2-hdf5storage 
@@ -18179,9 +18166,11 @@ unsorted:
   - python2-icalendar 
   - python2-identify 
   - python2-ifaddr 
+  - python2-imagecodecs 
   - python2-imageio 
   - python2-imagesize 
   - python2-img2pdf 
+  - python2-iminuit 
   - python2-importlab 
   - python2-importlib-metadata 
   - python2-importlib_resources 
@@ -18257,6 +18246,7 @@ unsorted:
   - python2-jsonref 
   - python2-jsonrpclib-pelix 
   - python2-jsonschema 
+  - python2-junit-xml 
   - python2-junitxml 
   - python2-jupyter-contrib-nbextensions 
   - python2-jupyter-server 
@@ -18373,7 +18363,6 @@ unsorted:
   - python2-marathon 
   - python2-markdown-math 
   - python2-markdown2 
-  - python2-marshmallow 
   - python2-matplotlib-gtk3 
   - python2-matplotlib-latex 
   - python2-matplotlib-qt-shared 
@@ -18486,8 +18475,8 @@ unsorted:
   - python2-numpy-devel 
   - python2-numpy-gnu-hpc 
   - python2-numpy-gnu-hpc-devel 
-  - python2-numpy_1_16_4-gnu-hpc 
-  - python2-numpy_1_16_4-gnu-hpc-devel 
+  - python2-numpy_1_16_5-gnu-hpc 
+  - python2-numpy_1_16_5-gnu-hpc-devel 
   - python2-numpydoc 
   - python2-nwdiag 
   - python2-oauth2 
@@ -18499,6 +18488,7 @@ unsorted:
   - python2-octaviaclient 
   - python2-odfpy 
   - python2-odorik 
+  - python2-opcodes 
   - python2-openapi-core 
   - python2-openapi-spec-validator 
   - python2-opencv 
@@ -18648,6 +18638,7 @@ unsorted:
   - python2-precise-runner 
   - python2-preggy 
   - python2-prelude-correlator 
+  - python2-premailer 
   - python2-pretend 
   - python2-prewikka 
   - python2-proboscis 
@@ -18748,7 +18739,6 @@ unsorted:
   - python2-pygments-pytest 
   - python2-pygments-style-railscasts 
   - python2-pygraphviz 
-  - python2-pyhibp 
   - python2-pyinotify 
   - python2-pyinsane2 
   - python2-pyjavaproperties 
@@ -18825,6 +18815,7 @@ unsorted:
   - python2-pytest-check-links 
   - python2-pytest-click 
   - python2-pytest-codestyle 
+  - python2-pytest-console-scripts 
   - python2-pytest-cov 
   - python2-pytest-datadir 
   - python2-pytest-django 
@@ -18854,7 +18845,6 @@ unsorted:
   - python2-pytest-profiling 
   - python2-pytest-pythonpath 
   - python2-pytest-qt 
-  - python2-pytest-randomly 
   - python2-pytest-relaxed 
   - python2-pytest-remotedata 
   - python2-pytest-reorder 
@@ -18911,6 +18901,7 @@ unsorted:
   - python2-python-mimeparse 
   - python2-python-mpd2 
   - python2-python-mpv 
+  - python2-python-nmap 
   - python2-python-openid-cla 
   - python2-python-openid-teams 
   - python2-python-pam 
@@ -19019,6 +19010,7 @@ unsorted:
   - python2-resolvelib 
   - python2-responses 
   - python2-restructuredtext_lint 
+  - python2-restview 
   - python2-resultsdb_api 
   - python2-retry 
   - python2-retry_decorator 
@@ -19051,6 +19043,7 @@ unsorted:
   - python2-ruffus 
   - python2-ryu 
   - python2-s3transfer 
+  - python2-sadisplay 
   - python2-salt 
   - python2-samplerate 
   - python2-sane 
@@ -19166,8 +19159,10 @@ unsorted:
   - python2-sphinxcontrib-newsfeed 
   - python2-sphinxcontrib-nwdiag 
   - python2-sphinxcontrib-pecanwsme 
+  - python2-sphinxcontrib-plantuml 
   - python2-sphinxcontrib-programoutput 
   - python2-sphinxcontrib-seqdiag 
+  - python2-sphinxcontrib-svg2pdfconverter 
   - python2-sphinxcontrib-websupport 
   - python2-spotipy 
   - python2-sqlalchemy-migrate 
@@ -19252,6 +19247,7 @@ unsorted:
   - python2-tooz 
   - python2-topy 
   - python2-tornado 
+  - python2-tornado4 
   - python2-tox 
   - python2-tox-no-internet 
   - python2-tox-travis 
@@ -19269,6 +19265,7 @@ unsorted:
   - python2-translationstring 
   - python2-translitcodec 
   - python2-treq 
+  - python2-tri.struct 
   - python2-trustme 
   - python2-tsk 
   - python2-tweepy 
@@ -19295,6 +19292,7 @@ unsorted:
   - python2-uncertainties 
   - python2-uncompyle6 
   - python2-unicodecsv 
+  - python2-unicodedata2 
   - python2-unidiff 
   - python2-unify 
   - python2-uniseg 
@@ -19412,6 +19410,7 @@ unsorted:
   - python2-zdaemon 
   - python2-zeep 
   - python2-zetup 
+  - python2-zhon 
   - python2-zict 
   - python2-zipp 
   - python2-zipstream 
@@ -19456,7 +19455,7 @@ unsorted:
   - python3-Cerberus 
   - python3-Chameleon 
   - python3-Cheetah3 
-  - python3-CherryPy 
+  - python3-CherryPy: [i586] 
   - python3-CommonMark 
   - python3-Cython 
   - python3-DataShape 
@@ -19507,6 +19506,7 @@ unsorted:
   - python3-GitPython 
   - python3-GitgExt 
   - python3-Glances 
+  - python3-Gloo 
   - python3-GooCalendar 
   - python3-GridDataFormats 
   - python3-HTTPolice 
@@ -19523,7 +19523,7 @@ unsorted:
   - python3-Lektor 
   - python3-Levenshtein 
   - python3-Logbook 
-  - python3-Mako 
+  - python3-Mako: [i586] 
   - python3-MapProxy 
   - python3-Markdown 
   - python3-Markups 
@@ -19538,6 +19538,7 @@ unsorted:
   - python3-Paste 
   - python3-PasteDeploy 
   - python3-PasteScript 
+  - python3-Paver 
   - python3-PeakUtils 
   - python3-Pebble 
   - python3-Pillow-tk 
@@ -19622,9 +19623,9 @@ unsorted:
   - python3-WSME 
   - python3-WTForms 
   - python3-WeasyPrint 
-  - python3-WebOb 
-  - python3-WebTest 
-  - python3-Werkzeug 
+  - python3-WebOb: [i586] 
+  - python3-WebTest: [i586] 
+  - python3-Werkzeug: [i586] 
   - python3-Whoosh 
   - python3-XStatic 
   - python3-XStatic-Angular-Schema-Form 
@@ -19895,7 +19896,7 @@ unsorted:
   - python3-bashate 
   - python3-bcc 
   - python3-bcolz 
-  - python3-beautifulsoup4 
+  - python3-beautifulsoup4: [i586] 
   - python3-behave 
   - python3-bencode 
   - python3-beniget 
@@ -19925,6 +19926,7 @@ unsorted:
   - python3-bobodoctestumentation 
   - python3-bokeh 
   - python3-boltons 
+  - python3-boolean.py 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_69_0 
   - python3-botan 
@@ -19967,6 +19969,7 @@ unsorted:
   - python3-cassowary 
   - python3-castellan 
   - python3-casttube 
+  - python3-catkin-pkg 
   - python3-cbor 
   - python3-cbor2 
   - python3-ccm 
@@ -19993,9 +19996,10 @@ unsorted:
   - python3-cfscrape 
   - python3-cftime 
   - python3-chai 
+  - python3-charset-normalizer 
   - python3-chart-studio 
   - python3-check-manifest 
-  - python3-cheroot 
+  - python3-cheroot: [i586] 
   - python3-chest 
   - python3-cinderclient 
   - python3-ciscoconfparse 
@@ -20003,6 +20007,7 @@ unsorted:
   - python3-clang 
   - python3-cli-helpers 
   - python3-click 
+  - python3-click-aliases 
   - python3-click-completion 
   - python3-click-didyoumean 
   - python3-click-help-colors 
@@ -20018,6 +20023,7 @@ unsorted:
   - python3-cloudflare 
   - python3-cloudpickle 
   - python3-cluster 
+  - python3-cluster-preflight-check 
   - python3-clustershell 
   - python3-cmarkgfm 
   - python3-cmd2 
@@ -20225,6 +20231,7 @@ unsorted:
   - python3-dparse 
   - python3-dpcontracts 
   - python3-dpkt 
+  - python3-dragonmapper 
   - python3-drf-jwt-knox 
   - python3-drf-nested-routers 
   - python3-drms 
@@ -20317,6 +20324,7 @@ unsorted:
   - python3-flake8-future-import 
   - python3-flake8-import-order 
   - python3-flake8-imports 
+  - python3-flake8-pep3101 
   - python3-flake8-polyfill 
   - python3-flake8-pyi 
   - python3-flake8-quotes 
@@ -20325,6 +20333,7 @@ unsorted:
   - python3-flask-jwt-extended 
   - python3-flask-mongoengine: [x86_64] 
   - python3-flask-peewee 
+  - python3-flask-restplus 
   - python3-flatbuffers 
   - python3-flex 
   - python3-flexmock 
@@ -20370,6 +20379,7 @@ unsorted:
   - python3-geolib 
   - python3-geolinks 
   - python3-geopy 
+  - python3-getmac 
   - python3-geventhttpclient 
   - python3-gexiv2 
   - python3-ggplot 
@@ -20426,6 +20436,7 @@ unsorted:
   - python3-h11 
   - python3-h5py 
   - python3-hankel 
+  - python3-hanzidentifier 
   - python3-happybase 
   - python3-haproxyctl 
   - python3-hawkauthlib 
@@ -20465,11 +20476,13 @@ unsorted:
   - python3-idle 
   - python3-idna_ssl 
   - python3-ifaddr 
+  - python3-imagecodecs 
   - python3-imageio 
   - python3-imageio-ffmpeg 
   - python3-imagesize 
   - python3-imbox 
   - python3-img2pdf 
+  - python3-iminuit 
   - python3-immutables 
   - python3-importlab 
   - python3-importlib-metadata 
@@ -20516,10 +20529,10 @@ unsorted:
   - python3-itsdangerous 
   - python3-itypes 
   - python3-iwlib 
-  - python3-jaraco.base 
+  - python3-jaraco.base: [i586] 
   - python3-jaraco.classes 
   - python3-jaraco.collections 
-  - python3-jaraco.functools 
+  - python3-jaraco.functools: [i586] 
   - python3-jaraco.itertools 
   - python3-jaraco.logging 
   - python3-jaraco.packaging 
@@ -20559,6 +20572,7 @@ unsorted:
   - python3-jsonrpclib-pelix 
   - python3-jsonschema: [i586] 
   - python3-jsonslicer 
+  - python3-junit-xml 
   - python3-junitxml 
   - python3-jupyter-contrib-nbextensions 
   - python3-jupyter-datatables 
@@ -20582,6 +20596,7 @@ unsorted:
   - python3-kafka-python 
   - python3-kaitaistruct 
   - python3-kazoo 
+  - python3-kea 
   - python3-keepalive 
   - python3-kerberos 
   - python3-keyczar 
@@ -20655,7 +20670,7 @@ unsorted:
   - python3-libsmdev 
   - python3-libsmraw 
   - python3-libsoc 
-  - python3-libstoragemgmt 
+  - python3-libstoragemgmt: [i586] 
   - python3-libstoragemgmt-clibs 
   - python3-libtorrent-rasterbar 
   - python3-libunity 
@@ -20687,7 +20702,7 @@ unsorted:
   - python3-logilab-common 
   - python3-logreduce 
   - python3-loguru 
-  - python3-logutils 
+  - python3-logutils: [i586] 
   - python3-logzero 
   - python3-lttngust 
   - python3-lupa 
@@ -20744,7 +20759,7 @@ unsorted:
   - python3-monascaclient 
   - python3-mongoengine 
   - python3-monotonic 
-  - python3-more-itertools 
+  - python3-more-itertools: [i586] 
   - python3-moretools 
   - python3-moto 
   - python3-moviepy 
@@ -20771,7 +20786,6 @@ unsorted:
   - python3-mutt-ics 
   - python3-mygpoclient 
   - python3-mysql-connector-python 
-  - python3-mysqlclient 
   - python3-nagiosplugin 
   - python3-natsort 
   - python3-nautilus 
@@ -20831,8 +20845,8 @@ unsorted:
   - python3-numpy-devel 
   - python3-numpy-gnu-hpc 
   - python3-numpy-gnu-hpc-devel 
-  - python3-numpy_1_17_0-gnu-hpc 
-  - python3-numpy_1_17_0-gnu-hpc-devel 
+  - python3-numpy_1_17_1-gnu-hpc 
+  - python3-numpy_1_17_1-gnu-hpc-devel 
   - python3-numpydoc 
   - python3-nwdiag 
   - python3-oauth2 
@@ -20848,6 +20862,7 @@ unsorted:
   - python3-odorik 
   - python3-oic 
   - python3-onionshare 
+  - python3-opcodes 
   - python3-openapi-core 
   - python3-openapi-spec-validator 
   - python3-opencv 
@@ -20942,7 +20957,7 @@ unsorted:
   - python3-pdd 
   - python3-pdfkit 
   - python3-pdfrw 
-  - python3-pecan 
+  - python3-pecan: [i586] 
   - python3-peewee 
   - python3-pefile 
   - python3-pelican 
@@ -20995,7 +21010,7 @@ unsorted:
   - python3-poppler-qt5 
   - python3-port-for 
   - python3-portalocker 
-  - python3-portend 
+  - python3-portend: [i586] 
   - python3-portpicker 
   - python3-positional 
   - python3-posix_ipc 
@@ -21007,6 +21022,7 @@ unsorted:
   - python3-precise-runner 
   - python3-preggy 
   - python3-prelude-correlator 
+  - python3-premailer 
   - python3-pretend 
   - python3-prewikka 
   - python3-proboscis 
@@ -21191,6 +21207,7 @@ unsorted:
   - python3-pytest-check-links 
   - python3-pytest-click 
   - python3-pytest-codestyle 
+  - python3-pytest-console-scripts 
   - python3-pytest-cov 
   - python3-pytest-datadir 
   - python3-pytest-django 
@@ -21219,6 +21236,7 @@ unsorted:
   - python3-pytest-mock 
   - python3-pytest-mpl 
   - python3-pytest-openfiles 
+  - python3-pytest-parallel 
   - python3-pytest-profiling 
   - python3-pytest-pythonpath 
   - python3-pytest-qt 
@@ -21236,6 +21254,7 @@ unsorted:
   - python3-pytest-socket 
   - python3-pytest-spec 
   - python3-pytest-subtesthack 
+  - python3-pytest-subtests 
   - python3-pytest-sugar 
   - python3-pytest-super-check 
   - python3-pytest-svn 
@@ -21282,6 +21301,7 @@ unsorted:
   - python3-python-mimeparse 
   - python3-python-mpd2 
   - python3-python-mpv 
+  - python3-python-nmap 
   - python3-python-openid-cla 
   - python3-python-openid-teams 
   - python3-python-pam 
@@ -21392,6 +21412,7 @@ unsorted:
   - python3-resolvelib 
   - python3-responses 
   - python3-restructuredtext_lint 
+  - python3-restview 
   - python3-resultsdb_api 
   - python3-retry 
   - python3-retry_decorator 
@@ -21427,6 +21448,7 @@ unsorted:
   - python3-ryu 
   - python3-s3fs 
   - python3-s3transfer 
+  - python3-sadisplay 
   - python3-samplerate 
   - python3-sane 
   - python3-sanlock 
@@ -21468,7 +21490,6 @@ unsorted:
   - python3-serpy 
   - python3-serverfiles 
   - python3-setools: [i586] 
-  - python3-setproctitle 
   - python3-setuptools-git 
   - python3-setuptools_scm 
   - python3-setuptools_scm_git_archive 
@@ -21513,12 +21534,13 @@ unsorted:
   - python3-sortinghat 
   - python3-soundcloud 
   - python3-sounddevice 
-  - python3-soupsieve 
+  - python3-soupsieve: [i586] 
   - python3-spake2 
   - python3-spark_parser 
   - python3-sparse 
   - python3-speaklater 
   - python3-spec 
+  - python3-spec_tools 
   - python3-sphinx-autodoc-typehints 
   - python3-sphinx-bootstrap-theme 
   - python3-sphinx-feature-classification 
@@ -21544,10 +21566,12 @@ unsorted:
   - python3-sphinxcontrib-newsfeed 
   - python3-sphinxcontrib-nwdiag 
   - python3-sphinxcontrib-pecanwsme 
+  - python3-sphinxcontrib-plantuml 
   - python3-sphinxcontrib-programoutput 
   - python3-sphinxcontrib-qthelp 
   - python3-sphinxcontrib-seqdiag 
   - python3-sphinxcontrib-serializinghtml 
+  - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
   - python3-sphinxcontrib-websupport 
   - python3-splinter 
@@ -21602,7 +21626,7 @@ unsorted:
   - python3-technicolor 
   - python3-telepot 
   - python3-template-remover 
-  - python3-tempora 
+  - python3-tempora: [i586] 
   - python3-tenacity 
   - python3-termcolor 
   - python3-terminado 
@@ -21646,6 +21670,7 @@ unsorted:
   - python3-toolz 
   - python3-tooz 
   - python3-topy 
+  - python3-tornado 
   - python3-tox 
   - python3-tox-no-internet 
   - python3-tox-travis 
@@ -21663,6 +21688,8 @@ unsorted:
   - python3-translationstring 
   - python3-translitcodec 
   - python3-treq 
+  - python3-tri.declarative 
+  - python3-tri.struct 
   - python3-trio 
   - python3-trustme 
   - python3-tsk 
@@ -21690,6 +21717,7 @@ unsorted:
   - python3-uncertainties 
   - python3-uncompyle6 
   - python3-unicodecsv 
+  - python3-unicodedata2 
   - python3-unidiff 
   - python3-unify 
   - python3-uniseg 
@@ -21734,6 +21762,7 @@ unsorted:
   - python3-vobject 
   - python3-voila 
   - python3-voluptuous 
+  - python3-voluptuous-serialize 
   - python3-vtk 
   - python3-vtk-openmpi 
   - python3-vtk-openmpi2 
@@ -21741,7 +21770,7 @@ unsorted:
   - python3-vulture 
   - python3-w3lib 
   - python3-wadllib 
-  - python3-waitress 
+  - python3-waitress: [i586] 
   - python3-waitress-doc 
   - python3-wakeonlan 
   - python3-warlock 
@@ -21819,11 +21848,12 @@ unsorted:
   - python3-zarafa 
   - python3-zc.buildout 
   - python3-zc.customdoctests 
-  - python3-zc.lockfile 
+  - python3-zc.lockfile: [i586] 
   - python3-zdaemon 
   - python3-zeep 
   - python3-zeroconf 
   - python3-zetup 
+  - python3-zhon 
   - python3-zict 
   - python3-zipp 
   - python3-zipstream 
@@ -21850,6 +21880,7 @@ unsorted:
   - pyzy-devel 
   - q4wine 
   - q4wine-lang 
+  - q5go 
   - qactus 
   - qalculate 
   - qbittorrent 
@@ -21961,13 +21992,12 @@ unsorted:
   - qsynth-lang 
   - qt4-assistant-adp 
   - qt4-assistant-adp-devel 
+  - qt4-qtscript 
   - qt4-qtscript-doc 
   - qt4-style-fusion 
   - qt5ct 
   - qtcurve-gtk2 
   - qtcurve-gtk2-32bit: [x86_64] 
-  - qtcurve-kde4 
-  - qtcurve-kde4-32bit: [x86_64] 
   - qtcurve-qt5 
   - qtcurve-qt5-32bit: [x86_64] 
   - qtel 
@@ -22031,7 +22061,8 @@ unsorted:
   - radeontop-lang 
   - radiotray 
   - radiotray-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - raft-devel 
   - rage 
   - ragel 
   - ragel-6 
@@ -22111,25 +22142,20 @@ unsorted:
   - redsea 
   - redshift 
   - redshift-gtk 
+  - reg: [x86_64] 
   - regexp 
   - reiser4progs 
   - reiser4progs-devel 
   - remake 
   - remake-lang 
   - remind 
-  - remmina 
   - remmina-devel 
   - remmina-kiosk 
-  - remmina-lang 
   - remmina-plugin-exec 
   - remmina-plugin-kwallet 
-  - remmina-plugin-rdp 
-  - remmina-plugin-secret 
   - remmina-plugin-spice 
   - remmina-plugin-st 
-  - remmina-plugin-vnc 
   - remmina-plugin-www 
-  - remmina-plugin-xdmcp 
   - rendercheck 
   - rep-gtk 
   - rep-gtk-devel 
@@ -22165,8 +22191,6 @@ unsorted:
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
   - ripgrep-zsh-completion 
-  - ristretto 
-  - ristretto-lang 
   - rk-devel 
   - rkhunter 
   - rkward 
@@ -22598,6 +22622,7 @@ unsorted:
   - ruby2.6-rubygem-inifile-testsuite 
   - ruby2.6-rubygem-ipaddress-doc 
   - ruby2.6-rubygem-ipaddress-testsuite 
+  - ruby2.6-rubygem-jaro_winkler-doc 
   - ruby2.6-rubygem-jbuilder-doc 
   - ruby2.6-rubygem-jbuilder-testsuite 
   - ruby2.6-rubygem-jekyll 
@@ -22644,10 +22669,12 @@ unsorted:
   - ruby2.6-rubygem-log4r-doc 
   - ruby2.6-rubygem-logging-doc 
   - ruby2.6-rubygem-logging-testsuite 
+  - ruby2.6-rubygem-lolcat-doc 
   - ruby2.6-rubygem-loofah-doc 
   - ruby2.6-rubygem-loofah-testsuite 
   - ruby2.6-rubygem-mail-doc 
   - ruby2.6-rubygem-mail-doc-2_5 
+  - ruby2.6-rubygem-manpages-doc 
   - ruby2.6-rubygem-marcel-doc 
   - ruby2.6-rubygem-memcache-client-doc 
   - ruby2.6-rubygem-memcache-client-testsuite 
@@ -22743,6 +22770,8 @@ unsorted:
   - ruby2.6-rubygem-open4-testsuite 
   - ruby2.6-rubygem-openid_connect-doc 
   - ruby2.6-rubygem-openid_connect-testsuite 
+  - ruby2.6-rubygem-optimist-doc 
+  - ruby2.6-rubygem-optimist-testsuite 
   - ruby2.6-rubygem-orm_adapter-doc 
   - ruby2.6-rubygem-orm_adapter-testsuite 
   - ruby2.6-rubygem-owncloud-admin-doc 
@@ -22798,6 +22827,7 @@ unsorted:
   - ruby2.6-rubygem-rails-doc-5.2 
   - ruby2.6-rubygem-rails-doc-5_0 
   - ruby2.6-rubygem-rails-doc-5_1 
+  - ruby2.6-rubygem-rails-doc-6.0 
   - ruby2.6-rubygem-rails-dom-testing-doc 
   - ruby2.6-rubygem-rails-dom-testing-testsuite 
   - ruby2.6-rubygem-rails-html-sanitizer-doc 
@@ -22829,6 +22859,8 @@ unsorted:
   - ruby2.6-rubygem-rest-client-testsuite 
   - ruby2.6-rubygem-restility-doc 
   - ruby2.6-rubygem-restility-testsuite 
+  - ruby2.6-rubygem-reverse_markdown-doc 
+  - ruby2.6-rubygem-reverse_markdown-testsuite 
   - ruby2.6-rubygem-rgen-doc 
   - ruby2.6-rubygem-rgen-testsuite 
   - ruby2.6-rubygem-rice-doc 
@@ -23230,8 +23262,6 @@ unsorted:
   - scim-bridge 
   - scim-bridge-gtk2 
   - scim-bridge-gtk2-32bit: [x86_64] 
-  - scim-bridge-qt4 
-  - scim-bridge-qt4-32bit: [x86_64] 
   - scim-canna 
   - scim-chewing 
   - scim-devel 
@@ -23272,7 +23302,7 @@ unsorted:
   - screengrab-lang 
   - screenkey 
   - scribus 
-  - scribus-devel 
+  - scribus-doc 
   - scrot 
   - scrub 
   - scrypt 
@@ -23357,8 +23387,6 @@ unsorted:
   - shorewall6-lite 
   - shotcut 
   - shotcut-lang 
-  - shotwell 
-  - shotwell-lang 
   - showfont 
   - showfoto 
   - shp 
@@ -23427,6 +23455,7 @@ unsorted:
   - skopeo: [i586] 
   - skrooge 
   - skrooge-lang 
+  - sl 
   - slade 
   - slang-devel 
   - sleuth 
@@ -23524,6 +23553,7 @@ unsorted:
   - sndio 
   - sndio-devel 
   - sngrep 
+  - sni-qt 
   - sni-qt-32bit: [x86_64] 
   - snmpsim 
   - snorenotify-qt5 
@@ -23551,11 +23581,13 @@ unsorted:
   - softhsm 
   - softhsm-devel 
   - solaar 
-  - solaar-cli 
   - solaar-doc 
+  - solaar-udev 
   - solarfighter 
   - solarus 
   - solarus-devel 
+  - solarus-gui 
+  - solarus-gui-lang 
   - solarus-quest-editor 
   - solarus-quest-editor-assets 
   - solarus-quest-editor-lang 
@@ -23632,6 +23664,7 @@ unsorted:
   - spirv-tools-devel-32bit: [x86_64] 
   - splint 
   - splinter-devel 
+  - spotify-easyrpm 
   - spread-sheet-widget-devel 
   - spyder 
   - spyder-breakpoints 
@@ -23802,6 +23835,7 @@ unsorted:
   - sundanese-unicode-fonts 
   - sunpinyin-devel 
   - sunpinyin-tools 
+  - sunwait 
   - sunxi-tools 
   - superlu-devel 
   - superlu-doc 
@@ -23889,15 +23923,15 @@ unsorted:
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
   - syslinux-x86_64: [x86_64] 
-  - syslog-ng 
-  - syslog-ng-curl 
-  - syslog-ng-devel 
-  - syslog-ng-geoip 
-  - syslog-ng-java 
-  - syslog-ng-python 
-  - syslog-ng-redis 
-  - syslog-ng-smtp 
-  - syslog-ng-sql 
+  - syslog-ng: [x86_64] 
+  - syslog-ng-curl: [x86_64] 
+  - syslog-ng-devel: [x86_64] 
+  - syslog-ng-geoip: [x86_64] 
+  - syslog-ng-java: [x86_64] 
+  - syslog-ng-python: [x86_64] 
+  - syslog-ng-redis: [x86_64] 
+  - syslog-ng-smtp: [x86_64] 
+  - syslog-ng-sql: [x86_64] 
   - syslogd 
   - sysprof-capture-devel-static 
   - sysprof-devel 
@@ -23930,6 +23964,7 @@ unsorted:
   - t38modem 
   - tachyon 
   - tagbanwa-fonts 
+  - taglib 
   - taglib-extras-devel 
   - taglib-sharp 
   - taglib-sharp-devel 
@@ -24069,6 +24104,7 @@ unsorted:
   - terminus-lang 
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
+  - terraform-provider-openstack 
   - teseq 
   - tesseract 
   - tesseract-data 
@@ -31408,23 +31444,14 @@ unsorted:
   - threadweaver-devel-32bit: [x86_64] 
   - thrift 
   - thttpd 
-  - thunar 
   - thunar-devel 
-  - thunar-lang 
-  - thunar-plugin-archive 
-  - thunar-plugin-archive-lang 
-  - thunar-plugin-media-tags 
-  - thunar-plugin-media-tags-lang 
   - thunar-plugin-shares 
   - thunar-plugin-shares-lang 
   - thunar-plugin-vcs 
   - thunar-plugin-vcs-lang 
   - thunar-sendto-blueman 
   - thunar-sendto-clamtk 
-  - thunar-volman 
-  - thunar-volman-branding-openSUSE 
   - thunar-volman-branding-upstream 
-  - thunar-volman-lang 
   - thunarx-python 
   - thunarx-python-doc 
   - thunderbolt-user-space 
@@ -31610,13 +31637,13 @@ unsorted:
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
-  - trilinos_12_10_1-gnu-mpich-hpc: [x86_64] 
-  - trilinos_12_10_1-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_12_10_1-gnu-mvapich2-hpc: [x86_64] 
-  - trilinos_12_10_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos_12_10_1-gnu-openmpi2-hpc: [x86_64] 
-  - trilinos_12_10_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - trilinos_12_10_1-hpc-doc: [x86_64] 
+  - trilinos_12_14_1-gnu-mpich-hpc: [x86_64] 
+  - trilinos_12_14_1-gnu-mpich-hpc-devel: [x86_64] 
+  - trilinos_12_14_1-gnu-mvapich2-hpc: [x86_64] 
+  - trilinos_12_14_1-gnu-mvapich2-hpc-devel: [x86_64] 
+  - trilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
+  - trilinos_12_14_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_12_14_1-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
   - trojita 
@@ -31651,10 +31678,8 @@ unsorted:
   - ttf2pt1 
   - tudu 
   - tuladha-jejeg-fonts 
-  - tumbler 
   - tumbler-devel 
   - tumbler-doc 
-  - tumbler-lang 
   - tumbleweed-cli 
   - tunctl 
   - tuned-gtk 
@@ -31718,6 +31743,7 @@ unsorted:
   - typelib-1_0-AyatanaAppIndicator-0_1 
   - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
+  - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
   - typelib-1_0-BlockDev-2_0 
   - typelib-1_0-BraseroBurn-3_2_0 
@@ -31730,9 +31756,9 @@ unsorted:
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
   - typelib-1_0-Caribou-1_0 
-  - typelib-1_0-Cheese-3_0 
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
+  - typelib-1_0-CloudProviders-0_3_0 
   - typelib-1_0-Cogl-2_0 
   - typelib-1_0-CoglPango-2_0 
   - typelib-1_0-Colord-1_0 
@@ -31761,7 +31787,6 @@ unsorted:
   - typelib-1_0-Fwupd-2_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GExiv2-0_10 
-  - typelib-1_0-GMenu-3_0 
   - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
@@ -31946,6 +31971,8 @@ unsorted:
   - ulogd-pcap 
   - ulogd-pgsql 
   - ulogd-sqlite3 
+  - ultimatestunts 
+  - ultimatestunts-data 
   - ultrastar-deluxe 
   - umoci 
   - unbound 
@@ -31978,6 +32005,7 @@ unsorted:
   - unsermake 
   - unshield 
   - unshield-devel 
+  - unzip-rcc 
   - unzix 
   - update-bootloader-rpm-macros 
   - update-checker 
@@ -32231,7 +32259,7 @@ unsorted:
   - vkd3d-devel 
   - vkd3d-devel-32bit: [x86_64] 
   - vkeybd 
-  - vkmark: [x86_64] 
+  - vkmark 
   - vkquake 
   - vlc-devel 
   - vlc-jack 
@@ -32300,6 +32328,7 @@ unsorted:
   - vtk-qt 
   - vtkdata 
   - vulkan-devel 
+  - vulkan-doc 
   - vulkan-headers 
   - vulkan-tools 
   - vulkan-validationlayers 
@@ -32314,7 +32343,6 @@ unsorted:
   - waffle-devel 
   - wallpapers-openSUSE-extra 
   - wallstreet 
-  - waltham-devel 
   - wammu 
   - wammu-lang 
   - wang-fonts 
@@ -32366,13 +32394,13 @@ unsorted:
   - webvfx-devel 
   - webvfx-module 
   - weechat 
-  - weechat-aspell 
   - weechat-devel 
   - weechat-lang 
   - weechat-lua 
   - weechat-perl 
   - weechat-python 
   - weechat-ruby 
+  - weechat-spell 
   - weechat-tcl 
   - weld-parent 
   - werken-xpath 
@@ -32384,6 +32412,7 @@ unsorted:
   - wesnoth-server 
   - weston 
   - weston-devel 
+  - wget2 
   - wgetpaste 
   - when-command 
   - when-command-lang 
@@ -32400,6 +32429,8 @@ unsorted:
   - wine-devel 
   - wine-devel-32bit: [x86_64] 
   - wine-gecko 
+  - wine-nine-standalone 
+  - wine-nine-standalone-32bit: [x86_64] 
   - wine-staging 
   - wine-staging-32bit: [x86_64] 
   - wine-staging-devel 
@@ -32499,8 +32530,6 @@ unsorted:
   - xapian-core 
   - xapian-core-doc 
   - xapian-core-examples 
-  - xapps-common 
-  - xapps-common-lang 
   - xar 
   - xautolock 
   - xautomation 
@@ -32593,125 +32622,37 @@ unsorted:
   - xf86dga 
   - xfburn 
   - xfburn-lang 
-  - xfce4-appfinder 
-  - xfce4-appfinder-lang 
-  - xfce4-dev-tools 
-  - xfce4-dict 
-  - xfce4-dict-lang 
+  - xfce4-calculator-plugin 
+  - xfce4-calculator-plugin-lang 
   - xfce4-icon-theme 
   - xfce4-mixer 
   - xfce4-mixer-lang 
   - xfce4-mixer-plugin 
   - xfce4-multiload-nandhp-plugin 
-  - xfce4-notifyd 
-  - xfce4-notifyd-branding-openSUSE 
+  - xfce4-netspeed-plugin 
   - xfce4-notifyd-branding-upstream 
-  - xfce4-notifyd-lang 
   - xfce4-notifyd-theme-adapta 
   - xfce4-notifyd-theme-plata 
-  - xfce4-panel 
-  - xfce4-panel-branding-openSUSE 
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
-  - xfce4-panel-lang 
   - xfce4-panel-plugin-appmenu 
-  - xfce4-panel-plugin-battery 
-  - xfce4-panel-plugin-battery-lang 
-  - xfce4-panel-plugin-calculator 
-  - xfce4-panel-plugin-calculator-lang 
-  - xfce4-panel-plugin-clipman 
-  - xfce4-panel-plugin-clipman-lang 
-  - xfce4-panel-plugin-cpufreq 
-  - xfce4-panel-plugin-cpufreq-lang 
-  - xfce4-panel-plugin-cpugraph 
-  - xfce4-panel-plugin-cpugraph-lang 
-  - xfce4-panel-plugin-datetime 
-  - xfce4-panel-plugin-datetime-lang 
-  - xfce4-panel-plugin-dict 
-  - xfce4-panel-plugin-diskperf 
-  - xfce4-panel-plugin-diskperf-lang 
-  - xfce4-panel-plugin-eyes 
-  - xfce4-panel-plugin-eyes-lang 
-  - xfce4-panel-plugin-fsguard 
-  - xfce4-panel-plugin-fsguard-lang 
-  - xfce4-panel-plugin-genmon 
-  - xfce4-panel-plugin-genmon-lang 
-  - xfce4-panel-plugin-mailwatch 
-  - xfce4-panel-plugin-mailwatch-lang 
-  - xfce4-panel-plugin-mount 
-  - xfce4-panel-plugin-mount-lang 
-  - xfce4-panel-plugin-mpc 
-  - xfce4-panel-plugin-mpc-lang 
-  - xfce4-panel-plugin-multiload-nandhp 
-  - xfce4-panel-plugin-netload 
-  - xfce4-panel-plugin-netload-lang 
-  - xfce4-panel-plugin-netspeed 
-  - xfce4-panel-plugin-notes 
-  - xfce4-panel-plugin-notes-lang 
-  - xfce4-panel-plugin-places 
-  - xfce4-panel-plugin-places-lang 
-  - xfce4-panel-plugin-power-manager 
-  - xfce4-panel-plugin-pulseaudio 
-  - xfce4-panel-plugin-pulseaudio-lang 
-  - xfce4-panel-plugin-screenshooter 
-  - xfce4-panel-plugin-sensors 
-  - xfce4-panel-plugin-sensors-devel 
-  - xfce4-panel-plugin-sensors-lang 
-  - xfce4-panel-plugin-smartbookmark 
-  - xfce4-panel-plugin-smartbookmark-lang 
   - xfce4-panel-plugin-sntray 
-  - xfce4-panel-plugin-statusnotifier 
-  - xfce4-panel-plugin-statusnotifier-lang 
-  - xfce4-panel-plugin-systemload 
-  - xfce4-panel-plugin-systemload-lang 
-  - xfce4-panel-plugin-timeout 
-  - xfce4-panel-plugin-timeout-lang 
-  - xfce4-panel-plugin-timer 
-  - xfce4-panel-plugin-timer-lang 
-  - xfce4-panel-plugin-verve 
-  - xfce4-panel-plugin-verve-lang 
-  - xfce4-panel-plugin-wavelan 
-  - xfce4-panel-plugin-wavelan-lang 
-  - xfce4-panel-plugin-weather 
-  - xfce4-panel-plugin-weather-lang 
-  - xfce4-panel-plugin-whiskermenu 
-  - xfce4-panel-plugin-whiskermenu-lang 
-  - xfce4-panel-plugin-xkb 
-  - xfce4-panel-plugin-xkb-lang 
-  - xfce4-panel-restore-defaults 
-  - xfce4-power-manager 
-  - xfce4-power-manager-branding-openSUSE 
   - xfce4-power-manager-branding-upstream 
-  - xfce4-power-manager-lang 
-  - xfce4-screensaver 
-  - xfce4-session 
-  - xfce4-session-branding-openSUSE 
+  - xfce4-sensors-plugin-devel 
   - xfce4-session-branding-upstream 
-  - xfce4-session-devel 
-  - xfce4-session-lang 
-  - xfce4-settings 
-  - xfce4-settings-branding-openSUSE 
   - xfce4-settings-branding-upstream 
-  - xfce4-settings-lang 
-  - xfce4-splash-branding-openSUSE 
-  - xfce4-taskmanager 
-  - xfce4-taskmanager-lang 
-  - xfce4-terminal 
-  - xfce4-terminal-lang 
-  - xfce4-vala 
+  - xfce4-stopwatch-plugin 
+  - xfce4-stopwatch-plugin-lang 
+  - xfce4-time-out-plugin 
+  - xfce4-time-out-plugin-lang 
   - xfce4-volumed 
   - xfce4-volumed-pulse 
-  - xfce4-whiskermenu-plugin 
-  - xfce4-whiskermenu-plugin-lang 
   - xfd 
   - xfdashboard 
   - xfdashboard-devel 
   - xfdashboard-lang 
   - xfdashboard-themes 
-  - xfdesktop 
-  - xfdesktop-branding-openSUSE 
   - xfdesktop-branding-upstream 
-  - xfdesktop-lang 
   - xfig 
   - xfishtank 
   - xfmpc 
@@ -32720,13 +32661,9 @@ unsorted:
   - xfs 
   - xfsinfo 
   - xfsprogs-devel 
-  - xfwm4 
-  - xfwm4-branding-openSUSE 
   - xfwm4-branding-upstream 
-  - xfwm4-lang 
   - xfwm4-theme-adapta 
   - xfwm4-theme-plata 
-  - xfwm4-themes 
   - xgalaga++ 
   - xgalaga-sdl 
   - xgamma 
@@ -32925,10 +32862,7 @@ unsorted:
   - xquarto 
   - xrdp 
   - xrdp-devel 
-  - xreader 
-  - xreader-backends 
   - xreader-devel 
-  - xreader-lang 
   - xrefresh 
   - xrestop 
   - xroach 
@@ -32962,7 +32896,6 @@ unsorted:
   - xstroke 
   - xsynth-dssi 
   - xtables-addons 
-  - xtables-addons-kmp-default 
   - xtables-addons-kmp-pae: [i586] 
   - xtables-geoip 
   - xteddy 
@@ -33168,7 +33101,6 @@ unsorted:
   - zchunk 
   - zdbsp 
   - zeal 
-  - zeitgeist 
   - zeitgeist-devel 
   - zerobranestudio 
   - zerofree: [i586] 

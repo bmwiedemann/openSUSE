@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:31:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Trim history from description.
+  Fix wrong "it's".
+
+-------------------------------------------------------------------
 Thu Aug  8 08:37:50 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Capitalize summary to make rpmlint happy
@@ -68,7 +74,7 @@ Tue Feb 28 23:06:08 UTC 2017 - tbechtold@suse.com
 update to version 1.0.0
   * Allow to specify the used python interpreter
   * Fix utils import in python3 case
-  * Post release version bump to 1.0.0 
+  * Post release version bump to 1.0.0
 
 -------------------------------------------------------------------
 Tue Feb 28 18:53:16 UTC 2017 - tbechtold@suse.com
@@ -96,4 +102,3 @@ update to version 0.0.7
 Sun Aug 28 06:14:54 UTC 2016 - tbechtold@suse.com
 
 - Initial packaging (version 0.0.6)
-

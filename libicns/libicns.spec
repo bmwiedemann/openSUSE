@@ -1,7 +1,7 @@
 #
 # spec file for package libicns
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2011 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,6 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Convertors
 Url:            http://icns.sourceforge.net/
 Source0:        http://download.sourceforge.net/icns/%{name}-%{version}.tar.gz
-BuildRequires:  libjasper-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpng)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

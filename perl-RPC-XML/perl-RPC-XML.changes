@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Aug 22 12:35:17 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove patches not needed anymore:
+  * RPC-XML-0.60-rev127.dif
+  * RPC-XML-0.76-extern_ent.dif
+  * RPC-XML-0.78-reproducible.diff
+
+-------------------------------------------------------------------
+Wed Apr  3 07:27:15 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.80
+   see /usr/share/doc/packages/perl-RPC-XML/ChangeLog
+
+  0.80	Sunday May  8, 2016, 12:45:00 PM -0700
+  
+  	* etc/make_method
+  	Make the build reproducible by dropping timestamps in
+  	make_method output. (Niko Tyni)
+  
+  	* t/40_server.t
+  	* t/40_server_xmllibxml.t
+  	* t/50_client.t
+  	Fixes for test problems with Strawberry Perl.
+  
+  	* lib/RPC/XML/Client.pm
+  	Fix leak caused by failing to free Expat parser. We don't want
+  	to return from the method until the parser's been freed. We
+  	therefore need to call $parser->release() before the return
+  	statements caused by request failures. (Tom Grimwood-Taylor)
+  
+  	* lib/RPC/XML/Server.pm
+  	One socket-opt change, one typo corrected.
+  
+  	* lib/RPC/XML.pm
+  	Applied patch for numeric regexes and critic cleanup. Addresses
+  	GitHub pull request #10 and RT #111636.
+  
+  	* t/60_net_server.t
+  	RT #99578: Work-around fix for Net::Server+IO::Socket::IP. If a
+  	system's IPv6 declaration of localhost was before the IPv4
+  	declaration in the hosts file, this test would fail.
+
+-------------------------------------------------------------------
 Tue Mar  8 08:54:25 UTC 2016 - coolo@suse.com
 
 - update to 0.79

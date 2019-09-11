@@ -19,30 +19,25 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.66
+Version:        0.1.72
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://gegl.org/babl/
 
-Source0:        https://download.gimp.org/pub/babl/0.1/%{name}-%{version}.tar.bz2
+Source0:        https://download.gimp.org/pub/babl/0.1/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(lcms2)
 # None of these is needed for standard build:
 #BuildRequires:  inkscape ruby w3m
 
 %description
 babl is a dynamic, any to any, pixel format translation library.
-
-It allows converting between different methods of storing pixels known
-as pixel formats that have with different bitdepths and other data
-representations, color models and component permutations.
-
-A vocabulary to formulate new pixel formats from existing primitives is
-provided as well as the framework to add new color models and data
-types.
 
 %package -n libbabl-0_1-0
 Summary:        Dynamic Pixel Format Translation Library
@@ -59,35 +54,35 @@ A vocabulary to formulate new pixel formats from existing primitives is
 provided as well as the framework to add new color models and data
 types.
 
+%package -n typelib-1_0-Babl-0_1
+Summary:        Introspection bindings for babl
+Group:          System/Libraries
+
+%description -n typelib-1_0-Babl-0_1
+babl is a dynamic, any to any, pixel format translation library.
+
+This package provides the GObject Introspection bindings for babl.
+
 %package devel
 Summary:        Dynamic Pixel Format Translation Library
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libbabl-0_1-0 = %{version}
+Requires:       typelib-1_0-Babl-0_1 = %{version}
 
 %description devel
 babl is a dynamic, any to any, pixel format translation library.
-
-It allows converting between different methods of storing pixels known
-as pixel formats that have with different bitdepths and other data
-representations, color models and component permutations.
-
-A vocabulary to formulate new pixel formats from existing primitives is
-provided as well as the framework to add new color models and data
-types.
 
 %prep
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n libbabl-0_1-0 -p /sbin/ldconfig
 %postun -n libbabl-0_1-0 -p /sbin/ldconfig
@@ -98,10 +93,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so.*
 %{_libdir}/babl-0.1/
 
+%files -n typelib-1_0-Babl-0_1
+%{_libdir}/girepository-1.0/Babl-0.1.typelib
+
 %files devel
-%doc AUTHORS README TODO
+%doc AUTHORS TODO
 %{_includedir}/babl-0.1/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_datadir}/gir-1.0/Babl-0.1.gir
 
 %changelog

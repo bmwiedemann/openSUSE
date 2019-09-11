@@ -18,7 +18,7 @@
 
 %global pkg_name free
 Name:           ghc-%{pkg_name}
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        Monads for free
 License:        BSD-3-Clause

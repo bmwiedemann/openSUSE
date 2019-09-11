@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 31 06:54:17 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.2.0
+  * PostgreSQL 12 support by dverite
+  * Fixes a bug that caused the cron.job table to not appear in pg_dump
+
+-------------------------------------------------------------------
 Sun Apr 21 17:55:20 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 1.1.4

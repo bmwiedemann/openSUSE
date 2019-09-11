@@ -17,29 +17,23 @@
 
 
 Name:           mokutil
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Tools for manipulating machine owner keys
 License:        GPL-3.0-only
 Group:          Productivity/Security
 Url:            https://github.com/lcp/mokutil
-Source:         %{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM mokutil-fix-overflow.patch glin@suse.com -- Fix the potential buffer overflow
-Patch1:         mokutil-fix-overflow.patch
-# PATCH-FIX-UPSTREAM mokutil-fshort-wchar.patch glin@suse.com -- Add "-fshort-wchar" to make sure the UEFI strings are UCS-2 encoding
-Patch2:         mokutil-fshort-wchar.patch
-# PATCH-FIX-UPSTREAM mokutil-set-efi-variable-file-mode.patch glin@suse.com -- Be explicit about file modes in all cases
-Patch3:         mokutil-set-efi-variable-file-mode.patch
-# PATCH-FIX-UPSTREAM mokutil-constify-efi-guid.patch glin@suse.com -- Make all efi_guild_t variables const
-Patch4:         mokutil-constify-efi-guid.patch
-# OPENSUSE ONLY
-# PATCH-FIX-OPENSUSE mokutil-support-revoke-builtin-cert.patch glin@suse.com -- Add an option to revoke the built-in certificate
+Source:         https://github.com/lcp/%{name}/archive/%{version}.tar.gz
+Source1:        modhash
+# PATCH-FIX-UPSTREAM mokutil-remove-shebang-from-bash-completion-file.patch glin@suse.com -- Remove shebang from bash-completion/mokutil
+Patch1:         mokutil-remove-shebang-from-bash-completion-file.patch
 Patch100:       mokutil-support-revoke-builtin-cert.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  efivar-devel >= 0.12
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  pkg-config
+Requires:       openssl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 aarch64
 
@@ -56,18 +50,16 @@ Authors:
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %patch100 -p1
 
 %build
-autoreconf
+./autogen.sh
 %configure
 make
 
 %install
 %makeinstall
+install -m 755 -D %{SOURCE1} %{buildroot}/%{_bindir}/modhash
 
 %clean
 %{?buildroot:%__rm -rf "%{buildroot}"}
@@ -76,6 +68,9 @@ make
 %defattr(-,root,root)
 %license COPYING
 %{_bindir}/mokutil
+%{_bindir}/modhash
 %{_mandir}/man?/*
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/mokutil
 
 %changelog

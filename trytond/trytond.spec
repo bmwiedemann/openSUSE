@@ -20,7 +20,7 @@
 %define majorver 4.6
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.18
+Version:        %{majorver}.19
 Release:        0
 
 Summary:        An Enterprise Resource Planning (ERP) system

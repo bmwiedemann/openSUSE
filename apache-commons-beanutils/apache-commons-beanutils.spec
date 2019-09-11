@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-beanutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name	beanutils
 %define short_name	commons-%{base_name}
 Name:           apache-commons-beanutils
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Utility methods for accessing and modifying the properties of JavaBeans
 License:        Apache-2.0
@@ -28,6 +28,7 @@ URL:            http://commons.apache.org/beanutils
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Patch0:         jdk9.patch
+Patch1:         apache-commons-beanutils-fix-build-version.patch
 BuildRequires:  ant
 BuildRequires:  commons-collections
 BuildRequires:  commons-logging
@@ -65,6 +66,7 @@ BeanUtils Package.
 %prep
 %setup -q -n %{short_name}-%{version}-src
 %patch0 -p1
+%patch1 -p1
 sed -i 's/\r//' *.txt
 # bug in ant build
 touch README.txt
@@ -76,7 +78,7 @@ ant -Dbuild.sysclasspath=first dist
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
+install -m 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
 
 pushd %{buildroot}%{_javadir}
 ln -s %{name}-%{version}.jar %{name}.jar

@@ -73,8 +73,8 @@ translation-update-upstream
 %{glib2_gio_module_postun}
 
 %files
-%license COPYING
-%doc LICENSE_EXCEPTION NEWS README
+%license COPYING LICENSE_EXCEPTION
+%doc NEWS README
 %{_libdir}/gio/modules/libgiognomeproxy.so
 %{_libdir}/gio/modules/libgiognutls.so
 %{_libdir}/gio/modules/libgiolibproxy.so

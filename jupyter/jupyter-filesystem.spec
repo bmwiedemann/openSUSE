@@ -18,7 +18,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           jupyter-filesystem
 Url:            https://jupyter.org/
-Version:        20190522
+Version:        20190823
 %define tar_ver 1.0.0
 Release:        0
 Summary:        Common directories shared by Jupyter packages
@@ -88,6 +88,9 @@ Requires:       jupyter-jupyter_core-filesystem = %{version}
 Provides:       jupyter-jupyterlab-macros-devel = %{version}
 Provides:       %{python_module jupyterlab-filesystem = %{version}}
 Provides:       %{python_module jupyterlab-macros-devel = %{version}}
+# jupyterlab-widgets is no longer available as a python package
+Provides:       jupyter-jupyterlab-widgets = 0.7
+Obsoletes:      jupyter-jupyterlab-widgets < 0.7
 
 %description -n jupyter-jupyterlab-filesystem
 This package provides common directories and macros used by many 

@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   163
+%define texlive_noarch   167
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for w
-License:        Artistic-1.0 and BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LPPL-1.0 and LPPL-1.3c and SUSE-Public-Domain and SUSE-TeX
+License:        Artistic-1.0 AND BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LPPL-1.0 AND LPPL-1.3c AND SUSE-Public-Domain AND SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-w-rpmlintrc
@@ -14655,6 +14655,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/texdoc/texdoclib-view.tlu
 %{_texmfdistdir}/scripts/texdoc/texdoclib.tlu
 %{_texmfdistdir}/texdoc/texdoc.cnf
+%{_texmfdistdir}/scripts/texdoc/Data.tlpdb.lua
 %if %{with zypper_posttrans}
 /var/adm/update-scripts/texlive-texdoc-%{texlive_version}.%{texlive_noarch}.3.1svn50627-%{release}-zypper
 %endif

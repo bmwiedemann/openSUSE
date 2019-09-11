@@ -17,21 +17,18 @@
 
 
 %define project        github.com/containers/libpod
-%define conmon_project conmon
-%define conmonver      0.3.0
 # Build with libostree-devel in Tumbleweed, Leap 15 and SLES 15
 %if 0%{?suse_version} >= 1500
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        1.4.4
+Version:        1.5.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/containers/libpod
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{conmon_project}-%{conmonver}.tar.xz
 Source2:        libpod.conf
 Source3:        %{name}-rpmlintrc
 BuildRequires:  bash-completion
@@ -55,11 +52,10 @@ BuildRequires:  golang(API) >= 1.12
 %ifarch ppc64le
 #!BuildIgnore: gcc-PIE
 %endif
-# i586 not supported, containers/conmon does not build
-ExcludeArch:    i586
 Requires:       apparmor-parser
 Requires:       cni
 Requires:       cni-plugins
+Requires:       conmon
 Requires:       iptables
 Requires:       libcontainers-common
 Requires:       libcontainers-image
@@ -69,6 +65,7 @@ Requires:       slirp4netns >= 0.3.0
 Requires:       catatonit
 Requires:       fuse-overlayfs
 Recommends:     %{name}-cni-config = %{version}
+Recommends:     katacontainers
 %{go_nostrip}
 %if 0%{?with_libostree}
 BuildRequires:  libostree-devel
@@ -84,12 +81,6 @@ skopeo, as they all share the same datastore backend.
 
 %prep
 %setup -q
-# unpack conmon into the unpacked podman source
-%setup -q -T -D -a 1
-rm -rf $HOME/%{conmon_project}
-mkdir -pv $HOME/%{conmon_project}
-mv %{conmon_project}-%{conmonver}/* $HOME/%{conmon_project}
-rm -r %{conmon_project}-%{conmonver}
 
 %package cni-config
 Summary:        Basic CNI configuration for podman
@@ -138,10 +129,6 @@ go build -tags "$BUILDTAGS remoteclient" \
 # Build manpages
 make %{?_smp_mflags} docs
 
-# Build conmon
-cd $HOME/%{conmon_project}
-make
-
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
 # Updates must be tested manually.
@@ -160,15 +147,12 @@ install -D -m 0644 cni/87-podman-bridge.conflist %{buildroot}/%{_sysconfdir}/cni
 install -D -m 0644 %{SOURCE2} %{buildroot}/%{_sysconfdir}/containers/libpod.conf
 install -D -m 0644 %{SOURCE2} %{buildroot}/%{_datadir}/containers/libpod.conf
 install -D -m 0644 completions/bash/podman %{buildroot}/%{_datadir}/bash-completion/completions/podman
+install -D -m 0644 completions/zsh/_podman %{buildroot}%{_sysconfdir}/zsh_completion.d/_podman
 
 # podman varlink
 install -D -m 0644 contrib/varlink/podman.conf %{buildroot}/%{_tmpfilesdir}/podman.conf
 install -D -m 0644 contrib/varlink/io.podman.service %{buildroot}%{_unitdir}/io.podman.service
 install -D -m 0644 contrib/varlink/io.podman.socket %{buildroot}%{_unitdir}/io.podman.socket
-
-# conmon
-cd $HOME/%{conmon_project}
-install -D -m 0755 bin/conmon  %{buildroot}/%{_libexecdir}/podman/bin/conmon
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -176,9 +160,6 @@ install -D -m 0755 bin/conmon  %{buildroot}/%{_libexecdir}/podman/bin/conmon
 # Binaries
 %{_bindir}/podman
 %{_bindir}/podman-remote
-%dir %{_libexecdir}/podman
-%dir %{_libexecdir}/podman/bin
-%{_libexecdir}/podman/bin/conmon
 # Manpages
 %{_mandir}/man1/podman*.1*
 %{_mandir}/man5/libpod*.5*
@@ -188,6 +169,7 @@ install -D -m 0755 bin/conmon  %{buildroot}/%{_libexecdir}/podman/bin/conmon
 %{_datadir}/containers/libpod.conf
 # Completion
 %{_datadir}/bash-completion/completions/podman
+%{_sysconfdir}/zsh_completion.d/_podman
 # Varlink
 %{_tmpfilesdir}/podman.conf
 %{_unitdir}/io.podman.service

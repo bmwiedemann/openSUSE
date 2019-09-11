@@ -27,7 +27,7 @@
 %define with_python2 1
 %endif
 Name:           nmap
-Version:        7.70
+Version:        7.80
 Release:        0
 Summary:        Network exploration tool and security scanner
 License:        GPL-2.0-or-later
@@ -40,8 +40,7 @@ Patch1:         nmap-7.40-desktop_files.patch
 Patch2:         nmap-4.75-nostrip.patch
 Patch3:         su-to-zenmap.patch
 Patch4:         nmap-ncat-skip-network-tests.patch
-Patch5:         nmap-7.70-CVE-2018-15173_pcre_limits.patch
-Patch6:         nmap-7.70-fix_infinite_loop.patch
+Patch5:         netmask_negativ_bitshift.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -124,7 +123,6 @@ Service attacks, route tracing, etc.
 %endif
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 # use system provided libraries
 rm -rf libpcap libpcre macosx mswin32
@@ -204,7 +202,7 @@ compiled_with=$("%{buildroot}%{_bindir}/nmap" -V | grep "Compiled with:" )
 [[ $compiled_with == *\ liblua-5.3* ]]
 %else
 # lua in nmap tarball identifies itself as "liblua-5.3.3"
-[[ $compiled_with == *\ liblua-5.3.3* ]]
+[[ $compiled_with == *\ nmap-liblua-5.3.* ]]
 %endif
 #
 

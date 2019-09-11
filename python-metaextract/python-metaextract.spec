@@ -20,7 +20,7 @@
 Name:           python-metaextract
 Version:        1.0.6
 Release:        0
-Summary:        Get metadata for python modules
+Summary:        Module to collect metadata for Python modules
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            http://github.com/toabctl/metaextract
@@ -40,11 +40,11 @@ Requires(preun):  update-alternatives
 %python_subpackages
 
 %description
-metaextract is a tool to collect metadata about a python module. For example
-you may have a sdist tarball from the `Python Package Index`_ and you want to
-know it's dependencies. metaextract can collect theses dependencies.
-The tool was first developed in `py2pack`_ but is now it's own module to be
-useful for others, too.
+metaextract is a tool to collect metadata about a python module. For
+example, it can determine and collect the dependencies of a sdist
+tarball that was retrieved from the Python Package Index.
+
+The tool was first developed in py2pack but is now its own module.
 
 %prep
 %setup -q -n metaextract-%{version}

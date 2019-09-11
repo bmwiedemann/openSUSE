@@ -18,13 +18,15 @@
 
 Name:           osmo-iuh
 %define lname	libosmo-ranap2
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Mobile
-Url:            https://osmocom.org/projects/osmohnbgw/wiki
+URL:            https://osmocom.org/projects/osmohnbgw/wiki
+
 Source:         %name-%version.tar.xz
+Patch1:         damncode.diff
 Patch3:         0001-iu_client-uses-gprs_msgb.h.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
@@ -34,13 +36,13 @@ BuildRequires:  pkg-config >= 0.20
 BuildRequires:  python2
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.2.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 0.9.0
-BuildRequires:  pkgconfig(libosmocore) >= 0.11.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 0.11.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 0.3.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 0.10.0
+BuildRequires:  pkgconfig(libosmocore) >= 0.12.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 0.12.0
 BuildRequires:  pkgconfig(libosmogb)
-BuildRequires:  pkgconfig(libosmogsm) >= 0.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.11.0
+BuildRequires:  pkgconfig(libosmogsm) >= 0.12.0
+BuildRequires:  pkgconfig(libosmovty) >= 0.12.0
 
 %description
 Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)

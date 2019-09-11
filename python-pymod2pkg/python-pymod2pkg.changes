@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep  4 07:05:22 UTC 2019 - cloud-devel@suse.de
+
+- update to version 0.21.0
+  - Translate tempest to openstack-tempest
+
+-------------------------------------------------------------------
+Wed Aug 28 08:59:00 UTC 2019 - cloud-devel@suse.de
+
+- update to version 0.20.1
+  - Add openstack-placement rule for SUSE and RDO
+
+-------------------------------------------------------------------
+Fri Aug 23 08:21:07 UTC 2019 - cloud-devel@suse.de
+
+- update to version 0.20.0
+  - Unify services list between rdo and suse
+  - Add openstack-placement mapping
+  - update git.openstack.org to opendev
+  - Use sphinx-build for building the documentation
+  - Add RDO mapping for semantic_version
+
+-------------------------------------------------------------------
+Tue Aug 20 04:27:40 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version 0.19.0:
+  * Add aodh and barbican rule for SUSE
+  * Add networking-l2gw translation for RDO & SUSE
+  * Add Python 3 Train unit tests
+  * Switch to openstackdocstheme
+  * OpenDev Migration Patch
+
+-------------------------------------------------------------------
 Tue Mar  5 08:59:23 UTC 2019 - cloud-devel@suse.de
 
 - update to version 0.18.0

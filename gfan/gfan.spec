@@ -1,7 +1,7 @@
 #
 # spec file for package gfan
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,13 @@ Name:           gfan
 Version:        0.6.2
 Release:        0
 Summary:        Calculation of Gröbner fans
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
-Url:            http://home.imf.au.dk/jensen/software/gfan/gfan.html
+URL:            http://home.imf.au.dk/jensen/software/gfan/gfan.html
 
 Source:         http://home.imf.au.dk/jensen/software/gfan/%name%version.tar.gz
 Patch1:         gfan-automake.diff
 Patch2:         gfan-warnings.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  cddlib-devel
 BuildRequires:  gcc-c++
@@ -53,8 +52,7 @@ Gfan is a software package for computing Gröbner fans and tropical
 varieties. These are polyhedral fans associated to polynomial ideals.
 
 %prep
-%setup -qn %name%version
-%patch -P 1 -P 2 -p1
+%autosetup -p1 -n %name%version
 
 %build
 autoreconf -fi
@@ -70,11 +68,11 @@ b="%buildroot"
 %make_install
 for i in $(src/gfan _list | grep ^gfan_); do
 	ln -s gfan "$b/%_bindir/$i"
-done;
+done
 
 %files
-%defattr(-,root,root)
 %_bindir/gfan*
+%license COPYING
 %doc examples
 %if 0%{?with_pdf}
 %doc doc/manual.pdf

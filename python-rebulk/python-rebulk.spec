@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rebulk
-Version:        1.0.1
+Version:        2.0.0
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
@@ -44,7 +44,7 @@ allow building a custom and complex string matcher.
 %prep
 %setup -q -n rebulk-%{version}
 # Remove shebang from non-executable files
-for i in {'chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
+for i in {'builder','chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
 sed -i -e "1d" "rebulk/$i.py"
 done
 for i in {'default_rules_module','__init__','rebulk_rules_module','rules_module','test_chain','test_debug','test_introspector','test_loose','test_match','test_pattern','test_processors','test_rebulk','test_rules','test_toposort','test_validators'}; do

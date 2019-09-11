@@ -17,7 +17,7 @@
 
 
 Name:           librsvg
-Version:        2.44.14
+Version:        2.44.15
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT

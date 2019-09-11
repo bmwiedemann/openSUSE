@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.2.1
+Version:        3.4.0
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://www.sylabs.io/singularity/
@@ -31,13 +31,7 @@ Source0:        https://github.com/sylabs/singularity/archive/v%{version}.tar.gz
 Source1:        README.SUSE
 Source5:        %{name}-rpmlintrc
 Patch0:         build-position-independent-binaries.patch
-Patch1:         zypper-install-Fix-dbpath-for-newer-versions-of-SUSE-Linux.patch
-Patch2:         Handle-zypper-error-code-correctly.patch
-Patch3:         Support-multi-line-bootdef-settings.patch
-Patch4:         Add-support-for-numbered-variables.patch
-Patch5:         Improve-zypper-integration.patch
-Patch6:         Add-unit-tests-for-zypper-installation-on-SLE.patch
-Patch7:         Fix-pgp-key-version-strings-and-paths.patch
+Patch1:         fix_flags_order.patch
 
 BuildRequires:  gcc
 # Remove after brokenness has been fixed
@@ -46,6 +40,7 @@ BuildRequires:  go >= 1.11
 %else
 BuildRequires:  go1.11
 %endif
+BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  libuuid-devel
@@ -72,12 +67,6 @@ containers that can be used across host environments.
 mv %{name}-%{version} %{name}
 %patch0 -p 4
 %patch1 -p 4
-%patch2 -p 4
-%patch3 -p 4
-%patch4 -p 4
-%patch5 -p 4
-%patch6 -p 4
-%patch7 -p 4
 cp %{S:1} .
 
 %build

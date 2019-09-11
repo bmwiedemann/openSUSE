@@ -34,6 +34,7 @@ Patch1:         proper-compiler-flags-check.patch
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  make
+BuildRequires:  ncurses-devel
 BuildRequires:  python-base
 BuildRequires:  xz
 ExclusiveArch:  %{ix86} x86_64

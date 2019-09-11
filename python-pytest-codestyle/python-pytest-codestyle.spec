@@ -23,7 +23,7 @@ Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/henry0312/pytest-codestyle
+URL:            https://github.com/henry0312/pytest-codestyle
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-codestyle/pytest-codestyle-%{version}.tar.gz
 Patch0:         fix-super.patch
 BuildRequires:  %{python_module pycodestyle}
@@ -35,7 +35,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pycodestyle
 Requires:       python-pytest
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,8 +52,7 @@ pytest plugin to run pycodestyle in python tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONPATH="$PWD"
-%python_exec %{_bindir}/py.test
+%pytest
 
 %files %{python_files}
 %doc README.md

@@ -8,11 +8,11 @@ Subject: [PATCH] zypp: Switch to doUpgrade solver when required by
  backends/zypp/pk-backend-zypp.cpp | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
-index 77fc69639..b607d5632 100644
---- a/backends/zypp/pk-backend-zypp.cpp
-+++ b/backends/zypp/pk-backend-zypp.cpp
-@@ -3297,6 +3297,14 @@ backend_update_packages_thread (PkBackendJob *job, GVariant *params, gpointer us
+Index: PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
+===================================================================
+--- PackageKit-1.1.12.orig/backends/zypp/pk-backend-zypp.cpp
++++ PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
+@@ -3297,6 +3297,14 @@ backend_update_packages_thread (PkBacken
  	ResPool pool = zypp_build_pool (zypp, TRUE);
  	PkRestartEnum restart = PK_RESTART_ENUM_NONE;
  

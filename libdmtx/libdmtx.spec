@@ -28,7 +28,6 @@ Source1:        baselibs.conf
 Patch0:         libdmtx-0.7.4.diff
 # PATCH-FIX-UPSTREAM libdmtx-DmtxPropRowPadBytes.patch
 Patch1:         libdmtx-DmtxPropRowPadBytes.patch
-BuildRequires:  ImageMagick-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

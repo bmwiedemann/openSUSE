@@ -1,7 +1,7 @@
 #
 # spec file for package mISDNuser
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mISDNuser
-Version:        2.1.0
+Version:        2.1.0+2.0.22+git6
 Release:        0
 Summary:        Tools and library for mISDN
-License:        GPL-2.0 and LGPL-2.1
+License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Hardware/ISDN
-Url:            http://misdn.org/
+URL:            https://github.com/ISDN4Linux/mISDNuser
 
-#Changelog:	http://misdn.org/index.php/MISDN_Release_Notes
-# There seem to be no tarballs. Hence generated from git.
 Source:         %name-%version.tar.xz
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake
+BuildRequires:  flex
 BuildRequires:  libtool >= 2
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains libmisdn and some tools to use the mISDN driver.
@@ -54,7 +52,7 @@ This package contain the header files and libraries for
 mISDNuser development.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 if [ ! -e configure ]; then
@@ -68,24 +66,24 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-find "%buildroot/%_libdir" -type f -name "*.la" -delete;
+b="%buildroot"
+find "$b/%_libdir" -type f -name "*.la" -delete
+mkdir -p "$b/%_prefix/lib/udev/rules.d"
+mv "$b/etc/udev/rules.d"/* "$b/%_prefix/lib/udev/rules.d/"
 
-%post -n libmisdn1 -p /sbin/ldconfig
-
+%post   -n libmisdn1 -p /sbin/ldconfig
 %postun -n libmisdn1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%config %_sysconfdir/udev
+%_sysconfdir/misdn*conf
 %_bindir/*
 %_sbindir/*
+%_prefix/lib/udev/
 
 %files -n libmisdn1
-%defattr(-,root,root)
 %_libdir/libmisdn.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/mISDN/
 %_libdir/*.so
 

@@ -12,10 +12,13 @@ index 0188c68..dd75255 100644
           DESTINATION share/applications)
  ENDIF(UNIX AND NOT APPLE)
 diff --git a/shared/kochmorse.desktop b/shared/kochmorse.desktop
-index 3dc0ecf..bb4aec1 100644
+index 3dc0ecf..0f3d05d 100644
 --- a/shared/kochmorse.desktop
 +++ b/shared/kochmorse.desktop
-@@ -3,8 +3,8 @@ Name=Koch Morse
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+-Name=Koch Morse	
++Name=Koch Morse
  GenericName=Morse Tutor
  Comment=A simple Morse tutor using the Koch method.
  Exec=kochmorse
@@ -23,6 +26,6 @@ index 3dc0ecf..bb4aec1 100644
 +Icon=kochmorse
  Type=Application
 -Categories=Education;Teaching;
-+Categories=Education;HamRadio;X-Teaching;
++Categories=Education;Languages;X-HamRadio;X-Teaching;
  Terminal=false
  Encoding=UTF-8

@@ -1,7 +1,7 @@
 #
 # spec file for package patch2mail
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2008-2015 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,7 @@ Summary:        Patch and package update notification via mail
 #BuildRequires: bash
 #
 #Url:            http://blog.cboltz.de/plugin/tag/patch2mail
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Packages
 Url:            https://github.com/openSUSE/zypp-utils/tree/master/patch2mail
 Source:         %{name}-%{version}.tar.bz2
@@ -39,6 +39,7 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
+BuildRequires:  cron
 Requires:       /bin/hostname
 Requires:       /bin/rm
 Requires:       /usr/bin/xsltproc

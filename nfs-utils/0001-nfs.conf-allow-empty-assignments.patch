@@ -1,0 +1,55 @@
+From b8ebadacd1ccf943e3c699027bdc64bdcf5e9f37 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.com>
+Date: Mon, 3 Dec 2018 11:54:16 +1100
+Subject: [PATCH] nfs.conf: allow empty assignments.
+
+A recent commit caused an error message (but didn't actually
+trigger an error) for a config file line like:
+
+  foo =
+
+There is no good reason to treat this as an error, and we (SUSE) have
+established practice of expecting these to be accepted.
+Specifically "/etc/nfs.conf" includes "/etc/sysconfig/nfs" which
+contains lots of empty definitions.
+
+So remove the error message.
+
+Fixes: 1c2c18806800 ("nfs.conf: Removed buffer overruns")
+Signed-off-by: NeilBrown <neilb@suse.com>
+---
+ support/nfs/conffile.c      | 5 -----
+ tests/nfsconf/01-errors.exp | 1 -
+ 2 files changed, 6 deletions(-)
+
+diff --git a/support/nfs/conffile.c b/support/nfs/conffile.c
+index 0e39aca6b468..77c5790c893c 100644
+--- a/support/nfs/conffile.c
++++ b/support/nfs/conffile.c
+@@ -405,11 +405,6 @@ conf_parse_line(int trans, char *line, const char *filename, int lineno, char **
+ 			  "missing tag in assignment", filename, lineno);
+ 		return;
+ 	}
+-	if (*val == '\0') {
+-		xlog_warn("config error at %s:%d: "
+-			  "missing value in assignment", filename, lineno);
+-		return;
+-	}
+ 
+ 	if (strcasecmp(line, "include")==0) {
+ 		/* load and parse subordinate config files */
+diff --git a/tests/nfsconf/01-errors.exp b/tests/nfsconf/01-errors.exp
+index 2bf1b8c7f65b..0b985b46267e 100644
+--- a/tests/nfsconf/01-errors.exp
++++ b/tests/nfsconf/01-errors.exp
+@@ -4,7 +4,6 @@ nfsconf: config error at 01-errors.conf:10: non-matched ']', ignoring until next
+ nfsconf: config error at 01-errors.conf:11: ignoring line not in a section
+ nfsconf: config error at 01-errors.conf:14: line not empty and not an assignment
+ nfsconf: config error at 01-errors.conf:15: missing tag in assignment
+-nfsconf: config error at 01-errors.conf:16: missing value in assignment
+ nfsconf: config error at 01-errors.conf:18: unmatched quotes
+ [four]
+  four = foo = bar
+-- 
+2.14.0.rc0.dirty
+

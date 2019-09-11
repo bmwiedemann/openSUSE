@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  4 21:27:10 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to version 5.1-beta
+- CHANGED: New action names that matches more closely
+  the terminology used in current Desktop Environments.
+  You can select "Use old action names" option if don't like the change.
+- NEW: Added Help|What's New? menu item
+- NEW: Added --logoff, --restart, and --sleep command line option aliases
+  (run kshutdown --help for details)
+- CHANGED: Do not show "Ctrl+Q" shortcut in system tray menu
+- CHANGED: Tweaked popup notifications autohide timeout
+- FIXED: Better default keyboard focus in dialog windows
+- NEW: Added "Wiki" link button to the "Command Line Option" help window
+- Qt5: About window:
+  * Links can be selected and opened using Tab/Enter keys
+  * Selectable text
+- NEW: Tools|Run menu: Added boot-related "journalctl" commands
+- CHANGED: Simplify and normalize application versioning.
+  Now all versions are in format: "mm.ii" plus optional "-beta" suffix.
+  This mostly apply to:
+  * versions displayed in KShutdown GUI
+  * default download URLs
+    (e.g. sourceforge.net/projects/kshutdown/files/KShutdown/$VERSION/kshutdown-source-$VERSION.zip/download)
+- UPDATED: "VERSION" file format and related files
+- REMOVED: "test-wine.bat"; use "Setup-wine.sh" instead
+- REMOVED: Obsolete "kshutdown.nsh" file (version number is now passed as /DAPP_VERSION option)
+- Code cleanup
+
+-------------------------------------------------------------------
 Sun May 26 08:31:59 UTC 2019 - Markus S <kamikazow@opensuse.org>
 
 - Update to version 5.0

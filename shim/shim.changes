@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 16 04:07:30 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix a typo in shim-install (bsc#1145802)
+
+-------------------------------------------------------------------
 Fri Apr 19 10:32:11 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc9-fix-warnings.patch (bsc#1121268).

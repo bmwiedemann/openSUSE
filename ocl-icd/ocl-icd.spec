@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocl-icd
-Version:        2.2.11
+Version:        2.2.12
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
 Group:          System/Libraries
-Url:            https://forge.imag.fr/projects/ocl-icd/
-Source:         https://forge.imag.fr/frs/download.php/814/%{name}-%{version}.tar.gz
-BuildRequires:  opencl-headers >= 1.2
+URL:            https://github.com/OCL-dev/ocl-icd
+Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  libtool
+BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  pkgconfig(egl)
@@ -46,7 +47,7 @@ ICD (driver backend).
 %package     -n libOpenCL1
 Summary:        OpenCL ICD Bindings
 Group:          System/Libraries
-Recommends:     pocl
+Suggests:       pocl
 %if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550)
 Requires(pre):  update-alternatives
 Requires(post): update-alternatives
@@ -75,6 +76,7 @@ use ocl-icd for ICD functionality.
 %setup -q
 
 %build
+./bootstrap
 %configure
 make %{?_smp_mflags} stamp-generator stamp-generator-dummy
 %if 0%{?sles_version} || (0%{?suse_version} && 0%{?suse_version} <= 1140)
@@ -132,8 +134,10 @@ if [ "$1" = 0 ] ; then
 fi
 %endif
 
+%check
+make check
+
 %files -n libOpenCL1
-%defattr(-, root, root)
 %doc README
 %if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550)
 %dir %{_libdir}/ocl-icd
@@ -145,8 +149,8 @@ fi
 %endif
 
 %files devel
-%defattr(-, root, root)
-%doc README NEWS COPYING
+%doc README NEWS
+%license COPYING
 %doc instdocs/*
 %{_libdir}/libOpenCL.so
 %{_libdir}/pkgconfig/OpenCL.pc

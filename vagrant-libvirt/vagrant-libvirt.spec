@@ -57,7 +57,7 @@ Requires:       %{rubygem fog-libvirt >= 0.3.}
 Requires:       %{rubygem fog-core:2 >= 2.1}
 # s.add_runtime_dependency 'nokogiri', '~> 1.6'
 # Prevent have choice for rubygem(ruby:2.6.0:nokogiri) >= 1.5.11
-BuildRequires:  %{rubygem nokogiri:1.10.3 }
+BuildRequires:  %{rubygem nokogiri:1.10.4 }
 
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }

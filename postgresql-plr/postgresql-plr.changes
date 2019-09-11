@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 27 02:34:49 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh patch-Makefile-ldflags.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Sat Oct 27 02:32:53 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 08.03.00.18
+  Due to some minor changes in the internal API, there were some
+  small changes in the source to accommodate the changes.
+
+-------------------------------------------------------------------
+Thu Oct 25 14:09:53 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Add build for PostgreSQL 11 and drop 9.3.
+- BuildRequire server-devel instead of devel.
+
+-------------------------------------------------------------------
 Thu Aug 10 16:59:39 UTC 2017 - mrueckert@suse.de
 
 - use _multibuild

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:23:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Mon May 13 07:46:35 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace systemd-gtk BuildRequires with pkgconfig(systemd): make

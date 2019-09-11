@@ -1,7 +1,7 @@
 #
 # spec file for package fflas-ffpack
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%ifarch %ix86
-%define atlas  %_libdir/atlas-sse2
-%else
-%define atlas  %_libdir/atlas
-%endif
 
 %bcond_without openblas
 
 Name:           fflas-ffpack
 %define lname	libfflas0
-Version:        2.3.2
+Version:        2.4.3
 Release:        0
 Summary:        Finite Field Linear Algebra Subroutines
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://linbox-team.github.io/fflas-ffpack/
+URL:            https://linbox-team.github.io/fflas-ffpack/
 
 #Git-Clone:	https://github.com/linbox-team/fflas-ffpack
-Source:         https://github.com/linbox-team/%name/archive/v%version.tar.gz
-Patch0:         reproducible.patch
+Source:         https://github.com/linbox-team/fflas-ffpack/releases/download/%version/fflas-ffpack-%version.tar.gz
+Patch1:         reproducible.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,8 +42,7 @@ BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
 %endif
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(givaro)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(givaro) >= 4.1.0
 
 %description
 The FFLAS-FFPACK library provides functionalities for dense linear
@@ -63,7 +56,7 @@ Group:          Development/Libraries/C and C++
 The FFLAS-FFPACK library provides functionalities for dense linear
 algebra over word size prime finite field.
 
-This subpackage contains the include files and library links for   
+This subpackage contains the include files for
 developing against the fflas-ffpack library.
 
 %package doc
@@ -79,16 +72,15 @@ This subpackage contains the Doxygen-generated HTML documentation for
 the FFLAS-FFPACK API.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 #Do not compile in DATE and TIME
 sed '/HTML_TIMESTAMP/s/YES/NO/' -i doc/Doxyfile
 
 %build
-if [ ! -e configure ]; then
-	autoreconf -fi
-fi
+# tarball strangely created; wants to rerun aclocal-1.15.
+autoreconf -fi
+
 trap "cat config.log; exit 1" ERR
 %configure \
 	--with-blas-cflags=" " \
@@ -107,7 +99,6 @@ rm -f "%buildroot/%_docdir/%name/fflas-ffpack-html/INSTALL"
 %fdupes %buildroot/%_prefix
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog
 %license COPYING.LESSER
 %_bindir/fflas-ffpack-config
@@ -115,7 +106,6 @@ rm -f "%buildroot/%_docdir/%name/fflas-ffpack-html/INSTALL"
 %_libdir/pkgconfig/ff*.pc
 
 %files doc
-%defattr(-,root,root)
 %_docdir/%name/
 
 %changelog

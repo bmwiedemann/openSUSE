@@ -24,12 +24,12 @@
 %endif
 
 # Disable LTO on TW due to build failures
-%if 0%{?suse_version} > 01500 && 0%{?is_opensuse}
+%if 0%{?suse_version} > 01500
 %define _lto_cflags %{nil}
 %endif
 
 Name:           telegram-desktop
-Version:        1.8.1
+Version:        1.8.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -96,6 +96,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -141,8 +142,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       ffmpeg
 Requires:       hicolor-icon-theme
 Requires:       icu
-Requires:       jasper
 Requires:       openssl
+Conflicts:      libqt5-qtstyleplugins-platformtheme-gtk2
 ExclusiveArch:  x86_64
 
 %description

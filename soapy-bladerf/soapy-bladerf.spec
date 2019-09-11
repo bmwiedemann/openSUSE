@@ -19,7 +19,7 @@
 %define soapy_modname soapysdr%{soapy_modver}-module-bladerf
 
 Name:           soapy-bladerf
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        SoapySDR BladeRF module
 License:        LGPL-2.1

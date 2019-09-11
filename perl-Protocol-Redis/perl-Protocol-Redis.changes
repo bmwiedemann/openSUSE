@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 29 05:33:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.0010
+   see /usr/share/doc/packages/perl-Protocol-Redis/Changes
+
+  1.0010  28.08.2019 00:00:00
+           - code cleanup, prerequirements improvement, updated metadata to
+             meta-spec (Grinnz)
+           - tests improved with binary-safe encoding tests (Grinnz)
+           - optimize encode() (Grinnz)
+           - optimize parse() (jhthorsen)
+
+-------------------------------------------------------------------
 Tue Jan 29 15:00:00 CET 2019 - sriedel@suse.de
 
 - initial version (1.0006)

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug 23 19:58:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim package descriptions on packages installed more rarely.
+
+-------------------------------------------------------------------
+Fri Aug 23 10:31:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.72:
+  + Added handling for grayscale ICC profiles and gobject
+    introspection support.
+  + Optimizations for many format conversions for u8, u16 and half
+    formats. 
+  + Fixed a crash for NANs in float to u8 conversions.
+- Drop babl-add-sse2_cflags-to-CIE.patch: Fixed upstream.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires: New
+  dependency.
+- Following the above, package new sub-package
+  typelib-1_0-Babl-0_1.
+
+-------------------------------------------------------------------
+Sun Aug  4 18:34:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.70:
+  + Build fixes making the meson build work with more
+    architectures.
+- Changes from version 0.1.68:
+  + Added Yu'v' (CIE 1976 UCS) color model.
+  + Fixed a severe non-initialised memory issue - that kept us from
+    using fast paths for many babl spaces loaded from profile.
+  + More fully symmetric conversions between associated and
+    separate alpha.
+  + Added more converters, both SSE2 and non-SSE2 for
+    matrix-conversion between different RGB spaces.
+  + Improvements to website/documentation; babl is now using the
+    terms associated alpha and separate alpha, all of:
+    nonpremultiplied-, premultiplied- and nonassociated- alpha are
+    now considered deprecated API.
+  + HCY luminance is now relative to the RGB space used - no change
+    for sRGB related pixel formats. AVX2 acceleration for some
+    linear to float conversions.
+- Add meson BuildRequires and macros, upstream switched to meson
+  only.
+- Add pkgconfig(lcms2) BuildRequires: New dependency.
+- Add babl-add-sse2_cflags-to-CIE.patch: Fix build for i586
+  (glgo#GNOME/babl!42, glgo#GNOME/babl#23).
+
+-------------------------------------------------------------------
 Sat Jun 15 17:44:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.66:

@@ -1,6 +1,6 @@
-diff -ur exiv2-0.27.1-Source/samples/geotag.cpp exiv2-0.27.1-Source_fix/samples/geotag.cpp
---- exiv2-0.27.1-Source/samples/geotag.cpp	2019-04-26 11:31:16.000000000 +0200
-+++ exiv2-0.27.1-Source_fix/samples/geotag.cpp	2019-06-06 08:55:15.756143641 +0200
+diff -ur exiv2-0.27.1/samples/geotag.cpp exiv2-0.27.1_fix/samples/geotag.cpp
+--- exiv2-0.27.1/samples/geotag.cpp	2019-04-26 11:31:16.000000000 +0200
++++ exiv2-0.27.1_fix/samples/geotag.cpp	2019-06-06 08:55:15.756143641 +0200
 @@ -698,7 +698,7 @@
  
  int version(const char* program)
@@ -10,9 +10,9 @@ diff -ur exiv2-0.27.1-Source/samples/geotag.cpp exiv2-0.27.1-Source_fix/samples/
      return 0;
  }
  
-diff -ur exiv2-0.27.1-Source/src/version.cpp exiv2-0.27.1-Source_fix/src/version.cpp
---- exiv2-0.27.1-Source/src/version.cpp	2019-04-26 11:31:16.000000000 +0200
-+++ exiv2-0.27.1-Source_fix/src/version.cpp	2019-06-06 08:55:15.780142862 +0200
+diff -ur exiv2-0.27.1/src/version.cpp exiv2-0.27.1_fix/src/version.cpp
+--- exiv2-0.27.1/src/version.cpp	2019-04-26 11:31:16.000000000 +0200
++++ exiv2-0.27.1_fix/src/version.cpp	2019-06-06 08:55:15.780142862 +0200
 @@ -472,8 +472,6 @@
      output(os,keys,"debug"          , debug      );
      output(os,keys,"cplusplus"      , __cplusplus);
@@ -22,9 +22,9 @@ diff -ur exiv2-0.27.1-Source/src/version.cpp exiv2-0.27.1-Source_fix/src/version
      output(os,keys,"processpath"    , Exiv2::getProcessPath());
  #ifdef EXV_ENABLE_NLS
      output(os,keys,"localedir"      , EXV_LOCALEDIR);
-diff -ur exiv2-0.27.1-Source/cmake/Doxyfile.in exiv2-0.27.1-Source_fix/cmake/Doxyfile.in
---- exiv2-0.27.1-Source/cmake/Doxyfile.in	2019-04-26 11:31:16.000000000 +0200
-+++ exiv2-0.27.1-Source_fix/cmake/Doxyfile.in	2019-06-06 08:55:15.780142862 +0200
+diff -ur exiv2-0.27.1/cmake/Doxyfile.in exiv2-0.27.1_fix/cmake/Doxyfile.in
+--- exiv2-0.27.1/cmake/Doxyfile.in	2019-04-26 11:31:16.000000000 +0200
++++ exiv2-0.27.1_fix/cmake/Doxyfile.in	2019-06-06 08:55:15.780142862 +0200
 @@ -1202,7 +1202,7 @@
  # The default value is: NO.
  # This tag requires that the tag GENERATE_HTML is set to YES.

@@ -1,0 +1,57 @@
+From dab9967f8e4a67e5b7ddd4e6718414d2e9b25e42 Mon Sep 17 00:00:00 2001
+From: Mihai Dinca <mdinca@suse.de>
+Date: Fri, 14 Jun 2019 15:13:12 +0200
+Subject: [PATCH] Move server_id deprecation warning to reduce log
+ spamming (bsc#1135567) (bsc#1135732)
+
+---
+ salt/grains/core.py | 4 ----
+ salt/minion.py      | 9 +++++++++
+ 2 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index ce64620a24..e54212edfb 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -2812,10 +2812,6 @@ def get_server_id():
+         if bool(use_crc):
+             id_hash = getattr(zlib, use_crc, zlib.adler32)(__opts__.get('id', '').encode()) & 0xffffffff
+         else:
+-            salt.utils.versions.warn_until('Sodium', 'This server_id is computed nor by Adler32 neither by CRC32. '
+-                                                     'Please use "server_id_use_crc" option and define algorithm you'
+-                                                     'prefer (default "Adler32"). The server_id will be computed with'
+-                                                     'Adler32 by default.')
+             id_hash = _get_hash_by_shell()
+         server_id = {'server_id': id_hash}
+ 
+diff --git a/salt/minion.py b/salt/minion.py
+index 058b7ef6b8..97f74bf47e 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -103,6 +103,7 @@ from salt.utils.odict import OrderedDict
+ from salt.utils.process import (default_signals,
+                                 SignalHandlingMultiprocessingProcess,
+                                 ProcessManager)
++from salt.utils.versions import warn_until
+ from salt.exceptions import (
+     CommandExecutionError,
+     CommandNotFoundError,
+@@ -992,6 +993,14 @@ class MinionManager(MinionBase):
+         if (self.opts['master_type'] in ('failover', 'distributed')) or not isinstance(self.opts['master'], list):
+             masters = [masters]
+ 
++        if not self.opts.get('server_id_use_crc'):
++            warn_until(
++                'Sodium',
++                'This server_id is computed nor by Adler32 neither by CRC32. '
++                 'Please use "server_id_use_crc" option and define algorithm you'
++                 'prefer (default "Adler32"). The server_id will be computed with'
++                 'Adler32 by default.')
++
+         for master in masters:
+             s_opts = copy.deepcopy(self.opts)
+             s_opts['master'] = master
+-- 
+2.22.0
+
+

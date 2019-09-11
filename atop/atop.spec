@@ -56,6 +56,7 @@ and only shows the deviations since the previous interval.
 Summary:        System Resource and Process Monitoring History Daemon
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
+Requires(post): permissions
 Recommends:     cron
 Recommends:     logrotate
 
@@ -107,12 +108,16 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatopgpu
 
 %post daemon
 %service_add_post atop.service atopgpu.service atopacct.service
+%set_permissions /etc/cron.d
 
 %postun daemon
 %service_del_postun atop.service atopgpu.service atopacct.service
 
 %preun daemon
 %service_del_preun atop.service atopgpu.service atopacct.service
+
+%verifyscript daemon
+%verify_permissions -e /etc/cron.d
 
 %files
 %license COPYING
@@ -134,6 +139,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatopgpu
 %doc README
 %config(noreplace) %{_sysconfdir}/logrotate.d/psaccs_atop
 %config(noreplace) %{_sysconfdir}/logrotate.d/psaccu_atop
+%dir %{_sysconfdir}/cron.d
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
 %{_datadir}/%{name}/atop.daily
 %{_localstatedir}/log/atop

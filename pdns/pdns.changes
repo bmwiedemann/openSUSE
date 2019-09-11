@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:56:44 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.2.0:
+  - New features:
+    * Lua records
+    * ixfrdist
+    * a new LMDB backend
+  - Important functional changes:
+    * the default UDP response size limit has been changed from 1680 to 1232
+    * the autoserial feature has been removed
+- pdns-4.0.3_allow_dacoverride_in_capset.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Aug  8 20:09:15 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.1.13:

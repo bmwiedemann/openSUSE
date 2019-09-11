@@ -1,7 +1,7 @@
 #
 # spec file for package potrace
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,13 @@ Name:           potrace
 Version:        1.15
 Release:        0
 Summary:        Utility for Tracing a Bitmap to Scalable Outline Image
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Convertors
 Url:            http://potrace.sourceforge.net/
 Source:         http://potrace.sourceforge.net/download/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  libtool
 BuildRequires:  zlib-devel
+Patch1:         potrace_configure_chg_for_lto.patch
 Provides:       bitmap_tracing
 
 %description
@@ -65,6 +67,7 @@ at any resolution.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat-security
@@ -77,6 +80,7 @@ export CFLAGS="${CFLAGS/-fstack-protector /}"
 %endif
 # clang does not support that yet...
 export CFLAGS="${CFLAGS/-fstack-clash-protection /}"
+autoreconf -fvi
 %configure\
 	--docdir=%{_docdir}/%{name}\
 	--with-libpotrace\

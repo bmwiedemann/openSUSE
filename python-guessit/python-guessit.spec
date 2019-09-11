@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-guessit
-Version:        3.0.4
+Version:        3.1.0
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only
@@ -30,13 +30,13 @@ BuildRequires:  %{python_module babelfish >= 0.5.5}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module rebulk >= 0.9.0}
+BuildRequires:  %{python_module rebulk >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.5.5
 Requires:       python-python-dateutil
-Requires:       python-rebulk >= 0.9.0
+Requires:       python-rebulk >= 2.0.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,7 +56,7 @@ done
 for i in {'common/comparators','common/date','common/expected','common/formatters','common/__init__','common/numeral','common/pattern','common/quantity','common/validators','common/words','__init__','markers/groups','markers/__init__','markers/path','processors'}; do
 sed -i -e "1d" "guessit/rules/$i.py"
 done
-for i in {'api','backports','__init__','jsonutils','__main__','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
+for i in {'api','backports','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
 sed -i -e "1d" "guessit/$i.py"
 done
 

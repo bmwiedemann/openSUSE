@@ -2,13 +2,13 @@
  contrib/completion/git-completion.bash |   10 ++++++----
  1 file changed, 6 insertions(+), 4 deletions(-)
 
-Index: git-2.13.0/contrib/completion/git-completion.bash
+Index: git-2.23.0/contrib/completion/git-completion.bash
 ===================================================================
---- git-2.13.0.orig/contrib/completion/git-completion.bash	2017-05-09 16:47:28.000000000 +0200
-+++ git-2.13.0/contrib/completion/git-completion.bash	2017-05-10 12:09:05.594109083 +0200
-@@ -37,10 +37,12 @@
- #     When set to "1", do not include "DWIM" suggestions in git-checkout
- #     completion (e.g., completing "foo" when "origin/foo" exists).
+--- git-2.23.0.orig/contrib/completion/git-completion.bash
++++ git-2.23.0/contrib/completion/git-completion.bash
+@@ -40,10 +40,12 @@
+ #     and git-switch completion (e.g., completing "foo" when "origin/foo"
+ #     exists).
  
 -case "$COMP_WORDBREAKS" in
 -*:*) : great ;;

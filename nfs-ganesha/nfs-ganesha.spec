@@ -113,6 +113,8 @@ License:	LGPL-3.0+ and GPL-3.0+
 Url:		https://github.com/nfs-ganesha/nfs-ganesha/wiki
 
 Source:		%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM https://github.com/nfs-ganesha/nfs-ganesha/pull/455.patch
+Patch0:         add-missing-CheckSymbolExists-include.patch
 
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -442,6 +444,7 @@ be used with NFS-Ganesha to support Gluster
 
 %prep
 %setup -q
+%patch0 -p2
 
 %build
 export LANGUAGE=en_US.UTF-8

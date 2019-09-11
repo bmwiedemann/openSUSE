@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 26 09:02:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream release 1.29
+  * teamd: remove port if adding fails
+  * teamd: add a default value 1000 for link_watch.interval
+  * teamd: fix a json object memleak in get_port_obj()
+- Update to upstream release 1.28
+  * teamd: do not process lacpdu before the port ifinfo is set
+  * teamd: add port_hwaddr_changed for ab runner
+  * teamd: add port_hwaddr_changed for lb runner
+  * teamd: add port_hwaddr_changed for lacp runner
+    name
+  * libteam: don't crash when trying to print unregistered device
+    teamd_event_watch_ops
+  * teamd: add port_master_ifindex_changed for
+    syslog
+  * teamd: add an option to force log output to stdout, stderr or
+    DEFAULT to CURRENT
+  * teamd: lacp: send LACPDU when port state transitions from
+
+-------------------------------------------------------------------
 Fri Feb 22 07:33:05 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Drop use of $FIRST_ARG in .spec

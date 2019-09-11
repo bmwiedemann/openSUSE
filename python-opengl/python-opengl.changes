@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:30:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid buildcycle
+
+-------------------------------------------------------------------
+Sun Aug 18 05:11:27 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove CFLAGS for noarch package
+- Use setuptools to build the package
+- Expand scope of fdupes to include egg-info
+- Activate test suite, disabled using bcond check on platforms
+  without test dependency pygame, and with test_buffer_api_basic
+  disabled on platforms other than x86_64 and aarch64 due to
+  failures caused by the installation of opengel-accelerate
+- Change optional dependencies tk and numpy to Recommends
+  instead of mandatory run time dependencies
+- Add missing python-tk to Recommends to complement tk
+- Change mtime adjustment algorithm to be more reflective of the
+  source date, based on OpenGL/__init__.py instead of .changes
+- Upgrade to 3.1.3b2
+  - Python 3.7 compatibility fixes
+
+-------------------------------------------------------------------
 Tue Dec  4 12:51:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

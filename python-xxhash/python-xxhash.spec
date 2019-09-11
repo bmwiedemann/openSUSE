@@ -18,22 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xxhash
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Python binding for xxHash
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/ifduyue/python-xxhash
+URL:            https://github.com/ifduyue/python-xxhash
 Source:         https://files.pythonhosted.org/packages/source/x/xxhash/xxhash-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  xxhash-devel
 # SECTION test requirements
 BuildRequires:  %{python_module nose > 1.3.0}
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  unzip
-
 %python_subpackages
 
 %description
@@ -44,17 +43,22 @@ xxhash is a Python binding for the xxHash library.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+export LANG=en_US.UTF-8
+export XXHASH_LINK_SO=1
 %python_build
 
 %install
+export LANG=en_US.UTF-8
+export XXHASH_LINK_SO=1
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+export LANG=en_US.UTF-8
+export XXHASH_LINK_SO=1
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/*

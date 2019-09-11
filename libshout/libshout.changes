@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  1 06:37:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.3
+  * Fixed building with OpenSSL 1.1.0.
+  * Added support for PUT.
+  * Added support for WebM and Matroska with full timing.
+
+-------------------------------------------------------------------
 Wed Feb  7 21:54:52 UTC 2018 - jengelh@inai.de
 
 - Fix typographic tidbits in description. Compact filelist.
@@ -33,22 +41,22 @@ Sun Nov 20 06:46:56 UTC 2011 - coolo@suse.com
 
 -------------------------------------------------------------------
 Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
- 
+
 - Added 32bit compatibility libraries
 - Removed self-obsoletes (fix for RPMLINT warning)
- 
+
 -------------------------------------------------------------------
 Wed Dec 26 03:08:19 CET 2007 - crrodriguez@suse.de
 
 - previous change introduced a undefined reference to `speex_packet_to_header'
   library wants to use speex but does not link to it correctly
   (libshout-2.2.2-missing-lib.patch)
- 
+
 
 -------------------------------------------------------------------
 Sun Dec 16 23:47:12 CET 2007 - crrodriguez@suse.de
 
-- support speex 
+- support speex
 - fix library packaging policy change
 - cleanup unneeded dependencies and pkgconfig script
 
@@ -94,4 +102,3 @@ Wed Jan 11 19:00:14 CET 2006 - tiwai@suse.de
 Tue Jun 14 13:08:49 CEST 2005 - tiwai@suse.de
 
 - initial version: 2.1
-

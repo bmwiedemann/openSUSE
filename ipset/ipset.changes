@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 19 12:53:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.3
+  * Fix rename concurrency with listing, which can result broken
+    list/save results.
+  * ipset: Copy the right MAC address in bitmap:ip,mac and
+    hash:ip,mac sets.
+  * ipset: Actually allow destination MAC address for hash:ip,mac
+    sets too.
+
+-------------------------------------------------------------------
 Mon Jun 10 13:09:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 7.2
@@ -133,7 +144,7 @@ Mon Jan 18 15:42:54 UTC 2016 - kstreitova@suse.com
     * compatibility: include linux/export.h when needed
     * compatibility: make sure vmalloc.h is included for kvfree()
     * compatibility: Fix detecting 'struct net' in 'struct tcf_ematch'
-    * compatibility: Protect definition of RCU_INIT_POINTER in 
+    * compatibility: Protect definition of RCU_INIT_POINTER in
       compatibility header file
     * netfilter: ipset: Fix sleeping memory allocation in atomic
       context (Nikolay Borisov)
@@ -212,7 +223,7 @@ Wed Mar  5 08:47:39 UTC 2014 - jengelh@inai.de
 * add markmask for hash:ip,mark data type
 * add hash:ip,mark data type to ipset
 * Fix all set output from list/save when set with counters in use.
-* ipset: Fix malformed output from list/save for ICMP types in port 
+* ipset: Fix malformed output from list/save for ICMP types in port
   field
 * ipset: fix timeout data type size (Nikolay Martynov)
 

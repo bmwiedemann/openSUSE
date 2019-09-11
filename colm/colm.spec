@@ -1,7 +1,7 @@
 #
 # spec file for package colm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           colm
-Version:        0.13.0.6
+Version:        0.13.0.7
 Release:        0
-%define lname	libcolm-0_13_0_6
+%define lname	libcolm-0_13_0_7
 Summary:        The Colm programming language
 License:        MIT
 Group:          Development/Languages/Other
-Url:            http://www.colm.net/open-source/colm/
+URL:            https://www.colm.net/open-source/colm/
 
-Source:         http://www.colm.net/files/colm/%name-%version.tar.gz
+#Git-Clone:     git://colm.net/colm
+Source:         https://www.colm.net/files/colm/%name-%version.tar.gz
 Patch1:         shadow.diff
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Colm is a programming language designed for the analysis and
@@ -71,8 +71,7 @@ transformation of computer languages.
 This subpackage contains the documentation in HTML format.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi

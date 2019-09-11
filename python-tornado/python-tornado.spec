@@ -16,61 +16,20 @@
 #
 
 
-%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tornado
 Version:        4.5.3
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
+Source0:        README.suse
 Group:          Development/Languages/Python
 Url:            http://www.tornadoweb.org
-Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
-Patch1:         tornado-testsuite_timeout.patch
-# meshed from upstream and local changes (Tornado 5 update blocked by salt)
-Patch2:         asyncio.patch
-Patch3:         openssl-cert-size.patch
-Patch4:         skip-failing-tests.patch
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pycurl}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module simplejson}
-BuildRequires:  fdupes
+BuildRequires:  %{pythons}
 BuildRequires:  python-rpm-macros
-Requires:       python
-Requires:       python-simplejson
-%if 0%{?suse_version} || 0%{?fedora_version} || 0%{?rhel} >= 8
-Recommends:     python-Twisted
-Recommends:     python-pycares
-Recommends:     python-pycurl
-Recommends:     python-service_identity
-%endif
-%if 0%{?sle_version} == 120300 || 0%{?sle_version} == 120400 || 0%{?fedora} || 0%{?rhel}
-BuildRequires:  %{python_module backports_abc}
-%endif
-%if 0%{?sle_version} == 120000 && !0%{?is_opensuse}
-BuildRequires:  %{python_module backports.ssl_match_hostname}
-BuildRequires:  %{python_module certifi}
-%endif
-%if %{with python2}
-BuildRequires:  python-futures
-BuildRequires:  python-singledispatch
-%endif
-# SECTION test requirements
-BuildRequires:  python-backports_abc
-%if %{python3_version_nodots} < 35
-BuildRequires:  python3-backports_abc
-%endif
-# /SECTION
-%if %{python_version_nodots} < 35
-Requires:       python-backports_abc
-%endif
-%ifpython2
-Requires:       python-singledispatch
-%if 0%{?suse_version} || 0%{?fedora_version} || 0%{?rhel} >= 8
-Recommends:     python-futures
-%endif
-%endif
+Requires:       python-tornado-impl = %{version}
+Requires:       python-tornado-impl = %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -90,36 +49,16 @@ FriendFeed servers. (For more information on scaling servers to support
 thousands of clients, see The C10K problem.)
 
 %prep
-%setup -q -n tornado-%{version}
-# Fix non-executable script rpmlint issue:
-find demos tornado -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-
-%pre
-# remove egg-info _file_, being replaced by an egg-info directory
-if [ -f %{python_sitearch}/tornado-%{version}-py%{python_version}.egg-info ]; then
-    rm %{python_sitearch}/tornado-%{version}-py%{python_version}.egg-info
-fi
+%setup -q -T -c
+cp %{SOURCE0} .
 
 %build
-%python_build
+# None
 
 %install
-%python_install
-%fdupes -s demos
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%check
-export ASYNC_TEST_TIMEOUT=30
-%python_exec -m tornado.test.runtests
+# None
 
 %files %{python_files}
-%license LICENSE
-%doc demos
-%{python_sitearch}/tornado
-%{python_sitearch}/tornado-%{version}-py*.egg-info
+%doc README.suse
 
 %changelog

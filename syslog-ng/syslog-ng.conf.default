@@ -1,4 +1,4 @@
-@version:3.19
+@version:3.23
 @include "scl.conf"
 
 #
@@ -40,7 +40,7 @@ source src {
 	#udp(ip("0.0.0.0") port(514));
 };
 
-include "ADDITIONAL_SOCKETS";
+@include "ADDITIONAL_SOCKETS"
 
 #
 # Filter definitions

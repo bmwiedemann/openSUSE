@@ -37,13 +37,13 @@
 %define qt_dir %{_datadir}/qt%{qt_ver}
 
 Name:           eric
-Version:        19.04
+Version:        19.9
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://eric-ide.python-projects.org/
-Source:         https://downloads.sourceforge.net/project/eric-ide/%{distname}/stable/%{version}/%{distname}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/19.09/%{distname}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3%{?qt_ext}
 BuildRequires:  python3-qscintilla%{?qt_ext}
@@ -105,8 +105,8 @@ python3 install.py -b %{_bindir} -d %{python3_sitelib} -i %{buildroot} -x --pyqt
 ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 
 %files
-%license LICENSE.GPL3
-%doc README.rst THANKS
+%license eric/docs/LICENSE.GPL3
+%doc eric/docs/README*.rst eric/docs/THANKS eric/docs/eric6-plugin.odt
 %{_bindir}/*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{distname}.appdata.xml
@@ -118,7 +118,7 @@ ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 %{python3_sitelib}/
 
 %files api
-%license LICENSE.GPL3
+%license eric/docs/LICENSE.GPL3
 %dir %{qt_dir}
 %dir %{qt_dir}/qsci/api/python
 %{qt_dir}/qsci/api/python/*

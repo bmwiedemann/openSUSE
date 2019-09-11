@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lark-parser
-Version:        0.7.1
+Version:        0.7.3
 Release:        0
 Summary:        A parsing library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erezsh/lark
-Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz
-# extracted test gramars from nearley -> https://github.com/kach/nearley 
+Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-parser-%{version}.tar.gz
+# extracted test gramars from nearley -> https://github.com/kach/nearley
 Source1:        testdata.tar.gz
-Patch0:         disable_test.patch
 BuildRequires:  %{python_module Js2Py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Suggests:       python-Js2Py
 %python_subpackages
 
 %description
@@ -41,8 +41,7 @@ Lark is a general-purpose parsing library for Python.
 With Lark, one can parse any context-free grammar with little code.
 
 %prep
-%setup -qa1 -n lark-%{version}
-%patch0 -p1
+%setup -q -n lark-%{version} -a1
 
 %build
 %python_build
@@ -52,11 +51,11 @@ With Lark, one can parse any context-free grammar with little code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -mtests
+%python_exec setup.py test
 
 %files %{python_files}
 %license LICENSE
-%doc README.md docs
+%doc README.md docs/*
 %{python_sitelib}/*
 
 %changelog

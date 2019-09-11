@@ -1,3 +1,2 @@
-# the password.lst contains some shebangs which are often
-# used as passwords - so the rpmlint warning is a false positive
-addFilter("non-executable-script.*/var/lib/john/password.lst")
+addFilter("devel-file-in-non-devel-package")
+addFilter("/usr/share/john/john.local.conf")

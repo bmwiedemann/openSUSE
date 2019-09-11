@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:39:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.4.11:
+  - Added SNMPv3 USM master and localized keys support to LCD configuration
+  - Improved initial and runtime USM debugging
+  - Fixed a bug in USM configuration which did not allow the same user names
+    to be added under different security names
+
+-------------------------------------------------------------------
 Wed Jul 31 20:44:55 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4.10

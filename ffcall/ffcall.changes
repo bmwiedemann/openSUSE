@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 26 07:22:29 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to (lib)fcall-2.2 release
+  * Added support for the following platforms:
+    (Previously, a build on these platforms failed.)
+    - armv6 (Raspberry Pi): Linux.
+    - hppa: Linux 32-bit.
+    - riscv32: Linux with ilp32d ABI.
+    - riscv64: Linux with lp64d ABI.
+  * The build for the mips 32-bit ABI is now compatible with toolchains for
+    the 'fpxx' ABI variant.  The downside is that the mips1 architecture is
+    no longer supported.
+  * Fixed a bug regarding passing of more than 8 arguments on the following
+    platforms:
+    - arm64: Linux 64-bit.
+  * Fixed a stack corruption bug on the following platforms:
+    - hppa: HP-UX 32-bit.
+
+-------------------------------------------------------------------
+Sun Aug 25 13:26:58 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing keyring and verify source signature
+
+-------------------------------------------------------------------
 Wed Jul 10 07:02:40 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Fix dependencies to get clisp build again 

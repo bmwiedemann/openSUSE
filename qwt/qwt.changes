@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:17:30 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix build with recent libqt5-qttools packages.
+
+-------------------------------------------------------------------
 Sun Jul 21 12:08:35 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added qwt-Qt_5.13.patch to fix Factory build

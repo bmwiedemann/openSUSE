@@ -324,6 +324,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %dir %{_sysconfdir}/munin/static
 %config %{_sysconfdir}/munin/templates/*
 %config %{_sysconfdir}/munin/static/*
+%dir %{_sysconfdir}/cron.d
 %config %{_sysconfdir}/cron.d/munin
 %config(noreplace) %{_sysconfdir}/munin/munin.conf
 %config %{_sysconfdir}/logrotate.d/munin

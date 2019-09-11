@@ -1,7 +1,7 @@
 #
 # spec file for package librevenge
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,23 +22,22 @@ Name:           librevenge
 Version:        0.0.4
 Release:        0
 Summary:        A base library for writing document import filters
-License:        LGPL-2.1+ or MPL-2.0+
-Group:          System/Libraries
-Url:            http://sourceforge.net/p/libwpd/wiki/librevenge/
+License:        LGPL-2.1-or-later OR MPL-2.0+
+Group:          Development/Libraries/C and C++
+URL:            https://sourceforge.net/p/libwpd/wiki/librevenge/
 Source:         http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
-%if 0%{?suse_version} > 1325
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  xz
+BuildRequires:  pkgconfig(cppunit)
+BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  doxygen
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRequires:  xz
-BuildRequires:  pkgconfig(cppunit)
-BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 %{name} is a base library for writing document import filters. It has
@@ -47,7 +46,7 @@ presentations.
 
 %package -n %{name}-%{pkgextension}
 Summary:        A base library for writing document import filters
-License:        LGPL-2.1+ or MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0+
 Group:          System/Libraries
 
 %description -n %{name}-%{pkgextension}
@@ -57,9 +56,9 @@ presentations.
 
 %package -n %{name}-stream-%{pkgextension}
 Summary:        A base library for writing document import filters (stream implementations)
-License:        (LGPL-2.1+ or MPL-2.0+) and BSD-3-Clause
-Group:          System/Libraries
 # src/lib/RVNGOLEStream.{h,cpp} are BSD3c
+License:        (LGPL-2.1-or-later OR MPL-2.0+) AND BSD-3-Clause
+Group:          System/Libraries
 
 %description -n %{name}-stream-%{pkgextension}
 %{name} is a base library for writing document import filters. It has
@@ -69,7 +68,7 @@ This package contains the different stream implementations.
 
 %package -n %{name}-generators-%{pkgextension}
 Summary:        A base library for writing document import filters
-License:        LGPL-2.1+ or MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0+
 Group:          System/Libraries
 
 %description -n %{name}-generators-%{pkgextension}
@@ -81,7 +80,7 @@ documents using %{name}s APIs.
 
 %package devel
 Summary:        Development files for %{name}
-License:        LGPL-2.1+ or MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0+
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{pkgextension} = %{version}-%{release}
 Requires:       %{name}-generators-%{pkgextension} = %{version}-%{release}
@@ -93,11 +92,9 @@ developing applications that use %{name}.
 
 %package doc
 Summary:        Documentation of %{name} API
-License:        LGPL-2.1+ or MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0+
 Group:          Documentation/Other
-%if 0%{?suse_version} > 1200
 BuildArch:      noarch
-%endif
 
 %description doc
 The %{name}-doc package contains documentation files for %{name}.
@@ -115,43 +112,35 @@ The %{name}-doc package contains documentation files for %{name}.
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_docdir}/%{name}
 
 %post -n %{name}-%{pkgextension} -p /sbin/ldconfig
-
 %postun -n %{name}-%{pkgextension} -p /sbin/ldconfig
-
 %post -n %{name}-stream-%{pkgextension} -p /sbin/ldconfig
-
 %postun -n %{name}-stream-%{pkgextension} -p /sbin/ldconfig
-
 %post -n %{name}-generators-%{pkgextension} -p /sbin/ldconfig
-
 %postun -n %{name}-generators-%{pkgextension} -p /sbin/ldconfig
 
-%if 0%{?suse_version} > 1300
 %check
+%if 0%{?suse_version} >= 1500
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 make %{?_smp_mflags} check
 %endif
 
 %files -n %{name}-%{pkgextension}
-%defattr(-,root,root)
-%doc COPYING.* README NEWS
+%license COPYING.*
+%doc README NEWS
 %{_libdir}/%{name}-%{apiversion}.so.*
 
 %files -n %{name}-stream-%{pkgextension}
-%defattr(-,root,root)
 %{_libdir}/%{name}-stream-%{apiversion}.so.*
 
 %files -n %{name}-generators-%{pkgextension}
-%defattr(-,root,root)
 %{_libdir}/%{name}-generators-%{apiversion}.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog
 %{_includedir}/%{name}-%{apiversion}
 
@@ -171,8 +160,7 @@ make %{?_smp_mflags} check
 %{_datadir}/%{name}/python
 
 %files doc
-%defattr(-,root,root)
-%doc COPYING.*
+%license COPYING.*
 %doc %{_docdir}/%{name}
 
 %changelog

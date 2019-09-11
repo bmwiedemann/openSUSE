@@ -38,6 +38,7 @@ This antlr package is used for bootstrapping purposes only.
 find | grep "\(ShowString.java$\|StreamConverter.java$\)" && exit 42 || :
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 #>>> some useful functions ... used throughout bootstrap packages
 # variables:
 TARGET_DIR=`pwd`

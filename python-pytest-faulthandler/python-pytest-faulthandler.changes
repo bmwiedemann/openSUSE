@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:53:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in pytest 5 as it is integral part of that
+  (yet we need it on py3 for pytest3 and pytest4)
+
+-------------------------------------------------------------------
 Mon Jun  3 09:20:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.6.0:

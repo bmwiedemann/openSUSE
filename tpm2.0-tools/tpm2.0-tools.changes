@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 26 07:42:52 UTC 2019 - matthias.gerstner@suse.com
+
+- update to minor version 3.1.4:
+  * Fix various man pages
+  * tpm2_getmanufec: fix OSSL build warnings
+  * Fix broken -T option
+  * Various build compatibility fixes
+  * Fix some unit tests
+  * Update build for recent autoconf-archive versions
+  * Install m4 files
+
+-------------------------------------------------------------------
 Wed Mar  6 10:44:52 UTC 2019 - matthias.gerstner@suse.com
 
 - update to minor version 3.1.3:

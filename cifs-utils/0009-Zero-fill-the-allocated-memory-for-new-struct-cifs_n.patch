@@ -1,0 +1,27 @@
+From 5a468f3dcbea4bfbc380a3f86466b8e33bc40570 Mon Sep 17 00:00:00 2001
+From: misku <miskuu@gmail.com>
+Date: Wed, 31 Jul 2019 13:12:24 +0200
+Subject: [PATCH] Zero fill the allocated memory for new `struct cifs_ntsd`
+
+Fixes a bug where `sacloffset` may not be set at all later on and therefore it
+can contain the original memory contents == trash.
+---
+ setcifsacl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setcifsacl.c b/setcifsacl.c
+index da1d742..f3d0189 100644
+--- a/setcifsacl.c
++++ b/setcifsacl.c
+@@ -206,7 +206,7 @@ alloc_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd **npntsd,
+ 	acessize = aces * sizeof(struct cifs_ace);
+ 	bufsize = size + acessize;
+ 
+-	*npntsd = malloc(bufsize);
++	*npntsd = calloc(1, bufsize);
+ 	if (!*npntsd) {
+ 		printf("%s: Memory allocation failure", __func__);
+ 		return errno;
+-- 
+2.16.4
+

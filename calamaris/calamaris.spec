@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            http://calamaris.cord.de
 Source:         http://cord.de/%{name}-%{version}.tar.gz
+Patch0001:      0001_perl.patch
 BuildArch:      noarch
 
 %description
@@ -32,6 +33,7 @@ native log format and generates a report.
 
 %prep
 %setup -q
+%patch0001
 
 %build
 

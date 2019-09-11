@@ -28,7 +28,7 @@ Url:            http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-Version:        201905
+Version:        201908
 Release:        0
 Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
@@ -221,6 +221,7 @@ TOOL_CHAIN_TAG=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
 	FLAVORS=("aavmf-aarch64")
 	BUILD_ARCH="AARCH64"
 
+	OVMF_FLAGS="$OVMF_FLAGS -D NETWORK_TLS_ENABLE"
 	BUILD_OPTIONS="$OVMF_FLAGS -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc -b DEBUG -t $TOOL_CHAIN_TAG"
 	ARCH=AARCH64 make -C BaseTools
 %else

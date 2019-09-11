@@ -39,7 +39,7 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        7.8.15
+Version:        8.1.14
 Release:        0
 Url:            https://github.com/TACC/Lmod
 %if 0%{?ohpc}
@@ -129,7 +129,8 @@ export LUA_PATH="%{lua_path}"
     --libdir=%{lua_archdir} \
     --datadir=%{lua_noarchdir} \
     --with-redirect=yes \
-    --with-autoSwap=no
+    --with-autoSwap=no \
+    --with-fastTCLInterp=no
 make
 find my_docs/ -name .gitignore -delete
 %endif
@@ -152,8 +153,6 @@ mkdir -p %{buildroot}%{lua_lmod_admin_modulesdir}
 mkdir -p %{buildroot}%{lua_lmod_moduledeps}
 mkdir -p %{buildroot}/%{_mandir}/man1                                                       
 
-# Fix exec warning
-chmod u+x %{buildroot}%{_datadir}/lmod/%{version}/libexec/ignore_dirs_converter
 # Fix file duplicates
 rm -f %{buildroot}/%{_datadir}/lmod/%{version}/init/ksh
 ln -s %{_datadir}/lmod/%{version}/init/sh  %{buildroot}/%{_datadir}/lmod/%{version}/init/ksh

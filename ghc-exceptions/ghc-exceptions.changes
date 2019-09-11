@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 28 02:02:31 UTC 2019 - psimons@suse.com
+
+- Update exceptions to version 0.10.3.
+  0.10.3 [2019.08.27]
+  -------------------
+  * `MonadThrow` instance for the strict `ST` monad.
+
+-------------------------------------------------------------------
 Fri May  3 02:03:13 UTC 2019 - psimons@suse.com
 
 - Update exceptions to version 0.10.2.

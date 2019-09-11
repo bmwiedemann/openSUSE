@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 30 14:17:48 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libgcrypt 1.8.5:
+  * CVE-2019-13627: mitigation against an ECDSA timing attack (boo#1148987)
+  * Improve ECDSA unblinding
+  * Provide a pkg-config file
+
+-------------------------------------------------------------------
 Wed Jun 26 06:52:54 UTC 2019 - Jason Sikes <jsikes@suse.de>
 
 - Fixed redundant fips tests in some situations causing sudo to stop

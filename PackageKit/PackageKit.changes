@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:27:28 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Modify PackageKit-systemd-timers.patch: Port the cron
+  configuration variables to the script, and add -sendwait
+  parameter to mail in the script(bsc#1130306).
+
+-------------------------------------------------------------------
+Mon Aug 19 01:10:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Refresh patches with quilt.
+- Drop PackageKit-cron-without-sleep.patch: Not needed for any
+  current version of openSUSE.
+- Add PackageKit-drop-gtk2.patch: Port away from gtk2 dependency,
+  drop gtk2-devel BuildRequires (gh#/hughsie/PackageKit#333).
+- Add autoconf-archive BuildRequires and run autogen.sh, needed as
+  above patch touches buildsystem.
+
+-------------------------------------------------------------------
+Mon Aug 19 01:10:01 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Add PackageKit-zypp-fix-what-provides-newest-filter.patch:
+  zypp: Add support for newest filter in what-provides(bsc#984865,
+  gh#hughsie/PackageKit#335).
+
+-------------------------------------------------------------------
+Wed Aug 14 01:32:01 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Rename PackageKit-remove-default-thread-check.patch to
+  PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch,
+  and update it with the one accepted upstream.
+
+-------------------------------------------------------------------
 Wed Jun 19 08:17:22 UTC 2019 - Jonathan Kang <sckang@suse.com>
 
 - Add PackageKit-zypp-fix-newest-filter.patch: zypp: Emit installed

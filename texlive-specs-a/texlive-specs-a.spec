@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   163
+%define texlive_noarch   167
 
 #!BuildIgnore:          texlive
 

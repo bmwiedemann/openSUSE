@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 27 03:34:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix inverted logic when evaluating test suite exit code
+- Add gmsh mesher to BuildRequires, increase FEM test coverage
+
+-------------------------------------------------------------------
 Tue Feb 12 21:10:12 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - disable builds for 32bit and s390x, test suite fails and it makes no

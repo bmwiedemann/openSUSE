@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Sep  4 06:14:16 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Removed QMPlay2-desktop-warnings.diff (no warnings any more)
+- Trimed previous changes entry.
+
+-------------------------------------------------------------------
+Tue Sep  3 22:31:53 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.09.03  
+   * fix possible compilation error with FFTSpectrum (all OSes),
+   * add code for finding VA-API and VDPAU drivers directory,
+   * fixes in "QMPlay2.1", "QMPlay2.desktop", "QMPlay2.appdata.xml",
+   * improve checking for EGL in X11 - less possibility to fail,
+   * add (again) YouTube quality settings into settings widget,
+   * update translation files (martinkg, Alexey Lugin),
+   * allow only YUV420P videos in VideoToolBox.
+
+-------------------------------------------------------------------
+Tue Aug 27 20:16:47 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.08.27
+   * A lot of VA-API improvements including zero-copy on OpenGL (some old drivers might cease to work - I can't test them),
+   * fix loading of QMPlay2 modules (on some OS'es it leads to crash),
+   * improve full screen switching (fixes regression since 18.12.26),
+   * add "CustomUserAgent" into a "General" section in QMPlay2.ini,
+   * fix black video when decoding videos with color palette,
+   * add option to disable subtitles at program startup,
+   * remove QMake build system, added Android to CMake,
+   * display FFT spectrum in logarithmic scale,
+   * improve displaying of graphical subtitles,
+   * rewrite MediaBrowser, now use JavaScript,
+   * a lot of YouTube and youtube-dl changes,
+   * show native window file path separator,
+   * add "opennew" command line argument,
+   * display lyrics from file metadata,
+   * fix language codes for MKV files,
+   * add initial colorspace support,
+   * add stereo channels swapping,
+   * add "always on top" option,
+   * bugfixes and improvements,
+   * LastFM scrobble fixes,
+   * require FFmpeg 3.3.
+
+-------------------------------------------------------------------
+Wed Aug 21 15:38:11 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.05.27+git.1566388634.946797cf
+   * Fixed QMPlay2 crashing on openSUSE Tumbleweed,
+   * fixed several VA-API related bugs,
+   * fixed compilation with FFmpeg < 4.0,
+   * don't use DeepBind for loading modules,
+   * added .m3u8 file extension to playlists,
+   * updated several translations,
+   * now requires Qt5Qml as a build dependency,
+   * other minor bugfixes.
+
+-------------------------------------------------------------------
 Tue May  7 15:12:30 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to version 18.12.26 

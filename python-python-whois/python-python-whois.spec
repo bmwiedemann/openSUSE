@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-whois
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Whois querying and parsing of domain registration information
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
 # /SECTION
 BuildRequires:  fdupes
@@ -57,7 +57,9 @@ rm test/test_query.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# test_ipv4 test_ipv6 - online check
+# test_il_parse - online check
+%pytest -k 'not (test_ipv4 or test_ipv6 or test_il_parse)'
 
 %files %{python_files}
 %doc README.rst

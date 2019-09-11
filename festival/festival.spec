@@ -1,7 +1,7 @@
 #
 # spec file for package festival
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           festival
 Version:        2.5.0
 Release:        0
 Summary:        The Speech Synthesis System
 License:        BSD-3-Clause
 Group:          Productivity/Text/Convertors
-Url:            http://festvox.org/%{name}/
+URL:            http://festvox.org/festival
 Source0:        http://festvox.org/packed/%{name}/2.5/%{name}-%{version}-release.tar.gz
 Source1:        http://festvox.org/packed/%{name}/2.5/speech_tools-%{version}-release.tar.gz
 Source2:        http://festvox.org/packed/%{name}/2.5/festlex_CMU.tar.gz
@@ -57,11 +56,9 @@ Patch17:        speech_tools-no-LD_LIBRARY_PATH-extension.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-PreReq:         %{fillup_prereq}
-Requires(pre):  /usr/sbin/useradd
-Requires(pre):  /usr/sbin/groupadd
-PreReq:         insserv-compat
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(pre):  insserv-compat
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 
 %description
 Festival is a multilingual speech synthesis system developed at CSTR.
@@ -94,6 +91,7 @@ cd ../speech_tools
 %patch17 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # configure festival
 %configure
 # configure speech tools
@@ -113,7 +111,7 @@ make \
   FTLIBDIR="%{_datadir}/festival" \
   CFLAGS="%{optflags} -fPIC" \
   CXXFLAGS="%{optflags} -fPIC"
-make doc
+make %{?_smp_mflags} doc
 
 %install
 %make_install
@@ -195,8 +193,8 @@ getent passwd %{name} >/dev/null || \
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
-%doc COPYING examples/*.text examples/ex1.* examples/*.scm examples/*.dtd
+%license COPYING
+%doc examples/*.text examples/ex1.* examples/*.scm examples/*.dtd
 %config(noreplace) %{_sysconfdir}/%{name}.scm
 %{_bindir}/%{name}
 %{_bindir}/%{name}_client
@@ -212,7 +210,6 @@ getent passwd %{name} >/dev/null || \
 %{_fillupdir}/*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/lib*.a
 

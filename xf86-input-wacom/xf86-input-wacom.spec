@@ -17,13 +17,13 @@
 
 
 Name:           xf86-input-wacom
-Version:        0.34.2
+Version:        0.37.0
 Release:        0
 Summary:        Wacom input driver for the Xorg X server
 License:        GPL-2.0-or-later
 Group:          System/X11/Servers/XF86_4
-Url:            http://sourceforge.net/apps/mediawiki/linuxwacom/index.php?title=Xf86-input-wacom
-Source0:        http://downloads.sourceforge.net/project/linuxwacom/xf86-input-wacom/%{name}-%{version}.tar.bz2
+Url:            https://github.com/linuxwacom/xf86-input-wacom
+Source0:        https://github.com/linuxwacom/xf86-input-wacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Patch7:         n_01-Add-option-to-enable-logging.patch
 Patch8:         n_02-Log-PROXIMITY-LOW-LEVEL-events.patch
 Patch9:         n_03-Log-PRESSURE-low-level-events.patch
@@ -124,7 +124,7 @@ exit 0
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog GPL README
+%doc AUTHORS ChangeLog GPL
 %{_udevrulesdir}/65-wacom.rules
 %{_unitdir}/wacom-inputattach@.service
 %dir %{_datadir}/X11/xorg.conf.d/

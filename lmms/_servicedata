@@ -5,7 +5,7 @@
 	</service>
     <service name="tar_scm">
         <param name="url">https://github.com/LMMS/lmms.git</param>
-        <param name="changesrevision">a2685c1cca3ef20e317d69eccb915f9d7b05e349</param></service>
+        <param name="changesrevision">0fbaca40bd6ea1a3fa664e12beaec5803d0d9662</param></service>
     <service name="recompress">
         <param name="file">lmms-*.tar</param>
         <param name="compression">xz</param>

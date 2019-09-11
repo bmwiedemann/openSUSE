@@ -18,16 +18,13 @@
 
 %bcond_without lang
 Name:           kio-gdrive
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://community.kde.org/KIO_GDrive
 Source:         https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Adapt-to-LibKGAPI-setFields-changes.patch
-Patch1:         Remove-useless-FileFetchJob-field-specifications.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  intltool
 BuildRequires:  libaccounts-glib-devel
@@ -42,6 +39,8 @@ BuildRequires:  cmake(Qt5Network) >= 5.2.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 # Used by the .desktop file
 Recommends:     dolphin
+# libkgapi has no ABI stability
+%requires_eq    libKPimGAPICore5
 
 %lang_package
 
@@ -53,10 +52,6 @@ This can be Dolphin or Gwenview or Konqueror.
 
 %prep
 %setup -q
-%if %pkg_vcmp cmake(KPimGAPI) >= 19.07.80
-%patch0 -p1
-%patch1 -p1
-%endif
 
 %build
   %cmake_kf5 -d build

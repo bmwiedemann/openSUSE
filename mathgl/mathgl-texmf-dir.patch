@@ -1,7 +1,7 @@
-Index: mathgl-2.4.1/mgltex/CMakeLists.txt
+Index: mathgl-2.4.3/mgltex/CMakeLists.txt
 ===================================================================
---- mathgl-2.4.1.orig/mgltex/CMakeLists.txt
-+++ mathgl-2.4.1/mgltex/CMakeLists.txt
+--- mathgl-2.4.3.orig/mgltex/CMakeLists.txt
++++ mathgl-2.4.3/mgltex/CMakeLists.txt
 @@ -10,15 +10,6 @@ find_program(findmktexlsr mktexlsr)
  if(NOT findmktexlsr)
  	message(SEND_ERROR "Couldn't find mktexlsr needed for LATEX example install.")

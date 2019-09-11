@@ -24,7 +24,7 @@ Index: SDL_bgi-2.2.2/configure.ac
 --- /dev/null
 +++ SDL_bgi-2.2.2/configure.ac
 @@ -0,0 +1,9 @@
-+AC_INIT([SDL_bgi], [2.2.4])
++AC_INIT([SDL_bgi], [2.3.0])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIR([m4])
 +AC_PROG_CC

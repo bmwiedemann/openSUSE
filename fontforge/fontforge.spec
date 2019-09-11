@@ -1,7 +1,7 @@
 #
 # spec file for package fontforge
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fontforge
-Version:        20170731
+Version:        20190801
 Release:        0
 Summary:        A Font Editor
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Vector Editors
 Url:            http://fontforge.org/
 #       Source: https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
@@ -30,8 +30,6 @@ Source1:        get-source.sh
 # workardound for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
-# PATCH-FIX-UPSTREAM bmwiedemann https://github.com/fontforge/fontforge/pull/3152
-Patch1:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
@@ -97,15 +95,8 @@ to develop applications that use FontForge libraries.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch0 -p1
 sed -i 's/\r$//' doc/html/{Big5.txt,corpchar.txt}
-# workaround for bug 930076; we just need the _version_of_the_release_! (see also fontforge-version.patch) ---
-grep 'doversion(FONTFORGE_MODTIME_STR)' fontforgeexe/startnoui.c && \
-sed -i 's:FONTFORGE_MODTIME_STR:"%{version}":' fontforgeexe/startnoui.c
-grep 'doversion(FONTFORGE_MODTIME_STR)' fontforgeexe/startui.c && \
-sed -i 's:FONTFORGE_MODTIME_STR:"%{version}":' fontforgeexe/startui.c
-# ---
 
 %build
 ./bootstrap --force
@@ -118,7 +109,7 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
-%suse_update_desktop_file -i %{name} VectorGraphics
+%suse_update_desktop_file -i org.fontforge.FontForge VectorGraphics
 %find_lang FontForge
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_datadir}/%{name}
@@ -136,9 +127,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/lib*.so.*
 %{_datadir}/fontforge/
 %{python3_sitearch}/*
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/applications/org.fontforge.FontForge.desktop
+%{_datadir}/icons/hicolor/*/apps/org.fontforge.FontForge.png
+%{_datadir}/icons/hicolor/scalable/apps/org.fontforge.FontForge.svg
+%{_datadir}/appdata/org.fontforge.FontForge.appdata.xml
+%{_datadir}/metainfo/org.fontforge.FontForge.*.xml
+%{_datadir}/pixmaps/org.fontforge.FontForge.*
 %{_datadir}/mime/packages/%{name}.xml
 
 %files doc

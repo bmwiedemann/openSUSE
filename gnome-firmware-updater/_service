@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="filename">gnome-firmware-updater</param>
+    <param name="url">https://gitlab.gnome.org/hughsie/gnome-firmware-updater.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">0.0.1~git.%cd</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">dead_mozay@opensuse.org</param>
+  </service>
+  <service mode="localonly" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

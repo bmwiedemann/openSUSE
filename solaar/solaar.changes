@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug 22 15:39:02 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add a conflict with solaar-cli to solar-udev
+
+-------------------------------------------------------------------
+Thu Aug  1 09:55:42 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix reading and storing DPI settings
+  + Added 0001-Fix-reading-and-storing-DPI-in-config-settings.patch
+
+-------------------------------------------------------------------
+Sat Jul 27 19:01:11 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.0.1:
+  * Updated the repo url.
+  * Fixed typo which was crashing the application.
+  * Improved the HID write routine which was causing issues on some devices.
+  * Fix non-unifying receivers in Linux 5.2.
+  * Add new Lightspeed receiver (used in the G305)
+
+- Updates from version 1.0.0:
+  * First major release after 6 years
+  * Support for a lot of new mice and keyboards
+
+-------------------------------------------------------------------
 Tue Jun 10 10:12:58 UTC 2014 - dmitry_r@opensuse.org
 
 - Disable autostart options in setup script

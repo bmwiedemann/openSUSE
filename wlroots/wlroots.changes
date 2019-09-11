@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:51:24 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.0:
+  * backend: touch: Assign good ids to single touch devices
+  * backend: touch: Fixup incomplete patch for single touch devices.
+  * render/drm: keep old drm_format if realloc fails
+  * xcursor: avoid leak and loss of all cursors if cursors realloc fails
+  * Fix memory leak
+  * Simplify check
+  * wlr_surface: condition is always false
+  * xdg_shell: remove variable self-assignment
+  * backend/session: non-void function should return a value
+  * backend/drm: use UINT64_C for uint64_t literals
+  * Avoid loss of a fractional part
+  * backend/wayland: check if zxdg_toplevel_decoration_v1 is not NULL
+  * xwayland: prevent possible array overrun
+  * examples: remove duplicated condition
+  * Use a set to track pointer button state.
+  * session/logind: keep active for pause_device gone
+  * zwp_virtual-keyboard: fix mmap error handling
+  * wlr_xdg_toplevel: reparent on parent unmap
+  * wlr-layer-shell-v1: destroy xdg popups on unmap
+  * x11: Send a frame event on the pointer after button events
+  * virtual_keyboard: Require keymap before accepting keycodes
+  * Remove rootston
+  * Add libinput-1.14 support
+  * Revert "render/drm: keep old drm_format if realloc fails"
+  * Add _incr_version to contrib/
+  * Support pointer-gestures on Wayland backend
+  * wlr_seat_touch: Don't destroy touch point with surface
+  * layer-shell: Remove unused event source
+  * layer-shell: Reject requests on gone surfaces
+  * text_input: Don't forget to send enter events
+  * output: clear output->damage on successful commit
+  * output-damage: set needs swap only when we have new damage
+  * session/logind: specify seat exactly
+  * session/logind: check for XDG_SESSION_ID first
+  * screencopy: fix segfault on disabled output
+  * screencopy: send failed after output disconnect
+  * export-dmabuf-v1: fix segfault on output disable
+  * Implement serial validation for selection requests
+  * wlr_seat: Fix edge cases with serial validation
+  * wlr_pointer_gestures: Register event serials
+  * wlr_tablet_v2: Register event serials
+  * wlr_seat: special-case first serial set use
+  * Use -fmacro-prefix-map to strip build path
+  * Fixes #1689 RDP RemoteFX crash
+  * wlr_output: remove idle_done on output destroy
+  * drm: legacy: issue a NULL modeset on disable
+  * backend: drm: switch to pageflip_handler_2
+  * backend/drm: destroy output immediately
+  * Revert "output: atomic mode"
+  * seat: Move focus back to first shell surface when unfocusing layer surface
+  * xdg_shell(_v6): Take maximize/fullscreen state into account on view init
+  * wlr_touch: Declare wlr_touch_impl usage as const
+  * backends/x11: Touch support
+  * wlr_input_method_v2: Remove input method's resource from the list on destroy
+  * wlr_seat_touch: add a way for a grab to ignore a touch point
+  * wlr_xdg_popup: grab touch events alongside pointer and keyboard
+  * wlr_xdg_popup: don't treat all surfaces of grabbing client as grabbing surfaces
+  * backend/wayland: use xdg-decoration-unstable-v1
+  * backend/wayland: remove wl_shm
+  * render/gles2: print GL_RENDERER
+  * Remove orbital screenshooter and gamma-control
+  * backend/drm: check format when scanning out DMA-BUF
+  * backend/drm: strip alpha channel on scan-out
+  * render/dmabuf: add wlr_dmabuf_attributes_copy
+  * buffer: add wlr_buffer_get_dmabuf
+  * output: change set_dmabuf to attach_buffer
+  * output: fix attach_buffer semantics
+  * output: save buffer in pending state
+  * backend/drm: hold buffers while scanning out
+  * backend/drm: reject DMA-BUFs with flags
+  * rootston: add support for direct scan-out
+  * output: refuse to scan-out if software cursors are used
+  * output: introduce wlr_output_lock_attach_render
+  * output-damage: support direct scan-out
+  * backend/drm: fallback to drmModeAddFB2
+  * backend/drm: add support for multiplanar BOs
+  * output: reset the pending state on failed commit
+  * output: remove wlr_output_impl.transform
+  * output: drop wlr_output_mode.flags
+  * Remove all wayland-server.h includes
+  * output: atomic mode, enabled, scale and transform
+  * xdg-output: add support for xdg-output-unstable-v1 version 3
+  * backend/drm: fix missing plane formats
+
+-------------------------------------------------------------------
 Mon May  6 08:44:03 UTC 2019 - mvetter@suse.com
 
 - Update to 0.6.0:

@@ -1,7 +1,7 @@
-Index: node-git.b4e670dc26/addon-rpm.gypi
+Index: node-v12.8.0/addon-rpm.gypi
 ===================================================================
 --- /dev/null
-+++ node-git.b4e670dc26/addon-rpm.gypi
++++ node-v12.8.0/addon-rpm.gypi
 @@ -0,0 +1,35 @@
 +{
 +  'target_defaults': {
@@ -38,11 +38,11 @@ Index: node-git.b4e670dc26/addon-rpm.gypi
 +    ]
 +  }
 +}
-Index: node-git.b4e670dc26/deps/npm/node_modules/node-gyp/lib/configure.js
+Index: node-v12.8.0/deps/npm/node_modules/node-gyp/lib/configure.js
 ===================================================================
---- node-git.b4e670dc26.orig/deps/npm/node_modules/node-gyp/lib/configure.js
-+++ node-git.b4e670dc26/deps/npm/node_modules/node-gyp/lib/configure.js
-@@ -62,10 +62,6 @@ function configure (gyp, argv, callback)
+--- node-v12.8.0.orig/deps/npm/node_modules/node-gyp/lib/configure.js
++++ node-v12.8.0/deps/npm/node_modules/node-gyp/lib/configure.js
+@@ -46,10 +46,6 @@ function configure (gyp, argv, callback)
        if ('v' + release.version !== process.version) {
          // if --target was given, then determine a target version to compile for
          log.verbose('get node dir', 'compiling against --target node version: %s', release.version)
@@ -53,7 +53,7 @@ Index: node-git.b4e670dc26/deps/npm/node_modules/node-gyp/lib/configure.js
  
        if (!release.semver) {
          // could not parse the version string with semver
-@@ -82,6 +78,12 @@ function configure (gyp, argv, callback)
+@@ -68,6 +64,12 @@ function configure (gyp, argv, callback)
          nodeDir = path.resolve(gyp.devDir, release.versionDir)
          createBuildDir()
        })
@@ -66,13 +66,13 @@ Index: node-git.b4e670dc26/deps/npm/node_modules/node-gyp/lib/configure.js
      }
    }
  
-@@ -280,7 +282,8 @@ function configure (gyp, argv, callback)
+@@ -282,7 +284,8 @@ function configure (gyp, argv, callback)
  
      // this logic ported from the old `gyp_addon` python file
-     var gyp_script = path.resolve(__dirname, '..', 'gyp', 'gyp_main.py')
--    var addon_gypi = path.resolve(__dirname, '..', 'addon.gypi')
+     var gypScript = path.resolve(__dirname, '..', 'gyp', 'gyp_main.py')
+-    var addonGypi = path.resolve(__dirname, '..', 'addon.gypi')
 +    var addon_gypi_file = gyp.opts.target || gyp.opts.nodedir ? 'addon.gypi' : 'addon-rpm.gypi'
-+    var addon_gypi = path.resolve(__dirname, '..', addon_gypi_file)
-     var common_gypi = path.resolve(nodeDir, 'include/node/common.gypi')
-     fs.stat(common_gypi, function (err, stat) {
-       if (err)
++    var addonGypi = path.resolve(__dirname, '..', addon_gypi_file)
+     var commonGypi = path.resolve(nodeDir, 'include/node/common.gypi')
+     fs.stat(commonGypi, function (err) {
+       if (err) {

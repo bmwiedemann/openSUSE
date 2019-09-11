@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Aug 20 15:05:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable prometheus exporter
+
+-------------------------------------------------------------------
+Tue Aug 20 14:05:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable verbose make output
+
+-------------------------------------------------------------------
+Tue Aug 20 14:01:33 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.5+git0.d905f49a:
+  * [RELEASE] Released version 2.0.5
+  * BUG/MEDIUM: mux_pt: Don't call unsubscribe if we did not subscribe.
+  * MINOR: fd: make sure to mark the thread as not stuck in fd_update_events()
+  * BUG/MINOR: stats: Wait the body before processing POST requests
+  * BUG/MEDIUM: lua: Fix test on the direction to set the channel exp timeout
+  * BUG/MEDIUM: mux_h1: Don't bother subscribing in recv if we're not connected.
+  * BUG/MINOR: Fix prometheus '# TYPE' and '# HELP' headers
+  * BUG/MINOR: lua: fix setting netfilter mark
+  * BUG/MEDIUM: proxy: Don't use cs_destroy() when freeing the conn_stream.
+  * BUG/MEDIUM: proxy: Don't forget the SF_HTX flag when upgrading TCP=>H1+HTX.
+  * BUG/MINOR: buffers/threads: always clear a buffer's head before releasing it
+  * MINOR: ssl: ssl_fc_has_early should work for BoringSSL
+  * BUG/MINOR: ssl: fix 0-RTT for BoringSSL
+  * BUG/MEDIUM: stick-table: Wrong stick-table backends parsing.
+  * [RELEASE] Released version 2.0.4
+  * BUG/MEDIUM: checks: make sure to close nicely when we're the last to speak
+  * BUG/MINOR: mux-h2: always reset rcvd_s when switching to a new frame
+  * BUG/MINOR: mux-h2: always send stream window update before connection's
+  * BUG/MEDIUM: mux-h2: do not recheck a frame type after a state transition
+  * BUG/MINOR: mux-h2: do not send REFUSED_STREAM on aborted uploads
+  * BUG/MINOR: mux-h2: use CANCEL, not STREAM_CLOSED in h2c_frt_handle_data()
+  * BUG/MINOR: mux-h2: don't refrain from sending an RST_STREAM after another one
+  * BUG/MEDIUM: fd: Always reset the polled_mask bits in fd_dodelete().
+  * BUG/MEDIUM: proxy: Make sure to destroy the stream on upgrade from TCP to H2
+  * BUG/MEDIUM: mux-h2: split the stream's and connection's window sizes
+  * BUG/MEDIUM: mux-h2: unbreak receipt of large DATA frames
+  * BUG/MINOR: stream-int: also update analysers timeouts on activity
+  * BUG/MAJOR: http/sample: use a static buffer for raw -> htx conversion
+  * BUG/MEDIUM: lb-chash: Ensure the tree integrity when server weight is increased
+  * MINOR: wdt: also consider that waiting in the thread dumper is normal
+  * BUG/MINOR: debug: fix a small race in the thread dumping code
+
+-------------------------------------------------------------------
 Tue Jul 30 13:16:56 UTC 2019 - kgronlund@suse.com
 
 - Update to version 2.0.3+git14.0ff395c1 (bsc#1142529) (CVE-2019-14241):

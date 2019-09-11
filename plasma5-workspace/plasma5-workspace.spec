@@ -27,7 +27,7 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.16.4
+Version:        5.16.5
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspa
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+Source4:        plasmafullwayland.desktop
 # PATCHES 000-100 and above are from upstream 5.16 branch
 # PATCHES 101-500 are from upstream master/5.17 branch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
@@ -327,6 +328,9 @@ Plasma 5 session with Wayland from a display manager.
   # Install compatibility symlink
   ln -s %{_kf5_sharedir}/xsessions/plasma5.desktop %{buildroot}%{_kf5_sharedir}/xsessions/kde-plasma.desktop
 
+  # Install custom "full wayland" session
+  install -m0644 %{SOURCE4} %{buildroot}%{_kf5_sharedir}/wayland-sessions/plasmafullwayland.desktop
+
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
@@ -492,6 +496,7 @@ fi
 %license COPYING*
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasmawayland.desktop
+%{_datadir}/wayland-sessions/plasmafullwayland.desktop
 %endif
 
 %if %{with lang}

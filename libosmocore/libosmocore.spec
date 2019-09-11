@@ -17,14 +17,13 @@
 
 
 Name:           libosmocore
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND AGPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
-Url:            https://osmocom.org/projects/libosmocore/wiki/Libosmocore
+URL:            https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 Source:         %name-%version.tar.xz
-Patch0:         0001-gsm_23_003.h-add-GSM23003_IMEI_NUM_DIGITS_NO_CHK.patch
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
@@ -162,12 +161,12 @@ interface, the control interface is meant to be used by programs.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmoctrl.
 
-%package -n libosmogb6
+%package -n libosmogb9
 Summary:        Osmocom GPRS Gb Interface (NS/BSSGP) library
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmogb6
+%description -n libosmogb9
 libosmocore is a package with various utility functions that were
 originally developed as part of the OpenBSC project.
 
@@ -178,7 +177,7 @@ Summary:        Development files for the Osmocom GPRS Gb interface library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmocore-devel = %version
-Requires:       libosmogb6 = %version
+Requires:       libosmogb9 = %version
 Requires:       libosmogsm-devel = %version
 
 %description -n libosmogb-devel
@@ -187,12 +186,12 @@ The libosmogb library contains a GPRS BSSGP protocol implementation.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmogb.
 
-%package -n libosmogsm11
+%package -n libosmogsm13
 Summary:        Osmocom GSM utility library
 License:        GPL-2.0-or-later AND AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmogsm11
+%description -n libosmogsm13
 libosmocore is a package with various utility functions that were
 originally developed as part of the OpenBSC project.
 
@@ -207,7 +206,7 @@ Summary:        Development files for the Osmocom GSM utility library
 License:        GPL-2.0-or-later AND AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmocore-devel = %version
-Requires:       libosmogsm11 = %version
+Requires:       libosmogsm13 = %version
 
 %description -n libosmogsm-devel
 The libosmogsm library in particular is a collection of common code
@@ -272,8 +271,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libosmovty.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
@@ -300,10 +298,10 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %postun -n libosmocore12 -p /sbin/ldconfig
 %post   -n libosmoctrl0 -p /sbin/ldconfig
 %postun -n libosmoctrl0 -p /sbin/ldconfig
-%post   -n libosmogb6 -p /sbin/ldconfig
-%postun -n libosmogb6 -p /sbin/ldconfig
-%post   -n libosmogsm11 -p /sbin/ldconfig
-%postun -n libosmogsm11 -p /sbin/ldconfig
+%post   -n libosmogb9 -p /sbin/ldconfig
+%postun -n libosmogb9 -p /sbin/ldconfig
+%post   -n libosmogsm13 -p /sbin/ldconfig
+%postun -n libosmogsm13 -p /sbin/ldconfig
 %post   -n libosmosim0 -p /sbin/ldconfig
 %postun -n libosmosim0 -p /sbin/ldconfig
 %post   -n libosmovty4 -p /sbin/ldconfig
@@ -352,8 +350,8 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %_libdir/libosmoctrl.so
 %_libdir/pkgconfig/libosmoctrl.pc
 
-%files -n libosmogb6
-%_libdir/libosmogb.so.6*
+%files -n libosmogb9
+%_libdir/libosmogb.so.9*
 
 %files -n libosmogb-devel
 %dir %_includedir/%name
@@ -362,8 +360,8 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %_libdir/libosmogb.so
 %_libdir/pkgconfig/libosmogb.pc
 
-%files -n libosmogsm11
-%_libdir/libosmogsm.so.11*
+%files -n libosmogsm13
+%_libdir/libosmogsm.so.13*
 
 %files -n libosmogsm-devel
 %dir %_includedir/%name

@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysnmp
-Version:        4.4.10
+Version:        4.4.11
 Release:        0
 Summary:        A pure-Python SNMPv1/v2c/v3 library
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://pysnmp.sourceforge.net/
+URL:            https://github.com/etingof/pysnmp
 Source:         https://github.com/etingof/pysnmp/archive/v%{version}.tar.gz#/pysnmp-%{version}.tar.gz
 BuildRequires:  %{python_module pyasn1 >= 0.2.3}
 BuildRequires:  %{python_module pycryptodome}

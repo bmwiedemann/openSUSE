@@ -28,6 +28,11 @@ Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
 # Snapshot tarball can be created using: ./make-git-shapshot.sh [gitcommit]
 Source0:        %{name}-%{version}.tar.gz
+Patch1:         %{name}_check_Ensure_mmap_of_BTT_sections_work_with_64K_page-sizes.patch
+Patch2:         %{name}-list-Introduce-region-capability-objects.patch
+Patch3:         %{name}-Use-the-same-align-value-as-original-namespace-on-reconfigure.patch
+Patch4:         %{name}-ndctl-lib-Fix-duplicate-bus-detection.patch
+Patch5:         %{name}-namespace-Handle-create-namespace-in-label-less-mode.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  keyutils-devel
@@ -86,6 +91,7 @@ Firmware Interface Table).
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 echo "%{version}" > version

@@ -93,6 +93,7 @@ to develop applications with CRIU library.
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 make V=1 %{?_smp_mflags} %{?make_options}
 

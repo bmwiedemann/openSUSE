@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:07:17 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable link-time-optimization to prevent build failures.
+
+-------------------------------------------------------------------
 Thu May 23 00:08:54 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Enable ufo-interface and package it as part of python-%{name}

@@ -1,0 +1,53 @@
+From 746197f51ecb229acd75bcd566a1199ebe5fafe8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Fri, 19 Jul 2019 15:11:54 +0200
+Subject: [PATCH 1/2] py3.8: avoid invalid escapes
+
+python3-3.8.0~b2-1.fc31.x86_64 warns:
+
+/home/zbyszek/python/apsw/tests.py:1880: SyntaxWarning: invalid escape sequence \o
+  "or even a \0\0\0\0\0\0sequence\0\0\0\0\of them",
+
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+<string>:1: SyntaxWarning: invalid escape sequence \i
+---
+ tests.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests.py b/tests.py
+index 15eb35682d..5c46ebaab3 100644
+--- a/tests.py
++++ b/tests.py
+@@ -1877,7 +1877,7 @@ class APSW(unittest.TestCase):
+         vals=("a simple string",
+               "a simple string\0with a null",
+               "a string\0with two\0nulls",
+-              "or even a \0\0\0\0\0\0sequence\0\0\0\0\of them",
++              "or even a \0\0\0\0\0\0sequence\0\0\0\0of them",
+               u(r"a \u1234 unicode \ufe54 string \u0089"),
+               u(r"a \u1234 unicode \ufe54 string \u0089\0and some text"),
+               u(r"\N{BLACK STAR} \N{WHITE STAR} \N{LIGHTNING} \N{COMET}\0more\0than you\0can handle"),
+@@ -6008,7 +6008,7 @@ class APSW(unittest.TestCase):
+             # py 3 barfs with any codepoints above 0xffff whining
+             # about surrogates not being allowed.  If only it
+             # implemented unicode properly.
+-            cmd(u("create table if not exists nastydata(x,y); insert into nastydata values(null,'xxx\\u1234\\uabcdyyy\r\n\t\"this \\is nasty\u0001stuff!');"))
++            cmd(u("create table if not exists nastydata(x,y); insert into nastydata values(null,'xxx\\u1234\\uabcdyyy\r\n\t\"this \\\\is nasty\u0001stuff!');"))
+             s.cmdloop()
+             isempty(fh[1])
+             isempty(fh[2])
+@@ -6583,7 +6583,7 @@ class APSW(unittest.TestCase):
+         s.db.cursor().execute("pragma user_version=0")
+         # some nasty stuff
+         reset()
+-        cmd(u("create table nastydata(x,y); insert into nastydata values(null,'xxx\\u1234\\uabcd\\U00012345yyy\r\n\t\"this \\is nasty\u0001stuff!');"
++        cmd(u("create table nastydata(x,y); insert into nastydata values(null,'xxx\\u1234\\uabcd\\U00012345yyy\r\n\t\"this \\\\is nasty\u0001stuff!');"
+               'create table "table"([except] int); create table [](""); create table [using]("&");'
+               ))
+         s.cmdloop()

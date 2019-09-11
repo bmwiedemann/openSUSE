@@ -20,17 +20,17 @@
 %define         skip_python3 1
 %define         oldpython python
 Name:           python2-ipykernel
-Version:        4.10.0
+Version:        4.10.1
 Release:        0
-Summary:        IPython Kernel for Jupyter
+Summary:        Python 2 IPython Kernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
-Source0:        https://files.pythonhosted.org/packages/py2/i/ipykernel/ipykernel-%{version}-py2-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module ipython >= 4.0.0}
 BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4.0}
 BuildRequires:  %{python_module traitlets >= 4.1.0}
 BuildRequires:  fdupes
@@ -46,13 +46,12 @@ Requires:       python-tornado >= 4.0
 Requires:       python-traitlets >= 4.1.0
 Requires:       python-typing
 Provides:       %{oldpython}-jupyter_ipykernel = %{version}
-Obsoletes:      %{oldpython}-jupyter_ipykernel <= %{version}
+Obsoletes:      %{oldpython}-jupyter_ipykernel < %{version}
 Provides:       python-jupyter_ipykernel = %{version}
-Obsoletes:      python-jupyter_ipykernel <= %{version}
+Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       python2-jupyter_ipykernel = %{version}
-Obsoletes:      python2-jupyter_ipykernel <= %{version}
+Obsoletes:      python2-jupyter_ipykernel < %{version}
 Provides:       %{oldpython}-ipykernel = %{version}
-Provides:       jupyter-ipykernel-python2 = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module nose_warnings_filters}
@@ -64,25 +63,34 @@ BuildRequires:  python-typing
 %python_subpackages
 
 %description
-This package provides the IPython kernel for Jupyter.
+This package provides the python2 IPython kernel
+for Jupyter.
 
 This package provides the python interface and
 the jupyter components.
 
+%package     -n jupyter-ipykernel-python2
+Summary:        Python 2 IPython Kernel for Jupyter
+Requires:       hicolor-icon-theme
+Requires:       jupyter-jupyter_client
+Requires:       python2-ipykernel = %{version}
+Conflicts:      python2-jupyter_ipykernel < 4.10.1
+
+%description -n jupyter-ipykernel-python2
+This package provides the python2 IPython kernel
+for Jupyter.
+
+This package provides the jupyter components.
+
 %prep
-%setup -q -T -c
+%setup -q -n ipykernel-%{version}
 
 %build
-# Not needed
+%python_build
 
 %install
-%python_expand pip%{$python_bin_suffix} install \
-    --root %{buildroot} \
-    --prefix %{_prefix} \
-    --compile \
-    %{SOURCE0}
-
-cp %{buildroot}%{python_sitelib}/ipykernel-%{version}.dist-info/LICENSE.txt .
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
@@ -91,10 +99,12 @@ nosetests-%{$python_bin_suffix}
 }
 
 %files %{python_files}
-%{python_sitelib}/ipykernel-%{version}.dist-info/
-%license %{python_sitelib}/ipykernel-%{version}.dist-info/LICENSE.txt
-%{python_sitelib}/ipykernel_launcher.py*
-%{python_sitelib}/ipykernel/
+%license COPYING.md
+%{python_sitelib}/*
+%{_jupyter_kernel_dir}/python2/
+
+%files -n jupyter-ipykernel-python2
+%license COPYING.md
 %{_jupyter_kernel_dir}/python2/
 
 %changelog

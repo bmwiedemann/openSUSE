@@ -1,7 +1,7 @@
 #
 # spec file for package barcode
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           barcode
 Version:        0.99
 Release:        0
 Summary:        Text-Mode Barcode Creation Utility
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://www.gnu.org/software/barcode
+URL:            https://www.gnu.org/software/barcode
 Source0:        ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
@@ -32,19 +32,10 @@ Patch2:         %{name}-0.99-info.patch
 Patch5:         %{name}-0.98-leak-fix.patch
 # PATCH-FIX-UPSTREAM barcode-fix-renamed-include.patch malcolmlewis@opensuse.org -- Fix renamed gettext include header reference.
 Patch6:         barcode-fix-renamed-include.patch
+BuildRequires:  makeinfo
 BuildRequires:  xz
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} <= 1220
-BuildRequires:  texlive
-%else
-BuildRequires:  makeinfo
-BuildRequires:  texinfo
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-tex
-BuildRequires:  texlive-texinfo
-%endif
 
 %description
 GNU Barcode is meant to meet most barcode creation needs with a
@@ -55,7 +46,7 @@ Encapsulated PostScript format.
 
 %package devel
 Summary:        Text-Mode Barcode Creation Utility - Development files
-Group:          Development/Libraries
+Group:          Development/Libraries/C and C++
 
 %description devel
 GNU Barcode is meant to meet most barcode creation needs with a
@@ -71,11 +62,12 @@ Encapsulated PostScript format.
 %patch6 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 install -Dm0644 barcode.h %{buildroot}%{_includedir}/barcode.h
 install -Dm0644 .libs/libbarcode.a %{buildroot}%{_libdir}/libbarcode.a
 
@@ -86,14 +78,13 @@ install -Dm0644 .libs/libbarcode.a %{buildroot}%{_libdir}/libbarcode.a
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
-%defattr(-,root,root)
-%doc COPYING README TODO
+%license COPYING
+%doc README TODO
 %{_bindir}/barcode
 %{_bindir}/sample
-%{_infodir}/%{name}.info.gz
+%{_infodir}/%{name}.info%{?ext_info}
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/barcode.h
 %{_libdir}/libbarcode.a
 

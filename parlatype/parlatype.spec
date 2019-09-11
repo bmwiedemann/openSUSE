@@ -1,7 +1,7 @@
 #
 # spec file for package parlatype
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-%define c_lib   libparlatype1
+%define c_lib   libparlatype2
 Name:           parlatype
-Version:        1.5.6
+Version:        1.6.2
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://gkarsay.github.io/parlatype/
 Source:         https://github.com/gkarsay/parlatype/releases/download/v%{version}/parlatype-%{version}.tar.gz
+BuildRequires:  AppStream-devel
 BuildRequires:  automake
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
@@ -64,13 +66,11 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %setup -q
 
 %build
-autoreconf -fi
-%configure
-make %{?_smp_mflags}
+%meson -Dasr=false
+%meson_build
 
 %install
-%make_install
-rm %{buildroot}%{_libdir}/libparlatype.la
+%meson_install
 
 %find_lang %{name}
 %find_lang libparlatype
@@ -85,24 +85,20 @@ rm %{buildroot}%{_libdir}/libparlatype.la
 %{_mandir}/man1/parlatype.1%{?ext_man}
 %{_datadir}/applications/com.github.gkarsay.parlatype.desktop
 %{_datadir}/metainfo/com.github.gkarsay.parlatype.appdata.xml
-%{_datadir}/metainfo/com.github.gkarsay.parlatype.libreoffice-helpers.metainfo.xml
+%{_datadir}/metainfo/com.github.gkarsay.parlatype.libreoffice_helpers.metainfo.xml
 %{_datadir}/help/
 %{_datadir}/icons/hicolor/
-%{_libdir}/libreoffice/share/Scripts/python/Parlatype.py
 %{_datadir}/dbus-1/services/com.github.gkarsay.parlatype.service
 %{_datadir}/glib-2.0/schemas/com.github.gkarsay.parlatype.gschema.xml
-%{_libdir}/girepository-1.0/Parlatype-1.0.typelib
-%dir %{_libdir}/libreoffice
-%dir %{_libdir}/libreoffice/share
-%dir %{_libdir}/libreoffice/share/Scripts
-%dir %{_libdir}/libreoffice/share/Scripts/python
+%dir %{_prefix}/lib/libreoffice/
+%dir %{_prefix}/lib/libreoffice/share
+%dir %{_prefix}/lib/libreoffice/share/Scripts
+%{_prefix}/lib/libreoffice/share/Scripts/python/
 
 %files -n libparlatype-devel
 %{_libdir}/libparlatype.so
 %{_includedir}/parlatype/
-%{_datadir}/gtk-doc/
 %{_libdir}/pkgconfig/parlatype.pc
-%{_datadir}/gir-1.0/Parlatype-1.0.gir
 
 %files -n %{c_lib}
 %{_libdir}/libparlatype.so.*
@@ -110,6 +106,5 @@ rm %{buildroot}%{_libdir}/libparlatype.la
 %files lang -f %{name}.lang
 
 %files lang -f libparlatype.lang
-%{_datadir}/locale/*/LC_MESSAGES/libparlatype.*
 
 %changelog

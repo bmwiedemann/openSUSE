@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 28 12:41:02 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 12.14.1. Trilinos is composed of 60 different 
+  packages. To see the changes you need to check the release notes of 
+  every package under packages/
+- Remove patches, upstream has fixed this problem in a different way
+  * Trilinos-trilinos-aarch64.patch
+
+-------------------------------------------------------------------
 Wed Jul 17 10:12:17 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add BuildRequires libopenblas-gnu-hpc >=  0.3.6 for hpc to  avoid

@@ -36,7 +36,7 @@ BuildRequires:  fix-version-checks-in-here
 
 %bcond_without lang
 Name:           plymouth-theme-breeze
-Version:        5.16.4
+Version:        5.16.5
 Release:        0
 Summary:        Plymouth "Breeze" theme
 License:        GPL-2.0+

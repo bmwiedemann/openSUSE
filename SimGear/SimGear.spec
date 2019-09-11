@@ -20,10 +20,10 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2018_3_2
+%define libname libSimGearCore-2018_3_4
 %define main_version 2018.3
 Name:           SimGear
-Version:        %{main_version}.2
+Version:        %{main_version}.4
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
@@ -31,8 +31,6 @@ License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND MIT
 Group:          Amusements/Games/3D/Simulation
 Url:            http://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/simgear-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM 0001-Improve-HTTP-redirect-handling-and-add-test.patch
-Patch0:         0001-Improve-HTTP-redirect-handling-and-add-test.patch
 # PATCH-FIX-UPSTREAM 0001-Remove-deprecated-boost-utility.patch
 Patch1:         0001-Remove-deprecated-boost-utility.patch
 # PATCH-FIX-UPSTREAM 0001-boost-enable_if-Support-Boost-versions-1.56.patch
@@ -93,7 +91,6 @@ SimGear.
 
 %prep
 %setup -q -n simgear-%{version}
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 

@@ -19,14 +19,13 @@
 %global pkg_name semigroupoids
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.3.2
+Version:        5.3.3
 Release:        0
 Summary:        Semigroupoids: Category sans id
 License:        BSD-2-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-bifunctors-devel
@@ -96,7 +95,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

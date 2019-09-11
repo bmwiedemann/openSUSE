@@ -1,7 +1,7 @@
 #
 # spec file for package hfst
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           hfst
-Version:        3.12.2
+Version:        3.15.0
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
-License:        GPL-3.0+ and GPL-3.0 and GPL-2.0+ and GPL-2.0 and GPL-3.0 and Apache-2.0
+License:        GPL-3.0-or-later AND GPL-3.0-only AND GPL-2.0-or-later AND GPL-2.0-only AND GPL-3.0-only AND Apache-2.0
 Group:          Development/Tools/Other
-Url:            http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+URL:            https://hfst.github.io/
 
 Source:         https://github.com/hfst/hfst/releases/download/v%version/hfst-%version.tar.gz
-Patch2:         hfst-wrong-flags.diff
-Patch3:         hfst-split-libs.diff
-Patch4:         hfst-scripts-install.diff
-Patch5:         hfst-nodate.diff
-Patch6:         gcc7.diff
+Patch1:         hfst-wrong-flags.diff
+Patch2:         hfst-split-libs.diff
+Patch3:         hfst-nodate.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -55,7 +53,7 @@ based on weighted and unweighted finite-state transducer technology.
 
 %package -n libfoma-hfst0
 Summary:        Multi-purpose finite-state toolkit
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libfoma-hfst0
@@ -73,12 +71,12 @@ Group:          System/Libraries
 OpenFst is a library for constructing, combining, optimizing, and
 searching weighted finite-state transducers (FSTs).
 
-%package -n libhfst49
+%package -n libhfst52
 Summary:        Helsinki Finite-State Transducer Technology Libraries
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Libraries
 
-%description -n libhfst49
+%description -n libhfst52
 The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analyzers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
@@ -87,7 +85,7 @@ based on weighted and unweighted finite-state transducer technology.
 Summary:        SFST Finite State Tools
 # HFST is missing the license file; a look in SFST upstream code
 # (https://code.google.com/p/cistern/wiki/SFST) reveals it is GPL-2.0.
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libsfst-hfst0
@@ -97,9 +95,9 @@ technology.
 
 %package devel
 Summary:        Development files for the Helsinki Finite-State Transducer
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Requires:       libhfst49 = %version
+Requires:       libhfst52 = %version
 
 %description devel
 The Helsinki Finite-State Transducer software is intended for the
@@ -110,8 +108,7 @@ This subpackage contains the files necessary to build programs that
 want to make use of the HFST library.
 
 %prep
-%setup -q
-%patch -P 2 -P 3 -P 4 -P 5 -P 6 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -130,37 +127,31 @@ rm -f "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %postun -n libfoma-hfst0 -p /sbin/ldconfig
 %post   -n libfst-hfst0 -p /sbin/ldconfig
 %postun -n libfst-hfst0 -p /sbin/ldconfig
-%post   -n libhfst49 -p /sbin/ldconfig
-%postun -n libhfst49 -p /sbin/ldconfig
+%post   -n libhfst52 -p /sbin/ldconfig
+%postun -n libhfst52 -p /sbin/ldconfig
 %post   -n libsfst-hfst0 -p /sbin/ldconfig
 %postun -n libsfst-hfst0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/hfst*
 %_mandir/man1/*.1*
 %doc AUTHORS COPYING NEWS README
 
 %files -n libfoma-hfst0
-%defattr(-,root,root)
 %_libdir/libfoma-hfst.so.0*
 %doc back-ends/foma/COPYING
 
 %files -n libfst-hfst0
-%defattr(-,root,root)
 %_libdir/libfst-hfst.so.0*
 %doc back-ends/openfst/COPYING
 
-%files -n libhfst49
-%defattr(-,root,root)
-%_libdir/libhfst.so.49*
+%files -n libhfst52
+%_libdir/libhfst.so.52*
 
 %files -n libsfst-hfst0
-%defattr(-,root,root)
 %_libdir/libsfst-hfst.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/*
 %_libdir/libhfst.so
 %_libdir/pkgconfig/*.pc

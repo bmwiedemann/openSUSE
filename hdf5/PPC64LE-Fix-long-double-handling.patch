@@ -11,11 +11,11 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  hdf5-1.10.1/test/dt_arith.c                | 26 ++++++++++++++++++++++++--
  2 files changed, 40 insertions(+), 2 deletions(-)
 
-diff --git a/hdf5-1.10.1/config/cmake/ConversionTests.c b/hdf5-1.10.1/config/cmake/ConversionTests.c
-index 082dbd4..9618a14 100644
---- a/config/cmake/ConversionTests.c
-+++ b/config/cmake/ConversionTests.c
-@@ -34,6 +34,14 @@ int main(void)
+Index: hdf5-1.10.5/config/cmake/ConversionTests.c
+===================================================================
+--- hdf5-1.10.5.orig/config/cmake/ConversionTests.c
++++ hdf5-1.10.5/config/cmake/ConversionTests.c
+@@ -34,6 +34,14 @@ int HDF_NO_UBSAN main(void)
      unsigned char       s2[8];
      int                 ret = 1;
  
@@ -30,7 +30,7 @@ index 082dbd4..9618a14 100644
      if(sizeof(long double) == 16 && sizeof(long) == 8) {
      /*make sure the long double type has 16 bytes in size and
      * 11 bits of exponent.  If it is,
-@@ -157,6 +165,14 @@ int main(void)
+@@ -157,6 +165,14 @@ int HDF_NO_UBSAN main(void)
      unsigned char       s[16];
      int                 ret = 0;
  
@@ -45,11 +45,11 @@ index 082dbd4..9618a14 100644
      if(sizeof(long double) == 16) {
          /*make sure the long double type is the same as the failing type
           *which has 16 bytes in size and 11 bits of exponent.  If it is,
-diff --git a/hdf5-1.10.1/test/dt_arith.c b/hdf5-1.10.1/test/dt_arith.c
-index 8f3e6e4..084b47c 100644
---- a/test/dt_arith.c
-+++ b/test/dt_arith.c
-@@ -3051,7 +3051,18 @@ test_conv_flt_1 (const char *name, int run_test, hid_t src, hid_t dst)
+Index: hdf5-1.10.5/test/dt_arith.c
+===================================================================
+--- hdf5-1.10.5.orig/test/dt_arith.c
++++ hdf5-1.10.5/test/dt_arith.c
+@@ -3051,7 +3051,18 @@ test_conv_flt_1 (const char *name, int r
                          buf, saved, nelmts);
  #if H5_SIZEOF_LONG_DOUBLE!=H5_SIZEOF_DOUBLE && H5_SIZEOF_LONG_DOUBLE!=0
              } else if(src_type == FLT_LDOUBLE) {
@@ -69,7 +69,7 @@ index 8f3e6e4..084b47c 100644
                          buf, saved, nelmts);
  #endif
              } else
-@@ -3712,7 +3723,18 @@ test_conv_int_fp(const char *name, int run_test, hid_t src, hid_t dst)
+@@ -3711,7 +3722,18 @@ test_conv_int_fp(const char *name, int r
              INIT_FP_DENORM(long double, LDBL_MANT_DIG, src_size, src_nbits, sendian, dst_size,
                      buf, saved, nelmts);
          } else {

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:45:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Rename ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  to ffmpeg-4.2-dlopen-fdk_aac.patch since we need dlopen only
+  for fdk_aac and looks like some other parts of the patch is
+  buggy.
+
+-------------------------------------------------------------------
+Thu Aug 22 06:42:57 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Sync ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  from upstream.
+
+-------------------------------------------------------------------
+Sun Aug 18 09:43:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO for arm, fixes build.
+
+-------------------------------------------------------------------
 Wed Aug 14 15:39:22 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - avoid ppc64le build error upstream issue

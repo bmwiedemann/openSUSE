@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:57:09 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Disable LTO for PowerPC as bypass boo#1146646
+
+-------------------------------------------------------------------
 Thu Aug  8 15:22:17 UTC 2019 - David Mair <dmair@suse.com>
 
 - Add patch for commit 326e1b8f83a4318b09033ef754f40c785aed5e68

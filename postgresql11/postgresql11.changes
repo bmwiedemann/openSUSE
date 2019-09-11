@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 12 13:20:15 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to 11.5:
+  * https://www.postgresql.org/about/news/1960/
+  * https://www.postgresql.org/docs/11/release-11-5.html
+  * CVE-2019-10208, bsc#1145092: TYPE in pg_temp executes arbitrary
+    SQL during SECURITY DEFINER execution.
+  * CVE-2019-10209, bsc#1145091: Memory disclosure in cross-type
+    comparison for hashed subplan.
+
+-------------------------------------------------------------------
+Fri Aug  2 08:54:10 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Fri Jun 21 13:27:15 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 11.4:

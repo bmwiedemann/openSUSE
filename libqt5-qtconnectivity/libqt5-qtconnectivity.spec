@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5Bluetooth5
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtconnectivity-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtconnectivity-everywhere-src-5.13.1
 Name:           libqt5-qtconnectivity
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 Nfc Addon
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
@@ -150,12 +150,13 @@ find %{buildroot}/%{_libdir}/pkgconfig -type f -name '*pc' -print -exec perl -pi
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
-# put all the binaries to %%_bindir, add -qt5 suffix, and symlink them back to %%_qt5_bindir
+# Link all the binaries with -qt5 suffix to %{_bindir}
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_libqt5_bindir}
 for i in * ; do
-      mv $i ../../../bin/
-      ln -s ../../../bin/$i .
+      # No conflict with Qt4, so keep the original name for compatibility
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}-qt5
 done
 popd
 

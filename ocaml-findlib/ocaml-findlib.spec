@@ -78,7 +78,7 @@ The ocaml-findlib-camlp4 contains signature files for developing applications th
 %build
 (cd tools/extract_args && make)
 tools/extract_args/extract_args -o src/findlib/ocaml_args.ml ocamlc ocamlcp ocamlmktop ocamlopt ocamldep ocamldoc ||:
-./configure -config %{_sysconfdir}/ocamlfind.conf \
+./configure -config %{_libdir}/ocaml/ocamlfind.conf \
   -bindir %{_bindir} \
   -sitelib `ocamlc -where` \
   -mandir %{_mandir} \
@@ -96,7 +96,7 @@ rm -rfv $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlbuild
 %files
 %defattr(-,root,root,-)
 %doc LICENSE doc/README
-%config(noreplace) %{_sysconfdir}/ocamlfind.conf
+%{_libdir}/ocaml/ocamlfind.conf
 %{_bindir}/*
 %{_mandir}/man?/*
 #

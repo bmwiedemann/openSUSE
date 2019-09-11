@@ -18,7 +18,7 @@
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 Name:           pgadmin4
-Version:        4.8
+Version:        4.12
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -128,6 +128,9 @@ This package contains the documentation for pgadmin4.
 %patch0 -p1
 %patch1 -p1
 cp %{S:7} .
+# rpmlint
+chmod -x docs/en_US/theme/pgadmin4/static/style.css
+chmod -x docs/en_US/theme/pgadmin4/theme.conf
 
 %build
 cd runtime

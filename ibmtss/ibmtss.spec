@@ -75,7 +75,7 @@ Includes IBM's TPM 2.0 TSS C header files
 
 %build
 autoreconf -i
-%configure --enable-hwtpm --enable-debug
+%configure --enable-hwtpm --enable-debug --disable-static
 cd utils
 %{_libexecdir}/%{suite}/tpm_server & tpm_server="$!"
 CCFLAGS="%{optflags}" make LNAFLAGS="-Wl,-rpath,%{_libdir}" %{?_smp_mflags}
@@ -118,7 +118,6 @@ done
 %files devel
 %license LICENSE
 %{_includedir}/%{suite}
-%{_libdir}/%{libname}*.a
 %{_libdir}/%{libname}*.so
 
 %changelog

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rapidjson
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Python wrapper around rapidjson
 License:        MIT
@@ -52,6 +52,7 @@ instances) and JSON Schema validation capabilities.
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8

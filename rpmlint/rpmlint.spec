@@ -60,6 +60,7 @@ Patch58:        remove-ghostfile-checks.diff
 Patch63:        fix-diag-sortorder.diff
 Patch72:        rpmlint-slpp-NUM-NUM.patch
 Patch77:        suse-rpmlint-all-pie.patch
+Patch78:        add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  obs-service-format_spec_file
 BuildRequires:  python3-flake8

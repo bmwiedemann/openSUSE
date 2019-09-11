@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sun Sep  1 10:01:01 UTC 2019 - antoine.belvire@opensuse.org
+
+- Fix translation loading:
+  * Update solarus-1.6.2-install-gui-translations.patch with
+    final version pushed to upstream.
+
+-------------------------------------------------------------------
+Wed Aug 21 07:46:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Package description updates.
+
+-------------------------------------------------------------------
+Fri Aug 16 16:48:12 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.2:
+  * Fix scrolling teletransporters with a square size (#1412).
+  * Fix hero displayed above stairs walls.
+- Install translations for solarus-gui:
+  * Add solarus-1.6.2-install-gui-translations.patch.
+  * Create solarus-gui-lang subpackage.
+- Add _service file to create a tarball without the big
+  'libraries' folder which is relevant only for Windows/Mac builds.
+- Disable check section on Leap <= 15.1 to fix build.
+- Disable test "lua/bugs/1269_coroutines" as it is unstable.
+- Remove obsolete build dependency on update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Aug 10 16:04:10 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to 1.6.1:
+  * Engine changes:
+    + Add `-force-software-rendering` switch to solarus-run.
+    + Add argument to set mouse cursor visibility on start (#1263).
+    + Add simple performance counters to the engine (#1280).
+    + Add argument to set fullscreen mode on start (#1281).
+    + Add joypad buttons combo for quitting the engine (#1283).
+    + Add git revision information to build and main loop startup
+      (#1292).
+    + Add argument to set the joypad axis deadzone (#1293).
+    + Add debug warning if a surface is larger than 2048 x 2048
+      (#1294).
+    + Add support of carried object sprites with multiple
+      directions (#1392).
+    + Improve CMake build (#1270, #1276, #1277, #1288, #1320).
+    + Fix several crashes (#1354, #1371, #1353, #1366, #1374,
+      #1361).
+    + Other bugfixes. See installed changelog.txt for more details.
+  * Lua API changes:
+    + This release adds new features but does not introduce any
+      incompatibility.
+    + Add methods game:get/set_transition_style() (#1368).
+    + Add methods state:get/set_can_use_teletransporter/switch/
+      stream() (#1363).
+    + Make surface, text_surface and timer userdata types indexable
+      (#1394).
+- Remove solarus-1.6.0-fix-desktop-exec.patch: Fixed upstream.
+- Update spec file:
+  * Split GUI and GUI library from main package.
+  * Update URL, Source and Description fields.
+  * Remove obsolete desktop_database_post(un) macros.
+  * Use cmake_build macro.
+  * Add check section.
+
+-------------------------------------------------------------------
 Sat Dec 22 20:21:07 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to 1.6.0:

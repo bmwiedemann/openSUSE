@@ -6,6 +6,11 @@
   <title>Ceph container image</title>
   <url>registry.opensuse.org/ceph/ceph:%PKG_VERSION%</url>
   <reference>ceph/ceph:%PKG_VERSION%</reference>
+  <packages_image>
+    <package>
+      <name>patterns-ceph-containers-ceph_base</name>
+    </package>	  
+  </packages_image>
   <packages_boot>
     <package>
       <name>kubic-locale-archive</name>

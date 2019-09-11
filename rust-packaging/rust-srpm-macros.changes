@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 29 10:14:50 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version 10
+  * Translate '-or-later' and '+' license suffixes properly
+  * Check /usr/lib/os-release in addition to /etc/os-release
+  * Prettify summary and description automatically
+  * Use %{expand:…} for %description to avoid escaping of newlines
+  * Add '--suffix' option for "compat" packages
+  * Implement option to skip building of crates (aka fast/bootstrap build)
+
+-------------------------------------------------------------------
 Sun May  5 12:02:04 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 9

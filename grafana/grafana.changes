@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 05 08:07:21 UTC 2019 - simon.crute@grafana.com
+
+- Version 6.3.5
+  * Upgrades
+    + Build: Upgrade to go 1.12.9. 
+  * Bug Fixes
+    + Dashboard: Fixes dashboards init failed loading error for dashboards with panel links that had missing properties. 
+    + Editor: Fixes issue where only entire lines were being copied.
+    + Explore: Fixes query field layout in splitted view for Safari browsers. 
+    + LDAP: multildap + ldap integration. 
+    + Profile/UserAdmin: Fix for user agent parser crashes grafana-server on 32-bit builds. 
+    + Prometheus: Prevents panel editor crash when switching to Prometheus datasource. 
+    + Prometheus: Changes brace-insertion behavior to be less annoying. 
+
+- Version 6.3.4 
+  * Security: CVE-2019-15043 - Parts of the HTTP API allow unauthenticated use.  
+
+
+-------------------------------------------------------------------
 Fri Aug 16 14:16:42 UTC 2019 - simon.crute@grafana.com
 
 - Version 6.3.3 

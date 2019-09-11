@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:28:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Generalize description.
+
+-------------------------------------------------------------------
+Tue Aug 20 12:00:18 CEST 2019 - kukuk@suse.de
+
+- BuildRequire cron as this contains now the cron directories
+
+-------------------------------------------------------------------
 Thu Aug  8 17:16:41 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
 
 - Only use cron if systemd timers are not installed
@@ -6,7 +16,7 @@ Thu Aug  8 17:16:41 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
 -------------------------------------------------------------------
 Thu Jul 25 20:23:36 UTC 2019 - Andrew Daugherity <adaugherity@tamu.edu>
 
-- Combine changelog files. 
+- Combine changelog files.
 - Update to 7.5.2.
   See /usr/share/doc/packages/logwatch/ChangeLog for details.
 
@@ -53,7 +63,7 @@ Mon May  2 11:15:07 CEST 2016 - pth@suse.de
 
   Changes for 7.4.3:
   [kernel] Fix default Ignore_messages value to not match anything
-  
+
 - Removed logwatch-http.patch as the fix is in upstream code.
 
 -------------------------------------------------------------------
@@ -90,7 +100,7 @@ Mon Jun 17 15:45:13 CEST 2013 - pth@suse.de
 Tue Dec 18 12:04:36 UTC 2012 - robert.munteanu@gmail.com
 
 - Added logwatch-dmeventd-reduce_frequency.patch to reduce false
-  positives from dmeventd when a long logwatch run is in progress 
+  positives from dmeventd when a long logwatch run is in progress
 
 -------------------------------------------------------------------
 Mon Oct 17 13:08:25 CEST 2011 - pth@suse.de
@@ -159,7 +169,7 @@ Mon Oct 13 16:47:05 CEST 2008 - pth@suse.de
 -------------------------------------------------------------------
 Tue Apr  8 09:33:47 CEST 2008 - crrodriguez@suse.de
 
-- logwatch does not watch anything without cron 
+- logwatch does not watch anything without cron
 
 -------------------------------------------------------------------
 Mon Nov 12 14:47:17 CET 2007 - pth@suse.de
@@ -183,4 +193,3 @@ Thu Nov 23 15:02:31 CET 2006 - mge@suse.de
 - check into autobuild
 - update to 7.3.1
 - FATE #300526
-

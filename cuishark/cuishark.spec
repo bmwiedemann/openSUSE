@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           cuishark
 Version:        0.1.2
@@ -23,6 +24,8 @@ License:        MIT
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/slankdev/cuishark
 Source:         https://github.com/slankdev/cuishark/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- Fix build on 32bit platform
+Patch0:         cuishark-0.1.2-fix-32bit-build.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
 BuildRequires:  ncurses-devel
@@ -33,13 +36,13 @@ It is using libwireshark for the protocol dissection.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 make %{?_smp_mflags}
 
 %install
 install -D -m 0755 cuishark %{buildroot}/%{_bindir}/cuishark
-
 
 %files
 %doc README.md

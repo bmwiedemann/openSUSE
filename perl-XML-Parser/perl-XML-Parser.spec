@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Parser
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name XML-Parser
 Name:           perl-XML-Parser
 Version:        2.44
 Release:        0
-%define cpan_name XML-Parser
 Summary:        A perl module for parsing XML documents
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/XML-Parser/
-Source:         http://www.cpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source:         https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 Patch0:         XML-Parser-2.40.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
-# MANUAL
+BuildRequires:  perl(LWP::UserAgent)
+Requires:       perl(LWP::UserAgent)
+# MANUAL BEGIN
 BuildRequires:  libexpat-devel
-Recommends:     perl(LWP::UserAgent)
+# MANUAL END
 
 %description
 This module provides ways to parse XML documents. It is built on top of the
@@ -56,14 +58,17 @@ the _Expat_ object, not the Parser object.
 %prep
 %setup -q -n %{cpan_name}-%{version}
 %patch0
-find . -type f -print0 | xargs -0 chmod 644
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+# MANUAL BEGIN
+chmod 644 samples/{canonical,xml*}
+# MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make %{?_smp_mflags} test
 
 %install
 %perl_make_install
@@ -72,6 +77,6 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes Expat Parser README samples
+%doc Changes README samples/
 
 %changelog

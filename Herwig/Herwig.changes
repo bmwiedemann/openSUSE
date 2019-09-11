@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 17 22:35:24 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable LTO to prevent resulting build failure.
+
+-------------------------------------------------------------------
 Thu May  2 05:21:07 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.1.5:

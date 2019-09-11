@@ -22,7 +22,7 @@
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Name:           python3-pyside2
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Python bindings for Qt
 # shiboken2 is licensed under GPL-3.0-with-Qt-Company-Qt-exception-1.1
@@ -33,8 +33,6 @@ Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PyS
 Patch0:         lib64.patch
 # PATCH-FIX-UPSTREAM - PYSIDE-881
 Patch1:         0001-Remove-unnecessary-she-bang-from-icon-cache.py.patch
-Patch2:         0002-Fix-qApp-import-of-QCoreApplication.patch
-Patch3:         0003-PySide2-QtCore-Remove-duplicated-type-entry-for-bool.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -121,8 +119,6 @@ Examples and Tutorials for the PySide2 bindings for Qt.
 %patch0 -p1
 %endif
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export LLVM_INSTALL_DIR=%{_prefix}

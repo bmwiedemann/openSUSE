@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define _lto_cflags %{nil}
 %define so_name Herwig-libs
 Name:           Herwig
 Version:        7.1.5

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:58:54 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Mon Jan 14 15:48:48 CET 2019 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]

@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Thu Aug 22 13:04:22 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.9.213 (bsc#1146853, bsc#1146854)
+  * api-change:``forecast``: [``botocore``] Update forecast client to latest version
+  * api-change:``forecastquery``: [``botocore``] Update forecastquery client to latest version
+  * api-change:``personalize-runtime``: [``botocore``] Update personalize-runtime client to latest version
+  * api-change:``elasticache``: [``botocore``] Update elasticache client to latest version
+  * api-change:``rekognition``: [``botocore``] Update rekognition client to latest version
+  * api-change:``sagemaker``: [``botocore``] Update sagemaker client to latest version
+  * api-change:``sqs``: [``botocore``] Update sqs client to latest version
+- from version 1.9.212
+  * api-change:``sagemaker``: [``botocore``] Update sagemaker client to latest version
+  * api-change:``transfer``: [``botocore``] Update transfer client to latest version
+  * api-change:``appstream``: [``botocore``] Update appstream client to latest version
+  * api-change:``alexaforbusiness``: [``botocore``] Update alexaforbusiness client to latest version
+- from version 1.9.211
+  * api-change:``appmesh``: [``botocore``] Update appmesh client to latest version
+  * api-change:``cur``: [``botocore``] Update cur client to latest version
+- from version 1.9.210
+  * api-change:``robomaker``: [``botocore``] Update robomaker client to latest version
+  * api-change:``emr``: [``botocore``] Update emr client to latest version
+  * api-change:``ecs``: [``botocore``] Update ecs client to latest version
+- from version 1.9.209
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``appmesh``: [``botocore``] Update appmesh client to latest version
+  * api-change:``athena``: [``botocore``] Update athena client to latest version
+  * api-change:``codecommit``: [``botocore``] Update codecommit client to latest version
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``storagegateway``: [``botocore``] Update storagegateway client to latest version
+- from version 1.9.208
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+- from version 1.9.207
+  * api-change:``appsync``: [``botocore``] Update appsync client to latest version
+- from version 1.9.206
+  * api-change:``autoscaling``: [``botocore``] Update autoscaling client to latest version
+  * api-change:``cloudwatch``: [``botocore``] Update cloudwatch client to latest version
+  * api-change:``application-autoscaling``: [``botocore``] Update application-autoscaling client to latest version
+  * api-change:``rekognition``: [``botocore``] Update rekognition client to latest version
+- from version 1.9.205
+  * api-change:``guardduty``: [``botocore``] Update guardduty client to latest version
+  * api-change:``lex-runtime``: [``botocore``] Update lex-runtime client to latest version
+  * api-change:``redshift``: [``botocore``] Update redshift client to latest version
+  * api-change:``iot``: [``botocore``] Update iot client to latest version
+  * api-change:``mediaconvert``: [``botocore``] Update mediaconvert client to latest version
+- from version 1.9.204
+  * api-change:``lakeformation``: [``botocore``] Update lakeformation client to latest version
+  * api-change:``opsworkscm``: [``botocore``] Update opsworkscm client to latest version
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``codebuild``: [``botocore``] Update codebuild client to latest version
+- from version 1.9.203
+  * api-change:``application-insights``: [``botocore``] Update application-insights client to latest version
+- from version 1.9.202
+  * api-change:``batch``: [``botocore``] Update batch client to latest version
+- from version 1.9.201
+  * api-change:``datasync``: [``botocore``] Update datasync client to latest version
+  * api-change:``iot``: [``botocore``] Update iot client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+- from version 1.9.200
+  * api-change:``sts``: [``botocore``] Update sts client to latest version
+  * enhancement:Credentials: [``botocore``] Add support for a credential provider that
+    handles resolving credentials via STS AssumeRoleWithWebIdentity
+- from version 1.9.199
+  * api-change:``polly``: [``botocore``] Update polly client to latest version
+  * api-change:``mediaconvert``: [``botocore``] Update mediaconvert client to latest version
+  * api-change:``route53``: [``botocore``] Update route53 client to latest version
+- from version 1.9.198
+  * bugfix:S3: [``botocore``] Fix an issue that would cause S3 list_object_versions to
+    sometimes fail parsing responses with certain key values.
+  * api-change:``codecommit``: [``botocore``] Update codecommit client to latest version
+- from version 1.9.197
+  * api-change:``ce``: [``botocore``] Update ce client to latest version
+  * api-change:``greengrass``: [``botocore``] Update greengrass client to latest version
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``logs``: [``botocore``] Update logs client to latest version
+  * api-change:``mediaconnect``: [``botocore``] Update mediaconnect client to latest version
+  * api-change:``batch``: [``botocore``] Update batch client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+- from version 1.9.196
+  * api-change:``medialive``: [``botocore``] Update medialive client to latest version
+  * api-change:``ecr``: [``botocore``] Update ecr client to latest version
+  * api-change:``mediaconvert``: [``botocore``] Update mediaconvert client to latest version
+- from version 1.9.195
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``sts``: [``botocore``] Update sts client to latest version
+  * api-change:``pinpoint``: [``botocore``] Update pinpoint client to latest version
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+- from version 1.9.194
+  * api-change:``ssm``: [``botocore``] Update ssm client to latest version
+  * api-change:``secretsmanager``: [``botocore``] Update secretsmanager client to latest version
+- from version 1.9.193
+  * api-change:``mq``: [``botocore``] Update mq client to latest version
+  * api-change:``shield``: [``botocore``] Update shield client to latest version
+- from version 1.9.192
+  * bugfix:Dependency: [``botocore``] Fixed dependency issue with broken docutils
+    aws/aws-cli`#4332 <https://github.com/boto/botocore/issues/4332>`__
+- from version 1.9.191
+  * api-change:``sqs``: [``botocore``] Update sqs client to latest version
+  * api-change:``iotevents``: [``botocore``] Update iotevents client to latest version
+- from version 1.9.190
+  * api-change:``comprehend``: [``botocore``] Update comprehend client to latest version
+  * api-change:``codedeploy``: [``botocore``] Update codedeploy client to latest version
+  * api-change:``elasticache``: [``botocore``] Update elasticache client to latest version
+  * api-change:``ecs``: [``botocore``] Update ecs client to latest version
+- from version 1.9.189
+  * api-change:``config``: [``botocore``] Update config client to latest version
+  * api-change:``dms``: [``botocore``] Update dms client to latest version
+  * api-change:``autoscaling``: [``botocore``] Update autoscaling client to latest version
+- Update BuildRequires and Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Tue Jul 16 06:35:10 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.9.188

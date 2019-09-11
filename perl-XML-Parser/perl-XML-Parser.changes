@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 21 17:37:23 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Add cpanspec.yml file
+
+-------------------------------------------------------------------
+Wed Aug 21 16:40:21 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Remove not needed files in doc section [bsc#1146634]
+- Fix permissions in samples directory
+
+-------------------------------------------------------------------
+Wed Aug 21 15:21:44 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Updated spec file with spec-celaner
+- Use https and metacpan release
+
+-------------------------------------------------------------------
 Sun Feb  8 08:01:54 UTC 2015 - coolo@suse.com
 
 - avoid a cycle with LWP

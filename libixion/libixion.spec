@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libname libixion-0_14-0
+%define libname libixion-0_15-0
 Name:           libixion
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Threaded multi-target formula parser & interpreter
 License:        MIT
@@ -30,8 +30,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(mdds-1.4)
+BuildRequires:  pkgconfig(mdds-1.5)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(spdlog) >= 0.16.0
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel

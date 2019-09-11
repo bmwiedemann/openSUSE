@@ -22,13 +22,14 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 Url:            https://goodies.xfce.org/projects/applications/xfce4-screenshooter
 Source:         https://archive.xfce.org/src/apps/xfce4-screenshooter/1.9/%{name}-%{version}.tar.bz2
+BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
@@ -95,6 +96,8 @@ NOCONFIGURE=1 ./autogen.sh
 
 rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libscreenshooterplugin.la
 
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
+
 %find_lang xfce4-screenshooter %{?no_lang_C}
 
 %suse_update_desktop_file -r xfce4-screenshooter -G 'Screenshot Tool' Utility X-SuSE-DesktopUtility GTK
@@ -107,8 +110,7 @@ rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libscreenshooterplugin.la
 %{_bindir}/xfce4-screenshooter
 %{_datadir}/icons/hicolor/*/apps/applets-screenshooter.*
 %{_datadir}/applications/xfce4-screenshooter.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/xfce4-screenshooter.appdata.xml
+%{_datadir}/metainfo/xfce4-screenshooter.appdata.xml
 %{_mandir}/man1/xfce4-screenshooter.1*
 
 %files -n xfce4-%{plugin}-plugin

@@ -6,5 +6,5 @@ custom_build: |-
   %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
   # build system busted - only supporting serial build
   %{__make} -j1
-patches:
-  50ff73f26855151910e039b8480473024ae08b8a.patch: -p1
+#patches:
+#  50ff73f26855151910e039b8480473024ae08b8a.patch: -p1

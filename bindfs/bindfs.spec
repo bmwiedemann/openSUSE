@@ -1,7 +1,7 @@
 #
 # spec file for package bindfs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bindfs
-Version:        1.13.9
+Version:        1.14.1
 Release:        0
-Summary:        Mount Directories to other Locations and alter Permission Bits
-License:        GPL-2.0+
+Summary:        Filesystem for mapping directories with alternate permissions
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://bindfs.org/
+URL:            https://bindfs.org/
+
 #Git-Clone:	git://github.com/mpartel/bindfs
-Source:         http://bindfs.org/downloads/%name-%version.tar.gz
-BuildRequires:  pkgconfig
+Source:         https://bindfs.org/downloads/%name-%version.tar.gz
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse) >= 2.6.0
 
 %description
@@ -34,7 +35,7 @@ location, similarly to mount --bind. The permissions inside the
 mountpoint can be altered using various rules.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -44,7 +45,8 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%doc ChangeLog COPYING
+%doc ChangeLog
+%license COPYING
 %_bindir/%name
 %_mandir/man1/%name.1%ext_man
 

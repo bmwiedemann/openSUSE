@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 30 14:20:09 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 20190830:
+  * dumpcap: remove 'other' executable bit because of capabilities (boo#1148788, CVE-2019-3687)
+
+-------------------------------------------------------------------
+Thu Aug 29 15:38:28 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 20190829:
+  * add one more missing slash for icinga2
+  * fix more missing slashes for directories
+
+-------------------------------------------------------------------
+Tue Aug 20 08:56:35 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 20190820:
+  * cron directory permissions: add slashes
+
+-------------------------------------------------------------------
 Thu Jul 11 14:21:23 UTC 2019 - malte.kraus@suse.com
 
 - Update to version 20190711:

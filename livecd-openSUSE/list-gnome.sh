@@ -33,7 +33,6 @@ source "$PWD/list-installer.sh"
 buildignore simple-scan
 
 buildignore ghostscript
-buildignore orca
 buildignore myspell-en_US
 
 # Pulls in color management tools
@@ -54,6 +53,7 @@ buildignore inkscape
 
 # Pulls in various python modules and duplicity
 buildignore deja-dup
+buildignore libpython2_7-1_0
 
 buildignore gimp
 buildignore noto-coloremoji-fonts
@@ -90,3 +90,6 @@ install gnome-mines
 install gnome-sudoku
 install quadrapassel
 install cifs-utils
+
+# Pulls in Qt WebEngine, too big
+buildignore opensuse-welcome

@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-git.40a1a11542/test/parallel/test-module-loading-globalpaths.js
+Index: node-v12.9.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-git.40a1a11542/test/parallel/test-module-loading-globalpaths.js
+--- node-v12.9.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v12.9.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-git.40a1a11542/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-git.40a1a11542/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-v12.9.0/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-git.40a1a11542/test/parallel/test-tls-env-bad-extra-ca.js
+--- node-v12.9.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-v12.9.0/test/parallel/test-tls-env-bad-extra-ca.js
 @@ -36,7 +36,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
@@ -29,12 +29,12 @@ Index: node-git.40a1a11542/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-git.40a1a11542/test/parallel/test-tls-passphrase.js
+Index: node-v12.9.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-tls-passphrase.js
-+++ node-git.40a1a11542/test/parallel/test-tls-passphrase.js
-@@ -221,7 +221,7 @@ server.listen(0, common.mustCall(functio
-   }, common.mustCall());
+--- node-v12.9.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v12.9.0/test/parallel/test-tls-passphrase.js
+@@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
+   }, onSecureConnect());
  })).unref();
  
 -const errMessagePassword = /bad decrypt/;
@@ -42,7 +42,7 @@ Index: node-git.40a1a11542/test/parallel/test-tls-passphrase.js
  
  // Missing passphrase
  assert.throws(function() {
-@@ -251,7 +251,7 @@ assert.throws(function() {
+@@ -253,7 +253,7 @@ assert.throws(function() {
    });
  }, errMessagePassword);
  
@@ -51,23 +51,25 @@ Index: node-git.40a1a11542/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-git.40a1a11542/test/parallel/test-crypto-scrypt.js
+Index: node-v12.9.0/test/parallel/test-crypto-scrypt.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-crypto-scrypt.js
-+++ node-git.40a1a11542/test/parallel/test-crypto-scrypt.js
-@@ -169,7 +169,7 @@ for (const options of bad) {
+--- node-v12.9.0.orig/test/parallel/test-crypto-scrypt.js
++++ node-v12.9.0/test/parallel/test-crypto-scrypt.js
+@@ -169,8 +169,8 @@ for (const options of bad) {
  
  for (const options of toobig) {
    const expected = {
--    message: /error:[^:]+:digital envelope routines:EVP_PBE_scrypt:memory limit exceeded/,
-+    message: /(error:[^:]+:digital envelope routines:EVP_PBE_scrypt:memory limit exceeded|Invalid scrypt parameter)/,
+-    message: new RegExp('error:[^:]+:digital envelope routines:' +
+-                        '(?:EVP_PBE_scrypt|scrypt_alg):memory limit exceeded'),
++    message: new RegExp('(error:[^:]+:digital envelope routines:' +
++                        '(?:EVP_PBE_scrypt|scrypt_alg):memory limit exceeded|Invalid scrypt parameter)'),
      type: Error,
    };
    common.expectsError(() => crypto.scrypt('pass', 'salt', 1, options, () => {}),
-Index: node-git.40a1a11542/test/parallel/test-repl-envvars.js
+Index: node-v12.9.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-repl-envvars.js
-+++ node-git.40a1a11542/test/parallel/test-repl-envvars.js
+--- node-v12.9.0.orig/test/parallel/test-repl-envvars.js
++++ node-v12.9.0/test/parallel/test-repl-envvars.js
 @@ -2,12 +2,14 @@
  
  // Flags: --expose-internals
@@ -84,11 +86,11 @@ Index: node-git.40a1a11542/test/parallel/test-repl-envvars.js
  const tests = [
    {
      env: {},
-Index: node-git.40a1a11542/test/common/index.mjs
+Index: node-v12.9.0/test/common/index.mjs
 ===================================================================
---- node-git.40a1a11542.orig/test/common/index.mjs
-+++ node-git.40a1a11542/test/common/index.mjs
-@@ -50,6 +50,7 @@ const {
+--- node-v12.9.0.orig/test/common/index.mjs
++++ node-v12.9.0/test/common/index.mjs
+@@ -45,6 +45,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -96,7 +98,7 @@ Index: node-git.40a1a11542/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-@@ -96,6 +97,7 @@ export {
+@@ -91,6 +92,7 @@ export {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -104,10 +106,10 @@ Index: node-git.40a1a11542/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-Index: node-git.40a1a11542/test/parallel/test-fs-utimes.js
+Index: node-v12.9.0/test/parallel/test-fs-utimes.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-fs-utimes.js
-+++ node-git.40a1a11542/test/parallel/test-fs-utimes.js
+--- node-v12.9.0.orig/test/parallel/test-fs-utimes.js
++++ node-v12.9.0/test/parallel/test-fs-utimes.js
 @@ -145,7 +145,7 @@ const path = `${tmpdir.path}/test-utimes
  fs.writeFileSync(path, '');
  
@@ -117,11 +119,11 @@ Index: node-git.40a1a11542/test/parallel/test-fs-utimes.js
    const Y2K38_mtime = 2 ** 31;
    fs.utimesSync(path, Y2K38_mtime, Y2K38_mtime);
    const Y2K38_stats = fs.statSync(path);
-Index: node-git.40a1a11542/Makefile
+Index: node-v12.9.0/Makefile
 ===================================================================
---- node-git.40a1a11542.orig/Makefile
-+++ node-git.40a1a11542/Makefile
-@@ -483,7 +483,7 @@ test-all-valgrind: test-build
+--- node-v12.9.0.orig/Makefile
++++ node-v12.9.0/Makefile
+@@ -493,7 +493,7 @@ test-all-valgrind: test-build
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) --mode=debug,release --valgrind
  
  .PHONY: test-all-suites
@@ -130,7 +132,7 @@ Index: node-git.40a1a11542/Makefile
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) --mode=$(BUILDTYPE_LOWER) test/*
  
  CI_NATIVE_SUITES ?= addons js-native-api node-api
-@@ -687,11 +687,12 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -705,11 +705,12 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -148,10 +150,10 @@ Index: node-git.40a1a11542/Makefile
  
  .PHONY: doc-only
  doc-only: tools/doc/node_modules \
-Index: node-git.40a1a11542/test/parallel/test-child-process-spawnsync-args.js
+Index: node-v12.9.0/test/parallel/test-child-process-spawnsync-args.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-child-process-spawnsync-args.js
-+++ node-git.40a1a11542/test/parallel/test-child-process-spawnsync-args.js
+--- node-v12.9.0.orig/test/parallel/test-child-process-spawnsync-args.js
++++ node-v12.9.0/test/parallel/test-child-process-spawnsync-args.js
 @@ -12,6 +12,8 @@ const tmpdir = require('../common/tmpdir
  const assert = require('assert');
  const { spawnSync } = require('child_process');
@@ -161,15 +163,14 @@ Index: node-git.40a1a11542/test/parallel/test-child-process-spawnsync-args.js
  const command = common.isWindows ? 'cd' : 'pwd';
  const options = { cwd: tmpdir.path };
  
-Index: node-git.40a1a11542/test/parallel/test-dns.js
+Index: node-v12.9.0/test/parallel/test-dns.js
 ===================================================================
---- node-git.40a1a11542.orig/test/parallel/test-dns.js
-+++ node-git.40a1a11542/test/parallel/test-dns.js
-@@ -317,12 +317,3 @@ common.expectsError(() => {
-   type: TypeError
+--- node-v12.9.0.orig/test/parallel/test-dns.js
++++ node-v12.9.0/test/parallel/test-dns.js
+@@ -320,16 +320,6 @@ common.expectsError(() => {
  });
  
--{
+ {
 -  dns.resolveMx('foo.onion', function(err) {
 -    assert.deepStrictEqual(err.errno, 'ENOTFOUND');
 -    assert.deepStrictEqual(err.code, 'ENOTFOUND');
@@ -178,20 +179,8 @@ Index: node-git.40a1a11542/test/parallel/test-dns.js
 -    assert.deepStrictEqual(err.message, 'queryMx ENOTFOUND foo.onion');
 -  });
 -}
-Index: node-git.40a1a11542/test/addons/uv-handle-leak/binding.cc
-===================================================================
---- node-git.40a1a11542.orig/test/addons/uv-handle-leak/binding.cc
-+++ node-git.40a1a11542/test/addons/uv-handle-leak/binding.cc
-@@ -15,9 +15,11 @@ void CloseCallback(uv_handle_t* handle)
- 
- class ExampleOwnerClass {
-  public:
--  virtual ~ExampleOwnerClass() {}
-+  virtual ~ExampleOwnerClass();
- };
- 
-+ExampleOwnerClass::~ExampleOwnerClass() {}
-+
- ExampleOwnerClass example_instance;
- 
- void LeakHandle(const FunctionCallbackInfo<Value>& args) {
+-
+-{
+   const cases = [
+     { method: 'resolveAny',
+       answers: [

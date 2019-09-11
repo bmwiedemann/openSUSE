@@ -1,7 +1,7 @@
 #
 # spec file for package mpfi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mpfi
 %define lname	libmpfi0
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Multi-precision floating-point interval arithmetic computation library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://mpfi.gforge.inria.fr/
+URL:            http://mpfi.gforge.inria.fr/
 
 #SVN-Clone:	svn://scm.gforge.inria.fr/svnroot/mpfi/trunk
 # Download depends on the file ID, not the filename!
-Source:         https://gforge.inria.fr/frs/download.php/file/37331/mpfi-1.5.3.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://gforge.inria.fr/frs/download.php/file/38111/mpfi-1.5.4.tgz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gmp-devel >= 4.1.0
-BuildRequires:  mpfr-devel >= 2.4.2
+BuildRequires:  libtool
+BuildRequires:  makeinfo
+BuildRequires:  mpfr-devel >= 3
 BuildRequires:  pkgconfig
-PreReq:         %install_info_prereq
+Requires(post): %install_info_prereq
+Requires(postun): %install_info_prereq
 
 %description
 MPFI is a C library for arbitrary precision interval arithmetic with
@@ -68,22 +72,21 @@ intervals represented using MPFR reliable floating-point numbers.
 This subpackage provides the development headers and libraries for it.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+./autogen.sh
 %configure --disable-static
-make %{?_smp_mflags};
-
-%check
-make %{?_smp_mflags} check;
+make %{?_smp_mflags}
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
-rm -f "$b/%_libdir"/*.la;
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
-%post -n %lname -p /sbin/ldconfig
+%check
+#make check #upstream broke it in 1.5.4
 
+%post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %post devel
@@ -93,11 +96,9 @@ rm -f "$b/%_libdir"/*.la;
 %install_info_delete --info-dir="%_infodir" "%_infodir/mpfi.info.gz"
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libmpfi.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/mpfi*.h
 %_libdir/libmpfi.so
 %_infodir/mpfi.info*

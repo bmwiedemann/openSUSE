@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.3.6
+Version:        1.3.8
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://www.sqlalchemy.org
+URL:            https://www.sqlalchemy.org
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module devel}

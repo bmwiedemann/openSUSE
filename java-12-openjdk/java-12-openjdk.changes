@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Thu Aug 29 07:27:04 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to jdk-12.0.2+10 (Oracle July 2019 CPU)
+  * Security fixes:
+    + S8212328, CVE-2019-2762, bsc#1141782: Exceptional throw cases
+    + S8213431, CVE-2019-2766, bsc#1141789: Improve file protocol
+      handling
+    + S8213432, CVE-2019-2769, bsc#1141783: Better copies of
+      CopiesList
+    + S8216381, CVE-2019-2786, bsc#1141787: More limited privilege
+      usage
+    + S8217563: Improve realm maintenance
+    + S8218863: Better endpoint checks
+    + S8218873: Improve JSSE endpoint checking
+    + S8218876, CVE-2019-7317, bsc#1141780: Improve PNG support
+      options
+    + S8219775: Certificate validation improvements
+    + S8220517: Enhanced GIF support
+    + S8221345, CVE-2019-2818, bsc#1141788: Better Poly1305 support
+    + S8221518, CVE-2019-2816, bsc#1141785: Normalize normalization
+    + S8222678, CVE-2019-2821, bsc#1141781: Improve TLS negotiation
+  * Fixes:
+    + S8170494: JNI exception pending in PlainDatagramSocketImpl.c
+    + S8188133: C2: Static field accesses in clinit can trigger
+      deoptimizations
+    + S8203627: Swing applications with JRadioButton and JCheckbox
+      fail to render correctly when using GTK3 and the GTK L&F
+    + S8205432: Replace the placeholder Japanese era name
+    + S8209901: Canonical file handling
+    + S8210782: Upgrade HarfBuzz to the latest 2.3.1
+    + S8211936: Better String parsing
+    + S8214235: arm32: assertion in collectedHeap.cpp: attempt to
+      clean empty remainder
+    + S8215367: Better Collection of References
+    + S8215472: (zipfs) Cleanups in implementation classes of
+      jdk.zipfs and tests
+    + S8215982: (tz) Upgrade time-zone data to tzdata2018i
+    + S8217647: JFR: recordings on 32-bit systems unreadable
+    + S8217737: Change the milestone to ea for jdk-12.0.2+1 build
+    + S8217737: Change the release version from 12.0.1 to 12.0.2
+    + S8217879: hs_err should print more instructions in hex dump
+    + S8218152: [javac] fails and exits with no error if a bad
+      annotation processor provided
+    + S8218453: More dynamic RMI interactions
+    + S8218469: JSlider display issue with slider for GTKLookAndFeel
+    + S8218470: JScrollBar display issue with GTKLookAndFeel
+    + S8218472: JProgressBar display issue with GTKLookAndFeel
+    + S8218473: JOptionPane display issue with GTKLookAndFeel
+    + S8218479: JTextPane display issue with GTKLookAndFeel
+    + S8218781: Localized names for Japanese era Reiwa in COMPAT
+      provider
+    + S8219448: split-if update_uses accesses stale idom data
+    + S8220166: Performance regression in deserialization (4-6% in
+      SPECjbb)
+    + S8220495: Update GIFlib library to the 5.1.8
+    + S8220625: tools/javac/classreader/8171132/BadConstantValue.java
+      failed with "did not see expected error"
+    + S8221437: assert(java_lang_invoke_ResolvedMethodName::vmtarget(
+      resolved_method()) == m()) failed: Should not change after
+      link resolution
+    + S8221530: Caller sensitive methods not handling caller = null
+      when invoked by JNI code with no java frames on stack
+    + S8221639: [i386] expand_exec_shield_cs_limit workaround is
+      undefined code after JDK-8199717
+    + S8221880: Better customization for Windows RC properties
+      FileDescription and ProductName
+    + S8221924: get(null) on single-entry unmodifiable Map returns
+      null instead of throwing NPE
+    + S8222027: java/util/logging/LogManager/TestLoggerNames.java
+      generates intermittent ClassCastException
+    + S8222078: test/jdk/java/lang/reflect/exeCallerAccessTest/
+      /exeCallerAccessTest.c build fails after 8221530
+    + S8222082: Build of test/jdk/java/lang/reflect/
+      /exeCallerAccessTest/exeCallerAccessTest.c still failing on
+      Windows
+    + S8222086: CodeCache::UnloadingScope needs to preserve and
+      restore previous IsUnloadingBehavior
+    + S8222111: exeCallerAccessTest.c fails to build: control
+      reaches end of non-void function
+    + S8222136: Remove two Comodo root CA certificates that are
+      expiring
+    + S8222137: Remove T-Systems root CA certificate
+    + S8222262: change milestone to fcs for jdk 12.0.2 build 2 on
+      jdk12.0.2 repos
+    + S8222397: x86_32 tests with UseSHA1Intrinsics SEGV due to
+      garbled registers
+    + S8222403: Shenandoah: Remove ShenandoahAlwaysTrueClosure, use
+      AlwaysTrueClosure instead
+    + S8222410: java/nio/file/attribute/BasicFileAttributeView/
+      /UnixSocketFile hangs when "nc" does not accept "-U"
+    + S8222425: Shenandoah: Move commonly used closures to separate
+      files
+    + S8222522: Add configure options for Mac Bundle creation
+    + S8222532: (zipfs) Performance regression when writing
+      ZipFileSystem entries in parallel
+    + S8222838: Shenandoah: SEGV on accessing cset bitmap for NULL
+      ptr
+    + S8222843: Print Shenandoah cset map addresses in hs_err
+    + S8222930: ConcurrentSkipListMap.clone() shares size variable
+      between original and clone
+    + S8223003: SunMSCAPI keys are not cleaned up
+    + S8223427: [TESTBUG] Disable JTReg Shenandoah tests when Graal
+      is enabled
+    + S8223437: Backout JDK-8219974 Restore static callsite
+      resolution for the current class
+    + S8223446: Shenandoah breaks alignment with some
+      HumongousThreshold values
+    + S8223447: Stabilize gc/shenandoah/TestStringDedupStress test
+    + S8223472: volatile long field corruption on x86_32
+    + S8223499: Remove two DocuSign root certificates that are
+      expiring
+    + S8223555: Cleanups in cacerts tests
+    + S8223570: Shenandoah needs to acquire lock before
+      CLDG::clear_claimed_marks
+    + S8223597: jdk/nio/zipfs/ZipFSTester.java RuntimeException:
+      CHECK_FAILED! (getAttribute.crc <entries20> failed 6af4413c
+      vs 0 ...)
+    + S8223651: Build fails with --with-jvm-features=-jfr and
+      --disable-precompiled-headers
+    + S8223759: Shenandoah should allow arbitrarily low initial
+      heap size
+    + S8223762: Shenandoah: overflows in calculations involving
+      heap capacity
+    + S8223767: Shenandoah fails to build on Solaris x86_64
+    + S8223980: Shenandoah: Refactor and fix ObjArrayChunkedTask
+      verification
+    + S8224907: Backout JDK-8209901 from JDK 11u-cpu and 12u-cpu
+    + S8227230: Backout JDK-8215367 from update releases
+
+-------------------------------------------------------------------
 Wed Apr 17 09:21:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to jdk-12.0.1+12 (Oracle April 2019 CPU)

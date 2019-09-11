@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/universal-ctags/ctags.git</param>
+    <param name="versionformat">0+git~%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="disabled" name="tar"/>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-DNS
-Version:        1.20
+Version:        1.21
 Release:        0
 %define cpan_name Net-DNS
 Summary:        Perl Interface to the Domain Name System

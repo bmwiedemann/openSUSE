@@ -1,7 +1,7 @@
 #
 # spec file for package froxlor
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Name:           froxlor
 Version:        0.9.40.1
 Release:        0
 Summary:        Froxlor Server Management Panel a php web-based administration software
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Url:            http://www.froxlor.org/
 Source0:        froxlor-%{version}.tar.bz2
@@ -38,6 +38,7 @@ BuildRequires:  fdupes
 # Hard requirements
 Requires:       apache2
 #Requires:       apache2-mod_php7
+BuildRequires:  cron
 Requires:       cron
 Requires:       logrotate
 Requires:       php-bcmath
@@ -114,7 +115,7 @@ cp %{S:1} $idir/lib/configfiles/
 %attr(0755, wwwrun, root) %dir /srv/www/htdocs/%{name}/lib
 /srv/www/htdocs/%{name}/
 %config %{apache_sysconfdir}/conf.d/*
-%doc COPYING
+%license COPYING
 %ghost %config(noreplace) /srv/www/htdocs/%{name}/lib/userdata.inc.php
 %config %{_sysconfdir}/named.d/froxlor_bind.conf
 %config %{_sysconfdir}/cron.d/froxlor

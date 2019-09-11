@@ -16,50 +16,23 @@
 #
 
 
-%if 0%{suse_version} >= 1500
+# python-rpm-macros doesn't work for hplip!
+# We just build for py3 since SLE15
 %define pyversion 3
 %define pymod() python3-%{**}
-%define pyver %py3_ver
-%define pyexe /usr/bin/python3
-%define gobject gobject
-%else
-%define pyversion 2
-%define pymod() python-%{**}
-%define pyver %py_ver
-%define pyexe /usr/bin/python
-%define gobject gobject2
-%endif
-
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse}
-%define is_leap 1
-%else
-%define is_leap 0
-%endif
-# For udev macros
-%if 0%{?suse_version} > 1130
-BuildRequires:  systemd-rpm-macros
-%else
-# For older suse_version (in particular for SLE11) define needed udev macros manually:
-%{!?_udevrulesdir: %global _udevrulesdir %{_prefix}/lib/udev/rules.d }
-%endif
-%if 0%{?suse_version} == 1110
-# For SLE11 redefine _libexecdir because on SLE11 _libexecdir is "/usr/lib64":
-%global _libexecdir %{_prefix}/lib
-%endif
-# Use Qt5 frontend on TW, Leap >= 42.2 and SLE >= 15
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120200 && 0%{?is_opensuse})
+%define pyver %{py3_ver}
+%define pyexe %{_bindir}/python3
 %global use_qt5 1
-%else
-%global use_qt5 0
-%endif
-
+# Set _with_new_pycups in prjconf if cups-rpm-helper is available
+# (for auto-generated printer driver Provides:)
+%bcond_with new_pycups
 Name:           hplip
-Version:        3.19.3
+Version:        3.19.6
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Hardware/Printing
-Url:            https://developers.hp.com/hp-linux-imaging-and-printing
+URL:            https://developers.hp.com/hp-linux-imaging-and-printing
 # Source0...Source9 is for sources from HP:
 # URL for Source0: http://prdownloads.sourceforge.net/hplip/hplip-3.15.9.tar.gz
 # URL to verify Source0: http://prdownloads.sourceforge.net/hplip/hplip-3.15.9.tar.gz.asc
@@ -75,7 +48,7 @@ Source2:        hplip.keyring
 # Source100... is for special SUSE sources:
 # Source102 is a small man page for /usr/bin/hpijs:
 Source102:      hpijs.1.gz
-# 
+#
 Source1000:     %{name}-rpmlintrc
 # Patch100... is for special Suse patches:
 # Patch101 change-udev-rules.diff changes the udev rules file 56-hpmud.rules
@@ -103,7 +76,11 @@ Patch303:       photocard-fix-import-error-for-pcardext.patch
 Patch400:       hplip-remove-imageprocessor.diff
 # Let a function return NULL instead of nothing
 Patch401:       hplip-orblite-return-null.diff
-
+BuildRequires:  %{pymod devel}
+BuildRequires:  %{pymod qt5-devel}
+BuildRequires:  %{pymod xml}
+BuildRequires:  cups > 1.5
+BuildRequires:  cups-devel > 1.5
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -114,22 +91,19 @@ BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
-# BuildRequires:  python-rpm-macros
-# All printer driver packages should have "BuildRequires: python-cups"
-# because python-cups installs special rpm macros that adds Provides tags
-# for the printer drivers supported by the package,
-# see https://bugzilla.novell.com/show_bug.cgi?id=735865
-BuildRequires:  %{pymod cups}
-BuildRequires:  %{pymod devel}
-%if %use_qt5
-BuildRequires:  %{pymod qt5-devel}
-%else
-BuildRequires:  %{pymod qt4}
-BuildRequires:  libqt4-devel
-%endif
-BuildRequires:  %{pymod xml}
 BuildRequires:  readline-devel
+BuildRequires:  sane-backends-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
+#!BuildIgnore:  clang8
+#!BuildIgnore:  libclang8
+# Break this dependency chain that has caused build breakage
+# python3-qt5-devel -> libqt5-qttools-devel -> libqt5-qttools-doc -> clang8
+#!BuildIgnore:  libqt5-qttools-devel
+#!BuildIgnore:  libqt5-qtwebengine
+# Break this dependency chain that has caused build breakage
+# python3-qt5-devel -> libqt5-qtwebengine-devel -> libavcodec58 -> libdav1d.so.1
+#!BuildIgnore:  libqt5-qtwebengine-devel
 # Require the exact matching version-release of the hpijs sub-package to make sure
 # to have the exact matching version of libhpip and libhpmud installed.
 # The exact matching version-release of the sub-package is available on the same
@@ -138,26 +112,10 @@ Requires:       %{name}-hpijs = %{version}-%{release}
 # Require the exact matching version-release of the sane sub-package to make sure
 # to have the exact matching version of libsane-hpaio installed:
 Requires:       %{name}-sane = %{version}-%{release}
-# Since version 2.8.4 all interprocess communication uses dbus.
-# Therefore python-dbus version 0.80 or greater is required (which pulls in dbus base stuff).
-# The dbus stuff in HPLIP requires the Python module gobject
-# but there is no automated RPM requirement for python-gobject2,
-# see https://answers.launchpad.net/hplip/+question/30741
-%if 0%{pyversion} == 3
-Requires:       dbus-1-python3 >= 0.80
-%else
-Requires:       dbus-1-python >= 0.80
-%endif
-# Because foomatic-rip-hplip has CVE-2011-2697 (bnc#698451)
-# plus a leftover in CVE-2004-0801 (bnc#59233)
-# foomatic-rip-hplip is no longer installed and foomatic-rip
-# from foomatic-filters or cups-filters-foomatic-rip is used instead.
-# The RPM requirement for foomatic-filters should actually be
-# in the hplip-hpijs sub-package but this would bloat a minimalist system
-# (see the comment for the hplip-hpijs sub-package below).
-# Therefore the hplip main package which is intended
-# to get "all the HPLIP stuff" installed has the RPM requirement:
-Requires:       foomatic-filters
+Requires:       %{pymod dbus-python} >= 0.80
+Requires:       %{pymod gobject}
+Requires:       %{pymod qt5}
+Requires:       cups > 1.5
 # foomatic-filters and cups-filters-foomatic-rip
 # do not require Ghostscript because depending on the PPD
 # (e.g. some PPDs for PostScript printers in OpenPrintingPPDs-postscript)
@@ -168,118 +126,44 @@ Requires:       foomatic-filters
 # (see the comment for the hplip-hpijs sub-package below).
 # Therefore the hplip main package which is intended
 # to get "all the HPLIP stuff" installed has the RPM requirement:
-Requires:       %{pymod %gobject}
-
-# SLE does not provide python-pillow (PIL) (bsc#1131613)
-%if 0%{?is_opensuse}
-Requires:       %{pymod Pillow}
-%endif
+# Because foomatic-rip-hplip has CVE-2011-2697 (bnc#698451)
+# plus a leftover in CVE-2004-0801 (bnc#59233)
+# foomatic-rip-hplip is no longer installed and foomatic-rip
+# from foomatic-filters or cups-filters-foomatic-rip is used instead.
+# The RPM requirement for foomatic-filters should actually be
+# in the hplip-hpijs sub-package but this would bloat a minimalist system
+# (see the comment for the hplip-hpijs sub-package below).
+# Therefore the hplip main package which is intended
+# to get "all the HPLIP stuff" installed has the RPM requirement:
+Requires:       foomatic-filters
 Requires:       ghostscript
-
-%if %use_qt5
-Requires:       %{pymod qt5}
-%else
-Requires:       %{pymod qt4}
-%endif
-# Require special Python stuff (which pulls in Python base stuff).
-# At least since openSUSE 11.1 and SLE11 pyxml is no longer required
-# (pyxml was required in particular for openSUSE 10.3 and SLE10,
-#  see https://answers.launchpad.net/hplip/+question/25696)
-# but meanwhile python-xml alone is sufficient for "import xml.parsers.expat"
-# see https://bugzilla.novell.com/show_bug.cgi?id=656779#c3
-Requires:       %{pymod xml}
 Requires(post): %{_bindir}/find
 Requires(post): /bin/grep
 Requires(post): /bin/sed
 Requires(post): coreutils
-# Either the hplip17 packages or the hplip packages can be installed,
-# see https://bugzilla.novell.com/show_bug.cgi?id=251830#c20
-# for the full story why there is this unversioned Obsoletes:
+# Obsolete earlier package names
 Obsoletes:      hplip17
-# Obsolete the hplip3 copy that was introduced for older SLED11-GA HP preloads:
 Provides:       hplip3 = 3.9.5
 Obsoletes:      hplip3 < 3.9.5
-# Install into this non-root directory (required when norootforbuild is used):
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# HPLIP's Python module cupsext.so has a build-time dependancy on the CUPS version:
-# It needs symbols (like ippFirstAttribute, ippNextAttribute, ippSetOperation etc)
-# that are defined only in libcups.so version > 1.5. For backward compatibility
-# cupsext.c has a macro (CUPS_VERSION_1_6) which defines those undefined function names
-# if CUPS version is <= 1.5. To check the CUPS version the CUPS_VERSION_MAJOR, CUPS_VERSION_MINOR
-# macros from cups/cups.h are used which means it depends on the CUPS version during build-time
-# whether or not cupsext will work with CUPS <= 1.5 at run-time.
-# See https://bugs.launchpad.net/hplip/+bug/1423220
-# and https://bugzilla.opensuse.org/show_bug.cgi?id=918387
-# Therefore it BuildRequires the CUPS version as provided in the openSUSE/SLE versions.
-# Up to openSUSE 13.2 and SLE11 CUPS < 1.6 is provided (from CUPS 1.3.9 for SLE11 up to CUPS 1.5.4 for openSUSE 13.2).
-# For SLE12 by default CUPS 1.7.5 is provided and alternatively CUPS 1.5.4 is provided in the "legacy" module.
-# After openSUSE 13.2 (i.e. for current openSUSE Factory) CUPS 2.0 is provided.
-# Up to openSUSE 13.2 and SLE12 it BuildRequires CUPS < 1.6 to ensure it even works on SLE12 with CUPS 1.5.4.
-# When it was built with CUPS > 1.5 it must also require CUPS > 1.5 during run-time.
-# In contrast when it was built with CUPS < 1.6 there must not be a run-time requirement
-# for a CUPS version to ensure it works on SLE12 both with CUPS 1.7.5 and CUPS 1.5.4.
-# For suse_version values see https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-%if 0%{?suse_version} > 1320 || %{is_leap}
-# For openSUSE after 13.2 (i.e. for current openSUSE Factory) CUPS > 1.5 is provided and required:
-BuildRequires:  cups > 1.5
-BuildRequires:  cups-devel > 1.5
-Requires:       cups > 1.5
-%endif
-%if 0%{?suse_version} == 1315 && !%{is_leap}
-# For SLE12 build it with traditional CUPS 1.5.4 to ensure it works on SLE12 both with CUPS 1.7.5 and CUPS 1.5.4.
-# Only in the Printing project for SLE12 use cups154 and cups154-devel (from the cups154-SLE12 source package):
-BuildRequires:  cups154
-BuildRequires:  cups154-devel
-Requires:       cups
-%endif
-%if 0%{?suse_version} == 1320 || 0%{?suse_version} < 1315
-# For openSUSE 13.2 and for openSUSE 13.1 and older openSUSE and SLE11 versions CUPS < 1.6 is provided:
-BuildRequires:  cups < 1.6
-BuildRequires:  cups-devel < 1.6
-Requires:       cups
-%endif
-%if 0%{?suse_version} > 1130
-BuildRequires:  sane-backends-devel
-%else
-BuildRequires:  sane-backends
+%if 0%{?with_new_pycups}
+# All printer driver packages should have "BuildRequires: cups-rpm-helper"
+# for automatic generation of Provides: tags.
+BuildRequires:  cups-rpm-helper
 %endif
 
 %description
 The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides
 a unified single and multifunction connectivity solution for HP
-printers and scanners (in particular, HP all-in-one devices).
+printers, scanners, and all-in-one devices.
 
-HPLIP provides unified connectivity for printing, scanning, sending
-faxes, photo card access, and device management and is designed to work
-with CUPS.
-
-It includes the Ghostscript printer driver HPIJS for HP printers and a
-special "hp" CUPS back-end that provides bidirectional communication
-with the device (required for HP printer device management).
-
-It also includes the SANE scanner driver "hpaio" for HP all-in-one
-devices. Basic PC send fax functionality is supported on a number of
-devices.
-
-The special "hpfax" CUPS back-end is required to send faxes. Direct
-uploading (i.e. without print and scan) of received faxes from the
-device to the PC is not supported.
-
-The "hp-toolbox" program is provided for device management.
-
-The "hp-sendfax" program must be used to send faxes.
-
-The "hp-setup" program can be used to set up HP all-in-one devices.
-
-The HPLIP project is open source software and uses GPL-compatible
-licenses. For more information, see:
-
-http://hplipopensource.com
-
-%{_docdir}/hplip/index.html
+This package contains command line and UI front-ends for HPLIP, and tools
+for extra functionality such as status and supply information. It is
+not required for basic printing and scanning with HP hardware, except
+for those devices that need the proprietary hplip plugin, see
+https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html
 
 %package hpijs
-Summary:        Only plain printing with HPLIP printer drivers
+Summary:        Printer drivers for HP printers and all-in-one devices
 # On a minimalist system only hplip-hpijs may be installed
 # or on a minimalist package repository (e.g. on the openSUSE CDs)
 # only hplip-hpijs may be available (even when a usual system is installed).
@@ -330,36 +214,19 @@ Obsoletes:      hplip3-hpijs < 3.9.5
 Obsoletes:      hplip-hpcups
 
 %description hpijs
-HPIJS is HPLIP's Ghostscript printer driver for HP printers.
+This package contains the backend drivers and PPDs for printing
+with HP printers using CUPS.
+
 HPCUPS is HPLIP's native CUPS printer driver for HP printers.
+HPIJS (deprecated) is HPLIP's Ghostscript printer driver for
+HP printers, and only used for some Fax devices nowadays.
 
-This sub-package includes only what is needed for plain printing
-with the printer drivers in HPLIP for standard HP printers.
-
-It does neither provide device status information,
-nor support for scanning, nor support for faxing,
-nor support for memory card (mass storage) access,
-nor support for non-standard devices e.g. no support
-for devices which require an additional plugin from HP.
-
-This sub-package includes in particular:
-
-The hpijs binary and the libraries libhpip and libhpmud
-which are needed to run it.
-
-The HPCUPS driver (%{_prefix}/lib[64]/cups/filter/hpcups).
-
-The CUPS backend "hp".
-
-All HPLIP PPD files (also for HP PostScript printers).
-
-For the full-featured HPLIP printing and scanning solution,
-the main-package package hplip must be installed.
-
-For full documentation and license see the main-package hplip.
+Install the "hplip" package if you need the proprietary HP plugin
+required by some devices, or additional functionality besides plain
+printing.
 
 %package sane
-Summary:        Only plain scanning with HPLIP scan drivers
+Summary:        SANE backends for HP scanners and all-in-one devices
 # Require the exact matching version-release of the hpijs sub-package to make sure
 # to have the exact matching version of libhpip and libhpmud installed.
 # A wrong library version may let libsane-hpaio crash (e.g. segfault)
@@ -372,11 +239,30 @@ Suggests:       %{name} = %{version}
 Enhances:       sane-backends
 # Automatically install this package if hpijs sub-package and sane-backends are
 # both installed:
-Supplements:    packageand(%{name}-hpijs:sane-backends)
+Supplements:    (%{name}-hpijs and sane-backends)
 
 %description sane
-This sub-package includes only what is needed for plain scanning
-with the scan drivers in HPLIP for standard HP all-in-one printers.
+This package includes the backend driver for scanning with HP scanners
+and all-in-one devices using SANE tools like xsane or scanimage.
+
+%package scan-utils
+Summary:        HPLIP scanning frontends hp-scan and hp-uiscan
+# SLE does not provide python-pillow (PIL) (bsc#1131613)
+Group:          Hardware/Scanner
+Requires:       %{pymod Pillow}
+# hp-scan et al. import skimage from the scikit-image package.
+# It is pretty heavy-weight and pulls in various other packages.
+Requires:       %{pymod scikit-image}
+Requires:       hplip
+Enhances:       hplip
+# "hplip-scan" has been replaced by hplip-scan-utils
+Provides:       %{name}-scan = %{version}-%{release}
+Obsoletes:      %{name}-scan < %{version}-%{release}
+
+%description scan-utils
+This package provides the "hp-scan" and "hp-uiscan" frontend utilities. These
+utilities are alternatives to the SANE frontends "xsane" and "scanimage". They
+expose some advanced features of certain HP scanner models.
 
 %package devel
 Summary:        Development files for hplip
@@ -387,6 +273,11 @@ Requires:       %{name}-hpijs = %{version}-%{release}
 # Require the exact matching version-release of the sane sub-package to make sure
 # to have the exact matching version of libsane-hpaio installed:
 Requires:       %{name}-sane = %{version}-%{release}
+Requires:       cups-devel
+Requires:       dbus-1-devel
+Requires:       libopenssl-devel
+Requires:       libusb-1_0-devel
+Requires:       net-snmp-devel
 
 %description devel
 This sub-package is only required by developers.
@@ -416,12 +307,12 @@ This sub-package is only required by developers.
 
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
-    xargs -n 1 sed -i '1s,^#!\(/usr/bin/env python\|/usr/bin/python\),#!%{pyexe},'
-sed -i 's,/usr/bin/python\>,%{pyexe},'  \
+    xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'
+sed -i 's,%{_bindir}/python\>,%{pyexe},'  \
     data/rules/*
 
 # replace icon not available on openSUSE
-sed -i -e 's|/usr/share/icons/Humanity/devices/48/printer.svg|printer|' hp-uiscan.desktop.in
+sed -i -e 's|%{_datadir}/icons/Humanity/devices/48/printer.svg|printer|' hp-uiscan.desktop.in
 
 %build
 # If AUTOMAKE='automake --foreign' is not set, autoreconf (in fact automake)
@@ -457,13 +348,8 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=return-type"
 # so that --with-htmldir must be explicitly set.
 %configure \
             --disable-qt3 \
-%if %use_qt5
             --disable-qt4 \
             --enable-qt5 \
-%else
-            --enable-qt4 \
-            --disable-qt5 \
-%endif
             --disable-policykit \
             --enable-doc-build \
             --enable-network-build \
@@ -485,34 +371,36 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=return-type"
             --with-drvdir=%{_libexecdir}/cups/driver \
             --with-mimedir=%{_sysconfdir}/cups \
             --with-docdir=%{_defaultdocdir}/%{name} \
-            --with-htmldir==%{_defaultdocdir}/%{name} \
+            --with-htmldir=%{_defaultdocdir}/%{name} \
 	    CFLAGS='%{optflags} -Wno-error=return-type' \
 	    PYTHON=%{pyexe}
 %make_build
 sed -i 's|ppd/hpcups/\*.ppd.gz ||g' Makefile
 
 %install
-make DESTDIR=%{buildroot} install
-# Make and install Python compiled bytecode files
-# (.pyc compiled python and .pyo optimized compiled python)
-# because normal users do not have write permissions
-# to the install location /usr/share/hplip/ so that
-# for normal users Python would recompile the sources every time
-# which results longer program startup time and waste of CPU for compiling,
-# see https://en.opensuse.org/openSUSE:Packaging_Python#Byte_Compiled_Files
-# and http://lists.opensuse.org/opensuse-packaging/2014-10/msg00028.html
+%make_install
 
-%if 0%{pyversion} == 3
-# Make and install .pyc files:
-%py3_compile %{buildroot}%{_datadir}/hplip
-# Make and install .pyo files:
-%py3_compile -O %{buildroot}%{_datadir}/hplip
-%else
-# Make and install .pyc files:
-%py_compile %{buildroot}%{_datadir}/hplip
-# Make and install .pyo files:
-%py_compile -O %{buildroot}%{_datadir}/hplip
+# SLE does not provide python-pillow (PIL) (bsc#1131613) and thus has no hp-scan
+# and related library code.
+# We can't use --disable-scan-build, as that would disable the SANE
+# backend, too.
+# On openSUSE, these files go into the hplip-scan package (see below).
+# Remove these before running pyX_compile
+%if !0%{?is_opensuse}
+rm -f %{buildroot}%{_datadir}/hplip/scan.py \
+      %{buildroot}%{_datadir}/hplip/uiscan.py \
+      %{buildroot}%{_datadir}/hplip/base/imageprocessing.py \
+      %{buildroot}%{_datadir}/hplip/ui5/scandialog.py \
+      %{buildroot}%{_bindir}/hp-scan \
+      %{buildroot}%{_bindir}/hp-uiscan \
+      %{buildroot}%{_datadir}/applications/hp-uiscan.desktop \
+      %{buildroot}%{_libdir}/python%{pyver}/site-packages/scanext.*
+rm -rf %{buildroot}%{_datadir}/hplip/scan
 %endif
+
+# Make and install Python compiled bytecode files
+%py3_compile %{buildroot}%{_datadir}/hplip
+%py3_compile -O %{buildroot}%{_datadir}/hplip
 
 # Hardlink .pyc and .pyo when they have same content.
 # Do not run "fdupes buildroot/_datadir/hplip" because
@@ -521,11 +409,7 @@ make DESTDIR=%{buildroot} install
 # https://bugzilla.opensuse.org/show_bug.cgi?id=784670
 for pyc in $( find %{buildroot}%{_datadir}/hplip -name '*.pyc' )
 do
-%if 0%{pyversion} == 3
    pyo="${pyc%.pyc}.opt-1.pyc"
-%else
-   pyo="${pyc%.pyc}.pyo"
-%endif
    if test -f $pyo && cmp -s $pyc $pyo
    then echo hardlinking $pyc and $pyo because both have same content
         ln -f $pyc $pyo
@@ -653,7 +537,10 @@ set -x
 popd
 # Replace the invalid Desktop categories
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/hplip.desktop System HardwareSettings
+%if 0%{?is_opensuse}
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/hp-uiscan.desktop System HardwareSettings
+%endif
+
 # Let suse_update_desktop_file add X-SuSE-translate key to /etc/xdg/autostart/hplip-systray.desktop
 # so that we can update its translations with translation-only packages.
 %suse_update_desktop_file -i %{buildroot}%{_sysconfdir}/xdg/autostart/hplip-systray.desktop
@@ -661,17 +548,6 @@ popd
 # Install the man page for /usr/bin/hpijs:
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 %{SOURCE102} %{buildroot}%{_mandir}/man1/
-
-# SLE does not provide python-pillow (PIL) (bsc#1131613)
-%if !0%{?is_opensuse}
-rm -f %{buildroot}/usr/share/hplip/scan.py %{buildroot}%{_bindir}/hp-scan
-cat >%{buildroot}%{_bindir}/hp-scan <<EOF
-#! /bin/sh
-echo 'Please use "scanimage" from the "sane-backends" package instead.' >&2
-exit 1
-EOF
-chmod a+x %{buildroot}%{_bindir}/hp-scan
-%endif
 
 # Run fdupes:
 # The RPM macro fdupes runs /usr/bin/fdupes that links files with identical content.
@@ -685,13 +561,9 @@ chmod a+x %{buildroot}%{_bindir}/hp-scan
 %fdupes -s %{buildroot}%{_datadir}/hplip/data/images
 
 %post -p /bin/bash
-%if 0%{?suse_version} > 1130
 %udev_rules_update
 %desktop_database_post
 %icon_theme_cache_post
-%else
-gtk-update-icon-cache %{_datadir}/icons/hicolor || true
-%endif
 /sbin/ldconfig
 exit 0
 
@@ -708,12 +580,8 @@ fi
 exit 0
 
 %postun -p /bin/bash
-%if 0%{?suse_version} >= 1140
 %desktop_database_postun
 %icon_theme_cache_postun
-%else
-gtk-update-icon-cache %{_datadir}/icons/hicolor || true
-%endif
 /sbin/ldconfig
 # If the package was removed (but not if it was updated)
 # then remove the hpaio lines in /etc/sane.d/dll.conf.
@@ -743,12 +611,7 @@ exit 0
 exit 0
 
 %files
-%defattr(-, root, root)
 %config %{_sysconfdir}/xdg/autostart/hplip-systray.desktop
-%if 0%{?suse_version} == 1110 || 0%{?suse_version} == 1320 || 0%{?suse_version} == 1315
-%dir %{_prefix}/lib/udev
-%dir %{_prefix}/lib/udev/rules.d
-%endif
 %{_udevrulesdir}/56-hpmud.rules
 %{_bindir}/hp-align
 %{_bindir}/hp-check
@@ -775,14 +638,12 @@ exit 0
 %{_bindir}/hp-printsettings
 %{_bindir}/hp-probe
 %{_bindir}/hp-query
-%{_bindir}/hp-scan
 %{_bindir}/hp-sendfax
 %{_bindir}/hp-setup
 %{_bindir}/hp-systray
 %{_bindir}/hp-testpage
 %{_bindir}/hp-timedate
 %{_bindir}/hp-toolbox
-%{_bindir}/hp-uiscan
 %{_bindir}/hp-uninstall
 %{_bindir}/hp-unload
 %{_bindir}/hp-upgrade
@@ -790,7 +651,6 @@ exit 0
 %{_libdir}/python%{pyver}/site-packages/cupsext.*
 %{_libdir}/python%{pyver}/site-packages/hpmudext.*
 %{_libdir}/python%{pyver}/site-packages/pcardext.*
-%{_libdir}/python%{pyver}/site-packages/scanext.*
 %dir %{_libexecdir}/cups
 %dir %{_libexecdir}/cups/backend
 %{_libexecdir}/cups/backend/hpfax
@@ -803,17 +663,43 @@ exit 0
 %{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin/
 %doc %{_defaultdocdir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/hp-uiscan.desktop
 %{_datadir}/hplip/
 %exclude %{_datadir}/hplip/data/models/models.dat
+%exclude %{_datadir}/hplip/base/imageprocessing.py*
+%exclude %{_datadir}/hplip/ui5/scandialog.py*
+%exclude %{_datadir}/hplip/scan
+%exclude %{_datadir}/hplip/scan.py*
+%exclude %{_datadir}/hplip/uiscan.py*
+%exclude %{_datadir}/hplip/__pycache__/uiscan.*
+%exclude %{_datadir}/hplip/__pycache__/scan.*
+%exclude %{_datadir}/hplip/base/__pycache__/imageprocessing.*
+%exclude %{_datadir}/hplip/ui5/__pycache__/scandialog.*
+
+# The scanning utils depend on PIL and python3-scikit-image,
+# which are not available in SLE
+%if 0%{?is_opensuse}
+%files scan-utils
+%{_datadir}/applications/hp-uiscan.desktop
+%{_libdir}/python%{pyver}/site-packages/scanext.*
+%{_bindir}/hp-scan
+%{_bindir}/hp-uiscan
+%{_datadir}/hplip/scan
+%{_datadir}/hplip/scan.py*
+%{_datadir}/hplip/uiscan.py*
+%{_datadir}/hplip/base/imageprocessing.py*
+%{_datadir}/hplip/ui5/scandialog.py*
+%{_datadir}/hplip/__pycache__/uiscan.*
+%{_datadir}/hplip/__pycache__/scan.*
+%{_datadir}/hplip/base/__pycache__/imageprocessing.*
+%{_datadir}/hplip/ui5/__pycache__/scandialog.*
+%endif
 
 %files hpijs
-%defattr(-, root, root)
 %config %{_sysconfdir}/hp/
 %config %{_sysconfdir}/cups/pstotiff.convs
 %config %{_sysconfdir}/cups/pstotiff.types
 %{_bindir}/hpijs
-%{_mandir}/man1/hpijs.1.gz
+%{_mandir}/man1/hpijs.1%{?ext_man}
 %{_libdir}/libhpip.so.*
 %{_libdir}/libhpipp.so.*
 %{_libdir}/libhpmud.so.*
@@ -841,12 +727,10 @@ exit 0
 %dir %{_localstatedir}/lib/hp
 
 %files sane
-%defattr(-, root, root)
 %dir %{_libdir}/sane
 %{_libdir}/sane/libsane-hpaio.so.*
 
 %files devel
-%defattr(-, root, root)
 %{_libdir}/libhpip.so
 %{_libdir}/libhpipp.so
 %{_libdir}/libhpmud.so

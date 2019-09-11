@@ -116,8 +116,7 @@ Patch2:         ffmpeg-arm6l.diff
 Patch3:         ffmpeg-new-coder-errors.diff
 Patch4:         ffmpeg-codec-choice.diff
 Patch5:         ffmpeg-prefer-dav1d-for-playback.patch
-# https://github.com/OpenMandrivaAssociation/ffmpeg/blob/master/ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
-Patch6:         ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+Patch6:         ffmpeg-4.2-dlopen-fdk_aac.patch
 # pending review upstream ML and issue#7861
 # http://ffmpeg.org/pipermail/ffmpeg-devel/2019-August/247759.html
 # https://trac.ffmpeg.org/ticket/7861
@@ -580,7 +579,7 @@ break compatibility without any notice.
 %autopatch -p1
 
 %build
-%ifarch %ix86
+%ifarch %ix86 %arm
 %define _lto_cflags %{nil}
 %endif
 CFLAGS="%optflags" \

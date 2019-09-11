@@ -1,7 +1,7 @@
-Index: mathgl-2.4.1/lang/CMakeLists.txt
+Index: mathgl-2.4.3/lang/CMakeLists.txt
 ===================================================================
---- mathgl-2.4.1.orig/lang/CMakeLists.txt
-+++ mathgl-2.4.1/lang/CMakeLists.txt
+--- mathgl-2.4.3.orig/lang/CMakeLists.txt
++++ mathgl-2.4.3/lang/CMakeLists.txt
 @@ -39,7 +39,7 @@ if(enable-python)
  
  	include_directories(${PYTHON_INCLUDE_DIR}  ${NUMPY_INCLUDE_PATH})

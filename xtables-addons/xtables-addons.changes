@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:14:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5
+  * Make xt_DELUDE and xt_TARPIT work under Linux >= 5.0
+    when used in conjunction with bridges.
+
+-------------------------------------------------------------------
+Fri Sep  6 08:45:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4
+  * Support for Linux 5.3
+- Drop remove_flags.patch
+
+-------------------------------------------------------------------
+Sun Aug  4 10:29:06 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove unused variable 'flags' from 'struct shash_desc'
+  * Support for Linux 5.2 (add remove_flags.patch)
+
+-------------------------------------------------------------------
 Thu Mar  7 09:22:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 3.3

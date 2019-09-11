@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 26 14:10:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.1
+  * Many changes, some of them breaking. For example:
+  * Remove support for Python 2 (#1120). Only Python>=3.5 is supported.
+  * Allow input value to be included in error messages for a number of fields.
+  * Change ordering of keys and values arguments to fields.Dict.
+  * Please read upstream changelog.
+- Drop upstreamed patches reproducible.patch and pytest5.patch
+
+-------------------------------------------------------------------
 Wed Jul 31 09:13:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix building with pytest5 from upstream git:

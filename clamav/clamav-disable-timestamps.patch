@@ -1,3 +1,5 @@
+Index: libclamav/tomsfastmath/misc/fp_ident.c
+===================================================================
 --- libclamav/tomsfastmath/misc/fp_ident.c.orig
 +++ libclamav/tomsfastmath/misc/fp_ident.c
 @@ -15,7 +15,11 @@ const char *fp_ident(void)
@@ -25,9 +27,11 @@
  
     if (sizeof(fp_digit) == sizeof(fp_word)) {
        strncat(buf, "WARNING: sizeof(fp_digit) == sizeof(fp_word), this build is likely to not work properly.\n", 
+Index: configure
+===================================================================
 --- configure.orig
 +++ configure
-@@ -812,6 +812,7 @@ FGREP
+@@ -814,6 +814,7 @@ FGREP
  SED
  LIBTOOL
  LIBCLAMAV_VERSION
@@ -35,7 +39,7 @@
  EGREP
  GREP
  CPP
-@@ -922,6 +923,7 @@ ac_user_opts='
+@@ -924,6 +925,7 @@ ac_user_opts='
  enable_option_checking
  enable_dependency_tracking
  enable_silent_rules
@@ -43,7 +47,7 @@
  enable_static
  enable_shared
  with_pic
-@@ -1641,6 +1643,8 @@ Optional Features:
+@@ -1644,6 +1646,8 @@ Optional Features:
    --enable-silent-rules   less verbose build output (undo: "make V=1")
    --disable-silent-rules  verbose build output (undo: "make V=0")
    --enable-static[=PKGS]  build static libraries [default=no]
@@ -52,7 +56,7 @@
    --enable-shared[=PKGS]  build shared libraries [default=yes]
    --enable-fast-install[=PKGS]
                            optimize for fast installation [default=yes]
-@@ -5923,6 +5927,26 @@ $as_echo "$ac_cv_safe_to_define___extens
+@@ -5927,6 +5931,26 @@ $as_echo "$ac_cv_safe_to_define___extens
  
    $as_echo "#define _TANDEM_SOURCE 1" >>confdefs.h
  
@@ -78,4 +82,4 @@
 +_ACEOF
  
  
- VERSION="0.101.3"
+ VERSION="0.101.4"

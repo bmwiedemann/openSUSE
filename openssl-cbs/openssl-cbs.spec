@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 Name:           openssl-cbs
 Version:        0.12.0
 Release:        0
-Summary:        Library which provides Crypto ByteString (CBS) functionality for OpenSSL
+Summary:        Crypto ByteString (CBS) functionality for OpenSSL
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/Maistra/openssl-cbs
@@ -40,15 +40,15 @@ BuildRequires:  openssl-devel
 ExclusiveArch:  aarch64 x86_64
 
 %description
-OpenSSL-CBS is a library which provides Crypto ByteString (CBS)
+OpenSSL-CBS is a library providing Crypto ByteString (CBS)
 functionality for OpenSSL.
 
 %package -n %{libnamefull}
-Summary:        Library which provides Crypto ByteString (CBS) functionality for OpenSSL
+Summary:        Crypto ByteString (CBS) functionality for OpenSSL
 Group:          System/Libraries
 
 %description -n %{libnamefull}
-OpenSSL-CBS is a library which provides Crypto ByteString (CBS)
+OpenSSL-CBS is a library providing Crypto ByteString (CBS)
 functionality for OpenSSL.
 
 %package devel
@@ -57,7 +57,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libnamefull} = %{version}
 
 %description devel
-OpenSSL-CBS is a library which provides Crypto ByteString (CBS)
+OpenSSL-CBS is a library providing Crypto ByteString (CBS)
 functionality for OpenSSL.
 
 This package contains development files for OpenSSL-CBS.
@@ -109,4 +109,3 @@ ln -sf %{libname}.so.%{sover} %{buildroot}%{_libdir}/%{libname}.so
 %{_libdir}/%{libname}.so
 
 %changelog
-

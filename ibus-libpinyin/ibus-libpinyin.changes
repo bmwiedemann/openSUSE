@@ -3,7 +3,7 @@ Fri May 31 03:02:42 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.11.1
   * Use gettext
-  * Add emoji-candidate option
+  * Add emoji-candidate option (boo#1112998)
   * Fix SuggestionEditor
 
 -------------------------------------------------------------------

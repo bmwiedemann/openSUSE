@@ -17,7 +17,7 @@
 
 
 Name:           yast2-pam
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -25,7 +25,7 @@ Source0:        %{name}-%{version}.tar.bz2
 
 Url:            http://github.com/yast/yast-pam
 BuildRequires:  yast2-devtools >= 3.1.10
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 Requires:       yast2
 

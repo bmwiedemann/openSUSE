@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:35:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop no longer needed abimap-0.3.0-disable-pytest-console-script-tests.patch
+  and properly depend on pytest-console-scripts
+
+-------------------------------------------------------------------
+Thu Aug 22 08:28:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.2:
+  * Fixed broken builds due to changes in warning output
+  * Changed tests to check error messages
+  * Added python 3.7 to testing matrix
+  * Added requirement to verify SNI when checking URLs in docs
+
+-------------------------------------------------------------------
 Mon Aug 20 14:34:59 UTC 2018 - tchvatal@suse.com
 
 - Just require python-setuptools not use macros as it gets auto-expanded

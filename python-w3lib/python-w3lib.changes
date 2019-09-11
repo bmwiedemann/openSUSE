@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:15:56 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.21.1
+  * Add the "encoding" and "path_encoding" parameters to
+    w3lib.url.safe_download_url (issue #118)
+  * w3lib.url.safe_url_string now also removes tabs and new lines
+    (issue #133)
+  * w3lib.html.remove_comments now also removes truncated comments
+    (issue #129)
+  * w3lib.html.remove_tags_with_content no longer removes tags which
+    start with the same text as one of the specified tags (issue #114)
+
+-------------------------------------------------------------------
 Fri Mar 29 09:53:27 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.20.0

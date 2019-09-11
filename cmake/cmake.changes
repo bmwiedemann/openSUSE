@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:52:50 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.15.3:
+  * CrayPrgEnv compiler wrapper support updated for 19.06
+- includes changes from 3.15.2:
+  * Fix CMAKE_FIND_PACKAGE_PREFER_CONFIG variable causing the
+    find_package() command to fail on a missing package even 
+    without the REQUIRED option
+
+-------------------------------------------------------------------
+Tue Aug 27 06:35:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies from description.
+- Avoid use of em dashes in summaries.
+
+-------------------------------------------------------------------
+Tue Aug 13 12:43:58 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to multibuild
+
+-------------------------------------------------------------------
+Mon Jul 29 08:45:58 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Actually remove system-libs.patch
+
+-------------------------------------------------------------------
+Sun Jul 28 20:23:25 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- update to 3.15.1
+  * Makefile: Fix regression in dependencies on relative includes
+  * FindMPI: Updated to use INTERFACE_LINK_OPTIONS
+  * ChangeLog: https://cmake.org/cmake/help/v3.15/release/3.15.html#id1
+- drop system-libs.patch because bundled jsonpp can be selected without
+  this patch and form lib is no longer selected
+
+-------------------------------------------------------------------
+Sat Jul 20 22:19:59 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- update to 3.15.0
+  * The “$<COMPILE_LANG_AND_ID:…>” generator expression was
+    introduced to allow specification of compile options for target
+    files based on the “CMAKE__COMPILER_ID” and “LANGUAGE” of each
+    source file.
+  * The “generator expressions” “C_COMPILER_ID”, “CXX_COMPILER_ID”,
+    “CUDA_COMPILER_ID”, “Fortran_COMPILER_ID”, “COMPILE_LANGUAGE”,
+    “COMPILE_LANG_AND_ID”, and “PLATFORM_ID” learned to support
+    matching one value from a comma-separated list.
+  * The “CMAKE_FIND_PACKAGE_PREFER_CONFIG” variable was added to tell
+    “find_package()” calls to look for a package configuration file
+    first even if a find module is available.
+  * The “PUBLIC_HEADER” and “PRIVATE_HEADER” properties may now be set
+    on Interface Libraries. The headers specified by those properties
+    can be installed using the “install(TARGETS)” command by passing
+    the "PUBLIC_HEADER” and “PRIVATE_HEADER” arguments respectively.
+  * The “FindBoost” module was reworked to expose a more consistent
+    user experience between its “Config” and “Module” modes and with
+    other find modules in general.
+  * The “message()” command learned new types: “NOTICE”, “VERBOSE”,
+    “DEBUG” and “TRACE”.
+- adjust cmake-fix-ruby-test.patch and system-libs.patch
+
+-------------------------------------------------------------------
 Tue Jul  9 09:18:28 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add _constraints file for aarch64

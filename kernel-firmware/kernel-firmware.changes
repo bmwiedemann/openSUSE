@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Aug 28 06:34:35 UTC 2019 - tiwai@suse.com
+
+- Update to version 20190827 (git-commit 7307a29961ad):
+  * brcm: Add 43455 based AP6255 NVRAM for the Minix Neo Z83-4 Mini PC
+  * brcm: Add 43340 based AP6234 NVRAM for the PoV TAB-P1006W-232 tablet
+  * iwlwifi: update FWs to core45-152 release
+  * check_whence: Add copy-firmware.sh to the list of ignored files
+  * rtl_bt: Update RTL8822C BT FW to V0x098A_94A4
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * Mellanox: Add new mlxsw_spectrum firmware 13.2000.1886
+
+-------------------------------------------------------------------
+Wed Aug 21 07:15:38 UTC 2019 - tiwai@suse.com
+
+- Update to version 20190815 (git-commit 07b925b450bf):
+  * Install only listed firmware files
+  * rtw88: add a README file
+  * rtw88: RTL8822C: add WoW firmware v7.3
+  * rtw88: RTL8822C: update rtw8822c_fw.bin to v7.3
+  * ath10k: QCA9984 hw1.0: update board-2.bin
+  * ath10k: QCA9984 hw1.0: update firmware-5.bin to 10.4-3.9.0.2-00046
+  * ath10k: QCA988X hw2.0: update firmware-5.bin to 10.2.4-1.0-00045
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update firmware-5.bin to 10.4-3.9.0.2-00040
+  * ath10k: QCA9887 hw1.0: update firmware-5.bin to 10.2.4-1.0-00045
+  * ath10k: QCA6174 hw3.0: update firmware-6.bin to WLAN.RM.4.4.1-00140-QCARMSWPZ-1
+  * ath10k: QCA4019 hw1.0: update board-2.bin
+  * cxgb4: update firmware to revision 1.24.3.0
+  * nfp: update Agilio SmartNIC flower firmware to rev AOTC-2.10.A.38
+  * nvidia: add missing entries in WHENCE
+  * linux-firmware: Update NXP Management Complex firmware to version 10.16.2
+  * iwlwifi: update -48 FWs for Qu and cc
+  * iwlwifi: update FWs for 3168, 7265D, 9000, 9260, 8000, 8265 and cc
+  * drm/i915/firmware: Add v33 of GuC for ICL
+  * drm/i915/firmware: Add v33 of GuC for KBL
+  * drm/i915/firmware: Add v33 of GuC for SKL
+  * drm/i915/firmware: Add v33 of GuC for GLK
+  * drm/i915/firmware: Add v33 of GuC for BXT
+- Drop iwlwifi revert patch, as the fix will go into 5.2.x kernel
+  (bsc#1142128):
+  WHENCE-iwlwifi-9xxx-46-revert.patch
+- Drop the deprecated upstream fix:
+  0001-nvidia-add-missing-entries-in-WHENCE.patch
+- Drop the local copy of copy-file.sh that is already included in
+  the latest linux-git tarball
+
+-------------------------------------------------------------------
+Mon Aug 19 17:30:06 CEST 2019 - tiwai@suse.de
+
+- Re-group some entries for USB hotpluggable network drivers into
+  kernel-firmware-usb-network subpackage, while moving ath10k and
+  mwifiex firmware into the own subpackage, too
+
+-------------------------------------------------------------------
+Thu Jul 25 07:28:47 CEST 2019 - tiwai@suse.de
+
+- Move documents and license texts into the proper section
+- Remove spurious non-firmware files
+- Restructure the packaging for reducing the storage footprint
+  (bsc#1143959):
+  the firmware files are split into several subpackages, so that user
+  doesn't need to install unnecessary files.  Each package has
+  supplements entries that are generated from the static list (that
+  was created from the current and old TW kernel binaries).
+  There is a catch-all package, kernel-firmware-all, and this
+  provides/obsoletes the former kernel-firmware package.  And each
+  firmware file is compressed in XZ format for the new kernel (5.3 or
+  later).
+
+  For the systems with older kernels, we still provide the old'n'good
+  kernel-firmware.rpm, containing everything in the raw format, too.
+  This kernel-firmware.rpm will be obsoleted once when
+  kernel-firmware-all above is installed.
+
+  The build of both flavors are done in the multibuild.  Without the
+  flavor, the raw kernel-firmware.rpm and ucode-amd.rpm are built,
+  while the new kernel firmware packages are built in "compressed"
+  flavor (-M compressed).
+- Upstream fix for missing WHENCE entries:
+  0001-nvidia-add-missing-entries-in-WHENCE.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 08:08:01 CEST 2019 - tiwai@suse.de
 
 - Revert the iwlwifi 9000 and 9260 *-46.ucode firmware files that

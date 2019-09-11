@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:15:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Remove dependency on attrs
+  Add: 0005-Drop-dependency-on-attrs.patch
+  this fixes bsc#1144506
+
+-------------------------------------------------------------------
+Thu Aug 15 08:35:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix a bit the multibuild conversion
+- Remove the attrs from the deps as they are no longer needed
+
+-------------------------------------------------------------------
+Thu Aug  8 11:41:45 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Enable tests via _multibuild
+  Add patches from https://github.com/pypa/packaging/pull/176:
+  * 0001-Fix-test-failures-test_linux_platforms_manylinux-for.patch
+  * 0002-Fix-check-for-64-bit-OS.patch
+  * 0003-Add-additional-test-to-get-100-branch-coverage.patch
+  * 0004-Fix-test_macos_version_detection-failure-on-32-bit-L.patch
+  (these fix the tests on non-x86 platforms and can be dropped on the next
+  release)
+
+-------------------------------------------------------------------
+Thu Aug  8 10:24:07 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add Requires:python-attrs as this is a new dependency
+  this fixes bsc#1144506
+
+-------------------------------------------------------------------
+Tue Aug  6 04:58:54 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 19.1:
+  * Add the ``packaging.tags`` module.
+  * Correctly handle two-digit versions in ``python_version``
+
+-------------------------------------------------------------------
 Sat Mar  9 04:56:34 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix check that egg-info is a directory to work with %check enabled,

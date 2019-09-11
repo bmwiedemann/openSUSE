@@ -1,5 +1,5 @@
 #
-# spec file for package xfce4-panel-plugin-whiskermenu
+# spec file for package xfce4-whiskermenu-plugin
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define panel_version 4.12.0
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
 Version:        2.3.3
-Release:        100
+Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
@@ -42,12 +43,11 @@ Obsoletes:      xfce4-panel-plugin-%{plugin} < %{version}-%{release}
 Obsoletes:      xfce4-panel-plugin-%{plugin}-debuginfo
 
 %description
-Whisker Menu is an alternate application launcher for Xfce. When you
-open it you are shown a list of applications you have marked as
-favorites. You can browse through all of your installed applications by
-clicking on the category buttons on the side. Top level categories make
-browsing fast, and simple to switch between. Additionally, Whisker Menu
-keeps a list of the last ten applications that you’ve launched from it.
+Whisker Menu is an alternate application launcher for Xfce. When
+opened, it shows a list of applications marked as favorites.
+Installed applications can be browsed by clicking on the category
+buttons on the side. Whisker Menu keeps a list of most recent used
+applications launched from it.
 
 %package lang
 Summary:        Translations for package %{name}

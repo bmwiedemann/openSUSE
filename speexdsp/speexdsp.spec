@@ -1,7 +1,7 @@
 #
 # spec file for package speexdsp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define package_version 1.2rc3
+%define package_version 1.2.0
 %define sover   1
 %define libname lib%{name}%{sover}
 Name:           speexdsp
-Version:        1.2~rc3
+Version:        1.2.0
 Release:        0
-Summary:        An Open Source, Patent Free Speech Codec
+Summary:        Patent free speech codec
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Url:            http://www.speex.org/
-Source0:        http://downloads.xiph.org/releases/speex/%{name}-%{package_version}.tar.gz
+URL:            https://www.speex.org/
+
+#Git-Clone:     https://github.com/xiph/speexdsp
+Source0:        https://downloads.xiph.org/releases/speex/%{name}-%{package_version}.tar.gz
 Source2:        baselibs.conf
-# taken from upstream boo#929450
-Patch0:         speexdsp-fixbuilds-774c87d.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -44,7 +44,7 @@ narrowband and wideband quality. This project aims to be complementary
 to the Vorbis codec.
 
 %package -n %{libname}
-Summary:        An Open Source, Patent Free Speech Codec Library
+Summary:        Patent-free speech codec
 Group:          System/Libraries
 
 %description -n %{libname}
@@ -64,8 +64,7 @@ This package contains the files needed to compile programs that use the
 SpeeX library.
 
 %prep
-%setup -q -n %{name}-%{package_version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{package_version}
 
 %build
 autoreconf -fiv
@@ -78,8 +77,8 @@ make %{?_smp_mflags} V=1
 
 %install
 %make_install
-# remove unneeded *.a and *.la files
-find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
+# remove unneeded *.la files
+rm -f %{buildroot}/%{_libdir}/*.la
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

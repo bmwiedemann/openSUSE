@@ -29,7 +29,7 @@ BuildRequires:  %{python_module SQLAlchemy >= 0.8}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pytest-tornado}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools >= 0.7}
 BuildRequires:  %{python_module setuptools_scm}

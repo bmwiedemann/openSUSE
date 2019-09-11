@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sat Aug 31 04:50:18 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.3.2:
+  * Skip exceptions in startup information (GH#2991) Jacob Tomlinson
+
+- changes from version 2.3.1:
+  * Add support for separate external address for SpecCluster
+    scheduler (GH#2963) Jacob Tomlinson
+  * Defer cudf serialization/deserialization to that library (GH#2881)
+    Benjamin Zaitlen
+  * Workaround for hanging test now calls ucp.fin() (GH#2967) Mads
+    R. B. Kristensen
+  * Remove unnecessary bullet point (GH#2972) Pav A
+  * Directly import progress from diagnostics.progressbar (GH#2975)
+    Matthew Rocklin
+  * Handle buffer protocol objects in ensure_bytes (GH#2969) Tom
+    Augspurger
+  * Fix documentatation syntax and tree (GH#2981) Pav A
+  * Improve get_ip_interface error message when interface does not
+    exist (GH#2964) Loïc Estève
+  * Add cores= and memory= keywords to scale (GH#2974) Matthew Rocklin
+  * Make workers robust to bad custom metrics (GH#2984) Matthew
+    Rocklin
+
+- changes from version 2.3.0:
+  * Except all exceptions when checking pynvml (GH#2961) Matthew
+    Rocklin
+  * Pass serialization down through small base collections (GH#2948)
+    Peter Andreas Entschev
+  * Use pytest.warning(Warning) rather than Exception (GH#2958)
+    Matthew Rocklin
+  * Allow server_kwargs to override defaults in dashboard (GH#2955)
+    Bruce Merry
+  * Update utils_perf.py (GH#2954) Shayan Amani
+  * Normalize names with str in retire_workers (GH#2949) Matthew
+    Rocklin
+  * Update client.py (GH#2951) Shayan Amani
+  * Add GPUCurrentLoad dashboard plots (GH#2944) Matthew Rocklin
+  * Pass GPU diagnostics from worker to scheduler (GH#2932) Matthew
+    Rocklin
+  * Import from collections.abc (GH#2938) Jim Crist
+  * Fixes Worker docstring formatting (GH#2939) James Bourbeau
+  * Redirect setup docs to docs.dask.org (GH#2936) Matthew Rocklin
+  * Wrap offload in gen.coroutine (GH#2934) Matthew Rocklin
+  * Change TCP.close to a coroutine to avoid task pending warning
+    (GH#2930) Matthew Rocklin
+  * Fixup black string normalization (GH#2929) Jim Crist
+  * Move core functionality from SpecCluster to Cluster (GH#2913)
+    Matthew Rocklin
+  * Add aenter/aexit protocols to ProcessInterface (GH#2927) Matthew
+    Rocklin
+  * Add real-time CPU utilization plot to dashboard (GH#2922) Matthew
+    Rocklin
+  * Always kill processes in clean tests, even if we don’t check
+    (GH#2924) Matthew Rocklin
+  * Add timeouts to processes in SSH tests (GH#2925) Matthew Rocklin
+  * Add documentation around spec.ProcessInterface (GH#2923) Matthew
+    Rocklin
+  * Cleanup async warnings in tests (GH#2920) Matthew Rocklin
+  * Give 404 when requesting nonexistent tasks or workers (GH#2921)
+    Martin Durant
+  * Raise informative warning when rescheduling an unknown task
+    (GH#2916) James Bourbeau
+  * Fix docstring (GH#2917) Martin Durant
+  * Add keep-alive message between worker and scheduler (GH#2907)
+    Matthew Rocklin
+  * Rewrite Adaptive/SpecCluster to support slowly arriving workers
+    (GH#2904) Matthew Rocklin
+  * Call heartbeat rather than reconnect on disconnection (GH#2906)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
 Fri Aug  9 14:39:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.2.0

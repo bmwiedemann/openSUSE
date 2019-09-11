@@ -18,20 +18,18 @@
 
 %global sname pymod2pkg
 Name:           python-pymod2pkg
-Version:        0.18.0
+Version:        0.21.0
 Release:        0
 Summary:        OpenStack Packaging - python module name to package name map
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://wiki.openstack.org/wiki/Rpm-packaging
-Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.18.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.21.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-stestr
 BuildRequires:  python2-testresources
 BuildRequires:  python2-testtools
-BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testresources
@@ -47,21 +45,21 @@ corresponding package names which is a common problem in the packaging world.
 %package -n python-pymod2pkg-doc
 Summary:        Documentation for python module name to package name map library
 Group:          Development/Libraries/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-oslosphinx
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-pymod2pkg-doc
 Documentation for python module name to package name map library.
 
 %prep
-%autosetup -p1 -n pymod2pkg-0.18.0
+%autosetup -p1 -n pymod2pkg-0.21.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+%sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

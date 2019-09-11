@@ -1,6 +1,0 @@
-## Name: Openslp server (SLP)
-## Description: Enables Openslp server to advertise services
-
-# space separated list of allowed ports
-TCP="427"
-UDP="427"

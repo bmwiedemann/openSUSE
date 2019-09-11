@@ -17,6 +17,7 @@
 
 
 %define soname lib%{name}0
+%define _lto_cflags %{nil}
 
 Name:           SHERPA-MC
 Version:        2.2.6

@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%bcond_with tests
+
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
+%bcond_without tests
 %bcond_with docs
-%bcond_without tutorials
+%bcond_with tutorials
 
 Name:           ade
-Version:        0.1.1d
+Version:        0.1.1f
 Release:        0
 Summary:        Graph construction, manipulation, and processing framework
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Url:            http://opencv.org/
 Source0:        https://github.com/opencv/ade/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/opencv/ade/pull/15.patch
-Patch0:         Silence_redundant-move_warning.patch
-BuildRequires:  cmake > 3.2
 BuildRequires:  c++_compiler
+BuildRequires:  cmake > 3.2
 %if %{with tests}
 BuildRequires:  gtest
 %endif
@@ -52,22 +53,28 @@ for organizing data flow processing and execution.
 
 %prep
 %setup -q
-%patch0 -p1
 # fixup library install directory (i.e. use CMake default)
 sed -i -e 's@ DESTINATION lib@ DESTINATION ${CMAKE_INSTALL_LIBDIR}@' sources/ade/CMakeLists.txt
 
 %build
 %cmake \
-  %{?with tutorials:-DBUILD_ADE_TUTORIAL=ON} \
-  %{?with docs:-DBUILD_ADE_DOCUMENTATION=ON} \
+  %{?with_tutorials:-DBUILD_ADE_TUTORIAL=ON} \
+  %{?with_docs:-DBUILD_ADE_DOCUMENTATION=ON} \
+  %{?with_tests:-DGTEST_ROOT:PATH=%{_prefix} -DENABLE_ADE_TESTING=ON} \
+
 
 %cmake_build
 
 %install
 %cmake_install
+%if %{with tests}
+rm %{buildroot}%{_bindir}/ade-tests
+%endif
 
-%post
-%postun
+%check
+%if %{with tests}
+%ctest
+%endif
 
 %files devel
 %license LICENSE

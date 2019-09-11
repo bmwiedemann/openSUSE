@@ -12,39 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
-
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fakeredis
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
-License:        BSD-3-Clause and MIT
 Summary:        Fake implementation of redis API for testing purposes
-Url:            https://github.com/jamesls/fakeredis
+License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/jamesls/fakeredis
 Source:         https://files.pythonhosted.org/packages/source/f/fakeredis/fakeredis-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module hypothesis}
-# SECTION test requirements
-# bug in https://github.com/jamesls/fakeredis/issues/235
-BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module six >= 1.12}
-BuildRequires:  %{python_module sortedcontainers}
-BuildRequires:  %{python_module lupa}
-BuildRequires:  %{python_module future}
-# /SECTION
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-redis
 Requires:       python-six >= 1.12
 Requires:       python-sortedcontainers
 Recommends:     python-future
 Suggests:       python-lupa
 BuildArch:      noarch
-
+# SECTION test requirements
+# bug in https://github.com/jamesls/fakeredis/issues/235
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module lupa}
+BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module six >= 1.12}
+BuildRequires:  %{python_module sortedcontainers}
+# /SECTION
 %python_subpackages
 
 %description

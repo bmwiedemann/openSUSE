@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/apps/catfish/start
 Source:         https://archive.xfce.org/src/apps/catfish/1.4/%{name}-%{version}.tar.bz2
+BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
@@ -87,11 +88,13 @@ for i in 16 24 32 48; do
     install -dm 0755 %{buildroot}%{_datadir}/icons/hicolor/$i\x$i/apps
     rsvg-convert -h $i -w $i data/media/catfish.svg -o %{buildroot}%{_datadir}/icons/hicolor/$i\x$i/apps/%{name}.png
 done
-mkdir -p %{buildroot}%{_datadir}/appdata
-mv %{buildroot}%{_datadir}/{metainfo,appdata}/%{name}.appdata.xml
 
 %suse_update_desktop_file -r org.xfce.Catfish GNOME Utility Filesystem
+
 %fdupes %{buildroot}%{python3_sitelib}
+
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
+
 %find_lang %{name}
 
 %files
@@ -99,7 +102,7 @@ mv %{buildroot}%{_datadir}/{metainfo,appdata}/%{name}.appdata.xml
 %doc AUTHORS ChangeLog README
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/org.xfce.Catfish.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %{python3_sitelib}/%{name}

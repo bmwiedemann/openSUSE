@@ -24,7 +24,7 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.2.5
+Version:        4.2.6
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
@@ -139,7 +139,7 @@ chmod -x %{buildroot}/%{_kf5_applicationsdir}/*.desktop
 %{_kf5_sharedir}/kritaplugins/
 %{_kf5_sharedir}/color/
 %{_kf5_sharedir}/color-schemes/
-%{_kf5_iconsdir}/hicolor/*/apps/calligrakrita.*
+%{_kf5_iconsdir}/hicolor/*/apps/krita.*
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-krita.png
 %dir %{_kf5_iconsdir}/hicolor/1024x1024
 %dir %{_kf5_iconsdir}/hicolor/1024x1024/apps

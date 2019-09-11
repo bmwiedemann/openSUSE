@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Aug 27 18:01:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.2
+  *  Fix new shortcuts not working when you update from 0.7.x
+
+-------------------------------------------------------------------
+Mon Aug 26 12:45:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.1
+  New stuff:
+  * qimgv will now track changes in the current directory. May
+    not work for remote locations like smb shares.
+  * You can now change sorting mode on-the-fly. It Just Werks.
+  * Add sorting mode combobox in folder view, as well as
+    shortcuts Shift + 1 / 2 / 3.
+  * You can now rename files by pressing F2.
+  * Added sxiv-like info bar at the bottom.
+  * Added info panel that shows exif tags. Press I to toggle.
+  * Copy current file to clipboard by pressing Ctrl+C.
+  * Copy current file path by pressing Ctrl+Shift+C.
+  * Force reload file F5.
+  * Context menu now can be accessed by pressing Menu key.
+  * You can now assign a different shortcut to context menu, it
+    is no longer hardcoded to right click.
+  * You can now assign a shortcut to toggle transparency grid
+    display.
+  * Improve folder view performance.
+  * Improve touchpad scrolling when using libinput driver.
+  * A more polished UI theme. I plan on implementing totally
+    configurable theme via config files, but that is for another
+    release.
+  * Split config file in two parts. The main one will not change
+    every time you open program.
+  Bug fixes:
+  * (important one) Fixed long startup times by moving
+    videoplayer into a separate library that is loaded ondemand.
+    I've seen some complaints about this, please give this
+    version a try.
+  * Fix some issues with mouse event handling.
+  * Fix scaling working incorrectly for webp files.
+  * Fix opening wrong directory when passed . as an argument.
+  * Previously when you used "Open dialog" qimgv would sometimes
+    hang. Now it doesn't do that.
+  * Saving PNG files will no longed produce huge file sizes.
+  Notes:
+  * This release may be a bit buggy as it included quite a bit
+    of refactoring. Stuff will get fixed promptly.
+
+- Added qimgv-nosharedlib.patch
+
+-------------------------------------------------------------------
 Wed Jan 30 09:24:01 UTC 2019 - aloisio@gmx.com
 
 - Update to version 0.7.3

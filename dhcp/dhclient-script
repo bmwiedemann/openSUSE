@@ -312,8 +312,8 @@ set_hostname()
       if [ "x${new_host_name}" != "x" ]; then
         hostname "${new_host_name}"
       else
-        if [ -x /usr/bin/host ] ; then
-          if out=`host -W 2 "$new_ip_address" 2>/dev/null` ; then
+        if [ -x /usr/bin/getent ] ; then
+          if out=`timeout 2s /usr/bin/getent hosts "$new_ip_address" 2>/dev/null` ; then
             _hostname="`echo "$out" | sed 's:^.* ::; s:\..*::; s:.*[)]::'`"
             [[ ${_hostname} =~ ${rx_host} ]] || unset _hostname
             if [ "x${_hostname}" != "x" -a \

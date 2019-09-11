@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 30 07:04:14 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 0.4.1
+  * Support specifying netns path (slirp4netns --netns-type=path PATH
+    TAPNAME)
+  * Support specifying --userns-path
+  * Vendor https://gitlab.freedesktop.org/slirp/libslirp (QEMU v4.1+)
+  * Bring up loopback device when --configure is specified
+  * Support sandboxing by creating a mount namespace
+    (--enable-sandbox)
+  * Support seccomp (--enable-seccomp)
+- Add new build dependencies libcap-devel and libseccomp-devel
+
+-------------------------------------------------------------------
+Thu Aug 29 08:27:25 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 0.3.3
+  * Fix use-after-free in libslirp
+
+-------------------------------------------------------------------
 Wed Aug  7 10:35:21 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Add missing licenses to spec file

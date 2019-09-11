@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 20 13:58:08 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove perl526.patch
+   Not needed anymore because Makefile.PL was fixed upstream
+
+-------------------------------------------------------------------
+Wed Apr  3 06:47:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.10014
+   see /usr/share/doc/packages/perl-Class-Accessor-Grouped/Changes
+
+  0.10014 2018-07-01 19:25 (UTC)
+      - releasing 0.10013_01 as stable
+  
+  0.10013_01 2018-05-28 13:37 (UTC)
+      - convert packaging from Module::Install to plain ExtUtils::MakeMaker
+      - fix running Makefile.PL when @INC does not contain '.' (perl 5.26).
+      - don't run author tests at all for user installs
+
+-------------------------------------------------------------------
 Tue Oct  3 03:12:38 UTC 2017 - coolo@suse.com
 
 - drop support for sle11 (perl-Class-Accessor-Grouped-use_lib.patch)

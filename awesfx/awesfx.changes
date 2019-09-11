@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:10:09 CEST 2019 - tiwai@suse.de
+
+- Fix the build error and warning:
+  Fix-the-bogus-return-in-seq_set_gus_bank.patch
+  Fix-unused-variable-prev-in-strtoken.patch
+
+-------------------------------------------------------------------
 Tue Mar 26 17:11:56 CET 2019 - tiwai@suse.de
 
 - Update to version 0.5.2:

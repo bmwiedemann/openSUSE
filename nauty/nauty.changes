@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 24 16:40:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.7~rc2
+  * -h and -k options for independent set size and clique size
+    were added to countg and pickg. For some graphs these use the
+    program cliquer.
+  * Added option -a to complg.
+  * Program copyg can now be used to make a simple filter.
+  * Programs countg and pickg can now display some parameter values
+    as ranges instead of writing a separate line for each value.
+  * Program vcolg now handles digraphs and graphs with loops.
+  * genrang can now make random spanning trees of K(n1,n2)
+  * amtog has an "s" command for reading tournaments
+  * genspecialg can now make multiple special graphs at once.
+    The -b option has been extended to allow removing a matching
+    from a complete bipartite graph.
+  * See /usr/share/doc/packages/nauty/changes24-27.txt for details.
+
+-------------------------------------------------------------------
 Thu Oct 25 10:11:59 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstrem release 2.6.11

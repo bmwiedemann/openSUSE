@@ -23,6 +23,8 @@ sed -i 's/^warning-is-error.*/warning-is-error = 0/g' setup.cfg \
 rm -rf *requirements.txt \
 %nil
 
+%sphinx_build /usr/bin/sphinx-build-3
+
 # Create a fake tempest plugin entry point which will
 # resides under %{python2_sitelib}/%{service}_tests.egg-info.
 # The prefix is %py2_entrypoint %{modulename} %{service}

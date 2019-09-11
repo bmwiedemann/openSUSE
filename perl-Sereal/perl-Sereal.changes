@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 10 05:23:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.007
+   see /usr/share/doc/packages/perl-Sereal/Changes
+
+  4.007 Tues Apr 9, 2019
+      * Sereal: restore write_sereal(), read_sereal() as aliases to write_sereal_file()
+        and read_sereal_file(). Better tests for exported subs. Add SRL_UNCOMPRESSED,
+        SRL_SNAPPY, SRL_ZLIB, SRL_ZSTD exports.
+      * Decoder: tweak docs for looks_like_sereal/scalar_looks_like_sereal
+  
+  4.006 Mon Apr 8, 2019
+      * Sereal: fix read_sereal_file(),
+
+-------------------------------------------------------------------
+Tue Apr  9 05:23:45 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.006
+   see /usr/share/doc/packages/perl-Sereal/Changes
+
+-------------------------------------------------------------------
 Wed Nov  7 10:50:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of summary.

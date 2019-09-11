@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:00:28 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.8.1
+  - Fix the apiGroup for PodSecurityPolicy, for compatibility with
+    Kubernetes 1.16. (#458).
+  - Fix speaker posting events with an empty string as the announcing
+    node name. (#456).
+  - Fix RBAC permissions on speaker, to allow it to post events to
+    all namespaces. (#455).
+
+-------------------------------------------------------------------
 Mon Jul 22 13:20:23 CEST 2019 - kukuk@suse.de
 
 - Update to version 0.8.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 06:52:52 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- add pycountry-19.7.15-fix-reading-description.patch to fix wrong
+  encoding when opening description files in setup.py 
+
+-------------------------------------------------------------------
 Tue Jul 23 10:31:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.7.15:

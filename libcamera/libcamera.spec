@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse0
-Version:        0~14.b99da21
+%define lname   libcamera-suse1
+Version:        0~699.8a92e6f
 Release:        0
 Summary:        A complex camera support library in C++
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  meson >= 0.40
 BuildRequires:  pkg-config
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libudev)
 
 %description
 libcamera is an experimental camera user-space API.
@@ -62,6 +63,17 @@ libcamera is an experimental camera user-space API.
 
 This subpackage contains the header files.
 
+%package tools
+Summary:        Command-line utilities from libcamera
+Group:          Development/Tools/Other
+
+%description tools
+libcamera is an experimental camera user-space API.
+
+"cam" is a command-line utility to interact with cameras. The initial state is
+limited and only supports listing cameras in the system and selecting a camera
+to interact with.
+
 %prep
 %autosetup -p1
 
@@ -79,14 +91,17 @@ perl -i -pe 's{-lcamera-suse}{-lcamera}' "%buildroot/%_libdir/pkgconfig"/*.pc
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libcamera*.so.*
 
 %files devel
-%defattr(-,root,root)
 %license licenses/*gpl*
 %_includedir/libcamera/
 %_libdir/libcamera.so
 %_libdir/pkgconfig/*.pc
+
+%files tools
+%_bindir/cam
+%_libexecdir/libcamera/
+%_libdir/libcamera/
 
 %changelog

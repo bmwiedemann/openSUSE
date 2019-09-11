@@ -17,7 +17,7 @@
 
 
 Name:           yast2-auth-client
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/yast/yast-auth-client
 Summary:        YaST2 - Centralised System Authentication Configuration
@@ -35,7 +35,7 @@ BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-network
 BuildRequires:  yast2-pam
 BuildRequires:  yast2-testsuite
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 PreReq:         %fillup_prereq
 Requires:       net-tools

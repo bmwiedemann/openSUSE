@@ -24,16 +24,18 @@
 %global ffcall_arches %ix86 x86_64 %alpha %arm aarch64 parisc hppa1.0 hppa1.1 hppa1.2 hppa2.0 ia64 m68k mips mipsel ppc ppc64 ppc64le ppc8260 ppc8560 ppc32dy4 ppciseries ppcpseries s390 s390x %sparc sparc64
 
 Name:           ffcall
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Libraries for foreign function call interfaces
 # As this package only provides a static library together with the header files
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 Provides:       %{name}-devel = %version-%release
-Url:            http://www.gnu.org/software/libffcall/
+Url:            https://www.gnu.org/software/libffcall/
 #               https://git.savannah.gnu.org/cgit/libffcall.git/snapshot/libffcall-<version>.tar.gz
 Source0:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libffcall&download=1#/%{name}.keyring
 Patch0:         ffcall-trampoline.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       ffcall-devel

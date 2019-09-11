@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dovecot23
-Version:        2.3.7.1
+Version:        2.3.7.2
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.7.1
-%define dovecot_pigeonhole_version 0.5.7.1
+%define dovecot_version 2.3.7.2
+%define dovecot_pigeonhole_version 0.5.7.2
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole

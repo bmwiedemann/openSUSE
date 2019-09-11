@@ -90,7 +90,7 @@ make %{?_smp_mflags}
 
 %install
 %make_install -C build
-%suse_update_desktop_file -r org.kde.kbibtex Qt KDE Office Database Science Education
+%suse_update_desktop_file -r org.kde.kbibtex Qt KDE Office Database Science DataVisualization Education
 
 %if %{with lang}
 %find_lang %{name}

@@ -38,7 +38,6 @@ BuildRequires:  Mesa-devel
 BuildRequires:  automake
 BuildRequires:  fluidsynth-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libdumb-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  pcre-devel

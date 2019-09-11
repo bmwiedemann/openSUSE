@@ -16,10 +16,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  tools/virsh.pod                  |    8 ++++++++
  6 files changed, 125 insertions(+), 6 deletions(-)
 
-Index: libvirt-5.6.0/include/libvirt/libvirt-domain.h
+Index: libvirt-5.7.0/include/libvirt/libvirt-domain.h
 ===================================================================
---- libvirt-5.6.0.orig/include/libvirt/libvirt-domain.h
-+++ libvirt-5.6.0/include/libvirt/libvirt-domain.h
+--- libvirt-5.7.0.orig/include/libvirt/libvirt-domain.h
++++ libvirt-5.7.0/include/libvirt/libvirt-domain.h
 @@ -1051,6 +1051,31 @@ typedef enum {
   */
  # define VIR_MIGRATE_PARAM_PARALLEL_CONNECTIONS     "parallel.connections"
@@ -52,11 +52,11 @@ Index: libvirt-5.6.0/include/libvirt/libvirt-domain.h
  /* Domain migration. */
  virDomainPtr virDomainMigrate (virDomainPtr domain, virConnectPtr dconn,
                                 unsigned long flags, const char *dname,
-Index: libvirt-5.6.0/src/libxl/libxl_driver.c
+Index: libvirt-5.7.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-5.6.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-5.6.0/src/libxl/libxl_driver.c
-@@ -6146,6 +6146,9 @@ libxlDomainMigratePerform3Params(virDoma
+--- libvirt-5.7.0.orig/src/libxl/libxl_driver.c
++++ libvirt-5.7.0/src/libxl/libxl_driver.c
+@@ -6156,6 +6156,9 @@ libxlDomainMigratePerform3Params(virDoma
      const char *dname = NULL;
      const char *uri = NULL;
      int ret = -1;
@@ -66,7 +66,7 @@ Index: libvirt-5.6.0/src/libxl/libxl_driver.c
  
  #ifdef LIBXL_HAVE_NO_SUSPEND_RESUME
      virReportUnsupportedError();
-@@ -6162,6 +6165,18 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6172,6 +6175,18 @@ libxlDomainMigratePerform3Params(virDoma
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_DEST_NAME,
                                  &dname) < 0 ||
@@ -85,7 +85,7 @@ Index: libvirt-5.6.0/src/libxl/libxl_driver.c
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_URI,
                                  &uri) < 0)
-@@ -6176,11 +6191,11 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6186,11 +6201,11 @@ libxlDomainMigratePerform3Params(virDoma
  
      if ((flags & (VIR_MIGRATE_TUNNELLED | VIR_MIGRATE_PEER2PEER))) {
          if (libxlDomainMigrationSrcPerformP2P(driver, vm, dom->conn, dom_xml,
@@ -99,10 +99,10 @@ Index: libvirt-5.6.0/src/libxl/libxl_driver.c
              goto cleanup;
      }
  
-Index: libvirt-5.6.0/src/libxl/libxl_migration.c
+Index: libvirt-5.7.0/src/libxl/libxl_migration.c
 ===================================================================
---- libvirt-5.6.0.orig/src/libxl/libxl_migration.c
-+++ libvirt-5.6.0/src/libxl/libxl_migration.c
+--- libvirt-5.7.0.orig/src/libxl/libxl_migration.c
++++ libvirt-5.7.0/src/libxl/libxl_migration.c
 @@ -342,18 +342,39 @@ libxlMigrateDstReceive(virNetSocketPtr s
  static int
  libxlDoMigrateSrcSend(libxlDriverPrivatePtr driver,
@@ -264,10 +264,10 @@ Index: libvirt-5.6.0/src/libxl/libxl_migration.c
      virObjectLock(vm);
  
      if (ret < 0) {
-Index: libvirt-5.6.0/src/libxl/libxl_migration.h
+Index: libvirt-5.7.0/src/libxl/libxl_migration.h
 ===================================================================
---- libvirt-5.6.0.orig/src/libxl/libxl_migration.h
-+++ libvirt-5.6.0/src/libxl/libxl_migration.h
+--- libvirt-5.7.0.orig/src/libxl/libxl_migration.h
++++ libvirt-5.7.0/src/libxl/libxl_migration.h
 @@ -35,6 +35,10 @@
      VIR_MIGRATE_PARAM_URI,              VIR_TYPED_PARAM_STRING, \
      VIR_MIGRATE_PARAM_DEST_NAME,        VIR_TYPED_PARAM_STRING, \
@@ -312,13 +312,13 @@ Index: libvirt-5.6.0/src/libxl/libxl_migration.h
  
  virDomainPtr
  libxlDomainMigrationDstFinish(virConnectPtr dconn,
-Index: libvirt-5.6.0/tools/virsh-domain.c
+Index: libvirt-5.7.0/tools/virsh-domain.c
 ===================================================================
---- libvirt-5.6.0.orig/tools/virsh-domain.c
-+++ libvirt-5.6.0/tools/virsh-domain.c
-@@ -10587,6 +10587,22 @@ static const vshCmdOptDef opts_migrate[]
+--- libvirt-5.7.0.orig/tools/virsh-domain.c
++++ libvirt-5.7.0/tools/virsh-domain.c
+@@ -10591,6 +10591,22 @@ static const vshCmdOptDef opts_migrate[]
       .type = VSH_OT_INT,
-      .help = N_("number of connections for parallel migration")
+      .help = N_("migration bandwidth limit in MiB/s")
      },
 +    {.name = "max_iters",
 +     .type = VSH_OT_INT,
@@ -339,7 +339,7 @@ Index: libvirt-5.6.0/tools/virsh-domain.c
      {.name = NULL}
  };
  
-@@ -10610,6 +10626,7 @@ doMigrate(void *opaque)
+@@ -10614,6 +10630,7 @@ doMigrate(void *opaque)
      unsigned long long ullOpt = 0;
      int rv;
      virConnectPtr dconn = data->dconn;
@@ -347,7 +347,7 @@ Index: libvirt-5.6.0/tools/virsh-domain.c
  
      sigemptyset(&sigmask);
      sigaddset(&sigmask, SIGINT);
-@@ -10729,6 +10746,27 @@ doMigrate(void *opaque)
+@@ -10733,6 +10750,27 @@ doMigrate(void *opaque)
              goto save_error;
      }
  
@@ -375,11 +375,11 @@ Index: libvirt-5.6.0/tools/virsh-domain.c
      if (vshCommandOptStringReq(ctl, cmd, "xml", &opt) < 0)
          goto out;
      if (opt) {
-Index: libvirt-5.6.0/tools/virsh.pod
+Index: libvirt-5.7.0/tools/virsh.pod
 ===================================================================
---- libvirt-5.6.0.orig/tools/virsh.pod
-+++ libvirt-5.6.0/tools/virsh.pod
-@@ -2026,6 +2026,14 @@ I<--parallel-connections>. Parallel conn
+--- libvirt-5.7.0.orig/tools/virsh.pod
++++ libvirt-5.7.0/tools/virsh.pod
+@@ -2254,6 +2254,14 @@ I<--parallel-connections>. Parallel conn
  network link between the source and the target and thus speeding up the
  migration.
  

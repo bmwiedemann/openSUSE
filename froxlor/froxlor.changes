@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:41:42 CEST 2019 - kukuk@suse.de
+
+- BuildRequire cron as this contains now the cron directories
+- Use %license for COPYING file instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
 Thu Jul 11 18:02:30 CEST 2019 - asemen@suse.de
 - removing froxlor-suse-config.diff not needed
 

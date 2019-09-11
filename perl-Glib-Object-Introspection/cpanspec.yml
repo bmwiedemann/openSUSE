@@ -10,7 +10,9 @@
 #patches:
 #  foo.patch: -p1
 #  bar.patch:
-#preamble: |-
+preamble: |-
+  BuildRequires:  pkgconfig
+  BuildRequires:  pkgconfig(gobject-introspection-1.0)
 # BuildRequires:  gcc-c++
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
@@ -19,7 +21,7 @@
 # rm unused.files
 #post_install: |-
 # sed on %{name}.files
-#license: SUSE-NonFree
+license: LGPL-2.1
 #skip_noarch: 1
 #custom_build: |-
 #./Build build flags=%{?_smp_mflags} --myflag

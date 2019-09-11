@@ -1,7 +1,7 @@
 #
 # spec file for package guile1
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Name:           guile1
 Version:        1.8.8
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Scheme
 Url:            http://www.gnu.org/software/guile/
 Source0:        ftp://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
@@ -166,6 +166,7 @@ contains the files necessary to link against the guile libraries.
 sed -i s/-Werror// configure.in configure
 
 %build
+%define _lto_cflags %{nil}
 sed -i "s:GUILE_:GUILE1_:" guile-config/guile.m4
 sed -i "s:guile:guile1:" guile-config/guile.m4
 # automake 1.13: do not run test simultaneously
@@ -249,8 +250,9 @@ rm -f usr/share/guile/site/slibcat.SuSEconfig
 
 %files
 %defattr(-,root,root)
-%doc ABOUT-NLS AUTHORS COPYING* ChangeLog* GUILE-VERSION HACKING
-%doc LICENSE NEWS README THANKS
+%doc ABOUT-NLS AUTHORS ChangeLog* GUILE-VERSION HACKING
+%doc NEWS README THANKS
+%license LICENSE COPYING*
 %{_bindir}/*
 %dir %{_datadir}/guile
 %{_datadir}/guile/1.8

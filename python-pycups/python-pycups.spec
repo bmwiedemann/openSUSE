@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,10 @@ Name:           python-pycups
 Version:        1.9.74
 Release:        0
 Summary:        Python Bindings for CUPS
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 Url:            http://cyberelk.net/tim/software/pycups/
 Source:         https://files.pythonhosted.org/packages/source/p/pycups/pycups-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE revert-postscriptdriver.prov-py3.patch switch back to python2
-Patch0:         revert-postscriptdriver.prov-py3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -46,9 +44,20 @@ Provides:       python3-cups = %{version}
 %description
 Python Bindings for CUPS, the Common Unix Printing System
 
+%package -n cups-rpm-helper
+Summary:        RPM macros for building cups drivers
+Group:          Development/Libraries/Python
+Url:            https://fedoraproject.org/wiki/Features/AutomaticPrintDriverInstallation
+Requires:       python3-cups
+Requires:       rpm-build
+Supplements:    (rpm-build and cups-devel)
+
+%description -n cups-rpm-helper
+RPM helper scripts to create automatic "Provides:" tags for printer
+driver RPMs.
+
 %prep
 %setup -q -n pycups-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -57,6 +66,7 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+make install-rpmhook DESTDIR=%{buildroot}
 
 %files %{python_files}
 %defattr(-,root,root)
@@ -64,5 +74,9 @@ export CFLAGS="%{optflags}"
 %license COPYING
 %{python_sitearch}/cups*.so
 %{python_sitearch}/pycups-%{version}-py*.egg-info
+
+%files -n cups-rpm-helper
+%{_rpmconfigdir}/fileattrs/psdriver.attr
+%{_rpmconfigdir}/postscriptdriver.prov
 
 %changelog

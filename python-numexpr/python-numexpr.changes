@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 31 04:46:34 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * added fix to call python in tests: fix_test.patch
+
+- update to version 2.7.0:
+  * The default number of 'safe' threads has been restored to the
+    historical limit of 8, if the environment variable
+    "NUMEXPR_MAX_THREADS" has not been set.
+  * Thanks to @eltoder who fixed a small memory leak.
+  * Support for Python 2.6 has been dropped, as it is no longer
+    available via TravisCI.
+  * A typo in the test suite that had a less than rather than greater
+    than symbol in the NumPy version check has been corrected thanks
+    to dhomeier.
+  * The file site.cfg was being accidently included in the sdists on
+    PyPi. It has now been excluded.
+
+-------------------------------------------------------------------
 Sat Dec 22 05:26:03 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.6.9

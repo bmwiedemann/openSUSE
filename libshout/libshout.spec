@@ -1,7 +1,7 @@
 #
 # spec file for package libshout
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libshout
-Version:        2.4.1
+Version:        2.4.3
 Release:        0
 Summary:        Library for communcating with Icecast servers
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://icecast.org/
-Source:         http://downloads.xiph.org/releases/libshout/%name-%version.tar.gz
+URL:            https://icecast.org/
+Source:         https://downloads.xiph.org/releases/libshout/%name-%version.tar.gz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtheora-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
@@ -65,7 +64,7 @@ autoreconf --force --install
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 # remove unneeded files
 rm -f "%buildroot/%_libdir"/*.la
 rm -rf "%buildroot/%_datadir/doc/%name"
@@ -75,13 +74,11 @@ rm -Rf "%buildroot/%_libdir/ckport"
 %post   -n libshout3 -p /sbin/ldconfig
 %postun -n libshout3 -p /sbin/ldconfig
 
-%files -n libshout3 
-%defattr(-,root,root)
+%files -n libshout3
 %_libdir/*.so.3*
 
 %files devel
-%defattr(-,root,root)
-%doc README COPYING doc/*.xml doc/*.xsl examples/*.c
+%doc README COPYING doc/*.xml examples/*.c
 %_libdir/*.so
 %_includedir/shout
 %_datadir/aclocal/*.m4

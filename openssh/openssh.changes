@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:24:36 CEST 2019 - kukuk@suse.de
+
+- don't install SuSEfirewall2 service on Factory, since SuSEfirewall2
+  has been replaced by firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
 Mon Jul 22 16:55:25 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - ssh-askpass: Try a fallback if the other option is not available

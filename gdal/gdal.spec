@@ -37,7 +37,11 @@ Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ver
 Patch0:         gdal-perl.patch
 # Fix occasional parallel build failure
 Patch1:         GDALmake.opt.in.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/OSGeo/gdal/pull/1819
+Patch3:         0001-Replace-SWIG-Python-obj0-swig_obj-0-with-version-agn.patch
 BuildRequires:  KEALib-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  blas-devel
 BuildRequires:  chrpath
 BuildRequires:  curl-devel
@@ -47,13 +51,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  geos-devel >= 3
 BuildRequires:  giflib-devel
+BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
-# No more please we have openjpeg2
-# BuildRequires:  libjasper-devel
-# Using jasper create build error on arm, powerpc, s390
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  opencl-headers
+BuildRequires:  perl-ExtUtils-MakeMaker
 BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
 BuildRequires:  python-numpy-devel
@@ -62,6 +65,10 @@ BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
+BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(freexl)
+BuildRequires:  pkgconfig(json)
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(expat) >= 1.95.0
 BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
@@ -70,8 +77,13 @@ BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libtiff-4) >= 3.6.0
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebpdecoder)
+BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(netcdf)
+BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(poppler)
 BuildRequires:  pkgconfig(proj)
 BuildRequires:  pkgconfig(spatialite)
@@ -87,26 +99,6 @@ BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 %if %{with ecw_support}
 BuildRequires:  libecwj2-devel
 %endif
-%endif
-%if 0%{?suse_version} >= 1310
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  hdf5-devel
-BuildRequires:  pkgconfig(freexl)
-BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(libwebpdecoder)
-BuildRequires:  pkgconfig(libwebpdemux)
-BuildRequires:  pkgconfig(libwebpmux)
-%endif
-%if 0%{?suse_version} > 1320
-BuildRequires:  opencl-headers
-BuildRequires:  perl-ExtUtils-MakeMaker
-BuildRequires:  pkgconfig(OpenCL)
-BuildRequires:  pkgconfig(json)
-BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(ocl-icd)
-%else
-BuildRequires:  hdf-devel >= 4.0
 %endif
 
 %description
@@ -141,11 +133,7 @@ application for all supported formats.
 Summary:        Perl bindings for GDAL
 Group:          Development/Languages/Perl
 Requires:       %{name} = %{version}-%{release}
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
 %{perl_requires}
-%endif
 
 %description -n perl-%{name}
 Perl bindings for GDAL - Geo::GDAL, Geo::OGR and Geo::OSR modules.
@@ -262,16 +250,10 @@ autoreconf -fi
        --with-proj5-api=no \
        CPPFLAGS="$CPPFLAGS -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" \
 %endif
-%if 0%{?suse_version} > 1320
         --with-opencl           \
-%endif
-%if 0%{?suse_version} > 1310
         --without-hdf4          \
         --with-hdf5             \
         --with-webp             \
-%else
-        --with-hdf4             \
-%endif
         --disable-rpath
 
 # regenerate where needed
@@ -319,16 +301,6 @@ chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/GNM/GNM.so
 chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/OGR/OGR.so
 chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/OSR/OSR.so
 
-%if 0%{?suse_version} <= 1315
-# perl bs 0 length files cleanup
-find %{buildroot}%{perl_vendorarch} -iname "*.bs" -exec rm -fv {} \;
-# Those are deleted.
-#%%{perl_vendorarch}/auto/Geo/OSR/OSR.bs
-#%%{perl_vendorarch}/auto/Geo/OGR/OGR.bs
-#%%{perl_vendorarch}/auto/Geo/GDAL/GDAL.bs
-#%%{perl_vendorarch}/auto/Geo/GDAL/Const/Const.bs
-%endif
-
 # do not ship these
 rm -rf %{buildroot}%{_mandir}/man1/_*
 rm -rf %{buildroot}%{_libdir}/libgdal.la
@@ -346,16 +318,13 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %postun	-n lib%{name}%{soversion} -p /sbin/ldconfig
 
 %files -n lib%{name}%{soversion}
-%defattr(644,root,root,755)
 %license LICENSE.TXT
 %{_libdir}/*.so.%{soversion}.*
 %{_libdir}/*.so.%{soversion}
 
 %files
-%defattr(644,root,root,755)
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
-%defattr(755,root,root,755)
 %{_bindir}/epsg_tr.py
 %{_bindir}/esri2wkt.py
 %{_bindir}/gcps2vec.py
@@ -405,7 +374,6 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_bindir}/pct2rgb.py
 %{_bindir}/rgb2pct.py
 %{_bindir}/testepsg
-%defattr(644,root,root,755)
 %{_datadir}/gdal
 %{_mandir}/man1/gdal2tiles.1%{?ext_man}
 %{_mandir}/man1/gdal_calc.1%{?ext_man}
@@ -450,7 +418,6 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %files devel
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
-%defattr(644,root,root,755)
 %doc html
 %attr(755,root,root) %{_bindir}/gdal-config
 %{_libdir}/libgdal.so
@@ -483,13 +450,11 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_mandir}/man3/Geo::GDAL.3pm%{?ext_man}
 
 %files -n python2-%{pypi_package_name}
-%defattr(644,root,root,755)
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
 %{python_sitearch}/*
 
 %files -n python3-%{pypi_package_name}
-%defattr(644,root,root,755)
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
 %{python3_sitearch}/*

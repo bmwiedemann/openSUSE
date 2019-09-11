@@ -20,7 +20,7 @@
 Name:           python-snowballstemmer
 Version:        1.9.0
 Release:        0
-Summary:        This package provides 16 stemmer algorithms
+Summary:        16 stemmer algorithms
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 Url:            https://github.com/shibukawa/snowball_py
@@ -30,7 +30,6 @@ Source1:        https://raw.githubusercontent.com/snowballstem/snowball/master/C
 BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %python_subpackages
@@ -57,7 +56,6 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitelib}/*
 %doc README.rst
 %license COPYING

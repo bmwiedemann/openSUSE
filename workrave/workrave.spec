@@ -32,19 +32,19 @@ BuildRequires:  automake
 BuildRequires:  boost-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  glibmm2-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  libpulse-devel
-BuildRequires:  libsigc++2-devel
 BuildRequires:  libtool
 BuildRequires:  python-xml
 BuildRequires:  python3-Jinja2
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(sigc++-2.0)
 # other requirements that are documented or previously used but (currently?) not needed. let's see if there are problems without them
 #BuildRequires:  gdome2-devel
 #BuildRequires:  gnome-panel-devel

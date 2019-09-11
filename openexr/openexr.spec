@@ -21,16 +21,13 @@
 %define debug_build 0
 %define sonum 24
 %global so_suffix -2_3-24
-# tests should run at least during local build
-# but do expect a HUGE number of memory, so beware
-%bcond_with tests
 Name:           openexr
 Version:        2.3.0
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
-Url:            http://www.openexr.com/
+URL:            http://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/releases/download/v%{version}/openexr-%{version}.tar.gz
 Source1:        https://github.com/openexr/openexr/releases/download/v%{version}/openexr-%{version}.tar.gz.sig
 Source2:        baselibs.conf
@@ -49,6 +46,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(IlmBase) >= 2.3.0
 BuildRequires:  pkgconfig(zlib)
+Obsoletes:      OpenEXR <= 1.6.1
+Provides:       OpenEXR = %{version}
 %if %{asan_build} || %{debug_build}
 BuildRequires:  ilmbase-debugsource
 BuildRequires:  libHalf%{sonum}-debuginfo
@@ -57,8 +56,6 @@ BuildRequires:  libIexMath%{so_suffix}-debuginfo
 BuildRequires:  libIlmThread%{so_suffix}-debuginfo
 BuildRequires:  libImath%{so_suffix}-debuginfo
 %endif
-Obsoletes:      OpenEXR <= 1.6.1
-Provides:       OpenEXR = %{version}
 
 %description
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -154,7 +151,6 @@ export CXXFLAGS="%{optflags} -O0"
    --disable-static \
    --enable-large-stack \
    --enable-imfexamples \
-   --enable-imffuzztest \
    --enable-imfhugetest
 %if %{asan_build}
 vmemlimit=$(ulimit -v)
@@ -175,7 +171,7 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-%if %{with tests}
+%if %__isa_bits == 64
 make %{?_smp_mflags} check
 %endif
 

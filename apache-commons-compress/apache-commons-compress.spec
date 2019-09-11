@@ -19,14 +19,15 @@
 %global base_name       compress
 %global short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.18
+Version:        1.19
 Release:        0
 Summary:        Java API for working with compressed files and archivers
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://commons.apache.org/proper/commons-compress/
 Source0:        http://archive.apache.org/dist/commons/compress/source/%{short_name}-%{version}-src.tar.gz
-Source1:        %{name}-build.xml
+Source1:        http://archive.apache.org/dist/commons/compress/source/%{short_name}-%{version}-src.tar.gz.asc
+Source2:        %{name}-build.xml
 Patch0:         0001-Remove-Brotli-compressor.patch
 Patch1:         0002-Remove-ZSTD-compressor.patch
 Patch2:         fix_java_8_compatibility.patch
@@ -57,7 +58,7 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-cp %{SOURCE1} build.xml
+cp %{SOURCE2} build.xml
 
 # Unavailable Google Brotli library (org.brotli.dec)
 %patch0 -p1

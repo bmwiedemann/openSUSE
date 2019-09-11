@@ -16,6 +16,8 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 %define sover   23
 %define lname   %{name}%{sover}
 Name:           libsodium

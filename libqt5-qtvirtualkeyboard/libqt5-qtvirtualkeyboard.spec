@@ -19,16 +19,16 @@
 %define qt5_snapshot 0
 
 Name:           libqt5-qtvirtualkeyboard
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 Virtual Keyboard
 License:        GPL-3.0
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtvirtualkeyboard-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtvirtualkeyboard-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
@@ -178,6 +178,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %{_libqt5_includedir}/QtHunspellInputMethod/
 %{_libqt5_libdir}/libQt5HunspellInputMethod.prl
 %{_libqt5_libdir}/libQt5HunspellInputMethod.so
+%{_libqt5_libdir}/cmake/Qt5HunspellInputMethod/
 %{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_hunspellinputmethod_private.pri
 
 %files examples

@@ -58,10 +58,12 @@ BuildRequires:  python3-xml
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa) >= 0.9.1
+%if 0%{?suse_version} < 1550
+BuildRequires:  pkgconfig(cairo)
+%endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2) >= 2.0.9
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.40
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
@@ -69,8 +71,6 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
-BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
@@ -86,6 +86,7 @@ BuildRequires:  pkgconfig(vorbis) >= 1.0
 BuildRequires:  pkgconfig(vorbisenc) >= 1.0
 BuildRequires:  pkgconfig(wayland-client) >= 1.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.0
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xext)
@@ -488,13 +489,14 @@ export PYTHON=%{_bindir}/python3
 %{meson_build}
 %else
 %configure\
-	--with-package-name='openSUSE GStreamer-plugins-base package'\
-	--with-package-origin='http://download.opensuse.org'\
-	--disable-static\
-	--enable-gtk-doc\
-	--enable-introspection\
+	--with-package-name='openSUSE GStreamer-plugins-base package' \
+	--with-package-origin='http://download.opensuse.org' \
+	--disable-static \
+	--enable-gtk-doc \
+	--enable-introspection \
+	--disable-examples \
 %if 0%{?is_opensuse}
-	--enable-orc\
+	--enable-orc \
 %endif
 	%{nil}
 %make_build

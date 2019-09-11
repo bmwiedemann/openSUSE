@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  2 18:59:35 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove openjade BuildRequires/Requires, SGML support was removed
+  in gtk-doc 1.25.
+
+-------------------------------------------------------------------
 Tue Aug 28 23:41:17 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 1.29:

@@ -271,6 +271,8 @@ Patch55:        source-fix-bool-poppler.patch
 Patch56:        source-poppler-use-std_string.patch
 # PATCH-FIX-SUSE Fix leaking string copy
 Patch57:        source-poppler-fix-dict-memleak.patch
+# PATCH-FIX-TEXLIVE
+Patch58:        source-poppler0.79.0.patch
 Prefix:         %{_bindir}
 Provides:       pdfjam = %{version}
 Obsoletes:      pdfjam < %{version}
@@ -3661,6 +3663,10 @@ popd
 %endif
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.69.0}}%{!?pkg_vcmp:0}
 %patch57 -p1 -b .popplerdict
+%endif
+cp ./texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc ./texk/web2c/pdftexdir/pdftoepdf-poppler0.79.0.cc
+%if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.73.0}}%{!?pkg_vcmp:0}
+%patch58 -p1 -b .poppler79
 %endif
 
 if pkg-config --atleast-version=0.59 poppler

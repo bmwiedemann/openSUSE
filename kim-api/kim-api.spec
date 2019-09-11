@@ -16,7 +16,7 @@
 #
 
 Name:           kim-api
-Version:        2.0.2
+Version:        2.1.3
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models KIM API
 License:        CDDL-1.0
@@ -85,22 +85,13 @@ This package contains the example models for the KIM-API.
 %setup -q -n %{name}-%{version}
 
 %build
-%{cmake} -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} ..
+%{cmake} -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} -DBASH_COMPLETION_COMPLETIONSDIR=%{_datadir}/bash-completion/completions -DZSH_COMPLETION_COMPLETIONSDIR=%{_datadir}/zsh/functions/Unix ..
 %make_jobs
 
 %install
 %cmake_install
-mkdir -p %{buildroot}/usr/share/bash-completion/completions
-mv %{buildroot}/etc/bash_completion.d/kim-api-collections-management.bash %{buildroot}%{_datadir}/bash-completion/completions
 mkdir -p %{buildroot}/usr/share/emacs/site-lisp
 mv %{buildroot}/usr/share/emacs/site-lisp/kim-api/kim-api-c-style.el %{buildroot}%{_datadir}/emacs/site-lisp/kim-api-c-style.el
-mkdir -p %{buildroot}/usr/share/cmake/kim-api
-mv %{buildroot}%{_libdir}/kim-api/cmake/kim-api-config.cmake %{buildroot}%{_datadir}/cmake/kim-api/kim-api-config.cmake
-mv %{buildroot}%{_libdir}/kim-api/cmake/kim-api-config-version.cmake %{buildroot}%{_datadir}/cmake/kim-api/kim-api-config-version.cmake
-mkdir -p %{buildroot}/usr/share/cmake/Modules
-mv %{buildroot}%{_libdir}/kim-api/cmake/Modules/FindKIM-API.cmake %{buildroot}%{_datadir}/cmake/Modules/FindKIM-API.cmake
-
-
 %post -n libkim-api2 -p /sbin/ldconfig
 %postun -n libkim-api2 -p /sbin/ldconfig
 
@@ -115,6 +106,11 @@ mv %{buildroot}%{_libdir}/kim-api/cmake/Modules/FindKIM-API.cmake %{buildroot}%{
 %dir %{_libexecdir}/kim-api
 %endif
 %{_datadir}/bash-completion/completions/kim-api-collections-management.bash
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/functions
+%dir %{_datadir}/zsh/functions/Unix
+%{_datadir}/zsh/functions/Unix/_kim-api-collections-management
+%{_datadir}/zsh/functions/Unix/kim-api-collections-management.bash
 %{_datadir}/emacs/site-lisp/kim-api-c-style.el
 
 %files -n libkim-api2
@@ -134,7 +130,7 @@ mv %{buildroot}%{_libdir}/kim-api/cmake/Modules/FindKIM-API.cmake %{buildroot}%{
 
 %files examples
 %{_libdir}/kim-api/model-drivers/
-%{_libdir}/kim-api/models/
+%{_libdir}/kim-api/portable-models/
 %{_libdir}/kim-api/simulator-models/
 
 %changelog

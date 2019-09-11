@@ -1,16 +1,12 @@
---- configure.in.orig
-+++ configure.in
-@@ -56,6 +56,8 @@ fi
- dnl Check for tools
- AC_PROG_LIBTOOL
- AC_PROG_CC
-+AC_USE_SYSTEM_EXTENSIONS
-+AC_SYS_LARGEFILE
- AC_PROG_CXX
- AC_PROG_INSTALL
- AC_PROG_MAKE_SET
---- Makefile.in.orig
-+++ Makefile.in
+---
+ Makefile.in  |    2 +-
+ configure.in |    2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+Index: SDL-1.2.15/Makefile.in
+===================================================================
+--- SDL-1.2.15.orig/Makefile.in
++++ SDL-1.2.15/Makefile.in
 @@ -21,7 +21,7 @@ distfile = $(distdir).tar.gz
  SHELL	= @SHELL@
  CC      = @CC@
@@ -20,3 +16,16 @@
  EXTRA_CFLAGS = @EXTRA_CFLAGS@
  LDFLAGS = @BUILD_LDFLAGS@
  EXTRA_LDFLAGS = @EXTRA_LDFLAGS@
+Index: SDL-1.2.15/configure.in
+===================================================================
+--- SDL-1.2.15.orig/configure.in
++++ SDL-1.2.15/configure.in
+@@ -56,6 +56,8 @@ fi
+ dnl Check for tools
+ AC_PROG_LIBTOOL
+ AC_PROG_CC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET

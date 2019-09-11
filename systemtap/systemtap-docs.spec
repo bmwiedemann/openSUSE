@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           systemtap-docs
-Version:        3.3
+Version:        4.1
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
@@ -74,10 +74,13 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags} doc
 cp README AUTHORS NEWS %{buildroot}%{_docdir}/systemtap/
 # remove binaries and runtime stuff
 rm -rf %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{_sbindir}
 rm -rf %{buildroot}%{_libdir}
 rm -rf %{buildroot}%{_libexecdir}
 rm -rf %{buildroot}%{_datadir}/systemtap
 rm -rf %{buildroot}%{_includedir}
+rm -rf %{buildroot}%{_sysconfdir}
+rm -rf %{buildroot}%{_unitdir}
 # these man pages are in each sub package
 rm -rf %{buildroot}%{_mandir}/man[178]
 rm -rf %{buildroot}%{_mandir}/cs/man[178]

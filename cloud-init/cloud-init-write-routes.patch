@@ -1,6 +1,6 @@
 --- cloudinit/distros/opensuse.py.orig
 +++ cloudinit/distros/opensuse.py
-@@ -172,7 +172,41 @@ class Distro(distros.Distro):
+@@ -172,7 +172,48 @@ class Distro(distros.Distro):
              util.write_file(out_fn, str(conf), 0o644)
  
      def _write_network_config(self, netconfig):
@@ -37,6 +37,13 @@
 +                        config_routes += ' -'
 +                    config_routes += ' -'
 +                    config_routes += '\n'
++                if not config_routes:
++                    dest = 'default'
++                    gateway = subnet.get('gateway')
++                    if gateway:
++                        config_routes += ' '.join(
++                            [dest, gateway, '-', '-', '\n']
++                        )
 +            if config_routes:
 +                route_file = '/etc/sysconfig/network/ifroute-%s' % if_name
 +                util.write_file(route_file, config_routes)

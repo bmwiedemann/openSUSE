@@ -1,7 +1,7 @@
 #
 # spec file for package neon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,15 @@ Source10:       replace_manpage_with_links.sh
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/Packaging/Patches
 Patch0:         %{name}-0.28.4-bloat.patch
 Patch1:         fix_timeout_tests_for_ppc64le.patch
+Patch2:         neon-0.30.2_ssl-fix_timeout_retvals.patch
+# backport from upstream
+Patch3:         neon-0.30.2-nulcert.patch
 BuildRequires:  krb5-devel
 BuildRequires:  libexpat-devel
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-1_1-devel >= 1.1.1
 BuildRequires:  libproxy-devel
 BuildRequires:  libtool
+BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 
@@ -72,6 +76,8 @@ neon is an HTTP and WebDAV client library with a C interface.
 %ifarch ppc64le ppc64
 %patch1
 %endif
+%patch2 -p1
+%patch3 -p1
 
 %build
 rm -f aclocal.m4 ltmain.sh
@@ -84,8 +90,7 @@ sh autogen.sh
     --disable-nls \
     --enable-shared \
     --disable-static \
-    --enable-warnings \
-    --with-pic
+    --enable-warnings
 make %{?_smp_mflags}
 
 %install

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 22 12:58:12 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.35
+
+-------------------------------------------------------------------
+Wed Aug 21 11:11:06 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
+
+- log all ng proposal settings
+- 4.2.34
+
+-------------------------------------------------------------------
+Sat Aug 10 22:00:06 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Initial Guided Proposal: added support to make the proposal
+  using all candidates devices, without trying all possible set
+  of settings for each individual device first (related to
+  jsc#SLE-7238).
+- 4.2.33
+
+-------------------------------------------------------------------
 Thu Aug  8 10:37:33 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - AutoYaST: allow to create a Bcache without a caching device.

@@ -18,28 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-moretools
-Version:        0.1.10
+Version:        0.1.12
 Release:        0
 Summary:        MORE Overly Reusable Essentials for Python
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/zimmermanncode/moretools
+URL:            https://github.com/zimmermanncode/moretools
 Source:         https://files.pythonhosted.org/packages/source/m/moretools/moretools-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm >= 1.15}
+BuildRequires:  %{python_module setuptools_scm >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module zetup >= 0.2.31}
+BuildRequires:  %{python_module zetup >= 0.2.60}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module decorator >= 4.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.10}
-# /SECTION
-Requires:       python-decorator >= 4.0
-Requires:       python-six >= 1.10
-Requires:       python-zetup >= 0.2.31
+Requires:       python-decorator >= 4.4.0
+Requires:       python-six >= 1.12
+Requires:       python-zetup >= 0.2.60
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module decorator >= 4.4.0}
+BuildRequires:  %{python_module pytest >= 4.6.2}
+BuildRequires:  %{python_module six >= 1.12}
+# /SECTION
 %python_subpackages
 
 %description
@@ -60,7 +59,6 @@ itertools, functools, operator and collections
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.md
 %license COPYING COPYING.LESSER
 %{python_sitelib}/moretools/

@@ -17,15 +17,16 @@
 
 
 Name:           lsp-plugins
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 Summary:        Linux Studio Plugins Project
 License:        LGPL-3.0-only AND Zlib
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://lsp-plug.in/
 Source:         https://github.com/sadko4u/lsp-plugins/archive/lsp-plugins-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE lsp-plugins-verbose.patch aloisio@gmx.com -- print compiation flags
-Patch0:         lsp-plugins-verbose.patch
+# PATCH-FIX-UPSTREAM lsp-plugins-fix_memory_corruption.patch
+Patch0:         lsp-plugins-fix_memory_corruption.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
@@ -37,7 +38,6 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
-ExcludeArch:    ppc64 ppc64le
 
 %description
 LSP (Linux Studio Plugins) is a collection of open-source plugins
@@ -60,20 +60,21 @@ Documents for Linux Studio Plugins Project
 %build
 export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make %{?_smp_mflags}
+make %{?_smp_mflags} SHELL="$(which bash) -x"
 
 %install
 export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 %make_install
-
+%fdupes -s %{buildroot}%{_libdir}
 
 %files
 %license LICENSE.txt
 %{_bindir}/%{name}-*
-%{_libdir}/%{name}-jack-core-%{version}.so
 %{_libdir}/ladspa/%{name}-ladspa.so
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/%{name}-jack-core-%{version}.so
+%{_libdir}/%{name}/%{name}-r3d-glx.so
 %{_libdir}/lv2/%{name}.lv2
-# doesn't anything own this?
 %dir %{_libdir}/vst
 %{_libdir}/vst/%{name}-lxvst-%{version}
 

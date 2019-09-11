@@ -18,15 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-MechanicalSoup
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        A Python library for automating interaction with websites
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hickford/MechanicalSoup
 Source:         https://files.pythonhosted.org/packages/source/M/MechanicalSoup/MechanicalSoup-%{version}.tar.gz
-Patch0:         bs4-47.patch
 BuildRequires:  %{python_module beautifulsoup4 >= 4.4}
+BuildRequires:  %{python_module httpbin}
+BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-mock}
@@ -41,6 +42,8 @@ Requires:       python-beautifulsoup4 >= 4.4
 Requires:       python-lxml
 Requires:       python-requests >= 2.0
 Requires:       python-six >= 1.4
+Recommends:     python-httpbin
+Recommends:     python-jsonschema >= 2.5.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,7 +60,6 @@ document navigation).
 
 %prep
 %setup -q -n MechanicalSoup-%{version}
-%patch0 -p1
 # do not require cov/xdist/etc
 sed -i -e '/addopts/d' setup.cfg
 

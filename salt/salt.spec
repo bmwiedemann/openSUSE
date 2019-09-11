@@ -26,8 +26,13 @@
 %global build_py3   1
 %global build_py2   1
 %else
+%if 0%{?rhel} == 7
 # RES7
 %global build_py2   1
+%else
+%global build_py3   1
+%global default_py3 1
+%endif
 %endif
 %endif
 %define pythonX %{?default_py3: python3}%{!?default_py3: python2}
@@ -215,6 +220,25 @@ Patch72:       avoid-traceback-when-http.query-request-cannot-be-pe.patch
 #                     https://github.com/saltstack/salt/pull/54022
 #                     https://github.com/saltstack/salt/pull/54024
 Patch73:       accumulated-changes-required-for-yomi-165.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/159
+Patch74:       move-server_id-deprecation-warning-to-reduce-log-spa.patch
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54077
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/166
+Patch75:       fix-aptpkg-systemd-call-bsc-1143301.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/170
+Patch76:       strip-trailing-from-repo.uri-when-comparing-repos-in.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/177
+Patch77:       restore-default-behaviour-of-pkg-list-return.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/172
+Patch78:       implement-network.fqdns-module-function-bsc-1134860-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/173
+Patch79:       2019.2.0-pr-54196-backport-173.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/174
+Patch80:       virt.volume_infos-needs-to-ignore-inactive-pools-174.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/175
+Patch81:       virt.volume_infos-silence-libvirt-error-message-175.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/176
+Patch82:       fix-virt.full_info-176.patch
 
 # BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -230,7 +254,7 @@ Requires(pre):  %{_sbindir}/useradd
 
 %if 0%{?suse_version}
 Requires(pre):  %fillup_prereq
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 %endif
 
 %if 0%{?suse_version}
@@ -313,6 +337,8 @@ BuildRequires:  python-msgpack-python > 0.3
 BuildRequires:  python-psutil
 BuildRequires:  python-requests >= 1.0.0
 BuildRequires:  python-tornado >= 4.2.1
+# We can't cope with tornado 5.x and newer (boo#1101780)
+BuildConflicts: python3-tornado >= 5
 
 # requirements/zeromq.txt
 BuildRequires:  python-pycrypto >= 2.6.1
@@ -355,6 +381,8 @@ Requires:       python-msgpack-python > 0.3
 Requires:       python-psutil
 Requires:       python-requests >= 1.0.0
 Requires:       python-tornado >= 4.2.1
+# We can't cope with tornado 5.x and newer (boo#1101780)
+Conflicts: python3-tornado >= 5
 %if 0%{?suse_version}
 # required for zypper.py
 Requires:       rpm-python
@@ -401,6 +429,8 @@ BuildRequires:  python3-msgpack-python > 0.3
 BuildRequires:  python3-psutil
 BuildRequires:  python3-requests >= 1.0.0
 BuildRequires:  python3-tornado >= 4.2.1
+# We can't cope with tornado 5.x and newer (boo#1101780)
+BuildConflicts: python3-tornado >= 5
 
 # requirements/zeromq.txt
 BuildRequires:  python3-pycrypto >= 2.6.1
@@ -439,6 +469,8 @@ Requires:       python3-msgpack-python > 0.3
 Requires:       python3-psutil
 Requires:       python3-requests >= 1.0.0
 Requires:       python3-tornado >= 4.2.1
+# We can't cope with tornado 5.x and newer (boo#1101780)
+Conflicts: python3-tornado >= 5
 %if 0%{?suse_version}
 # required for zypper.py
 Requires:       python3-rpm
@@ -758,6 +790,15 @@ cp %{S:5} ./.travis.yml
 %patch71 -p1
 %patch72 -p1
 %patch73 -p1
+%patch74 -p1
+%patch75 -p1
+%patch76 -p1
+%patch77 -p1
+%patch78 -p1
+%patch79 -p1
+%patch80 -p1
+%patch81 -p1
+%patch82 -p1
 
 %build
 %if 0%{?build_py2}

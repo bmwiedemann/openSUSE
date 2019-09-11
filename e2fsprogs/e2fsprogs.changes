@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  9 09:09:39 UTC 2019 - Jan Kara <jack@suse.cz>
+
+- Update to 1.45.3:
+  * Whether or not automatic online scrubbing will be called is now controlled
+    in /etc/e2scrub.conf.
+  * Fix e2fsck handling of filesystems with large_dir and inline directories
+  * Fix e2scrub_all for encrypted LUKS partitions
+  * Fix e2scrub_all volume cleanup 
+  * Regression tests cleanups and improvements
+  * Fixed compiler warnings
+  * Translation fixes and updates
+
+-------------------------------------------------------------------
 Wed Jul 24 20:47:22 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Fix build with gettext 0.20:

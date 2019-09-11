@@ -1,0 +1,20 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/terraform-providers/terraform-provider-openstack.git</param>
+    <param name="scm">git</param>
+    <param name="filename">terraform-provider-openstack</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v1.21.1</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.gitignore</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+  </service>
+</services>

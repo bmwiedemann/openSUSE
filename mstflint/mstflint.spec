@@ -16,7 +16,7 @@
 #
 
 
-%define extra_version -3
+%define extra_version -5
 
 Name:           mstflint
 Version:        4.11.0
@@ -28,8 +28,6 @@ Url:            http://www.openfabrics.org
 Obsoletes:      mstflint-devel < %{version}
 Source:         https://github.com/Mellanox/mstflint/releases/download/v%{version}%{extra_version}/mstflint-%{version}%{extra_version}.tar.gz
 Patch1:         Remove-date-time-info-from-build.patch
-Patch2:         Add-s390-s390x-support.patch
-Patch3:         Add-armv6-and-armv7-support.patch
 Patch4:         Fix-gcc7-and-gcc8.patch
 Patch5:         fix-race-condition-during-install.patch
 BuildRequires:  gcc-c++
@@ -52,8 +50,6 @@ the downloads page at the Mellanox web site.
 %prep
 %setup -q
 %patch1
-%patch2
-%patch3
 %patch4
 %patch5
 
@@ -83,6 +79,7 @@ rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 %{_bindir}/mstprivhost
 %{_bindir}/mstregdump
 %{_bindir}/mstvpd
+%{_bindir}/mstfwtrace
 %{_mandir}/man1/*.1%{ext_man}
 %{_libdir}/mstflint/
 %{_datadir}/mstflint/

@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 27 10:11:19 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- refresh gzip-1.10-ibm_dfltcc_support.patch to fix three data
+  corruption issues [bsc#1145276] [jsc#SLE-5818] [jsc#SLE-8914]
+
+-------------------------------------------------------------------
 Thu Jun  6 15:16:47 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
 
-- add gzip-1.10-ibm_dfltcc_support.patch [jsc#SLE-5818]
+- add gzip-1.10-ibm_dfltcc_support.patch [jsc#SLE-5818] [jsc#SLE-8914]
   * it adds support for DFLTCC (hardware-accelerated deflation)
     for s390x arch
   * enable it via "--enable-dfltcc" option

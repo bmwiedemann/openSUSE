@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{?nil}
-%define ver 2.15.1
-%define _ver 2_15_1
+%define ver 2.17.0
+%define _ver 2_17_0
 %define somver 0
 %define sover %{somver}.2.6
 
@@ -45,7 +45,6 @@ ExclusiveArch:  do_not_build
 %undefine suffix
 %undefine mpi_family
 %bcond_with hpc
-%bcond_without install_doc
 %endif
 
 %if "%{flavor}" == "openmpi"
@@ -165,10 +164,10 @@ Name:           %package_name
 Version:        %{ver}
 Release:        0
 Summary:        Scalable algorithms for solving linear systems of equations
-License:        LGPL-2.1-only
+License:        Apache-2.0 OR MIT
 Group:          Productivity/Scientific/Math
 Url:            https://www.llnl.gov/casc/hypre/
-Source:         https://github.com/LLNL/hypre/archive/v%{version}.tar.gz#/hypre-%{version}.tar.gz
+Source:         https://github.com/hypre-space/hypre/archive/v%{version}.tar.gz#/hypre-%{version}.tar.gz
 Patch0:         hypre_Makefile_examples.patch
 Patch1:         hypre_CMakeLists.patch
 
@@ -405,8 +404,8 @@ EOF
 %{?hpc_dirs}
 %{hpc_pkgconfig_file} 
 %endif
-%license COPYING.LESSER COPYRIGHT
-%doc CHANGELOG README
+%license COPYRIGHT LICENSE-APACHE LICENSE-MIT NOTICE 
+%doc CHANGELOG README.md INSTALL.md
 %{my_incdir}%{?!with_hpc:/%{pname}}
 %{my_libdir}/*.so
 %endif # build_all

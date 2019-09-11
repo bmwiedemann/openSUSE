@@ -1,0 +1,224 @@
+From 3119bc27584472b0f0d440a37ec4cff2504165f2 Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Tue, 3 Sep 2019 15:16:30 +0200
+Subject: [PATCH] 2019.2.0 PR 54196 backport (#173)
+
+* virt.network_define doesn't have vport as positional argument
+
+virt.network_running state calls virt.network_define with vport as a
+positional argument resulting in an error at runtime. Fix the state to
+use the vport named argument instead.
+
+* Fix virt.pool_running state documentation
+
+virt.pool_running needs the source to be a dictionary, which the
+documentation was not reflecting. Along the same lines the source hosts
+need to be a list, adjust the example to show it.
+
+* Get virt.pool_running to start the pool after creating it
+
+Commit 25b96815 is wrong in assuming the pool build also starts it. The
+pool needs to be stopped before building it, but we still need to start
+it after the build: libvirt won't do it automagically for us.
+
+* Fix states to match virt.{network,pool}_infos return
+
+virt.network_infos and virt.pool_infos return the infos as a dictionary
+with the network or pool name as a key even when there is only one
+value. Adapt the network_running and pool_running states to this.
+
+* Fix virt.running use of virt.vm_state
+
+vm_state return a dictionary with the VM name as a key. Fix virt.running
+state and its tests to match this. See issue #53107.
+---
+ salt/states/virt.py            | 26 ++++++++++++++++----------
+ tests/unit/states/test_virt.py | 27 +++++++++++++++------------
+ 2 files changed, 31 insertions(+), 22 deletions(-)
+
+diff --git a/salt/states/virt.py b/salt/states/virt.py
+index d411f864cd..32a9e31ae5 100644
+--- a/salt/states/virt.py
++++ b/salt/states/virt.py
+@@ -389,8 +389,8 @@ def running(name,
+ 
+     try:
+         try:
+-            __salt__['virt.vm_state'](name)
+-            if __salt__['virt.vm_state'](name) != 'running':
++            domain_state = __salt__['virt.vm_state'](name)
++            if domain_state.get(name, None) != 'running':
+                 action_msg = 'started'
+                 if update:
+                     status = __salt__['virt.update'](name,
+@@ -670,7 +670,7 @@ def network_running(name,
+     try:
+         info = __salt__['virt.network_info'](name, connection=connection, username=username, password=password)
+         if info:
+-            if info['active']:
++            if info[name]['active']:
+                 ret['comment'] = 'Network {0} exists and is running'.format(name)
+             else:
+                 __salt__['virt.network_start'](name, connection=connection, username=username, password=password)
+@@ -680,7 +680,7 @@ def network_running(name,
+             __salt__['virt.network_define'](name,
+                                             bridge,
+                                             forward,
+-                                            vport,
++                                            vport=vport,
+                                             tag=tag,
+                                             autostart=autostart,
+                                             start=True,
+@@ -744,11 +744,11 @@ def pool_running(name,
+                 - owner: 1000
+                 - group: 100
+             - source:
+-                - dir: samba_share
+-                - hosts:
+-                   one.example.com
+-                   two.example.com
+-                - format: cifs
++                dir: samba_share
++                hosts:
++                  - one.example.com
++                  - two.example.com
++                format: cifs
+             - autostart: True
+ 
+     '''
+@@ -761,7 +761,7 @@ def pool_running(name,
+     try:
+         info = __salt__['virt.pool_info'](name, connection=connection, username=username, password=password)
+         if info:
+-            if info['state'] == 'running':
++            if info[name]['state'] == 'running':
+                 ret['comment'] = 'Pool {0} exists and is running'.format(name)
+             else:
+                 __salt__['virt.pool_start'](name, connection=connection, username=username, password=password)
+@@ -795,6 +795,12 @@ def pool_running(name,
+                                         connection=connection,
+                                         username=username,
+                                         password=password)
++
++            __salt__['virt.pool_start'](name,
++                                        connection=connection,
++                                        username=username,
++                                        password=password)
++
+             ret['changes'][name] = 'Pool defined and started'
+             ret['comment'] = 'Pool {0} defined and started'.format(name)
+     except libvirt.libvirtError as err:
+diff --git a/tests/unit/states/test_virt.py b/tests/unit/states/test_virt.py
+index 8022989937..2904fa224d 100644
+--- a/tests/unit/states/test_virt.py
++++ b/tests/unit/states/test_virt.py
+@@ -229,7 +229,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                'result': True,
+                'comment': 'myvm is running'}
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.vm_state': MagicMock(return_value='stopped'),
++                    'virt.vm_state': MagicMock(return_value={'myvm': 'stopped'}),
+                     'virt.start': MagicMock(return_value=0),
+                 }):
+             ret.update({'changes': {'myvm': 'Domain started'},
+@@ -322,7 +322,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                                          password='supersecret')
+ 
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.vm_state': MagicMock(return_value='stopped'),
++                    'virt.vm_state': MagicMock(return_value={'myvm': 'stopped'}),
+                     'virt.start': MagicMock(side_effect=[self.mock_libvirt.libvirtError('libvirt error msg')])
+                 }):
+             ret.update({'changes': {}, 'result': False, 'comment': 'libvirt error msg'})
+@@ -330,7 +330,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         # Working update case when running
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.vm_state': MagicMock(return_value='running'),
++                    'virt.vm_state': MagicMock(return_value={'myvm': 'running'}),
+                     'virt.update': MagicMock(return_value={'definition': True, 'cpu': True})
+                 }):
+             ret.update({'changes': {'myvm': {'definition': True, 'cpu': True}},
+@@ -340,7 +340,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         # Working update case when stopped
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.vm_state': MagicMock(return_value='stopped'),
++                    'virt.vm_state': MagicMock(return_value={'myvm': 'stopped'}),
+                     'virt.start': MagicMock(return_value=0),
+                     'virt.update': MagicMock(return_value={'definition': True})
+                 }):
+@@ -351,7 +351,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         # Failed live update case
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.vm_state': MagicMock(return_value='running'),
++                    'virt.vm_state': MagicMock(return_value={'myvm': 'running'}),
+                     'virt.update': MagicMock(return_value={'definition': True, 'cpu': False, 'errors': ['some error']})
+                 }):
+             ret.update({'changes': {'myvm': {'definition': True, 'cpu': False, 'errors': ['some error']}},
+@@ -361,7 +361,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         # Failed definition update case
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.vm_state': MagicMock(return_value='running'),
++                    'virt.vm_state': MagicMock(return_value={'myvm': 'running'}),
+                     'virt.update': MagicMock(side_effect=[self.mock_libvirt.libvirtError('error message')])
+                 }):
+             ret.update({'changes': {},
+@@ -573,7 +573,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+             define_mock.assert_called_with('mynet',
+                                            'br2',
+                                            'bridge',
+-                                           'openvswitch',
++                                           vport='openvswitch',
+                                            tag=180,
+                                            autostart=False,
+                                            start=True,
+@@ -582,7 +582,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                                            password='secret')
+ 
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.network_info': MagicMock(return_value={'active': True}),
++                    'virt.network_info': MagicMock(return_value={'mynet': {'active': True}}),
+                     'virt.network_define': define_mock,
+                 }):
+             ret.update({'changes': {}, 'comment': 'Network mynet exists and is running'})
+@@ -590,7 +590,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         start_mock = MagicMock(return_value=True)
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.network_info': MagicMock(return_value={'active': False}),
++                    'virt.network_info': MagicMock(return_value={'mynet': {'active': False}}),
+                     'virt.network_start': start_mock,
+                     'virt.network_define': define_mock,
+                 }):
+@@ -666,10 +666,13 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                                               connection='myconnection',
+                                               username='user',
+                                               password='secret')
+-            mocks['start'].assert_not_called()
++            mocks['start'].assert_called_with('mypool',
++                                              connection='myconnection',
++                                              username='user',
++                                              password='secret')
+ 
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.pool_info': MagicMock(return_value={'state': 'running'}),
++                    'virt.pool_info': MagicMock(return_value={'mypool': {'state': 'running'}}),
+                 }):
+             ret.update({'changes': {}, 'comment': 'Pool mypool exists and is running'})
+             self.assertDictEqual(virt.pool_running('mypool',
+@@ -680,7 +683,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+         for mock in mocks:
+             mocks[mock].reset_mock()
+         with patch.dict(virt.__salt__, {  # pylint: disable=no-member
+-                    'virt.pool_info': MagicMock(return_value={'state': 'stopped'}),
++                    'virt.pool_info': MagicMock(return_value={'mypool': {'state': 'stopped'}}),
+                     'virt.pool_build': mocks['build'],
+                     'virt.pool_start': mocks['start']
+                 }):
+-- 
+2.20.1
+
+

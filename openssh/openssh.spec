@@ -236,9 +236,11 @@ install -m 755 contrib/ssh-copy-id %{buildroot}%{_bindir}
 install -m 644 contrib/ssh-copy-id.1 %{buildroot}%{_mandir}/man1
 sed -i -e s@%{_prefix}/libexec@%{_libexecdir}@g %{buildroot}%{_sysconfdir}/ssh/sshd_config
 
+%if 0%{?suse_version} < 1550
 # install firewall definitions
 mkdir -p %{buildroot}%{_fwdefdir}
 install -m 644 %{SOURCE7} %{buildroot}%{_fwdefdir}/sshd
+%endif
 
 # askpass wrapper
 sed -e "s,@LIBEXECDIR@,%{_libexecdir},g" < %{SOURCE6} > %{buildroot}%{_libexecdir}/ssh/ssh-askpass
@@ -318,9 +320,11 @@ rpm -q openssh-fips >& /dev/null && DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_sysconfdir}/slp.reg.d
 %config %{_sysconfdir}/slp.reg.d/ssh.reg
 %{_fillupdir}/sysconfig.ssh
+%if 0%{?suse_version} < 1550
 %dir %{_fwdir}
 %dir %{_fwdefdir}
 %config %{_fwdefdir}/sshd
+%endif
 
 %files helpers
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh

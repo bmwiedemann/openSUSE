@@ -1,7 +1,7 @@
 #
 # spec file for package uhubctl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           uhubctl
-Version:        2.0.0+git20180615.1709413
+Version:        2.1.0
 Release:        0
 Summary:        USB hub per-port power control
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://github.com/mvp/uhubctl
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/mvp/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
 

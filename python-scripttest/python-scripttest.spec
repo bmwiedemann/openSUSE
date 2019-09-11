@@ -1,7 +1,7 @@
 #
 # spec file for package python-scripttest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Helper to test command-line scripts
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://pythonpaste.org/scripttest/
+URL:            https://github.com/pypa/scripttest
 Source:         https://files.pythonhosted.org/packages/source/s/scripttest/scripttest-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -52,7 +52,6 @@ output (stdout, stderr) and any file modifications.
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %{python_sitelib}/*
 

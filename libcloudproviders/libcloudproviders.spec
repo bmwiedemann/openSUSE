@@ -16,22 +16,26 @@
 #
 
 
+%define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
+%define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           libcloudproviders
-Version:        0.2.5
+Version:        0.3.0
 Release:        0
 Summary:        Library/Client to integrate cloud storage providers
 License:        LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/External/libcloudproviders
-Source:         https://gitlab.gnome.org/External/libcloudproviders/uploads/32bb0a808c397d55b6d72c61540c0171/libcloudproviders-0.2.5.tar.xz
+Source:         https://gitlab.gnome.org/World/libcloudproviders/uploads/e97a550ebbf85e753c4df5692a86b39d/libcloudproviders-0.3.0.tar.xz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.40.0
+BuildRequires:  meson >= 0.42.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.51.2
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.51.2
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.51.2
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 Cross desktop library for desktop integration of cloud storage
@@ -44,6 +48,16 @@ Group:          System/Libraries
 %description -n libcloudproviders0
 Cross desktop library for desktop integration of cloud storage
 providers and sync tools.
+
+%package -n     typelib-1_0-CloudProviders-0_3_0
+Summary:        CloudProviders Introspection bindings
+Group:          Development/Libraries/GNOME
+
+%description -n typelib-1_0-CloudProviders-0_3_0
+Cross desktop library for desktop integration of cloud storage
+providers and sync tools.
+
+This package provides the GObject Introspection bindings for cloudproviders.
 
 %package devel
 Summary:        Development files for %{name}
@@ -76,11 +90,19 @@ developing applications that use %{name}.
 %doc CHANGELOG README.md
 %{_libdir}/libcloudproviders.so.*
 
+%files -n typelib-1_0-CloudProviders-0_3_0
+%{_typelibdir}/*.typelib
+
 %files devel
 %{_datadir}/gtk-doc/html/%{name}/
 %{_includedir}/cloudproviders/
 %{_libdir}/libcloudproviders.so
 %{_libdir}/pkgconfig/cloudproviders.pc
 %{_libdir}/*.so
+%{_girdir}/*.gir
+%dir %{_datadir}/vala
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/*.deps
+%{_datadir}/vala/vapi/*.vapi
 
 %changelog

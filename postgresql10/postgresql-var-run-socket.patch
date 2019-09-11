@@ -13,11 +13,9 @@ to be updated.  (Of course, a user who dislikes this behavior can still
 override it via postgresql.conf.)
 
 
-Index: postgresql-10beta2/src/bin/pg_upgrade/test.sh
-===================================================================
---- postgresql-10beta2.orig/src/bin/pg_upgrade/test.sh
-+++ postgresql-10beta2/src/bin/pg_upgrade/test.sh
-@@ -150,6 +150,12 @@ done
+--- src/bin/pg_upgrade/test.sh.orig
++++ src/bin/pg_upgrade/test.sh
+@@ -161,6 +161,12 @@ done
  EXTRA_REGRESS_OPTS="$EXTRA_REGRESS_OPTS --port=$PGPORT"
  export EXTRA_REGRESS_OPTS
  
@@ -27,14 +25,12 @@ Index: postgresql-10beta2/src/bin/pg_upgrade/test.sh
 +
 +POSTMASTER_OPTS="$POSTMASTER_OPTS -c unix_socket_directories='$PGHOST'"
 +
- # enable echo so the user can see what is being executed
- set -x
+ standard_initdb "$oldbindir"/initdb
+ "$oldbindir"/pg_ctl start -l "$logdir/postmaster1.log" -o "$POSTMASTER_OPTS" -w
  
-Index: postgresql-10beta2/src/backend/utils/misc/guc.c
-===================================================================
---- postgresql-10beta2.orig/src/backend/utils/misc/guc.c
-+++ postgresql-10beta2/src/backend/utils/misc/guc.c
-@@ -3427,7 +3427,7 @@ static struct config_string ConfigureNam
+--- src/backend/utils/misc/guc.c.orig
++++ src/backend/utils/misc/guc.c
+@@ -3436,7 +3436,7 @@ static struct config_string ConfigureNam
  		},
  		&Unix_socket_directories,
  #ifdef HAVE_UNIX_SOCKETS
@@ -43,11 +39,9 @@ Index: postgresql-10beta2/src/backend/utils/misc/guc.c
  #else
  		"",
  #endif
-Index: postgresql-10beta2/src/bin/initdb/initdb.c
-===================================================================
---- postgresql-10beta2.orig/src/bin/initdb/initdb.c
-+++ postgresql-10beta2/src/bin/initdb/initdb.c
-@@ -1031,7 +1031,7 @@ setup_config(void)
+--- src/bin/initdb/initdb.c.orig
++++ src/bin/initdb/initdb.c
+@@ -1039,7 +1039,7 @@ setup_config(void)
  
  #ifdef HAVE_UNIX_SOCKETS
  	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = '%s'",
@@ -56,10 +50,8 @@ Index: postgresql-10beta2/src/bin/initdb/initdb.c
  #else
  	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = ''");
  #endif
-Index: postgresql-10beta2/src/include/pg_config_manual.h
-===================================================================
---- postgresql-10beta2.orig/src/include/pg_config_manual.h
-+++ postgresql-10beta2/src/include/pg_config_manual.h
+--- src/include/pg_config_manual.h.orig
++++ src/include/pg_config_manual.h
 @@ -181,7 +181,7 @@
   * here's where to twiddle it.  You can also override this at runtime
   * with the postmaster's -k switch.

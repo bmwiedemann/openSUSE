@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -41,7 +41,8 @@ Summary:        Shared library for %{name}
 Group:          Development/Libraries/C and C++
 
 %description -n libchafa0
-Shared library for %{name}.
+The core of Chafa which converts all kinds of images, including
+animated image formats like GIFs, into ANSI/Unicode characters.
 
 %package devel
 Summary:        Development files for %{name}
@@ -55,6 +56,7 @@ Development files for %{name}.
 Summary:        Chafa documentation
 Group:          Documentation/HTML
 Recommends:     %{name}-devel
+BuildArch:      noarch
 
 %description doc
 Documentation for %{name}.
@@ -82,18 +84,16 @@ rm -rf %{buildroot}%{_libdir}/libchafa.{a,la}
 
 %files
 %license COPYING.LESSER
-%doc AUTHORS README* NEWS
+%doc README* NEWS
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n libchafa0
-%doc AUTHORS
 %license COPYING.LESSER
 %{_libdir}/lib%{name}.so.0
 %{_libdir}/lib%{name}.so.0.1.1
 
 %files devel
-%doc AUTHORS
 %license COPYING.LESSER
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc

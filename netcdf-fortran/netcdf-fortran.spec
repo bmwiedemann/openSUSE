@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,8 +21,8 @@
 %define _do_check 1
 
 %global pname netcdf-fortran
-%global ver 4.4.4
-%global _ver 4_4_4
+%global ver 4.4.5
+%global _ver 4_4_5
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
 %undefine DisOMPI3
@@ -121,8 +121,8 @@ Group:          Productivity/Scientific/Other
 Version:        %ver
 Release:        0
 %define sonum   6
-Url:            http://www.unidata.ucar.edu/software/netcdf/
-Source:         https://github.com/Unidata/netcdf-fortran/archive/v%{version}.tar.gz
+URL:            https://www.unidata.ucar.edu/software/netcdf/
+Source:         https://github.com/Unidata/netcdf-fortran/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Patch0:         netcdf4-Return-status-for-non-void-function-always.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -137,7 +137,7 @@ BuildRequires:  zlib-devel >= 1.2.5
 BuildRequires:  %{mpi_flavor}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 %endif
 BuildRequires:  hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
-BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
+BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel >= 4.6.2
 Requires:       %{libname}%{hpc_package_name_tail %_ver} = %{version}
 
 %description

@@ -1,7 +1,7 @@
 #
 # spec file for package fbi
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fbi
-Version:        2.12
+Version:        2.14
 Release:        0
 Summary:        Image Viewer for the Linux Framebuffer Console
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-Url:            http://www.kraxel.org/blog/linux/fbida/
-Source0:        http://www.kraxel.org/releases/fbida/fbida-%{version}.tar.gz
+URL:            https://www.kraxel.org/blog/linux/fbida/
+Source0:        https://www.kraxel.org/releases/fbida/fbida-%{version}.tar.gz
+Source1:        https://www.kraxel.org/releases/fbida/fbida-%{version}.tar.gz.asc
+Source2:        fbi.keyring
 BuildRequires:  curl-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  giflib-devel >= 5.1.0
@@ -40,7 +42,6 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(poppler-glib)
 Requires:       ghostscript-library
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a image viewer for Linux framebuffer devices. It has PhotoCD,
@@ -49,8 +50,8 @@ formats are piped through convert (ImageMagick), which hopefully can
 handle it.
 
 %package -n exiftran
-Summary:        Transform Digital Camera JPEG Images
-License:        LGPL-2.1+
+Summary:        Digital Camera JPEG image transformation utility
+License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 
 %description -n exiftran
@@ -62,8 +63,8 @@ information if needed (image dimension, orientation), and also rotating
 the EXIF thumbnail. It can process multiple images at once.
 
 %package -n fbpdf
-Summary:        Show PDF files on the framebuffer
-License:        LGPL-2.1+
+Summary:        PDF viewer for Linux framebuffer devices
+License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 
 %description -n fbpdf
@@ -84,25 +85,22 @@ export CFLAGS="%{optflags}"
 make %{?_smp_mflags} prefix=%{_prefix} exiftran fbi
 
 %install
-%makeinstall prefix=%{_prefix}
+%make_install prefix=%{_prefix}
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/fbgs
 %{_bindir}/fbi
 %{_mandir}/man1/fbgs.*
 %{_mandir}/man1/fbi.*
 
 %files -n exiftran
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/exiftran
 %{_mandir}/man1/exiftran.*
 
 %files -n fbpdf
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/fbpdf
 
 %changelog

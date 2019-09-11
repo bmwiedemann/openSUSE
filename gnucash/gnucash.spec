@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define __builder ninja
 Name:           gnucash
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -29,7 +29,9 @@ Source1:        %{name}-rpmlintrc
 ## Cpan-warning patch must always be applied.
 # PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
 Patch0:         gnucash-cpan-warning.patch
-BuildRequires:  cmake >= 3.0
+# PATCH-FIX-UPSTREAM Fix-CMakeLists-error.patch
+Patch1:         Fix-CMakeLists-error.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -19,25 +19,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymemcache
-Version:        2.1.1
+Version:        2.2.2
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/Pinterest/pymemcache
+URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-six
+BuildArch:      noarch
 %ifpython2
 BuildRequires:  python2-future
 Requires:       python2-future
 %endif
-BuildRequires:  python-rpm-macros
-Requires:       python-six
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -59,12 +59,12 @@ pymemcache supports the following features:
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/*

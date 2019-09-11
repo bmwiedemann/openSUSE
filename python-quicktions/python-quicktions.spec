@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-quicktions
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/scoder/quicktions
+URL:            https://github.com/scoder/quicktions
 Source:         https://files.pythonhosted.org/packages/source/q/quicktions/quicktions-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -33,7 +33,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-
 %python_subpackages
 
 %description

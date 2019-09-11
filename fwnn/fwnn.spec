@@ -43,7 +43,10 @@ Patch1:         FreeWnn-ja.patch
 Patch2:         FreeWnn-noroot.patch
 Patch7:         FreeWnn-s390x.patch
 Patch8:         FreeWnn-warnings.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  tcpd-devel
 Requires:       fwnncom = %{version}
@@ -217,6 +220,7 @@ client programs that use the Korean Input System, Free kWnn.
 # %%patch3 -p1
 
 %build
+autoreconf -fi
 %configure --prefix=%{_prefix} \
             --libdir=%{_libdir} \
             --mandir=%{_mandir} \

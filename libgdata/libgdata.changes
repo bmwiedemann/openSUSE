@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:41:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.17.11:
+  + Various fixes to the Meson port, including a soversion fix.
+  + Add support for user-specified properties of documents in
+    Drive.
+  + Bugs fixed: glgo#GNOME/libgdata#30, glgo#GNOME/libgdata#31,
+    glgo#GNOME/libgdata#32, glgo#GNOME/libgdata#33,
+    glgo#GNOME/libgdata#35, glgo#GNOME/libgdata!7,
+    glgo#GNOME/libgdata!9, glgo#GNOME/libgdata!10,
+    glgo#GNOME/libgdata!13 glgo#GNOME/libgdata!16.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 25 15:32:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.17.10:
+  + Port to Meson and drop autotools support.
+  + Migrate from intltool to gettext.
+  + Bugs fixed: glgo#GNOME/libgdata#26, glgo#GNOME/libgdata#27,
+    glgo#GNOME/libgdata!1, glgo#GNOME/libgdata!3,
+    glgo#GNOME/libgdata!4, bgo787252.
+  + Updated translations.
+- Add meson BuildRequires and macros following upstreams port.
+- Drop intltool BuildRequires, no longer needed after port.
+- Add gtk-doc BuildRequires: Build documentation.
+- Add pkgconfig(vapigen) BuildRequires: Build vapi bindings.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:34:23 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

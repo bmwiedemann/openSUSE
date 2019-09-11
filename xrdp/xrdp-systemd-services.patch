@@ -1,0 +1,36 @@
+Index: b/instfiles/xrdp-sesman.service.in
+===================================================================
+--- a/instfiles/xrdp-sesman.service.in	2019-04-18 13:38:26.000000000 +0800
++++ b/instfiles/xrdp-sesman.service.in	2019-09-10 18:16:37.077484890 +0800
+@@ -6,12 +6,9 @@ StopWhenUnneeded=true
+ BindsTo=xrdp.service
+ 
+ [Service]
+-Type=forking
+-PIDFile=@localstatedir@/run/xrdp-sesman.pid
+ EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+ EnvironmentFile=-@sysconfdir@/default/xrdp
+-ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS
+-ExecStop=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --kill
++ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --nodaemon
+ 
+ [Install]
+ WantedBy=multi-user.target
+Index: b/instfiles/xrdp.service.in
+===================================================================
+--- a/instfiles/xrdp.service.in	2019-04-18 13:38:26.000000000 +0800
++++ b/instfiles/xrdp.service.in	2019-09-10 18:16:24.737376128 +0800
+@@ -5,12 +5,9 @@ Requires=xrdp-sesman.service
+ After=network.target xrdp-sesman.service
+ 
+ [Service]
+-Type=forking
+-PIDFile=@localstatedir@/run/xrdp.pid
+ EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+ EnvironmentFile=-@sysconfdir@/default/xrdp
+-ExecStart=@sbindir@/xrdp $XRDP_OPTIONS
+-ExecStop=@sbindir@/xrdp $XRDP_OPTIONS --kill
++ExecStart=@sbindir@/xrdp $XRDP_OPTIONS --nodaemon
+ 
+ [Install]
+ WantedBy=multi-user.target

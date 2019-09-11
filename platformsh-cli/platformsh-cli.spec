@@ -17,7 +17,7 @@
 
 
 Name:           platformsh-cli
-Version:        3.46.0
+Version:        3.47.0
 Release:        0
 Summary:        Tool for managing Platform.sh services from the command line
 # See licenses.txt for dependency licenses.

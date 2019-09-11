@@ -1,7 +1,7 @@
 #
 # spec file for package libmowgli2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libmowgli2
 %define lname	libmowgli-2-0
+Version:        2.1.3
+Release:        0
 Summary:        A development framework for C (like GLib)
 License:        ISC
 Group:          Development/Libraries/C and C++
-Version:        2.1.1
-Release:        0
-Url:            http://atheme.org/projects/libmowgli.html
+URL:            https://github.com/atheme/libmowgli-2
 
-#Git-Clone:	git://github.com/atheme/libmowgli-2
 Source:         https://github.com/atheme/libmowgli-2/archive/v%version.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libopenssl-devel

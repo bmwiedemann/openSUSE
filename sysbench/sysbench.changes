@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 06:27:01 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1:
+  * regression tests: remove unnecessary error leading to
+    opt_rate.t instability.
+  * --rate mode: return a non-zero exit code on event queue
+    overflow.
+  * --rate mode: fix a bogus error about eventgen thread
+    termination
+
+-------------------------------------------------------------------
 Tue Apr  9 06:51:29 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing build dependency for Tumbleweed.

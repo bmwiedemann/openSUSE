@@ -25,7 +25,7 @@ Summary:        A Java-based GUI for drawing Feynman diagrams
 # The xslt files in the manual are Apache-2.0 licensed, GPL-2.0+ for everything else
 License:        GPL-2.0-or-later AND Apache-2.0
 Group:          Productivity/Scientific/Physics
-Url:            http://jaxodraw.sourceforge.net
+URL:            http://jaxodraw.sourceforge.net
 Source0:        http://download.sourceforge.net/%{name}/%{name}-%{major}-%{minor}-src.tar.gz
 Source1:        http://sourceforge.net/projects/jaxodraw/files/installer_files/installer-2.0-1.tar.gz
 Source2:        http://downloads.sourceforge.net/%{name}/axodraw4j_2008_11_19.tar.gz
@@ -37,10 +37,10 @@ Source5:        build.xml
 # PATCH-FEATURE-OPENSUSE jaxodraw-set-default-viewers.patch badshah400@gmail.com -- Set xdg-open as the default HTML and postscript viewers (can be changed by user)
 Patch0:         jaxodraw-set-default-viewers.patch
 BuildRequires:  ant
-BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.7.0
 BuildRequires:  javapackages-tools
+BuildRequires:  update-desktop-files
 BuildRequires:  tex(latex)
 Requires:       java >= 1.7.0
 Requires:       javapackages-tools
@@ -66,7 +66,7 @@ what-you-see-is-what-you-get interface.
 %package javadoc
 Summary:        Javadocs for %{name}
 License:        GPL-2.0-or-later
-Group:          Documentation
+Group:          Documentation/Other
 Requires:       %{name} = %{version}
 Requires:       javapackages-tools
 
@@ -131,11 +131,9 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -m 755 %{name} %{buildroot}%{_bindir}/
 
 # INSTALL .desktop file and appstream file [taken from FEDORA]
-desktop-file-install \
-  --dir=%{buildroot}%{_datadir}/applications \
-  --remove-category='Physics;Science;' \
-  --add-category='Education;Science;' \
-  installer-2.0-1/OS/Linux/%{name}.desktop
+install -D -m 644 installer-2.0-1/OS/Linux/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+%suse_update_desktop_file -r %{name} Graphics 2DGraphics VectorGraphics Education Science DataVisualization
+
 install -D -p -m 644 installer-2.0-1/OS/Linux/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 # Man page
 install -D -p -m 644 installer-2.0-1/OS/Linux/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
@@ -150,12 +148,6 @@ install -D -p -m 644 axodraw4j.sty %{buildroot}%{_datadir}/texmf/tex/latex/axodr
 
 # Register as an application to be visible in the software center
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
 
 # POST SCRIPTS IMPORTED FROM texlive-specs-a SPECFILE
 %post latex
@@ -189,7 +181,7 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files javadoc
 %{_javadocdir}/%{name}/

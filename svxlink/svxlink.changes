@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  2 18:50:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 19.09
+  Highlights:
+  * FSK metadata transmission for RF linked remote receivers
+  * Per receiver voter delay adjustment
+  * new module ModuleTrx to remote control transceivers using DTMF
+  * more flexible announcement configuration
+
+-------------------------------------------------------------------
+Thu Aug 22 12:11:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use Qt5 to build qtel
+
+-------------------------------------------------------------------
 Sun Feb 24 11:19:12 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 17.12.2

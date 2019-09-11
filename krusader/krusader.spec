@@ -1,7 +1,7 @@
 #
 # spec file for package krusader
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           krusader
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        A File Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-Url:            https://krusader.org/
+URL:            https://krusader.org/
 Source:         http://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz
 Source1:        krusader_browse_iso.desktop
 Source2:        org.kde.krusader.root-mode.desktop
-# PATCH-FIX-UPSTREAM
-Patch0:         Prefer-to-find-oktetapart-by-desktop-file.patch
 BuildRequires:  extra-cmake-modules >= 1.7.0
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
@@ -62,7 +60,6 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
 BuildRequires:  cmake(Qt5Xml) >= 5.5.0
 Requires:       kio_iso = %{version}
 Suggests:       %{name}-doc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 An advanced twin panel (commander style) file manager for KDE.
@@ -85,11 +82,9 @@ Group:          Productivity/File utilities
 An advanced twin panel (commander style) file manager for KDE.
 
 %prep
-%setup -q -n %{name}-%{version}
-%autopatch -p1
+%setup -q
 
 %build
-export RPM_OPT_FLAGS="%{optflags} -fpermissive"
 %cmake_kf5 -d build
 %make_jobs
 
@@ -103,11 +98,9 @@ cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
 %fdupes %{buildroot}
 
 %post   -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %doc README AUTHORS ChangeLog TODO
 %{_kf5_applicationsdir}/org.kde.krusader*.desktop
@@ -126,7 +119,6 @@ cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
 %{_kf5_appstreamdir}/org.kde.krusader.appdata.xml
 
 %files -n kio_iso
-%defattr(-,root,root)
 %config %{_kf5_configdir}/kio_isorc
 %{_kf5_plugindir}/kio_iso.so*
 %{_kf5_servicesdir}/iso.protocol
@@ -134,7 +126,6 @@ cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
 %{_kf5_servicesdir}/ServiceMenus/krusader_browse_iso.desktop
 
 %files doc
-%defattr(-,root,root)
 %doc %lang(en) %{_kf5_htmldir}/en/krusader
 %doc %lang(uk) %{_kf5_htmldir}/uk/krusader
 %doc %lang(sv) %{_kf5_htmldir}/sv/krusader

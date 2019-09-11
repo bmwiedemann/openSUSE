@@ -1,0 +1,4 @@
+# This is an importan test file.
+# The tests don't work without it, and other packages' tests depend on these tests being available
+addFilter("backup-file-in-package .*/jupyterlab_server/tests/schemas/@jupyterlab/shortcuts-extension/package.json.orig")
+addFilter("suse-filelist-forbidden .*/jupyterlab_server/tests/schemas/@jupyterlab/shortcuts-extension/package.json.orig")

@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon-translations
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Translation files for the Cinnamon desktop
 License:        GPL-2.0-or-later

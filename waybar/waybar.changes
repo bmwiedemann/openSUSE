@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  3 10:50:04 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- Add scdoc build dependency for generating waybar man pages
+
+-------------------------------------------------------------------
+Fri Aug 30 08:34:25 UTC 2019 - mvetter@suse.com
+
+- Update to 0.8.0:
+  Added:
+  * Manual #431
+  * Muted bluetooth format #429
+  * Support sway/mode pango markup #442
+  Changed:
+  * Fixed fmt 6.0.0 breakup #439
+  * Fixed stack-use-after-return8f9e6c1
+  * Fixed Tray dbusmenu delay and initial render #438
+
+-------------------------------------------------------------------
 Tue Aug 20 07:28:07 UTC 2019 - mvetter@suse.com
 
 - Update to 0.7.2:

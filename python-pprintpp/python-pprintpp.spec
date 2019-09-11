@@ -20,7 +20,7 @@
 Name:           python-pprintpp
 Version:        0.4.0
 Release:        0
-Summary:        A pprint that is actually pretty
+Summary:        A variant of pprint that is arguably "prettier"
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/wolever/pprintpp
@@ -35,7 +35,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-A drop-in replacement for pprint that's actually pretty.
+A drop-in replacement for pprint that is arguably prettier.
 
 %prep
 %setup -q -n pprintpp-%{version}

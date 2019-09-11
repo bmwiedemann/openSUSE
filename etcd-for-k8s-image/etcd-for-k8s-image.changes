@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:46:07 CEST 2019 - kukuk@suse.de
+
+- Add wrapper for etcd [bsc#1149392]
+
+-------------------------------------------------------------------
 Tue Jul 23 08:30:14 CEST 2019 - kukuk@suse.de
 
 - Add conflicts for etcd and etcdctl

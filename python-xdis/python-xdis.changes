@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:46:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.3:
+  * Support 3.8.0beta2; Code38 type with posonlyargcount field
+  * Add Python versions 3.4.10, 3.7.4 and 3.6.9
+  * script no longer works to install pydisasm; entry_points still works
+  * Add pypy 3.6 opcode formatting for MAKE_FUNCTION and EXTENDED_ARG
+  * Add format_CALL_function and use it or pypy36
+  * Start using "blacken" to reformat Python files
+
+-------------------------------------------------------------------
 Fri Jun 28 11:14:26 UTC 2019 - Andreas Färber <afaerber@suse.de>
 
 - Initial (v4.0.2)

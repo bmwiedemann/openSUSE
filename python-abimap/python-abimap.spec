@@ -1,7 +1,7 @@
 #
 # spec file for package python-abimap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-abimap
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        A helper for library maintainers to use symbol versioning
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ansasaki/abimap
 Source:         https://files.pythonhosted.org/packages/source/a/abimap/abimap-%{version}.tar.gz
-Patch0:         abimap-0.3.0-disable-pytest-console-script-tests.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
@@ -34,8 +33,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
-#BuildRequires:  %%{python_module pytest-console-scripts}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -57,8 +56,6 @@ Documentation for the symbol versioning helper %{name}
 %prep
 %setup -q -n abimap-%{version}
 
-%patch0 -p1
-
 %build
 %python_build
 
@@ -77,7 +74,7 @@ install -m 0644 man/abimap.1 %{buildroot}%{_mandir}/man1/
 
 %check
 make -j1 -C tests ABIMAP_NAME_VERSION="abimap-%{version}" ABIMAP_VERSION="%{version}"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD}/tests py.test-%{$python_version} -vv tests
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD}/tests py.test-%{$python_version} -vv tests -k 'not test_main'
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst

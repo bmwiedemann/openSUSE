@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Sep 9 13:11:58 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#23
+- auto-add a bugzilla number to every Weblate commit (bsc#1149754)
+- 0.17
+
+--------------------------------------------------------------------
 Thu Jun 6 08:26:54 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#22

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep  4 23:02:57 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Explicitly require perl-B-Debug because B::Debug was in core and is
+   deprecated since perl 5.28 and will generate a warning
+
+-------------------------------------------------------------------
+Mon May  6 05:05:33 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.33 - 26 April 2019
+   - Fix pod error (Mohammad S Anwar) (github 240)
+   - Work with cperl where class is a keyword (Reini Urban) (github 238)
+   - Restore correct behaviour on merging DBs (Daniel Egeberg) (github 232)
+   - Fix gcov output being on incorrect lines
+   - Fix cover -test with Build.PL (Dagfinn Ilmari Mannsåker) (github 241)
+
+-------------------------------------------------------------------
+Fri Apr 26 05:07:42 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.32 - 25 April 2019
+   - Test up to 5.26.3, 5.28.3 and  5.29.10
+   - Get dev environment working on MacOS
+   - Fix up tests with recent Math::BigInt versions (Ed J) (github 219)
+   - Add progress text when processing coverage (Christian Walde) (github 221)
+   - Optionally use Term::Size (Paul "LeoNerd" Evans) (github 228)
+   - Fix indentation in pod (Graham Knop) (github 229)
+   - Fix warn precedence (Alexandr Evstigneev) (github 231)
+
+-------------------------------------------------------------------
 Thu Dec 20 08:45:19 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - Buildrequire perl-B-Debug as B::Debug spits out a warning if used

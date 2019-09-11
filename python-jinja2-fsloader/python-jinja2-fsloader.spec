@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jinja2-fsloader
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Jinja2 template loader using PyFilesystem2
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/althonos/jinja2-fsloader/
 Source:         https://files.pythonhosted.org/packages/source/j/jinja2-fsloader/jinja2-fsloader-%{version}.zip
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 39.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -41,7 +41,10 @@ BuildRequires:  %{python_module mock}
 %python_subpackages
 
 %description
-Jinja2 template loader using PyFilesystem2.
+This library allows using PyFilesystem2 as a backend to load
+templates into Jinja2. You can take advantage of the whole fs
+ecosystem, which already implements drivers for FTP, SSH, SMB, S3,
+WebDAV servers, ZIP and Tar archives and others.
 
 %prep
 %setup -q -n jinja2-fsloader-%{version}

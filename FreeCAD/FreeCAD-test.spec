@@ -17,13 +17,14 @@
 
 
 Name:           FreeCAD-test
-Version:        0.18.1
+Version:        0.18.3
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 Url:            http://www.freecadweb.org/
 BuildRequires:  FreeCAD
+BuildRequires:  gmsh
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -33,7 +34,10 @@ This is just executing the test suite at build time.
 
 %build
 export LC_ALL="C.utf-8"
-#FreeCAD --console --write-log --log-file=/tmp/FreeCAD.log --run-test 0 || exit 1
-FreeCAD --console --run-test 0 || exit 1
+file=`mktemp`
+if ! FreeCAD --console --write-log --log-file="$file" --run-test 0; then
+  cat "$file"
+  exit 1
+fi
 
 %changelog

@@ -42,7 +42,7 @@
 %endif
 %bcond_with make_test
 Name:           php7
-Version:        7.3.8
+Version:        7.3.9
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -999,7 +999,7 @@ if test "x${vpear}" != "x%{pearver}"; then
     : Update the pearver macro and rebuild.
     exit 1
 fi
-if [ %{version} != '7.3.8' ]; then
+if [ %{version} != '7.3.9' ]; then
 echo 'check whether pcre.jit=0 workaround is still needed'
 echo 'https://bugs.php.net/bug.php?id=77260'
 exit 1

@@ -1,7 +1,7 @@
 #
 # spec file for package reiser4progs
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,13 +21,12 @@ Version:        1.2.1
 Release:        0
 %define lsuf	-1_2-1
 Summary:        Utilities for Managing the Reiser4 File System
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Filesystems
-Url:            http://sf.net/projects/reiser4/
+URL:            https://sf.net/projects/reiser4/
 
-Source:         http://downloads.sf.net/reiser4/%name-%version.tar.gz
+Source:         https://downloads.sf.net/reiser4/%name-%version.tar.gz
 Patch1:         no-static.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libaal-devel >= 1.0.7
 BuildRequires:  libtool
@@ -44,6 +43,8 @@ Summary:        Reiser4 filesystem library
 Group:          System/Libraries
 
 %description -n libreiser4%lsuf
+Reiser4 support library implementing the main filesystem logic for
+the reiser4progs utilities.
 
 %package -n libreiser4-minimal%lsuf
 Summary:        Minimal version of the Reiser4 filesystem library
@@ -55,16 +56,15 @@ that uses a reduced footprint and which has certain features disabled
 (plugin check, FNV1 hash, Rupasov hash, TEA hash and DEG hash). The
 maximum supported path length in -minimal is 256 instead of 1024.
 
-In openSUSE, all tunable features remain of libreiser4-minimal enabled.
-
 %package -n librepair%lsuf
 Summary:        Repair library for the Reiser4 filesystem
 Group:          System/Libraries
 
 %description -n librepair%lsuf
+Reiser4 support library implementing filesystem repair logic.
 
 %package devel
-Summary:        Header C files and static libs for the Reiser4 File System tools
+Summary:        Headers for the Reiser4 File System tool libraries
 Group:          Development/Libraries/C and C++
 Requires:       libreiser4%lsuf = %version
 Requires:       libreiser4-minimal%lsuf = %version
@@ -75,12 +75,11 @@ A set of header C files and static libraries for the Reiser4 file
 system tools.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 #
-# Disabling hashes only affects minimal library. The options are
+# Disabling hashes only affects the minimal library. The options are
 # a recommendation from reiser4progs's shipped .spec file.
 #
 autoreconf -fi
@@ -89,8 +88,8 @@ autoreconf -fi
 make %{?_smp_mflags}
 
 %install
-# paralel install cause missing file
-make install DESTDIR="%buildroot"
+# parallel install cause missing file
+%make_install -j1
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n libreiser4%lsuf -p /sbin/ldconfig
@@ -101,25 +100,21 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n librepair%lsuf -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc BUGS COPYING ChangeLog NEWS README TODO
+%doc BUGS ChangeLog NEWS README TODO
+%license COPYING
 %_mandir/man8/*
 %_sbindir/*reiser4
 
 %files -n libreiser4%lsuf
-%defattr(-,root,root)
 %_libdir/libreiser4-1.2.so.1*
 
 %files -n libreiser4-minimal%lsuf
-%defattr(-,root,root)
 %_libdir/libreiser4-minimal-1.2.so.1*
 
 %files -n librepair%lsuf
-%defattr(-,root,root)
 %_libdir/librepair-1.2.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/reiser4/
 %_includedir/repair/
 %_libdir/lib*.so

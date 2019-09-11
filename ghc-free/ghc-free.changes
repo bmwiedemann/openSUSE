@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 28 02:02:43 UTC 2019 - psimons@suse.com
+
+- Update free to version 5.1.2.
+  5.1.2 [2019.08.27]
+  ------------------
+  * Implement more performant versions of `some` and `many` in the `Alternative`
+    instance for the final `Alt` encoding.
+
+-------------------------------------------------------------------
 Fri May  3 02:02:58 UTC 2019 - psimons@suse.com
 
 - Update free to version 5.1.1.

@@ -29,6 +29,8 @@ Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source2:        %{name}.keyring
 Patch1:         dmidecode-fix-redfish-hostname-print-length.patch
 Patch2:         dmidecode-add-logical-non-volatile-device.patch
+Patch3:         dmidecode-only-scan-dev-mem-for-entry-point-on-x86.patch
+Patch4:         dmidecode-fix-formatting-of-tpm-table-output.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,6 +55,8 @@ the BIOS told it to.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 make CFLAGS="%{optflags}" %{?_smp_mflags}

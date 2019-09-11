@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Aug 23 11:19:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update sdl2-symvers.patch for SDL 2.0.9/2.0.10.
+
+-------------------------------------------------------------------
+Thu Aug 22 16:43:13 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE-2019-13616.patch: fix heap buffer overflow when reading
+  a crafted bmp file (boo#1141844 CVE-2019-13616).
+
+-------------------------------------------------------------------
+Sun Aug 11 04:29:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop libSDL2main.a from libSDL-2_0-devel. It is only used
+  during build.
+
+-------------------------------------------------------------------
+Wed Jul 31 08:47:44 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Jul 26 07:44:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.10
+  * The SDL_RW* macros have been turned into functions that are
+    available only in 2.0.10 and onward
+  * Added SDL_SIMDGetAlignment(), SDL_SIMDAlloc(), and
+    SDL_SIMDFree(), to allocate memory aligned for SIMD
+    operations for the current CPU
+  * Added SDL_RenderDrawPointF(), SDL_RenderDrawPointsF(),
+    SDL_RenderDrawLineF(), SDL_RenderDrawLinesF(),
+    SDL_RenderDrawRectF(), SDL_RenderDrawRectsF(),
+    SDL_RenderFillRectF(), SDL_RenderFillRectsF(),
+    SDL_RenderCopyF(), SDL_RenderCopyExF(), to allow floating
+    point precision in the SDL rendering API.
+  * Added SDL_GetTouchDeviceType() to get the type of a touch
+    device, which can be a touch screen or a trackpad in relative
+    or absolute coordinate mode.
+  * The SDL rendering API now uses batched rendering by default,
+    for improved performance
+  * Added SDL_RenderFlush() to force batched render commands to
+    execute, if you're going to mix SDL rendering with native
+    rendering
+  * Added the hint SDL_HINT_RENDER_BATCHING to control whether
+    batching should be used for the rendering API. This defaults
+    to "1" if you don't specify what rendering driver to use when
+    creating the renderer.
+  * Added the hint SDL_HINT_EVENT_LOGGING to enable logging of
+    SDL events for debugging purposes
+  * Added the hint SDL_HINT_GAMECONTROLLERCONFIG_FILE to specify
+    a file that will be loaded at joystick initialization with
+    game controller bindings
+  * Added the hint SDL_HINT_MOUSE_TOUCH_EVENTS to control
+    whether SDL will synthesize touch events from mouse events
+  * Improved handling of malformed WAVE and BMP files, fixing
+    potential security exploits (boo#1142031 CVE-2019-13626)
+  * Removed the Mir video driver in favor of Wayland
+
+- Refreshed sdl2-symvers.patch
+
+-------------------------------------------------------------------
 Sun Nov  4 14:10:15 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.9
@@ -45,12 +107,12 @@ Sun Nov  4 14:10:15 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
 -------------------------------------------------------------------
 Sun Jun 24 22:40:23 UTC 2018 - robert.munteanu@gmail.com
 
-- Add 7babfecee045.patch, fixes launching Firewatch 
+- Add 7babfecee045.patch, fixes launching Firewatch
 
 -------------------------------------------------------------------
 Fri May 11 11:08:39 UTC 2018 - crrodriguez@opensuse.org
 
-- SDL2-endian.patch: bring up patch from SDL1, use optimized 
+- SDL2-endian.patch: bring up patch from SDL1, use optimized
   byteswap routines from the C library.
 - build with --disable-3dnow, do not pass -m3dnow to the compiler
   modern cpus do not support this instructions at all.

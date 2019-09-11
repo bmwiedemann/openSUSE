@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:01:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.11:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:27:58 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
@@ -6,7 +12,7 @@ Wed Feb 28 16:27:58 UTC 2018 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 25 01:19:12 UTC 2018 - bjorn.lie@gmail.com
 
-- Update to version 1.1.10:
+- Update to version 0.1.10:
   + Updated translations.
 - Minor spec cleanup, use autosetup and make_build macro.
 

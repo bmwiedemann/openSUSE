@@ -19,9 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pytest-httpserver
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
-Summary:        A httpserver for pytest
+Summary:        A HTTP server for pytest
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.github.com/csernazs/pytest-httpserver
@@ -43,7 +43,10 @@ BuildRequires:  %{python_module requests}
 %python_subpackages
 
 %description
-pytest-httpserver is a httpserver for pytest.
+This library is for testing HTTP clients without contacting the real
+HTTP server. In other words, it is a fake HTTP server which is
+accessible via localhost can be started with the pre-defined expected
+HTTP requests and their responses.
 
 %prep
 %setup -q -n pytest_httpserver-%{version}

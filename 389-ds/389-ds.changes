@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 30 14:11:58 UTC 2019 - William Brown <william.brown@suse.com>
+
+- Change permission of ns-slapd from 750 to 755 to allow non-root
+  users to start the ldap server in containers and development
+  environments.
+
+-------------------------------------------------------------------
+Fri Aug 23 04:20:20 UTC 2019 - William Brown <william.brown@suse.com>
+
+- Temporarily back out of rust enablement due to incorrectly linked
+  library causing server startup failure.
+
+-------------------------------------------------------------------
+Wed Aug 21 01:03:31 UTC 2019 - William Brown <william.brown@suse.com>
+
+- During review an issue with libevent depedencies was noted. Change
+  to buildrequires libevent-devel.
+- During testing of versioning of features it was noticed that legacy
+  perl builds were broken.
+
+-------------------------------------------------------------------
 Thu Aug  8 05:31:18 UTC 2019 - William Brown <william.brown@suse.com>
 
 - Fix spec file discrepencies from SLE

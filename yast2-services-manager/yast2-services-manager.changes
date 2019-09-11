@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 27 18:33:52 CEST 2019 - schubi@suse.de
+
+- Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
+- 4.2.4
+
+-------------------------------------------------------------------
+Thu Aug 22 16:30:11 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.3
+
+-------------------------------------------------------------------
 Fri May 31 12:38:40 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Add metainfo (fate#319035)

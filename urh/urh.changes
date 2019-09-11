@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 25 22:05:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.5
+  * Fix bug in FSK modulation: remove spiky jumps
+  * Add missing update when deleting bits
+  * Add hidden import
+  * make subdevice and antenna for usrp configurable
+  * make analysis look better in lower resolutions
+
+-------------------------------------------------------------------
 Wed Jun 26 14:19:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.2

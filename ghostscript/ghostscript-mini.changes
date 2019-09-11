@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 12:38:45 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Use update-alternatives to get the real ghostscript binary from
+  /usr/bin/gs to /usr/bin/gs.bin and allow the gswrap package to
+  use this with ist wrapper script
+
+-------------------------------------------------------------------
 Thu Apr  4 14:37:09 CEST 2019 - jsmeix@suse.de
 
 - Version upgrade to 9.27

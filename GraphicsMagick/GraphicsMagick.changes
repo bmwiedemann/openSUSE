@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:58:44 UTC 2019 - pgajdos@suse.com
+
+- drop JPEG2000 support [bsc#1144240]
+
+-------------------------------------------------------------------
 Mon Jul 15 21:35:15 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Cleanup BuildRequires:

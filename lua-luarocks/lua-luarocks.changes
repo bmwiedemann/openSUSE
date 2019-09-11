@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 28 22:02:17 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.2.0:
+  * Bugfix: luarocks path does not change the order of
+    pre-existing path items when prepending or appending to path
+    variables
+  * Bugfix: fix directory detection on the Mac
+  * When building with --force-config, LuaRocks now never uses
+    the "project" directory, but only the forced configuration
+  * Lua libdir is now only checked for commands/platforms that
+    really need to link Lua explicitly
+  * LuaJIT is now detected dynamically
+  * RaptorJIT is now detected as a LuaJIT variant
+  * Improvements in Lua autodetection at runtime
+  * luarocks new_version: new option --dir
+  * luarocks which: report modules found via package.path and
+    package.cpath as well
+  * install.bat: Improved detection for Visual Studio 2017 and
+    higher
+
+-------------------------------------------------------------------
 Sun May 26 16:44:38 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-enable building for Lua 5.3

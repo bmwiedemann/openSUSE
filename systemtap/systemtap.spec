@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        3.3
+Version:        4.1
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -33,6 +33,8 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
 BuildRequires:  libcap-devel
@@ -94,6 +96,7 @@ This package contains the support tools for static probes.
 %patch1 -p1
 
 %build
+autoreconf -fi
 %configure \
   --disable-docs \
   --with-python3 \
@@ -102,7 +105,6 @@ make %{?_smp_mflags} V=1
 
 %install
 %make_install
-# XXX
 rm -f %{buildroot}%{_libexecdir}/systemtap/stap-server-request
 # README, AUTHORS, NEWS, man3 and all examples packaged by systemtap-docs
 # COPYING needs to stay in main for GPL
@@ -148,7 +150,7 @@ install -m 644 %{SOURCE5} %{buildroot}%{_libexecdir}/tmpfiles.d
 %{_libexecdir}/%{name}/stap-env
 %{_libexecdir}/%{name}/stap-authorize-cert
 %{_mandir}/man8/staprun.8*
-%{_mandir}/man8/systemtap.8*
+%{_mandir}/man8/systemtap-service.8*
 %{_mandir}/cs/man8/systemtap.8*
 %{_mandir}/man8/stapsh.8*
 %{_mandir}/cs/man8/stapsh.8*

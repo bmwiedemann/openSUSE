@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 06:59:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the getpatches as it does not work at all, oracle
+  removed the pages
+- Use spec-cleaner
+- Fix stripped debuginfo to make sure we can debug with libdb
+
+-------------------------------------------------------------------
 Mon Apr  9 05:32:56 UTC 2018 - fstrba@suse.com
 
 - Changed libdb_java-4_8-fix-java10-comp.patch to acount for Java

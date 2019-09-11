@@ -45,6 +45,7 @@ Bison is a parser generator similar to yacc(1).
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure \
   --disable-silent-rules \
   --disable-rpath \

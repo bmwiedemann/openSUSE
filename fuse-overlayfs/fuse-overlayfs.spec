@@ -17,7 +17,7 @@
 
 
 Name:           fuse-overlayfs
-Version:        0.4.1
+Version:        0.5.1
 Release:        0
 Summary:        FUSE implementation for overlayfs
 License:        GPL-3.0-only

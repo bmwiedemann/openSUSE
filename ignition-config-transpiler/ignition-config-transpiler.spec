@@ -1,7 +1,7 @@
 #
-# spec file for package config-transpiler
+# spec file for package ignition-config-transpiler
 #
-# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           ignition-config-transpiler
 Version:        0.1.0+git20190723.2c075d6
 Release:        0
-Group:          System/Management
-Summary:        Convert a yaml config file into a Ignition configuration
+Summary:        Tool to convert a yaml config file into a Ignition configuration
 License:        Apache-2.0
+Group:          System/Management
 URL:            https://github.com/coreos/fcct
 Source:         fcct-%{version}.tar.xz
 BuildRequires:  golang(API) >= 1.12

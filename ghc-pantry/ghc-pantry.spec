@@ -19,14 +19,13 @@
 %global pkg_name pantry
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.1
+Version:        0.1.1.2
 Release:        0
 Summary:        Content addressable Haskell package management
 License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch01:        enable-undecidable-instances-extension.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-ansi-terminal-devel
@@ -115,7 +114,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %setup -q -n %{pkg_name}-%{version}
 echo > Setup.hs 'import Distribution.Simple'
 echo >>Setup.hs 'main = defaultMain'
-%patch01 -p5
 
 %build
 %ghc_lib_build

@@ -18,9 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-%bcond_without test
 Name:           python-pycryptodomex
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
@@ -85,10 +84,8 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
 %python_exec setup.py test
-%endif
 
 %files %{python_files}
 %license LICENSE.rst

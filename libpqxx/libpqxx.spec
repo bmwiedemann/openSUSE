@@ -12,32 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define abi_ver_major 5
-%define abi_ver_minor 0
-
+%define abi_ver_major 6
+%define abi_ver_minor 4
 Name:           libpqxx
-Version:        5.0.1
+Version:        6.4.5
 Release:        0
 Summary:        C++ Client Library for PostgreSQL
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://pqxx.org/development/libpqxx/
+URL:            http://pqxx.org/development/libpqxx/
 Source:         https://github.com/jtv/libpqxx/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         libpqxx-sed-4.3.patch
-Patch1:         libpqxx-add-python3-support.patch
-Patch2:         libpqxx-add-pkg-config-support.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  postgresql-devel
-# BuildRequires:  python
+BuildRequires:  postgresql-server-devel
 BuildRequires:  python3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libpq)
 
 %description
 This is the official C++ client API for postgres.  What libpqxx brings you is
@@ -72,55 +66,34 @@ Requires:       %{name}-%{abi_ver_major}_%{abi_ver_minor} = %{version}
 This package contains header files needed for writing
 C++ programs that connect to a PostgreSQL database.
 
-%package doc
-Summary:        Documentation for %{name}
-Group:          Documentation/HTML
-BuildArch:      noarch
-
-%description doc
-This package contains documentation needed for writing
-C++ programs that connect to a PostgreSQL database.
-
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-chmod 0644 COPYING
-find . -name ".cvsignore" -delete
+%autosetup
 
 %build
-autoreconf -fiv
+chmod 0644 COPYING
+sed -i "s|env python|python3|g" tools/splitconfig
+sed -i "s|env python|python3|g" tools/template2mak.py
 %configure \
-    --enable-shared \
-    --disable-static \
-    --disable-documentation
-make %{?_smp_mflags}
+  --enable-shared \
+  --disable-static \
+  --disable-documentation
+%make_build
 
 %install
 %make_install
 rm %{buildroot}%{_libdir}/%{name}.la
-pushd doc/html/Reference
-    %fdupes -s .
-popd
 
 %post   %{abi_ver_major}_%{abi_ver_minor} -p /sbin/ldconfig
 %postun %{abi_ver_major}_%{abi_ver_minor} -p /sbin/ldconfig
 
 %files %{abi_ver_major}_%{abi_ver_minor}
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog COPYING NEWS README.md README-UPGRADE
+%license COPYING
+%doc AUTHORS NEWS README.md README-UPGRADE
 %{_libdir}/%{name}-%{abi_ver_major}.%{abi_ver_minor}.so
 
 %files devel
-%defattr(-, root, root)
 %{_libdir}/pkgconfig/libpqxx.pc
 %{_libdir}/%{name}.so
 %{_includedir}/pqxx/
-%{_bindir}/pqxx-config
-
-%files doc
-%defattr(-, root, root)
-%doc doc/html
 
 %changelog

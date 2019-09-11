@@ -3,7 +3,7 @@
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/SPIRV-Headers</param>
 		<param name="filename">spirv-headers</param>
-		<param name="revision">8b911bd</param>
+		<param name="revision">e4322e3be589e1ddd44afb20ea842a977c1319b8</param>
 		<param name="parent-tag">1.4.1</param>
 		<param name="versionformat">1.4.1.g@TAG_OFFSET@</param>
 	</service>

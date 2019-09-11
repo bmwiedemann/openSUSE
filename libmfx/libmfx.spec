@@ -1,7 +1,7 @@
 #
-# spec file for package MediaSDK
+# spec file for package libmfx
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           libmfx
 %define lname   libmfx1
@@ -22,7 +23,7 @@ Release:        0
 Summary:        The Intel Media SDK
 License:        MIT
 Group:          Development/Languages/C and C++
-Url:            https://github.com/Intel-Media-SDK/MediaSDK
+URL:            https://github.com/Intel-Media-SDK/MediaSDK
 Source0:        https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-%{version}.tar.gz
 Patch0:         cmake-sle12.patch
 BuildRequires:  cmake
@@ -34,13 +35,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
 %description
-Intel Media SDK provides a plain C API to access hardware-accelerated
+The Intel Media SDK provides a plain C API to access hardware-accelerated
 video decode, encode and filtering on Intel Gen graphics hardware
-platforms. Implementation written in C++ 11 with parts in C-for-Media
+platforms. The implementation is written in C++11, with parts in C-for-Media
 (CM).
 
 %package -n %lname
@@ -49,15 +49,15 @@ Group:          System/Libraries
 Requires:       %{name}
 
 %description -n %lname
-Intel Media SDK provides a plain C API to access hardware-accelerated
+The Intel Media SDK provides a plain C API to access hardware-accelerated
 video decode, encode and filtering on Intel Gen graphics hardware
-platforms. Implementation written in C++ 11 with parts in C-for-Media
+platforms. The implementation is written in C++11, with parts in C-for-Media
 (CM).
 
 %package devel
-Summary:  Development files Intel Media SDK
-Group:    Development/Languages/C and C++
-Requires: %lname = %version
+Summary:        Development files Intel Media SDK
+Group:          Development/Languages/C and C++
+Requires:       %lname = %version
 
 %description devel
 This package contains the development headers and pkgconfig files for
@@ -75,9 +75,9 @@ pushd build
 # libITT and cm compiler not available on openSUSE
 cmake \
 %if 0%{?suse_version} < 1500
--DCMAKE_CXX_COMPILER=/usr/bin/g++-7 \
+-DCMAKE_CXX_COMPILER="%{_bindir}/g++-7" \
 %endif
--DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_INSTALL_PREFIX="%{_prefix}" \
 -DENABLE_X11_DRI3:BOOL=ON \
 -DENABLE_WAYLAND:BOOL=ON \
 -DENABLE_TEXTLOG:BOOL=ON \
@@ -94,24 +94,22 @@ popd
 pushd build
 %make_install
 popd
-mkdir -p $RPM_BUILD_ROOT/%{_libdir}/mfx/samples
-mv $RPM_BUILD_ROOT/usr/share/mfx/samples/* \
-   $RPM_BUILD_ROOT/%{_libdir}/mfx/samples
-rmdir $RPM_BUILD_ROOT/usr/share/mfx/samples
+mkdir -p %{buildroot}/%{_libdir}/mfx/samples
+mv %{buildroot}/%{_datadir}/mfx/samples/* \
+   %{buildroot}/%{_libdir}/mfx/samples
+rmdir %{buildroot}/%{_datadir}/mfx/samples
 
 %post -n %lname -p /sbin/ldconfig
 
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc CHANGELOG.md CODEOWNERS README.md
 %license LICENSE 
-/usr/bin/asg-hevc
-/usr/bin/hevc_fei_extractor
+%{_bindir}/asg-hevc
+%{_bindir}/hevc_fei_extractor
 
 %files -n %lname
-%defattr(-,root,root)
 %{_libdir}/libmfx.so.*
 %{_libdir}/libmfxhw64.so.*
 %dir %{_libdir}/mfx
@@ -119,11 +117,11 @@ rmdir $RPM_BUILD_ROOT/usr/share/mfx/samples
 %dir %{_libdir}/mfx/samples/
 %{_libdir}/mfx/samples/*
 %exclude %{_libdir}/mfx/samples/libvpp_plugin.a
-%dir /usr/share/mfx
-/usr/share/mfx/plugins.cfg
+%dir %{_datadir}/mfx
+%{_datadir}/mfx/plugins.cfg
 
 %files devel
-/usr/include/mfx/
+%{_includedir}/mfx/
 %{_libdir}/libmfx.so
 %{_libdir}/libmfxhw64.so
 %{_libdir}/pkgconfig/*.pc

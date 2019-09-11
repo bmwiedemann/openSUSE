@@ -118,6 +118,7 @@ make %{?_smp_mflags}
 %{_libqt5_libdir}/libqwt5-qt5.so.*
 
 %files designer
+%dir %{_libqt5_plugindir}/designer/
 %{_libqt5_plugindir}/designer/*.so
 
 %files devel

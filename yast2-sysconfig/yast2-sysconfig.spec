@@ -20,7 +20,7 @@ Name:           yast2-sysconfig
 Summary:        YaST2 - Sysconfig Editor
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Url:            https://github.com/yast/yast-sysconfig
 

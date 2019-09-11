@@ -1,0 +1,374 @@
+From 4ce0bc544174fdb00482db4653fb4b0ef411e78b Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Tue, 3 Sep 2019 15:18:04 +0200
+Subject: [PATCH] Fix virt.full_info (#176)
+
+* virt.get_xml doesn't take a domain object
+
+In some places in the virt module, the get_xml function was called with
+a domain object, leading to runtime errors like the following one:
+
+'ERROR: The VM "<libvirt.virDomain object at 0x7fad04208650>" is not present'
+
+* qemu-img info needs -U flag on running VMs
+
+When getting VM disks informations on a running VM, the following error
+occured:
+
+    The minion function caused an exception: Traceback (most recent call last):
+      File "/usr/lib/python3.6/site-packages/salt/minion.py", line 1673, in _thread_return
+        return_data = minion_instance.executors[fname](opts, data, func, args, kwargs)
+      File "/usr/lib/python3.6/site-packages/salt/executors/direct_call.py", line 12, in execute
+        return func(*args, **kwargs)
+      File "/usr/lib/python3.6/site-packages/salt/modules/virt.py", line 2411, in full_info
+        'vm_info': vm_info()}
+      File "/usr/lib/python3.6/site-packages/salt/modules/virt.py", line 2020, in vm_info
+        info[domain.name()] = _info(domain)
+      File "/usr/lib/python3.6/site-packages/salt/modules/virt.py", line 2004, in _info
+        'disks': _get_disks(dom),
+      File "/usr/lib/python3.6/site-packages/salt/modules/virt.py", line 465, in _get_disks
+        output = _parse_qemu_img_info(qemu_output)
+      File "/usr/lib/python3.6/site-packages/salt/modules/virt.py", line 287, in _parse_qemu_img_info
+        raw_infos = salt.utils.json.loads(info)
+      File "/usr/lib/python3.6/site-packages/salt/utils/json.py", line 92, in loads
+        return json_module.loads(s, **kwargs)
+      File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+        return _default_decoder.decode(s)
+      File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+        obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+      File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+        raise JSONDecodeError("Expecting value", s, err.value) from None
+    json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+This is due to the fact that qemu-img can't get infos on a disk that is
+already used like by a running VM. Using the qemu-img -U flag gets it
+running in all cases.
+---
+ salt/modules/virt.py            |  10 +-
+ tests/unit/modules/test_virt.py | 242 +++++++++++++++++---------------
+ 2 files changed, 132 insertions(+), 120 deletions(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 96c17bd60b..d01b6c3f1e 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -331,7 +331,7 @@ def _get_uuid(dom):
+ 
+         salt '*' virt.get_uuid <domain>
+     '''
+-    return ElementTree.fromstring(get_xml(dom)).find('uuid').text
++    return ElementTree.fromstring(dom.XMLDesc(0)).find('uuid').text
+ 
+ 
+ def _get_on_poweroff(dom):
+@@ -344,7 +344,7 @@ def _get_on_poweroff(dom):
+ 
+         salt '*' virt.get_on_restart <domain>
+     '''
+-    node = ElementTree.fromstring(get_xml(dom)).find('on_poweroff')
++    node = ElementTree.fromstring(dom.XMLDesc(0)).find('on_poweroff')
+     return node.text if node is not None else ''
+ 
+ 
+@@ -358,7 +358,7 @@ def _get_on_reboot(dom):
+ 
+         salt '*' virt.get_on_reboot <domain>
+     '''
+-    node = ElementTree.fromstring(get_xml(dom)).find('on_reboot')
++    node = ElementTree.fromstring(dom.XMLDesc(0)).find('on_reboot')
+     return node.text if node is not None else ''
+ 
+ 
+@@ -372,7 +372,7 @@ def _get_on_crash(dom):
+ 
+         salt '*' virt.get_on_crash <domain>
+     '''
+-    node = ElementTree.fromstring(get_xml(dom)).find('on_crash')
++    node = ElementTree.fromstring(dom.XMLDesc(0)).find('on_crash')
+     return node.text if node is not None else ''
+ 
+ 
+@@ -458,7 +458,7 @@ def _get_disks(dom):
+             if driver is not None and driver.get('type') == 'qcow2':
+                 try:
+                     stdout = subprocess.Popen(
+-                                ['qemu-img', 'info', '--output', 'json', '--backing-chain', disk['file']],
++                                ['qemu-img', 'info', '-U', '--output', 'json', '--backing-chain', disk['file']],
+                                 shell=False,
+                                 stdout=subprocess.PIPE).communicate()[0]
+                     qemu_output = salt.utils.stringutils.to_str(stdout)
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index e644e62452..4d20e998d8 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -81,7 +81,9 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         mock_domain.XMLDesc.return_value = xml  # pylint: disable=no-member
+ 
+         # Return state as shutdown
+-        mock_domain.info.return_value = [4, 0, 0, 0]  # pylint: disable=no-member
++        mock_domain.info.return_value = [4, 2048 * 1024, 1024 * 1024, 2, 1234]  # pylint: disable=no-member
++        mock_domain.ID.return_value = 1
++        mock_domain.name.return_value = name
+         return mock_domain
+ 
+     def test_disk_profile_merge(self):
+@@ -1394,49 +1396,6 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+                     re.match('^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$',
+                              interface_attrs['mac'], re.I))
+ 
+-    def test_get_graphics(self):
+-        '''
+-        Test virt.get_graphics()
+-        '''
+-        xml = '''<domain type='kvm' id='7'>
+-              <name>test-vm</name>
+-              <devices>
+-                <graphics type='vnc' port='5900' autoport='yes' listen='0.0.0.0'>
+-                  <listen type='address' address='0.0.0.0'/>
+-                </graphics>
+-              </devices>
+-            </domain>
+-        '''
+-        self.set_mock_vm("test-vm", xml)
+-
+-        graphics = virt.get_graphics('test-vm')
+-        self.assertEqual('vnc', graphics['type'])
+-        self.assertEqual('5900', graphics['port'])
+-        self.assertEqual('0.0.0.0', graphics['listen'])
+-
+-    def test_get_nics(self):
+-        '''
+-        Test virt.get_nics()
+-        '''
+-        xml = '''<domain type='kvm' id='7'>
+-              <name>test-vm</name>
+-              <devices>
+-                <interface type='bridge'>
+-                  <mac address='ac:de:48:b6:8b:59'/>
+-                  <source bridge='br0'/>
+-                  <model type='virtio'/>
+-                  <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+-                </interface>
+-              </devices>
+-            </domain>
+-        '''
+-        self.set_mock_vm("test-vm", xml)
+-
+-        nics = virt.get_nics('test-vm')
+-        nic = nics[list(nics)[0]]
+-        self.assertEqual('bridge', nic['type'])
+-        self.assertEqual('ac:de:48:b6:8b:59', nic['mac'])
+-
+     def test_parse_qemu_img_info(self):
+         '''
+         Make sure that qemu-img info output is properly parsed
+@@ -1558,77 +1517,6 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+                 ],
+             }, virt._parse_qemu_img_info(qemu_infos))
+ 
+-    def test_get_disks(self):
+-        '''
+-        Test virt.get_disks()
+-        '''
+-        xml = '''<domain type='kvm' id='7'>
+-              <name>test-vm</name>
+-              <devices>
+-                <disk type='file' device='disk'>
+-                <driver name='qemu' type='qcow2'/>
+-                <source file='/disks/test.qcow2'/>
+-                <target dev='vda' bus='virtio'/>
+-              </disk>
+-              <disk type='file' device='cdrom'>
+-                <driver name='qemu' type='raw'/>
+-                <source file='/disks/test-cdrom.iso'/>
+-                <target dev='hda' bus='ide'/>
+-                <readonly/>
+-              </disk>
+-              </devices>
+-            </domain>
+-        '''
+-        self.set_mock_vm("test-vm", xml)
+-
+-        qemu_infos = '''[{
+-            "virtual-size": 25769803776,
+-            "filename": "/disks/test.qcow2",
+-            "cluster-size": 65536,
+-            "format": "qcow2",
+-            "actual-size": 217088,
+-            "format-specific": {
+-                "type": "qcow2",
+-                "data": {
+-                    "compat": "1.1",
+-                    "lazy-refcounts": false,
+-                    "refcount-bits": 16,
+-                    "corrupt": false
+-                }
+-            },
+-            "full-backing-filename": "/disks/mybacking.qcow2",
+-            "backing-filename": "mybacking.qcow2",
+-            "dirty-flag": false
+-        },
+-        {
+-            "virtual-size": 25769803776,
+-            "filename": "/disks/mybacking.qcow2",
+-            "cluster-size": 65536,
+-            "format": "qcow2",
+-            "actual-size": 393744384,
+-            "format-specific": {
+-                "type": "qcow2",
+-                "data": {
+-                    "compat": "1.1",
+-                    "lazy-refcounts": false,
+-                    "refcount-bits": 16,
+-                    "corrupt": false
+-                }
+-            },
+-            "dirty-flag": false
+-        }]'''
+-
+-        self.mock_popen.communicate.return_value = [qemu_infos]  # pylint: disable=no-member
+-        disks = virt.get_disks('test-vm')
+-        disk = disks.get('vda')
+-        self.assertEqual('/disks/test.qcow2', disk['file'])
+-        self.assertEqual('disk', disk['type'])
+-        self.assertEqual('/disks/mybacking.qcow2', disk['backing file']['file'])
+-        cdrom = disks.get('hda')
+-        self.assertEqual('/disks/test-cdrom.iso', cdrom['file'])
+-        self.assertEqual('cdrom', cdrom['type'])
+-        self.assertFalse('backing file' in cdrom.keys())
+-
+     @patch('salt.modules.virt.stop', return_value=True)
+     @patch('salt.modules.virt.undefine')
+     @patch('os.remove')
+@@ -2994,3 +2882,127 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             virt.volume_delete('default', 'missing')
+             virt.volume_delete('missing', 'test_volume')
+         self.assertEqual(mock_delete.call_count, 2)
++
++    def test_full_info(self):
++        '''
++        Test virt.full_info
++        '''
++        xml = '''<domain type='kvm' id='7'>
++              <uuid>28deee33-4859-4f23-891c-ee239cffec94</uuid>
++              <name>test-vm</name>
++              <on_poweroff>destroy</on_poweroff>
++              <on_reboot>restart</on_reboot>
++              <on_crash>destroy</on_crash>
++              <devices>
++                <disk type='file' device='disk'>
++                <driver name='qemu' type='qcow2'/>
++                <source file='/disks/test.qcow2'/>
++                <target dev='vda' bus='virtio'/>
++              </disk>
++              <disk type='file' device='cdrom'>
++                <driver name='qemu' type='raw'/>
++                <source file='/disks/test-cdrom.iso'/>
++                <target dev='hda' bus='ide'/>
++                <readonly/>
++              </disk>
++              <interface type='bridge'>
++                <mac address='ac:de:48:b6:8b:59'/>
++                <source bridge='br0'/>
++                <model type='virtio'/>
++                <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
++              </interface>
++              <graphics type='vnc' port='5900' autoport='yes' listen='0.0.0.0'>
++                <listen type='address' address='0.0.0.0'/>
++              </graphics>
++              </devices>
++            </domain>
++        '''
++        self.set_mock_vm("test-vm", xml)
++
++        qemu_infos = '''[{
++            "virtual-size": 25769803776,
++            "filename": "/disks/test.qcow2",
++            "cluster-size": 65536,
++            "format": "qcow2",
++            "actual-size": 217088,
++            "format-specific": {
++                "type": "qcow2",
++                "data": {
++                    "compat": "1.1",
++                    "lazy-refcounts": false,
++                    "refcount-bits": 16,
++                    "corrupt": false
++                }
++            },
++            "full-backing-filename": "/disks/mybacking.qcow2",
++            "backing-filename": "mybacking.qcow2",
++            "dirty-flag": false
++        },
++        {
++            "virtual-size": 25769803776,
++            "filename": "/disks/mybacking.qcow2",
++            "cluster-size": 65536,
++            "format": "qcow2",
++            "actual-size": 393744384,
++            "format-specific": {
++                "type": "qcow2",
++                "data": {
++                    "compat": "1.1",
++                    "lazy-refcounts": false,
++                    "refcount-bits": 16,
++                    "corrupt": false
++                }
++            },
++            "dirty-flag": false
++        }]'''
++
++        self.mock_popen.communicate.return_value = [qemu_infos]  # pylint: disable=no-member
++
++        self.mock_conn.getInfo = MagicMock(return_value=['x86_64', 4096, 8, 2712, 1, 2, 4, 2])
++
++        actual = virt.full_info()
++
++        # Test the hypervisor infos
++        self.assertEqual(2816, actual['freemem'])
++        self.assertEqual(6, actual['freecpu'])
++        self.assertEqual(4, actual['node_info']['cpucores'])
++        self.assertEqual(2712, actual['node_info']['cpumhz'])
++        self.assertEqual('x86_64', actual['node_info']['cpumodel'])
++        self.assertEqual(8, actual['node_info']['cpus'])
++        self.assertEqual(2, actual['node_info']['cputhreads'])
++        self.assertEqual(1, actual['node_info']['numanodes'])
++        self.assertEqual(4096, actual['node_info']['phymemory'])
++        self.assertEqual(2, actual['node_info']['sockets'])
++
++        # Test the vm_info output:
++        self.assertEqual(2, actual['vm_info']['test-vm']['cpu'])
++        self.assertEqual(1234, actual['vm_info']['test-vm']['cputime'])
++        self.assertEqual(1024 * 1024, actual['vm_info']['test-vm']['mem'])
++        self.assertEqual(2048 * 1024, actual['vm_info']['test-vm']['maxMem'])
++        self.assertEqual('shutdown', actual['vm_info']['test-vm']['state'])
++        self.assertEqual('28deee33-4859-4f23-891c-ee239cffec94', actual['vm_info']['test-vm']['uuid'])
++        self.assertEqual('destroy', actual['vm_info']['test-vm']['on_crash'])
++        self.assertEqual('restart', actual['vm_info']['test-vm']['on_reboot'])
++        self.assertEqual('destroy', actual['vm_info']['test-vm']['on_poweroff'])
++
++        # Test the nics
++        nic = actual['vm_info']['test-vm']['nics']['ac:de:48:b6:8b:59']
++        self.assertEqual('bridge', nic['type'])
++        self.assertEqual('ac:de:48:b6:8b:59', nic['mac'])
++
++        # Test the disks
++        disks = actual['vm_info']['test-vm']['disks']
++        disk = disks.get('vda')
++        self.assertEqual('/disks/test.qcow2', disk['file'])
++        self.assertEqual('disk', disk['type'])
++        self.assertEqual('/disks/mybacking.qcow2', disk['backing file']['file'])
++        cdrom = disks.get('hda')
++        self.assertEqual('/disks/test-cdrom.iso', cdrom['file'])
++        self.assertEqual('cdrom', cdrom['type'])
++        self.assertFalse('backing file' in cdrom.keys())
++
++        # Test the graphics
++        graphics = actual['vm_info']['test-vm']['graphics']
++        self.assertEqual('vnc', graphics['type'])
++        self.assertEqual('5900', graphics['port'])
++        self.assertEqual('0.0.0.0', graphics['listen'])
+-- 
+2.20.1
+
+

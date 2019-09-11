@@ -19,7 +19,7 @@
 %global pkg_name extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.17
+Version:        1.6.18
 Release:        0
 Summary:        Extra functions I use
 License:        BSD-3-Clause

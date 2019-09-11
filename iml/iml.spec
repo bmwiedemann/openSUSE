@@ -1,7 +1,7 @@
 #
 # spec file for package iml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,9 @@ Release:        0
 Summary:        An Integer Matrix Library
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Url:            https://cs.uwaterloo.ca/~astorjoh/iml.html
+URL:            https://cs.uwaterloo.ca/~astorjoh/iml.html
 
-Source:         http://www.cs.uwaterloo.ca/~astorjoh/%name-%version.tar.bz2
+Source:         https://www.cs.uwaterloo.ca/~astorjoh/%name-%version.tar.bz2
 BuildRequires:  gmp-devel >= 3.1.1
 %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -38,22 +38,20 @@ BuildRequires:  cblas-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-IML package provides efficient routines to solve nonsingular systems
-of linear equations, certified solve any shape systems of linear
-equations, and perform mod p matrix operations, such as computing
-row-echelon form, determinant, rank profile, inverse of a mod p
-matrix.
+IML package provides routines to solve nonsingular systems of linear
+equations, solve any shape systems of linear equations, and perform
+mod p matrix operations, such as computing row-echelon form,
+determinant, rank profile, inverse of a mod p matrix.
 
 %package -n %lname
 Summary:        An Integer Matrix Library
 Group:          System/Libraries
 
 %description -n %lname
-IML package provides efficient routines to solve nonsingular systems
-of linear equations, certified solve any shape systems of linear
-equations, and perform mod p matrix operations, such as computing
-row-echelon form, determinant, rank profile, inverse of a mod p
-matrix.
+IML package provides routines to solve nonsingular systems of linear
+equations, solve any shape systems of linear equations, and perform
+mod p matrix operations, such as computing row-echelon form,
+determinant, rank profile, inverse of a mod p matrix.
 
 %package devel
 Summary:        Development files for IML, an Integer Matrix Library
@@ -62,17 +60,16 @@ Requires:       %lname = %version
 Requires:       gmp-devel >= 3.3.1
 
 %description devel
-IML package provides efficient routines to solve nonsingular systems
-of linear equations, certified solve any shape systems of linear
-equations, and perform mod p matrix operations, such as computing
-row-echelon form, determinant, rank profile, inverse of a mod p
-matrix.
+IML package provides routines to solve nonsingular systems of linear
+equations, solve any shape systems of linear equations, and perform
+mod p matrix operations, such as computing row-echelon form,
+determinant, rank profile, inverse of a mod p matrix.
 
 This subpackage contains the include files and library links for   
 developing against the IML library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --enable-shared --disable-static \
@@ -89,8 +86,8 @@ make check %{?_smp_mflags}
 
 %install
 b="%buildroot"
-make install DESTDIR="$b"
-rm -f "$b/%_libdir"/*.la;
+%make_install
+rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_docdir"
 mv "$b/%_datadir/iml" "$b/%_docdir/"
 
@@ -98,11 +95,10 @@ mv "$b/%_datadir/iml" "$b/%_docdir/"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libiml.so.0*
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/iml.h
 %_libdir/libiml.so
 %_docdir/%name/

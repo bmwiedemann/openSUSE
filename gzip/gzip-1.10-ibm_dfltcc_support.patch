@@ -5,6 +5,9 @@ This patch contains the following upstream commits:
 http://git.savannah.gnu.org/cgit/gzip.git/commit/?id=7a6f9c9c3267185a299ad178607ac5e3716ab4a5
 http://git.savannah.gnu.org/cgit/gzip.git/commit/?id=be0c5581e38332b2ffa8a4cf92076cfde02872b4
 
+And the following enhancement:
+https://lists.gnu.org/archive/html/bug-gzip/2019-07/msg00000.html 
+
 -----
 
 From 7a6f9c9c3267185a299ad178607ac5e3716ab4a5 Mon Sep 17 00:00:00 2001
@@ -184,6 +187,15 @@ Index: gzip-1.10/configure.ac
  # cc -E produces incorrect asm files on SVR4, so postprocess it.
  ASCPPPOST="sed '/^ *\\#/d; s,//.*,,; s/% /%/g; s/\\. /./g'"
  AC_SUBST([ASCPPPOST])
+@@ -244,7 +260,7 @@ AC_SUBST([ASFLAGS_config])
+ AC_ISC_POSIX
+ AC_C_CONST
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS_ONCE(fcntl.h limits.h memory.h time.h)
++AC_CHECK_HEADERS_ONCE(fcntl.h limits.h memory.h time.h sys/sdt.h)
+ AC_CHECK_FUNCS_ONCE([chown fchmod fchown lstat siginterrupt])
+ AC_HEADER_DIRENT
+ AC_TYPE_SIGNAL
 Index: gzip-1.10/deflate.c
 ===================================================================
 --- gzip-1.10.orig/deflate.c
@@ -262,7 +274,7 @@ Index: gzip-1.10/dfltcc.c
 ===================================================================
 --- /dev/null
 +++ gzip-1.10/dfltcc.c
-@@ -0,0 +1,441 @@
+@@ -0,0 +1,471 @@
 +/* dfltcc.c -- compress data using IBM Z DEFLATE COMPRESSION CALL
 +
 +   Copyright (C) 2019 Free Software Foundation, Inc.
@@ -287,7 +299,7 @@ Index: gzip-1.10/dfltcc.c
 +#include <stdbool.h>
 +#include <stdlib.h>
 +
-+#ifdef DFLTCC_USDT
++#ifdef HAVE_SYS_SDT_H
 +# include <sys/sdt.h>
 +#endif
 +
@@ -304,11 +316,11 @@ Index: gzip-1.10/dfltcc.c
 +
 +typedef enum
 +{
-+ DFLTCC_CC_OK = 0,
-+ DFLTCC_CC_OP1_TOO_SHORT = 1,
-+ DFLTCC_CC_OP2_TOO_SHORT = 2,
-+ DFLTCC_CC_OP2_CORRUPT = 2,
-+ DFLTCC_CC_AGAIN = 3,
++  DFLTCC_CC_OK = 0,
++  DFLTCC_CC_OP1_TOO_SHORT = 1,
++  DFLTCC_CC_OP2_TOO_SHORT = 2,
++  DFLTCC_CC_OP2_CORRUPT = 2,
++  DFLTCC_CC_AGAIN = 3,
 +} dfltcc_cc;
 +
 +#define DFLTCC_QAF 0
@@ -316,8 +328,6 @@ Index: gzip-1.10/dfltcc.c
 +#define DFLTCC_CMPR 2
 +#define DFLTCC_XPND 4
 +#define HBT_CIRCULAR (1 << 7)
-+/* #define HB_BITS 15 */
-+/* #define HB_SIZE (1 << HB_BITS) */
 +#define DFLTCC_FACILITY 151
 +#define DFLTCC_FMT0 0
 +#define CVT_CRC32 0
@@ -420,9 +430,16 @@ Index: gzip-1.10/dfltcc.c
 +  if (env && !strcmp (env, "0"))
 +    return 0;
 +
-+  register int r0 __asm__ ("r0") = sizeof facilities / 8;
-+  __asm__ ("stfle %[facilities]\n"
-+           : [facilities] "=Q"(facilities) : [r0] "r"(r0) : "cc", "memory");
++  memset (facilities, 0, sizeof facilities);
++  register char r0 __asm__ ("r0") = sizeof facilities / 8 - 1;
++  /* STFLE is supported since z9-109 and only in z/Architecture mode.  When
++   * compiling with -m31, gcc defaults to ESA mode, however, since the kernel
++   * is 64-bit, it's always z/Architecture mode at runtime.  */
++  __asm__ (".machinemode push\n"
++           ".machinemode zarch\n"
++           "stfle %[facilities]\n"
++           ".machinemode pop\n"
++           : [facilities] "=Q"(facilities), [r0] "+r"(r0) :: "cc");
 +  return is_bit_set (facilities, DFLTCC_FACILITY);
 +}
 +
@@ -445,12 +462,12 @@ Index: gzip-1.10/dfltcc.c
 +  int cc;
 +
 +  __asm__ volatile (
-+#ifdef DFLTCC_USDT
++#ifdef HAVE_SYS_SDT_H
 +                    STAP_PROBE_ASM (zlib, dfltcc_entry,
 +                                    STAP_PROBE_ASM_TEMPLATE (5))
 +#endif
 +                    ".insn rrf,0xb9390000,%[r2],%[r4],%[hist],0\n"
-+#ifdef DFLTCC_USDT
++#ifdef HAVE_SYS_SDT_H
 +                    STAP_PROBE_ASM (zlib, dfltcc_exit,
 +                                    STAP_PROBE_ASM_TEMPLATE (5))
 +#endif
@@ -463,7 +480,7 @@ Index: gzip-1.10/dfltcc.c
 +                    : [r0] "r" (r0)
 +                      , [r1] "r" (r1)
 +                      , [hist] "r" (hist)
-+#ifdef DFLTCC_USDT
++#ifdef HAVE_SYS_SDT_H
 +                      , STAP_PROBE_ASM_OPERANDS (5, r2, r3, r4, r5, hist)
 +#endif
 +                    : "cc", "memory");
@@ -529,10 +546,16 @@ Index: gzip-1.10/dfltcc.c
 +}
 +
 +static void
-+bi_close_block (struct dfltcc_param_v0 *param)
++bi_load (struct dfltcc_param_v0 *param)
 +{
 +  bi_valid = param->sbb;
 +  bi_buf = bi_valid == 0 ? 0 : outbuf[outcnt] & ((1 << bi_valid) - 1);
++}
++
++static void
++bi_close_block (struct dfltcc_param_v0 *param)
++{
++  bi_load (param);
 +  send_bits (bi_reverse (param->eobs >> (15 - param->eobl), param->eobl),
 +             param->eobl);
 +  param->bcf = 0;
@@ -543,6 +566,7 @@ Index: gzip-1.10/dfltcc.c
 +{
 +  bi_close_block (param);
 +  bi_windup ();
++  /* bi_windup has written out a possibly partial byte, fix up the position */
 +  param->sbb = (param->sbb + param->eobl) % 8;
 +  if (param->sbb != 0)
 +    {
@@ -556,6 +580,8 @@ Index: gzip-1.10/dfltcc.c
 +{
 +  if (param->bcf)
 +    bi_close_block (param);
++  else
++    bi_load (param);
 +  send_bits (1, 3); /* BFINAL=1, BTYPE=00 */
 +  bi_windup ();
 +  put_short (0x0000);
@@ -599,7 +625,16 @@ Index: gzip-1.10/dfltcc.c
 +    {
 +      /* Flush the output data.  */
 +      if (outcnt > OUTBUFSIZ - 8)
-+        flush_outbuf ();
++        {
++          if (param->sbb == 0)
++            flush_outbuf ();
++          else
++            {
++              uch partial = outbuf[outcnt];
++              flush_outbuf ();
++              outbuf[outcnt] = partial;
++            }
++        }
 +
 +      /* Close the block.  */
 +      if (param->bcf && total_in == block_threshold && !param->cf)
@@ -625,14 +660,16 @@ Index: gzip-1.10/dfltcc.c
 +        {
 +          if (total_in == 0 && block_threshold > 0)
 +            param->htt = HTT_FIXED;
-+          else {
-+            param->htt = HTT_DYNAMIC;
-+            dfltcc_gdht (param);
-+          }
++          else
++            {
++              param->htt = HTT_DYNAMIC;
++              dfltcc_gdht (param);
++            }
 +        }
 +
 +      /* Compress inbuf into outbuf.  */
-+      dfltcc_cmpr_xpnd (param, DFLTCC_CMPR);
++      while (dfltcc_cmpr_xpnd (param, DFLTCC_CMPR) == DFLTCC_CC_AGAIN)
++        ;
 +
 +      /* Unmask the input data.  */
 +      insize += extra;
@@ -678,7 +715,9 @@ Index: gzip-1.10/dfltcc.c
 +        }
 +
 +        /* Decompress inbuf into outbuf.  */
-+        dfltcc_cc cc = dfltcc_cmpr_xpnd (param, DFLTCC_XPND);
++        dfltcc_cc cc;
++        while ((cc = dfltcc_cmpr_xpnd (param, DFLTCC_XPND)) == DFLTCC_CC_AGAIN)
++          ;
 +        if (cc == DFLTCC_CC_OK)
 +          {
 +            /* The entire deflate stream has been successfully decompressed.  */
@@ -687,6 +726,9 @@ Index: gzip-1.10/dfltcc.c
 +        if (cc == DFLTCC_CC_OP2_CORRUPT && param->oesc != 0)
 +          {
 +            /* The deflate stream is corrupted.  */
++            fprintf (stderr, "Operation-Ending-Supplemental Code 0x%x\n",
++                     param->oesc);
++            flush_outbuf ();
 +            return 2;
 +          }
 +        /* There must be more data to decompress.  */
@@ -695,7 +737,7 @@ Index: gzip-1.10/dfltcc.c
 +  if (param->sbb != 0)
 +    {
 +      /* The deflate stream has ended in the middle of a byte.  Go to
-+        the next byte boundary, so that unzip can read CRC and length.  */
++         the next byte boundary, so that unzip can read CRC and length.  */
 +      inptr++;
 +    }
 +
@@ -978,3 +1020,23 @@ Index: gzip-1.10/NEWS
  
  * Noteworthy changes in release 1.9 (2018-01-07) [stable]
  
+Index: gzip-1.10/tests/hufts
+===================================================================
+--- gzip-1.10.orig/tests/hufts
++++ gzip-1.10/tests/hufts
+@@ -28,6 +28,7 @@ returns_ 1 gzip -dc "$abs_srcdir/hufts-s
+ compare /dev/null out || fail=1
+ 
+ sed 's/.*hufts-segv.gz: /...: /' err > k; mv k err || fail=1
++grep -v 'Operation-Ending-Supplemental Code' err > k; mv k err || fail=1
+ compare exp err || fail=1
+ 
+ printf '\037\213\010\000\060\060\060\060\060\060\144\000\000\000' > bug33501 \
+@@ -35,6 +36,7 @@ printf '\037\213\010\000\060\060\060\060
+ printf '\ngzip: stdin: invalid compressed data--format violated\n' >exp33501 \
+   || framework_failure_
+ returns_ 1 gzip -d <bug33501 >out33501 2> err33501 || fail=1
++grep -v 'Operation-Ending-Supplemental Code' err33501 > k; mv k err33501 || fail=1
+ compare exp33501 err33501 || fail=1
+ 
+ Exit $fail

@@ -111,7 +111,7 @@ Requires(pre):  group(nogroup)
 %package client
 Summary:        ISC DHCP Client
 Group:          Productivity/Networking/Boot/Clients
-Requires:       %{_bindir}/host
+Requires:       %{_bindir}/getent
 Requires:       %{_bindir}/touch
 Requires:       dhcp = %{version}
 Requires:       iproute2
@@ -212,6 +212,7 @@ popd
 ##
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 CFLAGS="%{optflags} -D_GNU_SOURCE -W -Wall -Wno-unused"
 %ifarch ppc ppc64 s390x
   # bugs 134590, 171532

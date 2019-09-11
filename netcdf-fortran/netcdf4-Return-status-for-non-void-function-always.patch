@@ -12,33 +12,29 @@ status of the called function and return the status directly to the
 caller.
 
 Signed-off-by: Egbert Eich <eich@suse.de>
----
- fortran/nf_lib.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/fortran/nf_lib.c b/fortran/nf_lib.c
-index 8e93f52..e081bc3 100755
---- a/fortran/nf_lib.c
-+++ b/fortran/nf_lib.c
-@@ -171,9 +171,7 @@ nc_inq_numgrps(int ncid, int *numgrps)
+diff -Nrua a/fortran/nf_lib.c b/fortran/nf_lib.c
+--- a/fortran/nf_lib.c	2019-01-10 02:02:05.000000000 +0100
++++ b/fortran/nf_lib.c	2019-08-27 10:13:01.494856231 +0200
+@@ -171,9 +171,8 @@
  {
   int ret;
  
 - if ((ret = nc_inq_grps(ncid, numgrps, NULL))) 
--
--    return ret;
 + return nc_inq_grps(ncid, numgrps, NULL);
+ 
+-    return ret;
  }  
   
  extern int
-@@ -181,9 +179,7 @@ nc_inq_numtypes(int ncid, int *numtypes)
+@@ -181,9 +180,8 @@
  {
   int ret;
  
 - if ((ret = nc_inq_typeids(ncid, numtypes, NULL))) 
--
--    return ret;
 + return nc_inq_typeids(ncid, numtypes, NULL);
+ 
+-    return ret;
  }  
   
- #endif /*USE_NETCDF4*/
+ extern int

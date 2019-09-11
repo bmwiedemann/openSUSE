@@ -1,7 +1,7 @@
 #
 # spec file for package libsocketcan
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libsocketcan
 %define lname	libsocketcan2
-Version:        0.0.10
+Version:        0.0.11
 Release:        0
 Summary:        Library for SocketCAN
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://pengutronix.de/software/libsocketcan/download/
+URL:            https://public.pengutronix.de/software/libsocketcan/
 
 #Git-Clone:	git://git.pengutronix.de/git/tools/libsocketcan
-Source:         http://pengutronix.de/software/libsocketcan/download/%name-%version.tar.bz2
+Source:         https://public.pengutronix.de/software/libsocketcan/%name-%version.tar.bz2
 Patch3:         0003-build-avoid-overriding-user-s-CFLAGS.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
@@ -61,29 +60,25 @@ from userspace. A recent kernel with integrated SocketCAN (at least
 This package contains the libsocketcan development files.
 
 %prep
-%setup -q
-%patch -P 3 -p1
+%autosetup -p1
 
 %build
-./autogen.sh;
+./autogen.sh
 %configure --disable-static --docdir="%_docdir/%name"
-make %{?_smp_mflags};
+make %{?_smp_mflags}
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
-rm -f "$b/%_libdir"/*.la "$b/%_docdir/%name/INSTALL"
+%make_install
+rm -f "%buildroot/%_libdir"/*.la "%buildroot/%_docdir/%name/INSTALL"
 
-%post -n %lname -p /sbin/ldconfig
-
+%post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libsocketcan.so.2*
+%license LICENSE
 
 %files devel
-%defattr(-,root,root)
 %_includedir/can_netlink.h
 %_includedir/libsocketcan.h
 %_libdir/libsocketcan.so

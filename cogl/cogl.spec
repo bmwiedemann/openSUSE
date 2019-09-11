@@ -19,7 +19,7 @@
 %define with_GLES2 1
 %define with_COGLGST 0
 Name:           cogl
-Version:        1.22.4+20190423.9bc253e9
+Version:        1.22.4+8
 Release:        0
 Summary:        An object oriented GL/GLES Abstraction/Utility Layer
 License:        MIT

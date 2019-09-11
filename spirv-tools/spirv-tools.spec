@@ -16,16 +16,16 @@
 #
 
 
-%define version_unconverted 2019.4~git33
-%define lname libSPIRV-Tools-suse12
+%define version_unconverted 2019.5~git11
+%define lname libSPIRV-Tools-suse13
 
 Name:           spirv-tools
-Version:        2019.4~git33
+Version:        2019.5~git11
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/KhronosGroup/SPIRV-Tools
+URL:            https://github.com/KhronosGroup/SPIRV-Tools
 
 Source:         %name-%version.tar.xz
 Source9:        baselibs.conf
@@ -38,7 +38,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.3.7
+BuildRequires:  spirv-headers >= 1.4.1.g30
 
 %description
 The package includes an assembler, binary module parser,

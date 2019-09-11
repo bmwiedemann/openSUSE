@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{!?license: %global license %doc}
 Name:           python-shodan
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Python library and command-line utility for Shodan
 License:        MIT

@@ -1,7 +1,7 @@
 #
 # spec file for package mugshot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 Name:           mugshot
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        User profile configuration utility
 License:        GPL-3.0-only
 Group:          System/GUI/Other
-URL:            https://launchpad.net/%{name}
+URL:            https://github.com/bluesabre/mugshot
+Source:         https://github.com/bluesabre/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE disable_webcam.patch maurizio.galli@gmail.com -- remove webcam option from menu due to crashes
 Patch0:         disable_webcam.patch
-Source:         https://launchpad.net/%{name}/0.4/0.4.1/+download/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool
-BuildRequires:  python3-devel
 BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-dbus-python-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-devel
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-pexpect
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       python3
 Requires:       python3-base
@@ -50,8 +50,8 @@ Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
-Mugshot is a lightweight user configuration utility that allows you to easily 
-update personal user details and avatar.
+Mugshot is a user configuration utility that allows
+updating personal user details and avatar.
 
 %lang_package
 
@@ -93,7 +93,7 @@ popd
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{python3_sitelib}/%{name}*
 %{_datadir}/%{name}
 %{_bindir}/%{name}*

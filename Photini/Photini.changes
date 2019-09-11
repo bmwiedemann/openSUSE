@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 20 09:36:55 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2019.8.0
+  * Added new Google Photos uploader.
+  * Improved login process for both uploaders.
+  * Added GPX file (GPS track) importer to set approximate
+    locations.
+  * Made Photini extendable - can add tabs from other packages.
+  * Improved reliability of maps, uploaders, and importer.
+
+-------------------------------------------------------------------
 Tue May 21 11:05:02 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2019.5.0

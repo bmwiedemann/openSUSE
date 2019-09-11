@@ -179,7 +179,7 @@ the monolithic R-base-devel
 
 # R-core
 %package -n R-core
-Summary:        Libraries and includefiles for developing with R-base
+Summary:        The core components of R
 Group:          Development/Libraries/Other
 Version:        %{Rversion}
 Release:        %release
@@ -323,7 +323,7 @@ This package provides the core of R, i.e. all that is in base.
 
 %dir %{_libdir}/R/share/dictionaries/
 %{_libdir}/R/share/dictionaries/en_stats.rds
-%{_libdir}/R/share/licenses/
+%license %{_libdir}/R/share/licenses/
 %{_libdir}/R/share/make/
 %{_libdir}/R/share/R/
 %dir %{_libdir}/R/share/Rd/
@@ -337,7 +337,7 @@ This package provides the core of R, i.e. all that is in base.
 
 # R-core-devel
 %package -n R-core-devel
-Summary:        Libraries and includefiles for developing with R-base
+Summary:        Libraries and include files for developing with R-base
 Group:          Development/Libraries/Other
 Provides:       R-devel = %{version}
 Provides:       R-devel-macros = %{version}
@@ -859,7 +859,7 @@ This package provides R-stats, one of R-core packages.
 %defattr(-, root, root)
 
 %dir %{_libdir}/R/library/stats/
-%{_libdir}/R/library/stats/COPYRIGHTS.modreg
+%license %{_libdir}/R/library/stats/COPYRIGHTS.modreg
 %{_libdir}/R/library/stats/demo/
 %{_libdir}/R/library/stats/DESCRIPTION
 %{_libdir}/R/library/stats/help/
@@ -1228,7 +1228,7 @@ This packages provides R-foreign, one of the recommended packages.
 %defattr(-, root, root)
 
 %dir %{_libdir}/R/library/foreign/
-%{_libdir}/R/library/foreign/COPYRIGHTS
+%license %{_libdir}/R/library/foreign/COPYRIGHTS
 %{_libdir}/R/library/foreign/DESCRIPTION
 %{_libdir}/R/library/foreign/files/
 %{_libdir}/R/library/foreign/help/
@@ -1353,7 +1353,7 @@ This packages provides R-Matrix, one of the recommended packages.
 %defattr(-, root, root)
 
 %dir %{_libdir}/R/library/Matrix/
-%{_libdir}/R/library/Matrix/Copyrights
+%license %{_libdir}/R/library/Matrix/Copyrights
 %{_libdir}/R/library/Matrix/data/
 %{_libdir}/R/library/Matrix/doc/
 %{_libdir}/R/library/Matrix/DESCRIPTION
@@ -1363,7 +1363,7 @@ This packages provides R-Matrix, one of the recommended packages.
 %{_libdir}/R/library/Matrix/html/
 %{_libdir}/R/library/Matrix/INDEX
 %{_libdir}/R/library/Matrix/libs/
-%{_libdir}/R/library/Matrix/LICENCE
+%license %{_libdir}/R/library/Matrix/LICENCE
 %{_libdir}/R/library/Matrix/Meta/
 %{_libdir}/R/library/Matrix/NAMESPACE
 %{_libdir}/R/library/Matrix/NEWS.Rd
@@ -1575,7 +1575,7 @@ This packages provides R-survival, one of the recommended packages.
 %dir %{_libdir}/R/library/survival/
 %{_libdir}/R/library/survival/data/
 %{_libdir}/R/library/survival/CITATION
-%{_libdir}/R/library/survival/COPYRIGHTS
+%license %{_libdir}/R/library/survival/COPYRIGHTS
 %{_libdir}/R/library/survival/doc/
 %{_libdir}/R/library/survival/DESCRIPTION
 %{_libdir}/R/library/survival/help/

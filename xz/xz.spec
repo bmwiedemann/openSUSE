@@ -90,6 +90,7 @@ Static library for the LZMA library
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -D_REENTRANT -pipe -fPIE"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 %configure \

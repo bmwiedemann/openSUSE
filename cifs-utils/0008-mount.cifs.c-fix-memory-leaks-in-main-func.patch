@@ -1,0 +1,73 @@
+From bf7f48f4c7dcee623bd92b2e7a6ffd97a64a1138 Mon Sep 17 00:00:00 2001
+From: Jiawen Liu <liujiawen10@huawei.com>
+Date: Tue, 6 Aug 2019 10:35:29 +0800
+Subject: [PATCH] mount.cifs.c: fix memory leaks in main func
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In mount.cifs module, orgoptions and mountpoint in the main func
+point to the memory allocated by func realpath and strndup respectively.
+However, they are not freed before the main func returns so that the
+memory leaks occurred.
+
+The memory leak problem is reported by LeakSanitizer tool.
+LeakSanitizer url: "https://github.com/google/sanitizers"
+
+Here I free the pointers orgoptions and mountpoint before main
+func returns.
+
+Fixes：7549ad5e7126 ("memory leaks: caused by func realpath and strndup")
+Signed-off-by: Jiawen Liu <liujiawen10@huawei.com>
+Reported-by: Jin Du <dujin1@huawei.com>
+Reviewed-by: Saisai Zhang <zhangsaisai@huawei.com>
+Reviewed-by: Aurélien Aptel <aaptel@suse.com>
+---
+ mount.cifs.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/mount.cifs.c b/mount.cifs.c
+index b3235e4..7748d54 100644
+--- a/mount.cifs.c
++++ b/mount.cifs.c
+@@ -1942,6 +1942,9 @@ restore_privs:
+ 		gid_t __attribute__((unused)) gignore = setfsgid(oldfsgid);
+ 	}
+ 
++	if (rc) {
++		free(*mountpointp);
++	}
+ 	return rc;
+ }
+ 
+@@ -2044,8 +2047,10 @@ int main(int argc, char **argv)
+ 
+ 	/* chdir into mountpoint as soon as possible */
+ 	rc = acquire_mountpoint(&mountpoint);
+-	if (rc)
++	if (rc) {
++		free(orgoptions);
+ 		return rc;
++	}
+ 
+ 	/*
+ 	 * mount.cifs does privilege separation. Most of the code to handle
+@@ -2064,6 +2069,8 @@ int main(int argc, char **argv)
+ 		/* child */
+ 		rc = assemble_mountinfo(parsed_info, thisprogram, mountpoint,
+ 					orig_dev, orgoptions);
++		free(orgoptions);
++		free(mountpoint);
+ 		return rc;
+ 	} else {
+ 		/* parent */
+@@ -2209,5 +2216,6 @@ mount_exit:
+ 	}
+ 	free(options);
+ 	free(orgoptions);
++	free(mountpoint);
+ 	return rc;
+ }
+-- 
+2.16.4
+

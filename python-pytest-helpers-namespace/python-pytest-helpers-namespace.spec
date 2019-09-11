@@ -28,10 +28,10 @@ Source:         https://github.com/saltstack/pytest-helpers-namespace/archive/v2
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.9.1
+Requires:       python-pytest < 4
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.9.1}
+BuildRequires:  %{python_module pytest < 4}
 # /SECTION
 %python_subpackages
 

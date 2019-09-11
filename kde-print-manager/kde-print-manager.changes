@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:01:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * try to find the smb backend for cups as runtime dependency
+
+-------------------------------------------------------------------
 Fri Aug  9 08:32:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.08.0

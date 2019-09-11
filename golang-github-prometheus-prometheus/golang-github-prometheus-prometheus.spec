@@ -39,8 +39,6 @@ Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 Patch2:         0002-Default-settings.patch
 # Uyuni service discovery support
 Patch3:         0003-Add-Uyuni-service-discovery.patch
-# Add -buildmode=pie
-Patch4:         0004-prometheus-buildmode-pie.patch
 BuildRequires:  fdupes
 # Adding glibc-devel-static seems to be required for linking if building
 # with -buildmode=pie
@@ -70,22 +68,20 @@ Prometheus's main features are:
 
 %build
 %goprep github.com/prometheus/prometheus
-GOPATH=%{_builddir}/go promu build
+GOPATH=%{_builddir}/go promu build -v
 
 %install
 install -D -m0755 %{_builddir}/prometheus-%{version}/prometheus %{buildroot}/%{_bindir}/prometheus
 install -D -m0755 %{_builddir}/prometheus-%{version}/promtool %{buildroot}/%{_bindir}/promtool
-install -m 0755 -d %{buildroot}%{_datarootdir}/prometheus
-cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus.service
 
-install -m 0755 -d %{buildroot}%{_unitdir}
-install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus.service
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/prometheus/prometheus.yml
 
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus
 
-install -d -m 0755 %{buildroot}%{_sysconfdir}/prometheus
-install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/prometheus/prometheus.yml
+install -m 0755 -d %{buildroot}%{_datarootdir}/prometheus
+cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
 
 install -m 0755 -d %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.prometheus
@@ -93,11 +89,11 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 install -m 0755 -d %{buildroot}%{_libdir}/firewalld/services/
 install -m 0644 %{SOURCE4} %{buildroot}%{_libdir}/firewalld/services/prometheus.xml
 
-install -d -m 0755 %{buildroot}%{_sharedstatedir}/prometheus
-install -d -m 0755 %{buildroot}%{_sharedstatedir}/prometheus/data
-install -d -m 0755 %{buildroot}%{_sharedstatedir}/prometheus/metrics
-
-%fdupes %{buildroot}/%{_datarootdir}
+install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
+install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
+install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
+%gofilelist
+%fdupes %{buildroot}/%{_prefix}
 
 %pre
 getent group %{prometheus_group} >/dev/null || %{_sbindir}/groupadd -r %{prometheus_group}

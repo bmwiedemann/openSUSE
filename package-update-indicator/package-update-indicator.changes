@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  1 14:25:56 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5:
+  * Reduce delay before checking for updates after an "updates-
+    changed" signal
+  * Fix continuos loop of update checks if the refresh cache
+    interval is 0
+  * Add fallback icons for KDE-based themes
+
+-------------------------------------------------------------------
 Wed Jul 24 17:43:57 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - Update to version 4:

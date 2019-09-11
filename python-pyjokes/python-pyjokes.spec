@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjokes
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyjokes
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        One line jokes for programmers (jokes as a service)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/pyjokes/pyjokes
+URL:            https://github.com/pyjokes/pyjokes
 Source:         https://files.pythonhosted.org/packages/source/p/pyjokes/pyjokes-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/pyjokes/pyjokes/master/LICENCE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,7 +49,6 @@ cp %{SOURCE99} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENCE.txt
 %python3_only %{_bindir}/pyjoke

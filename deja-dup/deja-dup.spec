@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
 Source0:        https://gitlab.gnome.org/World/deja-dup/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM deja-dup-duplicity-Mark-GPGError-extern.patch -- Fix build with new vala
+Patch0:         deja-dup-duplicity-Mark-GPGError-extern.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  dbus-1

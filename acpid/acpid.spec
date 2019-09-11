@@ -17,7 +17,7 @@
 
 
 Name:           acpid
-Version:        2.0.31
+Version:        2.0.32
 Release:        0
 Summary:        Daemon to execute actions on ACPI events
 License:        GPL-2.0-or-later

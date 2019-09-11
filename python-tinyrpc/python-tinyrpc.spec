@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tinyrpc
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        A modular transport and protocol neutral RPC library
 License:        MIT

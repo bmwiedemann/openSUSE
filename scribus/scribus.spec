@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,52 +18,73 @@
 
 
 Name:           scribus
-Version:        1.4.7
+Version:        1.5.5
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Other
-Url:            http://www.scribus.net/
-Source0:        http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.xz
-Source1:        %{name}-icon24.png
-Source2:        %{name}-icon32.png
-Source3:        %{name}-icon64.png
-Source4:        %{name}-icon128.png
-Source5:        %{name}-icon256.png
-Source6:        %{name}.appdata.xml
+URL:            https://www.scribus.net/
+# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.5/
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
-Patch:          hunspell.patch
+Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+BuildRequires:  breeze5-icons
+BuildRequires:  cmake
+BuildRequires:  cups-devel
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  libcdr-devel
+BuildRequires:  libetonyek-devel
+BuildRequires:  libfreehand-devel
+BuildRequires:  libmspub-devel
+BuildRequires:  libpagemaker-devel
+BuildRequires:  libpodofo-devel
+BuildRequires:  libqxp-devel
+BuildRequires:  librevenge-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  libvisio-devel
+BuildRequires:  libwpd-devel
+BuildRequires:  libwpg-devel
+BuildRequires:  libzmf-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Core) >= 5.7.0
+BuildRequires:  cmake(Qt5Gui) >= 5.7.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.7.0
+BuildRequires:  cmake(Qt5Network) >= 5.7.0
+BuildRequires:  cmake(Qt5OpenGL) >= 5.7.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.7.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.7.0
+BuildRequires:  cmake(Qt5Xml) >= 5.7.0
+BuildRequires:  pkgconfig(GraphicsMagick)
+BuildRequires:  pkgconfig(GraphicsMagick++)
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(poppler)
+BuildRequires:  pkgconfig(zlib)
+Recommends:     python2-Pillow
+Recommends:     python-tk
+# Only available in graphics for the moment
+Recommends:     uniconvertor
+Recommends:     scribus-doc
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Not packaged anymore
+Provides:       scribus-devel = %{version}
+Obsoletes:      scribus-devel < %{version}
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
-%endif
-BuildRequires:  cairo-devel
-BuildRequires:  cmake >= 2.6.0
-BuildRequires:  cups-devel
-BuildRequires:  fdupes
-BuildRequires:  fontconfig-devel
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  hunspell-devel
-BuildRequires:  liblcms2-devel
-BuildRequires:  libpodofo-devel
-BuildRequires:  libqt4-devel >= 4.6.0
-BuildRequires:  libtiff-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  openssl-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
-
-%if 0%{?suse_version}
-Requires:       ghostscript-library
-Requires:       python-imaging
-Requires:       tk
-Suggests:       AdobeICCProfiles
-Suggests:       Uniconvertor
 %endif
 
 %description
@@ -74,104 +95,80 @@ Scribus supports publishing features such as CMYK and spot colors,
 PDF creation, Encapsulated Postscript import and export and creation
 of color separations.
 
-%package devel
-Summary:        Development files for Scribus
-Group:          Development/Libraries/Other
-Requires:       %{name} = %{version}
-Requires:       freetype2-devel
-Requires:       glibc-devel
-Requires:       libstdc++-devel
-Requires:       zlib-devel
+%package doc
+Summary:        Documentation for Scribus
+Group:          Documentation/HTML
 
-%description devel
-This package provides the development headers for Scribus, used for
-developing Scribus plugins.
+%description doc
+This package provides the documentation for Scribus.
 
 %prep
-
-%setup -q
-%patch -p1
+%autosetup -p1
+# W: wrong-script-end-of-line-encoding
+dos2unix scribus/plugins/scriptplugin/scripts/Ligatursatz.py
 
 %build
-# Delete non-free colour swatches (bnc#763586)
-rm resources/swatches/givelife_colors_license.rtf
-rm resources/swatches/GiveLife_Color_System*.xml
-# All .eps swatches come with the same non-free license by dtp studio Oldenburg.
-rm resources/swatches/*.eps
-rm resources/swatches/dtp-studio-free-palettes-license.rtf
-
-export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-export CFLAGS="$CXXFLAGS"
-
+# Don't use the %%cmake macro, it causes crashes when starting scribus
 mkdir build
 pushd build
-cmake \
+cmake .. \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  %if "%{_lib}" == "lib64"
-  -DWANT_LIB64=1 \
-  %endif
-  -DWANT_CAIRO=1 \
-  -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
-  -DCMAKE_SKIP_RPATH=TRUE \
+  -DWANT_DISTROBUILD=1 \
   -DWANT_HUNSPELL=1 \
-   ../
-
-make %{_smp_mflags}
-
-%install
-
-pushd build
-%make_install
-popd
-
-# install hi-res icons for better appearance on gnome-shell
-install -D -m 0644 %{S:1} %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/%{name}.png
-install -D -m 0644 %{S:2} %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-install -D -m 0644 %{S:3} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
-install -D -m 0644 %{S:4} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
-install -D -m 0644 %{S:5} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-
-%if 0%{?suse_version}
-%suse_update_desktop_file -r -i %{name} Qt Office Publishing WordProcessor
-
+  -DWANT_GRAPHICSMAGICK=1 \
+%if "%{_lib}" == "lib64"
+  -DWANT_LIB64=1
 %endif
 
-%fdupes %{buildroot}/%{_prefix}
+%cmake_build
+popd
 
-# INSTALL APPSTREAM METAINFO (SOURCE6)
-install -Dm0644 %{S:6} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+%install
+%cmake_install
 
-#update the mime database
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+cp %{_datadir}/icons/breeze/apps/48/scribus.svg %{buildroot}%{_datadir}/pixmaps/
 
-%post
-%mime_database_post
-%desktop_database_post
-%icon_theme_cache_post
+# These files are required at runtime to populate the help/about window
+mkdir -p %{buildroot}%{_datadir}/scribus/aboutData
+mv %{buildroot}%{_datadir}/doc/scribus/{AUTHORS,COPYING,LINKS,TRANSLATION} %{buildroot}%{_datadir}/scribus/aboutData/
 
-%postun
-%mime_database_postun
-%desktop_database_postun
-%icon_theme_cache_postun
+# Already in %%doc
+rm -f %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
+
+%fdupes %{buildroot}%{_datadir}/doc/scribus
+%fdupes %{buildroot}%{_datadir}/scribus
+
+%suse_update_desktop_file -r scribus Qt Office WordProcessor
+
+%files doc
+%license COPYING
+%doc ChangeLog README
+%dir %{_datadir}/doc/scribus/
+%lang(de) %{_datadir}/doc/scribus/de/
+%lang(it) %{_datadir}/doc/scribus/it/
+%{_datadir}/doc/scribus/en/
 
 %files
-%defattr(-,root,root)
-%{_bindir}/scribus
-%{_mandir}/man?/*.*
-%{_mandir}/*/man?/*.*
-%{_libdir}/scribus
-%{_datadir}/mime/packages/scribus.xml
-%{_datadir}/scribus
-%{_datadir}/doc/scribus
-%{_datadir}/applications/%{name}.desktop
-# This should be owned by filesystem or man, but there are only scribus files:
+%license COPYING
+%doc ChangeLog README
+%dir %{_datadir}/doc/scribus/
+%dir %{_datadir}/icons/hicolor/1024x1024
+%dir %{_datadir}/icons/hicolor/1024x1024/apps
+%lang(de) %dir %{_mandir}/de
+%lang(de) %dir %{_mandir}/de/man1
+%lang(de) %{_mandir}/de/man1/scribus.1%{?ext_man}
 %lang(pl) %dir %{_mandir}/pl
-%lang(pl) %{_mandir}/pl/man1
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
-
-%files devel
-%defattr(-,root,root)
-%{_includedir}/scribus
+%lang(pl) %dir %{_mandir}/pl/man1
+%lang(pl) %{_mandir}/pl/man1/scribus.1%{?ext_man}
+%{_bindir}/scribus
+%{_datadir}/applications/scribus.desktop
+%{_datadir}/icons/hicolor/*/apps/scribus.png
+%{_datadir}/metainfo/scribus.appdata.xml
+%{_datadir}/mime/packages/scribus.xml
+%{_datadir}/pixmaps/scribus.svg
+%{_datadir}/scribus/
+%{_libdir}/scribus/
+%{_mandir}/man1/scribus.1%{?ext_man}
 
 %changelog

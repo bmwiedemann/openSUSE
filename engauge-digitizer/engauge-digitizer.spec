@@ -17,7 +17,7 @@
 
 
 Name:           engauge-digitizer
-Version:        11.3
+Version:        12
 Release:        0
 Summary:        Ditigizer software that converts old graphs into numbers again
 License:        GPL-2.0-or-later

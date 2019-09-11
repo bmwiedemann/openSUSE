@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^(libtool|perl)\\(
 Name:           texinfo
-Version:        6.5
+Version:        6.6
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later
@@ -31,7 +31,6 @@ Source2:        %{name}.keyring
 Source10:       info-dir
 Patch1:         texinfo-zlib.patch
 Patch2:         install-info_exitcode.patch
-Patch3:         perl-5.28-fixes.patch
 BuildRequires:  automake
 BuildRequires:  help2man
 BuildRequires:  libbz2-devel
@@ -92,9 +91,8 @@ or standalone GNU Info.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch1 -p1 -b .p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 LANG=en_GB.UTF-8
@@ -145,6 +143,7 @@ make %{?_smp_mflags} check
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/info-stnd.info%{ext_info}
 
 %files -f %{name}_document.lang
+%defattr(-,root,root,0755)
 %license COPYING
 %doc ABOUT-NLS AUTHORS NEWS README TODO
 %doc doc/texinfo.tex doc/txi-*.tex
@@ -154,29 +153,33 @@ make %{?_smp_mflags} check
 %{_bindir}/texindex
 %{_bindir}/pdftexi2dvi
 %{_infodir}/texinfo*%{ext_info}
-%{_mandir}/man1/pod2texi.1%{ext_man}
-%{_mandir}/man1/texindex.1%{ext_man}
-%{_mandir}/man1/texi2dvi.1%{ext_man}
-%{_mandir}/man1/texi2pdf.1%{ext_man}
-%{_mandir}/man1/pdftexi2dvi.1%{ext_man}
-%{_mandir}/man5/texinfo.5%{ext_man}
+%{_mandir}/man1/pod2texi.1%{?ext_man}
+%{_mandir}/man1/texindex.1%{?ext_man}
+%{_mandir}/man1/texi2dvi.1%{?ext_man}
+%{_mandir}/man1/texi2pdf.1%{?ext_man}
+%{_mandir}/man1/pdftexi2dvi.1%{?ext_man}
+%{_mandir}/man5/texinfo.5%{?ext_man}
+%attr(644,root,root) %{_datadir}/texinfo/texindex.awk
 
 %files -n makeinfo -f %{name}.lang
+%defattr(-,root,root,0755)
 %{_bindir}/makeinfo
 %{_bindir}/texi2any
-%{_mandir}/man1/makeinfo.1%{ext_man}
-%{_mandir}/man1/texi2any.1%{ext_man}
+%{_mandir}/man1/makeinfo.1%{?ext_man}
+%{_mandir}/man1/texi2any.1%{?ext_man}
 %{_libdir}/texinfo
+%exclude %{_datadir}/texinfo/texindex.awk
 %{_datadir}/texinfo/
 
 %files -n info
+%defattr(-,root,root,0755)
 %config(noreplace) %verify(not md5 size mtime) %{_infodir}/dir
 /sbin/install-info
 %{_bindir}/install-info
 %{_bindir}/info
-%{_infodir}/info-stnd.info*
-%{_mandir}/man1/info.1*
-%{_mandir}/man1/install-info.1*
-%{_mandir}/man5/info.5*
+%{_infodir}/info-stnd.info%{?ext_info}
+%{_mandir}/man1/info.1%{?ext_man}
+%{_mandir}/man1/install-info.1%{?ext_man}
+%{_mandir}/man5/info.5%{?ext_man}
 
 %changelog

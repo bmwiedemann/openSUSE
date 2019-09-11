@@ -16,22 +16,24 @@
 #
 
 
-%define sover 0
+%define sover 1
 %define libname libboringssl%{sover}
-
 Name:           boringssl
-Version:        20181228
+Version:        20190523
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
 Group:          Development/Libraries/C and C++
-Url:            https://boringssl.googlesource.com/boringssl/
+URL:            https://boringssl.googlesource.com/boringssl/
 Source:         %{name}-%{version}.tar.xz
 Patch0:         add-soversion-option.patch
 Patch1:         0001-crypto-Fix-aead_test-build-on-aarch64.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  go
+BuildRequires:  libunwind-devel
+BuildRequires:  ninja
+ExclusiveArch:  %{ix86} x86_64 aarch64
 
 %description
 BoringSSL is an implementation of the Secure Sockets Layer (SSL) and
@@ -62,11 +64,13 @@ derived from OpenSSL.
 %patch1 -p1
 
 %build
+%define _lto_cflags %{nil}
+%define __builder ninja
 %cmake \
-    -DCMAKE_C_FLAGS="%{optflags} -pthread" \
-    -DCMAKE_CXX_FLAGS="%{optflags} -pthread" \
-    -DSOVERSION=1
-%make_jobs
+  -DCMAKE_C_FLAGS="%{optflags} -pthread" \
+  -DCMAKE_CXX_FLAGS="%{optflags} -pthread" \
+  -DSOVERSION=%{sover}
+%cmake_build
 
 %install
 install -D -m0755 build/crypto/libcrypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so.%{sover}

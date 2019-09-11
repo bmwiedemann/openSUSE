@@ -752,6 +752,21 @@ check_single_file()
        echo "Ignore $file"
        return 0
        ;;
+    /usr/lib*/R/library/*/DESCRIPTION)
+       # Simulate R CMD INSTALL --built-timestamp=''
+       # Built: R 3.6.1; x86_64-suse-linux-gnu; 2019-08-13 04:19:49 UTC; unix
+       sed -i -e 's|\(Built: [^;]*; [^;]*; \)20[0-9][0-9]-[01][0-9]-[0123][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9] UTC\(; .*\)$|\1\2|' old/$file new/$file
+       ;;
+    /usr/lib*/R/library/*/Meta/package.rds)
+       # R binary cache of DESCRIPTION
+       echo "Ignore $file"
+       return 0
+       ;;
+    /usr/lib*/R/library/*/R/*.rd[bx])
+       # binary cache of interpreted R code
+       echo "Ignore $file"
+       return 0
+       ;;
     */Linux*Env.Set.sh)
        # LibreOffice files, contains:
        # Generated on: Mon Apr 18 13:19:22 UTC 2011

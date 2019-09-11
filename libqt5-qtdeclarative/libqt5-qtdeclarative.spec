@@ -21,16 +21,16 @@
 %define libname libQtQuick5
 
 Name:           libqt5-qtdeclarative
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtdeclarative-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtdeclarative-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
@@ -179,19 +179,18 @@ find %{buildroot}/%{_libdir}/pkgconfig -type f -name '*pc' -print -exec perl -pi
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
-# put all the binaries to %%_bindir, add -qt5 suffix, and symlink them back to %%_qt5_bindir
+# Link all the binaries with -qt5 suffix to %{_bindir}
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_libqt5_bindir}
 for i in * ; do
   case "${i}" in
     qmlplugindump|qmlprofiler)
-      mv $i ../../../bin/${i}-qt5
-      ln -s ../../../bin/${i}-qt5 .
-      ln -s ../../../bin/${i}-qt5 $i
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}-qt5
       ;;
    *)
-      mv $i ../../../bin/
-      ln -s ../../../bin/$i .
+      # No conflict with Qt4, so keep the original name for compatibility
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}-qt5
       ;;
   esac
 done

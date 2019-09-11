@@ -93,6 +93,7 @@ echo > user.make "\
 "
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export XCFLAGS="%{optflags} -fPIC -DJBIG_NO_MEMENTO -DTOFU -DTOFU_CJK"
 make %{?_smp_mflags} build=release verbose=yes
 

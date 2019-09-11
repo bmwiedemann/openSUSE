@@ -1,7 +1,7 @@
 #
 # spec file for package libdwarf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           libdwarf
 Version:        20180129
 Release:        0
 Summary:        Access DWARF debugging information
-License:        LGPL-2.1+ and GPL-2.0+
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            http://prevanders.net/dwarf.html
 #Git-Clone:	git://git.code.sf.net/p/libdwarf/code
@@ -35,7 +35,7 @@ debugging records.
 
 %package -n libdwarf1
 Summary:        Library to access DWARF information in object files
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libdwarf1
@@ -46,7 +46,7 @@ frame description information.
 
 %package devel
 Summary:        Development files for libdwarf
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libdwarf1 = %{version}
 
@@ -58,7 +58,7 @@ debugging records.
 
 %package devel-static
 Summary:        Static library for libdwarf
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Provides:       libdwarf-devel:%{_libdir}/libdwarf.a
@@ -72,7 +72,7 @@ debugging records.
 %package tools
 Summary:        DWARF-related tools
 # Debian name for the package; provide it for cross-discoverability.
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Provides:       dwarfutils = %{version}-%{release}
 
@@ -81,7 +81,7 @@ Contains dwarfdump, a tool to access DWARF debug information.
 
 %package doc
 Summary:        Documentation for libdwarf
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Documentation/Other
 
 %description doc
@@ -91,6 +91,7 @@ Documentation for libdwarf.
 %setup -q -n dwarf-%{version}
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 ## libdwarf
 cd libdwarf

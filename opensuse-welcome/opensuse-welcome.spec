@@ -18,7 +18,7 @@
 %define __builder ninja
 
 Name:           opensuse-welcome
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT

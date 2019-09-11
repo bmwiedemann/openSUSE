@@ -1,7 +1,7 @@
 #
 # spec file for package cxxtools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define _lto_cflags %{nil}
 
 %define major   9
 Name:           cxxtools
 Version:        2.2.1
 Release:        0
 Summary:        Collection of General-purpose C++ Classes
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Url:            http://www.tntnet.org/cxxtools.html
 Source0:        http://www.tntnet.org/download/cxxtools-%{version}.tar.gz

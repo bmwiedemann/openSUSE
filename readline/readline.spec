@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -120,6 +120,7 @@ done
 %patch0 -p0 -b .0
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 LANG=POSIX
 LC_ALL=$LANG
 unset LC_CTYPE

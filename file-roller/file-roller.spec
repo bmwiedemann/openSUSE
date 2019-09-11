@@ -17,7 +17,7 @@
 
 
 Name:           file-roller
-Version:        3.32.1
+Version:        3.32.2
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later

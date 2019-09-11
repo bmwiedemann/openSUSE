@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:33:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add return-values.diff to unbreak build.
+- Use more macros for standard dirs in the build recipe.
+
+-------------------------------------------------------------------
 Thu May  2 14:22:58 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Fix initialisation of encrypted password store (bsc#1133597,
@@ -140,7 +146,7 @@ Mon Sep  2 14:07:32 UTC 2013 - jengelh@inai.de
 * New option preserve-original-fields that adds the ability to
   preserve To: and Cc: fields when replying to a message, as
   specified by original sender.
-* Added Quota subcommands for printing, forwarding, saving, etc. 
+* Added Quota subcommands for printing, forwarding, saving, etc.
 - Refresh from homepage (and save as unified): chappa-*.patch
 - Refresh for -p1: operation-may-be-undefined-warning.diff,
   fix-implicit.patch, alpine-gcc44.diff
@@ -181,7 +187,7 @@ Fri Jul 27 08:43:05 UTC 2012 - aj@suse.de
 -------------------------------------------------------------------
 Wed Feb  8 11:36:12 UTC 2012 - puzel@suse.com
 
-- clean up spec file 
+- clean up spec file
 
 -------------------------------------------------------------------
 Mon Oct 17 08:45:32 UTC 2011 - max@suse.com
@@ -217,7 +223,7 @@ Sat Sep 17 10:55:07 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Sat Sep  3 18:53:17 UTC 2011 - crrodriguez@opensuse.org
 
-- Fix build with no-add-needed 
+- Fix build with no-add-needed
 
 -------------------------------------------------------------------
 Tue Nov  3 19:09:05 UTC 2009 - coolo@novell.com
@@ -294,7 +300,7 @@ Fri Apr 25 14:40:15 CEST 2008 - bk@suse.de
 -------------------------------------------------------------------
 Fri Jan 11 17:04:18 CET 2008 - bk@suse.de
 
-- Update to alpine-1.00 and apply fixes suggested for this version 
+- Update to alpine-1.00 and apply fixes suggested for this version
 
 -------------------------------------------------------------------
 Tue Sep 25 13:05:20 CEST 2007 - bk@suse.de
@@ -305,7 +311,7 @@ Tue Sep 25 13:05:20 CEST 2007 - bk@suse.de
 Wed Sep 19 14:32:24 CEST 2007 - bk@suse.de
 
 - Remove files with unclear license from packaged sources (#308533)
-- Add small bug fix: Postponed messages which were labelled as UTF-8 
+- Add small bug fix: Postponed messages which were labelled as UTF-8
 - Spec file cleanup: Comments improved, obsoleted some warning flags
 
 -------------------------------------------------------------------
@@ -321,5 +327,4 @@ Thu Aug  9 12:42:41 CEST 2007 - bk@suse.de
 -------------------------------------------------------------------
 Thu Aug  2 18:14:38 CEST 2007 - bk@suse.de
 
-- initial version 0.999 + assorted feature patches and some fixes 
-
+- initial version 0.999 + assorted feature patches and some fixes

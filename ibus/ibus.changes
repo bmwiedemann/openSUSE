@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:17:58 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Apply the change on Jun. 22 again, reverted by the previous
+  change
+- Stop exporting OOO_FORCE_DESKTOP (boo#1042136)
+  * KDE4 LibreOffice VCL plugin was removed from upstream
+  * New KDE5/Qt5 VCL plugin supporting Qt IM Module will be
+    available
+  * Note only LibreOffice KDE5/Qt5 >= 6.3 supports Qt IM module
+    - For older version, please export OOO_FORCE_DESKTOP=gnome
+      in ~/.profile
+
+-------------------------------------------------------------------
+Thu Aug 29 16:22:00 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 1.5.21
+  * Enable to run ibus-setup with a different python
+  * Update ibusunicodegen.h for Unicode UCD 12.0
+  * Add ibus.its for IME's component files
+  * Make ISO 639 language names with title
+  * Keep preedit cursor_pos and visible in clearing preedit text
+  * Support long sequences and multiple output characters for
+    compose table
+    - fix boo#1138123
+  * Exit ibus-daemon with parent's death
+  * Update Wayland input-method protocol to unstable v1
+  * Indistinguishable address of ibus-daemon
+  * Update LOCALES_STRING
+  * Fix typos
+- Drop ibus-fix-check-abs-icon-path-support.patch
+  * not necessary anymore since the current Qt is enough new
+
+-------------------------------------------------------------------
+Sat Jun 22 13:13:33 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Stop exporting OOO_FORCE_DESKTOP (boo#1042136)
+  * KDE4 LibreOffice VCL plugin was removed from upstream
+  * New KDE5/Qt5 VCL plugin supporting Qt IM Module will be
+    available
+
+-------------------------------------------------------------------
 Wed May  8 09:40:05 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

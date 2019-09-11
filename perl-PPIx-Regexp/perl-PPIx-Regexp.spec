@@ -17,7 +17,7 @@
 
 
 Name:           perl-PPIx-Regexp
-Version:        0.065
+Version:        0.067
 Release:        0
 %define cpan_name PPIx-Regexp
 Summary:        Represent a regular expression of some sort
@@ -90,7 +90,6 @@ perl Build.PL installdirs=vendor
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes eg README
-%license LICENSES
+%doc Changes README
 
 %changelog

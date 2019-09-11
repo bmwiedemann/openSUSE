@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 20 20:07:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.7:
+  + Fix compatibility with Vala 0.46.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:29:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.6:
+  + Fix issue with Flickr authentication introduced in 0.30.5.
+
+-------------------------------------------------------------------
 Wed Aug 14 12:32:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.30.5:

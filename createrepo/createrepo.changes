@@ -9,6 +9,11 @@ Wed Feb 28 13:44:00 UTC 2018 - dimstar@opensuse.org
 - Fix misspelled createrepo-implementation provides.
 
 -------------------------------------------------------------------
+Sun Feb 25 11:48:26 UTC 2018 - jengelh@inai.de
+
+- Replace old $RPM_* shell variables
+
+-------------------------------------------------------------------
 Wed Feb 21 17:15:40 CET 2018 - mls@suse.de
 
 - make createrepo et al an alternative, so that createrepo_c

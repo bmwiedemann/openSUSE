@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-unikey
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@ Name:           fcitx-unikey
 Version:        0.2.7
 Release:        0
 Summary:        Vietnamese unikey support for Fcitx
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-unikey
-Source:         http://download.fcitx-im.org/fcitx-unikey/%{name}-%{version}.tar.xz
+URL:            https://gitlab.com/fcitx/fcitx-unikey
+Source:         https://download.fcitx-im.org/fcitx-unikey/%{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM lower qt5 version
-Patch:          qt5-version.patch
+Patch0:         qt5-version.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel >= 4.2.3
 BuildRequires:  fcitx-qt5-devel
@@ -34,9 +34,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{fcitx_requires}
-%if 0%{?suse_version} >= 1220
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 BuildRequires:  libqt4-devel
 %endif
 
@@ -45,15 +44,11 @@ fcitx-unikey provides support for Vietnamese unikey IM.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
-mkdir build && cd build
-CXXFLAGS+="%{optflags}" cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	..
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -62,21 +57,17 @@ make %{?_smp_mflags}
 %fdupes %{buildroot}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc COPYING
-%{_fcitx_libdir}/%{name}.so
-%if 0%{?suse_version} >= 1220
+%license COPYING
 %dir %{_fcitx_libdir}/qt
-%{_fcitx_libdir}/qt/lib%{name}-macro-editor.so
-%endif
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_fcitx_addondir}/%{name}.conf
+%{_fcitx_descdir}/%{name}.desc
 %{_fcitx_imicondir}/unikey.png
 %{_fcitx_inputmethoddir}/unikey.conf
-%{_fcitx_descdir}/%{name}.desc
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_fcitx_libdir}/%{name}.so
+%{_fcitx_libdir}/qt/lib%{name}-macro-editor.so
 
 %changelog

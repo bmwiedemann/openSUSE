@@ -26,16 +26,16 @@
 %define qt5_snapshot 0
 
 Name:           libqt5-qttools
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 QtTools Module
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
+URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qttools-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qttools-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 Source11:       designer5.desktop
@@ -59,18 +59,18 @@ Recommends:     libqt5-qtdoc-qch >= %{version}
 BuildRequires:  perl
 %endif
 BuildRequires:  xz
-Requires:       libQt5Designer5 = %{version}
-Requires:       libQt5DesignerComponents5 = %{version}
-Requires:       libQt5Help5 = %{version}
+# help files are SQLite databases, so assistant/qhelpgenerator need the SQLite plugin
 Requires:       libQt5Sql5-sqlite >= %{version}
 Requires:       libqt5-qdbus = %{version}
 Requires:       libqt5-qtpaths = %{version}
+Requires:       %{name}-qhelpgenerator = %{version}
 %requires_ge libQt5DBus5
 
 %description
-Qt is a set of libraries for developing applications.
+The QtTools modules contains some tools mostly useful for application development.
 
-This package contains base tools, like string, xml, and network handling.
+Included are QtAssistant (help browser), QtDesigner (GUI design), QDbusViewer
+and several more.
 
 %prep
 %autosetup -p1 -n %{tar_version}
@@ -78,16 +78,15 @@ This package contains base tools, like string, xml, and network handling.
 %package devel
 Summary:        Development files for the Qt5 Tools library
 Group:          Development/Libraries/X11
-Requires:       %{name} = %{version}
-%if %{with qdoc}
-Requires:       %{name}-doc = %{version}
-%endif
 Requires:       libQt5Designer5 = %{version}
 Requires:       libQt5DesignerComponents5 = %{version}
 Requires:       libQt5Help5 = %{version}
 Requires:       libqt5-linguist-devel = %{version}
 Requires:       libxslt-devel
 Requires:       pkgconfig(Qt5Xml) >= %{so_version}
+Requires:       %{name}-qhelpgenerator = %{version}
+Recommends:     %{name} = %{version}
+Recommends:     %{name}-doc = %{version}
 
 %description devel
 You need this package if you want to compile programs with qttools.
@@ -95,8 +94,8 @@ You need this package if you want to compile programs with qttools.
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 Tools library
 Group:          Development/Libraries/C and C++
-BuildArch:      noarch
 Requires:       %{name}-devel = %{version}
+BuildArch:      noarch
 
 %description private-headers-devel
 This package provides private headers of libqt5-qttools that are normally
@@ -112,11 +111,19 @@ Recommends:     %{name}-devel
 %description examples
 Examples for the libqt5-qttools module.
 
+%package example-plugins
+Summary:        Example plugins for Qt5 Designer
+Group:          Development/Libraries/X11
+Recommends:     %{name}-examples
+
+%description example-plugins
+Example plugins for Qt5 Designer, e.g. a TicTacToe and a World Clock widget.
+
 %package -n libQt5Designer5
 Summary:        Qt 5 Designer Library
 Group:          Development/Libraries/X11
-%requires_ge libQt5Widgets5
-%requires_ge libQt5Xml5
+%requires_ge    libQt5Widgets5
+%requires_ge    libQt5Xml5
 
 %description -n libQt5Designer5
 The Qt 5 Designer library.
@@ -132,19 +139,28 @@ The Qt 5 Designer Components library.
 %package -n libQt5Help5
 Summary:        Qt 5 Help Library
 Group:          Development/Libraries/X11
-%requires_ge libQt5Widgets5
-%requires_ge libQt5Sql5
-%requires_ge libQt5Network5
+%requires_ge    libQt5Network5
+%requires_ge    libQt5Sql5
+%requires_ge    libQt5Widgets5
 
 %description -n libQt5Help5
 The Qt 5 Help library.
 
+%package qhelpgenerator
+Summary:        Generator for Qt5 Help files (qch)
+Group:          Development/Libraries/X11
+# help files are SQLite databases, so assistant/qhelpgenerator need the SQLite plugin
+Requires:       libQt5Sql5-sqlite >= %{version}
+
+%description qhelpgenerator
+Binaries for generating .qch help catalogs.
+
 %package -n libqt5-linguist
 Summary:        Qt 5 Linguist Tools
 Group:          Development/Libraries/X11
-%requires_ge libQt5Widgets5
-%requires_ge libQt5Xml5
-%requires_ge libQt5PrintSupport5
+%requires_ge    libQt5PrintSupport5
+%requires_ge    libQt5Widgets5
+%requires_ge    libQt5Xml5
 
 %description -n libqt5-linguist
 The Qt 5 Linguist Tools.
@@ -159,12 +175,12 @@ Requires:       pkgconfig(Qt5Core) >= %{version}
 The Qt 5 Linguist Tools - development files.
 
 %package -n libqt5-qdbus
-Summary:        Interface to Qt applications communicating over D-Bus
+Summary:        Command line client for communication over D-Bus
 Group:          Development/Libraries/X11
 Conflicts:      %{name} < %{version}
 
 %description -n libqt5-qdbus
-Interface to Qt applications communicating over D-Bus.
+Command line client for communication over D-Bus.
 
 %package -n libqt5-qtpaths
 Summary:        Command line client to QStandardPaths
@@ -180,25 +196,22 @@ Group:          Development/Libraries/C and C++
 Provides:       libqt5-qtbase-doc = %{version}
 Obsoletes:      libqt5-qtbase-doc < %{version}
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
+%if 0%{?suse_version} < 1550
 %requires_eq    clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
+%else
+%requires_eq    libclang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
+%endif
 
 %description doc
 Qt 5 tool used by Qt Developers to generate documentation for software projects.
 
 %post -p /sbin/ldconfig
-
 %post -n libQt5Designer5 -p /sbin/ldconfig
-
 %post -n libQt5DesignerComponents5 -p /sbin/ldconfig
-
 %post -n libQt5Help5 -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
-
 %postun -n libQt5Designer5 -p /sbin/ldconfig
-
 %postun -n libQt5DesignerComponents5 -p /sbin/ldconfig
-
 %postun -n libQt5Help5 -p /sbin/ldconfig
 
 %build
@@ -212,14 +225,13 @@ mkdir .git
 
 %install
 %qmake5_install
-find %{buildroot}/%{_libdir} -type f -name '*la' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} +
-find %{buildroot}/%{_libdir} -type f -name '*pc' -print -exec perl -pi -e "s, -L$RPM_BUILD_DIR/?\S+,,g" {} + -exec sed -i -e "s,^moc_location=.*,moc_location=%{_libqt5_bindir}/moc," -e "s,uic_location=.*,uic_location=%{_libqt5_bindir}/uic," {} +
-%fdupes -s %{buildroot}/%{_libqt5_includedir}
+find %{buildroot}%{_libdir} -type f -name '*pc' -print -exec sed -i -e "s, -L%{buildroot}/?\S+,,g" -e "s,^moc_location=.*,moc_location=%{_libqt5_bindir}/moc," -e "s,uic_location=.*,uic_location=%{_libqt5_bindir}/uic," {} +
+%fdupes -s %{buildroot}%{_libqt5_includedir}
 
 # kill .la files
-rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
+find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
 
-# Link all the binaries with -qt5 suffix to %{_bindir}
+# Link all the binaries with -qt5 suffix to %%{_bindir}
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_libqt5_bindir}
 for i in * ; do
@@ -235,6 +247,10 @@ for i in * ; do
   esac
 done
 popd
+
+# Do not add dependencies on the implementation of the abstract Designer plugin
+# interface provided by the plugins, QTCREATORBUG-22886
+rm %{buildroot}%{_libqt5_libdir}/cmake/Qt5Designer/Qt5Designer_*Plugin.cmake
 
 install -D -m644 %{SOURCE11} %{buildroot}%{_datadir}/applications/designer5.desktop
 install -D -m644 %{SOURCE12} %{buildroot}%{_datadir}/applications/linguist5.desktop
@@ -255,22 +271,18 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %{_bindir}/designer*
 %{_bindir}/pixeltool*
 %{_bindir}/qdbusviewer*
-%{_bindir}/qhelpgenerator*
 %{_bindir}/qtdiag*
 %{_bindir}/qtplugininfo*
 %{_bindir}/qtattributionsscanner*
 %{_bindir}/qdistancefieldgenerator*
-%{_bindir}/qcollectiongenerator*
 %{_libqt5_bindir}/assistant*
 %{_libqt5_bindir}/designer*
 %{_libqt5_bindir}/pixeltool*
 %{_libqt5_bindir}/qdbusviewer*
-%{_libqt5_bindir}/qhelpgenerator*
 %{_libqt5_bindir}/qtdiag*
 %{_libqt5_bindir}/qtplugininfo*
 %{_libqt5_bindir}/qtattributionsscanner*
 %{_libqt5_bindir}/qdistancefieldgenerator
-%{_libqt5_bindir}/qcollectiongenerator*
 %{_datadir}/applications/assistant5.desktop
 %{_datadir}/applications/designer5.desktop
 %{_datadir}/applications/qdbusviewer5.desktop
@@ -280,7 +292,8 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %{_datadir}/icons/hicolor/*/apps/assistant5.png
 %{_datadir}/icons/hicolor/*/apps/designer5.png
 %{_datadir}/icons/hicolor/*/apps/qdbusviewer5.png
-%{_libqt5_libdir}/qt5/plugins/designer
+%dir %{_libqt5_libdir}/qt5/plugins/designer
+%{_libqt5_libdir}/qt5/plugins/designer/libqquickwidget.so
 
 %files -n libqt5-linguist
 %license LICENSE.*
@@ -334,6 +347,13 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %{_libqt5_bindir}/qdoc*
 %endif
 
+%files qhelpgenerator
+%license LICENSE.*
+%{_bindir}/qhelpgenerator*
+%{_bindir}/qcollectiongenerator*
+%{_libqt5_bindir}/qhelpgenerator*
+%{_libqt5_bindir}/qcollectiongenerator*
+
 %files private-headers-devel
 %license LICENSE.*
 %{_libqt5_includedir}/QtDesigner/%{so_version}
@@ -353,6 +373,7 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %{_libqt5_includedir}/QtUiTools
 %{_libqt5_includedir}/QtUiPlugin
 %{_libqt5_libdir}/cmake/Qt5Designer/
+%{_libqt5_libdir}/cmake/Qt5DesignerComponents/
 %{_libqt5_libdir}/cmake/Qt5Help/
 %{_libqt5_libdir}/cmake/Qt5UiTools/
 %{_libqt5_libdir}/cmake/Qt5UiPlugin/
@@ -366,5 +387,10 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %files examples
 %license LICENSE.*
 %{_libqt5_examplesdir}/
+
+%files example-plugins
+%license LICENSE.*
+%{_libqt5_libdir}/qt5/plugins/designer
+%exclude %{_libqt5_libdir}/qt5/plugins/designer/libqquickwidget.so
 
 %changelog

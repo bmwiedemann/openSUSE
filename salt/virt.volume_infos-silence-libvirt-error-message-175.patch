@@ -1,0 +1,37 @@
+From fa621d17371ea6c8eff75460755c0040fcbf13de Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Tue, 3 Sep 2019 15:17:46 +0200
+Subject: [PATCH] virt.volume_infos: silence libvirt error message (#175)
+
+Even though the volume_infos handles the libvirt exception when a volume
+is missing, libvirt was still outputting the error message in the log.
+Since this can add noise to the log only record the libvirt error
+message in debug level.
+---
+ salt/modules/virt.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 0353e6a1f5..96c17bd60b 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -5008,8 +5008,14 @@ def _is_valid_volume(vol):
+     the last pool refresh.
+     '''
+     try:
+-        # Getting info on an invalid volume raises error
++        # Getting info on an invalid volume raises error and libvirt logs an error
++        def discarder(ctxt, error):  # pylint: disable=unused-argument
++            log.debug("Ignore libvirt error: %s", error[2])
++        # Disable the libvirt error logging
++        libvirt.registerErrorHandler(discarder, None)
+         vol.info()
++        # Reenable the libvirt error logging
++        libvirt.registerErrorHandler(None, None)
+         return True
+     except libvirt.libvirtError as err:
+         return False
+-- 
+2.20.1
+
+

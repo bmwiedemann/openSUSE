@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  4 08:10:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.11:
+  + Adwaita:
+    - Add drop shadow to icons.
+    - Small color fixes.
+    - Make title buttons round.
+  + Wayland:
+    - Support xdg-output v3.
+    - Fix clipboard ownership handling.
+  + X11: Improve monitor metadata.
+  + Build: Require GLib 2.57.2.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul  4 09:00:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.10:

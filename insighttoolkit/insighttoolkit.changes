@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Sat Jul  6 18:06:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove filler wording from description.
+- Limit %fdupes to /usr subvolume.
+
+-------------------------------------------------------------------
+Tue Jul  2 13:21:01 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 4.13.2
+- Replace add_gcc8_support.patch with add_gcc9_support.patch
+- Update dcmtk-cmake.patch
+
+-------------------------------------------------------------------
+Thu May 16 08:55:49 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add missing libxml2-devel build dep (Fix Leap 15.1 and TW builds)
+
+-------------------------------------------------------------------
+Mon Jul  2 13:32:09 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add patch to add support to GCC8:
+  * add_gcc8_support.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 19:28:40 UTC 2017 - bruno@ioda-net.ch
+
+- Add _constaints file with minimal disk space of 6GB
+  Fix build on powerpc
+
+-------------------------------------------------------------------
+Mon Nov 20 12:32:06 UTC 2017 - guillaume@opensuse.org
+
+- Change group from 'Development/Libraries' to 'Development/Libraries/C and C++'
+
+-------------------------------------------------------------------
+Mon Nov 20 09:58:51 UTC 2017 - guillaume@opensuse.org
+
+- Update to 4.12.2 (Fix Tumbleweed build)
+- Remove doubleconv.patch
+
+-------------------------------------------------------------------
+Sun Oct  2 11:00:00 UTC 2016 - tzotsos@opensuse.org
+
+- Update to 4.10.0
+- Ported doubleconv.patch to new version
+- Added dcmtk-cmake.patch to revert recent git changes that work with latest dcmtk .cmake files
+
+-------------------------------------------------------------------
+Sat Oct  1 18:00:00 UTC 2016 - tzotsos@opensuse.org
+
+- python-vtk not needed and removed from spec file
+
+-------------------------------------------------------------------
+Fri Jan  1 08:07:48 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use cmake macros
+- Use spdx license and install license file
+- Use url for source
+
+----------------------------------------------------------------------------
+* Sat Dec 26 15:34:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.8.2
+
+- Update to 4.8.2
+
+----------------------------------------------------------------------------
+* Fri Aug 14 00:40:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.7.2
+
+- Update to 4.7.2
+
+----------------------------------------------------------------------------
+* Fri Feb 27 21:24:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Renamed package to insighttoolkit
+
+----------------------------------------------------------------------------
+* Wed Jan 14 01:14:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.6.0
+
+- Update to 4.6.0
+
+----------------------------------------------------------------------------
+* Sat Mar 01 23:03:00 UTC 2014 Angelos Tzotsos <tzotsos@opensuse.org> - 4.5.1
+
+- Initial build

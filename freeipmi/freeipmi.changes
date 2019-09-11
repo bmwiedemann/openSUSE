@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 22 02:21:00 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.6.4
+  o In libfreeipmi, add additional workarounds for packets that are
+    re-ordered during sensor bridging.
+  o In libfreeipmi, add additional sensor / event interpretations.
+  o In libfreeipmi, fix error return value on bridging requests.
+  o Add workaround in ipmi-sel for QuantaPlex T42D-2U motherboard,
+    whichlists a SDR record that makes no sense.
+  o Add workaround for Dell Poweredge FC830, which have an error
+    when reading the last SDR record on a motherboard.
+  o Support Supermicro X10 OEM dimm events. 
+
+-------------------------------------------------------------------
 Fri Jan 25 07:01:47 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.6.3

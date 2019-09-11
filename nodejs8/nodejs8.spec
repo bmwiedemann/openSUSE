@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs8
-Version:        8.15.1
+Version:        8.16.1
 Release:        0
 
 %define node_version_number 8
@@ -197,7 +197,7 @@ BuildRequires:  user(nobody)
 %if ! 0%{with intree_openssl}
 
 %if %node_version_number >= 8
-BuildRequires:  openssl-devel >= %{openssl_req_ver}
+BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 %else # older node doesn't support OpenSSL 1.1
 
 %if 0%{?suse_version} >= 1330
@@ -218,7 +218,7 @@ BuildRequires:  pkgconfig(icu-i18n) >= 57
 %endif
 
 %if ! 0%{with intree_nghttp2}
-BuildRequires:  libnghttp2-devel >= 1.34.0
+BuildRequires:  libnghttp2-devel >= 1.39.2
 %endif
 
 %if 0%{with valgrind_tests}
@@ -367,7 +367,7 @@ find -name *.md.orig -delete
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -Wno-class-memaccess"
+export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}

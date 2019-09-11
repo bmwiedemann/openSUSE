@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Tue Sep  3 09:18:38 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to samba 4.10.8
+  + CVE-2019-10197: user escape from share path definition;
+    (bso#14035); (bsc#1141267);
+
+-------------------------------------------------------------------
+Fri Aug 30 13:10:01 UTC 2019 - Noel Power <nopower@suse.com>
+
+- Fix build on newer systems by modifying samba.spec to use
+  consistent non-relative paths for pammodules in configure line
+  and specification of pam_winbind.so library to package.
+
+-------------------------------------------------------------------
+Tue Aug 27 14:47:44 UTC 2019 - Noel Power <nopower@suse.com>
+
+- Update to samba 4.10.7
+  + Unable to create or rename file/directory inside shares
+    configured with vfs_glusterfs_fuse module; (bso#14010).
+  + build: Allow build when '--disable-gnutls' is set; (bso#13844)
+  + samba-tool: Add 'import samba.drs_utils' to fsmo.py;
+    (bso#13973).
+  + Fix 'Error 32 determining PSOs in system' message on old DB
+    with FL upgrade; (bso#14008).
+  + s4/libnet: Fix joining a Windows pre-2008R2 DC; (bso#14021)
+  + join: Use a specific attribute order for the DsAddEntry
+    nTDSDSA object; (bso#14046).
+  + vfs_catia: Pass stat info to synthetic_smb_fname();
+    (bso#14015).
+  + lookup_name: Allow own domain lookup when flags == 0;
+    (bso#14091).
+  + s4 librpc rpc pyrpc: Ensure tevent_context deleted last;
+    (bso#13932).
+  + DEBUGC and DEBUGADDC doesn't print into a class specific log
+    file; (bso#13915).
+  + Request to keep deprecated option "server schannel",
+    VMWare Quickprep requires "auto"; (bso#13949).
+  + dbcheck: Fallback to the default tombstoneLifetime of 180 days;
+    (bso#13967).
+  + dnsProperty fails to decode values from older Windows versions;
+    (bso#13969).
+  + samba-tool: Use only one LDAP modify for dns partition fsmo
+    role transfer; (bso#13973).
+  + third_party: Update waf to version 2.0.17; (bso#13960).
+  + netcmd: Allow 'drs replicate --local' to create partitions;
+    (bso#14051).
+  + ctdb-config: Depend on /etc/ctdb/nodes file; (bso#14017).
+
+-------------------------------------------------------------------
+Wed Aug  7 13:03:55 UTC 2019 - npower <nopower@suse.com>
+
+- Prepare for use future use of kernel keyrings, modify
+  /etc/pam.d/samba to include  pam_keyinit.so; (bsc#1144059).
+
+-------------------------------------------------------------------
+Thu Aug  1 10:00:00 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Update samba-winbind script to work with systemd; (bsc#1132739);
+- Drop samba dhcpcd hook scripts
+- Update to samba 4.10.6
+  + s3: winbind: Fix crash when invoking winbind idmap scripts;
+    (bso#13956).
+  + smbd does not correctly parse arguments passed to dfree and quota
+    scripts; (bso#13964).
+  + samba-tool dns: use bytes for inet_ntop; (bso#13965).
+  + samba-tool domain provision: Fix --interactive module in python3;
+    (bso#13828).
+  + ldb_kv: Skip @ records early in a search full scan; (bso#13893).
+  + docs: Improve documentation of "lanman auth" and "ntlm auth"
+    connection; (bso#13981).
+  + python/ntacls: Use correct "state directory" smb.conf option instead
+    of "state dir"; (bso#14002).
+  + registry: Add a missing include; (bso#13840).
+  + Fix SMB guest authentication; (bso#13944).
+  + AppleDouble conversion breaks Resourceforks; (bso#13958).
+  + vfs_fruit makes direct use of syscalls like mmap() and pread();
+    (bso#13968).
+  + s3:mdssvc: Fix flex compilation error; (bso#13987).
+  + s3/vfs_glusterfs[_fuse]: Avoid using NAME_MAX directly; (bso#13872).
+  + dsdb:samdb: schemainfo update with relax control; (bso#13799).
+  + s3:util: Move static file_pload() function to lib/util; (bso#13964).
+  + smbd: Fix a panic; (bso#13957).
+  + ldap server: Generate correct referral schemes; (bso#12478).
+  + s4 dsdb/repl_meta_data: fix use after free in dsdb_audit_add_ldb_value;
+    (bso#13941).
+  + s4 dsdb: Fix use after free in samldb_rename_search_base_callback;
+    (bso#13942).
+  + dsdb/repl: we need to replicate the whole schema before we can apply it;
+    (bso#12204).
+  + ldb: Release ldb 1.5.5; (bso#12478).
+  + Schema replication fails if link crosses chunk boundary backwards;
+    (bso#13713).
+  + 'samba-tool domain schemaupgrade' uses relax control and skips the
+    schemaInfo update provision; (bso#13799).
+  + dsdb_audit: avoid printing "... remote host [Unknown] SID [(NULL SID)]
+    ..."; (bso#13916).
+  + python/ntacls: We only need security.SEC_STD_READ_CONTROL in order to
+    get the ACL; (bso#13917).
+  + s3:loadparm: Ensure to truncate FS Volume Label at multibyte boundary;
+    (bso#13947).
+  + Using Kerberos credentials to print using spoolss doesn't work;
+    (bso#13939).
+  + wafsamba: Use native waf timer; (bso#13998).
+  + ctdb-scripts: Fix tcp_tw_recycle existence check; (bso#13984).
+
+-------------------------------------------------------------------
 Wed Jun 19 09:20:12 UTC 2019 - Noel Power <nopower@suse.com>
 
 - Update to samba-4.10.5 (including updates for 4.10.4, 4.10.3)

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 19:41:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.1
+  * This release rewrites the file writing code such that ownership
+    and permissions are never accidentally changed.
+
+-------------------------------------------------------------------
 Mon Jan  7 15:48:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.0.0

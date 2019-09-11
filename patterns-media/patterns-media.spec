@@ -501,7 +501,6 @@ Requires:       pattern() = gnome_office
 Requires:       pattern() = gnome_utilities
 Requires:       pattern() = gnome_yast
 Requires:       pattern() = imaging
-Requires:       pattern() = imaging_opt
 Requires:       pattern() = kde
 Requires:       pattern() = kde_edutainment
 Requires:       pattern() = kde_games

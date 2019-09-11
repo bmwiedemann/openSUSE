@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 %description
 ruamel.yaml.clib is a YAML parser/emitter that supports roundtrip preservation
 of comments, seq/map flow style, and map key order.
-And this is C-lib counterpart
+This package contains the C library counterpart of it.
 
 %prep
 %setup -q -n ruamel.yaml.clib-%{version}

@@ -33,12 +33,11 @@ buildignore libreoffice
 # Pulls in sane-backends
 buildignore simple-scan
 
-# Add useful extras
-install gparted
-install evince
-
-# Ignore xreader for now
-buildignore xreader
+# make sure pdf support for xreader is installed
+install xreader-plugin-pdfdocument
 
 # From rest_cd_core
 install alsa-firmware
+
+# From x11_enhanced, but that pattern can't be installed
+install opensuse-welcome

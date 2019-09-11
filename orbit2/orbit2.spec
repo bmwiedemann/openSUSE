@@ -1,7 +1,7 @@
 #
 # spec file for package orbit2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -82,7 +82,7 @@ use the CORBA technology ORBit implementation.
 %setup -q -n %{_name}-%{version}
 
 %build
-%configure\
+%configure \
 	--disable-static
 echo "#undef G_DISABLE_DEPRECATED" >> config.h
 # Do not use parallel make since there is a .deps directory creation
@@ -91,6 +91,7 @@ make -j1
 
 %install
 %make_install
+find %{buildroot} -type f -name "*.a" -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
@@ -110,7 +111,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/typelib-dump
 %{_includedir}/orbit-2.0/
 %{_libdir}/*.so
-%{_libdir}/libname-server-2.a
 %{_libdir}/pkgconfig/ORBit-*.pc
 %{_datadir}/aclocal/ORBit2.m4
 %{_datadir}/idl/orbit-2.0/

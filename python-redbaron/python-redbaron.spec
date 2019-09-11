@@ -33,7 +33,7 @@ Requires:       python-baron >= 0.7
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module baron >= 0.7}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 4}
 # /SECTION
 %python_subpackages
 

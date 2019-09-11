@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        Terminal for KDE
 License:        GPL-2.0-or-later

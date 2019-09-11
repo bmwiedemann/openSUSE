@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 19 14:52:14 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- pam.d/xdm{,-np}: added pam_keyinit.so (boo#1144063)
+
+-------------------------------------------------------------------
 Thu Mar 28 14:03:43 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch

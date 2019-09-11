@@ -22,6 +22,7 @@
 %define vers 2.0.2
 %define _vers 2_0_2
 %define openblas_vers 0.3.6
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
 %undefine DisOMPI1

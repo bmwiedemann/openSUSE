@@ -10,10 +10,10 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  src/H5detect.c | 15 ---------------
  1 file changed, 15 deletions(-)
-diff --git a/src/H5detect.c b/src/H5detect.c
-index 4424009..f49774c 100644
---- a/src/H5detect.c
-+++ b/src/H5detect.c
+Index: hdf5-1.10.5/src/H5detect.c
+===================================================================
+--- hdf5-1.10.5.orig/src/H5detect.c
++++ hdf5-1.10.5/src/H5detect.c
 @@ -1245,21 +1245,6 @@ bit.\n";
      fprintf(rawoutstream, "/* Generated automatically by H5detect -- do not edit */\n\n\n");
      HDfputs(FileHeader, rawoutstream);        /*the copyright notice--see top of this file */

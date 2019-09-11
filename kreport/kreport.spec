@@ -26,22 +26,21 @@ Group:          Productivity/Office/Other
 URL:            https://community.kde.org/KReport
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kguiaddons-devel
 BuildRequires:  kproperty-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  marble-devel
-BuildRequires:  pkgconfig
 BuildRequires:  python-base
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Marble)
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5WebKitWidgets)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
 
 %description
@@ -77,6 +76,9 @@ Development package for the Report Creation and Generation framework
   %kf5_makeinstall -C build
   %find_lang %{name} %{name}.lang --all-name --with-qt
 
+  # The pkgconfig files contain incorrect stuff
+  rm -f %{buildroot}%{_libdir}/pkgconfig/KReport3.pc
+
 %post -n libKReport3-%{sover} -p /sbin/ldconfig
 %postun -n libKReport3-%{sover} -p /sbin/ldconfig
 
@@ -94,7 +96,7 @@ Development package for the Report Creation and Generation framework
 %{_includedir}/KReport3/
 %{_libdir}/cmake/KReport3/
 %{_libdir}/libKReport3.so
-%{_libdir}/pkgconfig/KReport3.pc
+#%%{_libdir}/pkgconfig/KReport3.pc
 %{_kf5_mkspecsdir}/qt_KReport3.pri
 
 %files lang -f %{name}.lang

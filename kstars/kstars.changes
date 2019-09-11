@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Sep  9 12:18:16 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.6
+  * Fixing a little typo
+  * QVector --> std::vector just to resolve the mysterious build
+    errors on Windows CI
+  * Fix block logic error
+  * Fix cross-platform errors
+  * Fix wrong variable name
+
+-------------------------------------------------------------------
+Sun Sep  8 08:14:35 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.5
+  * Add confirmation when deleting index folder, improve GUI a bit
+  * Improving Astrometry Conf file support for Linux and OS X
+  * Add indi web manager scanner for the local network in the
+    profile editor
+  * Adding icon for atikbase
+  * Initialize the recommended gain properly on startup
+    (kde#411638)
+  * Add DBus function to get location info
+  * Improvements is estimateJobTime
+  * Send camera state instead of just temperature
+  * Do not set temperature or gain unless supported
+  * Send states after defining the device capabilities
+  * processMarkSelection should be overridden in align view to
+    prevent double clicking from moving the marker by mistake
+  * Fix few warnings
+  * Improve set coordinates manually by adding switches for JNow
+    and J2000 settings
+  * Set coordinates manually should always default to RA-DE tab
+  * Do not report guiding as started in PHD2::StartGuiding Event
+    handler because it will start scheduled capture prematurely
+    (before Settle is complete)
+  * Use table for statistics to show all channels
+  * No need to use double for frequency
+  * Add DesktopEntry to notifyrc
+  * Compute histogram is median value is missing
+  * Median value should be an integer
+  * In case setting is missing, use camera value
+  * Send settings along with camera info
+  * Disable actions when parked
+  * Use icons for the menu
+  * Use more intuitive telescope popup menu in the sky map
+  * Display of weather sensor data added to Observatory module
+  * Insert format and gain values in the settings
+  * Sync the tip with GUI label
+  * Improve set coordinates manually dialog by initializing it to
+    the current selected coordinates first
+  * Set clicked object to nullptr in order to correctly recenter
+    on clicked point
+  * Minor UI changes
+  * Adding error handling strategy control to Scheduler
+  * Filename options selection preserved
+  * Further improvements to the auto-park functionality
+  * Add support to automatically starting auto-park feature on
+    startup to park the mount at a specific time
+  * Replace the last overlooked qSort()
+  * Replace obsolete methods with non-obsolete ones
+  * Fix typos, make the button tooltips translatable
+  * Make the tooltips translatable
+  * Fix minor typo
+  * Add support to reverse axis in mount control panel
+  * Add support to profile mappings
+  * Fix minor typos
+  * Fix i18n()
+  * Should be fabs not abs, abs is ambiguous.
+  * NOOP --> i18n
+  * Add cr3 to list of RAW formats
+  * changing name to sky point
+  * Fixing bug in Mount Model and Simplifying function
+  * Fix using i18n for Sun object
+  * Do not set m_wasSlewStarted explicity when issusing GOTO
+    command. Wait for IPS_BUSY from mount driver. (kde#410094)
+  * Make display format in planet viewer to be dd/MM/yyyy
+    (kde#411185)
+  * Fix infinite loop
+  * Profile wizard revamp to remove confusion by some end users
+  * Update backlash value from driver as it arrives
+  * Fix toggle of meridian flip unit
+  * Fix gain behavior setting in focus module. It should use value
+    stored in config unless changed by user
+  * Add support for direct gain setting in capture module
+  * Fallback to default configs in case dns lookup fails for .local
+    addresses
+  * Bugfix for focus looping with HFR setup
+  * Sample the fits viewer's histogram calculation
+  * Make the meridian flip hour angle unit to be in degrees by
+    default since this is a common settings used by many mounts
+  * Remove debug that was added by mistake
+  * Flip correction vector for southern hemisphere
+  * Set the exposure restart button as default since it was
+    defaulting to record which should not be the case
+  * Add support to setting backlash directly in Ekos focus module
+    IF supported by the INDI driver (kde#410804)
+  * Check against device name and not pointer when removing
+  * Fix minor warning
+  * remove unnecessary debug message
+  * Adding support for debayer in video stream window
+- New _constraints for ppc64/ppc64le to avoid "No space left on
+  device" and "Out of memory" errors
+
+-------------------------------------------------------------------
 Thu Aug  8 11:25:30 UTC 2019 - wbauer@tmo.at
 
 - Update to 3.3.4

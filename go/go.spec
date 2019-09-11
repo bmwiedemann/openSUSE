@@ -19,10 +19,14 @@
 # By default we don't include tsan. It's only supported on amd64.
 %define tsan_arch x86_64
 
+%if 0%{?suse_version} >= 1315
+%define short_version 1.12
+%else
 %define short_version 1.11
+%endif
 
 Name:           go
-Version:        1.11.5
+Version:        1.12
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        A compiled, garbage-collected, concurrent programming language

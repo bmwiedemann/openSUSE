@@ -20,7 +20,7 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name luarocks
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT

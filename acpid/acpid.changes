@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 21 22:51:30 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 2.0.32
+  * Remove filename argument from --nosocket option
+  * Fix race during startup
+   
+----------------------------------------------------------------
 Sun Mar 17 13:23:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce %systemd_requires to %systemd_ordering:

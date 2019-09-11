@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  5 17:02:18 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use _multibuild for documentation subpackage. The documentation requires
+  TeX and emacs, which significantly add to the build dependencies (emacs
+  depends on webkit2gtk, which depends on rust).
+- Split Gnuplot mode files for emacs from the gnuplot package. The
+  gnuplot mode packages has no build dependency on gnuplot, while
+  the split removes the emacs build dependency from gnuplot.
+- Disable KDE3 era DCOP support
+- Move man pages to main package
+- Do not package figure_*.pdf build artifacts, created for PDF manual
+- Cleanup spec file:
+  * Fix RPM Group for doc package
+  * Remove support for openSUSE 13.1 (Qt4)
+  * Remove support for X11 installed in /usr/X11R6/
+  * Remove defattr macro use
+  * Disable (S)VGA terminal (requires unvailable libvga)
+
+-------------------------------------------------------------------
 Fri May 31 07:29:54 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.2.7

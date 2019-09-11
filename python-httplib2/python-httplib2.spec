@@ -1,7 +1,7 @@
 #
 # spec file for package python-httplib2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,16 +21,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-httplib2
-Version:        0.10.3
+Version:        0.13.1
 Release:        0
 Url:            https://github.com/httplib2/httplib2
 Summary:        A Python HTTP client library
-License:        MIT AND Apache-2.0 AND (MPL-1.1 OR GPL-2.0+ OR LGPL-2.1+)
+License:        MIT AND Apache-2.0 AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
 Group:          Development/Libraries/Python
 Source:         https://files.pythonhosted.org/packages/source/h/httplib2/httplib2-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE: Don't ship private copy of Mozilla NSS certs, use system certs instead (bnc#761162)
-Patch0:         httplib2-use-system-certs.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with tests}
 # Test requirements (for ssl module):
@@ -38,6 +37,7 @@ BuildRequires:  python
 BuildRequires:  python3
 %endif
 Requires:       ca-certificates
+Requires:       python-certifi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
@@ -49,13 +49,13 @@ left out of other HTTP libraries.
 
 %prep
 %setup -q -n httplib2-%{version}
-%patch0 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}
 %check

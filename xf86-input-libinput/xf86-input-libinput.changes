@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 13:03:34 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.29.0
+  * Only one real fix: we now check for the tool type as well as
+    the serial when we create subdevices for tablet tools.
+    Previously there were some cases where the eraser device
+    wasn't created correctly.
+
+-------------------------------------------------------------------
 Tue Jul 30 12:05:30 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - move xorg.conf.d snippet from /etc/X11/xorg.conf.d to

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-w3lib
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 Summary:        Library of Web-Related Functions
 License:        BSD-3-Clause

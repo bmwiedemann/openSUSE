@@ -2,7 +2,7 @@ Index: sddm-0.18.0/services/sddm-autologin.pam
 ===================================================================
 --- sddm-0.18.0.orig/services/sddm-autologin.pam
 +++ sddm-0.18.0/services/sddm-autologin.pam
-@@ -1,13 +1,6 @@
+@@ -1,13 +1,7 @@
  #%PAM-1.0
 -auth        required    pam_env.so
 -auth        required    pam_tally.so file=/var/log/faillog onerr=succeed
@@ -21,11 +21,12 @@ Index: sddm-0.18.0/services/sddm-autologin.pam
 +password include        common-password
 +session  required       pam_loginuid.so
 +session  include        common-session
++session  optional       pam_keyinit.so revoke force
 Index: sddm-0.18.0/services/sddm.pam
 ===================================================================
 --- sddm-0.18.0.orig/services/sddm.pam
 +++ sddm-0.18.0/services/sddm.pam
-@@ -1,15 +1,6 @@
+@@ -1,15 +1,7 @@
  #%PAM-1.0
 -
 -auth		include		system-login
@@ -46,11 +47,12 @@ Index: sddm-0.18.0/services/sddm.pam
 +password include        common-password
 +session  required       pam_loginuid.so
 +session  include        common-session
++session  optional       pam_keyinit.so revoke force
 Index: sddm-0.18.0/services/sddm-greeter.pam.in
 ===================================================================
 --- sddm-0.18.0.orig/services/sddm-greeter.pam.in
 +++ sddm-0.18.0/services/sddm-greeter.pam.in
-@@ -1,17 +1,7 @@
+@@ -1,17 +1,8 @@
  #%PAM-1.0
 -
 -# Load environment from /etc/environment and ~/.pam_environment
@@ -74,3 +76,4 @@ Index: sddm-0.18.0/services/sddm-greeter.pam.in
 +password include        common-password
 +session  required       pam_loginuid.so
 +session  include        common-session
++session  optional       pam_keyinit.so revoke

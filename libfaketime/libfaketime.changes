@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 28 20:18:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.8
+   * Passthrough for unknown clock ids to avoid error messages
+   * Fixes for multithreaded operations (mliertzer, qnox)
+   * glibc-related fixes (jprjr) and gcc8 support (tpetazzoni)
+   * Improved error message output on parsing errors
+   * fix file stat() faking when 'i' modifier is used for determinism
+   - Use FAKETIME="%" to take FAKETIME setting from a file as
+     specified in FAKETIME_FOLLOW_FILE
+   * Added FAKETIME_DONT_RESET environment variable to avoid
+     faketime resets when subprocesses are started (similar to
+     the old v0.9.6 behavior)
+   * Added FAKETIME_XRESET to avoid large clock jumps when
+     the 'x' modifier is used and changed during run-time
+   - Do not fake time during libfaketime initialization to
+     improve compatibility with memory allocation libraries that
+     use time-related functions themselves
+   * Fixes for shared memory related issues, especially when
+     not using the faketime wrapper
+   * Updated glibc compatibility settings for various platforms
+   * Support for clock_nanosleep() with realtime and monotonic clocks
+   * Support for epoll_wait(), epoll_pwait(), and pselect()
+   * src/Makefile CFLAG FORCE_MONOTONIC_FIX should be set (only) on
+     platforms where the test program hangs forever at the
+     CLOCK_MONOTONIC test.
+- Remove not longer needed patch:
+  * 161.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sun Jun 24 09:26:45 UTC 2018 - coolo@suse.com
 
 - add 161.patch to pick gcc8 patches from git

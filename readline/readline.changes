@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 16 10:05:11 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Rework patch readline-7.0-screen.patch again for bug boo#1143055
+  * Map all "screen(-xxx)?.yyy(-zzz)?" to "screen" as well as
+    map "konsole(-xxx)?" and "gnome(-xxx)?" to "xterm"
+
+-------------------------------------------------------------------
+Thu Aug 15 13:45:15 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch readline80-001
+  The history file reading code doesn't close the file descriptor open to
+  the history file when it encounters a zero-length file.
+
+-------------------------------------------------------------------
+Fri Aug  2 08:20:41 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Wed Jan  9 12:51:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to readline-8.0 final

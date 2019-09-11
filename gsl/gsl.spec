@@ -19,9 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname gsl
-%define vers 2.5
-%define _vers 2_5
-%define lgsl_so_v   23
+%define vers 2.6
+%define _vers 2_6
+%define lgsl_so_v   25
 %define lgslcblas_so_v 0
 
 %if "%{flavor}" == ""
@@ -92,11 +92,8 @@ URL:            https://www.gnu.org/software/%{pname}/
 Source0:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{pname}.keyring
-Patch0:         gsl-1.6-initvars.diff
-Patch5:         gsl-wrap.diff
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
-Patch8:         gsl-fsf_address.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -229,11 +226,8 @@ library packages.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0 -p1
-%patch5 -p1
 %patch6
 %patch7 -p1
-%patch8
 
 %build
 

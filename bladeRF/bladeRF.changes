@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 27 05:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summaries and RPM category groups.
+
+-------------------------------------------------------------------
+Tue Aug 27 00:42:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix download url
+- Small packaging enhancements
+
+-------------------------------------------------------------------
+Sat Aug 17 19:30:59 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2019.07
+  libbladeRF
+  * Gain mode setting default is now manual
+  * Tuning mode setting default is now host
+  * Add OTP command support
+  * Fix metadata related arithmetic
+  bladeRF-cli:
+  * Add RFIC fitler selection
+  * Add tuning_mode
+  * Display more useful warning and error messages
+- libbladeRF doc files (HTML) in separate package
+
+-------------------------------------------------------------------
 Fri Sep  7 12:05:23 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Clarify license status

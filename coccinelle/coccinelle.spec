@@ -17,14 +17,15 @@
 
 
 Name:           coccinelle
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Semantic patch utility
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            http://coccinelle.lip6.fr/
 #Git-Clone:	git://github.com/coccinelle/coccinelle
-Source:         http://coccinelle.lip6.fr/distrib/%{name}-%{version}.tgz
+
+Source:         http://coccinelle.lip6.fr/distrib/%name-%version.tar.gz
 Patch1:         kill-env.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -57,9 +58,8 @@ Beyond collateral evolutions, Coccinelle is used for finding and
 fixing bugs in systems code.
 
 %prep
-%setup -q
-%patch1 -p1
-rm tools/spgen/source/spgen{,.opt}
+%autosetup -p1
+rm -fv tools/spgen/source/spgen{,.opt}
 
 %build
 autoreconf -fi
@@ -71,24 +71,24 @@ make %{?_smp_mflags}
 # with the -custom option."
 export NO_BRP_STRIP_DEBUG=true
 export NO_DEBUGINFO_STRIP_DEBUG=true
-%define __debug_install_post %{nil}
+%define __debug_install_post %nil
 : >debugfiles.list
 : >debugsources.list
 : >debugsourcefiles.list
 
 %make_install
 # Remove coccilib, don't have the deps
-rm -Rf "%{buildroot}/%{_libdir}/%{name}"/{commons,globals,ocaml,parsing_c} \
-	"%{buildroot}/%{_mandir}/man3"/Coccilib*
-%fdupes %{buildroot}/%{_prefix}
+rm -Rf "%buildroot/%_libdir/%name"/{commons,globals,ocaml,parsing_c} \
+	"%buildroot/%_mandir/man3"/Coccilib*
+%fdupes %buildroot/%_prefix
 
 %files
 %doc authors.txt bugs.txt changes.txt copyright.txt credits.txt
 %license license.txt
 %doc readme.txt
-%{_mandir}/man?/*
-%{_bindir}/sp*
-%{_bindir}/pycocci
-%{_libdir}/%{name}
+%_mandir/man?/*
+%_bindir/sp*
+%_libdir/%name
+%_datadir/bash-completion/
 
 %changelog

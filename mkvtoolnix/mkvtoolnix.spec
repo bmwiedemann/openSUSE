@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        35.0.0
+Version:        37.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 27 19:07:49 CEST 2019 - schubi@suse.de
+
+- Report warning if X_SuSE_YaST_AutoInstResource has not been set
+  in desktop file (bsc#144894).
+- 4.2.2
+
+-------------------------------------------------------------------
 Fri Aug  2 15:38:09 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update autoyast2 and yast2-add-on dependencies to:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 20 19:34:08 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add SIOCGSTAMP.patch for recent changes in socket.h/socketios.h
+
+-------------------------------------------------------------------
 Sat Dec 22 22:04:19 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 20181219:

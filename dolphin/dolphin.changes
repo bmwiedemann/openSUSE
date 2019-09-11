@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:00:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Fixing bugs in new folders in tabs feature 
+  * Making sure that DBus objects are all created before the service 
+  * Fix places text when the URL has a trailing slash 
+  * Reset progress bar text when directory loading starts 
+  * Fixing bug where split view opens with no URLs (kde#411193)
+
+-------------------------------------------------------------------
 Fri Aug  9 08:30:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.08.0

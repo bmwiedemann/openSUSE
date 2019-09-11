@@ -100,7 +100,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 14.2.2.348+gf6da3d1d18
+Version: 14.2.2.354+g8878cf2360
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -116,7 +116,7 @@ License: LGPL-2.1 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-3-Clause and 
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-14.2.2-348-gf6da3d1d18.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-14.2.2-354-g8878cf2360.tar.bz2
 %if 0%{?suse_version}
 Source96: checkin.sh
 Source97: README-checkin.txt
@@ -508,7 +508,7 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %endif
 %prep
-%autosetup -p1 -n ceph-14.2.2-348-gf6da3d1d18
+%autosetup -p1 -n ceph-14.2.2-354-g8878cf2360
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:

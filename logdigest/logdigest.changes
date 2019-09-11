@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:46:47 CEST 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+- Package /etc/cron.d*
+
+-------------------------------------------------------------------
 Sat Dec 21 20:10:49 UTC 2013 - wr@rosenauer.org
 
 - split logtail binary out of main package to avoid running

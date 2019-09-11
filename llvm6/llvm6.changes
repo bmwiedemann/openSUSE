@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug 15 23:41:42 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove -fno-strict-aliasing, which upstream doesn't use any more
+  since r245304 in 2015. (http://reviews.llvm.org/D12036)
+  It's probably also not needed for modern versions of GCC.
+  It was enabled in r105644 because of some bugs there.
+- Add a clang-%{_sonum} symlink, which is referenced by
+  /usr/lib64/cmake/clang/ClangTargets.cmake (boo#1120098).
+- Make rpm macros work properly.
+- Reduce memory requirements for compile jobs depending on arch.
+- Use the documented LLVM_ENABLE_RTTI to enable RTTI instead of
+  LLVM_REQUIRES_RTTI, which "is an internal flag that individual
+  targets can use to force RTTI". (boo#1139584)
+- Drop obsolete llvm-build-tests-with-rtti.patch.
+- Remove unused (since r268685) CMake flags LLVM_ENABLE_TIMESTAMPS.
+- Fix typo.
+- Don't build libc++ and python3-clang anymore, because they come
+  from llvm8 now (boo#1145735), and previously llvm7.
+- Don't recommend scan-build and scan-view in clang. (boo#1145444)
+- Add versions to Provides/Conflicts except for files.
+- Fix installation of opt-viewer files when python3-clang is no
+  longer built.
+
+-------------------------------------------------------------------
 Wed Apr 24 17:19:21 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133254).

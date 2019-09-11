@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 22 15:54:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.1.14:
+    * Extended Default feature added: module load intel/17 will find 
+      the "best" intel/17.* etc.
+    * All hidden files are NOT written to the softwarePage output.
+    * Lmod now correctly reports failed to load module "A" in the 
+      special case where "ml A B" and A is a prereq of B and A 
+      doesn't exist.
+    * A meta module takes precedence over a regular module if the 
+      meta module occurs in an earlier directory in $MODULEPATH
+    * Lmod output only "fills" when the text is more than one line 
+      or it is wider than the current width.
+    * Embed the TCL interpreter in Lmod when a site allows TCL files
+    * "module reset" resets $MODULEPATH to be the system $MODULEPATH
+    * Improved tracing of module loads/unloads when --trace is given.
+    * Allow MODULERCFILE to be a colon separated list.
+- Set --with-fastTCLInterp=no, because this option is not supported 
+  with TCL 8.6
+
+-------------------------------------------------------------------
 Mon Mar 11 10:01:57 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Remove flavor 'doc-man' building a package only with the lmod manpage

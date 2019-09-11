@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 24 17:11:39 UTC 2019 - enzokiel@kabelmail.de
+
+- update to version 3.8.0
+  * New:
+    + kid3-cli: Support JSON output.
+    + Format codes %{modificationdate} and %{creationdate}.
+    + Support ID3v2 GRP1 frame introduced with iTunes 12.5.4.
+    + Import from Tags function which operates on selected files.
+    + Explicit frame names can be used by prepending a '!'
+      character.
+  * Improved:
+    + Adapt unified frame type mapping for better iTunes
+      compatibility.
+    + Support multiple covers in M4A files.
+    + kid3-cli: Remove dependencies to GUI libraries.
+    + Android: Show info how to write to SD card.
+    + Android: Support Qt 5.12.
+  * Fixed:
+    + Use file settings to replace illegal characters when renaming
+      directories.
+    + Self-contained Linux package: Provide libraries to run QML
+      console.
+
+-------------------------------------------------------------------
 Sat Mar 30 00:39:16 UTC 2019 - enzokiel@kabelmail.de
 
 - update to version 3.7.1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 06:38:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.4
+  * Faster slice-by-8 CRC32 implementation.
+    See https://lwn.net/Articles/453931/ for motivation.
+
+-------------------------------------------------------------------
 Tue Mar 27 07:29:22 UTC 2018 - 9+suse@cirno.systems
 
 - Use %license macro
@@ -33,7 +40,7 @@ Sun Dec 25 15:06:51 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Sun Dec 25 11:14:05 UTC 2011 - idonmez@suse.com
 
-- -O20 optimization level does not exist, use -O3 
+- -O20 optimization level does not exist, use -O3
 
 -------------------------------------------------------------------
 Sun Nov 20 19:18:37 UTC 2011 - reddwarf@opensuse.org
@@ -57,7 +64,7 @@ Wed Dec  8 09:27:17 UTC 2010 - reddwarf@opensuse.org
 - update to version 1.2.2
    * Build fix (types correction) for Mac OS X
    * Update win32 project files to Visual Studio 2008
-   * ogg_stream_pageout_fill documentation fix  
+   * ogg_stream_pageout_fill documentation fix
 
 -------------------------------------------------------------------
 Tue Dec  7 13:27:44 UTC 2010 - reddwarf@opensuse.org
@@ -124,7 +131,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 Sun Aug 12 00:36:01 CEST 2007 - crrodriguez@suse.de
 
 - really follow the library packaging policy
-- run make check 
+- run make check
 - add missing glibc-devel dependency on -devel package
 
 -------------------------------------------------------------------
@@ -207,7 +214,7 @@ Thu Sep 19 15:09:38 CEST 2002 - tiwai@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:25:34 CEST 2002 - pthomas@suse.de
 
-- ogg.m4: 
+- ogg.m4:
    - If prefix is /usr, don't add -I$prefix/include to OGG_CFLAGS
      and don't add -L$prefix/lib to OGG_LIBS. While the latter is
      just unnecessary, the former can be dangerous and will make
@@ -288,4 +295,3 @@ Mon Feb 26 17:07:36 CET 2001 - tiwai@suse.de
 Wed Jan 31 12:22:39 CET 2001 - tiwai@suse.de
 
 - Initial version: 1.0beta3.
-

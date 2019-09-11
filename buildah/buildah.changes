@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:02:56 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.11.0
+  * Add --digestfile and Re-add push statement as debug
+  * Add --log-level command line option and deprecate --debug
+  * Add security-related volume options to validator
+  * Allow buildah bud to be called without arguments
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * Correctly detect ExitError values from Run()
+  * Disable empty logrus timestamps to reduce logger noise
+  * Fix directory pull image names
+  * Fix handling of /dev/null masked devices
+  * Fix possible runtime panic on bud
+  * Update bud/from help to contain indicator for --dns=none
+  * Update documentation about bud
+  * Update shebangs to take env into consideration
+  * Use content digests in ADD/COPY history entries
+  * add support for cgroupsV2
+  * add: add a DryRun flag to AddAndCopyOptions
+  * add: handle hard links when copying with .dockerignore
+  * add: teach copyFileWithTar() about symlinks and directories
+  * imagebuilder: fix detection of referenced stage roots
+  * pull/commit/push: pay attention to $BUILD_REGISTRY_SOURCES
+  * run_linux: fix mounting /sys in a userns
+- Remove hardly set build tags in favor of the Makefile
+
+-------------------------------------------------------------------
+Fri Aug 16 06:32:33 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.10.1
+  * Add automatic apparmor tag discovery
+  * Add overlayfs to fuse-overlayfs tip
+  * Bug fix for volume minus syntax
+  * Bump container/storage v1.13.1 and containers/image v3.0.1
+  * Bump containers/image to v3.0.2 to fix keyring issue
+  * Fix bug whereby --get-login has no effect
+  * Bump github.com/containernetworking/cni to v0.7.1
+- Add appamor-pattern requirement
+
+-------------------------------------------------------------------
 Mon Aug  5 10:41:41 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update build process to match the latest repository architecture

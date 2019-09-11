@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           waybar
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -35,6 +35,8 @@ BuildRequires:  libudev-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  spdlog-devel
+# optional: man pages
+BuildRequires:  scdoc
 # optional: tray module
 BuildRequires:  libdbusmenu-gtk3-devel
 # optional: network
@@ -62,5 +64,6 @@ Customizable Wayland bar for Sway and Wlroots based compositors.
 %files
 %{_sysconfdir}/xdg/waybar/
 %{_bindir}/waybar
+%{_mandir}/man?/%{name}*
 
 %changelog

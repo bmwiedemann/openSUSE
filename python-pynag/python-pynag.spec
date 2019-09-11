@@ -26,11 +26,11 @@ URL:            http://pynag.org/
 Source:         https://github.com/pynag/pynag/archive/pynag-%{version}-1_.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  python-mock
-BuildRequires:  python-pytest
-BuildRequires:  python-rpm-macros
-BuildRequires:  python-setuptools
-BuildRequires:  python-unittest2
+BuildRequires:  python2-mock
+BuildRequires:  python2-pytest
+BuildRequires:  python2-rpm-macros
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-unittest2
 BuildArch:      noarch
 
 %description

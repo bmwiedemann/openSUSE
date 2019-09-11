@@ -80,7 +80,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README COPYING.LIB FAQ
+%license COPYING.LIB COPYING
+%doc NEWS README FAQ
 %{_bindir}/bc
 %{_bindir}/dc
 %{_infodir}/bc.info%{ext_info}

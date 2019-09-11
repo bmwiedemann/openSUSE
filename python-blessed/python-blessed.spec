@@ -29,7 +29,7 @@ BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module wcwidth >= 0.1.4}

@@ -3,8 +3,8 @@
     <param name="url">https://github.com/containers/fuse-overlayfs.git</param>
     <param name="scm">git</param>
     <param name="filename">fuse-overlayfs</param>
-    <param name="versionformat">0.4.1</param>
-    <param name="revision">v0.4.1</param>
+    <param name="versionformat">0.5.1</param>
+    <param name="revision">v0.5.1</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">fuse-overlayfs</param>

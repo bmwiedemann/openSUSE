@@ -119,7 +119,7 @@
 %endif
 
 Name:           go1.12
-Version:        1.12.8
+Version:        1.12.9
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pytest4%{psuffix}
-Version:        4.6.4
+Version:        4.6.5
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT

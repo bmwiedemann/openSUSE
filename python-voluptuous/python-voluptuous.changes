@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 26 11:41:09 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.11.7:
+  * #378: Allow extend() of a Schema to return a subclass of a Schema as well.
+  * #364: Accept description for Inclusive instances.
+  * #373: Accept msg for Maybe instances.
+  * #382: Added support for default values in Inclusive instances.
+  * #371: Fixed DeprecationWarning related to collections.Mapping.
+  * #377: Preserve Unicode strings when passed to utility functions
+    (e.g., Lower(), Upper()).
+  * #380: Fixed regression with Any and required flag.
+
+-------------------------------------------------------------------
 Wed Aug  8 12:30:18 UTC 2018 - jengelh@inai.de
 
 - Trim repeated name in summary (rpmlint). Trim filler wording

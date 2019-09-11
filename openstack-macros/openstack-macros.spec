@@ -20,7 +20,7 @@
 %global rdo 1
 %endif
 Name:           openstack-macros
-Version:        2019.1.1
+Version:        2019.2.1
 Release:        0
 Summary:        OpenStack Packaging - RPM Macros
 License:        Apache-2.0
@@ -30,6 +30,8 @@ Source1:        macros.openstack-common
 Source2:        macros.openstack-suse
 Source3:        macros.openstack-rdo
 Source4:        macros.openstack-fedora
+# the singlespec macros are a copy of https://github.com/openSUSE/python-rpm-macros
+Source5:        macros.openstack-singlespec
 BuildArch:      noarch
 %if 0%{?rdo}
 Obsoletes:      rdo-rpm-macros <= 1-3
@@ -48,6 +50,7 @@ packages.
 
 %install
 install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-common
+install -D -m644 %{SOURCE5} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-singlespec
 %if 0%{?suse_version}
 install -D -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-suse
 %endif
@@ -60,6 +63,7 @@ install -D -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-fedo
 
 %files
 %{_sysconfdir}/rpm/macros.openstack-common
+%{_sysconfdir}/rpm/macros.openstack-singlespec
 %if 0%{?suse_version}
 %{_sysconfdir}/rpm/macros.openstack-suse
 %endif

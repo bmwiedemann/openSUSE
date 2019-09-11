@@ -46,17 +46,14 @@ Patch8:         bluez-5.50-a2dp-backports.patch
 Patch9:         0001-tools-Fix-build-after-y2038-changes-in-glibc.patch
 # Move 43xx firmware path for RPi3 bluetooth support bsc#1140688
 Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
+# PATCH-FIX-UPSTREAM fix build with gcc 9, picked from upstream and rebased (boo#1121404, bko#202213)
+Patch11:        bluez-5.50-gcc9.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
 Patch101:       CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 Patch102:       CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 
-# workaround for gcc9 problem, boo#1121404
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc8
-%define gcc_suf -8
-%endif
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -171,6 +168,7 @@ desktop specific applets like blueman or GNOME or KDE applets).
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 %patch101 -p1
 %patch102 -p1
 mkdir dbus-apis
@@ -184,7 +182,6 @@ sed -i "/SystemdService=.*/d" obexd/src/org.bluez.obex.service
 echo AutoEnable=true >> src/main.conf
 
 %build
-export CC=gcc%{?gcc_suf}
 # because of patch4...
 autoreconf -fi
 # --enable-experimental is needed or btattach does not build (bug?)
@@ -209,7 +206,6 @@ autoreconf -fi
 make %{?_smp_mflags} all
 
 %install
-export CC=gcc%{?gcc_suf}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 install --mode=0644 -D %{SOURCE7} %{buildroot}/%{_sysconfdir}/modprobe.d/50-bluetooth.conf
@@ -246,7 +242,6 @@ sed -i -e '1s/env p/p/' %{buildroot}%{_libdir}/bluez/test/example-gatt-{client,s
 
 %check
 %if ! 0%{?qemu_user_space_build}
-export CC=gcc%{?gcc_suf}
 ##make %%{?_smp_mflags} check
 # deliberately not running parallel, as the test suite has spurious failures otherwise
 make check V=0

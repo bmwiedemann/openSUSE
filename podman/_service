@@ -4,20 +4,12 @@
 <param name="url">https://github.com/containers/libpod.git</param>
 <param name="scm">git</param>
 <param name="filename">podman</param>
-<param name="versionformat">1.4.4</param>
-<param name="revision">v1.4.4</param>
+<param name="versionformat">1.5.1</param>
+<param name="revision">v1.5.1</param>
 </service>
 
 <service name="set_version" mode="disabled">
 <param name="basename">podman</param>
-</service>
-
-<service name="tar_scm" mode="disabled">
-<param name="url">https://github.com/containers/conmon.git</param>
-<param name="scm">git</param>
-<param name="filename">conmon</param>
-<param name="versionformat">0.3.0</param>
-<param name="revision">v0.3.0</param>
 </service>
 
 <service name="recompress" mode="disabled">

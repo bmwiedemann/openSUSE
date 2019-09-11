@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 26 12:35:42 UTC 2019 - Jean Delvare <jdelvare@suse.de>
+
+2 recommended fixes from upstream:
+- dmidecode-only-scan-dev-mem-for-entry-point-on-x86.patch: Only
+  scan /dev/mem for entry point on x86 (fixes reboot on ARM64).
+- dmidecode-fix-formatting-of-tpm-table-output.patch: Fix
+  formatting of TPM table output (missing newlines).
+
+-------------------------------------------------------------------
 Wed Jan 16 09:23:52 UTC 2019 - jdelvare@suse.de
 
 - dmidecode-add-logical-non-volatile-device.patch: Add "Logical

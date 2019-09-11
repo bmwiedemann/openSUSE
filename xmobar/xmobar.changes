@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 23 02:01:35 UTC 2019 - psimons@suse.com
+
+- Update xmobar to version 0.30.
+  ## Version 0.30 (August, 2019)
+
+  _New features_
+
+    - New monitor `MultiCoreTemp`, thanks to Felix Springer.
+    - `DiskIO`: Additional template variables for absolute number of
+      bytes rather than speeds (see [issue #390].
+    - `WeatherX`: An extension to the `Weather` monitor allowing the
+      spefication of custom strings or icons for sky conditions.
+    - The battery monitors accept the new arguments `-a` and `-A` to
+      specify a system command executed if battery left goes beyond a
+      given threshold.
+
+  [issue #390]: https://github.com/jaor/xmobar/issues/390
+
+-------------------------------------------------------------------
 Tue Jun 11 13:00:00 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Build xmobar with 'datezone' extension enabled.

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 21 08:14:14 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.7:
+  * Fix printing of YAML annotations.
+  * Fix Python 3 / Unicode compatibility for Point.pyx.
+- Changes from version 1.7.6:
+  * Add xEdges and yEdges methods to the 2D Histo and Profile
+    classes, in C++ and Python.
+  * Remove @property attributes from Python xEdges methods.
+  * Fix Python3/argparse attribute access bug in yodamerge.
+- Changes from version 1.7.5:
+  * Convert bin/* scripts to use Python3-compatible argparse
+    rather than old optparse.
+  * Fix Histo1D::integralRange to include the second-argument bin
+    content as described in the docstring.
+  * Fix Python3 StringIO import compatibility
+  * Add -m/-M filtering to yodadiff.
+  * Fix HistoBin2D printing in Python interface.
+  * Protect yodamerge against zero-valued (?!) ScaledBy
+    attributes.
+- Drop conditional for boost BuildRequires pertaining to outdated
+  versions of openSUSE.
+
+-------------------------------------------------------------------
 Wed May  1 11:31:10 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.7.4:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 20 17:31:48 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Fix arping -D problem (bsc#1146440)
+ * added arping-revert-partially-fix-sent-vs-received-package.patch
+ (upstream commit 18f14be)
+
+-------------------------------------------------------------------
 Fri Jul 26 06:19:44 UTC 2019 - Petr Vorel <pvorel@suse.cz>
 
 - Set caps for clockdiff (boo#1140994), based on change in permissions package

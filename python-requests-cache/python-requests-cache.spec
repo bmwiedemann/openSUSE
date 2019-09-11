@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-cache
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause
@@ -27,6 +27,7 @@ URL:            https://github.com/reclosedev/requests-cache
 Source:         https://files.pythonhosted.org/packages/source/r/requests-cache/requests-cache-%{version}.tar.gz
 BuildRequires:  %{python_module requests >= 1.1.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 1.1.0
 BuildArch:      noarch
@@ -54,6 +55,7 @@ take a look at `httpcache <https://github.com/Lukasa/httpcache>`_ and
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

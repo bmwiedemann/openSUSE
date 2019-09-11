@@ -49,6 +49,7 @@ Requires:       cri-runtime
 Requires:       cri-tools
 Requires:       flannel-k8s-yaml
 Requires:       health-checker-plugins-kubic
+Requires:       hello-kubic-k8s-yaml
 Requires:       kubernetes-client
 Requires:       kubernetes-kubeadm
 Requires:       kubernetes-kubeadm-criconfig
@@ -166,6 +167,7 @@ Requires:       kail
 Requires:       kubectl-who-can
 Requires:       rakkess
 Requires:       rbac-lookup
+Requires:       reg
 Requires:       pattern() = basesystem
 
 %description kubernetes_utilities

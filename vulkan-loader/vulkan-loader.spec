@@ -16,11 +16,11 @@
 #
 
 
-%define version_unconverted 1.1.112
+%define version_unconverted 1.1.120
 
 Name:           vulkan-loader
 %define lname	libvulkan1
-Version:        1.1.112
+Version:        1.1.120
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0

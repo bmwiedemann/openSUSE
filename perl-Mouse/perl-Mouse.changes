@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 27 05:17:28 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.5.9
+   see /usr/share/doc/packages/perl-Mouse/Changes
+
+  v2.5.9 2019-08-26T14:46:49Z
+      - Fix circular dependencies between Mouse and MouseX::Foreign (pghmcfc #102)
+
+-------------------------------------------------------------------
+Mon Aug 26 05:18:54 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.5.8
+   see /usr/share/doc/packages/perl-Mouse/Changes
+
+  v2.5.8 2019-08-25T18:52:19Z
+      - Fix segmentation fault which occurs when using MouseX::Foreign and role->apply at the same time (ken39arg #100, #101)
+
+-------------------------------------------------------------------
 Tue Aug 13 05:19:40 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.5.7

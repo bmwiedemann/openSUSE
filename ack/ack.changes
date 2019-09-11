@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:12:17 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Rebase patches:
+  * ack-add_spec.patch
+  * ack-ignore-osc.patch
+
+-------------------------------------------------------------------
+Wed Aug 21 12:11:56 UTC 2019 - Christopher Childress <christopher.childress@dciinc.org>
+
+- ack 3.0.3:
+  * Made smartcase's check for lowercase patterns smarter.
+  * Updated many URLs, especially in the config. (GH #223)
+
+-------------------------------------------------------------------
 Sat Aug  3 15:01:41 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.0.2:

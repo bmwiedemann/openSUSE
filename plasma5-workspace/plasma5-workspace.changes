@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * [Notifications] Elide application label on the left
+  * [Notifications] Group only same origin and show it in heading
+  * [Notifications] Implement JobViewV3
+  * Replicate Shift+Enter for action invocation for history as well (kde#411350)
+  * libtaskmanager: fix launch url for startup info with pathless desktop file
+  * [weather] [envcan] Add additional current condition icon mappings
+  * [weather] [envcan] Thunderstorm is a current condition, the XML also seems to have whitespaces so strip those off
+  * Tell AppStream generators not to index Klipper .desktop files
+  * [Notifications] Bring back dismissed progress in case of crash
+  * Add missing include (QJsonArray) to fix compilation with Qt 5.13
+  * [lockscreen] Fit album art to defined geometry
+  * Fix compilation
+  * Add missing include
+  * [notifications] Change default icon to notification-inactive
+  * [MPRIS Data Engine] Ignore non-standards compliant players
+  * [applets/notifications] Try to not have the notification count numbers overflow the icon
+  * [Notifications] Workaround NativeRendering with non-integer scaling
+  * Bind SQL parameters in firefox bookmarksrunner support
+
+-------------------------------------------------------------------
+Wed Aug 28 13:23:28 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Change 0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch to not
+  override GDK_BACKEND if already set
+- Add a new plasmafullwayland.desktop which overrides use of X11
+  backends of GTK and Qt
+
+-------------------------------------------------------------------
 Tue Jul 30 12:40:19 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.4

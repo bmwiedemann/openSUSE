@@ -1,0 +1,10 @@
+--- media-driver-intel-media-19.2.1/media_driver/cmake/linux/media_compile_flags_linux.cmake.orig	2019-09-02 17:11:46.420713000 +0200
++++ media-driver-intel-media-19.2.1/media_driver/cmake/linux/media_compile_flags_linux.cmake	2019-09-02 17:11:56.632899000 +0200
+@@ -32,7 +32,6 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -Wno-overflow
+     -Wno-parentheses
+     -Wno-delete-incomplete
+-    -Werror=implicit-function-declaration
+     -Werror=address
+     -Werror=format-security
+     -Werror=non-virtual-dtor

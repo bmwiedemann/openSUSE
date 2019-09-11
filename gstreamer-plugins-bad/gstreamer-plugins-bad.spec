@@ -39,12 +39,10 @@ Source:         https://gstreamer.freedesktop.org/src/gst-plugins-bad/%{_name}-%
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 
-# PATCH-FIX-OPENSUSE gst-bad-revert-automake-autoconf-versions.patch bjorn.lie@gmail.com -- Revert the autoconf and automake version bump
-Patch1:         gst-bad-revert-automake-autoconf-versions.patch
-Patch2:         fix-Werror=return-type.patch
+Patch0:         fix-Werror=return-type.patch
 # PATCH-FIX-UPSTREAM gst-bad-Fix-compilation-with-openh264-v2.0.patch -- Fix build with openh264 version 2.0 and newer
-Patch3:         gst-bad-Fix-compilation-with-openh264-v2.0.patch
-Patch4:         gst-plugins-bad-do-not-retry-downloads-during-shutdown.patch
+Patch1:         gst-bad-Fix-compilation-with-openh264-v2.0.patch
+Patch2:         gst-plugins-bad-do-not-retry-downloads-during-shutdown.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -54,11 +52,10 @@ BuildRequires:  gtk-doc
 BuildRequires:  ladspa-devel
 BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  libjasper-devel
 %if %{use_meson}
 BuildRequires:  meson >= 0.47.0
 %else
-# Needed for patch1
+# Needed for patch0
 BuildRequires:  libtool
 %endif
 BuildRequires:  musepack-devel
@@ -85,8 +82,6 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{version}
-BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.3
-BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 2.91.3
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(kate) >= 0.1.7
 BuildRequires:  pkgconfig(lcms2)
@@ -540,7 +535,6 @@ autoreconf -fiv
 	--disable-examples \
 	--disable-festival \
 	--enable-gtk-doc \
-	--with-gtk=3.0 \
 	--enable-wayland \
 	--enable-introspection \
 	%{nil}

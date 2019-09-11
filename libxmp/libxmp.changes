@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:13:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable LTO, as it leads to a build error
+  "<artificial>:(.text.startup+0xb0): undefined reference to `xmp_set_player'"
+- Modernize specfile.
+
+-------------------------------------------------------------------
 Tue Feb  7 14:03:52 UTC 2017 - jengelh@inai.de
 
 - Update to new upstream release 4.4.1

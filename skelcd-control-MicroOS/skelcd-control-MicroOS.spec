@@ -53,6 +53,7 @@ Requires:       yast2-theme
 Requires:       autoyast2
 Requires:       yast2-add-on
 Requires:       yast2-buildtools
+Requires:       yast2-caasp >= 4.2.1
 Requires:       yast2-devtools
 Requires:       yast2-fcoe-client
 # For creating the AutoYast profile at the end of installation (bnc#887406)
@@ -117,7 +118,7 @@ Requires:       yast2-vm
 
 Url:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20190802
+Version:        20190815
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT

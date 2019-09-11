@@ -39,8 +39,8 @@ BuildRequires:  libcmocka-devel
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-Requires:       cmake
-Requires:       pkg-config
+Recommends:     cmake
+Recommends:     pkgconf
 
 %description
 socket_wrapper aims to help client/server software development teams willing to
@@ -66,9 +66,7 @@ make %{?_smp_mflags} VERBOSE=1
 %cmake_install
 
 %check
-pushd build
-make %{?_smp_mflags} test || cat $(find Testing -name "*.log")
-popd
+%ctest
 
 %post -p /sbin/ldconfig
 

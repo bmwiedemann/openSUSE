@@ -1,7 +1,7 @@
 #
 # spec file for package gtkwave
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtkwave
-Version:        3.3.79
+Version:        3.3.101
 Release:        0
 Summary:        Waveform viewer for Ditital Signals
 License:        GPL-2.0+

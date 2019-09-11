@@ -1,7 +1,7 @@
 #
 # spec file for package gawk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gawk
-Version:        4.2.1
+Version:        5.0.1
 Release:        0
-Summary:        GNU awk
-License:        GPL-3.0+
+Summary:        Domain-specificl anguage for text processing
+License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            http://www.gnu.org/software/gawk/
+URL:            https://www.gnu.org/software/gawk/
 Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
@@ -33,9 +33,11 @@ Requires(post): update-alternatives
 Requires(preun): %{install_info_prereq}
 Requires(preun): update-alternatives
 Provides:       awk
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
+AWK is a domain-specific language designed for text processing and
+typically used as a data extraction and reporting tool.
+
 GNU awk is upwardly compatible with the System V Release 4 awk.  It is
 almost completely POSIX 1003.2 compliant.
 
@@ -50,7 +52,7 @@ make %{?_smp_mflags}
 make check %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 #UsrMerge
 install -d %{buildroot}/bin
@@ -81,7 +83,6 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %config %{_sysconfdir}/profile.d/gawk.csh
 %config %{_sysconfdir}/profile.d/gawk.sh
 #UsrMerge
@@ -102,7 +103,7 @@ fi
 %{_libdir}/gawk
 %{_datadir}/awk
 %{_includedir}/gawkapi.h
-%{_infodir}/*.info.gz
+%{_infodir}/*.info%{?ext_info}
 %{_mandir}/man1/gawk.1%{?ext_man}
 %{_mandir}/man3/*%{?ext_man}
 

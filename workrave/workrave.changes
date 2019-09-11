@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  9 17:28:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace glibmm2-devel and libsigc++2-devel with
+  pkgconfig(glibmm-2.4) and pkgconfig(sigc++-2.0) BuildRequires:
+  align with what configure checks for.
+
+-------------------------------------------------------------------
 Thu Jun 13 05:53:54 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Add boost-devel build dep, replace python-cheetah with python3-Jinja2

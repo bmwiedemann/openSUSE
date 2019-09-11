@@ -17,7 +17,7 @@
 
 
 Name:           scmon
-Summary:        Makes waiting for smart card events easy
+Summary:        Smartcard hardware event monitor
 License:        GPL-2.0-only
 Group:          System/Daemons
 Version:        0.4
@@ -73,15 +73,6 @@ BuildRequires:  nss-devel
 SCMon monitors smart cards, configured in a system-wide nss database,
 and broadcasts their insertion/removal over D-Bus. It also supports a
 few simple queries.
-
-It is intended to make it easy for applications such as screensavers
-and login managers to support smart card events.
-
-
-
-Authors:
---------
-    jacob berkman  <jberkman@novell.com>
 
 %prep
 %setup -q

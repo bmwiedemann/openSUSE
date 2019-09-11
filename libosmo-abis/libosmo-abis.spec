@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define version_unconverted 0.6.0
+%define version_unconverted 0.7.0
 
 Name:           libosmo-abis
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-Url:            https://osmocom.org/projects/libosmo-abis/wiki/Libosmo-abis
+URL:            https://osmocom.org/projects/libosmo-abis/wiki/Libosmo-abis
 
 Source:         %name-%version.tar.xz
 Patch1:         osmo-talloc.diff

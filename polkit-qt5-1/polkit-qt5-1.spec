@@ -1,7 +1,7 @@
 #
 # spec file for package polkit-qt5-1
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define rname polkit-qt-1
 Name:           polkit-qt5-1
-Version:        0.112.0
+Version:        0.113.0
 Release:        0
 Summary:        PolicyKit Library Qt Bindings
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Url:            http://api.kde.org/kdesupport-api/kdesupport-apidocs/polkit-qt/html/
-Source:         http://download.kde.org/stable/apps/KDE4.x/admin/polkit-qt-1-%{version}.tar.bz2
-Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM do-not-use-global-static-systembus-instance.patch
-Patch0:         do-not-use-global-static-systembus-instance.patch
+URL:            https://www.kde.org
+Source:         https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  pkgconfig(Qt5Core) >= 5.1.0
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.1.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.1.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Polkit-qt-1 aims to make it easy for Qt developers to take advantage of
@@ -67,23 +68,21 @@ QAbstractButton that lets you integrate those two components easily
 with PolicyKit.
 
 %prep
-%setup -q -n polkit-qt-1-%{version}
-%patch0 -p1
+%autosetup -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DUSE_QT5=ON -DUSE_QT4=OFF
+  %cmake_kf5 -d build
   %make_jobs
 
 %install
   %kf5_makeinstall -C build
 
 %post -n libpolkit-qt5-1-1 -p /sbin/ldconfig
-
 %postun -n libpolkit-qt5-1-1 -p /sbin/ldconfig
 
 %files -n libpolkit-qt5-1-devel
-%defattr(-,root,root)
-%doc AUTHORS README COPYING*
+%license COPYING*
+%doc AUTHORS README
 %{_includedir}/polkit-qt5-1/
 %{_kf5_libdir}/pkgconfig/polkit-qt5*
 %{_kf5_libdir}/libpolkit-qt5-gui-1.so
@@ -92,8 +91,7 @@ with PolicyKit.
 %{_kf5_libdir}/cmake/PolkitQt5-1/
 
 %files -n libpolkit-qt5-1-1
-%defattr(-,root,root)
-%doc COPYING*
+%license COPYING*
 %{_kf5_libdir}/libpolkit-qt5-gui-1.so.*
 %{_kf5_libdir}/libpolkit-qt5-core-1.so.*
 %{_kf5_libdir}/libpolkit-qt5-agent-1.so.*

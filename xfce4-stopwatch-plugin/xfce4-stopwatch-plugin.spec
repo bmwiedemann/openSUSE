@@ -1,5 +1,5 @@
 #
-# spec file for package xfce4-panel-plugin-stopwatch
+# spec file for package xfce4-stopwatch-plugin
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -14,13 +14,15 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %bcond_with git
 %define panel_version 4.13.0
 %define plugin stopwatch
 
 Name:           xfce4-%{plugin}-plugin
 Version:        0.3.1
-Release:        100
+Release:        0
 Summary:        A panel plugin to keep track of elapsed time
 License:        BSD-2-Clause
 Group:          System/GUI/XFCE
@@ -86,9 +88,6 @@ NOCONFIGURE=1 ./autogen.sh
 
 rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libstopwatch.la
 
-%clean
-rm -rf %{buildroot}
-
 %files
 %license COPYING
 %doc ChangeLog README NEWS AUTHORS
@@ -99,4 +98,3 @@ rm -rf %{buildroot}
 %files lang -f %{name}.lang
 
 %changelog
-

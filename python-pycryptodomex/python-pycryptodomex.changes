@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.9.0:
+  * Add support for loading PEM files encrypted with AES256-CBC.
+  * Add support for XChaCha20 and XChaCha20-Poly1305 ciphers.
+  * Add support for bcrypt key derivation function (Crypto.Protocol.KDF.bcrypt).
+  * Add support for left multiplication of an EC point by a scalar.
+  * Add support for importing ECC and RSA keys in the new OpenSSH format.
+
+-------------------------------------------------------------------
 Mon Jun  3 10:23:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.8.2:

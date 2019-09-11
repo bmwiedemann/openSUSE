@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-# libmysqld soname
+# libmariadbd soname (embedded library)
 %define soname 19
 # Set this to 1 to run regression test suite (it takes a long time)
 %define run_testsuite 1
@@ -37,26 +37,34 @@
 # and a build without jemalloc is not supported upstream (MDEV-15034)
 # Also we can't use PerconaFT (AGPL licence) that is needed for tokudb
 %define with_tokudb 0
-# Mroonga currently only supports the x86_64 architecture
-# see https://mariadb.com/kb/en/mariadb/about-mroonga/
+# Mroonga and RocksDB are available only for x86_64 architecture
+# see https://mariadb.com/kb/en/mariadb/about-mroonga/ and
+# https://mariadb.com/kb/en/library/myrocks-supported-platforms/
 %ifarch x86_64
 %define with_mroonga 1
+%define with_rocksdb 1
 %else
 %define with_mroonga 0
+%define with_rocksdb 0
+%endif
+# Define python interpreter version
+%if 0%{?suse_version} >= 1500
+%define python_path /usr/bin/python3            
+%else            
+%define python_path /usr/bin/python2            
 %endif
 Name:           mariadb
-Version:        10.2.24
+Version:        10.3.17
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Productivity/Databases/Servers
-Url:            https://www.mariadb.org
+URL:            https://www.mariadb.org
 Source:         https://downloads.mariadb.org/f/mariadb-%{version}/source/mariadb-%{version}.tar.gz
 Source1:        %{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source4:        README.debug
 Source5:        suse-test-run
-Source6:        mysql.SuSEfirewall2
 Source7:        README.install
 Source14:       my.ini
 Source15:       mariadb.service
@@ -64,30 +72,34 @@ Source16:       mariadb.target
 Source17:       mysql-systemd-helper
 Source18:       mariadb@.service
 Source50:       suse_skipped_tests.list
-Patch0:         mysql-community-server-5.1.45-multi-configuration.patch
 Patch1:         mariadb-10.2.4-logrotate.patch
-Patch2:         mariadb-5.5.28-install_db-quiet.patch
 Patch3:         mariadb-10.1.1-mysqld_multi-features.patch
-Patch4:         mariadb-5.2.3-cnf.patch
-Patch6:         mariadb-10.1.12-deharcode-libdir.patch
 Patch7:         mariadb-10.0.15-logrotate-su.patch
 Patch8:         mariadb-10.2.4-fortify-and-O.patch
 Patch9:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
-Patch11:        mariadb-10.2.9-galera_cnf.patch
+Patch10:        mariadb-10.3.17-fix_ppc_build.patch
+# needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+# GSSAPI
 BuildRequires:  krb5-devel
+# embedded server libmariadbd
 BuildRequires:  libaio-devel
+# mariabackup tool
 BuildRequires:  libarchive-devel
 BuildRequires:  libbz2-devel
+# commands history feature
+BuildRequires:  libedit-devel
 BuildRequires:  libevent-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+# CLI graphic and wsrep API
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
+# auth_pam.so plugin
 BuildRequires:  pam-devel
 # MariaDB requires a specific version of pcre. Provide MariaDB with
 # "BuildRequires: pcre-devel" and it automatically decides if the version is
@@ -95,7 +107,9 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  procps
-BuildRequires:  pwdutils
+# Some tests and myrocks_hotbackup script need python3
+BuildRequires:  python3
+BuildRequires:  shadow
 BuildRequires:  sqlite
 BuildRequires:  tcpd-devel
 # Tests requires time and ps and some perl modules
@@ -110,7 +124,9 @@ BuildRequires:  perl(Fcntl)
 BuildRequires:  perl(File::Temp)
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  perl(IPC::Open3)
+BuildRequires:  perl(Memoize)
 BuildRequires:  perl(Socket)
+BuildRequires:  perl(Symbol)
 BuildRequires:  perl(Sys::Hostname)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
@@ -123,12 +139,14 @@ Requires:       %{name}-errormessages = %{version}
 # It can be switched back to plain "hostname" when this bug is resolved
 Requires:       /bin/hostname
 Requires:       perl-base
-Requires(pre):  pwdutils
+# myrocks_hotbackup needs MySQLdb - if we want to use it under python3, we need python3-mysqlclient
+Requires:       python3-mysqlclient
+Requires(pre):  shadow
 Recommends:     logrotate
-Conflicts:      otherproviders(mariadb-server)
-Conflicts:      otherproviders(mysql)
-Conflicts:      otherproviders(mysql-debug)
-Conflicts:      otherproviders(mysql-server)
+Conflicts:      mariadb-server
+Conflicts:      mysql
+Conflicts:      mysql-debug
+Conflicts:      mysql-server
 # Compatibility with Fedora/CentOS
 Provides:       mariadb-server = %{version}
 Provides:       mysql-server = %{version}
@@ -151,7 +169,7 @@ Obsoletes:      mysql-debug < %{version}
 %ifnarch i586 %{arm}
 BuildRequires:  lzo-devel
 %endif
-BuildRequires:  libedit-devel
+# boost and Judy are required for oograph
 %if 0%{with_oqgraph} > 0
 BuildRequires:  judy-devel
 %if 0%{?suse_version} > 1315
@@ -171,25 +189,29 @@ MySQL Community Server.
 
 This package only contains the server-side programs.
 
-%package -n libmysqld%{soname}
+%package -n libmariadbd%{soname}
 Summary:        MariaDB embedded server library
 Group:          System/Libraries
 Requires:       %{name}-errormessages >= %{version}
+Provides:       libmysqld = %{version}-%{release}
+Obsoletes:      libmysqld < %{version}-%{release}
 
-%description -n libmysqld%{soname}
+%description -n libmariadbd%{soname}
 This package contains MariaDB library that allows to run an embedded
 MariaDB server inside a client application.
 
-%package -n libmysqld-devel
+%package -n libmariadbd-devel
 Summary:        MariaDB embedded server development files
 Group:          Development/Libraries/C and C++
 Requires:       libaio-devel
 # The headers files are the shared
 Requires:       libmariadb-devel >= 3.0
-Requires:       libmysqld%{soname} = %{version}
+Requires:       libmariadbd%{soname} = %{version}
 Requires:       tcpd-devel
+Provides:       libmysqld-devel = %{version}-%{release}
+Obsoletes:      libmysqld-devel < %{version}-%{release}
 
-%description -n libmysqld-devel
+%description -n libmariadbd-devel
 This package contains the development header files and libraries
 for developing applications that embed the MariaDB.
 
@@ -199,8 +221,8 @@ Group:          Productivity/Databases/Clients
 Requires:       %{name}-errormessages = %{version}
 # Explicit requires to pull in charsets for errormessages
 Requires:       libmariadb3 >= 3.0
-Requires(pre):  pwdutils
-Conflicts:      otherproviders(mysql-client)
+Requires(pre):  shadow
+Conflicts:      mysql-client
 Provides:       mysql-client = %{version}
 Obsoletes:      mysql-client < %{version}
 
@@ -230,7 +252,7 @@ This package contains configuration files and scripts that are
 needed for running MariaDB Galera Cluster.
 
 %package errormessages
-Summary:        The error messages files required by server, client and libmysqld
+Summary:        The error messages files required by server, client and libmariadbd
 Group:          System/Localization
 BuildArch:      noarch
 
@@ -243,7 +265,7 @@ Summary:        Benchmarks for MariaDB
 Group:          Productivity/Databases/Tools
 Requires:       %{name}-client
 Requires:       perl-DBD-mysql
-Conflicts:      otherproviders(mysql-bench)
+Conflicts:      mysql-bench
 Provides:       mysql-bench = %{version}
 Obsoletes:      mysql-bench < %{version}
 
@@ -273,11 +295,13 @@ Requires:       perl(Fcntl)
 Requires:       perl(File::Temp)
 Requires:       perl(Getopt::Long)
 Requires:       perl(IPC::Open3)
+Requires:       perl(Memoize)
 Requires:       perl(Socket)
+Requires:       perl(Symbol)
 Requires:       perl(Sys::Hostname)
 Requires:       perl(Test::More)
 Requires:       perl(Time::HiRes)
-Conflicts:      otherproviders(mysql-test)
+Conflicts:      mysql-test
 Provides:       mysql-test = %{version}
 Obsoletes:      mysql-test < %{version}
 
@@ -290,7 +314,7 @@ To run the testsuite, run %{_datadir}/mysql-test/suse-test-run.
 Summary:        MariaDB tools
 Group:          Productivity/Databases/Servers
 Requires:       perl-DBD-mysql
-Conflicts:      otherproviders(mysql-tools)
+Conflicts:      mysql-tools
 # make sure this package is installed when updating from 10.2 and older
 Provides:       mysql-client:%{_bindir}/perror
 Provides:       mysql-tools = %{version}
@@ -305,16 +329,12 @@ applications with MariaDB.
 %setup -q
 # Remove JAR files from the tarball (used for testing from the source)
 find . -name "*.jar" -type f -exec rm --verbose -f {} \;
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
-%patch4 -p0
-%patch6 -p0
-%patch7 -p0
-%patch8 -p0
+%patch1
+%patch3
+%patch7
+%patch8
 %patch9 -p1
-%patch11 -p1
+%patch10 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -351,6 +371,7 @@ rm -r storage/tokudb/mysql-test/tokudb/t/*.py
 rm -rf storage/tokudb/PerconaFT
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 EXTRA_FLAGS="-Wno-unused-but-set-variable -fno-strict-aliasing -Wno-unused-parameter"
 # Mariadb devs seems to fall in love with -Werror option
 EXTRA_FLAGS="${EXTRA_FLAGS} -Wno-error"
@@ -387,6 +408,10 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
 %if 0%{with_mroonga} < 1
        -DPLUGIN_MROONGA=NO                                          \
 %endif
+%if 0%{with_rocksdb} < 1
+       -DPLUGIN_ROCKSDB=NO                                          \
+%endif
+       -DPYTHON_SHEBANG=%{python_path}                              \
        -DWITH_XTRADB_STORAGE_ENGINE=1                               \
        -DWITH_CSV_STORAGE_ENGINE=1                                  \
        -DWITH_HANDLERSOCKET_STORAGE_ENGINE=1                        \
@@ -461,10 +486,8 @@ install -m 644 build/sql/mysqld.sym %{buildroot}%{_libdir}/mysql/mysqld.sym
 # INFO_SRC binary
 install -p -m 644 build/Docs/INFO_SRC %{buildroot}%{_libdir}/mysql/
 
-# Remove most static libs (FIXME: don't build them at all...)
-[ \! -f "%{buildroot}%{_libdir}/"libmysqld.a ] || mv "%{buildroot}%{_libdir}/"libmysqld.a "%{buildroot}%{_libdir}/"libmysqld.static
-rm -f %{buildroot}%{_libdir}/*.a
-[ \! -f "%{buildroot}%{_libdir}/"libmysqld.static ] || mv "%{buildroot}%{_libdir}/"libmysqld.static "%{buildroot}%{_libdir}/"libmysqld.a
+# Remove static libs (FIXME: don't build them at all...)
+rm %{buildroot}%{_libdir}/*.a
 
 # Remove unused stuff
 rm -f %{buildroot}%{_datadir}/mysql/{errmsg-utf8.txt,mysql-log-rotate}
@@ -478,6 +501,9 @@ rm -f %{buildroot}%{_datadir}/mysql/mysql.server
 rm -f %{buildroot}%{_datadir}/mysql/mysqld_multi.server
 # The old fork of mytop utility (we ship it as a separate package)
 rm -f %{buildroot}%{_bindir}/mytop
+# xtrabackup is not supported for MariaDB 10.3
+rm -f %{buildroot}%{_bindir}/wsrep_sst_xtrabackup-v2
+rm -f %{buildroot}%{_bindir}/wsrep_sst_xtrabackup
 
 # Remove unused upstream services
 rm -f %{buildroot}'%{_unitdir}/mariadb.service'
@@ -489,18 +515,18 @@ rm -f %{buildroot}%{_sysusersdir}/sysusers.conf
 
 # Remove client libraries that are now provided in mariadb-connector-c
 # Client library and links
-rm %{buildroot}%{_libdir}/libmariadb*.so.*
+rm %{buildroot}%{_libdir}/libmariadb.so.*
 unlink %{buildroot}%{_libdir}/libmysqlclient.so
 unlink %{buildroot}%{_libdir}/libmysqlclient_r.so
 unlink %{buildroot}%{_libdir}/libmariadb.so
 # Client plugins
-rm %{buildroot}%{_libdir}/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so}
+rm %{buildroot}%{_libdir}/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so,caching_sha2_password.so,client_ed25519.so}
 # Devel files
 rm %{buildroot}%{_bindir}/mysql_config
 rm %{buildroot}%{_bindir}/mariadb_config
 rm %{buildroot}%{_datadir}/pkgconfig/mariadb.pc
 rm -f %{buildroot}%{_prefix}/lib/pkgconfig/libmariadb.pc
-rm -f %{buildroot}%{_prefix}/lib64/pkgconfig/libmariadb.pc
+rm -f %{buildroot}%{_libdir}/pkgconfig/libmariadb.pc
 rm %{buildroot}%{_datadir}/aclocal/mysql.m4
 rm %{buildroot}%{_mandir}/man1/mysql_config*.1*
 rm -r %{buildroot}%{_includedir}/mysql
@@ -527,7 +553,7 @@ if [ -f scripts/mysqlaccess.conf ] ; then
 fi
 
 # mariadb-galera.files
-filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_xtrabackup-v2 wsrep_sst_xtrabackup wsrep_sst_rsync_wan >mariadb-galera.files
+filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera.files
 
 # mariadb-bench.files
 filelist mysqlslap >mariadb-bench.files
@@ -587,9 +613,6 @@ mkdir -p %{buildroot}%{_tmpfilesdir}
 cat >> %{buildroot}%{_tmpfilesdir}/mariadb.conf <<EOF
 x %{_localstatedir}/tmp/mysql.*
 EOF
-
-# SuSEfirewall service description
-install -D -m 644 %{_sourcedir}/mysql.SuSEfirewall2 %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/mysql
 
 # Testsuite
 install -d -m 755 '%{buildroot}'%{_datadir}/mysql-test/
@@ -708,6 +731,7 @@ datadir="`%{_bindir}/my_print_defaults mysqld mysql_server | sed -n 's|--datadir
 [ -n "$datadir" ] || datadir="%{_localstatedir}/lib/mysql"
 if [ -d "$datadir/mysql" ]; then
     touch "$datadir/.run-mysql_upgrade"
+    chmod 640 "$datadir/.run-mysql_upgrade"
 fi
 if [ \! -f "$datadir/mysql_upgrade_info" ]; then
     if [ $1 -eq 1 ]; then
@@ -740,8 +764,8 @@ exit 0
 %postun
 %service_del_postun mariadb.service
 
-%post -n libmysqld%{soname} -p /sbin/ldconfig
-%postun -n libmysqld%{soname} -p /sbin/ldconfig
+%post -n libmariadbd%{soname} -p /sbin/ldconfig
+%postun -n libmariadbd%{soname} -p /sbin/ldconfig
 
 %files -f mariadb.files
 %config(noreplace) %attr(0644, root, mysql) %{_sysconfdir}/my.cnf
@@ -767,7 +791,6 @@ exit 0
 %dir %{_libdir}/mysql
 %{_libdir}/mysql/mysqld.sym
 %{_libdir}/mysql/INFO_SRC
-%config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/mysql
 %dir %{_libdir}/mysql/plugin
 %{_libdir}/mysql/plugin/*.so
 %exclude %{_libdir}/mysql/plugin/dialog*.so
@@ -794,12 +817,12 @@ exit 0
 %{_datadir}/mysql/systemd/mariadb.service
 %{_datadir}/mysql/systemd/mariadb@.service
 
-%files -n libmysqld%{soname}
-%{_libdir}/libmysqld.so.*
+%files -n libmariadbd%{soname}
+%{_libdir}/libmariadbd.so.*
 
-%files -n libmysqld-devel
-%{_libdir}/libmysqld.a
+%files -n libmariadbd-devel
 %{_libdir}/libmysqld.so
+%{_libdir}/libmariadbd.so
 
 %files client -f mariadb-client.files
 %dir %{_libdir}/mysql
@@ -820,9 +843,10 @@ exit 0
 
 %files test -f mariadb-test.files
 %{_bindir}/my_safe_process
-%{_mandir}/man1/my_safe_process.1*
-%{_mandir}/man1/mysql-test-run.pl.1*
-%{_mandir}/man1/mysql-stress-test.pl.1*
+%{_bindir}/test-connect-t
+%{_mandir}/man1/my_safe_process.1%{?ext_man}
+%{_mandir}/man1/mysql-test-run.pl.1%{?ext_man}
+%{_mandir}/man1/mysql-stress-test.pl.1%{?ext_man}
 %{_datadir}/mysql-test/valgrind.supp
 %dir %attr(755, mysql, mysql)%{_datadir}/mysql-test
 %{_datadir}/mysql-test/[^v]*

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 25 17:56:17 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.15.1:
+  * Small bugfix and removal of a print statement
+
+- changes from version 0.15.0:
+  * Added file path completions, there's a new "Completion.type" path,
+    now. Example: '/ho -> '/home/
+  * *args/**kwargs resolving. If possible Jedi replaces the parameters
+    with the actual alternatives.
+  * Better support for enums/dataclasses
+  * When using Interpreter, properties are now executed, since a lot
+    of people have complained about this. Discussion in #1299, #1347.
+  * New APIs:
+    + Definition.get_signatures() -> List[Signature]. Signatures are
+      similar to CallSignature. Definition.params is therefore
+      deprecated.
+    + Signature.to_string() to format call signatures.
+    + Signature.params -> List[ParamDefinition], ParamDefinition has
+      the following additional attributes infer_default(),
+      infer_annotation(), to_string(), and kind.
+    + Definition.execute() -> List[Definition], makes it possible to
+      infer return values of functions.
+
+-------------------------------------------------------------------
 Tue Jul 16 10:41:56 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.14.1

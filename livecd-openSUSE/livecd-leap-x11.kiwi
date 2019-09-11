@@ -2,7 +2,7 @@
 
 <!-- OBS-ExclusiveArch: aarch64 i586 x86_64 -->
 
-<image schemaversion="6.5" name="openSUSE-Leap-15.1-Rescue-CD" displayname="openSUSE Leap 15.1 Rescue CD">
+<image schemaversion="6.5" name="openSUSE-Leap-%OS_VERSION_ID%-Rescue-CD" displayname="openSUSE Leap %OS_VERSION_ID% Rescue CD">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>opensuse@opensuse.org</contact>
@@ -13,20 +13,20 @@
     <profile name="EFI" description="EFI" import="true" arch="x86_64,aarch64"/>
   </profiles>
   <preferences profiles="EFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Leap_15.1_Rescue_CD" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Leap_%OS_VERSION_ID%_Rescue_CD" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
-    <bootsplash-theme>bgrt</bootsplash-theme>
+    <bootsplash-theme>openSUSE</bootsplash-theme>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <locale>en_US</locale>
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
   <preferences profiles="noEFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Leap_15.1_Rescue_CD" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Leap_%OS_VERSION_ID%_Rescue_CD" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
-    <bootsplash-theme>bgrt</bootsplash-theme>
+    <bootsplash-theme>openSUSE</bootsplash-theme>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <locale>en_US</locale>

@@ -18,13 +18,13 @@
 
 %define ver %{version}
 Name:           hub
-Version:        2.12.2
+Version:        2.12.4
 Release:        0
 Summary:        Command-line wrapper for git and GitHub
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/github/hub
-Source:         https://github.com/github/%{name}/archive/v%{ver}.tar.gz
+Source:         https://github.com/github/%{name}/archive/v%{ver}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fish
 BuildRequires:  go
 BuildRequires:  groff

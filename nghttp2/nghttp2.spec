@@ -29,7 +29,7 @@
 %bcond_with python
 %endif
 Name:           nghttp2%{psuffix}
-Version:        1.39.1
+Version:        1.39.2
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -60,7 +60,9 @@ BuildRequires:  python3-Cython
 BuildRequires:  python3-setuptools
 %endif
 %ifnarch ppc %{arm}
+%if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(jemalloc)
+%endif
 %endif
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_system-devel
@@ -105,7 +107,7 @@ Python bindings for implementation of Hypertext Transfer Protocol version
 %package -n %{soname}-devel
 Summary:        Development files for nghttp2
 Group:          Development/Languages/C and C++
-Requires:       %{soname_asio}%{sover_asio} = %{version}
+Requires:       %{soname}-%{sover} = %{version}
 Provides:       %{name}-devel
 
 %description -n %{soname}-devel

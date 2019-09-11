@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 19 12:04:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.4
+  * Add ct id support, add ct expectation support,
+    add synproxy support.
+
+-------------------------------------------------------------------
 Tue May 28 08:30:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.3

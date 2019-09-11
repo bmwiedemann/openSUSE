@@ -16,16 +16,16 @@
 #
 
 
-%define sha 0ffeca803fca7c812560a6c0e34342e4833f1ab0
+%define sha f4b068cdf359186bfbed36959c53e9e52e2eda84
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyocr
-Version:        0.7
+Version:        0.7.2
 Release:        0
 Summary:        Python wrapper for OCR engines
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://gitlab.gnome.org/World/OpenPaperwork/pyocr
+URL:            https://gitlab.gnome.org/World/OpenPaperwork/pyocr
 Source:         https://gitlab.gnome.org/World/OpenPaperwork/pyocr/-/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module base}
@@ -54,7 +54,8 @@ That is, it helps using various OCR tools from a Python program.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc AUTHORS COPYING ChangeLog README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{python_sitelib}/*
 
 %changelog

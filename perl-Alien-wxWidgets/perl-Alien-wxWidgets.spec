@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-wxWidgets
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Alien-wxWidgets
-Version:        0.68
+Version:        0.69
 Release:        0
 %define cpan_name Alien-wxWidgets
-Summary:        Building, Finding and Using Wxwidgets Binaries
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Building, finding and using wxWidgets binaries
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Alien-wxWidgets/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         perl-Alien-wxWidgets-do_not_build_wxgtk.patch
@@ -35,6 +35,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder) >= 0.24
+BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(Module::Build) >= 0.280000
 BuildRequires:  perl(Module::Pluggable) >= 2.6
 Requires:       perl(Module::Pluggable) >= 2.6
@@ -80,6 +81,6 @@ yes no | ./Build
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes patches README.txt script
+%doc Changes README.txt
 
 %changelog

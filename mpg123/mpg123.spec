@@ -17,7 +17,7 @@
 
 
 Name:           mpg123
-Version:        1.25.11
+Version:        1.25.12
 Release:        0
 Summary:        Console MPEG audio player and decoder library
 License:        LGPL-2.1-only

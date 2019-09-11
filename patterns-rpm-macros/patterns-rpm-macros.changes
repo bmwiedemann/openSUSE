@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:41:36 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- introduce obsolete_legacy_pattern macro
+
+-------------------------------------------------------------------
 Wed May  8 09:41:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

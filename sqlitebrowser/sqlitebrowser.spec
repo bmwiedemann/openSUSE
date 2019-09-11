@@ -1,7 +1,7 @@
 #
 # spec file for package sqlitebrowser
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sqlitebrowser
-Version:        3.10.1
+Version:        3.11.2
 Release:        0
 Summary:        Spreadsheet-like interface to SQLite databases
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Productivity/Office/Organizers
 Url:            http://sqlitebrowser.org/
-Source0:        https://github.com/sqlitebrowser/sqlitebrowser/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        sqlitebrowser.1
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -31,11 +31,13 @@ BuildRequires:  libqscintilla_qt5-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): hicolor-icon-theme

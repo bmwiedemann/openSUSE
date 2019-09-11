@@ -49,6 +49,7 @@ particular preference.
 %patch0 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fvi
 %configure \
   --disable-silent-rules \

@@ -1,7 +1,7 @@
---- gramps-5.0.0_orig/gramps/gui/grampsgui.py	2018-07-24 16:07:47.000000000 +0200
-+++ gramps-5.0.0/gramps/gui/grampsgui.py	2018-07-28 10:14:23.804797101 +0200
-@@ -251,7 +251,8 @@
-         self._vm = ViewManager(dbstate,
+--- gramps-5.1.0_orig/gramps/gui/grampsgui.py	2019-08-22 09:17:54.101297170 +0200
++++ gramps-5.1.0/gramps/gui/grampsgui.py	2019-08-22 09:19:48.686880378 +0200
+@@ -613,7 +613,8 @@
+         self._vm = ViewManager(app, dbstate,
                                 config.get("interface.view-categories"))
  
 -        if (lin()

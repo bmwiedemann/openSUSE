@@ -16,10 +16,10 @@
 #
 
 
-%define soname 6
-%define hogweed_soname 4
+%define soname 7
+%define hogweed_soname 5
 Name:           libnettle
-Version:        3.4.1
+Version:        3.5.1
 Release:        0
 Summary:        Cryptographic Library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -35,7 +35,6 @@ BuildRequires:  gmp-devel
 BuildRequires:  m4
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
-
 Requires(post): %{install_info_prereq}
 
 %description
@@ -121,7 +120,7 @@ make check %{?_smp_mflags}
 
 %files -n libnettle%{soname}
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/libnettle.so.%{soname}
 %{_libdir}/libnettle.so.%{soname}.*
 
@@ -139,7 +138,7 @@ make check %{?_smp_mflags}
 
 %files -n nettle
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/nettle-lfib-stream
 %{_bindir}/nettle-pbkdf2
 %{_bindir}/pkcs1-conv

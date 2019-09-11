@@ -22,7 +22,7 @@
 %bcond_with systemd
 %endif
 Name:           vnstat
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
@@ -162,7 +162,7 @@ make check
 %{_initddir}/vnstatd
 %endif
 %{_mandir}/man1/vnstat.1%{?ext_man}
-%{_mandir}/man1/vnstatd.1%{?ext_man}
+%{_mandir}/man8/vnstatd.8%{?ext_man}
 %{_mandir}/man5/vnstat.conf.5%{?ext_man}
 %attr(0755,vnstat,root) %{_localstatedir}/lib/vnstat
 

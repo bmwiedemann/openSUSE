@@ -8,21 +8,18 @@ Works around missing window decorations and broken config file reading.
  startkde/startplasmacompositor.cmake | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/startkde/startplasmacompositor.cmake b/startkde/startplasmacompositor.cmake
-index dcb473a4..1ebd126a 100644
---- a/startkde/startplasmacompositor.cmake
-+++ b/startkde/startplasmacompositor.cmake
+Index: plasma-workspace-5.16.4/startkde/startplasmacompositor.cmake
+===================================================================
+--- plasma-workspace-5.16.4.orig/startkde/startplasmacompositor.cmake
++++ plasma-workspace-5.16.4/startkde/startplasmacompositor.cmake
 @@ -118,6 +118,10 @@ else
      export QT_WAYLAND_FORCE_DPI=96
  fi
  
 +# GTK3 uses the wayland backend by default, but its implementation is not correct
 +# enough to work well here. Window decorations are missing, for instance.
-+export GDK_BACKEND=x11
++[ -n "$GDK_BACKEND" ] || export GDK_BACKEND=x11
 +
  # Get a property value from org.freedesktop.locale1
  queryLocale1() {
      qdbus-qt5 --system org.freedesktop.locale1 /org/freedesktop/locale1 "$1"
--- 
-2.20.1
-

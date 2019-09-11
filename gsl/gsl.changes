@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 21 18:55:31 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to gsl 2.6:
+  * add BLAS calls for multiple functions
+  * Algorithm and implementation updates
+  * deprecation of multiple functions
+  * removal of multiple previously deprecated functions
+  * add binary search tree module (gsl_bst); based on GNU libavl
+  * remove -u flag to gsl-histogram
+  * updated spmatrix module
+  * add routines for banded Cholesky decomposition
+- drop upstreamed patches:
+  * gsl-1.6-initvars.diff 
+  * gsl-wrap.diff
+  * gsl-fsf_address.patch
+
+-------------------------------------------------------------------
 Thu Feb 14 09:00:22 UTC 2019 - adam.majer@suse.de
 
 - mark examples as a noarch package

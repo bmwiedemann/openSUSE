@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:27:53 UTC 2019 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Upgrade to release 3.0.5 and patch
+- Upstream changes:
+  *Add Stereo peaks for individual part metering
+  *Change LFO frequency units to Hz (from unitless)
+  *Enhance LFO delay parameter resolution and units (seconds)
+  *Enhance global volume parameter resolution and units (dB)
+  *Enhance part volume parameter resolution and units (dB)
+  *Enhance sub synth volume parameter resolution and units (dB)
+  *Enhance sub synth volume velocity sensing resolution
+  *Fix zippering when changing master volume
+  *Fix misaligned points in live envelope values
+  *Fix possible crash when envelopes are provided invalid live data
+  *Fix minor bugs
+-------------------------------------------------------------------
 Fri Mar 29 08:51:03 UTC 2019 - plater <davejplater@gmail.com>
 
 - Update to release 3.0.4 and rebase zynaddsubfx-buildflags.patch.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 23:18:43 UTC 2019 - Frank H. Ellenberger <frank.h.ellenberger@gmail.com>
+
+- Add fontbox to classpath: (rh#1413340)
+
+-------------------------------------------------------------------
 Mon Apr 15 13:59:26 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against glassfish-servlet-api

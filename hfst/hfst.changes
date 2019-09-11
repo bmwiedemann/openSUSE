@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 22 18:51:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.15.0
+  * Numerous improvements to pmatching and tokenization.
+  * Add tool hfst-eliminate-flags.
+  * Allow both escaped and unescaped zeros in multicharacters in
+    all lexc lexicon entries.
+- Drop gcc7.diff, hfst-scripts-install.diff
+
+-------------------------------------------------------------------
 Tue Sep  5 00:44:15 UTC 2017 - jengelh@inai.de
 
 - Add gcc7.diff

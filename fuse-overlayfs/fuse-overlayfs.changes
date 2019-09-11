@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:04:35 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.5.1
+  - support fuse writeback cache and enable it by default
+  - update to latest gnulib
+  - add option to disable fsync
+  - add option to disable xattrs
+  - add option to skip ino number check in lower layers
+  - fix fd validity check
+  - fix memory leak
+  - fix read after free
+  - fix type for flistxattr return
+  - fix warnings reported by lgtm.com
+  - enable parallel dirops
+
+-------------------------------------------------------------------
 Mon Jun 17 06:43:31 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v0.4.1:

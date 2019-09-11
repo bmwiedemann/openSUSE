@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 22 01:25:07 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 1.5.0
+  * Handle emoji has double-width character, introduced in Unicode 9.0.
+  * Add option "Treat Emojis as double-width characters", on by default.
+  * Hide cursor when idle, with parameter to set idle time
+  * Add papercolor theme
+  * Themes can now set background color through a color-class
+  * Handle OSC-11 to report background color
+  * Update Italian and French translations
+  * Fix initial window size hints
+  * Fix focus issues
+  
+-------------------------------------------------------------------
 Tue May 28 09:14:10 UTC 2019 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Update to 1.4.1:

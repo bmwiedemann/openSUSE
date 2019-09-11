@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 07:58:04 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Thu Feb  1 07:47:48 UTC 2018 - werner@suse.de
 
 - Add check for %{ext_man} macro 

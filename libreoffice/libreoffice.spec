@@ -52,7 +52,7 @@
 %bcond_with gtk3
 %endif
 Name:           libreoffice
-Version:        6.3.0.4
+Version:        6.3.1.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -100,7 +100,10 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-Patch4:         gcc.patch
+Patch5:         mdds-1-5.patch
+Patch6:         0001-Fix-buidling-with-older-boost.patch
+Patch7:         old-boost.patch
+Patch8:         old-boost2.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -120,13 +123,13 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  doxygen >= 1.8.4
 # Dot is used by doxygen
 BuildRequires:  fdupes
-BuildRequires:  flex
+BuildRequires:  flex >= 2.6.0
 BuildRequires:  flute
 BuildRequires:  fontforge
 BuildRequires:  glm-devel
 # Needed for tests
 BuildRequires:  google-carlito-fonts
-BuildRequires:  gperf >= 3.0.0
+BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
 # genbrk binary is required
@@ -199,7 +202,7 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.15
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.5
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.14)
+BuildRequires:  pkgconfig(liborcus-0.15)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libqxp-0.0)
@@ -213,7 +216,7 @@ BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.10
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libzmf-0.0)
-BuildRequires:  pkgconfig(mdds-1.4) >= 1.4.1
+BuildRequires:  pkgconfig(mdds-1.5) >= 1.5.0
 BuildRequires:  pkgconfig(mythes)
 BuildRequires:  pkgconfig(nspr) >= 4.8
 BuildRequires:  pkgconfig(nss) >= 3.9.3
@@ -559,9 +562,12 @@ This package contains some GNOME extensions and GTK2 interface for LibreOffice.
 Summary:        Gtk3 interface for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name}-gnome = %{version}
-Supplements:    (libreoffice and gnome-session)
-Supplements:    (libreoffice and mate-session-manager)
-Supplements:    (libreoffice and xfce4-session)
+Supplements:    packageand(libreoffice:gnome-session)
+Supplements:    packageand(libreoffice:mate-session-manager)
+Supplements:    packageand(libreoffice:xfce4-session)
+%if !%{with kdeintegration}
+Supplements:    packageand(libreoffice:plasma5-workspace)
+%endif
 
 %description gtk3
 This package contains Gtk3 interface rendering option for LibreOffice.
@@ -573,11 +579,11 @@ Recommends:     %{name}-gnome = %{version}
 Conflicts:      %{name}-gnome < %{version}
 # We are default if gtk3 is not present
 %if !%{with gtk3}
-Supplements:    (libreoffice and gnome-session)
-%endif
-# Without kde integration we provide gtk2 interface there
+Supplements:    packageand(libreoffice:gnome-session)
+# Without kde and gtk3 ntegration we provide gtk2 interface there
 %if !%{with kdeintegration}
-Supplements:    (libreoffice and plasma5-workspace)
+Supplements:    packageand(libreoffice:plasma5-workspace)
+%endif
 %endif
 
 %description gtk2
@@ -587,7 +593,7 @@ This package contains Gtk2 interface rendering option for LibreOffice.
 Summary:        Qt5/KDE Frameworks interface for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name} = %{version}
-Supplements:    (libreoffice and plasma5-workspace)
+Supplements:    packageand(libreoffice:plasma5-workspace)
 Provides:       %{name}-kde4 = %{version}
 Obsoletes:      %{name}-kde4 < %{version}
 
@@ -981,7 +987,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
-%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 %patch990 -p1
 %patch991 -p1
 

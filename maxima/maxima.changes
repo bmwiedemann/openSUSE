@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:31:57 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix download URLs for include-maxima.de.texi and
+  include-maxima.texi.in.
+
+-------------------------------------------------------------------
+Wed Aug 21 11:45:38 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Refresh source files include-maxima.de.texi and
+  include-maxima.texi.in from upstream; bind URLs pointing to the
+  source to a particular commit.
+
+-------------------------------------------------------------------
+Tue Jun  4 09:59:06 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.43.0:
+  + See
+    https://sourceforge.net/p/maxima/code/ci/master/tree/ChangeLog-5.43.md
+    for changes.
+- Manually include documentation source files missing from
+  upstream tarball (https://sourceforge.net/p/maxima/bugs/3558/).
+- Use %%license to package COPYING file.
+- Adapt file list to upstream changes, notably renamed .desktop
+  file, installation of emacs supporting files, and installation
+  of appinfo file.
+
+-------------------------------------------------------------------
 Fri Jan 25 11:09:51 UTC 2019 - badshah400@gmail.com
 
 - Update to version 5.42.2:

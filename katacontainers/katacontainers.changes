@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  4 14:40:50 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add config file in /etc/kata-containers
+- Build with golang >= 1.12
+
+-------------------------------------------------------------------
+Tue Aug 27 14:58:06 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Remove image entry from configuration files only where both image and 
+  initrd are supported.
+
+-------------------------------------------------------------------
+Thu Aug  8 14:41:31 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Move dependency on kernel-kvmsmall to the katacontainers-image package. 
+
+-------------------------------------------------------------------
 Fri Aug  2 16:27:09 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Set the kernel version in the configuration files according to the one 

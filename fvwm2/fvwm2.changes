@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  9 07:44:29 UTC 2019 - mvetter@suse.com
+
+- Update to 2.6.9:
+  * Adds a new conditional option Fullscreen which detects windows in that state;
+  * Updates to translations;
+  * Fix how htmldoc/mandoc are detected in configure.ac
+
+-------------------------------------------------------------------
 Fri Oct  5 06:49:37 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with multibuttons mice. Upstream is not

@@ -1,7 +1,7 @@
 #
 # spec file for package hmaccalc
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -40,6 +40,8 @@ Source2:        %name.keyring
 Patch1:         hmaccalc-susekey.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+BuildRequires:  libfreebl3-hmac
+BuildRequires:  libsoftokn3-hmac
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkg-config
 

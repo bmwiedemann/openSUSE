@@ -1,26 +1,12 @@
-Index: flac-1.3.2/configure.ac
+---
+ configure.ac |    4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: flac-1.3.3/configure.ac
 ===================================================================
---- flac-1.3.2.orig/configure.ac
-+++ flac-1.3.2/configure.ac
-@@ -389,8 +389,7 @@ if test "x$debug" = xtrue; then
- 	CFLAGS="-g $CFLAGS"
- else
- 	CPPFLAGS="-DNDEBUG $CPPFLAGS"
--	CFLAGS=$(echo "$CFLAGS" | sed 's/-O2//')
--	CFLAGS="-O3 -funroll-loops $CFLAGS"
-+	CFLAGS="$user_cflags"
- fi
- 
- XIPH_GCC_VERSION
-@@ -400,7 +399,6 @@ if test x$ac_cv_c_compiler_gnu = xyes ;
- 	CXXFLAGS="$CXXFLAGS -Wall -Wextra -Wcast-align -Wshadow -Wwrite-strings -Wctor-dtor-privacy -Wnon-virtual-dtor -Wreorder -Wsign-promo -Wundef " # -Wcast-qual -Wbad-function-cast -Wwrite-strings -Woverloaded-virtual -Wmissing-declarations
- 
- 	XIPH_ADD_CFLAGS([-Wdeclaration-after-statement])
--	XIPH_ADD_CFLAGS([-D_FORTIFY_SOURCE=2])
- 
- 	AC_LANG_PUSH([C++])
- 	XIPH_ADD_CXXFLAGS([-Weffc++])
-@@ -426,10 +424,6 @@ if test x$ac_cv_c_compiler_gnu = xyes ;
+--- flac-1.3.3.orig/configure.ac
++++ flac-1.3.3/configure.ac
+@@ -468,10 +468,6 @@ if test x$ac_cv_c_compiler_gnu = xyes ;
  		XIPH_ADD_CFLAGS([-fno-inline-small-functions])
  		fi
  

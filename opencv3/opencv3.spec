@@ -26,6 +26,7 @@
 %bcond_without python2
 %bcond_without python3
 %bcond_without openblas
+
 Name:           opencv3
 Version:        3.4.6
 Release:        0
@@ -102,7 +103,7 @@ BuildRequires:  pkgconfig(libswscale)
 %endif
 
 %description
-OpenCV means Intel® Open Source Computer Vision Library. It is a collection of C
+OpenCV means Intel Open Source Computer Vision Library. It is a collection of C
 functions and a few C++ classes that implement some popular Image Processing and
 Computer Vision algorithms.
 

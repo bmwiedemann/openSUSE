@@ -2,8 +2,7 @@
 
 # The SSL tests that are failing correctly
 main.ssl_7937                                : bsc#937835, MDEV-8404
-main.ssl_crl_clients                         : bsc#937835, MDEV-8404
-main.ssl_cert_verify                         : bsc#937835, MDEV-8404
+main.ssl_crl                                 : bsc#937835, MDEV-8404
 main.ssl_8k_key                              : bsc#937835, MDEV-8404
 
 # Main and perfschema tests
@@ -11,11 +10,6 @@ main.userstat                                : bsc#937836, MDEV-8446
 perfschema.nesting                           : bsc#937836, MDEV-8446
 perfschema.socket_summary_by_event_name_func : bsc#937836, MDEV-8446
 perfschema.socket_summary_by_instance_func   : bsc#937836, MDEV-8446
-
-# It's not a critical test. The problem is that it's not easy to
-# unify the correct number of the repetition in the test for all
-# various platforms (fails for s390x)
-main.func_regexp_pcre                        : bsc#1058722 comment 11
 
 # Failing because of "Self Signed Certificate in the Certificate Chain"
 perfschema.cnf_option                        : all
@@ -25,53 +19,30 @@ rpl.rpl_row_img_eng_noblob                   : all
 
 #----------------------------------------------------------------
 
-# Failing with OpenSSL 1.1.1.
-main.ssl_cipher                              : MDEV-17184
-main.openssl_6975                            : MDEV-17184
-main.ssl                                     : MDEV-17184
-
 # Needs to be investigated (issues trackers will be added)
-sys_vars.slave_parallel_threads_basic        : all
-main.mysqldump                               : all
-unit.lf                                      : all
-unit.my_atomic                               : all
-
-mariabackup.huge_lsn                         : x86_64
-rocksdb.deadlock                             : x86_64
-
-rocksdb.2pc_group_commit                     : aarch64, ppc64le, x86_64, armv7l
-rocksdb.read_only_tx                         : aarch64, ppc64le, x86_64, armv7l
-rocksdb.shutdown                             : aarch64, ppc64le, x86_64, armv7l
-rocksdb.index_merge_rocksdb                  : aarch64, ppc64le, x86_64, armv7l
-
-main.ps                                      : ppc64le
-main.type_ranges                             : ppc64le
-main.select                                  : ppc64le
-main.select_jcl6                             : ppc64le
-main.derived_cond_pushdown                   : ppc64le
-main.select_pkeycache                        : ppc64le
-main.sp                                      : ppc64le
-main.type_float                              : ppc64le
-main.type_newdecimal                         : ppc64le
-rocksdb.type_float                           : ppc64le
-rocksdb.col_opt_not_null                     : ppc64le
-rocksdb.col_opt_null                         : ppc64le
-rocksdb.col_opt_unsigned                     : ppc64le
-innodb.temporary_table_optimization          : ppc64le
-
-rocksdb.bulk_load_errors                     : armv7l
-encryption.innodb-encryption-alter           : armv7l
-plugins.processlist                          : armv7l
-rocksdb.add_index_inplace                    : armv7l
-rocksdb.bulk_load_unsorted                   : armv7l
-rocksdb.bulk_load_unsorted_rev               : armv7l
-rocksdb.commit_in_the_middle_ddl             : armv7l
-rocksdb.concurrent_alter                     : armv7l
-rocksdb.drop_index_inplace                   : armv7l
-rocksdb.rocksdb                              : armv7l
-rocksdb_sys_vars.rocksdb_merge_buf_size_basic                   : armv7l
-rocksdb_sys_vars.rocksdb_merge_combine_read_size_basic          : armv7l
-rocksdb_sys_vars.rocksdb_merge_tmp_file_removal_delay_ms_basic  : armv7l
-rocksdb.unique_sec                           : armv7l
-
-sys_vars.innodb_ft_result_cache_limit_32     : s390
+sys_vars.slave_parallel_threads_basic        : since 10.3.16 - x86_64, i386, s390x, armv7l
+rocksdb.2pc_group_commit                     : since 10.3.16 - x86_64
+rocksdb.read_only_tx                         : since 10.3.16 - x86_64
+rocksdb.shutdown                             : since 10.3.16 - x86_64
+rocksdb.index_merge_rocksdb                  : since 10.3.16 - x86_64
+rocksdb_rpl.mdev12179                        : since 10.3.16 - x86_64
+main.gis_notembedded                         : since 10.3.16 - x86_64, i386, s390x, armv7l
+unit.conc_ps_bugs                            : since 10.3.16 - x86_64, i386, s390x, armv7l
+handler.heap                                 : since 10.3.16 - s390x
+federated.federatedx_versioning              : since 10.3.16 - amrv7l
+versioning.partition                         : since 10.3.16 - amrv7l
+versioning.online                            : since 10.3.16 - amrv7l
+versioning.auto_increment                    : since 10.3.16 - amrv7l
+versioning.truncate                          : since 10.3.16 - amrv7l
+versioning.select                            : since 10.3.16 - amrv7l
+versioning.delete                            : since 10.3.16 - amrv7l
+versioning.foreign                           : since 10.3.16 - amrv7l
+versioning.insert                            : since 10.3.16 - amrv7l
+versioning.replace                           : since 10.3.16 - amrv7l
+versioning.select2                           : since 10.3.16 - amrv7l
+versioning.update                            : since 10.3.16 - amrv7l
+versioning.alter                             : since 10.3.16 - amrv7l
+versioning.commit_id                         : since 10.3.16 - amrv7l
+versioning.trx_id                            : since 10.3.16 - amrv7l
+mariabackup.system_versioning                : since 10.3.16 - amrv7l
+versioning.insert2                           : since 10.3.16 - amrv7l

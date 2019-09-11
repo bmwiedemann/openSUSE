@@ -19,7 +19,7 @@
 Name:           direvent
 Version:        5.2
 Release:        0
-Summary:        Monitor a file system directory for changes
+Summary:        File system directory change monitoring tool
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://www.gnu.org/software/direvent/

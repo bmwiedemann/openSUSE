@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Real-Time Data Viewing and Plotting Tool with Basic Data Analysis Functionality
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
-URL:            http://kst-plot.kde.org/
+URL:            https://kst-plot.kde.org/
 Source:         Kst-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gsl2-support.patch -- fixes build with GSL-2.0
 Patch0:         gsl2-support.patch
@@ -38,23 +38,18 @@ BuildRequires:  libcfitsio-devel
 BuildRequires:  libmatio-devel
 BuildRequires:  libnetcdf
 BuildRequires:  libnetcdf_c++-devel
+BuildRequires:  libqt5-linguist
 BuildRequires:  netcdf-devel
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Requires:       libnetcdf
 Obsoletes:      python-kst < %{version}
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-%else
-BuildRequires:  libqt4-devel
-%endif
 
 %description
 Kst is a data plotting and viewing program. Some of the features include:
@@ -74,16 +69,12 @@ Kst is a data plotting and viewing program. Some of the features include:
 Summary:        Development files for %{name}
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} >= 1500
-Requires:       pkgconfig(Qt5Concurrent)
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5Network)
-Requires:       pkgconfig(Qt5PrintSupport)
-Requires:       pkgconfig(Qt5Widgets)
-Requires:       pkgconfig(Qt5Xml)
-%else
-Requires:       libqt4-devel
-%endif
+Requires:       cmake(Qt5Concurrent)
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5Network)
+Requires:       cmake(Qt5PrintSupport)
+Requires:       cmake(Qt5Widgets)
+Requires:       cmake(Qt5Xml)
 
 %description devel
 Development libraries and headers needed to build software
@@ -93,17 +84,14 @@ making use of %{name}
 %autosetup -p1 -n Kst-2.0.8
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
              -Dkst_rpath=0 \
              -Dkst_install_libdir=%{_lib} \
              -Dkst_release=1 \
              -Dkst_dbgsym=1 \
              -Dkst_python=0 \
-%if 0%{?suse_version} >= 1500
              -Dkst_qt5=1"
-%else
-             -Dkst_qt4=1"
-%endif
 
 %cmake $EXTRA_FLAGS
 make %{?_smp_mflags}

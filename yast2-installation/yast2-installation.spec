@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.2.10
+Version:        4.2.12
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -34,8 +34,8 @@ BuildRequires:  yast2-devtools >= 3.1.10
 BuildRequires:  yast2-ruby-bindings >= 4.0.6
 # needed for xml agent reading about products
 BuildRequires:  yast2-xml
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # Yast::Execute.stdout
 BuildRequires:  yast2 >= 4.1.42
 # Y2Packager::KnownRepositories

@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,24 +28,15 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        3.0.12
+Version:        4.0.0
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            http://www.swig.org/
-Source:         http://sourceforge.net/projects/swig/files/swig/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/%{name}/%{name}/archive/rel-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 Patch2:         swig308-isfinite.diff
-Patch3:         swig-ocaml-int64.patch
-Patch4:         swig-perl526.patch
-Patch5:         swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_ConvertF.patch
-Patch6:         swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_FixMetho.patch
-Patch7:         swig-3.0.12-Coverity-fix-issue-reported-for-wrapper-argument-che.patch
-Patch8:         swig-3.0.12-Fix-Coverity-issue-reported-for-setslice-pycontainer.patch
-Patch9:         swig-3.0.12-Fix-generated-code-for-constant-expressions-containi.patch
-Patch10:        swig-3.0.12-fix-collections.patch
-Patch11:        swig-3.0.12-support-octave-4.4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -61,11 +52,11 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-tools
 %else
 BuildRequires:  boost-devel
-BuildRequires:  python-devel
+BuildRequires:  python-devel > 2.6
 %endif
 %if %{with swig_ocaml}
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml
+BuildRequires:  ocaml >= 3.12.0
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-findlib
 %endif
@@ -119,7 +110,7 @@ This package contains SWIG examples, useful both for testing and
 understandig SWIG usage.
 
 %prep
-%setup -q
+%setup -q -n %{name}-rel-%{version}
 %autopatch -p1
 
 %build

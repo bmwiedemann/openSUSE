@@ -1,7 +1,7 @@
 #
 # spec file for package libgudev
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libgudev
-Version:        232
+Version:        233
 Release:        0
 Summary:        Library that provides GObject bindings for libudev
 License:        LGPL-2.0-or-later
@@ -25,10 +25,11 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libgudev
 Source0:        https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.30.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.30.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc) >= 1.18
 BuildRequires:  pkgconfig(libudev) >= 199
@@ -66,14 +67,15 @@ This is the devel package for the GObject library libgudev, which
 provides GObject access to udev device information.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
-    --disable-static \
-    --disable-umockdev \
-    --enable-gtk-doc
-make %{?_smp_mflags} V=1
+	--disable-static \
+	--disable-umockdev \
+	--enable-gtk-doc \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -84,7 +86,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libgudev-1_0-0
 %license COPYING
-
 %{_libdir}/libgudev-1.0.so.*
 
 %files -n typelib-1_0-GUdev-1_0

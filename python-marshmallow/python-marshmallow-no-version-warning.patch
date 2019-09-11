@@ -36,15 +36,15 @@
 #> I am perhaps hitting
 #>
 # https://github.com/humitos/sphinx-version-warning/issues/22
-Index: marshmallow-2.19.1/docs/conf.py
+Index: marshmallow-3.0.1/docs/conf.py
 ===================================================================
---- marshmallow-2.19.1.orig/docs/conf.py	2019-03-16 21:09:37.000000000 +0100
-+++ marshmallow-2.19.1/docs/conf.py	2019-04-01 10:00:19.833567622 +0200
+--- marshmallow-3.0.1.orig/docs/conf.py
++++ marshmallow-3.0.1/docs/conf.py
 @@ -35,7 +35,6 @@ extensions = [
-     'sphinx.ext.viewcode',
-     'alabaster',
-     'sphinx_issues',
--    'versionwarning.extension',
+     "sphinx.ext.viewcode",
+     "alabaster",
+     "sphinx_issues",
+-    "versionwarning.extension",
  ]
  
- primary_domain = 'py'
+ primary_domain = "py"

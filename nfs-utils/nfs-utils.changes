@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Sep  2 05:25:07 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- 0005-nfs.conf-fail-to-disable-major-NFS-version-4-using-v.patch
+  Fix a bug that cause NFSv4 service to always be enabled, if
+  the server was enabled at all.
+
+-------------------------------------------------------------------
+Wed Jul 24 13:07:41 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Wed Jan 30 00:10:03 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- remove libnfsidmap1 dependency for nfs-client.
+  It isn't needed.
+
+-------------------------------------------------------------------
+Tue Jan 29 22:50:04 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- Remove service aliases - these files are deleted.
+   nfs.service
+   nfsserver.service
+   nfs-server.nfsserver.conf
+   nfs-client.nfs.conf
+
+  Now the upstream standard service names "nfs-client" and "nfs-server"
+  must be used.
+
+-------------------------------------------------------------------
+Tue Dec  4 00:03:00 UTC 2018 - Neil Brown <nfbrown@suse.com>
+
+- 0004-nfsidmap-honour-with-pluginpath-for-instalation.patch
+  Allow plugins to be installed properly
+- nfs-utils.spec
+  Package shared library correctly
+
+-------------------------------------------------------------------
+Mon Dec  3 02:49:13 UTC 2018 - Neil Brown <nfbrown@suse.com>
+
+- 0001-nfs.conf-allow-empty-assignments.patch
+  Fix regression due to unnecessary "error" messages from nfs.conf
+
+- 0002-Let-systemd-know-when-rpc.statd-is-needed.patch
+  0003-systemd-run-statd-notify-even-when-nfs-client-isn-t-.patch
+  Fixes for systemd integration
+  (bsc#1116221)
+
+-------------------------------------------------------------------
+Thu Oct 25 05:32:30 UTC 2018 - Neil Brown <nfbrown@suse.com>
+
+- New version: nfs-utils-2.3.3
+  The nfsidmap library source has been merged into
+  nfs-utils, so this source package now makes
+  nfsidmap and nfsidmap-devel packages.
+  New program "nfsconf" improves access to nfs config files.
+  Delete patches that have been included upstream:
+    0001-conffile-ignore-empty-environment-variables.patch
+    0002-mount-call-setgroups-before-setuid.patch
+    0003-nfs-server-generator-handle-noauto-mounts-correctly.patch
+    nsm-headers.patch
+    sysmacros.patch
+
+-------------------------------------------------------------------
 Mon Aug  6 07:29:37 UTC 2018 - schwab@suse.de
 
 - sysmacros.patch: include <sys/sysmacros.h> for major

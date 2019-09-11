@@ -19,7 +19,7 @@
 %global pkg_name exceptions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Extensible optionally-pure exceptions
 License:        BSD-3-Clause

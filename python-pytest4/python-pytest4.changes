@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:18:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.6.5:
+  * #4344: Fix RuntimeError/StopIteration when trying to collect package with "init.py" only.
+  * #5478: Fix encode error when using unicode strings in exceptions with pytest.raises.
+  * #5524: Fix issue where tmp_path and tmpdir would not remove directories containing files marked as read-only,
+           which could lead to pytest crashing when executed a second time with the --basetemp option.
+  * #5547: --step-wise now handles xfail(strict=True) markers properly.
+  * #5650: Improved output when parsing an ini configuration file fails.
+
+-------------------------------------------------------------------
 Fri Jul 19 10:16:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add setuptools requires as we still use entrypoints

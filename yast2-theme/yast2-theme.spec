@@ -17,7 +17,7 @@
 
 
 Name:           yast2-theme
-Version:        4.2.4
+Version:        4.2.5
 Release:        0
 
 Source0:        %{name}-%{version}.tar.bz2
@@ -27,7 +27,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 %if 0%{?is_opensuse}
 BuildRequires:  breeze5-icons
 BuildRequires:  oxygen5-icon-theme

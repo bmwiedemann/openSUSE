@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -113,13 +113,16 @@ Requires:       %{name} = %{version}
 %description ruby
 Support for %{name} scripts written in the Ruby language.
 
-%package aspell
-Summary:        Aspell Spell-Checking Support for %{name}
+%package spell
+Summary:        Aspell and Enchant Spell-Checking Support for %{name}
 Group:          Productivity/Networking/IRC
 Requires:       %{name} = %{version}
+Supplements:    (%{name} and enchant-2-backend-hunspell)
+Obsoletes:      %{name}-aspell < 2.5
+Provides:       %{name}-aspell = %{version}
 
-%description aspell
-Spell-checking support for %{name}, using the aspell library.
+%description spell
+Spell-checking support for %{name}, using the aspell and enchant libraries.
 
 %prep
 %setup -q
@@ -195,7 +198,7 @@ install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.de
 %files ruby
 %{_libdir}/weechat/plugins/ruby.so
 
-%files aspell
-%{_libdir}/weechat/plugins/aspell.so
+%files spell
+%{_libdir}/weechat/plugins/spell.so
 
 %changelog

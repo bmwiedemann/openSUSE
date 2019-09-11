@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:31:56 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
 Tue Mar  5 16:41:34 UTC 2019 - josef.moellers@suse.com
 
 - Added systemd support. Integrated SUSE-specific patches into

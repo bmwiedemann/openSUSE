@@ -1,7 +1,7 @@
 #
 # spec file for package bridge-utils
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           bridge-utils
 Version:        1.6
 Release:        0
 Summary:        Utilities for Configuring the Linux Ethernet Bridge
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 Url:            http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge
 Source:         http://www.kernel.org/pub/linux/utils/net/bridge-utils/%{name}-%{version}.tar.gz
@@ -53,6 +53,7 @@ The %{name} devel package contains files needed for development.
 %patch2
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
 %configure
 make %{?_smp_mflags}

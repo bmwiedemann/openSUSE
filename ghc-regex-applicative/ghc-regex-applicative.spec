@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-regex-applicative
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name regex-applicative
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.3
+Version:        0.3.3.1
 Release:        0
 Summary:        Regex-based parsing with applicative interface
 License:        MIT

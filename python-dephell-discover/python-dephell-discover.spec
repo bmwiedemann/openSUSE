@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,14 +21,14 @@
 Name:           python-dephell-discover
 Version:        0.2.1
 Release:        0
+Summary:        Module to find project modules and data files (packages and package_data for setup.py)
 License:        MIT
-Summary:        Find project modules and data files (packages and package_data for setup.py)
-Url:            https://github.com/dephell/dephell_discover
 Group:          Development/Languages/Python
+Url:            https://github.com/dephell/dephell_discover
 Source:         https://files.pythonhosted.org/packages/source/d/dephell-discover/dephell_discover-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module attr}
 # /SECTION
@@ -38,7 +39,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Find project modules and data files (packages and package_data for setup.py).
+This Python module finds project modules and data files (packages and package_data for setup.py).
 
 %prep
 %setup -q -n dephell_discover-%{version}

@@ -21,8 +21,8 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define ver 2019.1
-%define _ver 2019_1
+%define ver 2019.3
+%define _ver 2019_3
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
 %undefine DisOMPI1
@@ -43,14 +43,14 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %undefine c_f_ver
 %global mpi_flavor mvapich2
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
 %if "%{flavor}" == "mpich"
 %{bcond_with hpc}
 %undefine c_f_ver
 %global mpi_flavor mpich
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
 %if "%{flavor}" == "gnu-mvapich2-hpc"
@@ -58,7 +58,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %undefine c_f_ver
 %global mpi_flavor mvapich2
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
 %if "%{flavor}" == "openmpi"
@@ -66,7 +66,7 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %global mpi_flavor openmpi
 %define mpi_vers 1
-%define buildtarget "IMB-MPI1 IMB-EXT"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI1}
 %endif
 
@@ -75,7 +75,7 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %global mpi_flavor openmpi
 %define mpi_vers 2
-%define buildtarget "IMB-MPI1 IMB-EXT"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI2}
 %endif
 
@@ -84,7 +84,7 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %global mpi_flavor openmpi
 %define mpi_vers 3
-%define buildtarget "IMB-MPI1 IMB-EXT"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI3}
 %endif
 
@@ -94,7 +94,7 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 # macro mpi is used by macros for master package
 %global mpi_flavor mpich
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
 %if "%{flavor}" == "gnu-openmpi-hpc"
@@ -104,7 +104,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_flavor openmpi
 %define mpi_vers 1
-%define buildtarget "IMB-MPI1 IMB-EXT"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI1}
 %endif
 
@@ -115,7 +115,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_flavor openmpi
 %define mpi_vers 2
-%define buildtarget "IMB-MPI1 IMB-EXT"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI2}
 %endif
 
@@ -126,7 +126,7 @@ ExclusiveArch:  do_not_build
 # macro mpi is used by macros for master package
 %global mpi_flavor openmpi
 %define mpi_vers 3
-%define buildtarget "IMB-MPI1 IMB-EXT"
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI3}
 %endif
 
@@ -149,8 +149,8 @@ Release:        0
 Summary:        Intel MPI Benchmarks (IMB)
 License:        CPL-1.0
 Group:          Development/Tools/Other
-Url:            https://software.intel.com/en-us/articles/intel-mpi-benchmarks
-Source0:        https://github.com/intel/mpi-benchmarks/archive/v%{version}.tar.gz#/%{pname}_%{version}.tar.gz
+URL:            https://software.intel.com/en-us/articles/intel-mpi-benchmarks
+Source0:        https://github.com/intel/mpi-benchmarks/archive/IMB-v%{version}.tar.gz#/%{pname}_%{version}.tar.gz
 %if %{without hpc}
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
@@ -171,7 +171,7 @@ a range of message sizes.
 %{?with_hpc:%{hpc_master_package -L}}
 
 %prep
-%setup -n mpi-benchmarks-%{version}
+%setup -n mpi-benchmarks-IMB-v%{version}
 
 %build
 

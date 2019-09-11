@@ -18,9 +18,10 @@
 
 # bcond is confusingly backwards to what you expect - without means
 #  to ENABLE the option, with means to DISABLE it.
-%if 0%{?suse_version} >= 1500
+%if (0%{is_opensuse} > 0) || (0%{?sle_version} > 150100)
 %bcond_without lib389
-%bcond_without rust
+# Temporarily disable rust due to a broken library.
+%bcond_with rust
 %else
 %bcond_with    lib389
 %bcond_with    rust
@@ -161,7 +162,7 @@ Provides:       svrcore-devel = 4.1.4
 Obsoletes:      svrcore-devel < 4.1.4
 Requires:       %{name} = %{version}
 Requires:       %{svrcorelib} = %{version}
-Requires:       libevent
+Requires:       libevent-devel
 Requires:       openldap2-devel
 Requires:       pkgconfig
 Requires:       pkgconfig(nspr)
@@ -264,6 +265,7 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   %if %{with lib389}
   --disable-perl \
   %else
+  --enable-perl \
   --with-perldir=%{_bindir} \
   %endif
   --libexecdir=%{_prefix}/lib/dirsrv/ \
@@ -439,7 +441,7 @@ exit 0
 # TODO: audit bug running https://bugzilla.opensuse.org/show_bug.cgi?id=1111564
 # This also needs a lot more work on the service file
 #attr(750,root,dirsrv) #caps(CAP_NET_BIND_SERVICE=pe) #{_sbindir}/ns-slapd
-%verify(not caps) %attr(750,root,dirsrv) %{_sbindir}/ns-slapd
+%verify(not caps) %attr(755,root,dirsrv) %{_sbindir}/ns-slapd
 %if ! %{with lib389}
 %{_sbindir}/bak2db
 %{_sbindir}/bak2db.pl

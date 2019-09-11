@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:05:46 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
+
+- Include pkg-config file in opencv-devel package
+  * Add opencv-includedir.patch
+
+-------------------------------------------------------------------
+Tue Aug 27 10:23:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid use of ®/™ signs in specfiles as per guidelines.
+
+-------------------------------------------------------------------
+Mon Aug 19 11:13:05 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Disable LTO on ppc64le for now, as it fails to build when enabled
+  (boo#1146096).
+
+-------------------------------------------------------------------
 Sat Aug 10 21:45:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Increase the disk space needed to build opencv.
@@ -86,7 +103,7 @@ Mon Oct 29 10:22:25 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
   * Compatibility fixes with python 3.7
   * Added a new computational target DNN_TARGET_OPENCL_FP16
   * Extended support of Intel's Inference Engine backend
-  * Enabled import of Intel's OpenVINO pre-trained networks from 
+  * Enabled import of Intel's OpenVINO pre-trained networks from
     intermediate representation (IR).
   * tutorials improvements
   Check https://github.com/opencv/opencv/wiki/ChangeLog#version343
@@ -197,7 +214,7 @@ Mon Oct  9 05:06:36 UTC 2017 - kah0922@gmail.com
 - Update to 3.3
 - Dropped obsolete patches
 	* opencv-gcc6-fix-pch-support-PR8345.patch
-    * opencv-gles.patch 
+    * opencv-gles.patch
 - Updated opencv-build-compare.patch
 
 -------------------------------------------------------------------
@@ -308,8 +325,8 @@ Wed Mar  9 18:15:57 UTC 2016 - toddrme2178@gmail.com
 Thu Mar  3 21:16:19 UTC 2016 - tittiatcoke@gmail.com
 
 - Added opencv_contrib_face-3.1.0.tar.bz2
-  * This tarball is created to take only the face module from the 
-    contrib package. The Face module is required by libkface, which 
+  * This tarball is created to take only the face module from the
+    contrib package. The Face module is required by libkface, which
     in its turn is required by digikam.
 
 -------------------------------------------------------------------
@@ -334,7 +351,7 @@ Sat Feb 27 11:11:34 UTC 2016 - joerg.lorenzen@ki.tng.de
     + “Real-time Multi-object Tracking using Kernelized Correlation
       Filter” – opencv_contrib/tracking module
       (Laksono Kurnianggoro, Fernando J. Iglesias Garcia)
-    + “Improved and expanded Scene Text Detection” – 
+    + “Improved and expanded Scene Text Detection” –
       opencv_contrib/text module (Lluis Gomez, Vadim Pisarevsky)
     + “Stereo correspondence improvements” – opencv_contrib/stereo
       module (Mircea Paul Muresan, Sergei Nosov)
@@ -449,7 +466,7 @@ Fri Jan 22 09:47:00 UTC 2016 - olaf@aepfle.de
 Wed Dec 23 16:51:20 UTC 2015 - alarrosa@suse.com
 
 - Remove BuildRequirement for python-sphinx in SLE12, since it's
-  not available there and it's not a mandatory requirement. 
+  not available there and it's not a mandatory requirement.
 
 -------------------------------------------------------------------
 Wed Dec  2 09:17:09 UTC 2015 - ohering@suse.de
@@ -494,7 +511,7 @@ Wed Apr 29 09:35:29 UTC 2015 - coolo@suse.com
 -------------------------------------------------------------------
 Mon Jan 26 09:46:21 UTC 2015 - tittiatcoke@gmail.com
 
-- Add specific buildrequires for libpng15, so that we are 
+- Add specific buildrequires for libpng15, so that we are
   building against the system provided libpng.
 
 -------------------------------------------------------------------
@@ -515,9 +532,9 @@ Tue May 13 14:56:21 EEST 2014 - koprok@gmail.com
 -------------------------------------------------------------------
 Sun Apr 6 16:22:56 UTC 2014 - tittiatcoke@gmail.com
 
-- Drop the BuildRequires on libucil and libunicap for Factory. This 
+- Drop the BuildRequires on libucil and libunicap for Factory. This
   stops us from getting ride of Gstreamer 0.10 and besides these two
-  libraries seem to be unmaintained upstream as that the latest 
+  libraries seem to be unmaintained upstream as that the latest
   actions are from 2010
 
 -------------------------------------------------------------------
@@ -525,7 +542,7 @@ Thu Apr 3 11:22:56 UTC 2014 - tittiatcoke@gmail.com
 
 - Add upstream patch (3.0 version) to support Gstreamer 1.x
   * bomb_commit_gstreamer-1x-support.patch
-  
+
 -------------------------------------------------------------------
 Thu Mar 13 07:50:56 UTC 2014 - tchvatal@suse.com
 
@@ -558,7 +575,7 @@ Sun Jan 19 15:57:26 EET 2014 - koprok@gmail.com
 Thu Jan 16 17:11:21 UTC 2014 - dvlaeev@suse.com
 
 - Fix build with altivec:
-  opencv-altivec-vector.patch 
+  opencv-altivec-vector.patch
 
 -------------------------------------------------------------------
 Sun Dec  1 17:37:36 UTC 2013 - hrvoje.senjan@gmail.com
@@ -573,11 +590,11 @@ Tue Nov 12 23:07:23 UTC 2013 - hrvoje.senjan@gmail.com
   More info at:
   http://opencv.org/opencv-2-4-7-is-out.html
   The brief list of changes:
-  * dynamic OpenCL runtime loading, setting default OpenCL device 
+  * dynamic OpenCL runtime loading, setting default OpenCL device
     via env var, many bug-fixes and some new optimization with OpenCL
   * bug-fixes and new optimizations in CUDA stuff
   * latest NDK and Android OS support, Native Android Camera tuning
-  * minor fixes, XAML sample and MS Certification compatibility 
+  * minor fixes, XAML sample and MS Certification compatibility
     in WinRT stuff
   * 382 pull requests have been merged
   * 54 reported bugs have been fixed
@@ -589,7 +606,7 @@ Tue Nov 12 23:07:23 UTC 2013 - hrvoje.senjan@gmail.com
 -------------------------------------------------------------------
 Sun Nov 10 09:42:16 UTC 2013 - tittiatcoke@gmail.com
 
-- Add patch assume-Sphinx-is-there.diff to fix building with 
+- Add patch assume-Sphinx-is-there.diff to fix building with
   Sphinx versions that have alphanumeric characters in the version
   (Only for factory builds at the moment)
 
@@ -625,7 +642,7 @@ Fri Jul 12 11:22:31 EEST 2013 - koprok@nand.bg
 -------------------------------------------------------------------
 Wed Jun 26 20:26:48 UTC 2013 - crrodriguez@opensuse.org
 
-- build with LFS_CFLAGS in 32 bit archs. 
+- build with LFS_CFLAGS in 32 bit archs.
 
 -------------------------------------------------------------------
 Fri May 10 09:59:31 UTC 2013 - hrvoje.senjan@gmail.com
@@ -757,7 +774,7 @@ Tue Jan 10 04:24:32 UTC 2012 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Sat Dec 31 14:21:49 UTC 2011 - idonmez@suse.com
 
-- Add upstream r6881 to fix clang compatibility 
+- Add upstream r6881 to fix clang compatibility
 
 -------------------------------------------------------------------
 Tue Oct 18 08:19:10 UTC 2011 - coolo@suse.com
@@ -833,7 +850,7 @@ Wed Aug  3 00:36:36 EEST 2011 - koprok@nand.bg
 -------------------------------------------------------------------
 Wed Jul  6 08:23:04 UTC 2011 - idonmez@novell.com
 
-- Add opencv-v4l-2.6.38.patch: use the new libv4l2 interface 
+- Add opencv-v4l-2.6.38.patch: use the new libv4l2 interface
 
 -------------------------------------------------------------------
 Mon Dec 27 16:56:15 EET 2010 - koprok@nand.bg
@@ -853,7 +870,7 @@ Thu Dec 23 16:08:46 EET 2010 - koprok@nand.bg
 Sun Dec 12 13:39:48 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Use system zlib, oh, and do not export ZLIB symbols to
-  other applications, clashes ensued. 
+  other applications, clashes ensued.
 
 -------------------------------------------------------------------
 Thu Nov 11 15:50:25 CET 2010 - dmueller@suse.de
@@ -899,16 +916,16 @@ Thu Apr 15 14:26:49 EEST 2010 - koprok@nand.bg
 Tue Apr 13 19:54:42 EEST 2010 - koprok@nand.bg
 
 - Update to OpenCV 2.1.0:
-  * The whole OpenCV is now using exceptions instead of the old 
+  * The whole OpenCV is now using exceptions instead of the old
     libc-style mechanism
-  * Experimental "static" OpenCV configuration in CMake was 
+  * Experimental "static" OpenCV configuration in CMake was
     contributed by Jose Luis Blanco.
     Pass "BUILD_SHARED_LIBS=OFF" to CMake to build OpenCV statically.
   * new improved version of one-way descriptor is added
-  * User can now control the image areas visible after the stereo 
+  * User can now control the image areas visible after the stereo
     rectification
   * Fullscreen has been added (thanks to Yannick Verdie).
-  * Further info at: 
+  * Further info at:
      http://opencv.willowgarage.com/wiki/OpenCV%20Change%20Logs
 
 -------------------------------------------------------------------
@@ -930,4 +947,3 @@ Sat Jan 16 19:45:04 UTC 2010 - tittiatcoke@gmail.com
 Fri Oct  9 19:23:14 UTC 2009 - cmorve69@yahoo.es
 
 - Initial package
-

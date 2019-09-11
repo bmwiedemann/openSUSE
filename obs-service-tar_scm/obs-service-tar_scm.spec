@@ -90,8 +90,8 @@ Recommends:     obs-service-download_files                      \
 ######## END OF MACROS AND FUN ###################################
 
 Name:           obs-service-tar_scm
-%define version_unconverted 0.10.9.1559745964.22c86cd
-Version:        0.10.9.1559745964.22c86cd
+%define version_unconverted 0.10.10.1566390389.9f923f8
+Version:        0.10.10.1566390389.9f923f8
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later

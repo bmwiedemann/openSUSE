@@ -29,6 +29,8 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gst-vaapi-fix-garbled-screen-totem.patch -- Fix garbled video in totem
 Patch0:         gst-vaapi-fix-garbled-screen-totem.patch
+# PATCH-FIX-UPSTREAM gst-vaapi-remove-gallium-from-white-list.patch -- Remove Mesa gallium from drivers white list
+Patch1:         gst-vaapi-remove-gallium-from-white-list.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -37,6 +39,7 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
 %endif
 BuildRequires:  pkgconfig
+BuildRequires:  vaapi-wayland-tools
 BuildRequires:  yasm
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
@@ -48,19 +51,18 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libva) >= 0.30.4
 BuildRequires:  pkgconfig(libva-drm) >= 0.33.0
-BuildRequires:  pkgconfig(libva-x11)
-BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:  vaapi-wayland-tools
 BuildRequires:  pkgconfig(libva-glx)
 BuildRequires:  pkgconfig(libva-wayland)
+BuildRequires:  pkgconfig(libva-x11)
+BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(wayland-client) >= 1.0.2
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.15
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
 ExclusiveArch:  %{ix86} x86_64
 
 %description

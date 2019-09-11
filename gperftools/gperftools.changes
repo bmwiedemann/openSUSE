@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 07:00:37 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Tue Mar  5 15:31:55 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add ppc64-fix-367fd5731a8c68225cb870aa656ea0ce677fe040.patch

@@ -1,10 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 04 08:39:34 UTC 2019 - mwilck@suse.com
+
+- Update to version 0.8.2+27+suse.3ff280b:
+  * Added upstream patch to fix premature path reinstantiation
+    with san_path_err_XX (boo#1149319)
+
+-------------------------------------------------------------------
+Thu Aug 29 08:22:13 UTC 2019 - mwilck@suse.com
+
+- Update to version 0.8.2+26+suse.d884195:
+- Don't activate NVMe native multipath support by default
+  * multipath.conf.5: document foreign library support
+  * multipath.conf: add "enable_foreign" parameter (bsc#1139837)
+  * Set default for "enable_foreign" to "NONE" (bsc#1139837)
+    added libmultipath-set-enable_foreign-to-NONE-by-default.patch
+- Added reviewed upstream patches (marginal path patch set from Red Hat)
+  * add "marginal_pathgroups" config option
+  * deprecate "delay_wait_checks" and "delay_watch_checks"; they are
+    now automatically mapped to eqivalent "san_path_err_..." settings.
+
+-------------------------------------------------------------------
 Tue Jul 16 13:01:13 UTC 2019 - mwilck@suse.com
 
 - Update to version 0.8.2+11+suse.0f6a649:
   * kpartx: recognize DASD on loop devices again (bsc#1139775)
   * Bump version to 0.8.2 - most changes were already in SUSE tree
-  * Man page improvements
+  * Man page improvements (bsc#1148767)
 
 -------------------------------------------------------------------
 Tue Jul 02 22:21:14 UTC 2019 - mwilck@suse.com
@@ -55,7 +76,7 @@ Tue Apr 30 14:48:40 UTC 2019 - mwilck@suse.com
     - multipath -u: test socket connection in non-blocking mode
   * Fix priority handling for offline paths
   (bsc#1118495)
-- Update to upstream 0.8.1
+- Update to upstream 0.8.1 (bsc#1148767)
   * Avoid device IO in "multipath -u" (bsc#1125145)
   * multipathd: protect all access to running_state
   (bsc##1110060, bsc#1110439)
@@ -159,7 +180,7 @@ Tue Jan 08 23:26:41 UTC 2019 - mwilck@suse.com
   (bsc#1121066)
 - merged upstream fb824725
   * Improved NVMe support in both native and dm-mpath mode
-  added basic NVMe ANA support (bsc#1119898)
+  added basic NVMe ANA support (bsc#1119898, bsc#1118495)
   * Fix prio output in "multipathd show topology" (bsc#1119897)
   * multipathd: fix daemon not really shutdown
   (bsc##1110060, bsc#1110439)

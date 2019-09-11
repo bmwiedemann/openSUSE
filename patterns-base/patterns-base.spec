@@ -48,17 +48,7 @@ Provides:       pattern() = 32bit
 Provides:       pattern-icon() = pattern-cli
 Provides:       pattern-order() = 1180
 Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Provides:       patterns-openSUSE-32bit = %{version}
-Provides:       patterns-openSUSE-x86 = %{version}
-Obsoletes:      patterns-openSUSE-32bit < %{version}
-Obsoletes:      patterns-openSUSE-x86 < %{version}
-%else
-Provides:       patterns-sled-32bit = %{version}
-Provides:       patterns-sles-32bit = %{version}
-Obsoletes:      patterns-sled-32bit < %{version}
-Obsoletes:      patterns-sles-32bit < %{version}
-%endif
+%obsolete_legacy_pattern 32bit
 
 %description 32bit
 This will install the 32-bit variant of all selected patterns. This allows to execute 32-bit software.
@@ -78,19 +68,8 @@ Provides:       pattern() = apparmor
 Provides:       pattern-icon() = pattern-apparmor
 Provides:       pattern-order() = 1100
 Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Provides:       patterns-openSUSE-apparmor = %{version}
-Obsoletes:      patterns-openSUSE-apparmor < %{version}
-%else
-Provides:       patterns-sled-apparmor = %{version}
-Provides:       patterns-sles-apparmor = %{version}
-Obsoletes:      patterns-sled-apparmor < %{version}
-Obsoletes:      patterns-sles-apparmor < %{version}
-%endif
+%obsolete_legacy_pattern apparmor
 Requires:       pattern() = minimal_base
-%if 0%{?is_opensuse}
-Recommends:     pattern() = apparmor_opt
-%endif
 
 Requires:       apparmor-abstractions
 Requires:       apparmor-parser
@@ -104,6 +83,7 @@ Requires:       audit
 %else
 Recommends:     audit
 %endif
+Recommends:     apparmor-docs
 
 %description apparmor
 AppArmor is an application security framework that provides mandatory access control for programs. It protects from exploitation of software flaws and compromised systems. It offers an advanced tool set that automates the development of per-program application security without requiring additional knowledge.
@@ -111,32 +91,6 @@ AppArmor is an application security framework that provides mandatory access con
 %files apparmor
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/apparmor.txt
-
-################################################################################
-
-%if 0%{?is_opensuse}
-%package apparmor_opt
-%pattern_basetechnologies
-Summary:        AppArmor
-Group:          Metapackages
-Provides:       pattern() = apparmor_opt
-Provides:       pattern-extends() = apparmor
-Provides:       pattern-icon() = pattern-apparmor
-Provides:       pattern-order() = 1080
-# Keep these grouped
-Provides:       patterns-openSUSE-apparmor_opt = %{version}
-Obsoletes:      patterns-openSUSE-apparmor_opt < %{version}
-Requires:       pattern() = minimal_base
-
-Requires:       apparmor-docs
-
-%description apparmor_opt
-AppArmor is an application security framework that provides mandatory access control for programs. It protects from exploitation of software flaws and compromised systems. It offers an advanced tool set that automates the development of per-program application security without requiring additional knowledge.
-
-%files apparmor_opt
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/apparmor_opt.txt
-%endif
 
 ################################################################################
 
@@ -165,20 +119,11 @@ Provides:       pattern() = base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 1030
 Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Provides:       patterns-openSUSE-base = %{version}
-Obsoletes:      patterns-openSUSE-base < %{version}
-%else
-Provides:       patterns-sles-base
-Provides:       patterns-sles-minimal
-Obsoletes:      patterns-sles-base < %{version}
-Obsoletes:      patterns-sles-minimal < %{version}
-%endif
+%obsolete_legacy_pattern base
+%obsolete_legacy_pattern minimal
 Requires:       pattern() = minimal_base
 
-Requires:       e2fsprogs
 Requires:       kmod
-Requires:       openssh
 Requires:       polkit
 Requires:       polkit-default-privs
 Requires:       shadow
@@ -190,35 +135,19 @@ Requires:       systemd-coredump
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     bash-completion
-Recommends:     btrfsprogs
 Recommends:     ca-certificates-mozilla
 Recommends:     chrony
 Recommends:     cron
 # we rely on cron for daily/hourly
 Recommends:     cronie
-Recommends:     grub2
 Recommends:     glibc-locale
 Recommends:     systemd-sysvinit
-Recommends:     snapper
 
 %if 0%{?is_opensuse}
 # get it branded
 Recommends:     branding-openSUSE
 %else
 Recommends:     branding-SLE
-%endif
-%ifarch x86_64
-Recommends:     efibootmgr
-Recommends:     shim
-Recommends:     grub2-x86_64-efi
-%endif
-%ifarch aarch64
-Recommends:     shim
-Recommends:     grub2-arm64-efi
-%endif
-%ifarch %arm
-Recommends:     efibootmgr
-Recommends:     grub2-arm-efi
 %endif
 %ifarch ppc ppc64 ppc64le
 %if !0%{?is_opensuse}
@@ -259,6 +188,7 @@ Provides:       pattern-icon() = pattern-desktop
 Provides:       pattern-order() = 1802
 Provides:       pattern-visible()
 # We want SLES-15 systems to install this pattern on upgrade to SLES-16
+# XXX 2019-08-28 this package still exists so an obsolete is wrong here
 %if !0%{?is_opensuse}
 Obsoletes:      patterns-base-x11 < %{version}
 %endif
@@ -289,9 +219,7 @@ Provides:       pattern() = console
 Provides:       pattern-icon() = pattern-cli
 Provides:       pattern-order() = 1120
 Provides:       pattern-visible()
-# Keep these grouped
-Provides:       patterns-openSUSE-console = %{version}
-Obsoletes:      patterns-openSUSE-console < %{version}
+%obsolete_legacy_pattern console
 Requires:       pattern() = enhanced_base
 Recommends:     pattern() = yast2_basis
 
@@ -349,25 +277,13 @@ Provides:       pattern() = documentation
 Provides:       pattern-icon() = pattern-documentation
 Provides:       pattern-order() = 1005
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
-%if !0%{?is_opensuse}
-Provides:       patterns-sled-documentation
-Obsoletes:      patterns-sles-documentation < %{version}
-%endif
+Requires:       pattern() = minimal_base
+%obsolete_legacy_pattern documentation
 
-Recommends:     info2html
+Requires:       man
 Recommends:     man-pages
 # note pam is in every install so no point in using packageand
 Recommends:     pam-doc
-Recommends:     susehelp
-Recommends:     susehelp_en
-%if !0%{?is_opensuse}
-Recommends:     sled-admin_en-pdf
-Recommends:     sled-gnomeuser_en-pdf
-Recommends:     sled-manuals_en-pdf
-Recommends:     sled-security_en-pdf
-Recommends:     sled-tuning_en-pdf
-%endif
 
 %description documentation
 Help and Support Documentation
@@ -386,18 +302,13 @@ Provides:       pattern() = enhanced_base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 1060
 Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Provides:       patterns-openSUSE-enhanced_base = %{version}
-Obsoletes:      patterns-openSUSE-enhanced_base < %{version}
-%endif
+%obsolete_legacy_pattern enhanced_base
 Requires:       pattern() = base
 Recommends:     pattern() = apparmor
 Recommends:     pattern() = sw_management
 Recommends:     pattern() = yast2_basis
-%if 0%{?is_opensuse}
-Recommends:     pattern() = enhanced_base_opt
-%endif
 
+Requires:       openssh
 Recommends:     aaa_base-extras
 # getfacl and setfacl
 Recommends:     acl
@@ -453,8 +364,6 @@ Recommends:     hdparm
 Recommends:     hwinfo
 Recommends:     info
 Recommends:     initviocons
-# /bin/ip considered useful
-Recommends:     iproute2
 # ping is required for network tests
 Recommends:     iputils
 Recommends:     irqbalance
@@ -485,8 +394,6 @@ Recommends:     nscd
 Recommends:     ntfs-3g
 Recommends:     ntfsprogs
 Recommends:     openslp
-# we want a ssh server to be available
-Recommends:     openssh
 # TODO: should this be in more places
 Recommends:     pam-config
 Recommends:     parted
@@ -550,17 +457,7 @@ Recommends:     mouseemu
 Recommends:     pdisk
 Recommends:     powerpc32
 %endif
-# openSUSE Branding packages first
-%if 0%{?is_opensuse}
-# we want a branded grub2 too #757683
-Recommends:     grub2-branding-openSUSE
 Recommends:     plymouth
-Recommends:     plymouth-branding-openSUSE
-Recommends:     release-notes-openSUSE
-%else
-Recommends:     grub2-branding-SLE
-Recommends:     plymouth
-%endif
 # Other packages we have in openSUSE and not SLE-15
 %if 0%{?is_opensuse}
 Recommends:     dmraid
@@ -595,30 +492,6 @@ Recommends:     numactl
 Recommends:     ucode-amd
 Recommends:     ucode-intel
 %endif
-%endif
-
-%description enhanced_base
-This is the enhanced base runtime system with lots of convenience packages.
-
-%files enhanced_base
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/enhanced_base.txt
-
-################################################################################
-
-%if 0%{?is_opensuse}
-%package enhanced_base_opt
-%pattern_basetechnologies
-Summary:        Enhanced Base System
-Group:          Metapackages
-Provides:       pattern() = enhanced_base_opt
-Provides:       pattern-extends() = enhanced_base
-Provides:       pattern-icon() = pattern-software-management
-Provides:       pattern-order() = 1040
-# Keep these grouped
-Provides:       patterns-openSUSE-enhanced_base_opt = %{version}
-Obsoletes:      patterns-openSUSE-enhanced_base_opt < %{version}
-
 Recommends:     joe
 Recommends:     mpt-status
 Recommends:     perl-TermReadLine-Gnu
@@ -658,14 +531,16 @@ Suggests:       xfsdump
 %ifarch %ix86 x86_64
 Suggests:       hyper-v
 %endif
+%endif
 
-%description enhanced_base_opt
+%description enhanced_base
 This is the enhanced base runtime system with lots of convenience packages.
 
-%files enhanced_base_opt
+%files enhanced_base
 %dir %{_docdir}/patterns
-%{_docdir}/patterns/enhanced_base_opt.txt
-%endif
+%{_docdir}/patterns/enhanced_base.txt
+
+################################################################################
 
 ################################################################################
 
@@ -677,16 +552,13 @@ Provides:       pattern() = minimal_base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 5190
 Provides:       pattern-visible()
-# Keep these grouped
-Provides:       patterns-openSUSE-minimal_base = %{version}
-Obsoletes:      patterns-openSUSE-minimal_base < %{version}
+%obsolete_legacy_pattern minimal_base
 
 Requires:       aaa_base
 Requires:       bash
 Requires:       coreutils
 Requires:       device-mapper
 Requires:       distribution-release
-Requires:       dracut
 Requires:       filesystem
 Requires:       glibc
 Requires:       iproute2
@@ -703,6 +575,9 @@ Requires:       system-user-nobody
 Requires:       systemd
 Requires:       udev
 Requires:       zypper
+# the release package recommends a specific branding package so
+# the solver should pick the right one
+Requires:       branding
 # Note it makes no sense to recommend packages in minimal_base as it can't
 # be installed with --no-recommends if your package can be Recommended rather
 # then required it likely belongs in base and not here.
@@ -769,15 +644,12 @@ Provides:       pattern() = sw_management
 Provides:       pattern-icon() = pattern-software-management
 Provides:       pattern-order() = 1360
 Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Provides:       patterns-openSUSE-sw_management = %{version}
-Obsoletes:      patterns-openSUSE-sw_management < %{version}
-%endif
+%obsolete_legacy_pattern sw_management
+# Zypper is the basic sw_management stack for *SUSE
+Requires:       zypper
 %if 0%{?sle_version}
 Recommends:     pattern() = sw_management_x11
 
-# Zypper is the basic sw_management stack for *SUSE
-Requires:       zypper
 Recommends:     lifecycle-data
 Recommends:     zypper-lifecycle-plugin
 %endif
@@ -800,9 +672,7 @@ Provides:       pattern() = update_test
 Provides:       pattern-icon() = pattern-tests
 Provides:       pattern-order() = 1380
 Provides:       pattern-visible()
-# Keep these grouped
-Provides:       patterns-openSUSE-update_test = %{version}
-Obsoletes:      patterns-openSUSE-update_test < %{version}
+%obsolete_legacy_pattern update_test
 
 Recommends:     update-test-affects-package-manager
 Recommends:     update-test-interactive
@@ -833,14 +703,10 @@ Provides:       pattern() = x11
 Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1800
 Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Provides:       patterns-openSUSE-x11 = %{version}
-Obsoletes:      patterns-openSUSE-x11 < %{version}
-%endif
+%obsolete_legacy_pattern x11
 Requires:       pattern() = base
 %if 0%{?is_opensuse}
 Recommends:     pattern() = x11_enhanced
-Recommends:     pattern() = x11_opt
 %endif
 
 Requires:       xorg-x11-fonts-core
@@ -889,19 +755,10 @@ Group:          Metapackages
 Provides:       pattern() = x11_enhanced
 Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1801
-%if 0%{?is_opensuse}
-Obsoletes:      patterns-openSUSE-x11 < %{version}
-%else
-Provides:       patterns-sled-minimal
-Obsoletes:      patterns-sled-minimal < %{version}
-%endif
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = x11
 Recommends:     pattern() = x11_yast
-%if 0%{?is_opensuse}
-Recommends:     pattern() = x11_opt
-%endif
 
 # 1057377
 Requires:       glibc-locale
@@ -949,31 +806,6 @@ Recommends:     susepaste-screenshot
 Suggests:       gvim
 Suggests:       hexchat
 Suggests:       wpa_supplicant-gui
-%endif
-
-%description x11_enhanced
-The X Window System provides the only standard platform-independent networked graphical window system bridging the heterogeneous platforms in today's enterprise: from network servers to desktops, thin clients, laptops, and handhelds, independent of operating system and hardware.
-
-%files x11_enhanced
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/x11_enhanced.txt
-
-################################################################################
-
-%if 0%{?is_opensuse}
-%package x11_opt
-%pattern_graphicalenvironments
-Summary:        X Window System
-Group:          Metapackages
-Provides:       pattern() = x11_opt
-Provides:       pattern-extends() = x11
-Provides:       pattern-icon() = pattern-x11
-Provides:       pattern-order() = 1680
-# Keep these grouped
-Provides:       patterns-openSUSE-x11_opt = %{version}
-Obsoletes:      patterns-openSUSE-x11_opt < %{version}
-Requires:       pattern() = enhanced_base
-Requires:       pattern() = fonts
 # needed e.g. for nvidia drivers
 # #302566
 Recommends:     x11-tools
@@ -988,14 +820,14 @@ Suggests:       xorg-x11-driver-video-radeonhd
 Suggests:       xorg-x11-driver-video-unichrome
 # #389816
 Suggests:       xorg-x11-server-sdk
+%endif
 
-%description x11_opt
+%description x11_enhanced
 The X Window System provides the only standard platform-independent networked graphical window system bridging the heterogeneous platforms in today's enterprise: from network servers to desktops, thin clients, laptops, and handhelds, independent of operating system and hardware.
 
-%files x11_opt
+%files x11_enhanced
 %dir %{_docdir}/patterns
-%{_docdir}/patterns/x11_opt.txt
-%endif
+%{_docdir}/patterns/x11_enhanced.txt
 
 ################################################################################
 
@@ -1130,7 +962,7 @@ done
 # These packages don't generate a 32bit pattern
 for i in \
 %if 0%{?is_opensuse}
-apparmor_opt basesystem basic_desktop console documentation enhanced_base_opt transactional_base update_test x11_opt \
+basesystem basic_desktop console documentation transactional_base update_test \
 %else
 %ifnarch s390 s390x
 32bit \

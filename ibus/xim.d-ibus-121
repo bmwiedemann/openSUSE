@@ -30,17 +30,6 @@ case "$WINDOWMANAGER" in
     ;;
 esac
 
-# Force OOo to use gtk-immodule
-# Only libreoffice-gnome supports IM module
-# To fix cursor following problem (on_the_spot), do not use libreoffice-kde4
-if [ -e /usr/lib64/libreoffice/program/libvclplug_gtklo.so ] ||
-   [ -e /usr/lib/libreoffice/program/libvclplug_gtklo.so ] ||
-   [ -e /usr/lib64/libreoffice/program/libvclplug_gtk3lo.so ] ||
-   [ -e /usr/lib/libreoffice/program/libvclplug_gtk3lo.so ]; then
-    export OOO_FORCE_DESKTOP=gnome
-else
-    echo "libreoffice-gnome is not found. For better IBus support, please install libreoffice-gnome"
-fi
 
 export XMODIFIERS="@im=ibus"
 export GTK_IM_MODULE=ibus

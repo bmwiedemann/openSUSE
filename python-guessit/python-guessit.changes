@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  3 06:44:13 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.1.0
+  * Add python `3.8` support
+  * Use rebulk `2.*`
+  * Remove `v` from `subtitle_language` prefix in default
+    configuration
+  * Add `Variable Frame Rate` value to `other` property (VFR tag)
+  * Use episode words defined in configuration in a rebulk rule
+  * Avoid trigger of useless rules consequences
+  * Fix possible crash in weak episode removal
+  * Fix issue caused by `streaming_service` property conflicts
+  * Fix source validation when more than one pattern match
+  * Fix issue with some titles on multiple fileparts
+  * Fix issue related to website exclusion inside title
+
+-------------------------------------------------------------------
 Tue Jun 11 06:30:07 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0.4

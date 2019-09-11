@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 26 10:43:03 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.37.2
+  * Follow updated Mozilla recommendations for Nginx ssl_protocols, 
+    ssl_ciphers, and ssl_prefer_server_ciphers
+  * Stop disabling TLS session tickets in Nginx as it caused TLS 
+    failures on some systems.
+
+-------------------------------------------------------------------
 Wed Jul 17 13:38:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.36.0 (bsc#1141928)

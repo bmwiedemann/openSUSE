@@ -1,7 +1,7 @@
 #
 # spec file for package python-units
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        Python-2.0
 Group:          Development/Languages/Python
 Url:            https://bitbucket.org/adonohue/units/
 Source:         https://files.pythonhosted.org/packages/source/u/units/units-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,10 +49,7 @@ cannot add 2 metres to 5 seconds, because this doesn't make sense.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm -rf _build.* build
-%{python_expand rm -rf _build.* build
-py.test-%{$python_bin_suffix}
-}
+%pytest
 
 %files %{python_files}
 %doc README

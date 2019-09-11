@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:10:35 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.4.2
+  * All debuggers: fix VariableCollection to unregister as
+    texthinter provider (kde#411371)
+  * Contextbrowser: register as texthint provider to existing views
+    on creation
+  * Fix crash on text hint being triggered after disabling code
+    browser plugin (kde#411371)
+  * Avoid possible dereference of an invalid iterator (kde#411323)
+  * Kdevplatform/shell: fix outdated window title once project of
+    document loaded
+  * Kdevplatform/shell: work-around for Qt 5.9/macOS bug showing
+    modified indicator
+  * Kdevplatform/shell: restore document modified flag in
+    mainwindow title
+  * Kdevplatform/shell: do not repeat query & differently for
+    current document
+  * Indicate appstream the ps desktop file isn't a separate
+    application (kde#410687)
+  * Clang: fix tooltip missing closing bracket with default
+    argument calls
+  * Include more hidden files in projectfilter plugin (CI, Lint
+    configs...)
+
+-------------------------------------------------------------------
 Tue Aug 13 08:09:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.4.1

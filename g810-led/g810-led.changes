@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sun Aug 25 08:05:54 UTC 2019 - Olav Reinert <seroton10@gmail.com>
+
+- Update to version 0.3.7.
+
+-------------------------------------------------------------------
+Mon Jun 24 10:14:52 UTC 2019 - Christos Gourdoupis <xrigou@otenet.gr>
+
+- Update to version 0.3.5.
+
+-------------------------------------------------------------------
+Sat Jan 26 15:26:53 UTC 2019 - Christos Gourdoupis <xrigou@otenet.gr>
+
+- Update to version 0.3.3.
+
+-------------------------------------------------------------------
+Tue Nov 27 11:12:59 UTC 2018 - Christos Gourdoupis <xrigou@otenet.gr>
+
+- Update to version 0.2.8.
+
+-------------------------------------------------------------------
+Fri Nov  3 23:39:34 UTC 2017 - xrigou@otenet.gr
+
+- Fix support for newer keyboard models.
+- Rename the changes file.
+
+-------------------------------------------------------------------
+Wed Oct 25 22:36:42 UTC 2017 - xrigou@otenet.gr
+
+- Update to version 0.2.7.
+
+-------------------------------------------------------------------
+Wed Jun  7 08:03:20 UTC 2017 - xrigou@otenet.gr
+
+- Update to version 0.2.6.
+
+-------------------------------------------------------------------
+Fri May  5 12:31:54 UTC 2017 - xrigou@otenet.gr
+
+- Update to version 0.2.1.
+
+-------------------------------------------------------------------
+Wed Feb 22 20:52:06 UTC 2017 - xrigou@otenet.gr
+
+- Update to latest git.
+  Use libhidapi instead of libusb
+- Fix build for Leap_42.1
+
+-------------------------------------------------------------------
+Sun Jan 15 00:19:07 UTC 2017 - xrigou@otenet.gr
+
+- Initial package.
+

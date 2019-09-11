@@ -1,7 +1,7 @@
 #
 # spec file for package givaro
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           givaro
 %define lname   libgivaro9
-Version:        4.0.4
+Version:        4.1.1
 Release:        0
 Summary:        C++ library for arithmetic and algebraic computations
 License:        CECILL-B
 Group:          Productivity/Scientific/Math
-Url:            http://givaro.forge.imag.fr/
+URL:            https://casys.gricad-pages.univ-grenoble-alpes.fr/givaro/
 
 #Git-Clone:	https://github.com/linbox-team/givaro
-Source:         https://github.com/linbox-team/givaro/archive/v%version.tar.gz
+Source:         https://github.com/linbox-team/givaro/releases/download/v%version/%name-%version.tar.gz
 Patch1:         givaro-doc-no-build-time.patch
 Patch2:         reproducible.patch
 # Old doxygen does not properly handle symlink recursion
@@ -37,23 +37,9 @@ BuildRequires:  gmp-devel >= 3.1.1
 BuildRequires:  graphviz
 BuildRequires:  libtool >= 2.2
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Givaro is a C++ library for arithmetic and algebraic computations.
-
-Its main features are implementations of the basic arithmetic of many
-mathematical entities: Primes fields, Extensions Fields, Finite
-Fields, Finite Rings, Polynomials, Algebraic numbers, Arbitrary
-precision integers and rationals (C++ wrappers over gmp) It also
-provides data-structures and templated classes for the manipulation
-of basic algebraic objects, such as vectors, matrices (dense, sparse,
-structured), univariate polynomials (and therefore recursive
-multivariate).
-
-It contains different program modules and is fully compatible with
-the LinBox linear algebra library and the KAAPI kernel for
-Adaptative, Asynchronous Parallel and Interactive programming.
 
 %package -n %lname
 Summary:        C++ library for arithmetic and algebraic computations
@@ -65,10 +51,14 @@ Givaro is a C++ library for arithmetic and algebraic computations.
 Its main features are implementations of the basic arithmetic of many
 mathematical entities: Primes fields, Extensions Fields, Finite
 Fields, Finite Rings, Polynomials, Algebraic numbers, Arbitrary
-precision integers and rationals. It also provides data-structures
+precision integers and rationals. It also provides data structures
 and templated classes for the manipulation of basic algebraic
 objects, such as vectors, matrices (dense, sparse, structured),
 univariate polynomials (and therefore recursive multivariate).
+
+It contains different program modules and is fully compatible with
+the LinBox linear algebra library and the KAAPI kernel for
+Adaptative, Asynchronous Parallel and Interactive programming.
 
 %package devel
 Summary:        Development files for Givaro, an algorithmic-algebraic computation library
@@ -89,25 +79,16 @@ developing against the Givaro library.
 %package doc
 Summary:        API documentation for the Givaro library, in HTML
 Group:          Documentation/HTML
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description doc
 Givaro is a C++ library for arithmetic and algebraic computations.
-
-Its main features are implementations of the basic arithmetic of many
-mathematical entities: Primes fields, Extensions Fields, Finite
-Fields, Finite Rings, Polynomials, Algebraic numbers, Arbitrary
-precision integers and rationals.
 
 This subpackage contains the Doxygen-generated HTML documentation for
 the Givaro API.
 
 %prep
-%setup -q
-%patch -P 1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -117,21 +98,18 @@ chmod a+x givaro-config
 make %{?_smp_mflags}
 
 %install
-b="%buildroot"
 %make_install
-rm -f "$b/%_libdir"/*.la
+rm -f "%buildroot/%_libdir"/*.la
 %fdupes -s %buildroot/%_docdir/%name/givaro-html/
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libgivaro.so.*
-%doc COPYRIGHT COPYING
+%license COPYRIGHT COPYING
 
 %files devel
-%defattr(-,root,root)
 %_bindir/givaro-config
 %_bindir/givaro-makefile
 %_includedir/givaro-config.h
@@ -142,7 +120,6 @@ rm -f "$b/%_libdir"/*.la
 %_libdir/pkgconfig/givaro.pc
 
 %files doc
-%defattr(-,root,root)
 %dir %_docdir/%name/
 %exclude %_docdir/%name/givaro-html/INSTALL
 %_docdir/%name/givaro.html

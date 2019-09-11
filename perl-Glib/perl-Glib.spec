@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Glib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           perl-Glib
-Version:        1.328
+Version:        1.3291
 Release:        0
 %define cpan_name Glib
 Summary:        Perl wrappers for the GLib utility and Object libraries
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/pod/%{cpan_name}
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         perl-Glib-1.328-glib2.59-comment-linebreaks.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  glib2-devel >= 2.0.0
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Depends) >= 0.300
 BuildRequires:  perl(ExtUtils::PkgConfig) >= 1.000000
 Requires:       perl(ExtUtils::Depends) >= 0.300
 Requires:       perl(ExtUtils::PkgConfig) >= 1.000000
-Provides:       %{name}-devel = %{version}
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  glib2-devel >= 2.0.0
+# MANUAL END
 
 %description
 This wrapper attempts to provide a perlish interface while remaining as
@@ -48,14 +48,13 @@ sorts of good information.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

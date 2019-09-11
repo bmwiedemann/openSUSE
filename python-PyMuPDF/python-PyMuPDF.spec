@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.14.19
+Version:        1.16.1
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        GPL-3.0-only AND AGPL-3.0-only
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  jbig2dec-devel
-BuildRequires:  mupdf-devel-static >= 1.14.0
+BuildRequires:  mupdf-devel-static >= 1.16.0
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
@@ -51,6 +51,13 @@ This is PyMuPDF, a Python binding for MuPDF, a PDF and XPS viewer.
 MuPDF can access files in PDF, XPS, OpenXPS, epub, comic and fiction
 book formats. PyMuPDF can also access files with extensions *.pdf,
 *.xps, *.oxps, *.epub, *.cbz or *.fb2 from Python scripts.
+
+%package -n     python-%{pypi_name}-doc
+Summary:        Documentation for PyMuPDF
+Group:          Development/Languages/Python
+
+%description -n python-%{pypi_name}-doc
+This is the documentation for PyMuPDF.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
@@ -69,7 +76,10 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %license COPYING
-%doc README.md doc/PyMuPDF.pdf
+%doc README.md
 %{python_sitearch}/*
+
+%files -n python-%{pypi_name}-doc
+%doc doc/PyMuPDF.pdf
 
 %changelog

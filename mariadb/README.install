@@ -1,12 +1,14 @@
-You just installed MySQL server for the first time.
+You have just installed MariaDB server for the first time.
 
-You can start it using:
+You can start it via:
+ systemctl start mariadb
+or
  rcmysql start
 
-During first start empty database will be created for your automatically.
+During the first start, empty database will be created for you automatically.
 
-PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
-To do so, start the server, then issue the following commands:
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER!
+To do so, start the server and run the following commands:
 
 '/usr/bin/mysqladmin' -u root password 'new-password'
 '/usr/bin/mysqladmin' -u root -h <hostname> password 'new-password'

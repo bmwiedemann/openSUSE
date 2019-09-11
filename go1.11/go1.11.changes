@@ -2,9 +2,12 @@
 Tue Aug 13 21:06:30 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.11.13 (released 2019/08/13) includes security fixes to the
-  net/http and net/url packages addressing:
+  net/http and net/url packages addressing CVEs:
   CVE-2019-9512 CVE-2019-9514 CVE-2019-14809
   Refs boo#1141688.
+  * bnc#1146111 VUL-0: CVE-2019-9512: go: HTTP/2: flood using PING frames results in unbounded memory growth
+  * bnc#1146115 VUL-0: CVE-2019-9514: go: HTTP/2 implementation is vulnerable to a reset flood, potentially leading to a denial of service
+  * bnc#1146123 VUL-0: CVE-2019-14809: go: malformed hosts in URLs leads to authorization bypass
   * go#33632 net/url: URL.Parse Multiple Parsing Issues
   * go#33630 net/http: Denial of Service vulnerabilities in the HTTP/2 implementation
 

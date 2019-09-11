@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  7 10:46:21 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Install appdata to metainfo (bxo#15752)
+
+-------------------------------------------------------------------
 Fri Aug 16 12:45:21 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 28 12:12:34 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.g35:
+  * Add _distconfdir as /usr/etc
+  * find-provides.ksyms, find-requires.ksyms: cleanup kernel version handling (bsc#1145601).
+  * find-requires.ksyms: fix matching of uninstalled files (bsc#1145601).
+  * add changes
+
+-------------------------------------------------------------------
+Thu Aug 15 17:53:05 UTC 2019 - msuchanek@suse.de
+
+- Update to version 0.g32:
+  * find-provides.ksyms, find-requires.ksyms: cleanup kernel version handling (bsc#1145601).
+  * find-requires.ksyms: fix matching of uninstalled files (bsc#1145601).
+
+-------------------------------------------------------------------
+Wed Aug 14 11:25:25 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 0.g29:
+  * find-requires.ksyms: Move modinfo and modprobe before the ksym dependency code.
+
+-------------------------------------------------------------------
 Tue Jun 18 13:25:45 UTC 2019 - Takashi Iwai <tiwai@suse.de>
 
 - Add support for compressed firmware files

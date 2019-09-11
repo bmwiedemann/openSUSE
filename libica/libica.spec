@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,19 @@
 %endif
 
 Name:           libica
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
 Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/libica
-Source:         libica-%{version}.tar.gz
-Source1:        libica-SuSE.tar.bz2
+Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # The icaioctl.h file came from https://sourceforge.net/p/opencryptoki/icadd/ci/master/tree/
-Source3:        icaioctl.h
-Source4:        README.SUSE
-Source5:        sysconfig.z90crypt
+Source1:        icaioctl.h
+Source2:        README.SUSE
+Source3:        sysconfig.z90crypt
+Source4:        z90crypt
+Source5:        z90crypt.service
 Source6:        baselibs.conf
 Source7:        %{name}-rpmlintrc
 BuildRequires:  autoconf
@@ -42,7 +43,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 PreReq:         %fillup_prereq
-PreReq:         %insserv_prereq
 ExclusiveArch:  s390 s390x
 
 %description
@@ -105,38 +105,48 @@ This RPM contains all the tools necessary to compile and link using
 the libica library.
 
 %prep
-%setup -q -a 1
+%autosetup -p 1
 
 %build
 mkdir -p include/linux/
-cp %{SOURCE3} include/linux/
+cp %{SOURCE1} include/linux/
 
 autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC" CFLAGS="%{optflags} -fPIC" \
   --enable-fips
-make clean
+make %{?_smp_mflags} clean
 make %{?_smp_mflags}
 
 %install
-mkdir -p %{buildroot}%{_includedir}
 %make_install
+mkdir -p %{buildroot}%{_includedir}
 cp -p include/ica_api.h %{buildroot}%{_includedir}
-cp -a SuSE/* %{buildroot}
-install -D %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.z90crypt
-cp -a %{_sourcedir}/README.SUSE .
+mkdir -p %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcz90crypt
+install -D %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.z90crypt
+install -D %{SOURCE4} %{buildroot}%{_prefix}/lib/systemd/scripts/z90crypt
+install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/system/z90crypt.service
+
+cp -a %{SOURCE2} .
 rm -f %{buildroot}%{_libdir}/libica.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
 
+%check
+make check
+
+%pre tools
+%service_add_pre z90crypt.service
+
 %post tools
-%{fillup_and_insserv -n boot.z90crypt}
+%service_add_post z90crypt.service
+%{fillup_only -n z90crypt}
 
 %preun tools
-%stop_on_removal boot.z90crypt
+%service_del_preun z90crypt.service
 
 %postun tools
-%restart_on_update boot.z90crypt
-%insserv_cleanup
+%service_del_postun z90crypt.service
 
 %post   -n libica3 -p /sbin/ldconfig
 %postun -n libica3 -p /sbin/ldconfig
@@ -146,25 +156,24 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 %{_libdir}/libica.so.3*
 
 %files tools
-%defattr(-, root, root)
 %license LICENSE
 %doc README.SUSE
-%{_initddir}/boot.z90crypt
 %{_sbindir}/rcz90crypt
 %attr(0644,root,root) %{_fillupdir}/sysconfig.z90crypt
 %{_bindir}/icainfo
 %{_bindir}/icastats
 %{_mandir}/man1/icainfo.1%{?ext_man}
 %{_mandir}/man1/icastats.1%{?ext_man}
+%dir %{_prefix}/lib/systemd/scripts
+%{_prefix}/lib/systemd/scripts/z90crypt
+%{_prefix}/lib/systemd/system/z90crypt.service
 # Must be in here, otherwise openssl-ibmca does not find it via DSO_load() bsc#952871
 %{_libdir}/libica.so
 
 %files devel
-%defattr(-, root, root)
 %attr(0644,root,root) %{_includedir}/ica_api.h
 
 %files devel-static
-%defattr(-, root, root)
-%{_libdir}/libica.a
+%attr(0644,root,root) %{_libdir}/libica.a
 
 %changelog

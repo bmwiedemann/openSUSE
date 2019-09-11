@@ -19,7 +19,7 @@
 %define dracutlibdir %{_libexecdir}/dracut
 
 Name:           dracut
-Version:        049+git104.1244eed7
+Version:        049+git108.6c9d1156
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

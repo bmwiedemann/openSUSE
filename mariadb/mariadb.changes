@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Thu Sep  5 21:43:14 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use <memory> instead of <physicalmemory> for _constraints, increasing
+  the worker pool on x86_64 from 6 to >700.
+
+-------------------------------------------------------------------
+Thu Aug  8 10:06:04 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- remove sql_mode from my.ini/my.cnf as NO_ENGINE_SUBSTITUTION and
+  STRICT_TRANS_TABLES are already set by default from version
+  10.2.4 [bsc#1144314]
+
+-------------------------------------------------------------------
+Wed Aug  7 11:22:39 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- add mariadb-10.3.17-fix_ppc_build.patch to fix a compilation
+  failure for ppc if ${CRC32_LIBRARY} target has no COMPILE_FLAGS
+  yet. Then GET_TARGET_PROPERTY returns COMPILE_FLAGS-NOTFOUND,
+  which doesn't work very well when it's later fed back into
+  COMPILE_FLAGS.
+- _constraints: increase the memory because of the ppc build
+- adjust mysql-systemd-helper ("shutdown protected MySQL" section)
+  so it checks both ping response and the pid in a process list
+  as it can take some time till the process is terminated.
+  Otherwise it can lead to "found left-over process" situation
+  when regular mariadb is started [bsc#1143215]
+
+-------------------------------------------------------------------
+Fri Aug  2 10:32:48 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 10.3.17 [bsc#1141798]
+  * notable changes:
+    * MDEV-19795: Merge upstream MyRocks.
+    * MDEV-17228: Encrypted temporary tables are not encrypted.
+    * MDEV-18328: Disks Plugin is now stable and requires the FILE
+      privilege.
+    * Merge relevant InnoDB changes from MySQL 5.7.27
+    * Adjust spin loops to the x86 PAUSE instruction latency
+    * CREATE TABLE: MDEV-19292, MDEV-20102
+    * ALTER TABLE: MDEV-15641, MDEV-19630, MDEV-19916, MDEV-19974
+    * Indexed virtual columns: MDEV-16222, MDEV-17005, MDEV-19870
+    * FULLTEXT INDEX: MDEV-14154
+    * Encryption: MDEV-17228, MDEV-19914
+    * Galera + FOREIGN KEY: MDEV-19660
+    * Recovery & Mariabackup: MDEV-19978
+    * MDEV-19781: Add page id matching check in innochecksum tool
+    * MDEV-20091: DROP TEMPORARY table is logged despite no CREATE
+      was logged
+    * MDEV-19427: mysql_upgrade_service throws exception upgrading
+      from 10.0 to 10.3
+    * MDEV-19814: Server crash in row_upd_del_mark_clust_rec or
+      Assertion
+    * MDEV-17363: Compressed columns cannot be restored from dump
+  * fixes for the following security vulnerabilities:
+    CVE-2019-2805, CVE-2019-2740, CVE-2019-2739, CVE-2019-2737,
+    CVE-2019-2758
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10317-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10317-changelog
+- add "BuildRequires: python3" as some tests and myrocks_hotbackup
+  script need python3. Make the PYTHON_SHEBANG value configurable
+  [bsc#1142909]
+- remove "innodb_file_format" option from my.ini (my.cnf) file that
+  was removed in MariaDB 10.3.1. Also remove "innodb_file_per_table=ON"
+  option that is by default ON and it's redundant now.
+- remove mariadb-10.2.9-galera_cnf.patch as it's not clear what the
+  correct path to galera wsrep provider is while users can use
+  galera 3, galera 4 or galera compiled on their own
+- add "Requires: python3-mysqlclient" that is needed by
+  myrocks_hotbackup script
+
+-------------------------------------------------------------------
+Fri Aug  2 08:14:49 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Thu Jul 25 11:07:30 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- remove client_ed25519.so plugin because it's shipped in
+  mariadb-connector-c package (libmariadb_plugins)
+
+-------------------------------------------------------------------
+Wed Jul 24 12:49:32 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Jun 17 13:39:54 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 10.3.16 [bsc#1108088]
+  * notable changes:
+    * MDEV-19490: show tables fails when selecting the
+      information_schema database
+    * MDEV-19491: multi-update with triggers and stored routines
+    * MDEV-19541: InnoDB crashes when trying to recover
+      a corrupted page
+    * MDEV-19725: Incorrect error handling in ALTER TABLE
+    * MDEV-19445: FULLTEXT INDEX fix
+    * MDEV-19486: System Versioning fix
+    * MDEV-19509: InnoDB skips the tablespace in rotation list
+    * MDEV-19614: SET GLOBAL innodb_ deadlock due to
+      LOCK_global_system_variables
+    * MDEV-17458: Unable to start galera node
+    * MDEV-17456: Malicious SUPER user can possibly change audit
+      log configuration without leaving traces
+    * MDEV-19588: Wrong results from query, using left join
+    * MDEV-19258: RIGHT JOIN hangs in MariaDB
+    * Virtual columns fixes: MDEV-19027, MDEV-19602
+    * Crash recovery fixes: MDEV-13080, MDEV-19587, MDEV-19435
+    * MDEV-11094: Fixed row-based event applying with an error anymore
+      when the events aim at the blackhole engine and row annotation
+      is enabled
+    * MDEV-19076: Fixed slave_parallel_mode=optimistic did not always
+      properly order replication events on temporary tables in some
+      case to attempt execution before a parent event has been already
+      processed
+    * MDEV-19158: Fixed duplicated entries in binlog occurred in 
+      combination of LOCK TABLES and binlog_format=MIXED when a being
+      locked table was under replication unsafe operation
+  * fixes for the following security vulnerabilities: none
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10316-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10316-changelog
+- fix reading options for multiple instances if my${INSTANCE}.cnf
+  is used. Also remove "umask 077" from mysql-systemd-helper that
+  causes that new datadirs are created with wrong permissions. Set
+  correct permissions for files created by us (mysql_upgrade_info,
+  .run-mysql_upgrade) [bsc#1132666]
+- remove mariadb-5.5.28-install_db-quiet.patch and add "--rpm"
+  option to the mysql_install_db script that does basically the same
+  [bsc#1080891]
+- remove mariadb-10.1.12-deharcode-libdir.patch because it's not
+  needed - we don't build libmariadb library in mariadb package
+  anymore so we don't need to take care about LIBDIR and PLUGINDIR
+  here. Moreover we shouldn't (and we don't) touch *_RPM
+  variables as they are internal) [bsc#1080891]
+- update suse_skipped_tests.list
+
+-------------------------------------------------------------------
+Tue Jun  4 12:01:57 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 10.3.15
+  * see changes in 10.3 series
+    https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-103/
+  * fixes for the following security vulnerabilities:
+    [CVE-2019-2503] (the rest was already applied for 10.2)
+- remove mysql-community-server-5.1.45-multi-configuration.patch as
+  we have the same configuration in /etc/my.cnf and it doesn't make
+  any sense to keep it twice. Moreover the patched file 
+  support-files/my-medium.cnf.sh was removed in upstream
+- remove mariadb-5.2.3-cnf.patch as all patched files were removed
+  upstream 
+- refresh mariadb-10.2.4-fortify-and-O.patch
+- refresh mariadb-10.2.19-link-and-enable-c++11-atomics.patch and
+  use a simplified version from Debian
+- refresh README.install and suse-test-run
+- remove caching_sha2_password.so as it's shipped in mariadb-connector-c
+  package (libmariadb_plugins)
+- rename libmysqld subpackage (embedded library) to libmariadbd as
+  libmysqld.so was renamed to libmariadbd.so (MDEV-14953)
+- simplify removing static libs (we don't need to have .static)
+- add perl(Memoize) and perl(Symbol) to BuildRequires and Requires
+  that are needed for tests
+- replace Requires pwdutils with shadow
+- build RocksDB only for x86_64 as other platforms are not supported
+- remove xtrabackup scripts as we already removed xtrabackup requires
+  and it doesn't work for MariaDB 10.3 anyway
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Tue May 14 12:20:09 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
 
 - update to 10.2.24 GA [bsc#1122198]

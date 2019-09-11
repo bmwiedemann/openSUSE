@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Mon Sep 09 21:08:56 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190909.2ca2925a:
+  * osclib/request_splitter: utilize osclib.util.sha1_short() for encoding.
+
+-------------------------------------------------------------------
+Thu Sep 05 19:15:22 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190905.783a0674:
+  * osclib/comments: command_find(): allow seperators after user.
+
+-------------------------------------------------------------------
+Thu Sep 05 11:07:51 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190905.b269bf48:
+  * announce.gocd.yaml: escape the : in pipeline names
+
+-------------------------------------------------------------------
+Thu Sep 05 11:00:15 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190905.a24bcf0f:
+  * Fix syntax of build-fail-reminder.gocd.yaml (endless story)
+
+-------------------------------------------------------------------
+Thu Sep 05 10:30:13 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190905.87de492d:
+  * New basic test case
+  * Don't use the webui for project status
+  * Add little SMTP server that does not send mails for testing
+  * Fix filename of the build-fail-reminder gocd config
+  * Inline the mail text for the mailing list post - easier to map
+  * Deduplicate the 2 mail sending functions
+  * build-fail-notification: Mail to -factory after 4, dr after 6 weeks
+
+-------------------------------------------------------------------
+Wed Sep 04 21:39:25 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.1b3a6e1f:
+  * osclib/core: request_action_key(): handle add_role/set_bugowner against project.
+  * osclib/core: request_action_key(): include set_bugowner in top level condition.
+
+-------------------------------------------------------------------
+Wed Sep 04 16:12:21 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.41587803:
+  * Continue python3 port of abichecker
+  * Fix cron for openqa - it's supposed to run every 10 minutes
+
+-------------------------------------------------------------------
+Wed Sep 04 14:19:48 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.3d286c35:
+  * Fix group name for the abichecker pipeline
+
+-------------------------------------------------------------------
+Wed Sep 04 14:13:52 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.f5eee13e:
+  * Run abichecker on botmaster as well
+
+-------------------------------------------------------------------
+Wed Sep 04 12:17:27 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.fb0c4142:
+  * oqamaint: fix more python3 issues and add _OBSOLETE=1
+
+-------------------------------------------------------------------
+Wed Sep 04 11:54:12 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.3ba02675:
+  * also remove 42.3 from apimap
+  * remove leap 42.3 add 15.2
+
+-------------------------------------------------------------------
+Wed Sep 04 11:43:43 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.0f9d84a0:
+  * oqamaint: Take the default modules
+
+-------------------------------------------------------------------
+Wed Sep 04 11:12:19 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190904.72915933:
+  * Python3 port of openqa maintenance bot
+  * Run openqa-maintenance on botmaster as well
+
+-------------------------------------------------------------------
+Tue Sep 03 20:37:49 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190903.79a13ddd:
+  * osclib/request_splitter: replace map() calls with loop and call.
+
+-------------------------------------------------------------------
+Thu Aug 29 20:19:26 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190829.72c1e9b4:
+  * obs_operator: override HTTPServer.handle_error() to capture exceptions.
+  * osclib/sentry: tag osc version.
+  * osclib/sentry: provide dummy client.
+  * osclib/sentry: sentry_client(): handle 0.11.x API change.
+
+-------------------------------------------------------------------
+Thu Aug 29 15:44:59 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190829.e912e9d2:
+  * obs_operator: allow illegal cookie keys.
+
+-------------------------------------------------------------------
+Thu Aug 29 13:29:48 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190829.f74d0c1d:
+  * osc-origin: update: indicate which package is being checked.
+
+-------------------------------------------------------------------
+Thu Aug 29 13:14:58 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190829.64280909:
+  * web/origin-manager: allow a request to be diffed against a potential origin.
+  * web/origin-manager: display the reason for a diff failure.
+  * web/origin-manager: properly handle potential origin de-selection.
+  * web/origin-manager: properly handle package de-selection.
+  * web/origin-manager: clear table data before loading new data.
+  * web/origin-manager: table_selection_set(): handle undefined table.
+  * osclib/origin: origin_history(): expose source_(project,package,revision).
+  * obs_operator: handle_package_diff(): expose target package and revision.
+
+-------------------------------------------------------------------
+Wed Aug 28 20:39:27 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190828.14971e2d:
+  * osc-origin: capture exception with sentry to ensure they are reported.
+  * check_source: check for target package not found when checking out.
+  * ReviewBot: action_method(): drop request.type sentry extra in favor or action.key.
+  * ReviewBot: simplify sentry_sdk initialization line since defined globally.
+  * ReviewBot: provide request.id and action.key as sentry extras.
+  * ReviewBot: action_method(): reduce sentry extra to filter(None, ...).
+  * osclib/common: provide version_calcuate() and utilize by default.
+  * osclib/git: provide describe().
+  * osclib/git: remove unnecessary CacheManager import.
+
+-------------------------------------------------------------------
+Wed Aug 28 14:44:50 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190828.97f37e80:
+  * gocd: use sep pipeline for build-fail-reminder
+  * gocd: add Leap 15.2 announcer
+  * checknewer.py: Use python3 shebang
+
+-------------------------------------------------------------------
+Wed Aug 28 10:13:21 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190828.30c7a9a2:
+  * update_repo_handler: properly extract factory build string
+
+-------------------------------------------------------------------
+Tue Aug 27 13:43:40 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190827.7f92a226:
+  * ReviewBot: reduce unhandled request type log message from error to info.
+
+-------------------------------------------------------------------
+Mon Aug 26 20:54:33 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190826.cf98ac16:
+  * osclib/origin: origin_annotation_dump(): allow origin_info_new to be None.
+
+-------------------------------------------------------------------
+Thu Aug 22 16:22:19 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190822.bf48f33a:
+  * check_source: add a review for the security team if there are warnings about missing whitelist entries and this is submitted to a project that has this check activated via attribute OSRT:Config (add to bad-rpmlint-entries)
+
+-------------------------------------------------------------------
+Tue Aug 20 12:57:28 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190820.b9c7635c:
+  * gocd: *.Origin.Manager.Update: shift timer to account for seconds.
+
+-------------------------------------------------------------------
 Fri Aug 16 22:51:21 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190816.a1d076d0:

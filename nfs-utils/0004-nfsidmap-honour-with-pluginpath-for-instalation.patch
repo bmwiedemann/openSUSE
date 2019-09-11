@@ -1,0 +1,39 @@
+From b535ba0513fd53bb3ae63d13b55b4784e056e225 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.com>
+Date: Tue, 4 Dec 2018 11:00:10 +1100
+Subject: [PATCH] nfsidmap: honour --with-pluginpath for instalation.
+
+The path set with --with-pluginpath is not currently
+used when installing plugins.  It should be.
+
+Signed-off-by: NeilBrown <neilb@suse.com>
+---
+ configure.ac                 | 1 +
+ support/nfsidmap/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4163f6a518f5..4bf5aea4442f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -450,6 +450,7 @@ if test -n "$path_plugins" ; then
+                 [Define this to change the plugins path])
+ fi
+ AM_CONDITIONAL(PATH_PLUGINS, test -n "$path_plugins")
++AC_SUBST(PATH_PLUGINS, "$path_plugins")
+ 
+ AC_SUBST(AM_CPPFLAGS, "$AM_CPPFLAGS")
+ AC_DEFINE([HAVE_NFS4_SET_DEBUG], 1,
+diff --git a/support/nfsidmap/Makefile.am b/support/nfsidmap/Makefile.am
+index 8b5dfe4e784a..cdbeb4c1a9ac 100644
+--- a/support/nfsidmap/Makefile.am
++++ b/support/nfsidmap/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgplugindir=$(libdir)/libnfsidmap
++pkgplugindir=$(PATH_PLUGINS)
+ 
+ if ENABLE_LDAP
+ UMICH_LDAP_LIB = umich_ldap.la
+-- 
+2.14.0.rc0.dirty
+

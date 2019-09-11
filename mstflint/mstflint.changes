@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:30:48 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v4.11.0-5 (bsc#1136328)
+  - Build related changes
+    - Disabled -Werror compiler flag
+    - Added the option to choose local system libraries if available in the machine
+    - Enhanced python 3 compatibility
+    - Removed python shebangs from the scripts
+    - Fixed multiple rpmbuild issues
+    - Added --enable-all-static configure flag that allows compilation of static executables, when the the option is supported by the compiler
+    - All python scripts were aligned to unix encoding
+    - Fixed multiple builds and compilation issues
+  - mstprivhost tool
+    - Added mstprivhost tool to set host privilege configurations
+  - mstflint tool
+    - Added missing Rom info attribute for legacy FW qq query
+    - Fixed query timeout when device is locked
+    - Renamed former --next_boot_fw_ver to --flashed_version flag. This flag queries the flashed version.
+    - Note that the previous flag is supported to keep compatibility.
+    - Fixed an issue with FW upgrade on ConnectX-5 EN
+  - mstregdup tool
+    - Fixed segfault
+  - mstconfig
+    - Added new params:
+  - mstfwtrace
+    - Added fwtracer: in this release, this tool supports secure FW flow only
+  - libibmad
+    - Added support for libibmad 12 in addition to 5
+  - Python tools
+    - Fixed Python wrapper to work properly in multiple OSes and multiple Python versions
+  - Added adb generic tools
+    - Added mstreg tool: To enable this option please use "--enable-adb-genaric-tools" flag
+  - mstarchive
+    - Added return values
+    - Fixed an issue in the MFA2's header minor and subminor versions
+- Drop patches that were fixed upstream:
+  - Add-armv6-and-armv7-support.patch
+  - Add-s390-s390x-support.patch
+- Refresh patchest against latest sources:
+  - Fix-gcc7-and-gcc8.patch
+  - Remove-date-time-info-from-build.patch
+  - fix-race-condition-during-install.patch
+
+-------------------------------------------------------------------
 Fri Mar 29 07:54:57 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add missing python helpers to the package (bsc#1103497)

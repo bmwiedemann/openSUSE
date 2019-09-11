@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 09 22:37:15 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.32.0+28:
+  + sidebar links: fix popup.
+  + require Poppler 0.76.0 for ignoreDiacritics feature.
+  + shell: remember unmaximized window size.
+  + EvPresentationView: don't start render job until realized.
+  + ev-page-action-widget: disconnect notify::document signal in
+    finalize.
+  + backend: fix swapped y-coordinates when adding annotations.
+  + ev_window: prevent NULL metadata being passed.
+  + Updated translations.
+- Switch to source services, use checkout from gnome-3.32 stable
+  branch.
+- Switch to meson buildsystem. Add meson BuildRequires and macros,
+  as well as dropping libtool BuildRequires, no longer needed.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Drop CVE-2019-11459.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Jun  3 18:51:09 UTC 2019 - mgorse@suse.com
 
 - Add CVE-2019-11459.patch: fix display of uninitialized memory if

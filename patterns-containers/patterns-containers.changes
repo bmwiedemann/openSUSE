@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 12:38:55 CEST 2019 - kukuk@suse.de
+
+- Add reg to kubernetes utilities pattern
+
+-------------------------------------------------------------------
+Sat Aug 24 11:18:27 CEST 2019 - kukuk@suse.de
+
+- Add hello-kubic-k8s-yaml to kubeadm pattern
+
+-------------------------------------------------------------------
 Thu Aug  8 20:24:44 CEST 2019 - kukuk@suse.de
 
 - Add yomi salt states to Kubic admin node

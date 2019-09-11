@@ -71,7 +71,7 @@ BuildRequires:  update-alternatives
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        9.4.22
+Version:        9.4.24
 Release:        0
 %define pg_minor_version %(echo %version | sed -r 's/^([0-9]+\\.[0-9]+).*/\\1/')
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
@@ -326,13 +326,14 @@ touch -r configure tmp
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
+%patch9
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete
 find -name .gitignore -delete
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 PACKAGE_TARNAME=%name %configure \
         --bindir=%pgbindir \
         --libdir=%pglibdir \

@@ -32,13 +32,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado >= 4.5}
-BuildRequires:  %{python_module tornado < 5}
+BuildConflicts: %{python_module tornado >= 5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.5
 Requires:       python-six
 Requires:       python-tornado >= 4.5
-Requires:       python-tornado < 5
+Conflicts:      python-tornado >= 5
 BuildArch:      noarch
 %python_subpackages
 

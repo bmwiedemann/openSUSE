@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:56:00 CEST 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+- Add /etc/cron.* to filelist as they are now part of cron, which
+  we don't want to require 
+
+-------------------------------------------------------------------
 Thu Nov 23 13:47:27 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

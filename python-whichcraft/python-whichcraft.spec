@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-whichcraft
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Cross-python shutil.which functionality
 License:        BSD-3-Clause

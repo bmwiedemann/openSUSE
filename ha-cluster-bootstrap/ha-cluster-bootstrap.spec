@@ -1,7 +1,7 @@
 #
 # spec file for package ha-cluster-bootstrap
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010-2011 Novell Inc. All Rights Reserved.
 #
 # All modifications and additions to the file contributed by third parties
@@ -79,6 +79,9 @@ ln -s ha-cluster-remove %{buildroot}%{_sbindir}/sleha-remove
 mkhelp() {
 	help2man -s 8 -n "$1" -o %{buildroot}%{_mandir}/man8/ha-cluster-$2.8 --version-string "%{version}" --help-option "cluster $2 --help" /usr/sbin/crm
 }
+mkhelp "Initialize cluster" init
+mkhelp "Join cluster" join
+mkhelp "Remove node from cluster" remove
 mkhelp "Initialize as geo cluster" geo-init
 mkhelp "Join geo cluster" geo-join
 mkhelp "Initialize as geo arbitrator" geo-init-arbitrator

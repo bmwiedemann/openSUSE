@@ -18,16 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plotly
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/plotly/plotly.py
+URL:            https://github.com/plotly/plotly.py
 Source:         https://files.pythonhosted.org/packages/source/p/plotly/plotly-%{version}.tar.gz
 Source100:      python-plotly-rpmlintrc
 BuildRequires:  %{python_module decorator >= 4.0.6}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbformat >= 4.2}
@@ -35,8 +34,8 @@ BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module retrying >= 1.3.3}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4.0.6
@@ -111,7 +110,7 @@ This package provides Jupyter Notebook integration and widgets.
 
 %install
 %python_install
-%jupyter_move_config
+%{jupyter_move_config}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{jupyter_prefix}
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 26 06:49:37 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
+
+- update to version 2.1.1:
+  - changes in version 2.1.1:
+    - Unit tests accessing dbus have been fixed to use mock functions. Unit
+    tests no longer depend on dbus.
+    - Race condition between client connections and dbus proxy object
+    creation by registering bus name after instantiation of the proxy object.
+
+-------------------------------------------------------------------
 Fri Apr 26 10:35:51 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils

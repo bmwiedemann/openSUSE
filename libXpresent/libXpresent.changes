@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:34:51 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add -ffat-lto-objects to _lto_cflags
+
+-------------------------------------------------------------------
 Sun Jul  7 22:02:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid name repetition in summaries.

@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -53,7 +53,7 @@ BuildRequires:  lensfun-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel >= 0.26
 BuildRequires:  libexpat-devel
-BuildRequires:  libjasper-devel
+BuildRequires:  libjpeg8-devel
 BuildRequires:  libksane-devel >= 15.12.0
 BuildRequires:  liblcms2-devel
 BuildRequires:  liblqr-devel

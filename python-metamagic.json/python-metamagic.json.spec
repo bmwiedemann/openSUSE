@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,21 +21,21 @@
 Name:           python-metamagic.json
 Version:        0.9.6
 Release:        0
+Summary:        Python JSON encoder
 License:        BSD-2-Clause
-Summary:        Fast JSON encoder
-Url:            http://github.com/sprymix/metamagic.json
 Group:          Development/Languages/Python
+URL:            http://github.com/sprymix/metamagic.json
 Source:         https://files.pythonhosted.org/packages/source/m/metamagic.json/metamagic.json-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 
 %python_subpackages
 
 %description
-A fast Python 3 implementation of a JSON encoder for Python objects
+A Python 3 implementation of a JSON encoder for Python objects
 designed to be compatible with native JSON decoders in various web browsers.
 
 %prep

@@ -1,5 +1,11 @@
---- include/SDL_endian.h.orig
-+++ include/SDL_endian.h
+---
+ include/SDL_endian.h |  146 +++++----------------------------------------------
+ 1 file changed, 15 insertions(+), 131 deletions(-)
+
+Index: SDL-1.2.15/include/SDL_endian.h
+===================================================================
+--- SDL-1.2.15.orig/include/SDL_endian.h
++++ SDL-1.2.15/include/SDL_endian.h
 @@ -37,12 +37,11 @@
  #define SDL_LIL_ENDIAN	1234
  #define SDL_BIG_ENDIAN	4321

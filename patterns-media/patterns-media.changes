@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 21 10:17:26 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop imaging_opt from rest_dvd: we are at a size limit;
+  imaging_opt mainly consists of 'calibre'.
+
+-------------------------------------------------------------------
 Wed Dec  5 16:04:08 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer require pattern x86: it's been removed from

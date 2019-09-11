@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-builtins
 Version:        1.4.1
 Release:        0
-License:        GPL-2.0-only
 Summary:        Flake8 Builtins plugin
-Url:            https://github.com/gforcada/flake8-builtins
+License:        GPL-2.0-only
 Group:          Development/Languages/Python
+Url:            https://github.com/gforcada/flake8-builtins
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-builtins/flake8-builtins-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module mock}
@@ -43,7 +44,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Check for python builtins being used as variables or parameters
+This plugin checks for Python builtins being used as variables or parameters.
 
 %prep
 %setup -q -n flake8-builtins-%{version}

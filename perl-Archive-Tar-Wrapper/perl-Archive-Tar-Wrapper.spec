@@ -17,7 +17,7 @@
 
 
 Name:           perl-Archive-Tar-Wrapper
-Version:        0.36
+Version:        0.37
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Archive-Tar-Wrapper
@@ -31,7 +31,6 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Dumbbench) >= 0.111
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(IPC::Run)
 BuildRequires:  perl(Log::Log4perl)

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 14:15:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.0:
+  * no changelog
+- Restrict pytest5 for now
+
+-------------------------------------------------------------------
 Wed Jun  5 08:36:51 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - test package in %check

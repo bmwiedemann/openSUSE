@@ -47,7 +47,7 @@ BuildRequires:  skelcd-control-openSUSE
 
 # Kubic specific Yast packages needed in the inst-sys
 # to provide the functionality needed by this control file
-Requires:       yast2-caasp >= 4.1.1
+Requires:       yast2-caasp >= 4.2.1
 
 # branding
 Requires:       yast2-qt-branding-openSUSE
@@ -121,7 +121,7 @@ Requires:       yast2-vm
 
 Url:            https://github.com/yast/skelcd-control-Kubic
 AutoReqProv:    off
-Version:        20190731
+Version:        20190815
 Release:        0
 Summary:        The Kubic control file needed for installation
 License:        MIT

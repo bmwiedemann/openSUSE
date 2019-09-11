@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:01:57 UTC 2019 - pgajdos@suse.com
+
+- drop JPEG2000 support [bsc#1144252]
+
+-------------------------------------------------------------------
+Fri Aug  2 07:06:22 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Thu Jan 10 10:57:32 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - supplementary fix for https://github.com/LibRaw/LibRaw/issues/195

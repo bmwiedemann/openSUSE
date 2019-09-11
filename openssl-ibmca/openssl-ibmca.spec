@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,32 @@
 
 
 Name:           openssl-ibmca
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
-License:        Apache-2.0
+License:        IPL-1.0
 Group:          Hardware/Other
-URL:            https://github.com/opencryptoki/openssl-ibmca/
-Source:         openssl-ibmca-%{version}.tar.gz
+URL:            https://github.com/opencryptoki/openssl-ibmca
+Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libica-devel >= 3.1.1
 BuildRequires:  libica-tools >= 2.4.0
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
+Requires:       libica3
 Requires:       openssl
-ExclusiveArch:  s390 s390x
+ExclusiveArch:  s390x
 
 %description
 This package contains a shared object OpenSSL dynamic engine for the
 IBM eServer Cryptographic Accelerator (ICA).
 
 %prep
-%setup -q
+%autosetup
+./bootstrap.sh
 
 %build
 # The directory where crypto engines are located is owned by the libcrypto package.
@@ -110,7 +113,6 @@ if [ $1 -eq 0 ]; then # last uninstall, modify %%{_sysconfdir}/openssl.cnf (bsc#
 fi
 
 %files
-%defattr(-, root, root)
 %license LICENSE
 %doc README.md
 %doc src/openssl.cnf.sample

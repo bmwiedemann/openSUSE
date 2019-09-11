@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 15 16:41:03 CEST 2019 - kukuk@suse.de
+
+- Add dialog to configure salt-minion where needed [bsc#1145768]
+- Require yast2-caasp >= 4.2.1
+- 20190815
+
+-------------------------------------------------------------------
 Wed Jul 31 14:51:52 CEST 2019 - kukuk@suse.de
 
 - Remove unneeded entries

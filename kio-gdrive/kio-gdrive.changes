@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 24 22:49:39 UTC 2019 - wbauer@tmo.at
+
+- Update to 1.2.7
+  * Fix the build against libkgapi >= 19.08 while keeping
+    compatibility with older libkgapi
+- Drop patches that are no longer necessary:
+  * Adapt-to-LibKGAPI-setFields-changes.patch
+  * Remove-useless-FileFetchJob-field-specifications.patch
+
+-------------------------------------------------------------------
+Tue Aug 20 12:35:01 UTC 2019 - wbauer@tmo.at
+
+- Require same libkgapi version as it was built against, there is
+  no ABI stability guarantee and there were incompatible changes
+  again in 19.08
+
+-------------------------------------------------------------------
 Sat Jul 27 09:47:56 UTC 2019 - wbauer@tmo.at
 
 - Add upstream patches to fix build with libkgapi 19.08:

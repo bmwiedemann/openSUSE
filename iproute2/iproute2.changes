@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 12 07:00:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Aug  2 07:02:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build.
+
+-------------------------------------------------------------------
+Thu Jul 18 07:39:53 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- Update to new upstream release 5.2
+  * devlink: increase column size for larger shared buffers
+  * ip: reset netns after each command in batch mode
+  * ip addr: do not set IPv6 specific options for IPv4 addresses
+  * ip fou: support binding FOU ports
+  * ip link: support bridge vlan_stats_per_port
+  * ip link: support vlan bridge binding flag
+  * ip macsec: supporet gcm-aes-256 cipher type
+  * ip monitor: display interfaces from all groups
+  * ip neigh: show neighbor offload indication
+  * rdma: add link add/delete
+  * rdma: update node type strings
+  * ss: add option for single line output
+  * ss: show raw numbers for data rates with --numeric
+  * tc: support for plug qdisc
+  * tc: taprio: support for changing schedules
+  * tc: taprio: support cycle_time and cycle_time_extensions
+  * tipc: support for link broadcast method and ratio
+  * update documentation
+
+-------------------------------------------------------------------
 Mon May 13 09:28:09 UTC 2019 - Michal Kubecek <mkubecek@suse.cz>
 
 - Revert-tc-ematch-fix-deprecated-yacc-warning.patch:

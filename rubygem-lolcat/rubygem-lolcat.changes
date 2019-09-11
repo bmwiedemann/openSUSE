@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Thu Aug 22 17:13:10 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to v100.0.0:
+  * increase legacy by 8kb
+  * fix support for legacy terminals (Urxvt)
+
+-------------------------------------------------------------------
+Fri Jul 19 09:21:23 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 99.9.99
+  no changelog found
+
+-------------------------------------------------------------------
+Sun May  5 09:33:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 99.9.69
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Mar  2 15:25:11 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 99.9.21
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Dec  8 16:25:01 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 99.9.20
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Sep  5 10:26:28 UTC 2018 - coolo@suse.com
+
+- updated to version 99.9.19
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr 19 00:13:11 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 99.9.11
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Apr 16 09:39:17 UTC 2018 - matthias.gerstner@suse.com
+
+- remove .gitignore from install tree
+
+-------------------------------------------------------------------
+Mon Apr  9 04:30:00 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 99.9.10
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Aug  3 19:26:04 UTC 2017 - coolo@suse.com
+
+- updated to version 90.8.8
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jun 13 20:49:54 UTC 2017 - coolo@suse.com
+
+- updated to version 42.24.1
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Dec 27 05:32:02 UTC 2016 - coolo@suse.com
+
+- updated to version 42.24.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Nov 24 11:57:27 UTC 2016 - bwiedemann@suse.com
+
+- update with current gem2rpm
+
+-------------------------------------------------------------------
+Fri Nov 11 16:07:16 UTC 2016 - matthias.gerstner@suse.com
+
+- initial version using the build service
+

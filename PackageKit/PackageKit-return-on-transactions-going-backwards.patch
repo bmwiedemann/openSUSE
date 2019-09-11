@@ -15,11 +15,11 @@ Fixes 2807cbf8
  src/pk-transaction.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/src/pk-transaction.c b/src/pk-transaction.c
-index 76e99655f..d14ea7d9c 100644
---- a/src/pk-transaction.c
-+++ b/src/pk-transaction.c
-@@ -760,6 +760,7 @@ pk_transaction_set_state (PkTransaction *transaction, PkTransactionState state)
+Index: PackageKit-1.1.12/src/pk-transaction.c
+===================================================================
+--- PackageKit-1.1.12.orig/src/pk-transaction.c
++++ PackageKit-1.1.12/src/pk-transaction.c
+@@ -760,6 +760,7 @@ pk_transaction_set_state (PkTransaction
  		g_warning ("cannot set %s, as already %s",
  			   pk_transaction_state_to_string (state),
  			   pk_transaction_state_to_string (priv->state));
@@ -27,6 +27,3 @@ index 76e99655f..d14ea7d9c 100644
  	}
  
  	g_debug ("transaction now %s", pk_transaction_state_to_string (state));
--- 
-2.20.1
-

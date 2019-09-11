@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * Fix build
+  * Fix #410744: Duplicate results when a 2nd unit is partially written in krunner (kde#410744)
+  * Remove colon (:) prefix when looking up dictionary word (kde#376905)
+
+-------------------------------------------------------------------
 Tue Jul 30 12:40:18 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.4

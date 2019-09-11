@@ -1,7 +1,7 @@
 #
 # spec file for package telegraf
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           telegraf
-Version:        1.8.3
+Version:        1.12.0
 Release:        0
-License:        MIT
 Summary:        The plugin-driven server agent for collecting & reporting metrics
-Url:            https://github.com/influxdata/telegraf
+License:        MIT
 Group:          System/Monitoring
+Url:            https://github.com/influxdata/telegraf
 Source:         %{name}-%{version}.tar.gz
+# run dep ensure --vendor-only (in a container)
 Source1:        %{name}-deps.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  git-core
 BuildRequires:  go >= 1.7
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
@@ -48,18 +51,20 @@ easily add support for collecting metrics from local or remote services.
 
 %prep
 mkdir -p %{_influxdata_dir}
-tar -C %{_builddir}/src -xJf %{SOURCE1}
 tar -C %{_influxdata_dir} -xzf %{SOURCE0}
 cd %{_influxdata_dir}
 # If there is allready telegraf then remove it
 rm -rf %{name}
 ln -sf %{name}-%{version} %{name}
 cd %{name}
+tar -xJf %{SOURCE1}
 %patch0 -p1
 
 %build
-export GOPATH="%{_builddir}:$GOPATH"
+%ifnarch ppc64 ppc64le
 export LDFLAGS="-buildmode=pie"
+%endif
+export GOPATH="%{_builddir}:$GOPATH"
 cd %{_telegraf_dir}
 make %{name}
 

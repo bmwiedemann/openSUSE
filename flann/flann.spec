@@ -34,16 +34,16 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(zlib)
 
 %description
-FLANN is a library for performing fast approximate nearest neighbor 
+FLANN is a library for performing approximate nearest neighbor
 searches in high dimensional spaces.
 
 %package -n     lib%{name}%{sover}
-Summary:        C++ library for %{name}
+Summary:        Fast Library for Approximate Nearest Neighbors
 Group:          System/Libraries
 Provides:       lib%{name}_cpp%{sover} = %{version}
 
 %description -n lib%{name}%{sover}
-FLANN is a library for performing fast approximate nearest neighbor 
+FLANN is a library for performing approximate nearest neighbor
 searches in high dimensional spaces.
 
 This package contains the shared library.
@@ -71,7 +71,7 @@ application that use %{name}.
     -DBUILD_EXAMPLES=OFF \
     -DBUILD_DOC=OFF
 
-%make_jobs 
+%make_jobs
 
 %install
 %cmake_install

@@ -1,7 +1,7 @@
 #
 # spec file for package solarus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           solarus
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
-Summary:        Zelda-like game engine
+Summary:        Game engine for action RPGs
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/RPG
-Url:            http://www.solarus-engine.org/
-Source:         http://www.solarus-games.org/downloads/solarus/%{name}-%{version}-src.tar.gz
-# PATCH-FIX-UPSTREAM solarus-1.6.0-fix-desktop-exec.patch -- wrong Exec field in desktop file
-Patch0:         solarus-1.6.0-fix-desktop-exec.patch
+URL:            https://www.solarus-games.org/
+Source0:        %{name}-%{version}.tar.bz2
+# PATCH-FEATURE-UPSTREAM -- https://gitlab.com/solarus-games/solarus/merge_requests/1311
+Patch0:         solarus-1.6.2-install-gui-translations.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  physfs-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
@@ -43,24 +42,54 @@ BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
+Suggests:       %{name}-gui
 
 %description
-Solarus is a Zelda-like game engine written in C++.
+Solarus is a 2D game engine written in C++, and it executes games
+made in Lua. It is designed with 16-bit classic action RPGs in
+mind.
+
+This package contains the 'solarus-run' executable required to run
+games based on the Solarus engine.
+
+%package gui
+Summary:        Graphical user interface to launch Solarus games
+Group:          Amusements/Games/RPG
+# Package "gui" was split from main package on 1.6.1
+# Make sure upgrade of main package from version < 1.6.1
+# installs "gui" as well with a specific Provides
+Provides:       %{name}:%{_bindir}/solarus-launcher
+
+%description gui
+This package provides a graphical user interface to launch games
+based on the Solarus engine.
 
 %package -n libsolarus1
-Summary:        Zelda-like game engine
+Summary:        Solarus game engine shared library
 Group:          System/Libraries
 
 %description -n libsolarus1
-Solarus is a Zelda-like game engine written in C++.
+This package provides the main shared library of the Solarus game
+engine.
+
+%package -n libsolarus-gui1
+Summary:        Solarus game engine shared library (GUI parts)
+Group:          System/Libraries
+
+%description -n libsolarus-gui1
+This package provides the GUI shared library of the Solarus game
+engine.
 
 %package devel
 Summary:        Development files for solarus
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       %{name}-gui = %{version}
 
 %description devel
-Development files for solarus, including header-files.
+Development files for Solarus, including header files.
+
+%lang_package -n solarus-gui
 
 %prep
 %setup -q
@@ -68,41 +97,54 @@ Development files for solarus, including header-files.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
+%find_lang %{name} --with-qt
 
-%if 0%{?suse_version} < 1330
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
+%if 0%{?suse_version} > 1510
+%check
+# Tweak path to find libsolarus.so and libsolarus-testing.so
+export LD_LIBRARY_PATH="$PWD/build:$PWD/build/tests"
+# Tests 1200 and 1210 require a graphical display, 1269 is unstable
+%ctest --exclude-regex "lua/bugs/(1200_.*|1210_.*|1269_.*)"
 %endif
 
 %post   -n libsolarus1 -p /sbin/ldconfig
 %postun -n libsolarus1 -p /sbin/ldconfig
+%post   -n libsolarus-gui1 -p /sbin/ldconfig
+%postun -n libsolarus-gui1 -p /sbin/ldconfig
 
 %files
 %doc changelog.txt readme.md
-%license license.txt
-%{_bindir}/solarus-launcher
+%license license.txt license_gpl.txt
 %{_bindir}/solarus-run
+%{_mandir}/man6/solarus-run.6%{?ext_man}
+
+%files gui
+%license license.txt license_gpl.txt
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_libdir}/libsolarus-gui.so
-%{_mandir}/man6/solarus*
+%{_bindir}/solarus-launcher
+# man page should be renamed to solarus-launcher
+%{_mandir}/man6/solarus.6%{?ext_man}
+
+%files gui-lang -f %{name}.lang
+%dir %{_datadir}/%{name}-gui
+%dir %{_datadir}/%{name}-gui/translations
 
 %files -n libsolarus1
 %{_libdir}/libsolarus.so.*
 
+%files -n libsolarus-gui1
+%{_libdir}/libsolarus-gui.so.*
+
 %files devel
 %{_includedir}/solarus
 %{_libdir}/libsolarus.so
+%{_libdir}/libsolarus-gui.so
 
 %changelog

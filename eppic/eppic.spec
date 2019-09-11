@@ -1,7 +1,7 @@
 #
 # spec file for package eppic
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Name:           eppic
 Version:        3.99.%{checkout}
 Release:        0
 Summary:        Embeddable Pre-Processor and Interpreter for C
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Source:         %{name}-git%{git_commit}.tar.bz2
 Patch1:         %{name}-fix-install.patch
@@ -61,6 +61,7 @@ This package provides the include files and libraries needed for development.
 %patch2 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 cd libeppic
 make CFLAGS="%{optflags} -fPIC" %{?_smp_mflags}
 

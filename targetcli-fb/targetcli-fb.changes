@@ -6,7 +6,6 @@ Mon Aug 19 15:32:55 UTC 2019 - Lee Duncan <lduncan@suse.com>
   * iscsi-discovery_auth-enable-is-a-number-not-a-string (bsc#1145685)
   * saveconfig-compress-the-backup-config-files
   * do-not-remove-the-first-digit-when-auto-completing-the-tpg-tag
-  * add-emulate_pr-backstore-attribute
 
 -------------------------------------------------------------------
 Wed Apr  3 03:14:10 UTC 2019 - ddiss@suse.com

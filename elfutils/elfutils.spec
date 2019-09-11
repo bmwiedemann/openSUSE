@@ -17,12 +17,12 @@
 
 
 Name:           elfutils
-Version:        0.176
+Version:        0.177
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-Url:            http://fedorahosted.org/elfutils/
+URL:            https://sourceware.org/elfutils/
 
 #Git-Clone:	git://sourceware.org/git/elfutils
 Source:         https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2
@@ -33,9 +33,6 @@ Source3:        %{name}.changes
 Source5:        %{name}.keyring
 Patch1:         disable-tests-with-ptrace.patch
 Patch2:         cfi-fix.patch
-Patch3:         gcc9-tests-Don-t-printf-a-known-NULL-symname.patch
-Patch4:         fix-bsc-1110929.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -139,8 +136,6 @@ applications that require libdw.
 %patch1 -p1
 %endif
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -164,13 +159,13 @@ autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
 %configure --program-prefix=eu-
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 # remove unneeded files
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
-ls -lR $RPM_BUILD_ROOT%{_libdir}/libelf*
+rm -f %{buildroot}/%{_libdir}/*.la
+ls -lR %{buildroot}/%{_libdir}/libelf*
 %find_lang %{name}
 
 %post -n libasm1 -p /sbin/ldconfig
@@ -186,43 +181,36 @@ ls -lR $RPM_BUILD_ROOT%{_libdir}/libelf*
 %postun -n libdw1 -p /sbin/ldconfig
 
 %check
-make check %{?_smp_mflags} V=1
+%make_build check
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog NEWS NOTES README THANKS TODO
 %{_bindir}/*
 
 %files -n libasm1
-%defattr(-,root,root)
 %{_libdir}/libasm.so.*
 %{_libdir}/libasm-%{version}.so
 
 %files -n libasm-devel
-%defattr(-,root,root)
 %{_libdir}/libasm.so
 %{_libdir}/libasm.a
 %dir %{_includedir}/elfutils
 %{_includedir}/elfutils/libasm.h
 
 %files -n libebl-plugins
-%defattr(-,root,root)
 %{_libdir}/elfutils
 
 %files -n libebl-devel
-%defattr(-,root,root)
 %{_libdir}/libebl.a
 %dir %{_includedir}/elfutils
 %{_includedir}/elfutils/libebl.h
 
 %files -n libelf1
-%defattr(-,root,root)
 %{_libdir}/libelf.so.*
 %{_libdir}/libelf-%{version}.so
 
 %files -n libelf-devel
-%defattr(-,root,root)
 %{_libdir}/libelf.so
 %{_libdir}/libelf.a
 %{_includedir}/libelf.h
@@ -234,12 +222,10 @@ make check %{?_smp_mflags} V=1
 %{_libdir}/pkgconfig/libelf.pc
 
 %files -n libdw1
-%defattr(-,root,root)
 %{_libdir}/libdw.so.*
 %{_libdir}/libdw-%{version}.so
 
 %files -n libdw-devel
-%defattr(-,root,root)
 %{_libdir}/libdw.a
 %{_libdir}/libdw.so
 %{_includedir}/dwarf.h

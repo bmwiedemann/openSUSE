@@ -1,6 +1,6 @@
---- src/examples/Makefile.orig	2019-02-13 14:10:08.298666931 +0100
-+++ src/examples/Makefile	2019-02-13 14:10:26.674630317 +0100
-@@ -27,7 +28,7 @@
+--- src/examples/Makefile.orig
++++ src/examples/Makefile
+@@ -32,7 +32,7 @@ F90FLAGS = $(FFLAGS) $(IF90FLAGS)
  
  
  LINKOPTS  = $(COPTS)

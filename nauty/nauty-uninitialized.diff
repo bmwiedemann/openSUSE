@@ -11,13 +11,12 @@ patch some real bad code
 [   40s]  }
 ---
  checks6.c |    1 +
- traces.c  |    5 ++---
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ 1 file changed, 1 insertion(+)
 
-Index: nauty26r7/checks6.c
+Index: nauty27rc2/checks6.c
 ===================================================================
---- nauty26r7.orig/checks6.c
-+++ nauty26r7/checks6.c
+--- nauty27rc2.orig/checks6.c
++++ nauty27rc2/checks6.c
 @@ -121,6 +121,7 @@ seemsbad(char *s)
              else
                  return FALSE;
@@ -26,33 +25,3 @@ Index: nauty26r7/checks6.c
  }
  
  /***********************************************************************/
-Index: nauty26r7/traces.c
-===================================================================
---- nauty26r7.orig/traces.c
-+++ nauty26r7/traces.c
-@@ -253,7 +253,7 @@ static int  traces_refine_sametrace(Cand
-                                     struct TracesVars*, struct TracesInfo*);
- static int  traces_refine_refine(sparsegraph*, Candidate*, int, Partition*,
-                                  struct TracesVars*, struct TracesInfo*);
--static int  refine_tr_refine(Candidate*, int, Partition*,
-+static void refine_tr_refine(Candidate*, int, Partition*,
-                              struct TracesVars*, struct TracesInfo*);
- static int given_gens(sparsegraph*, permnode*, int*, boolean);
- static void quickSort(int*, int);
-@@ -4717,7 +4717,7 @@ void refine_tr(sparsegraph *sg, int *lab
- #endif
- }
- 
--int refine_tr_refine(Candidate *Cand,
-+void refine_tr_refine(Candidate *Cand,
-                      int n,
-                      Partition *Part,
-                      struct TracesVars* tv,
-@@ -5313,7 +5313,6 @@ int refine_tr_refine(Candidate *Cand,
-         }
-     }
-     Part->code = Cand->code = CLEANUP(longcode);
--    return TraceInd;
- }
- 
- void Allocate_Traces_Structures(int n) {

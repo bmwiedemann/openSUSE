@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,9 +28,9 @@
 %define gcl_flags --disable-gcl
 
 Name:           maxima
-Version:        5.42.2
+Version:        5.43.0
 Release:        0
-%define major_version 5.42
+%define major_version 5.43
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
@@ -38,6 +38,10 @@ Url:            http://maxima.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
 Source1:        maxima-rpmlintrc
+## SECTION Manually include texi sources missed by upstream tarball (https://sourceforge.net/p/maxima/bugs/3558/)
+Source2:        https://sourceforge.net/p/maxima/code/ci/5e38cb/tree/doc/info/de/include-maxima.de.texi?format=raw#/include-maxima.de.texi 
+Source3:        https://sourceforge.net/p/maxima/code/ci/5e38cb/tree/doc/info/pt/include-maxima.texi.in?format=raw#/include-maxima.texi.in
+# /SECTION
 %if 0%{?suse_version}
 PreReq:         %install_info_prereq
 %endif
@@ -172,6 +176,8 @@ Maxima Brazilian Portuguese language support (in UTF-8).
 
 %prep
 %setup -q
+cp %{SOURCE2} doc/info/de/
+cp %{SOURCE3} doc/info/pt/
 
 %build
 %configure  %{?sbcl_flags:} %{?cmucl_flags:} %{?gcl_flags:} %{?clisp_flags:} \
@@ -201,9 +207,6 @@ make %{?_smp_mflags}
     infodir=%{?buildroot:%{buildroot}}%{_infodir} \
   install-info
 
-# Delete unnecessary hidden dir
-rm -fr %{buildroot}%{_datadir}/maxima/%{version}/share/.gitattributes
-
 #  Deal with info/dir
 rm -f %{buildroot}%{_infodir}/dir
 # set executable rights for example scripts
@@ -213,9 +216,9 @@ gzip %{buildroot}%{_mandir}/*/*
 # reduce space, create symlinks
 %fdupes -s %{buildroot}/%{_datadir}/%{name}/%{version}/share %{buildroot}/%{_datadir}/%{name}/%{version}/src
 
-%fdupes %{buildroot}/%{_datadir}/%{name}/%{version}/doc
+%fdupes %{buildroot}/%{_datadir}/
 
-%suse_update_desktop_file xmaxima
+%suse_update_desktop_file net.sourceforge.maxima.xmaxima
 
 %check
 make check
@@ -264,11 +267,9 @@ make check
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING NEWS README README.*
-# Omitted from 5.41.0 tarball probably by mistake
-#%doc  ChangeLog-%{major_version}.md
-#
-%doc %{_mandir}/man1/maxima.1*
+%license COPYING
+%doc AUTHORS NEWS README README.*
+%{_mandir}/man1/maxima.1*
 %dir %{_datadir}/maxima
 %dir %{_datadir}/maxima/%{version}
 %dir %{_libdir}/maxima
@@ -294,6 +295,9 @@ make check
 %{_bindir}/rmaxima
 %{_datadir}/bash-completion/completions/maxima
 %{_datadir}/bash-completion/completions/rmaxima
+%dir %{_datadir}/emacs
+%dir %{_datadir}/emacs/site-lisp
+%{_datadir}/emacs/site-lisp/*
 
 %files xmaxima
 %defattr(-,root,root,-)
@@ -301,12 +305,11 @@ make check
 %{_bindir}/xmaxima
 %{_datadir}/maxima/%{version}/xmaxima/*
 %{_datadir}/mime/packages/x-mac.xml
-%{_datadir}/applications/xmaxima.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/xmaxima
 %{_datadir}/mime/packages/x-maxima-out.xml
-%{_datadir}/pixmaps/maxima-new.*
-%{_datadir}/pixmaps/text-x-maxima-out.*
-%{_datadir}/pixmaps/text-x-maximasession.svg
+%{_datadir}/pixmaps/*
+%{_datadir}/metainfo/*.appdata.xml
 
 %if 0%{?enable_clisp}
 %files exec-clisp
@@ -335,24 +338,20 @@ make check
 %endif
 
 %files lang-de-utf8
-%defattr(-,root,root)
 %doc %{_datadir}/maxima/%{version}/doc/html/de.utf8
 %{_infodir}/de.utf8
 
 %files lang-es-utf8
-%defattr(-,root,root)
 %doc %{_datadir}/maxima/%{version}/doc/html/es.utf8
 %{_datadir}/locale/es/LC_MESSAGES/maxima.mo
 %{_infodir}/es.utf8
 
 %files lang-pt-utf8
-%defattr(-,root,root)
 %doc %{_datadir}/maxima/%{version}/doc/html/pt.utf8
 %{_datadir}/locale/pt/LC_MESSAGES/maxima.mo
 %{_infodir}/pt.utf8
 
 %files lang-pt_BR-utf8
-%defattr(-,root,root)
 %doc %{_datadir}/maxima/%{version}/doc/html/pt_BR.utf8
 %{_infodir}/pt_BR.utf8
 

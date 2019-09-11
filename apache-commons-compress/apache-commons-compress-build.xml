@@ -9,7 +9,7 @@
   <property file="build.properties"/>
 
   <property name="build.name" value="commons-compress"/>
-  <property name="build.version" value="1.18"/>
+  <property name="build.version" value="1.19"/>
   <property name="build.finalName" value="${build.name}-${build.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.javadocDir" value="${build.dir}/site/apidocs"/>

@@ -30,7 +30,7 @@
 %define with_emoji 0
 %endif
 Name:           ibus
-Version:        1.5.20
+Version:        1.5.21
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -51,8 +51,6 @@ Patch4:         ibus-xim-fix-re-focus-after-lock.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
 # Select an IM engine at the first login
 Patch8:         im-engines-precede-xkb.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp
-Patch9:         ibus-fix-check-abs-icon-path-support.patch
 # PATCH-FIX-SLE hide-setup-menu.patch bnc#899259  qzhao@suse.com
 # ibus-setup should not launch from main menu.
 Patch10:        hide-setup-menu.patch
@@ -178,7 +176,6 @@ docs for ibus.
 %patch0 -p1
 %patch4 -p1
 %patch8 -p1
-%patch9 -p1
 
 cp -r %{SOURCE2} .
 cp -r %{SOURCE3} .
@@ -351,6 +348,7 @@ dconf update
 %{_includedir}/ibus-1.0
 %{_datadir}/gtk-doc/html/ibus
 %{_libdir}/pkgconfig/ibus-1.0.pc
+%{_datadir}/gettext/its/ibus.*
 %{_datadir}/gir-1.0/IBus-1.0.gir
 %{_datadir}/vala/vapi/ibus-1.0.deps
 %{_datadir}/vala/vapi/ibus-1.0.vapi

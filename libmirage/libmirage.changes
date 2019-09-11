@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 09:53:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add CVE-2019-15757.patch [boo#1148728]
+
+-------------------------------------------------------------------
+Mon Aug 26 08:28:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop SLE11 recipes from specfile, the build is disabled anyway.
+- Add 0001-libMirage-CSO-filter-validate-part-size.patch,
+  0002-libMirage-CSO-filter-replaced-a-g_assert-with-error-.patch
+  [boo#1148087, CVE-2019-15540]
+
+-------------------------------------------------------------------
 Mon Jul  1 13:34:01 UTC 2019 - Aaron Stern <ukbeast89@ptotonmail.com>
 
 - Update to new upstream release 3.2.2

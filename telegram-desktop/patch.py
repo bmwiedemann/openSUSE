@@ -269,7 +269,7 @@ def process_telegram(jsonobj):
     child.append("'TDESKTOP_DISABLE_AUTOUPDATE'")
     child.append("'TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME'")
     child.append("'TDESKTOP_DISABLE_UNITY_INTEGRATION'")
-    child.append("'TDESKTOP_DISABLE_GTK_INTEGRATION'")
+    # child.append("'TDESKTOP_DISABLE_GTK_INTEGRATION'")
     child.append("'TDESKTOP_DISABLE_OPENAL_EFFECTS'")
     child.remove("'AL_LIBTYPE_STATIC'")
     child = jsonobj["'targets'"][0]["'include_dirs'"]

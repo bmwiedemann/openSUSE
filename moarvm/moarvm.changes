@@ -1,3 +1,17 @@
+Tue Jul 18 10:10:00 CEST 2019 - nine@detonation.org
+
+- update to version 2019.07
+
++ Fix several segfaults
++ Fix inlining CStruct and CUnion in CPPStruct REPR instances
++ Fix a couple of memory leaks
++ Many updates to the heap profiler
++ Make builds of mbc files reproducible
++ Many performance improvements
++ Add freemem and totalmem ops
+
+- Add fix-build.patch with a backported fix to Configure.pl
+
 -------------------------------------------------------------------
 Tue Mar 19 09:22:56 CET 2019 - nine@detonation.org
 

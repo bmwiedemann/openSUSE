@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 15 04:29:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.7.0
+  * ipaccess: allow TCP keepalive for IPA clients
+  * Add IPA keep-alive FSM implementation
+
+-------------------------------------------------------------------
 Mon Jan 28 22:37:38 UTC 2019 - mardnh@gmx.de
 
 - Update to new upstream release 0.6.0

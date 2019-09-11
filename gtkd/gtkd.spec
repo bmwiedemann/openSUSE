@@ -17,23 +17,30 @@
 
 
 %define gtkd_major  3
-%define gtkd_minor  8
-%define gtkd_bugfix 5
+%define gtkd_minor  9
+%define gtkd_bugfix 0
 %define sover  0
 # DMD is available only on x86*. Use LDC otherwise.
+# For Tumbleweed move to use LDC
+%if 0%{?suse_version} > 1500
+%bcond_with dcompiler_dmd
+%endif
+%if 0%{?suse_version} < 1550
 %ifarch %{ix86} x86_64
 %bcond_without dcompiler_dmd
 %else
 %bcond_with dcompiler_dmd
 %endif
+%endif
 Name:           gtkd
-Version:        3.8.5
+Version:        3.9.0
 Release:        0
 Summary:        D binding and OO wrapper for GTK+
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Other
 URL:            http://gtkd.org/
 Source:         https://github.com/gtkd-developers/GtkD/archive/v%{version}/gtkd-%{version}.tar.gz
+Patch1:         fix-build.patch
 BuildRequires:  pkgconfig
 Requires:       Mesa-libGL1
 Requires:       atk
@@ -123,8 +130,9 @@ This package contains the header files for GtkD a D binding and OO wrapper of GT
 
 %prep
 %setup -q -n GtkD-%{version}
+%patch1 -p1
+
 sed -i 's|ldconfig|/sbin/ldconfig|g' GNUmakefile
-sed -i 's|/lib/|/$(libdir)/|g' GNUmakefile
 
 %build
 make %{?_smp_mflags} \
@@ -142,7 +150,7 @@ make %{?_smp_mflags} \
     shared-vte
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} prefix=%{_prefix} libdir=%{?_lib} datadir=%{_datadir} \
+make %{?_smp_mflags} DESTDIR=%{buildroot} prefix=%{_prefix} libdir=%{?_lib} \
     install-shared-gstreamer install-headers-gstreamer \
     install-shared-gtkd install-headers-gtkd \
     install-shared-gtkdgl install-headers-gtkdgl \
@@ -199,6 +207,6 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} prefix=%{_prefix} libdir=%{?_lib} data
 %{_libdir}/libgtkdsv-%{gtkd_major}.so
 %{_libdir}/libpeasd-%{gtkd_major}.so
 %{_libdir}/libvted-%{gtkd_major}.so
-%{_datadir}/pkgconfig/*
+%{_libdir}/pkgconfig/*
 
 %changelog

@@ -27,10 +27,9 @@ Source:         http://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
+Source4:        busybox-container.config
 # other patches
 Patch:          busybox.install.patch
-# kiwi requires "rpm -E %%_dbpath" working
-Patch1:         busybox-rpm-E.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
 BuildRequires:  libtirpc-devel
@@ -62,11 +61,28 @@ full-featured GNU cousins. The options that are included provide the
 expected functionality and behave very much like their GNU
 counterparts.
 
+%package container
+Summary:        Swiss Army Knife of Embedded Linux configured for container
+Group:          System/Base
+Provides:       useradd_or_adduser_dep
+
+%description container
+This is a very small BusyBox version which contains only the tools which
+makes sense in a container.
+BusyBox combines tiny versions of many common UNIX utilities into a
+small single executable. It provides minimalist replacements for most
+of the utilities usually found in fileutils, shellutils, findutils,
+textutils, grep, gzip, tar, and more. BusyBox provides a fairly
+complete POSIX environment for any small or embedded system. The
+utilities in BusyBox generally have fewer options than their
+full-featured GNU cousins. The options that are included provide the
+expected functionality and behave very much like their GNU
+counterparts.
+
 
 %prep
 %setup -q
 %patch -p0
-%patch1 -p0
 cp -a %{SOURCE1} docs/
 find -name CVS | xargs rm -rf
 find -name .cvsignore | xargs rm -rf
@@ -80,6 +96,13 @@ export BUILD_VERBOSE=2
 export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
+cp -a %{SOURCE4} .config
+make %{?_smp_mflags} -e oldconfig
+make -e %{?_smp_mflags}
+mv busybox busybox-container
+make busybox.links
+mv busybox.links busybox-container.links
+sed -e 's|busybox.links|busybox-container.links|g' -e 's|/usr/bin/busybox|/usr/bin/busybox-container|g' applets/install.sh > busybox-container.install
 cp -a %{SOURCE3} .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
@@ -94,9 +117,12 @@ make -e doc busybox.links %{?_smp_mflags}
 install -d %{buildroot}/%{_bindir}
 install -d %{buildroot}/%{_datadir}/busybox
 install -m 0644 busybox.links %{buildroot}%{_datadir}/busybox
+install -m 0644 busybox-container.links %{buildroot}%{_datadir}/busybox
 install applets/install.sh %{buildroot}%{_bindir}/busybox.install
+install busybox-container.install %{buildroot}%{_bindir}/busybox-container.install
 install -m 0755 busybox %{buildroot}/%{_bindir}
 install -m 0755 busybox-static %{buildroot}/%{_bindir}
+install -m 0755 busybox-container %{buildroot}/%{_bindir}
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 
@@ -114,5 +140,12 @@ install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 %defattr(-,root,root)
 %license LICENSE
 %{_bindir}/busybox-static
+
+%files container
+%defattr(-,root,root)
+%license LICENSE
+%{_bindir}/busybox-container
+%{_bindir}/busybox-container.install
+%{_datadir}/busybox/busybox-container.links
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:51:57 UTC 2019 - mvetter@suse.com
+
+- Update to 1.15.1:
+  * AI improvements
+  * New campaigns and fixes
+  * Updated translations
+  * Please see the packaged changelog.md for details
+
+-------------------------------------------------------------------
 Sat Mar 23 16:40:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add explicit BuildRequires libboost_system-devel (no longer implicit
@@ -81,7 +90,6 @@ Mon Sep 24 13:46:23 UTC 2018 - mvetter@suse.com
     + Support [break], [continue], and [return] in [random_placement]
     + [remove_sound_source] now accepts a comma-separated ID list
     + Support [filter_team] in [side] in addition to team_name=
-
 
 -------------------------------------------------------------------
 Thu Jul 26 12:26:41 UTC 2018 - antoine.belvire@opensuse.org

@@ -18,7 +18,7 @@
 
 
 Name:           uftpd
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        A combined TFTP/FTP server
 License:        ISC

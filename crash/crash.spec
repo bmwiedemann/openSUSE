@@ -17,6 +17,11 @@
 # needssslcertforbuild
 
 
+# Disable LTO for PowerPC as bypass boo#1146646
+%ifarch ppc ppc64 ppc64le
+%define _lto_cflags %{nil}
+%endif
+
 %define whitepaper_version 2003
 %define scripts_version  2008-02-08
 %define gcore_version  2011-09-22

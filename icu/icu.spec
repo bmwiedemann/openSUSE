@@ -68,9 +68,6 @@ This subpackage contains the runtime programs for interacting with ICU.
 Summary:        International Components for Unicode
 Group:          System/Libraries
 Requires:       timezone
-# Following O/P added in timeframe for 12.2
-Provides:       libicu = %version
-Obsoletes:      libicu < %version
 %if %be_platform
 Requires:       libicu%aversion-bedata = %version
 %else
@@ -88,11 +85,6 @@ Group:          System/Libraries
 %if 0%{?suse_version} >= 1210
 BuildArch:      noarch
 %endif
-%if %be_platform
-# Added for 13.2
-Obsoletes:      libicu%aversion-data < %version
-Provides:       libicu%aversion-data = %version
-%endif
 
 %description -n libicu%aversion-bedata
 ICU is a set of C and C++ libraries that provide extensive Unicode
@@ -109,11 +101,6 @@ Summary:        Rule databases and tables for ICU
 Group:          System/Libraries
 %if 0%{?suse_version} >= 1210
 BuildArch:      noarch
-%endif
-%if !%be_platform
-# Added for 13.2
-Obsoletes:      libicu%aversion-data < %version
-Provides:       libicu%aversion-data = %version
 %endif
 
 %description -n libicu%aversion-ledata

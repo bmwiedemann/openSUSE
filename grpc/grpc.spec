@@ -17,16 +17,16 @@
 
 
 %define lname libgrpc6
-%define src_install_dir /usr/src/%{name}
+%define src_install_dir /usr/src/%name
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           grpc
-Version:        1.21.3
+Version:        1.23
 Release:        0
-%define rver	1.21.3
+%define rver	1.23.0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Tools/Building
-Url:            http://grpc.io/
+URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%rver.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -35,11 +35,11 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
+BuildRequires:  zypper
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(protobuf) >= 3.8.0
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The reference implementation of the gRPC protocol, done on top of
@@ -94,15 +94,19 @@ This subpackage contains the python3 bindings.
 %setup -qn grpc-%rver
 
 %build
-make %{?_smp_mflags} STRIP=/bin/true V=1 VERBOSE=1 \
-	CFLAGS="%optflags -Wno-error" CXXFLAGS="%optflags -Wno-error"
+%define _lto_cflags %nil
+# protoc is invoked strangely; make it happy with this dir or it will assert()
+mkdir -p third_party/protobuf/src
+
+export CFLAGS="%optflags -Wno-error"
+export CXXFLAGS="$CFLAGS"
+make %{?_smp_mflags} STRIP=/bin/true V=1 VERBOSE=1
 
 # build python module
 export GRPC_PYTHON_BUILD_WITH_CYTHON=True
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=True
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=True
 export GRPC_PYTHON_BUILD_SYSTEM_CARES=True
-export CFLAGS="%optflags"
 %python_build
 
 %install
@@ -123,13 +127,15 @@ popd
 %python_install
 
 # Install sources
-mkdir -p %{buildroot}%{src_install_dir}
-tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+mkdir -p "%buildroot/%src_install_dir"
+tar -xzf %SOURCE0 --strip-components=1 -C "%buildroot/%src_install_dir"
 # Fix env-script-interpreter rpmlint error
-find %{buildroot}%{src_install_dir} -type f -exec sed -i 's|#!/usr/bin/env bash|#!/bin/bash|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -exec sed -i 's|#!/usr/bin/env ruby|#!/usr/bin/ruby|' "{}" +
-find %{buildroot}%{src_install_dir} -type f \( -name "*.bzl" -o -name "*.py" \) -exec sed -i 's|#!/usr/bin/env python2.7|#!/usr/bin/python2.7|' "{}" +
-find %{buildroot}%{src_install_dir} -type f \( -name "*.bzl" -o -name "*.py" \) -exec sed -i 's|#!/usr/bin/env python|#!/usr/bin/python|' "{}" +
+find "%buildroot/%src_install_dir" -type f \
+	-exec sed -i 's|#!%_bindir/env bash|#!/bin/bash|' "{}" + \
+	-exec sed -i 's|#!%_bindir/env ruby|#!%_bindir/ruby|' "{}" +
+find "%buildroot/%src_install_dir" -type f "(" -name "*.bzl" -o -name "*.py" ")" \
+	-exec sed -i 's|#!%_bindir/env python2.7|#!%_bindir/python2.7|' "{}" + \
+	-exec sed -i 's|#!%_bindir/env python|#!%_bindir/python|' "{}" +
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -149,7 +155,7 @@ find %{buildroot}%{src_install_dir} -type f \( -name "*.bzl" -o -name "*.py" \) 
 %_libdir/*.so
 
 %files source
-%{src_install_dir}
+%src_install_dir
 
 %files -n python2-grpcio
 %python2_sitearch/grpc*

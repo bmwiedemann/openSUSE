@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas
-Version:        0.25.0
+Version:        0.25.1
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -93,6 +93,8 @@ block for doing data analysis in Python.
 %prep
 %setup -q -n pandas-%{version}
 sed -i -e '/^#!\//, 1d' pandas/core/computation/eval.py
+sed -i -e '/^#!\//, 1d' pandas/tests/io/generate_legacy_storage_files.py
+sed -i -e '/^#!\//, 1d' pandas/tests/plotting/common.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -100,6 +102,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %python_install
+%python_expand sed -i -e 's|"python", "-c",|"%{__$python}", "-c",|' %{buildroot}%{$python_sitearch}/pandas/tests/io/test_compression.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -108,9 +111,12 @@ export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 429496
 export http_proxy=http://1.2.3.4 https_proxy=http://1.2.3.4;
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PYTHONDONTWRITEBYTECODE=1
+mv pandas pandas_temp
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 xvfb-run py.test-%{$python_version} -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable'
 }
+mv pandas_temp pandas
 
 %files %{python_files}
 %license LICENSE

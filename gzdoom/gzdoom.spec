@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.1.3
+Version:        4.2.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -25,9 +25,8 @@ Group:          Amusements/Games/3D/Shoot
 Url:            http://zdoom.org/
 
 #Git-Clone:     https://github.com/coelckers/gzdoom
-Source:         https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
+Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
-Patch2:         gzdoom-wadsrc-extra.patch
 Patch4:         fl2.patch
 Patch5:         gzdoom-lzma.patch
 Patch6:         gzdoom-vulkan.patch
@@ -83,8 +82,8 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 * Demo record/playback of classic and Boom demos is not supported.
 
 %prep
-%setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -P 4 -p1
+%setup -q -n %name-g%version
+%patch -P 1 -P 4 -p1
 
 %if 0%{?suse_version} >= 1500
 %patch -P 5 -p1
@@ -98,6 +97,7 @@ perl -i -pe 's{<unknown version>}{%version}g' \
 	tools/updaterevision/updaterevision.c
 
 %build
+%define _lto_cflags %nil
 # We must not strip - %%debug_package will take care of it
 # Deactivate -Wl,--as-needed
 %cmake -DNO_STRIP=1 \

@@ -17,7 +17,7 @@
 
 
 Name:           logwatch
-Summary:        Analyzes and Reports on system logs
+Summary:        Tool to analyze and report on system logs
 License:        MIT
 Group:          System/Monitoring
 Version:        7.5.2
@@ -31,6 +31,7 @@ Source3:        ChangeLog
 Patch0:         logwatch-firewall.patch
 Patch2:         logwatch-timestamp_in_var.patch
 Patch3:         logwatch-dmeventd-reduce_frequency.patch
+BuildRequires:  cron
 Requires:       cron
 Requires:       grep
 Requires:       mailx
@@ -61,8 +62,8 @@ BuildRequires:  systemd
 
 %description
 Logwatch is a customizable, pluggable log-monitoring system. It will go
-through your logs for a given period of time and make a report in the
-areas that you wish with the detail that you wish.
+through system logs for a given period of time and make a report for the
+desired areas at the desired detail level.
 
 %prep
 %setup -q -a 2

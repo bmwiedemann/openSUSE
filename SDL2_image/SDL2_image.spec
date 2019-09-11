@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_image
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 Name:           SDL2_image
 %define lname	libSDL2_image-2_0-0
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
-Summary:        SDL2 image loading library
+Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib
 Group:          Development/Libraries/X11
-Url:            http://libsdl.org/projects/SDL_image/
+URL:            https://libsdl.org/projects/SDL_image/
 
 #Hg-Clone:	http://hg.libsdl.org/SDL_image/
-Source:         http://libsdl.org/projects/SDL_image/release/%name-%version.tar.gz
+Source:         https://libsdl.org/projects/SDL_image/release/%name-%version.tar.gz
 Source2:        baselibs.conf
+Patch1:         CVE-2019-13616.patch
 BuildRequires:  dos2unix
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
@@ -35,7 +36,6 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.8
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a simple library to load images of various formats as SDL
@@ -43,7 +43,7 @@ surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
 %package -n %lname
-Summary:        Simple DirectMedia Layer 2 – Image Loading Library
+Summary:        Simple DirectMedia Layer 2 image loading library
 Group:          System/Libraries
 Provides:       SDL2_image = %version-%release
 
@@ -64,7 +64,7 @@ surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
 %prep
-%setup -q
+%autosetup -p1
 dos2unix *.txt
 rm -rf external
 
@@ -74,19 +74,18 @@ rm -rf external
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc CHANGES.txt COPYING.txt README.txt
+%license COPYING.txt
 %_libdir/libSDL2_image-2*.so.*
 
 %files -n libSDL2_image-devel
-%defattr(-,root,root)
+%doc CHANGES.txt README.txt
 %_includedir/SDL2/
 %_libdir/libSDL2_image.so
 %_libdir/pkgconfig/SDL2_image.pc

@@ -21,16 +21,16 @@
 %define libname libQt5WebView5
 
 Name:           libqt5-qtwebview
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 WebView Library
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtwebview-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtwebview-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtwebengine-private-headers-devel >= %{version}

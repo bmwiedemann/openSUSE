@@ -29,7 +29,7 @@
 %endif
 
 Name:           suse-module-tools
-Version:        15.2.4
+Version:        15.2.5
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -116,8 +116,6 @@ install -pm 755 "regenerate-initrd-posttrans" "%{buildroot}%{_libexecdir}/module
 
 install -d -m 755 "%{buildroot}%{_prefix}/bin"
 install -pm 755 kmp-install "%{buildroot}%{_bindir}/"
-# modhash for calculating hash of signed kernel module
-install -pm 755 modhash "%{buildroot}%{_bindir}/"
 
 # systemd service to load /boot/sysctl.conf-`uname -r`
 install -d -m 755 "%{buildroot}%{_libexecdir}/systemd/system/systemd-sysctl.service.d"
@@ -258,7 +256,6 @@ done
 %if 0%{?suse_version} < 1550
 %{_rpmmacrodir}/macros.initrd
 %endif
-%{_bindir}/modhash
 %{_bindir}/kmp-install
 %{_libexecdir}/module-init-tools
 %exclude %{_libexecdir}/module-init-tools/weak-modules

@@ -9,14 +9,14 @@ Index: CMakeLists.txt
 ===================================================================
 --- CMakeLists.txt.orig
 +++ CMakeLists.txt
-@@ -224,7 +224,6 @@ IF(SECURITY_HARDENED)
-   MY_CHECK_AND_SET_COMPILER_FLAG("-pie -fPIC")
-   MY_CHECK_AND_SET_COMPILER_FLAG("-Wl,-z,relro,-z,now")
-   MY_CHECK_AND_SET_COMPILER_FLAG("-fstack-protector --param=ssp-buffer-size=4")
--  MY_CHECK_AND_SET_COMPILER_FLAG("-D_FORTIFY_SOURCE=2" RELEASE RELWITHDEBINFO)
+@@ -236,7 +236,6 @@ IF(NOT WITH_TSAN)
+     MY_CHECK_AND_SET_COMPILER_FLAG("-pie -fPIC")
+     MY_CHECK_AND_SET_COMPILER_FLAG("-Wl,-z,relro,-z,now")
+     MY_CHECK_AND_SET_COMPILER_FLAG("-fstack-protector --param=ssp-buffer-size=4")
+-    MY_CHECK_AND_SET_COMPILER_FLAG("-D_FORTIFY_SOURCE=2" RELEASE RELWITHDEBINFO)
+   ENDIF()
  ENDIF()
  
- # Always enable debug sync for debug builds.
 Index: storage/tokudb/PerconaFT/cmake_modules/TokuSetupCompiler.cmake
 ===================================================================
 --- storage/tokudb/PerconaFT/cmake_modules/TokuSetupCompiler.cmake.orig
@@ -33,7 +33,7 @@ Index: storage/tokudb/PerconaFT/cmake_modules/TokuSetupCompiler.cmake
      )
  endif ()
  
-@@ -111,23 +109,23 @@ set_cflags_if_supported(
+@@ -103,23 +101,23 @@ set_cflags_if_supported(
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
  
  ## set extra debugging flags and preprocessor definitions
@@ -65,7 +65,7 @@ Index: storage/tokudb/PerconaFT/cmake_modules/TokuSetupCompiler.cmake
  else ()
    if (APPLE)
      set(FLTO_OPTS "-fwhole-program")
-@@ -135,10 +133,10 @@ else ()
+@@ -127,10 +125,10 @@ else ()
      set(FLTO_OPTS "-fuse-linker-plugin")
    endif()
    # we overwrite this because the default passes -DNDEBUG and we don't want that

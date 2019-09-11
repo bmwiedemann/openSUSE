@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:40:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to enable testsuite
+
+-------------------------------------------------------------------
+Wed Aug 21 12:12:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 41.2.0:
+  * #479: Remove some usage of the deprecated imp module.
+  * #1565: Changed html_sidebars from string to list of string as per https://www.sphinx-doc.org/en/master/changes.html#id58
+  * #1697: Moved most of the constants from setup.py to setup.cfg
+  * #1756: Forse metadata-version >= 1.2. when project urls are present.
+
+-------------------------------------------------------------------
 Sat May  4 19:54:21 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 41.0.1:
@@ -264,6 +278,11 @@ Sun May  6 05:30:02 UTC 2018 - arun@gmx.de
   * #1337: In pkg_resources, now support loading resources for modules
      loaded by the SourcelessFileLoader.
   * #1332: Silence spurious wheel related warnings on Windows.
+
+-------------------------------------------------------------------
+Tue Apr 24 14:02:55 UTC 2018 - jgonzalez@suse.com
+
+- build python3 subpackage (FATE#323875)
 
 -------------------------------------------------------------------
 Mon Mar 19 10:56:56 UTC 2018 - tchvatal@suse.com
@@ -1062,6 +1081,12 @@ Tue Aug 11 07:02:31 UTC 2015 - tbechtold@suse.com
   * Upgrade to vendored packaging 15.3.
 
 -------------------------------------------------------------------
+Mon Aug  3 15:40:48 UTC 2015 - jmatejek@suse.com
+
+- update to 18.0.1 for fate#319032
+  * see full changelog in CHANGES.txt
+
+-------------------------------------------------------------------
 Mon Jul 20 19:39:31 UTC 2015 - dmueller@suse.com
 
 - update to 18.0.1:
@@ -1098,6 +1123,11 @@ Mon Jun  8 16:43:29 UTC 2015 - tbechtold@suse.com
     ``pkg_resources._initialize_master_working_set``, allowing for
     imperative re-initialization of the master working set.
 
+-------------------------------------------------------------------
+Wed May 27 09:57:53 UTC 2015 - jmatejek@suse.com
+
+- fix vulnerability in non-RFC6125-compliant host name matching
+  (bsc#930189, setuptools-1.1.7-match-hostname.patch)
 
 -------------------------------------------------------------------
 Mon Apr 27 07:04:26 UTC 2015 - mcihar@suse.cz
@@ -1329,6 +1359,11 @@ Fri Mar 27 14:30:44 UTC 2015 - tbechtold@suse.com
 - Refresh setuptools-5.4.1-create-sitedir.patch
 - Add fix-type-error.patch: Fix error during test run
 - Add fix-sle11-test-failure.patch: Fix error during test run on SLE11SP3
+
+-------------------------------------------------------------------
+Thu Jan 15 17:48:35 CET 2015 - lchiquitto@suse.de
+
+- Add package to SLE 12 SDK (FATE#318137, bnc#913229) 
 
 -------------------------------------------------------------------
 Wed Jul 23 08:54:56 UTC 2014 - sleep_walker@suse.cz

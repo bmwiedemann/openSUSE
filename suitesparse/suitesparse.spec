@@ -579,6 +579,7 @@ rm SPQR/Doc/spqr.pdf
 %patch775418 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %if 0%{?suse_version} < 1500
 export CC=gcc-7
 export CXX=g++-7

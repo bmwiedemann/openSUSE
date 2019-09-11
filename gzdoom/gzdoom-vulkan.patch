@@ -7,28 +7,28 @@ Use Vulkan system libraries instead of bundled code.
  CMakeLists.txt                              |    3 ---
  src/CMakeLists.txt                          |    2 +-
  src/rendering/vulkan/shaders/vk_shader.cpp  |    2 +-
- src/rendering/vulkan/system/vk_builders.cpp |   22 +++++++++++-----------
- 4 files changed, 13 insertions(+), 16 deletions(-)
+ src/rendering/vulkan/system/vk_builders.cpp |    4 ++--
+ 4 files changed, 4 insertions(+), 7 deletions(-)
 
-Index: gzdoom-4.0.0/CMakeLists.txt
+Index: gzdoom-g4.2.0/CMakeLists.txt
 ===================================================================
---- gzdoom-4.0.0.orig/CMakeLists.txt
-+++ gzdoom-4.0.0/CMakeLists.txt
-@@ -287,9 +287,6 @@ option(FORCE_INTERNAL_ASMJIT "Use intern
+--- gzdoom-g4.2.0.orig/CMakeLists.txt
++++ gzdoom-g4.2.0/CMakeLists.txt
+@@ -301,9 +301,6 @@ option(FORCE_INTERNAL_ASMJIT "Use intern
  mark_as_advanced( FORCE_INTERNAL_ASMJIT )
  
  if (HAVE_VULKAN)
--	add_subdirectory( glslang/glslang)
--	add_subdirectory( glslang/spirv )
--	add_subdirectory( glslang/OGLCompilersDLL )
+-	add_subdirectory( libraries/glslang/glslang)
+-	add_subdirectory( libraries/glslang/spirv )
+-	add_subdirectory( libraries/glslang/OGLCompilersDLL )
  endif()
  
  # Fast math flags, required by some subprojects
-Index: gzdoom-4.0.0/src/CMakeLists.txt
+Index: gzdoom-g4.2.0/src/CMakeLists.txt
 ===================================================================
---- gzdoom-4.0.0.orig/src/CMakeLists.txt
-+++ gzdoom-4.0.0/src/CMakeLists.txt
-@@ -465,7 +465,7 @@ add_custom_target( revision_check ALL
+--- gzdoom-g4.2.0.orig/src/CMakeLists.txt
++++ gzdoom-g4.2.0/src/CMakeLists.txt
+@@ -466,7 +466,7 @@ add_custom_target( revision_check ALL
  message( STATUS "Fluid synth libs: ${FLUIDSYNTH_LIBRARIES}" )
  set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LIBRARIES}" "${JPEG_LIBRARIES}" "${BZIP2_LIBRARIES}" "${GME_LIBRARIES}" "${CMAKE_DL_LIBS}" )
  if (HAVE_VULKAN)
@@ -37,10 +37,10 @@ Index: gzdoom-4.0.0/src/CMakeLists.txt
  endif()
  include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${GME_INCLUDE_DIR}" )
  
-Index: gzdoom-4.0.0/src/rendering/vulkan/shaders/vk_shader.cpp
+Index: gzdoom-g4.2.0/src/rendering/vulkan/shaders/vk_shader.cpp
 ===================================================================
---- gzdoom-4.0.0.orig/src/rendering/vulkan/shaders/vk_shader.cpp
-+++ gzdoom-4.0.0/src/rendering/vulkan/shaders/vk_shader.cpp
+--- gzdoom-g4.2.0.orig/src/rendering/vulkan/shaders/vk_shader.cpp
++++ gzdoom-g4.2.0/src/rendering/vulkan/shaders/vk_shader.cpp
 @@ -4,7 +4,7 @@
  #include "hwrenderer/utility/hw_shaderpatcher.h"
  #include "w_wad.h"
@@ -50,10 +50,10 @@ Index: gzdoom-4.0.0/src/rendering/vulkan/shaders/vk_shader.cpp
  
  VkShaderManager::VkShaderManager(VulkanDevice *device) : device(device)
  {
-Index: gzdoom-4.0.0/src/rendering/vulkan/system/vk_builders.cpp
+Index: gzdoom-g4.2.0/src/rendering/vulkan/system/vk_builders.cpp
 ===================================================================
---- gzdoom-4.0.0.orig/src/rendering/vulkan/system/vk_builders.cpp
-+++ gzdoom-4.0.0/src/rendering/vulkan/system/vk_builders.cpp
+--- gzdoom-g4.2.0.orig/src/rendering/vulkan/system/vk_builders.cpp
++++ gzdoom-g4.2.0/src/rendering/vulkan/system/vk_builders.cpp
 @@ -2,8 +2,8 @@
  #include "vk_builders.h"
  #include "doomerrors.h"

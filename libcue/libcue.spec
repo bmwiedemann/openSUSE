@@ -1,7 +1,7 @@
 #
 # spec file for package libcue
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcue
 %define lname	libcue2
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        CUE sheet parsing library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/lipnitsk/libcue
+URL:            https://github.com/lipnitsk/libcue
 
 Source:         https://github.com/lipnitsk/libcue/archive/v%version.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
-BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 
 %description
@@ -58,7 +57,7 @@ This package contains the development library symlink and header
 files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
@@ -78,11 +77,9 @@ ctest --output-on-failure --force-new-ctest-process
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libcue.so.2*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libcue.h
 %_includedir/libcue*/
 %_libdir/libcue.so

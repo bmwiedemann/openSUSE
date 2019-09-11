@@ -6,7 +6,7 @@ Wed Feb 28 16:36:49 UTC 2018 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 14 12:26:54 UTC 2016 - dimstar@opensuse.org
 
-- Update to version 3.0.1:
+- Update to version 3.0.1 (jsc#SLE-8163, FATE#324347):
   + Element::remove_attribute(): Delete the C++ wrapper
     (bgo#768404).
 

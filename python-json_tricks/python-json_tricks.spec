@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-json_tricks
-Version:        3.13.1
+Version:        3.13.2
 Release:        0
 Summary:        Extra features for Python's JSON
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mverleg/pyjson_tricks
-Source:         https://files.pythonhosted.org/packages/source/j/json_tricks/json_tricks-%{version}.tar.gz
+Source:         https://github.com/mverleg/pyjson_tricks/archive/v%{version}.tar.gz#/pyjson_tricks-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,7 +60,7 @@ python handling of json files:
 As well as compression and disallowing duplicate keys.
 
 %prep
-%setup -q -n json_tricks-%{version}
+%setup -q -n pyjson_tricks-%{version}
 
 %build
 %python_build

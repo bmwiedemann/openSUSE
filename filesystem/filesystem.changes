@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:39:51 CEST 2019 - kukuk@suse.de
+
+- Move /etc.cron.* directories to cron package
+- Add /usr/etc
+
+-------------------------------------------------------------------
 Mon May 27 15:47:56 CEST 2019 - kukuk@suse.de
 
 - Re-add /var/cache and /var/log (revert [bsc#1078466] because of

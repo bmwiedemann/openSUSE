@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 16:03:51 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.5
+
+-------------------------------------------------------------------
 Thu Jun  6 10:47:31 CEST 2019 - schubi@suse.de
 
 - Going back and forward in the update workflow: Initialize

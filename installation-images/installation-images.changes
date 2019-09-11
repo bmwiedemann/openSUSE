@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Fri Aug 30 13:41:05 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#329
+- handle compressed modules
+- 14.434
+
+--------------------------------------------------------------------
+Fri Aug 30 12:03:52 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#328
+- Speed up fix_perms
+- 14.433
+
+--------------------------------------------------------------------
+Fri Aug 23 08:48:13 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#327
+- add all gpio modules (bsc#1145777)
+- 14.432
+
+--------------------------------------------------------------------
 Thu Jul 18 14:16:03 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#326

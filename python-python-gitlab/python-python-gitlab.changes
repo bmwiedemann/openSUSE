@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:26:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.0:
+  * add methods to retrieve an individual project environment
+  * group labels with subscriptable mixin
+  * add mr rebase method bc4280c
+  * get artifact by ref and job cda1174
+  * add support for board update 908d79f, closes #801
+  * add support for issue.related_merge_requests 90a3631, closes #794
+
+-------------------------------------------------------------------
 Mon Jul 22 13:15:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.9.0:

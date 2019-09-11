@@ -17,7 +17,7 @@
 
 
 Name:           perl-WWW-Mechanize
-Version:        1.91
+Version:        1.92
 Release:        0
 %define cpan_name WWW-Mechanize
 Summary:        Handy web browsing in a Perl object
@@ -36,7 +36,7 @@ BuildRequires:  perl(HTML::HeadParser)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTML::TreeBuilder) >= 5
 BuildRequires:  perl(HTTP::Cookies)
-BuildRequires:  perl(HTTP::Daemon)
+BuildRequires:  perl(HTTP::Daemon) >= 6.05
 BuildRequires:  perl(HTTP::Request) >= 1.30
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Response)

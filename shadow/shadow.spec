@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -51,8 +51,6 @@ Patch5:         shadow-util-linux.patch
 Patch6:         shadow-4.1.5.1-userdel-helpfix.patch
 # PATCH-FIX-FEDORA shadow-4.1.5.1-logmsg.patch kukuk@suse.com -- Fix error message.
 Patch7:         shadow-4.1.5.1-logmsg.patch
-# PATCH-FEATURE-SUSE encryption_method_nis.patch kukuk@suse.com -- Add support for ENCRYPT_METHOD_NIS used by SUSE patch in pam (pam_unix).
-Patch10:        encryption_method_nis.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-comments.patch kukuk@suse.com -- Adjust login.defs comments.
 Patch13:        shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
@@ -101,7 +99,6 @@ group accounts.
 %patch5
 %patch6
 %patch7
-%patch10
 %patch13
 %patch14
 %if 0%{?suse_version} < 1330

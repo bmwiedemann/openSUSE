@@ -1,4 +1,4 @@
-From 17175b78edbf2d00da9048d0df916f502f7c486c Mon Sep 17 00:00:00 2001
+From 129c582687484ac3f6aa2d5eeb6e517c053337eb Mon Sep 17 00:00:00 2001
 From: Gary Ching-Pang Lin <glin@suse.com>
 Date: Tue, 24 Jun 2014 11:57:32 +0800
 Subject: [PATCH 1/3] Add DebugPkg
@@ -548,10 +548,10 @@ index 000000000000..dac215c53893
 +
 +
 -- 
-2.18.0
+2.23.0
 
 
-From 351ceccd0f7349a5740dc5fe781f9d8c7ffc9da6 Mon Sep 17 00:00:00 2001
+From 84c13bdbdc050c12c55de76ff62ed3f1b89c8f63 Mon Sep 17 00:00:00 2001
 From: Gary Ching-Pang Lin <glin@suse.com>
 Date: Tue, 24 Jun 2014 11:59:02 +0800
 Subject: [PATCH 2/3] Compile DebugPkg and load .debug files
@@ -582,20 +582,20 @@ index dac215c53893..3db87a4de430 100644
                               (sym_name,
                                long (base)))
 diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
-index aa3efc5e73b9..2196d43e073e 100644
+index ba7a75884490..c35371447a75 100644
 --- a/OvmfPkg/OvmfPkgX64.dsc
 +++ b/OvmfPkg/OvmfPkgX64.dsc
-@@ -950,3 +950,5 @@ [Components]
-       NULL|SecurityPkg/Library/HashInstanceLibSha512/HashInstanceLibSha512.inf
+@@ -923,3 +923,5 @@ [Components]
+       NULL|SecurityPkg/Library/HashInstanceLibSm3/HashInstanceLibSm3.inf
    }
  !endif
 +
 +  DebugPkg/GdbSyms/GdbSyms.inf
 -- 
-2.18.0
+2.23.0
 
 
-From 1f1d526adefc94c79ac15532b89d93e1d7b80d55 Mon Sep 17 00:00:00 2001
+From dcbdaa6cccce44133f8cb6a1a78a0cebd10ac172 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Mon, 16 Oct 2017 16:32:27 +0800
 Subject: [PATCH 3/3] DebugPkg: Print the local variables
@@ -628,5 +628,5 @@ index 2551dfab90b6..0d591e5a8f22 100644
  }
  
 -- 
-2.18.0
+2.23.0
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Aug 27 06:51:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Upgrade descriptions.
+
+-------------------------------------------------------------------
+Mon Aug 12 21:20:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU awk 5.0.1:
+  * Sandbox mode now disallows assigning new filename values in
+    ARGV that were not there when gawk was invoked
+  * The new argument "no-ext" to --lint disables "XXX is a gawk
+    extension" lint warnings
+- possibly incompatible changes in 5.0.0:
+  * Add support for the POSIX standard %a and %A printf formats
+  * Replace regex routines with those from GNULIB
+  * PROCINFO["platform"] yields a string indicating the platform for
+    which gawk was compiled.
+  * Writing to elements of SYMTAB that are not variable names now
+    causes a fatal error
+  * New comment handling in the pretty-printer
+  * Namespaces have been implemented. Files included with -i, read
+    with -f, and command line program segments must all be self-
+    contained syntactic units.
+  * now uses the locale settings for ignoring case in single byte
+    locales, instead of hardwiring in Latin-1
+
+-------------------------------------------------------------------
 Mon Feb 26 10:19:21 UTC 2018 - astieger@suse.com
 
 - GNU awk 4.2.1:

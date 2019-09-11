@@ -12,7 +12,7 @@ grep -rh LOGIN_DEFS . |
 	sed -n 's/^.*search_key *("\([A-Z0-9_]*\)", *LOGIN_DEFS).*$/\1/p' |
 	LC_ALL=C sort -u >pam-login_defs-vars.lst
 
-if test $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//') != 3e1ae01b1e928c53c828f64ab412be6267eb1018 ; then
+if test $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//') != da39a3ee5e6b4b0d3255bfef95601890afd80709 ; then
 
 	echo "does not match!" >&2
 	echo "Checksum is: $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//')" >&2

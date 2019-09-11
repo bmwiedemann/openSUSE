@@ -182,6 +182,7 @@ dvd:
   # all kernel flavors we want to have
   - kernel-default
   - kexec-tools
+  - guota-nfs
 
   - patterns-media-rest_dvd: [suggested]
   # all loggers
@@ -297,6 +298,9 @@ dvd:
   - virtualbox-host-kmp-default: [locked]
 
   - desktop-data-openSUSE-extra: [i586]
+ 
+  # DVD exploded in size - klettres grew from 17MB to 36 - dimstar, 20190821
+  - klettres: [locked]
 
   # additional packages not picked
   - apache-parent

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:48:27 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 12:
+  * New hourglass and triangle point types
+    (gh#markummitchell/engauge-digitizer#346).
+  * Fix data export for log scale data when step factor is less
+    than one (gh#markummitchell/engauge-digitizer#345).
+
+-------------------------------------------------------------------
 Wed Jul 24 13:08:05 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 11.3:

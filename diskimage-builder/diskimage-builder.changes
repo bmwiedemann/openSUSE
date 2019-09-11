@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep  9 11:33:05 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Update to 2.27.0
+  * Uninstall linux-firmware and linux-firmware-whence
+  * Fixed use of flake8
+  * Allow configurable gzip binary name
+  * Do not delete cracklib from /usr/share
+  * Fedora 30 functional and boot tests
+  * rpm-distro: ensure we selinux relabel underlying directories
+  * Allow extra repositories to be added to images
+  * yum-minimal: install fedora-release-cloud
+
+-------------------------------------------------------------------
+Thu Aug 22 06:31:15 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Update to 2.26.1
+  * zypper-minimal: Don't get confused by etc/resolv.conf symlink
+  * simple-init: add configurable RA timeout with network-manager
+  * update gentoo systemd profile to 17.1 from 17.0
+  * block-device-efi : expand disk size calculation
+  * Don't show all elements found
+  * dracut-regenerate: catch failures and exit code
+  * Fixes packages for arm64 bootloader
+  * Fixes DIB_DISTRIBUTION_MIRROR_UBUNTU_IGNORE matching when empty
+  * Fix the pypi element for multiple mirror URLs
+  * Stop regex warning
+  * Create /etc/machine-id for RHEL images
+  * fix comments / spelling errors in gentoo element
+  * support alternate portage directories
+  * journal-to-console: element to send systemd journal to console
+  * update version of open-iscsi that is installed on musl
+  * Cleanup: remove useless statement
+
+-------------------------------------------------------------------
 Mon Jul 15 11:21:56 UTC 2019 - Markos Chandras <mchandras@suse.de>
 
 - Update to 2.25.0

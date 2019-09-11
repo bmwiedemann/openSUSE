@@ -17,7 +17,7 @@
 
 
 Name:           yast2-instserver
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        YaST2 - Installation Server Configuration and Management
 License:        GPL-2.0-or-later
@@ -31,8 +31,8 @@ BuildRequires:  update-desktop-files
 # Yast2::Systemd::Socket
 BuildRequires:  yast2 >= 4.1.3
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 Requires:       yast2 >= 4.1.3
 Requires:       yast2-ruby-bindings >= 1.0.0

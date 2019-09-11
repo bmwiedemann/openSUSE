@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Build failure with LTO enabled on ppc64le boo#1146096
+%ifarch ppc64le
+%define _lto_cflags %{nil}
+%endif
 
 # The ADE required for gapi is not yet packaged, disable it for now
 %bcond_with gapi
@@ -45,6 +49,8 @@ Patch0:         opencv-gles.patch
 Patch1:         opencv-build-compare.patch
 # PATCH-FIX-OPENSUSE 0001-Do-not-include-glx.h-when-using-GLES.patch -- Fix build error on 32bit ARM, due to incompatible pointer types, https://github.com/opencv/opencv/issues/9171
 Patch2:         0001-Do-not-include-glx.h-when-using-GLES.patch
+# PATCH-FIX-OPENSUSE opencv-includedir.patch -- Fix wrong include path in pkgconfig file
+Patch3:         opencv-includedir.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -104,7 +110,7 @@ BuildRequires:  pkgconfig(libswscale)
 %endif
 
 %description
-OpenCV means Intel® Open Source Computer Vision Library. It is a collection of C
+OpenCV means Intel Open Source Computer Vision Library. It is a collection of C
 functions and a few C++ classes that implement some popular Image Processing and
 Computer Vision algorithms.
 
@@ -195,6 +201,7 @@ rm -f doc/packaging.txt
 %endif
       -DOPENCV_INCLUDE_INSTALL_PATH=%{_includedir} \
       -DOPENCV_LICENSES_INSTALL_PATH=%{_licensedir}/%{name} \
+      -DOPENCV_GENERATE_PKGCONFIG=ON \
       -DINSTALL_C_EXAMPLES=ON \
       -DINSTALL_PYTHON_EXAMPLES=ON \
       -DENABLE_OMIT_FRAME_POINTER=OFF \
@@ -254,6 +261,9 @@ chmod 644 %{buildroot}%{_docdir}/%{name}-doc/examples/python/*.py
 # Remove LD_LIBRARY_PATH wrapper script, we install into proper library dirs
 rm %{buildroot}%{_bindir}/setup_vars_opencv4.sh
 
+# Fix duplicated install prefix in pkg-config file
+sed -i -e 's|//usr||g' %{buildroot}%{_libdir}/pkgconfig/opencv4.pc
+
 %fdupes -s %{buildroot}%{_docdir}/%{name}-doc/examples
 %fdupes -s %{buildroot}%{_includedir}
 
@@ -299,6 +309,7 @@ rm %{buildroot}%{_bindir}/setup_vars_opencv4.sh
 %license LICENSE LICENSE.contrib
 %{_includedir}/opencv2/
 %{_libdir}/lib*.so
+%{_libdir}/pkgconfig/opencv4.pc
 %dir %{_libdir}/cmake/opencv4
 %{_libdir}/cmake/opencv4/OpenCVConfig*.cmake
 %{_libdir}/cmake/opencv4/OpenCVModules*.cmake

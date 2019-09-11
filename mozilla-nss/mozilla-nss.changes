@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat Aug  3 21:12:12 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.45 (bsc#1141322)
+  * required by Firefox 69.0
+  New functions
+  * PK11_FindRawCertsWithSubject - Finds all certificates on the
+    given slot with the given subject distinguished name and returns
+    them as DER bytes. If no such certificates can be found, returns
+    SECSuccess and sets *results to NULL. If a failure is encountered
+    while fetching any of the matching certificates, SECFailure is
+    returned and *results will be NULL.
+  Notable changes
+  * bmo#1540403 - Implement Delegated Credentials
+  * bmo#1550579 - Replace ARM32 Curve25519 implementation with one
+    from fiat-crypto
+  * bmo#1551129 - Support static linking on Windows
+  * bmo#1552262 - Expose a function PK11_FindRawCertsWithSubject for
+    finding certificates with a given subject on a given slot
+  * bmo#1546229 - Add IPSEC IKE support to softoken
+  * bmo#1554616 - Add support for the Elbrus lcc compiler (<=1.23)
+  * bmo#1543874 - Expose an external clock for SSL
+  * bmo#1546477 - Various changes in response to the ongoing FIPS review
+  Certificate Authority Changes
+  * The following CA certificates were Removed:
+    bmo#1552374 - CN = Certinomis - Root CA
+  Bugs fixed
+  * bmo#1540541 - Don't unnecessarily strip leading 0's from key material
+    during PKCS11 import (CVE-2019-11719)
+  * bmo#1515342 - More thorough input checking (CVE-2019-11729)
+  * bmo#1552208 - Prohibit use of RSASSA-PKCS1-v1_5 algorithms in
+    TLS 1.3 (CVE-2019-11727)
+  * bmo#1227090 - Fix a potential divide-by-zero in makePfromQandSeed
+    from lib/freebl/pqg.c (static analysis)
+  * bmo#1227096 - Fix a potential divide-by-zero in PQG_VerifyParams
+    from lib/freebl/pqg.c  (static analysis)
+  * bmo#1509432 - De-duplicate code between mp_set_long and mp_set_ulong
+  * bmo#1515011 - Fix a mistake with ChaCha20-Poly1305 test code where
+    tags could be faked. Only relevant for clients that might have copied
+    the unit test code verbatim
+  * bmo#1550022 - Ensure nssutil3 gets built on Android
+  * bmo#1528174 - ChaCha20Poly1305 should no longer modify output
+    length on failure
+  * bmo#1549382 - Don't leak in PKCS#11 modules if C_GetSlotInfo()
+    returns error
+  * bmo#1551041 - Fix builds using GCC < 4.3 on big-endian architectures
+  * bmo#1554659 - Add versioning to OpenBSD builds to fix link time
+    errors using NSS
+  * bmo#1553443 - Send session ticket only after handshake is marked
+    as finished
+  * bmo#1550708 - Fix gyp scripts on Solaris SPARC so that libfreebl_64fpu_3.so
+    builds
+  * bmo#1554336 - Optimize away unneeded loop in mpi.c
+  * bmo#1559906 - fipstest: use CKM_TLS12_MASTER_KEY_DERIVE instead of vendor
+    specific mechanism
+  * bmo#1558126 - TLS_AES_256_GCM_SHA384 should be marked as FIPS compatible
+  * bmo#1555207 - HelloRetryRequestCallback return code for rejecting 0-RTT
+  * bmo#1556591 - Eliminate races in uses of PK11_SetWrapKey
+  * bmo#1558681 - Stop using a global for anti-replay of TLS 1.3 early data
+  * bmo#1561510 - Fix a bug where removing -arch XXX args from CC didn't work
+  * bmo#1561523 - Add a string for the new-ish error
+    SSL_ERROR_MISSING_POST_HANDSHAKE_AUTH_EXTENSION
+
+-------------------------------------------------------------------
+Fri Aug  2 14:43:24 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- split hmac subpackages to match SLE's packaging
+
+-------------------------------------------------------------------
+Mon Jul 22 07:13:42 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use -ffat-lto-objects in order to provide assembly for static libs.
+
+-------------------------------------------------------------------
 Mon Jul  8 07:14:57 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.44.1

@@ -39,15 +39,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(uuid)
 
 %description
-The Easy Publish and Consume library provides an easy method to:
-
-    * publish data using HTTPS: EpcPublisher
-    * announce that information via DNS-SD: EpcDispatcher
-    * find that information: EpcConsumer
-    * and finally consume it
-
-You can use this library as a key/value store published to the network,
-using encryption, authentication and service discovery.
+The Easy Publish and Consume library provides methods to publish
+data via HTTPS, announce data via DNS-SD, re-find and consume this
+data.
 
 %package 1_0-2
 Summary:        Easy Publish and Consume Library
@@ -57,15 +51,12 @@ Recommends:     %{name}-lang = %{version}
 Provides:       %{name} = %{version}
 
 %description 1_0-2
-The Easy Publish and Consume library provides an easy method to:
+The Easy Publish and Consume library provides methods to publish
+data via HTTPS, announce data via DNS-SD, re-find and consume this
+data.
 
-    * publish data using HTTPS: EpcPublisher
-    * announce that information via DNS-SD: EpcDispatcher
-    * find that information: EpcConsumer
-    * and finally consume it
-
-You can use this library as a key/value store published to the network,
-using encryption, authentication and service discovery.
+This library can be used as a key/value store published to the
+network, using encryption, authentication and service discovery.
 
 %package devel
 Summary:        Easy Publish and Consume Library
@@ -75,15 +66,9 @@ Requires:       %{name}-1_0-2 = %{version}
 %description devel
 Development headers for libepc.
 
-The Easy Publish and Consume library provides an easy method to:
-
-    * publish data using HTTPS: EpcPublisher
-    * announce that information via DNS-SD: EpcDispatcher
-    * find that information: EpcConsumer
-    * and finally consume it
-
-You can use this library as a key/value store published to the network,
-using encryption, authentication and service discovery.
+The Easy Publish and Consume library provides methods to publish
+data via HTTPS, announce data via DNS-SD, re-find and consume this
+data.
 
 %lang_package
 

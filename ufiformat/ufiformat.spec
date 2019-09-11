@@ -1,7 +1,7 @@
 #
 # spec file for package ufiformat
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           ufiformat
 Version:        0.9.9
 Release:        0
 Summary:        Low-level format tool for USB floppy drives under Linux
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://www.geocities.jp/tedi_world/format_usbfdd_e.html
-Source:         %name-%version.tar.xz
+URL:            https://github.com/tedigh/ufiformat
+Source:         https://github.com/tedigh/ufiformat/archive/v%version.tar.gz
 Patch1:         ufiformat-headers.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libext2fs-devel
@@ -33,19 +33,18 @@ BuildRequires:  xz
 ufiformat is a tool to low-level format USB floppy disks.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
-%configure 
+%configure
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README 
+%doc ChangeLog NEWS README
+%license COPYING
 %_bindir/ufiformat
 %_mandir/man8/ufiformat.8.gz
 

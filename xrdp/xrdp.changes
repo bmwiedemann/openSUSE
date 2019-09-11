@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 10:19:14 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Add xrdp-systemd-services.patch: Let systemd handle the daemons,
+  fix daemon start failures (boo#1138954, boo#1144327).
+
+-------------------------------------------------------------------
 Mon Aug  5 03:42:13 UTC 2019 - Felix Zhang <fezhang@suse.com>
 
 - Update xrdp-pam.patch: Include the pam_keyinit.so module in

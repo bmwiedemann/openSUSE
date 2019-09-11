@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 29 22:07:53 UTC 2019 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Upgrade to 4.7.0.
+- findutils.spec:
+  - Change source compression from gzip to xz.
+  - Align comments about how to bump the version.
+  - Activate the signature checking via *.sig and keyring files.
+  - Remove downstream hack in %check section to make a test executable.
+- Delete obsolete patches:
+  - disable-broken-tests.patch
+  - gnulib-libio.patch
+  - sv-bug-48030-find-exec-plus-does-not-pass-all-arguments.patch
+  - sysmacros.patch
+- findutils-4.4.2-xautofs.patch: Refresh, and rename ...
+- findutils-xautofs.patch: ... to this.
+
+-------------------------------------------------------------------
 Thu Jun 20 09:45:24 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add disable-broken-tests.patch in order to remove broken

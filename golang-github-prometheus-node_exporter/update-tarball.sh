@@ -25,7 +25,7 @@ trap clean_up EXIT SIGINT SIGTERM
 PKG_DIR=$(pwd)
 REPO_NAME="node_exporter"
 REPO="https://github.com/prometheus/$REPO_NAME"
-REV="v0.17.0"
+REV="v0.18.1"
 
 
 cd $WORK_DIR

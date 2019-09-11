@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Aug 28 12:47:09 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Disable dwz:testsuite if %{with ringdisabled}
+
+-------------------------------------------------------------------
+Fri Aug 16 11:26:06 UTC 2019 - Tom de Vries <tdevries@suse.de>
+
+- Fix copyright years in --version message:
+  * dwz-update-version-copyright-message.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 09:29:02 UTC 2019 - Tom de Vries <tdevries@suse.de>
+
+- Split off dwz-testsuite package using multibuild, to remove build
+  cycle
+- Don't require binutils-gold for riscv64
+
+-------------------------------------------------------------------
+Fri Aug  2 10:43:02 UTC 2019 - Tom de Vries <tdevries@suse.de>
+
+- DWZ 0.13 update:
+  * Dropped patches:
+    - dwz-0.12-ignore-nobits.patch
+    - dwz-0.12-DW_OP_GNU_variable_value.patch
+    - dwz-low-mem-Fix-DW_OP_GNU_parameter_ref-handling-in-read_exprloc.patch
+  * Added BuildRequires for dejagnu, elfutils, gdb and binutils-gold.
+  * Add %check
+- Add URL tag
+
+-------------------------------------------------------------------
 Mon Feb 18 14:31:42 UTC 2019 - tdevries@suse.com
 
 - Add dwz-low-mem-Fix-DW_OP_GNU_parameter_ref-handling-in-read_exprloc.patch

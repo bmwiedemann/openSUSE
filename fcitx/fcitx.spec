@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libver -4_2_9
-
 Name:           fcitx
 Version:        4.2.9.6
 Release:        0
 Summary:        Flexible Context-aware Input Tool with eXtension
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx
+URL:            https://github.com/fcitx/fcitx
 Source:         https://download.fcitx-im.org/fcitx/%{name}-%{version}_dict.tar.xz
 Source1:        xim.d-fcitx
 Source2:        fcitx-README.suse
@@ -51,31 +50,35 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  iso-codes-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpresage-devel
+# Only for leap < 15.2
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 BuildRequires:  libqt4-devel
+%endif
 BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  opencc-devel
 BuildRequires:  pango-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 BuildRequires:  pkgconfig(xkbfile)
+Requires:       %{name}-branding = %{version}
 Requires:       %{name}-gtk3 = %{version}-%{release}
 Requires:       lib%{name}%{libver} = %{version}-%{release}
 Recommends:     %{name}-gtk2 = %{version}-%{release}
-Recommends:     %{name}-qt4 = %{version}-%{release}
 Recommends:     %{name}-pinyin = %{version}-%{release}
 Recommends:     %{name}-table = %{version}-%{release}
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
+Recommends:     %{name}-qt4 = %{version}-%{release}
+%endif
 # These libraries are dlopen-ed in fcitx at runtime 
 # for spell-checking for keyboard users. ld can't find
 # them, so explicitly recommends.
+Recommends:     libenchant1
 Recommends:     libopencc2
 Recommends:     libpresage1
-Recommends:     libenchant1
-Requires:       %{name}-branding = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       locale(ko;zh_CN;zh_SG)
 
 %description
@@ -98,12 +101,12 @@ Requires:       %{name} = %{version}-%{release}
 
 %description devel
 Development header files for Fcitx input method framework.
- 
+
 %package gtk2
 Summary:        Gtk2 IM module for %{name}
 Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}-%{release}
-%gtk2_immodule_requires
+%{gtk2_immodule_requires}
 
 %description gtk2
 GTK+ version 2 input module for Fcitx input method rfamework.
@@ -112,7 +115,7 @@ GTK+ version 2 input module for Fcitx input method rfamework.
 Summary:        Gtk3 IM module for %{name}
 Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}-%{release}
-%gtk3_immodule_requires
+%{gtk3_immodule_requires}
 
 %description gtk3
 GTK+ version 3 input module for Fcitx input method framework.
@@ -127,6 +130,7 @@ Pinyin and QuWei input methods. It's flexible and fast.
 
 This package provides the GObject Introspection bindings for Fcitx.
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %package qt4
 Summary:        Qt4 IM module for %{name}
 Group:          System/I18n/Chinese
@@ -134,6 +138,7 @@ Requires:       %{name} = %{version}-%{release}
 
 %description qt4
 QT4 input module for Fcitx input method framework.
+%endif
 
 %package quwei
 Summary:        Chinese Zone-bit(QuWei) engine for %{name}
@@ -209,8 +214,8 @@ Fcitx Evening Breeze (Wan feng) input tables for Simplified Chinese.
 %package table-cn-wubi-pinyin
 Summary:        Wubi and pinyin(wubi-pinyin) table for %{name}
 Group:          System/I18n/Chinese
-Provides:       locale(fcitx-table:zh_CN;)
 Requires:       %{name}-table = %{version}-%{release}
+Provides:       locale(fcitx-table:zh_CN;)
 BuildArch:      noarch
 
 %description table-cn-wubi-pinyin
@@ -221,8 +226,8 @@ Wubi in Fcitx is based on wubi x86.
 %package table-cn-wubi
 Summary:        Wubi table for %{name}
 Group:          System/I18n/Chinese
-Provides:       locale(fcitx-table:zh_CN;)
 Requires:       %{name}-table = %{version}-%{release}
+Provides:       locale(fcitx-table:zh_CN;)
 BuildArch:      noarch
 
 %description table-cn-wubi
@@ -261,10 +266,10 @@ Tools to convert txt or scel(sougou pinyin data format) pinyin sheets to fcitx m
 Summary:        openSUSE default Skins for Fcitx
 Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
+Supplements:    (%{name} and branding-openSUSE)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
-Conflicts:      otherproviders(%{name}-branding)
-Supplements:    packageand(%{name}:branding-openSUSE)
+BuildArch:      noarch
 
 %description branding-openSUSE
 openSUSE default skins for Fcitx
@@ -305,9 +310,8 @@ Fcitx dark skin.
 
 You can either use this package for download from kde-look.org using knewstaff in fcitx-config-kde4.
 
-
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch2 -p1
 %patch3 -p1
 
@@ -317,15 +321,15 @@ cd build
 
 # fix dlopen-ed library name
 cmake .. \
-		 -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
-		 -DCMAKE_CXX_FLAGS="$RPM_OPT_FLAGS" \
+		 -DCMAKE_C_FLAGS="%{optflags}" \
+		 -DCMAKE_CXX_FLAGS="%{optflags}" \
 		 -DCMAKE_VERBOSE_MAKEFILE=On \
 		 -DCMAKE_BUILD_TYPE=Release \
 		 -DOPENCC_LIBRARY_FILENAME=libopencc.so.2 \
 		 -DENCHANT_LIBRARY_FILENAME=libenchant.so.1 \
 		 -DPRESAGE_LIBRARY_FILENAME=libpresage.so.1 \
                  -DENABLE_GTK3_IM_MODULE=On \
-%if 0%{?sles_version}
+%if 0%{?sles_version} || 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 		 -DENABLE_QT=Off \
 		 -DENABLE_QT_IM_MODULE=off \
 %endif
@@ -336,11 +340,11 @@ cmake .. \
 
 # fix gobject-introspection build
 export SUSE_ASNEEDED=0
-make
+make %{?_smp_mflags}
 
 %install
 cd build
-%makeinstall
+%make_install
 cd ..
 
 # install openSUSE skins
@@ -368,7 +372,7 @@ cp -r ChangeLog %{buildroot}%{_docdir}/%{name}/
 
 # create autostart
 mkdir -p %{buildroot}%{_sysconfdir}/X11/xim.d/
-install -m 644 %{S:1} %{buildroot}%{_sysconfdir}/X11/xim.d/fcitx
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xim.d/fcitx
 
 priority=30
 pushd  %{buildroot}%{_sysconfdir}/X11/xim.d/
@@ -386,30 +390,30 @@ popd
 install -D -m644 %{SOURCE9} %{buildroot}%{_sysconfdir}/rpm/macros.%{name}
 
 # remove *.la
-%{__rm} -rf %{buildroot}%{_libdir}/lib%{name}-config.la
+rm -rf %{buildroot}%{_libdir}/lib%{name}-config.la
 
 %find_lang %{name}
 
 %fdupes %{buildroot}
 
 %post gtk2
-%gtk2_immodule_post
+%{gtk2_immodule_post}
 
 %postun gtk2
-%gtk2_immodule_postun
+%{gtk2_immodule_postun}
 
 %post gtk3
-%gtk3_immodule_post
+%{gtk3_immodule_post}
 
 # Add fcitx icons to gnome3 panel
-TARGET="/usr/share/gnome-shell/js/ui/statusIconDispatcher.js"
+TARGET="%{_datadir}/gnome-shell/js/ui/statusIconDispatcher.js"
 if [ -f $TARGET ] && [ ! -f $TARGET-fcitx ] ; then
 mv $TARGET $TARGET-fcitx
 sed "/^const STANDARD_TRAY_ICON_IMPLEMENTATIONS/a \    'fcitx': 'input-method'," $TARGET-fcitx > $TARGET
-fi 
+fi
 
 %postun gtk3
-%gtk3_immodule_postun
+%{gtk3_immodule_postun}
 
 %post
 %desktop_database_post
@@ -422,11 +426,9 @@ exit 0
 exit 0
 
 %post -n lib%{name}%{libver} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/%{name}-autostart
@@ -440,8 +442,8 @@ exit 0
 %{_datadir}/icons/*
 %{_datadir}/mime/packages/*
 %{_datadir}/dbus-1/services/org.fcitx.Fcitx.service
-%{_mandir}/man1/fcitx.1.gz
-%{_mandir}/man1/fcitx-remote.1.gz
+%{_mandir}/man1/fcitx.1%{?ext_man}
+%{_mandir}/man1/fcitx-remote.1%{?ext_man}
 %{_libdir}/%{name}/
 %{_sysconfdir}/xdg/autostart/%{name}*.desktop
 %config %{_sysconfdir}/X11/xim.d/
@@ -470,30 +472,24 @@ exit 0
 %exclude %{_datadir}/%{name}/skin/dark
 
 %files -n lib%{name}%{libver}
-%defattr(-,root,root)
 %{_libdir}/libfcitx*.so.*
 %{_libdir}/libfcitx*.so
 
 %files gtk2
-%defattr(-,root,root)
 %{_libdir}/gtk-2.0/*
 
 %files gtk3
-%defattr(-,root,root)
 %{_libdir}/gtk-3.0/*
 
 %files -n typelib-1_0-Fcitx-1_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Fcitx-1.0.typelib
 
 %files quwei
-%defattr(-,root,root)
 %{_libdir}/%{name}/%{name}-qw.so
 %{_datadir}/%{name}/inputmethod/qw.conf
 %{_datadir}/%{name}/addon/%{name}-qw.conf
 
 %files pinyin
-%defattr(-,root,root)
 %{_libdir}/%{name}/%{name}-pinyin.so
 %{_datadir}/%{name}/pinyin/
 %{_datadir}/%{name}/inputmethod/pinyin.conf
@@ -504,87 +500,71 @@ exit 0
 %{_datadir}/%{name}/configdesc/%{name}-pinyin.desc
 
 %files table
-%defattr(-,root,root)
 %{_libdir}/%{name}/%{name}-table.so
 %{_datadir}/%{name}/addon/%{name}-table.conf
 %{_datadir}/%{name}/configdesc/table.desc
 
 %files table-cn-cangjie
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/cangjie.*
 %{_datadir}/%{name}/imicon/cangjie.png
 
 %files table-cn-dianbao
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/db.*
 
 %files table-cn-erbi
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/erbi.*
 %{_datadir}/%{name}/imicon/erbi.png
 
 %files table-cn-bingchan
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/qxm.*
 
 %files table-cn-wanfeng
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/wanfeng.*
 
 %files table-cn-wubi-pinyin
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/wbpy.*
 %{_datadir}/%{name}/imicon/wbpy.png
 
 %files table-cn-wubi
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/wbx.*
 %{_datadir}/%{name}/imicon/wubi.png
 
 %files table-cn-ziran
-%defattr(-,root,root)
 %{_datadir}/%{name}/table/zrm.*
 %{_datadir}/%{name}/imicon/ziranma.png
 
 %files table-tools
-%defattr(-,root,root)
 %{_bindir}/mb2txt
 %{_bindir}/txt2mb
-%{_mandir}/man1/mb2txt.1.gz
-%{_mandir}/man1/txt2mb.1.gz
+%{_mandir}/man1/mb2txt.1%{?ext_man}
+%{_mandir}/man1/txt2mb.1%{?ext_man}
 
 %files pinyin-tools
-%defattr(-,root,root)
 %{_bindir}/createPYMB
 %{_bindir}/readPYMB
 %{_bindir}/readPYBase
 %{_bindir}/mb2org
 %{_bindir}/scel2org
-%{_mandir}/man1/createPYMB.1.gz
-%{_mandir}/man1/readPYMB.1.gz
-%{_mandir}/man1/readPYBase.1.gz
-%{_mandir}/man1/mb2org.1.gz
-%{_mandir}/man1/scel2org.1.gz
+%{_mandir}/man1/createPYMB.1%{?ext_man}
+%{_mandir}/man1/readPYMB.1%{?ext_man}
+%{_mandir}/man1/readPYBase.1%{?ext_man}
+%{_mandir}/man1/mb2org.1%{?ext_man}
+%{_mandir}/man1/scel2org.1%{?ext_man}
 
 %files branding-openSUSE
-%defattr(-,root,root)
 %{_datadir}/%{name}/skin/Harlequin
 %{_datadir}/%{name}/skin/Dartmouth
 
 %files skin-new-air
-%defattr(-,root,root)
 %{_datadir}/%{name}/skin/NewAir
 
 %files skin-classic
-%defattr(-,root,root)
 %{_datadir}/%{name}/skin/classic
 
 %files skin-dark
-%defattr(-,root,root)
 %{_datadir}/%{name}/skin/dark
 
 %files devel
-%defattr(-,root,root)
 %config %{_sysconfdir}/rpm/macros.%{name}
 %{_includedir}/*
 %{_bindir}/%{name}4-config
@@ -595,8 +575,9 @@ exit 0
 %{_datadir}/cmake/
 %{_datadir}/gir-1.0/Fcitx-1.0.gir
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %files qt4
-%defattr(-,root,root)
 %{_libdir}/qt4/*
+%endif
 
 %changelog

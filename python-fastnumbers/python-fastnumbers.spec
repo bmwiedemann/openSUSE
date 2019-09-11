@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-fastnumbers
 Version:        2.2.1
 Release:        0
@@ -31,8 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-faulthandler}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  python3-testsuite
 # /SECTION
 %python_subpackages

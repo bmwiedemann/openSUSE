@@ -3,7 +3,7 @@
 		<param name="scm">git</param>
 		<param name="url">https://github.com/performancecopilot/pcp.git</param>
 		<param name="filename">pcp</param>
-		<param name="revision">4.3.1</param>
+		<param name="revision">4.3.4</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="changesgenerate">disable</param>
 	</service>

@@ -42,6 +42,8 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-plugins-good/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gstreamer-plugins-good-fix-glibc-incompat.patch: v4l2: Fix build with glibc 2.30
+Patch0:         gstreamer-plugins-good-fix-glibc-incompat.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -197,7 +199,7 @@ export PYTHON=%{_bindir}/python3
 	--with-package-name='openSUSE GStreamer-plugins-good package' \
 	--with-package-origin='http://download.opensuse.org' \
 %{nil}
-make %{?_smp_mflags}
+%make_build
 %endif
 
 %install

@@ -16,21 +16,17 @@
 #
 
 
-%if 0%{?suse_version} >= 1500
-%define use_wacom 1
-%endif
-
 Name:           libinput
 %define lname	libinput10
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
 Group:          Development/Libraries/C and C++
 Url:            http://www.freedesktop.org/wiki/Software/libinput/
 
-#Git-Clone:	git://anongit.freedesktop.org/wayland/libinput
-#Git-Web:	http://cgit.freedesktop.org/wayland/libinput/
+#Git-Clone:	https://gitlab.freedesktop.org/libinput/libinput.git
+#Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
 #DL-URL:	http://freedesktop.org/software/libinput/
 Source:         http://freedesktop.org/software/libinput/%name-%version.tar.xz
 Source2:        http://freedesktop.org/software/libinput/%name-%version.tar.xz.sig
@@ -38,21 +34,20 @@ Source3:        baselibs.conf
 Source4:        %name.keyring
 Source5:        libinput-rpmlintrc
 Patch1:         kill-env.diff
+
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz >= 2.26
 BuildRequires:  grep
 BuildRequires:  meson >= 0.41.0
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libevdev) >= 0.4
 BuildRequires:  pkgconfig(libudev)
-%if 0%{?use_wacom} == 1
 BuildRequires:  pkgconfig(libwacom) >= 0.20
-%endif
 BuildRequires:  pkgconfig(mtdev) >= 1.1.0
 
 %description
@@ -111,8 +106,8 @@ to develop applications that require libinput.
 	--includedir="%_includedir/%name" \
 	--datadir="%_datadir/%name-%version" \
 	-Dudev-dir="%_prefix/lib/udev" \
-	-Dtests=false -Ddocumentation=false
-	%{!?use_wacom:-Dlibwacom=false} \
+	-Dtests=false \
+	-Ddocumentation=false \
 	%nil
 %meson_build
 

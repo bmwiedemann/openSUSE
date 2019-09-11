@@ -23,7 +23,7 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 #
 Summary:        An authoritative-only domain name server

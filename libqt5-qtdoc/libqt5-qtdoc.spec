@@ -17,10 +17,10 @@
 # nodebuginfo
 
 
-%define real_version 5.13.0
-%define tar_version qt-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define tar_version qt-everywhere-src-5.13.1
 Name:           libqt5-qtdoc
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
@@ -49,7 +49,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  libpulse-devel
 BuildRequires:  libqt5-qtbase-devel >= %{version}
+BuildRequires:  libqt5-qttools >= %{version}
 BuildRequires:  libqt5-qttools-devel >= %{version}
+BuildRequires:  libqt5-qttools-doc >= %{version}
 BuildRequires:  libqt5-qtbase-common-devel >= %{version}
 BuildRequires:  libtiff-devel
 BuildRequires:  lksctp-tools-devel

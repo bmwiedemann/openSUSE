@@ -27,7 +27,7 @@
 %bcond_with     llvm
 %endif
 Name:           %{pgversion}-%{sname}
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        PostgreSQL module for simple job schedule
 License:        PostgreSQL

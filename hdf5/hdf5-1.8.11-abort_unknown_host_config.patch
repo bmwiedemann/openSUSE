@@ -2,7 +2,7 @@ Index: configure
 ===================================================================
 --- configure.orig
 +++ configure
-@@ -4085,6 +4085,8 @@ done
+@@ -4097,6 +4097,8 @@ done
  if test "X$host_config" != "Xnone"; then
    CC_BASENAME="`echo $CC | cut -f1 -d' ' | xargs basename 2>/dev/null`"
    . $host_config
@@ -15,7 +15,7 @@ Index: configure.ac
 ===================================================================
 --- configure.ac.orig
 +++ configure.ac
-@@ -266,6 +266,8 @@ done
+@@ -263,6 +263,8 @@ done
  if test "X$host_config" != "Xnone"; then
    CC_BASENAME="`echo $CC | cut -f1 -d' ' | xargs basename 2>/dev/null`"
    . $host_config

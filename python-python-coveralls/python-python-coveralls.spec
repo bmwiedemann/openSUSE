@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-coveralls
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        Python interface to coveralls io API
 License:        Apache-2.0

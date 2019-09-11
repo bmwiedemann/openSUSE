@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 24 14:13:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 2.1.0+2.0.22+git6 (d6818dd9a)
+  * mISDNcapid: Add experimental partial early B3 support.
+  * mISDNcapid: Parse B channel id first from message then its
+    included IEs.
+  * Add LLC logging
+  * Create signal handler for capi20: SIGHUP re-opens debug log file.
+  * Fix possible buffer overflows detected by newer GCC versions.
+
+-------------------------------------------------------------------
 Wed Jun  7 23:34:29 UTC 2017 - jengelh@inai.de
 
 - Build with -Wno-error to fix a build failure on Tumbleweed

@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           borgmatic
-Version:        1.3.1
+Version:        1.3.14
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ BuildRequires:  python3-atomicwrites
 BuildRequires:  python3-attrs
 BuildRequires:  python3-black
 BuildRequires:  python3-click
+BuildRequires:  python3-colorama
 BuildRequires:  python3-coverage
 BuildRequires:  python3-devel
 BuildRequires:  python3-docopt
@@ -56,6 +57,7 @@ BuildRequires:  python3-six
 BuildRequires:  python3-toml
 BuildRequires:  systemd-devel
 Requires:       borgbackup
+Requires:       python3-colorama
 Requires:       python3-pykwalify
 Requires:       python3-ruamel.yaml
 Requires:       python3-setuptools
@@ -73,9 +75,9 @@ common errors.
 %setup -q
 
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
-perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /usr/local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic
-perl -pi -e "s,/usr/local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic.service
-perl -pi -e "s/ruamel.yaml>0.15.0,<0.16.0/ruamel.yaml/" setup.py
+perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic
+perl -pi -e "s,/root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic.service
+perl -pi -e "s/ruamel.yaml>0.15.0,<0.17.0/ruamel.yaml/" setup.py
 perl -pi -e "s/packages=find_packages\(\)/packages=find_packages(exclude=('tests*',))/" setup.py
 
 %build
@@ -143,6 +145,7 @@ fi
 %{_sbindir}/rcborgmatic
 %{_bindir}/generate-borgmatic-config
 %{_bindir}/upgrade-borgmatic-config
+%{_bindir}/validate-borgmatic-config
 %{_mandir}/man1/borgmatic.1%{?ext_man}
 %{_docdir}/%{name}/sample/cron
 

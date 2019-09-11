@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Specio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Specio
-Version:        0.43
+Version:        0.44
 Release:        0
 %define cpan_name Specio
 Summary:        Type constraints and coercions for Perl
@@ -59,6 +59,7 @@ Requires:       perl(parent)
 Requires:       perl(version) >= 0.83
 Recommends:     perl(Ref::Util) >= 0.112
 Recommends:     perl(Sub::Util) >= 1.40
+Recommends:     perl(XString)
 %{perl_requires}
 
 %description
@@ -81,10 +82,10 @@ with this module.
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

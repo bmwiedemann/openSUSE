@@ -49,7 +49,7 @@ source packages can be checked.
 
 %prep
 %setup -q -n desktop-file-utils-0.24
-[[ -r COPYING ]]
+[ -r COPYING ]
 
 %build
 %configure

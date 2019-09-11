@@ -1,7 +1,17 @@
-diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-swig-3.0.9/Lib/typemaps/fragments.swg ./Lib/typemaps/fragments.swg
---- ../orig-swig-3.0.9/Lib/typemaps/fragments.swg	2016-05-29 14:35:37.000000000 +0200
-+++ ./Lib/typemaps/fragments.swg	2016-06-08 11:13:09.475671763 +0200
-@@ -178,6 +178,8 @@
+From 7d7454cacbae4355432a7f88455de4981742033f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 8 May 2019 14:50:10 +0200
+Subject: [PATCH] swig308-isfinite
+
+---
+ Lib/typemaps/fragments.swg | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Lib/typemaps/fragments.swg b/Lib/typemaps/fragments.swg
+index e83f415c4322..cac69ffff745 100644
+--- a/Lib/typemaps/fragments.swg
++++ b/Lib/typemaps/fragments.swg
+@@ -129,6 +129,8 @@ inline int SWIG_isfinite_func(T x) {
  # elif defined(__sun) && defined(__SVR4)
  #  include <ieeefp.h>
  #  define SWIG_isfinite(X) (finite(X))
@@ -10,3 +20,6 @@ diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache
  # endif
  #endif
  %}
+-- 
+2.21.0
+

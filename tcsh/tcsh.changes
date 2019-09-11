@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 22 12:27:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-6.21.00-sighup-deadlock.patch from upstream list
+  * Do not (re)run SIGHUP handler during rewrite history
+  * Port and rename patch tcsh-6.18.03-history-file-locking.patch
+    which now becomes tcsh-6.21.0-history-file-locking.patch 
+
+-------------------------------------------------------------------
 Thu May  9 08:50:56 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh bug fix version V6.21.00 - 20190508

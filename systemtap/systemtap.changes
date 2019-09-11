@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 9 20:06:57 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Update to version 4.1.  
+  Do not package systemtap-exporter.
+  4.1 release notes: https://sourceware.org/ml/systemtap/2019-q2/msg00043.html
+  4.0 release notes: https://sourceware.org/ml/systemtap/2018-q4/msg00018.html
+
+- Force autoreconf of configure to match systemtap-docs (tarball configure 
+  is stale).
+
+-------------------------------------------------------------------
 Mon Apr 15 13:40:09 UTC 2019 - jlee@suse.com
 
 - Add BuildRequire libavahi-devel, otherwise that the systemstap-server

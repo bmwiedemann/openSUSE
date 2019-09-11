@@ -1,7 +1,7 @@
 #
 # spec file for package ragel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 Name:           ragel
-Version:        7.0.0.11
+Version:        7.0.0.12
 Release:        0
 Summary:        Finite state machine compiler
 License:        MIT
 Group:          Development/Tools/Other
-Url:            http://complang.org/ragel/
+URL:            https://www.colm.net/open-source/ragel/
 
-#Git-Clone:	git://git.complang.org/ragel
-Source:         http://www.colm.net/files/ragel/%name-%version.tar.gz
+#Git-Clone:	git://colm.net/ragel
+Source:         https://www.colm.net/files/ragel/%name-%version.tar.gz
 Source2:        %name.keyring
 BuildRequires:  automake
-BuildRequires:  colm = 0.13.0.6
+BuildRequires:  colm = 0.13.0.7
 BuildRequires:  gcc-c++
 BuildRequires:  kelbt
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Ragel compiles finite state machines from regular languages into
@@ -70,7 +69,7 @@ executable C, C++, Objective-C, or D code.
 This package contains the C headers for libragel.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -97,8 +96,8 @@ rm -Rf "%buildroot/%_libdir"/*.la
 %postun -n libragel0 -p /sbin/ldconfig
 
 %files
-%doc COPYING
-%doc %{_docdir}/%{name}
+%license COPYING
+%doc %_docdir/%name
 %_bindir/ragel*
 %_mandir/man1/ragel.1*
 %_datadir/vim/

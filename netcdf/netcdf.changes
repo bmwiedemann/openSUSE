@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:34:27 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use FAT LTO objects in order to provide proper static library.
+- Readd optflags to CFLAGS again. The motivating issue has been solved
+  (https://github.com/Unidata/netcdf-c/issues/244), and without
+  optflags the lto flags were only applied to parts of the build,
+  causing broken static libraries.
+
+-------------------------------------------------------------------
+Fri Sep  6 16:37:27 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Bump soversion, use it in the files section (so it fails the next
+  time the version update is omitted), and remove the rpmlintrc
+  also hiding the problem.
+
+-------------------------------------------------------------------
+Mon Aug 26 12:30:51 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 4.7.0, see changes from 4.6.1 at:
+  * https://www.unidata.ucar.edu/blogs/news/entry/netcdf-4-7-0
+  * https://www.unidata.ucar.edu/blogs/news/entry/netcdf-4-6-3
+  * https://www.unidata.ucar.edu/blogs/news/entry/netcdf-4-6-2
+- Update Source to rename the tarball as netcdf instead of netcdf-c
+
+-------------------------------------------------------------------
 Wed Feb 13 11:49:57 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Consolidate use of openmpi1, openmpi2, openmpi3.

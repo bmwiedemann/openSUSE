@@ -17,7 +17,7 @@
 
 
 Name:           perl-ExtUtils-CppGuess
-Version:        0.19
+Version:        0.20
 Release:        0
 %define cpan_name ExtUtils-CppGuess
 Summary:        Guess C++ compiler and flags

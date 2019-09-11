@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:00:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Fix disabling clip only disable audio part of an AV clip. BUG: 411466 (kde#411466) 
+  * Fix regression breaking timeline resize 
+  * Fix timelinekeyboard focus on start and grab not correctly ended 
+  * default effects to video 
+  * Fix disabling autoscroll. Fixes #312 
+  * Convert old custom effects to new customAudio/Video naming Related to #336 
+  * Fix group move sometimes moving clip very far from expected location. Fixes #328 
+  * Ctrl resize in monitor effects keeps center position Fixes #321 
+  * Shift resize in monitor effect keeps aspect ratio Related to #321 
+  * Update appdata version 
+  * Fix effect/composition list filter working on untranslated strings Fixes #339 
+  * Merge branch 'rgb_parade' into 'master' 
+  * Fix custom effects not recognized as audio Fixes #336 
+  * Fix encoder speed ignored BUG: 411000 (kde#411000) 
+  * Late update of version in appdata.. 
+  * Use the parameter readable and translatable name instead of its formal name for the color edit widget
+
+-------------------------------------------------------------------
 Fri Aug  9 08:30:44 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.08.0

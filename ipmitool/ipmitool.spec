@@ -37,6 +37,11 @@ BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
+# Taken over from freeipmi.spec:
+# Necessary as only those archs implement iopl and friends (#368541)
+%ifarch %{ix86} x86_64 ia64 alpha aarch64
+BuildRequires:  freeipmi-devel
+%endif
 %{?systemd_requires}
 
 %description
@@ -73,8 +78,9 @@ of net-snmp to include redirections to BMC based SNMP.
 cp %{SOURCE3} lib
 autoreconf -fiv
 # file-security: enables more security checks on files
-%configure \
-  --enable-file-security
+%configure               \
+  --enable-file-security \
+  --enable-intf-usb
 make %{?_smp_mflags}
 
 %install

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * Exclude other desktop file from AppStream metadata generation
+  * Use non-deprecated .metainfo.xml filename extension
+  * fix XML syntax
+  * Add AppStream metadata file
+
+-------------------------------------------------------------------
 Tue Jul 30 12:40:20 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.4

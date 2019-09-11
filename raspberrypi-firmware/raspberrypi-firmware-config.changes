@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:24:04 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to e2e17cd03 (2019-09-04)
+  * firmware: Port file loading revamp to master
+  * firmware: Avoid defaulting to 64-bit kernel on older Pi
+  * firmware: Revamp file loading logic
+  * firmware: power: Allow reading uncached voltage
+  * firmware: arm_loader: Request KMS to use CVT timings
+  * firmware: vc_image: Default YUVUV to non-tall mode, with flag if required
+  * firmware: ldconfig: Implement [pi2/pi3/pi3+] using board types
+    See: #1242
+  * firmware: platform: Remove 10mV of margin
+  * firmware: power: Add 2711-specific PMIC compensation values
+  * firmware: sdhost_arasan: Disable busy wait on EMMC_STATUS_NEW_CARD_DATA_SET
+  * firmware: AWB: Fix for manual WB settings in capture
+    See: #1215
+  * firmware: arm_loader: Use platform_get_min_core_voltage for actual min voltage
+  * firmware: clock: Remember disable state across clock changes
+  * firmware: platform: pi4: Reduce min core voltage to 810mV
+  * firmware: arm_dt: Use boost to force turbo mode rather than modifying core_freq_min for uart
+  * firmware: arm_loader: Add optional flag to add_boost and get_boost calls
+  * firmware: avs_2711: Move margin from init structure to run time
+  * firmware: platform: fix get_min_default
+  * firmware: arm_loader: Use AP_CLOCK_T for clock_iterator for easier debugging
+  * hdmi: Switch to active pixel rate + margin for core clock boost
+  * platform: Reduce the minimum core clock frequency from 250 to 200 MHz
+  * firmware: arm_loader: Fix initial_turbo getting stuck
+    See: #1005
+  * firmware: clock_2711: don't set reserved values for KA in PLL KAIP registers
+  * firmware: AWB: Allow user to set manual gains for the RPi algorithm
+  * firmware: arm_loader: Fix disabling of audio before reboot
+  * firmware: fixed up the custom CVT values to use correct group
+  * firmware: hdmi: Add independent table entries for hdmi_timings on each display
+    See: #1218
+  * firmware: Fix to allow HDMI audio port route setting
+    See: raspberrypi/linux#3100
+  * firmware: pwm_audio: Use the correct DREQs on Pi4
+    See: #1214
+  * firmware: pixelvalve_2711: Alter back porch for widths of 1366
+    See: #1202
+  * firmware: Clear the SMIDSW1 display interrupt flag on startup
+  * firmware: dt-blob: Declare Pi 4B's SD_IO voltage selector
+  * firmware: Fixups for missing code changes from Pi4 branch
+    See: #1201
+  * firmware: Change order of display remapping for default display number
+  * firmware: AWB: Set default number of stats regions for RPi AWB
+    See: #1198
+  * firmware: Fix composite interrupt HVS channel
+  * firmware: scalarlib: Fix width setting for SCALERLIB_PIXEL_FORMAT_YUV10COL
+  * firmware: vcmailbox: Add a new SET_AUDIO_LDO_STATE mailbox command
+  * firmware: Add mailbox call to report the HDMI timings
+  * firmware: H264: Set the decoder cache AXI burst length to the same as the encoder
+  * firmware: gencmd: Fix gencmd max result length
+  * firmware: bootloader_config: New gencmd to read the EEPROM config
+  * firmware: pwm_audio: Use PWM1 on BCM2838 unless remapped
+    See: #1178
+  * firmware: AWB updates
+    See: #1167
+  * firmware: dispmanx: Fix handling of disable_overscan to not disable it totally
+    See: raspberrypi/linux#3059
+  * firmware: power: Enable/disable H264 and ISP clocks with domain
+  * firmware: arm_loader: arm_64bit=0 should disable loading of kernel8.img
+  * firmware: dt-blob: CM has no activity LED
+
+-------------------------------------------------------------------
 Wed Jul 10 15:00:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix %post scripts to copy RPi4 firmware files too

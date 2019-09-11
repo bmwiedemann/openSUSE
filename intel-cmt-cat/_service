@@ -2,8 +2,8 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/intel/intel-cmt-cat.git</param>
-    <param name="revision">v3.0.1</param>
-    <param name="version">3.0.1</param>
+    <param name="revision">v3.1.0</param>
+    <param name="version">3.1.0</param>
     <param name="exclude">.git</param>
     <param name="subdir"></param>
     <param name="filename">intel-cmt-cat</param>

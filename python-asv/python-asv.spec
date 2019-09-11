@@ -20,10 +20,10 @@
 Name:           python-asv
 Version:        0.4.1
 Release:        0
-Summary:        Airspeed Velocity: A simple Python history benchmarking tool
+Summary:        Airspeed Velocity: A Python history benchmarking tool
 License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/airspeed-velocity/asv
+URL:            https://github.com/airspeed-velocity/asv
 Source:         https://files.pythonhosted.org/packages/6e/94/4521cc0183a5656de9470452ddd2b6170a2d04ba9b18b84c597db09b8b0d/asv-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +42,13 @@ Suggests:       python-python-hglib >= 1.5
 %python_subpackages
 
 %description
-Airspeed Velocity: A simple Python history benchmarking tool
+airspeed velocity (asv) is a tool for benchmarking Python packages
+over their lifetime.
+
+It is designed to benchmark a single project over its lifetime using
+a given suite of benchmarks. The results are displayed in an
+interactive web frontend that requires only a basic static webserver
+to host.
 
 %prep
 %setup -q -n asv-%{version}

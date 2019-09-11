@@ -5,8 +5,8 @@
     <param name="submodules">enable</param>
     <param name="exclude">.git</param>
 	<param name="filename">lmms</param>
-    <param name="versionformat">1.2.0rc7+git%cd.%h</param>
-    <param name="revision">a2685c1</param>
+    <param name="versionformat">1.2.0</param>
+    <param name="revision">0fbaca4</param>
     <param name="changesgenerate">enable</param>	
   </service>
   <service name="tar" mode="disabled">

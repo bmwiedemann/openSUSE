@@ -2,10 +2,10 @@
  src/Makefile.am |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: YODA-1.7.4/src/Makefile.am
+Index: YODA-1.7.7/src/Makefile.am
 ===================================================================
---- YODA-1.7.4.orig/src/Makefile.am
-+++ YODA-1.7.4/src/Makefile.am
+--- YODA-1.7.7.orig/src/Makefile.am
++++ YODA-1.7.7/src/Makefile.am
 @@ -23,7 +23,7 @@ libYODA_la_SOURCES = \
      Scatter2D.cc \
      Scatter3D.cc

@@ -1,7 +1,7 @@
 #
 # spec file for package hdf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -403,6 +403,7 @@ done
 mkdir build_static
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 for mpi in %_mpi;
 do
 # parallel static library
@@ -637,40 +638,34 @@ popd
 %endif
 
 %files
-%defattr(-,root,root,0755)
 %{_bindir}/*
 
 %files -n %{libname}%{sonum}
-%defattr(-,root,root,0755)
-%doc COPYING MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
+%license COPYING
+%doc MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
 %{_libdir}/*.so.*
 
 %files devel-data
-%defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/rpm/macros.hdf
 
 %files devel
-%defattr(-,root,root,0755)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_datadir}/cmake/Modules/hdf4/
 
 %files devel-static
-%defattr(-,root,root,0755)
 %{_libdir}/*.a
 
 %if 0%{?_openmpi}
 %files openmpi
-%defattr(-,root,root,0755)
 %{_libdir}/mpi/gcc/openmpi/bin/*
 
 %files -n %{libname}%{sonum}-openmpi
-%defattr(-,root,root,0755)
-%doc COPYING MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
+%license COPYING
+%doc MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
 %{_libdir}/mpi/gcc/openmpi/%{_lib}/*.so.*
 
 %files openmpi-devel
-%defattr(-,root,root,0755)
 %{_libdir}/mpi/gcc/openmpi/include/*
 %{_libdir}/mpi/gcc/openmpi/%{_lib}/*.so
 %dir %{_libdir}/mpi/gcc/openmpi/share/cmake/
@@ -678,22 +673,19 @@ popd
 %{_libdir}/mpi/gcc/openmpi/share/cmake/Modules/hdf4/
 
 %files openmpi-devel-static
-%defattr(-,root,root,0755)
 %{_libdir}/mpi/gcc/openmpi/%{_lib}/*.a
 %endif
 
 %if 0%{?_mvapich2}
 %files mvapich2
-%defattr(-,root,root,0755)
 %{_libdir}/mpi/gcc/mvapich2/bin/*
 
 %files -n %{libname}%{sonum}-mvapich2
-%defattr(-,root,root,0755)
-%doc COPYING MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
+%license COPYING
+%doc MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
 %{_libdir}/mpi/gcc/mvapich2/%{_lib}/*.so.*
 
 %files mvapich2-devel
-%defattr(-,root,root,0755)
 %{_libdir}/mpi/gcc/mvapich2/include/*
 %{_libdir}/mpi/gcc/mvapich2/%{_lib}/*.so
 %dir %{_libdir}/mpi/gcc/mvapich2/share/cmake/
@@ -701,7 +693,6 @@ popd
 %{_libdir}/mpi/gcc/mvapich2/share/cmake/Modules/hdf4/
 
 %files mvapich2-devel-static
-%defattr(-,root,root,0755)
 %{_libdir}/mpi/gcc/mvapich2/%{_lib}/*.a
 %endif
 

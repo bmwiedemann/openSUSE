@@ -1,7 +1,7 @@
 #
 # spec file for package libgdata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Update baselibs.conf when changing this
 %define _sover 22
 Name:           libgdata
-Version:        0.17.9
+Version:        0.17.11
 Release:        0
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
 License:        LGPL-2.1-or-later
@@ -27,8 +27,10 @@ Group:          Development/Libraries/GNOME
 URL:            http://live.gnome.org/libgdata
 Source:         https://download.gnome.org/sources/libgdata/0.17/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  intltool
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gcr-base-3)
@@ -43,6 +45,7 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.55.90
 BuildRequires:  pkgconfig(libuhttpmock-0.0) >= 0.5.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(oauth)
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 libgdata is a GLib-based library for accessing online service APIs using
@@ -89,17 +92,20 @@ applications that want to make use of libgdata.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 
 %build
-%configure \
-	--disable-static
-make %{?_smp_mflags}
+%meson \
+	-Dalways_build_tests=false \
+	-Dinstalled_tests=false \
+	-Dgtk_doc=true \
+	-Dvapi=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang gdata
 
 %post -n libgdata%{_sover} -p /sbin/ldconfig
@@ -107,8 +113,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libgdata%{_sover}
 %license COPYING
-%doc AUTHORS ChangeLog HACKING NEWS README
-%{_libdir}/*.so.%{_sover}*
+%doc AUTHORS HACKING NEWS README
+%{_libdir}/%{name}.so.*
 
 %files -n typelib-1_0-GData-0_0
 %{_libdir}/girepository-1.0/GData-0.0.typelib
@@ -119,6 +125,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libgdata.pc
 %{_datadir}/gir-1.0/*.gir
 %doc %{_datadir}/gtk-doc/html/gdata/
+%{_datadir}/vala/vapi/%{name}.*
 
 %files lang -f gdata.lang
 

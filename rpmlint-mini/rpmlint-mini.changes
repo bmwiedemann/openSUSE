@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 06:55:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bash-specific constructs in build recipe
+
+-------------------------------------------------------------------
 Tue Aug 13 11:44:23 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update desktop-file-utils to 0.24 release

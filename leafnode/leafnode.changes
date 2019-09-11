@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:44:25 CEST 2019 - kukuk@suse.de
+
+- BuildRequire cron since it contains now the cron directories
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
 Fri Jun 16 11:36:40 UTC 2017 - aliouliaki@suse.com
 
 - Removed xinetd service

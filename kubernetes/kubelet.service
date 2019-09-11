@@ -1,6 +1,7 @@
 [Unit]
 Description=kubelet: The Kubernetes Node Agent
 Documentation=https://kubernetes.io/docs/
+After=network.target network-online.target
 Wants=docker.service crio.service
 
 [Service]

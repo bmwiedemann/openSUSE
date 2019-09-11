@@ -1,7 +1,7 @@
 #
 # spec file for package viewres
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           viewres
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Graphical class browser for Xt
 License:        X11
@@ -49,7 +49,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %{_bindir}/viewres
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Viewres

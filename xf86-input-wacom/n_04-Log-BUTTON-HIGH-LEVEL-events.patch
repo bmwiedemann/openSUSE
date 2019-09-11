@@ -12,11 +12,11 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  src/wcmCommon.c | 14 +++++++++++---
  1 file changed, 11 insertions(+), 3 deletions(-)
 
-Index: xf86-input-wacom-0.28.0/src/wcmCommon.c
+Index: xf86-input-wacom-0.37.0/src/wcmCommon.c
 ===================================================================
---- xf86-input-wacom-0.28.0.orig/src/wcmCommon.c
-+++ xf86-input-wacom-0.28.0/src/wcmCommon.c
-@@ -288,9 +288,17 @@ static void sendAButton(InputInfoPtr pIn
+--- xf86-input-wacom-0.37.0.orig/src/wcmCommon.c
++++ xf86-input-wacom-0.37.0/src/wcmCommon.c
+@@ -346,9 +346,17 @@ static void sendAButton(InputInfoPtr pIn
  #ifdef DEBUG
  	WacomCommonPtr common = priv->common;
  #endif

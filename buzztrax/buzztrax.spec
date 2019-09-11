@@ -16,6 +16,9 @@
 #
 
 
+%define rev eb51b04c45f075577f71199d3a62c8fc6c5996f2
+%define relver 0.11.0
+
 %define gir gobject-introspection-1.0
 %define gstreamer_pluginsdir %(pkg-config --variable=pluginsdir gstreamer-1.0)
 %define girdir %{_datadir}/gir-1.0
@@ -28,43 +31,33 @@
 %define glib_version 2.32.0
 %define gst_version 1.2.0
 Name:           buzztrax
-Version:        0.10.2
+Version:        0.10.2+git20190809
 Release:        0
 Summary:        A music studio inspired by Buzz
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Url:            http://buzztrax.org
-Source0:        http://files.buzztrax.org/releases/%{name}-%{version}.tar.gz
+Source0:        https://github.com/Buzztrax/buzztrax/archive//%{rev}.tar.gz#/%{name}-%{version}.tar.gz
+#http://files.buzztrax.org/releases/%%{name}-%%{version}.tar.gz
 Source1:        autogen.sh
 Source2:        COPYING-DOCS
-# Combined patch of cherry picked build fixes applies after 0.10.2
-Patch0:         buzztrax-build.patch
-Patch1:         buzztrax-appdata.patch
-# PATCH-FIX gcc6 error misleading-indentation with patch from git.
-Patch2:         buzztrax-misleading-indentation.patch
-# PATCH-FIX-UPSTREAM buzztrax-gcc7fix.patch davepl@gmail.com -- fix gcc 7 duplicate constant errors
-Patch3:         buzztrax-gcc7fix.patch
-Patch4:         buzztrax-newfix.patch
 BuildRequires:  automake >= 1.13
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1320
 BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc8-c++
-%endif
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  scrollkeeper
 BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig(%{gir})
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
 #BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  yelp-devel
+BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
@@ -197,6 +190,10 @@ This package provides the development files for libbml.
 Summary:        Buzztrax plugins
 Group:          Productivity/Multimedia/Other
 Requires:       buzztrax = %{version}
+Requires:       libbml%{bml_soname} = %{version}
+Requires:       libbuzztrax-core%{core_soname} = %{version}
+Requires:       libbuzztrax-gst%{gst_soname} = %{version}
+Requires:       libbuzztrax-ic%{ic_soname} = %{version}
 
 %description plugins
 This package contains buzztrax plugins
@@ -204,21 +201,23 @@ This package contains buzztrax plugins
 %lang_package
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
+%setup -q -n %{name}-%{rev}
+%autopatch -p1
 # Rpmlint complains that COPYING-DOCS is outdated
 cp -v %{SOURCE2} .
 cp -v %{SOURCE1} .
+if ! `test -a AUTHORS`; then
+touch AUTHORS
+fi
 
 %build
 test -x "$(type -p gcc-8)" && export CC="$_"
 test -x "$(type -p g++-8)" && export CXX="$_"
 export CFLAGS="%{optflags} -Wno-error=deprecated-declarations"
 export CFLAGS="$CFLAGS -Wno-error=format-truncation= -Wno-error=format-overflow= -Wno-error=incompatible-pointer-types -Wno-error=restrict"
+%ifarch i586
+export CFLAGS="$CFLAGS -Wno-error=format"
+%endif
 export CXXFLAGS="$CFLAGS"
 
 /bin/sh ./autogen.sh --noconfigure
@@ -230,7 +229,9 @@ export CXXFLAGS="$CFLAGS"
     --disable-rpath \
     --with-pic \
     --enable-man \
-    --disable-dllwrapper
+    --disable-dllwrapper \
+    --enable-gtk-doc
+cp -v docs/version.entities docs/help/bt-edit/C/
 
 make %{?_smp_mflags}
 
@@ -238,14 +239,14 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 echo %{buildroot}
-%find_lang %{name}-%{version}
+%find_lang %{name}-%{relver}
 mv %{buildroot}%{_datadir}/applications/buzztrax-edit.desktop %{buildroot}%{_datadir}/applications/buzztrax.desktop
 #%%find_gconf_schemas
 # ensure the icons in hicolor are the REAL files. fdupes links them the 'wrong way around' for xdg-app and appstream-builder
 for icon in 48x48/apps/buzztrax.png scalable/apps/buzztrax.svg; do
   ln -sf %{_datadir}/icons/hicolor/${icon} %{buildroot}%{_datadir}/icons/gnome/${icon}
 done
-%fdupes -s %{buildroot}
+%fdupes -s %{buildroot}/%{_datadir}/
 # WARNING: this creates baselibs.conf
 printf 'libbuzztrax-ic%{ic_soname}\n
 libbuzztrax-core%{core_soname}\n
@@ -315,11 +316,8 @@ typelib-1_0-BuzztraxCore-1_1\n
 %{_datadir}/appdata/buzztrax.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/gnome
-%dir %{_datadir}/omf
-%dir %{_datadir}/omf/buzztrax-edit
-%doc %{_datadir}/omf/buzztrax-edit/
-%dir %{_datadir}/gnome/
-%doc %{_datadir}/gnome/help/
+%{_datadir}/help/C
+%{_mandir}/man1/*
 %dir %{_datadir}/gtk-doc/html/buzztrax-cmd
 %dir %{_datadir}/gtk-doc/html/buzztrax-edit
 %{_datadir}/gtk-doc/html/buzztrax-cmd/
@@ -405,7 +403,7 @@ typelib-1_0-BuzztraxCore-1_1\n
 %dir %{_libdir}/buzztrax-songio
 %{_libdir}/buzztrax-songio/*.so
 
-%files lang -f buzztrax-%{version}.lang
+%files lang -f %{name}-%{relver}.lang
 %defattr (-, root, root)
 
 %changelog

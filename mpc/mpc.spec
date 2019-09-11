@@ -1,7 +1,7 @@
 #
 # spec file for package mpc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           mpc
 Version:        1.1.0
 Release:        0
 Summary:        MPC multiple-precision complex shared library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            http://www.multiprecision.org/mpc/
 Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
@@ -62,6 +62,7 @@ MPC multiple-precision complex library development files.
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
 make %{?_smp_mflags}
 

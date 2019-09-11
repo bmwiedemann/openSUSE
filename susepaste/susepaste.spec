@@ -19,23 +19,21 @@
 Name:           susepaste
 Version:        0.6
 Release:        0
-Summary:        Simple script for using openSUSE paste easily
+Summary:        Script for using openSUSE paste
 License:        GPL-3.0-only
 Group:          Productivity/Other
-Url:            http://susepaste.org
+URL:            http://susepaste.org
 Source0:        susepaste-script-%{version}.tar.bz2
 Requires:       bash
 Requires:       curl
 BuildArch:      noarch
 
 %description
-Simple script for using openSUSE paste easily.
+A script for using the openSUSE paste service.
 You can paste either the file or input from stdin.
 
-http://susepaste.org
-
 %package screenshot
-Summary:        Simple script for pasting screenshots easily
+Summary:        Script for pasting screenshots
 Group:          Productivity/Other
 Requires:       ImageMagick
 Requires:       curl
@@ -44,10 +42,8 @@ Recommends:     xclip
 BuildArch:      noarch
 
 %description screenshot
-Simple script for using openSUSE paste easily.
+A script for using the openSUSE paste service.
 You can paste screenshot of the window or whole desktop.
-
-http://susepaste.org
 
 %prep
 %setup -q -n susepaste-script-%{version}

@@ -1,0 +1,326 @@
+From 76d0ec5ec0764f6c5e71ddc2dc03bd12c25045a0 Mon Sep 17 00:00:00 2001
+From: EricS <54029547+ESiebigteroth@users.noreply.github.com>
+Date: Tue, 3 Sep 2019 11:22:53 +0200
+Subject: [PATCH] Implement network.fqdns module function (bsc#1134860)
+ (#172)
+
+* Duplicate fqdns logic in module.network
+* Move _get_interfaces to utils.network
+* Reuse network.fqdns in grains.core.fqdns
+* Return empty list when fqdns grains is disabled
+
+
+Co-authored-by: Eric Siebigteroth <eric.siebigteroth@suse.de>
+---
+ salt/grains/core.py            | 66 +++++-----------------------------
+ salt/modules/network.py        | 60 +++++++++++++++++++++++++++++++
+ salt/utils/network.py          | 12 +++++++
+ tests/unit/grains/test_core.py | 64 ++++++++++++++++++++++++++-------
+ 4 files changed, 131 insertions(+), 71 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index e54212edfb..fa188a6ff7 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -25,8 +25,9 @@ import zlib
+ from errno import EACCES, EPERM
+ import datetime
+ import warnings
++import salt.modules.network
+ 
+-from multiprocessing.pool import ThreadPool
++from salt.utils.network import _get_interfaces
+ 
+ # pylint: disable=import-error
+ try:
+@@ -83,6 +84,7 @@ __salt__ = {
+     'cmd.run_all': salt.modules.cmdmod._run_all_quiet,
+     'smbios.records': salt.modules.smbios.records,
+     'smbios.get': salt.modules.smbios.get,
++    'network.fqdns': salt.modules.network.fqdns,
+ }
+ log = logging.getLogger(__name__)
+ 
+@@ -106,7 +108,6 @@ HAS_UNAME = True
+ if not hasattr(os, 'uname'):
+     HAS_UNAME = False
+ 
+-_INTERFACES = {}
+ 
+ # Possible value for h_errno defined in netdb.h
+ HOST_NOT_FOUND = 1
+@@ -1506,17 +1507,6 @@ def _linux_bin_exists(binary):
+         return False
+ 
+ 
+-def _get_interfaces():
+-    '''
+-    Provide a dict of the connected interfaces and their ip addresses
+-    '''
+-
+-    global _INTERFACES
+-    if not _INTERFACES:
+-        _INTERFACES = salt.utils.network.interfaces()
+-    return _INTERFACES
+-
+-
+ def _parse_lsb_release():
+     ret = {}
+     try:
+@@ -2200,52 +2190,12 @@ def fqdns():
+     '''
+     Return all known FQDNs for the system by enumerating all interfaces and
+     then trying to reverse resolve them (excluding 'lo' interface).
++    To disable the fqdns grain, set enable_fqdns_grains: False in the minion configuration file.
+     '''
+-    # Provides:
+-    # fqdns
+-
+-    grains = {}
+-    fqdns = set()
+-
+-    def _lookup_fqdn(ip):
+-        try:
+-            name, aliaslist, addresslist = socket.gethostbyaddr(ip)
+-            return [socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)]
+-        except socket.herror as err:
+-            if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
+-                # No FQDN for this IP address, so we don't need to know this all the time.
+-                log.debug("Unable to resolve address %s: %s", ip, err)
+-            else:
+-                log.error(err_message, err)
+-        except (socket.error, socket.gaierror, socket.timeout) as err:
+-            log.error(err_message, err)
+-
+-    start = time.time()
+-
+-    addresses = salt.utils.network.ip_addrs(include_loopback=False, interface_data=_get_interfaces())
+-    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False, interface_data=_get_interfaces()))
+-    err_message = 'Exception during resolving address: %s'
+-
+-    # Create a ThreadPool to process the underlying calls to 'socket.gethostbyaddr' in parallel.
+-    # This avoid blocking the execution when the "fqdn" is not defined for certains IP addresses, which was causing
+-    # that "socket.timeout" was reached multiple times secuencially, blocking execution for several seconds.
+-
+-    try:
+-       pool = ThreadPool(8)
+-       results = pool.map(_lookup_fqdn, addresses)
+-       pool.close()
+-       pool.join()
+-    except Exception as exc:
+-       log.error("Exception while creating a ThreadPool for resolving FQDNs: %s", exc)
+-
+-    for item in results:
+-        if item:
+-            fqdns.update(item)
+-
+-    elapsed = time.time() - start
+-    log.debug('Elapsed time getting FQDNs: {} seconds'.format(elapsed))
+-
+-    return {"fqdns": sorted(list(fqdns))}
++    opt = {"fqdns": []}
++    if __opts__.get('enable_fqdns_grains', True) == True:
++        opt = __salt__['network.fqdns']()
++    return opt
+ 
+ 
+ def ip_fqdn():
+diff --git a/salt/modules/network.py b/salt/modules/network.py
+index 28bcff1622..5b6ac930ea 100644
+--- a/salt/modules/network.py
++++ b/salt/modules/network.py
+@@ -11,6 +11,10 @@ import logging
+ import re
+ import os
+ import socket
++import time
++
++from multiprocessing.pool import ThreadPool
++
+ 
+ # Import salt libs
+ import salt.utils.decorators.path
+@@ -1881,3 +1885,59 @@ def iphexval(ip):
+     a = ip.split('.')
+     hexval = ['%02X' % int(x) for x in a]  # pylint: disable=E1321
+     return ''.join(hexval)
++
++
++def fqdns():
++    '''
++    Return all known FQDNs for the system by enumerating all interfaces and
++    then trying to reverse resolve them (excluding 'lo' interface).
++    '''
++    # Provides:
++    # fqdns
++
++    # Possible value for h_errno defined in netdb.h
++    HOST_NOT_FOUND = 1
++    NO_DATA = 4
++
++    grains = {}
++    fqdns = set()
++
++    def _lookup_fqdn(ip):
++        try:
++            name, aliaslist, addresslist = socket.gethostbyaddr(ip)
++            return [socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)]
++        except socket.herror as err:
++            if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
++                # No FQDN for this IP address, so we don't need to know this all the time.
++                log.debug("Unable to resolve address %s: %s", ip, err)
++            else:
++                log.error(err_message, err)
++        except (socket.error, socket.gaierror, socket.timeout) as err:
++            log.error(err_message, err)
++
++    start = time.time()
++
++    addresses = salt.utils.network.ip_addrs(include_loopback=False, interface_data=salt.utils.network._get_interfaces())
++    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False, interface_data=salt.utils.network._get_interfaces()))
++    err_message = 'Exception during resolving address: %s'
++
++    # Create a ThreadPool to process the underlying calls to 'socket.gethostbyaddr' in parallel.
++    # This avoid blocking the execution when the "fqdn" is not defined for certains IP addresses, which was causing
++    # that "socket.timeout" was reached multiple times secuencially, blocking execution for several seconds.
++
++    try:
++       pool = ThreadPool(8)
++       results = pool.map(_lookup_fqdn, addresses)
++       pool.close()
++       pool.join()
++    except Exception as exc:
++       log.error("Exception while creating a ThreadPool for resolving FQDNs: %s", exc)
++
++    for item in results:
++        if item:
++            fqdns.update(item)
++
++    elapsed = time.time() - start
++    log.debug('Elapsed time getting FQDNs: {} seconds'.format(elapsed))
++
++    return {"fqdns": sorted(list(fqdns))}
+\ No newline at end of file
+diff --git a/salt/utils/network.py b/salt/utils/network.py
+index 3f0522b9a5..942adf1ca4 100644
+--- a/salt/utils/network.py
++++ b/salt/utils/network.py
+@@ -55,6 +55,18 @@ except (ImportError, OSError, AttributeError, TypeError):
+ # pylint: disable=C0103
+ 
+ 
++_INTERFACES = {}
++def _get_interfaces(): #! function
++    '''
++    Provide a dict of the connected interfaces and their ip addresses
++    '''
++
++    global _INTERFACES
++    if not _INTERFACES:
++        _INTERFACES = interfaces()
++    return _INTERFACES
++
++
+ def sanitize_host(host):
+     '''
+     Sanitize host string.
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index 5fa0ea06f1..889fb90074 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -33,6 +33,7 @@ import salt.utils.network
+ import salt.utils.platform
+ import salt.utils.path
+ import salt.grains.core as core
++import salt.modules.network
+ 
+ # Import 3rd-party libs
+ from salt.ext import six
+@@ -845,6 +846,40 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         with patch.object(salt.utils.dns, 'parse_resolv', MagicMock(return_value=resolv_mock)):
+             assert core.dns() == ret
+ 
++
++    def test_enablefqdnsFalse(self):
++        '''
++        tests enable_fqdns_grains is set to False
++        '''
++        with patch.dict('salt.grains.core.__opts__', {'enable_fqdns_grains':False}):
++            assert core.fqdns() == {"fqdns": []}
++
++
++    def test_enablefqdnsTrue(self):
++        '''
++        testing that grains uses network.fqdns module
++        '''
++        with patch.dict('salt.grains.core.__salt__', {'network.fqdns': MagicMock(return_value="my.fake.domain")}):
++            with patch.dict('salt.grains.core.__opts__', {'enable_fqdns_grains':True}):
++                assert core.fqdns() == 'my.fake.domain'
++
++
++    def test_enablefqdnsNone(self):
++        '''
++        testing default fqdns grains is returned when enable_fqdns_grains is None
++        '''
++        with patch.dict('salt.grains.core.__opts__', {'enable_fqdns_grains':None}):
++             assert core.fqdns() == {"fqdns": []}
++
++
++    def test_enablefqdnswithoutpaching(self):
++        '''
++        testing fqdns grains is enabled by default
++        '''
++        with patch.dict('salt.grains.core.__salt__', {'network.fqdns': MagicMock(return_value="my.fake.domain")}):
++            assert core.fqdns() == 'my.fake.domain'
++
++
+     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+     @patch.object(salt.utils, 'is_windows', MagicMock(return_value=False))
+     @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4', '5.6.7.8']))
+@@ -861,11 +896,12 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+                                ('foo.bar.baz', [], ['fe80::a8b2:93ff:fe00:0']),
+                                ('bluesniff.foo.bar', [], ['fe80::a8b2:93ff:dead:beef'])]
+         ret = {'fqdns': ['bluesniff.foo.bar', 'foo.bar.baz', 'rinzler.evil-corp.com']}
+-        with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
+-            fqdns = core.fqdns()
+-            assert "fqdns" in fqdns
+-            assert len(fqdns['fqdns']) == len(ret['fqdns'])
+-            assert set(fqdns['fqdns']) == set(ret['fqdns'])
++        with patch.dict(core.__salt__, {'network.fqdns': salt.modules.network.fqdns}):
++            with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
++                fqdns = core.fqdns()
++                assert "fqdns" in fqdns
++                assert len(fqdns['fqdns']) == len(ret['fqdns'])
++                assert set(fqdns['fqdns']) == set(ret['fqdns'])
+ 
+     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+     @patch.object(salt.utils.platform, 'is_windows', MagicMock(return_value=False))
+@@ -881,14 +917,16 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+                                ('rinzler.evil-corp.com', ["false-hostname", "badaliass"], ['5.6.7.8']),
+                                ('foo.bar.baz', [], ['fe80::a8b2:93ff:fe00:0']),
+                                ('bluesniff.foo.bar', ["alias.bluesniff.foo.bar"], ['fe80::a8b2:93ff:dead:beef'])]
+-        with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
+-            fqdns = core.fqdns()
+-            assert "fqdns" in fqdns
+-            for alias in ["this.is.valid.alias", "alias.bluesniff.foo.bar"]:
+-                assert alias in fqdns["fqdns"]
+-
+-            for alias in ["throwmeaway", "false-hostname", "badaliass"]:
+-                assert alias not in fqdns["fqdns"]
++        with patch.dict(core.__salt__, {'network.fqdns': salt.modules.network.fqdns}):
++            with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
++                fqdns = core.fqdns()
++                assert "fqdns" in fqdns
++                for alias in ["this.is.valid.alias", "alias.bluesniff.foo.bar"]:
++                    assert alias in fqdns["fqdns"]
++
++                for alias in ["throwmeaway", "false-hostname", "badaliass"]:
++                    assert alias not in fqdns["fqdns"]
++
+     def test_core_virtual(self):
+         '''
+         test virtual grain with cmd virt-what
+-- 
+2.22.0
+
+

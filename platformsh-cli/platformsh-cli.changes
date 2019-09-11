@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:19:28 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.47.0:
+  * Release v3.47.0
+  * Update API client to reduce environment API requests
+  * Remove now unnecessary DrushServiceMock
+  * Remove --pipe to -o alias
+  * Allow many commands to work 'locally' on the container
+  * Alias --pipe to -o and --primary to -1 (#844)
+  * Fix performance regression with many environments and Drush aliases (#843)
+  * Allow multiple command arguments in drush and ssh commands (#837)
+  * Installer hotfix: do not require curl (#838)
+  * Installer hotfix: do not require curl (#838)
+  * Use primary route URL from deployments API in Drush aliases (#835)
+  * Test on 7.4
+
+-------------------------------------------------------------------
 Fri Aug 16 21:35:00 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.46.0:

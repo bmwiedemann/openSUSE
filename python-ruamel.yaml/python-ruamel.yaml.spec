@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.yaml
-Version:        0.16.1
+Version:        0.16.5
 Release:        0
 Summary:        Python YAML parser
 License:        MIT

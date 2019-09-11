@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 21 08:37:52 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.7.2
+  * Fixes to CMS_2016_I1487288 jet selection and normalisation.
+  * Improve Vector3::azimuthalAngle() (also used by FourMomentum
+    and FourVector) to use exact rather than fuzzy is-zero check,
+    to only check the perpendicular components, and to note that
+    IEEE floating point implementations of atan2 should already be
+    'safe' unless we decide that this function should throw or
+    return NaN in case of null or along-z vectors.
+  * Tools/Utils.h: Add isum() functions, and mark other container
+    functions as wanting a conversion to use std::function.
+  * Add super-generic (i)discardIfAny(particlebases,
+    particlebases, bool(pb,pb)) functions.
+  * Introduce TTMODE options for MC_TTBAR to pick the decay mode
+- Changes from versions 2.7.1 and 2.7.0: See
+  %{_docdir}/%{name}-devel/ChangeLog.
+- Add Rivet-fix-ambiguous-namespace.patch: Fixed Et -> Kin::Et to
+  avoid ambiguous namespace; patch taken from upstream commit
+- YODA >= 1.7.4 required for building.
+
+-------------------------------------------------------------------
 Sat Jun  9 16:03:53 UTC 2018 - badshah400@gmail.com
 
 - Update to version 2.6.0:

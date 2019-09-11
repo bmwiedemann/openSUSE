@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Jul 16 15:00:46 UTC 2019 - mvetter@suse.com
+
+- Update to 2.9.1:
+  * Fix a bug where provided namespace compilation order was overridden. (Phil Hagelberg)
+  * Don't emit namespaced maps when merging data readers for uberjar. (Joel Kaasinen)
+- Install to correct bash completions path
+- Remove suse macros
+- Use standalone leiningen
+- Add files from upstream:
+  * bash_completion.bash
+  * zsh_completion.bash
+  * lein.1 manpage
+  * lein-pkg script
+
+-------------------------------------------------------------------
+Tue Jul 16 14:06:52 UTC 2019 - mvetter@suse.com
+
+- Remove PKGBUILD
+
+-------------------------------------------------------------------
+Thu Feb 19 13:24:55 UTC 2015 - kgronlund@suse.com
+
+- Update to 2.5.1
+  - Completion scripts are now bundled in the distribution.
+
+-------------------------------------------------------------------
+Sun Jan 12 07:11:47 UTC 2014 - kgronlund@suse.com
+
+- Initial version.
+

@@ -1,7 +1,7 @@
 #
 # spec file for package srt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define sover 1
+
 Name:           srt
-Version:        1.3.1
+Version:        1.3.4
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0
@@ -26,8 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.srtalliance.org
 Source0:        https://github.com/Haivision/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM srt-no-rpath.patch -- Fix build, patch from archlinux
-Patch0:         srt-no-rpath.patch
+Patch0:         CVE-2019-15784.patch
+
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -73,7 +74,7 @@ needed to develop applications with Secure Reliable Transport
 	-DENABLE_SHARED=ON \
 	-DENABLE_STATIC=OFF \
 	%{nil}
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -87,7 +88,7 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}-ffplay
 %{_bindir}/%{name}-file-transmit
 %{_bindir}/%{name}-live-transmit
-%{_bindir}/%{name}-multiplex
+%{_bindir}/%{name}-tunnel
 
 %files -n libsrt%{sover}
 %license LICENSE

@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Tue Sep  3 02:08:57 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable201908
+  + OvmfPkg: Introduce platform OvmfXen
+  + OvmfPkg/ResetSystemLib: Add missing dependency on PciLib
+  + MdeModulePkg DxeCore: Fix for missing Memory Attributes Table
+    (MAT) update
+  + BaseTools: Fixed issue of incorrect Module Unique Name
+  + CryptoPkg/OpensslLib: Add missing header files in INF file
+  + SecurityPkg/SecurityPkg.uni: Add missing strings for new PCDs
+  + MdeModulePkg/DxeIplPeim: Initialize pointer PageMapLevel5Entry
+  + MdeModulePkg/MdeModulePkg.dec: Remove gEfiDpcProtocolGuid
+  + Readme.md: add submodule policy and clone commands
+  + MdeModulePkg/DxeIplPeim: Relocate operation of
+    PageMapLevel5Entry++
+  + MdeModulePkg: Add missing header files in INF files
+  + MdePkg: Add MmAccess and MmControl definition.
+  + CryptoPkg/BaseCryptLib: Wrap OpenSSL HKDF algorithm
+  + MdeModulePkg/DxeIpl: Create 5-level page table for long mode
+  + MdeModulePkg/DxeIpl: Introduce PCD PcdUse5LevelPageTable
+  + UefiCpuPkg/CpuDxe: Support parsing 5-level page table
+  + UefiCpuPkg/MpInitLib: Enable 5-level paging for AP when BSP's
+    enabled
+  + OvmfPkg/PlatformPei: Change referenced MSR name.
+  + UefiCpuPkg/PiSmmCpuDxeSmm: Add check for pointer Pml5Entry
+  + SecurityPkg/SecurityPkg.dec: Remove trailing white space
+  + MdeModulePkg/PiSmmCore: Use unique structure signatures
+  + UefiCpuPkg/MpInitLib: don't shadow the microcode patch twice.
+  + ShellPkg: improve acpiview
+  + MdePkg: Add PI 1.5 SmramMemoryReserve HOB file
+  + MdePkg/PciExpress21.h: Fix the PCI industry standard register
+    defines
+  + CryptoPkg/BaseCryptLib: Use cmp-operator for non-Boolean
+    comparisons
+  + ArmPkg: DebugPeCoffExtraActionLib: fix trivial comment typos
+  + ArmPkg: DebugPeCoffExtraActionLib: debugger commands are not
+    errors
+  + UefiCpuPkg/RegisterCpuFeaturesLib: Start all processors
+    simultaneously.
+  + UefiCpuPkg: Add new EDKII_PEI_MP_SERVICES2_PPI
+  + list module-internal header files in INF [Sources]
+  + SecurityPkg: introduce the SM3 digest algorithm
+  + BaseTools: Fix python3.8 SyntaxWarning
+  + BaseTools: Add HOST_APPLICATION module type.
+  + UefiCpuPkg/PiSmmCpu: Enable 5 level paging when CPU supports
+  + MdePkg/BaseLib.h: Update IA32_CR4 structure for 5-level paging
+  + UefiCpuPkg RegisterCpuFeaturesLib: Fix an ASSERTION issue
+  + ArmPlatformPkg: Actually disable PL031 interrupts
+  + UefiCpuPkg/PiSmmCpu: Change variable names and comments to follow
+    SDM
+  + OvmfPkg: use DxeTpmMeasurementLib if and only if TPM2_ENABLE
+  + ArmPlatformPkg: Fix various typos
+  + ArmPkg: Fix various typos
+  + Remove IntelFrameworkPkg
+  + Remove IntelFrameworkModulePkg
+  + MdeModulePkg/BdsDxe: Use a pcd to control PlatformRecovery
+  + MdeModulePkg: Add a pcd to set the OS indications bit
+  + SecurityPkg: Remove DxeDeferImageLoadLib in DSC
+  + BaseTools:Linux changes the way the latest version is judged
+  + Fix indentation in edksetup.sh SetupPython3
+  + MdeModulePkg/SdMmcHcDxe: Implement revision 3 of
+    SdMmcOverrideProtocol
+  + MdeModulePkg/SdMmcOverride: Add GetOperatingParam notify phase
+  + MdeModulePkg/UfsPassThruDxe: Fix unaligned data transfer
+    handling
+  + ArmVirtPkg: handle NETWORK_TLS_ENABLE in ArmVirtQemu*
+  + UefiCpuPkg/MpInitLib: MicrocodeDetect: Ensure checked range is
+    valid
+  + MdeModulePkg/UfsPassThruDxe: Refactor UFS device presence
+    detection
+  + PcAtChipsetPkg: Remove framework modules
+  + SecurityPkg: add FvReportPei.inf in dsc for build validation
+  + SecurityPkg/FvReportPei: implement a common FV verifier and
+    reporter
+  + SecurityPkg: add definitions for OBB verification
+  + OvmfPkg: don't assign PCI BARs above 4GiB when CSM enabled
+  + OvmfPkg: Don't build in QemuVideoDxe when we have CSM
+  + OvmfPkg/LegacyBbs: Add boot entries for VirtIO and NVME
+    devices
+  + OvmfPkg/LegacyBios: set NumberBbsEntries to the size of
+    BbsTable
+  + SecurityPkg: Add missing instances for build only
+  + BaseTools: Move Build Cache related function out of
+    CreateAsBuiltInf
+  + BaseTools: refine CreateAsBuiltInf function
+  + BaseTools:Add DetectNotUsedItem.py to Edk2\BaseTools\Scripts
+  + BaseTools:Add import in FvImageSection
+  + MdeModulePkg/PeiMain: PeiAllocatePool: output NULL if HOB
+    creation fails
+  + MdePkg: Add Generic Initiator Affinity Structure definitions
+    to SRAT
+  + BaseTools:Introduce CopyFileOnChange() function to copy cache
+    files
+  + MdeModulePkg: Add missing instances for build only
+  + SourceLevelDebugPkg: Add missing instances for build only
+  + CryptoPkg: Add missing instance for build only
+  + MdeModulePkg: Introduce EDKII_SERIAL_PORT_LIB_VENDOR_GUID
+  + MdeModulePkg/GraphicsConsoleDxe: Initialize the output mode
+  + MdeModulePkg/ConSplitterDxe: Optimize the
+    ConSplitterTextOutSetMode
+  + BaseTools: add script to configure local git options
+  + BaseTools: add centralized location for git config files
+  + OvmfPkg/QemuVideoDxe: Shouldn't assume system in VGA alias
+    mode.
+- Refresh ovmf-gdb-symbols.patch
+- Enable NETWORK_TLS_ENABLE for AArch64
+
+-------------------------------------------------------------------
 Fri Jul  5 07:15:55 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Reset BootOrder after enrolling the default keys (boo#1140195)

@@ -12,11 +12,11 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  src/wcmUSB.c | 16 ++++++++++++++++
  1 file changed, 16 insertions(+)
 
-Index: xf86-input-wacom-0.28.0/src/wcmUSB.c
+Index: xf86-input-wacom-0.37.0/src/wcmUSB.c
 ===================================================================
---- xf86-input-wacom-0.28.0.orig/src/wcmUSB.c
-+++ xf86-input-wacom-0.28.0/src/wcmUSB.c
-@@ -517,6 +517,8 @@ static void usbWcmInitPadState(InputInfo
+--- xf86-input-wacom-0.37.0.orig/src/wcmUSB.c
++++ xf86-input-wacom-0.37.0/src/wcmUSB.c
+@@ -544,6 +544,8 @@ static void usbWcmInitPadState(InputInfo
  	ds->device_type = PAD_ID;
  	ds->device_id = PAD_DEVICE_ID;
  	ds->serial_num = channel;
@@ -25,7 +25,7 @@ Index: xf86-input-wacom-0.28.0/src/wcmUSB.c
  }
  
  int usbWcmGetRanges(InputInfoPtr pInfo)
-@@ -1697,6 +1699,7 @@ static void usbDispatchEvents(InputInfoP
+@@ -1821,6 +1823,7 @@ static void usbDispatchEvents(InputInfoP
  	int channel;
  	wcmUSBData* private = common->private;
  	WacomDeviceState dslast = common->wcmChannel[private->lastChannel].valid.state;
@@ -33,7 +33,7 @@ Index: xf86-input-wacom-0.28.0/src/wcmUSB.c
  
  	DBG(6, common, "%d events received\n", private->wcmEventCnt);
  
-@@ -1733,6 +1736,7 @@ static void usbDispatchEvents(InputInfoP
+@@ -1857,6 +1860,7 @@ static void usbDispatchEvents(InputInfoP
  
  	ds = &common->wcmChannel[channel].work;
  	dslast = common->wcmChannel[channel].valid.state;
@@ -41,7 +41,7 @@ Index: xf86-input-wacom-0.28.0/src/wcmUSB.c
  
  	if (ds->device_type && ds->device_type != private->wcmDeviceType)
  		LogMessageVerbSigSafe(X_ERROR, 0,
-@@ -1747,10 +1751,16 @@ static void usbDispatchEvents(InputInfoP
+@@ -1871,10 +1875,16 @@ static void usbDispatchEvents(InputInfoP
  	/* all USB data operates from previous context except relative values*/
  	ds->relwheel = 0;
  	ds->serial_num = private->wcmLastToolSerial;
@@ -58,7 +58,7 @@ Index: xf86-input-wacom-0.28.0/src/wcmUSB.c
  		event = private->wcmEvents + i;
  		DBG(11, common,
  			"event[%d]->type=%d code=%d value=%d\n",
-@@ -1804,6 +1814,12 @@ static void usbDispatchEvents(InputInfoP
+@@ -1928,6 +1938,12 @@ static void usbDispatchEvents(InputInfoP
  			usbParseKeyEvent(common, event, channel);
  			usbParseBTNEvent(common, event, btn_channel);
  		}

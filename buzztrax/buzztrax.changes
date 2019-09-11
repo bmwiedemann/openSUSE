@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 11 08:14:05 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to git snapshot version 0.10.2+git20190809 which no longer
+  uses rarian-scrollkeeper but uses yelp instead for help file
+  generation.
+- This fixes boo#1141385.
+- Removed the following incorporated patches:
+  buzztrax-appdata.patch, buzztrax-build.patch,
+  buzztrax-gcc7fix.patch, buzztrax-misleading-indentation.patch
+  and buzztrax-newfix.patch.
+- Added -Wno-error=format for the i586 build.
+
+-------------------------------------------------------------------
 Wed Jul 10 12:25:54 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Use %license

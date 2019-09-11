@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  2 12:36:11 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+-Update to version 1.2.6
+ -issue#101: MySQL 8 has retired 'my_bool' type
+ -issue#104: Spine should report which threads are outstanding
+ -issue#105: Spine should include 'Process[<id>]' in standard logging
+ -issue#107: Log Buffer is too small to handle some output
+ -issue#108: Once an SNMP timeout is reached, snmp_get does not honor
+             include_host
+ -issue#109: Initial declarations inside for loop cause compile errors
+ -issue#110: When compiling, 'directive output may be truncated'
+             messages can appear
+ -issue#112: INSTALL instructions have typo in bootstrap command
+
+-------------------------------------------------------------------
 Tue Jul 16 06:45:51 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
 
 -Update to version 1.2.5

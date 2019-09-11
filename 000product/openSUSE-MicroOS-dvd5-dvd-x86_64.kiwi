@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20190819" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20190909" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20190819</productvar>
+      <productvar name="VERSION">20190909</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20190819,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20190909,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20190819/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20190909/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -64,7 +64,6 @@
       <repopackage name="bash"/>
       <repopackage name="bc" arch="x86_64"/>
       <repopackage name="bcache-tools" arch="x86_64"/>
-      <repopackage name="bind-utils" arch="x86_64"/>
       <repopackage name="biosdevname" arch="x86_64"/>
       <repopackage name="blog"/>
       <repopackage name="boost-license1_69_0" arch="x86_64"/>
@@ -81,6 +80,7 @@
       <repopackage name="cloud-init-config-MicroOS" arch="x86_64"/>
       <repopackage name="cni" arch="x86_64"/>
       <repopackage name="cni-plugins" arch="x86_64"/>
+      <repopackage name="conmon" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="cpio"/>
       <repopackage name="cracklib"/>
@@ -112,10 +112,8 @@
       <repopackage name="findutils"/>
       <repopackage name="fuse-overlayfs" arch="x86_64"/>
       <repopackage name="gawk"/>
-      <repopackage name="GeoIP-data" arch="x86_64"/>
       <repopackage name="gettext-runtime" arch="x86_64"/>
       <repopackage name="gio-branding-openSUSE" arch="x86_64"/>
-      <repopackage name="glib-networking" arch="x86_64"/>
       <repopackage name="glib2-tools" arch="x86_64"/>
       <repopackage name="glibc"/>
       <repopackage name="glibc-locale" arch="x86_64"/>
@@ -129,9 +127,7 @@
       <repopackage name="grub2-i386-pc" arch="x86_64"/>
       <repopackage name="grub2-snapper-plugin" arch="x86_64"/>
       <repopackage name="grub2-x86_64-efi" arch="x86_64"/>
-      <repopackage name="gsettings-desktop-schemas" arch="x86_64"/>
       <repopackage name="gzip"/>
-      <repopackage name="hardlink"/>
       <repopackage name="haveged" arch="x86_64"/>
       <repopackage name="health-checker" arch="x86_64"/>
       <repopackage name="health-checker-plugins-MicroOS" arch="x86_64"/>
@@ -165,7 +161,6 @@
       <repopackage name="libacl1"/>
       <repopackage name="libaio1" arch="x86_64"/>
       <repopackage name="libapparmor1"/>
-      <repopackage name="libarchive13" arch="x86_64"/>
       <repopackage name="libargon2-1"/>
       <repopackage name="libasm1"/>
       <repopackage name="libassuan0" arch="x86_64"/>
@@ -174,7 +169,6 @@
       <repopackage name="libaugeas0" arch="x86_64"/>
       <repopackage name="libauparse0" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
-      <repopackage name="libbind9-160" arch="x86_64"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblogger2"/>
       <repopackage name="libboost_thread1_69_0" arch="x86_64"/>
@@ -199,7 +193,6 @@
       <repopackage name="libdevmapper1_03"/>
       <repopackage name="libdhash1" arch="x86_64"/>
       <repopackage name="libdnet1" arch="x86_64"/>
-      <repopackage name="libdns169" arch="x86_64"/>
       <repopackage name="libdw1"/>
       <repopackage name="libebl-plugins"/>
       <repopackage name="libedit0" arch="x86_64"/>
@@ -218,7 +211,6 @@
       <repopackage name="libgcrypt20"/>
       <repopackage name="libgdbm6" arch="x86_64"/>
       <repopackage name="libgdbm_compat4" arch="x86_64"/>
-      <repopackage name="libGeoIP1" arch="x86_64"/>
       <repopackage name="libgio-2_0-0" arch="x86_64"/>
       <repopackage name="libglib-2_0-0" arch="x86_64"/>
       <repopackage name="libgmodule-2_0-0" arch="x86_64"/>
@@ -237,10 +229,6 @@
       <repopackage name="libip4tc2" arch="x86_64"/>
       <repopackage name="libip6tc2" arch="x86_64"/>
       <repopackage name="libipset13" arch="x86_64"/>
-      <repopackage name="libirs160" arch="x86_64"/>
-      <repopackage name="libisc166" arch="x86_64"/>
-      <repopackage name="libisccc160" arch="x86_64"/>
-      <repopackage name="libisccfg160" arch="x86_64"/>
       <repopackage name="libjson-c4"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libkmod2"/>
@@ -251,7 +239,6 @@
       <repopackage name="liblmdb-0_9_23" arch="x86_64"/>
       <repopackage name="libltdl7" arch="x86_64"/>
       <repopackage name="liblua5_3-5"/>
-      <repopackage name="liblwres160" arch="x86_64"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblzma5"/>
       <repopackage name="liblzo2-2" arch="x86_64"/>
@@ -275,7 +262,6 @@
       <repopackage name="libnuma1" arch="x86_64"/>
       <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
       <repopackage name="libopenssl1_1"/>
-      <repopackage name="libostree-1-1" arch="x86_64"/>
       <repopackage name="libp11-kit0"/>
       <repopackage name="libparted0" arch="x86_64"/>
       <repopackage name="libpath_utils1" arch="x86_64"/>
@@ -307,7 +293,6 @@
       <repopackage name="libsnapper4" arch="x86_64"/>
       <repopackage name="libsnappy1" arch="x86_64"/>
       <repopackage name="libsolv-tools" arch="x86_64"/>
-      <repopackage name="libsoup-2_4-1" arch="x86_64"/>
       <repopackage name="libsqlite3-0" arch="x86_64"/>
       <repopackage name="libssh-config" arch="x86_64"/>
       <repopackage name="libssh4" arch="x86_64"/>
@@ -389,7 +374,6 @@
       <repopackage name="perl-Bootloader"/>
       <repopackage name="perl-HTML-Parser" arch="x86_64"/>
       <repopackage name="perl-HTML-Tagset" arch="x86_64"/>
-      <repopackage name="perl-JSON" arch="x86_64"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="pigz"/>
@@ -411,7 +395,6 @@
       <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-Babel" arch="x86_64"/>
       <repopackage name="python3-base" arch="x86_64"/>
-      <repopackage name="python3-bind" arch="x86_64"/>
       <repopackage name="python3-blinker" arch="x86_64"/>
       <repopackage name="python3-certifi" arch="x86_64"/>
       <repopackage name="python3-cffi" arch="x86_64"/>
@@ -430,7 +413,6 @@
       <repopackage name="python3-networkx" arch="x86_64"/>
       <repopackage name="python3-oauthlib" arch="x86_64"/>
       <repopackage name="python3-packaging" arch="x86_64"/>
-      <repopackage name="python3-ply" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-py" arch="x86_64"/>
       <repopackage name="python3-pyasn1" arch="x86_64"/>

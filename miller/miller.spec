@@ -1,7 +1,7 @@
 #
 # spec file for package miller
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           miller
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
 License:        BSD-2-Clause AND BSD-4-Clause
 Group:          Productivity/File utilities
-Url:            http://johnkerl.org/miller/doc
-Source0:        https://github.com/johnkerl/miller/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            http://johnkerl.org/miller/doc
+Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM miller-5.3.0-gcc43.patch
 Patch0:         miller-5.3.0-gcc43.patch
 BuildRequires:  automake

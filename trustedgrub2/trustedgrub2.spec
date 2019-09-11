@@ -1,7 +1,7 @@
 #
 # spec file for package trustedgrub2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           trustedgrub2
 Version:        1.4.0
 Release:        0
 Summary:        Bootloader with TCG (TPM) support  
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Boot
 Url:            https://github.com/Sirrix-AG/TrustedGRUB2
 Source0:        %{name}-%{version}.tar.gz
@@ -46,6 +46,15 @@ Patch11:        0001-Fix-packed-not-aligned-error-on-GCC-8.patch
 Patch12:        0001-Verify-modules-on-build-time-rather-than-failing-in-.patch
 Patch13:        0002-module-verifier-Check-range-limited-relative-relocat.patch
 Patch14:        0003-support-modules-without-symbol-table.patch
+# fix build against GCC-9
+Patch15:        0001-cpio-Disable-gcc9-Waddress-of-packed-member.patch
+Patch16:        0002-jfs-Disable-gcc9-Waddress-of-packed-member.patch
+Patch17:        0003-hfs-Fix-gcc9-error-Waddress-of-packed-member.patch
+Patch18:        0004-hfsplus-Fix-gcc9-error-with-Waddress-of-packed-membe.patch
+Patch19:        0005-acpi-Fix-gcc9-error-Waddress-of-packed-member.patch
+Patch20:        0006-usbtest-Disable-gcc9-Waddress-of-packed-member.patch
+Patch21:        0007-chainloader-Fix-gcc9-error-Waddress-of-packed-member.patch
+Patch22:        0008-efi-Fix-gcc9-error-Waddress-of-packed-member.patch
 # Btrfs snapshot booting related patches
 Patch101:       grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
 Patch102:       grub2-btrfs-02-export-subvolume-envvars.patch
@@ -96,27 +105,7 @@ from scratch.
 This package contains modules for %{platform} systems.
 
 %prep
-%setup
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch110 -p1
+%autosetup -p1
 
 # HOWTO.luks-keyfile
 cp %{SOURCE2} .

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ruby-bindings
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/yast/yast-ruby-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -57,7 +57,7 @@ Suggests:       rubygem(%{rb_default_ruby_abi}:byebug)
 # bcond within macros are ignored by osc/OBS.
 %bcond_with yast_run_ci_tests
 %if %{with yast_run_ci_tests}
-BuildRequires:  rubygem(yast-rake-ci)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake-ci)
 %endif
 
 Requires:       ruby

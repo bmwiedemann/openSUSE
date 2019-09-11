@@ -56,6 +56,7 @@ Requires(pre):  grep
 Requires(pre):  sed
 Requires(verify): permissions
 Obsoletes:      tetex
+BuildRequires:  cron
 BuildRequires:  ed
 BuildRequires:  fontconfig
 #BuildConflicts: texinfo

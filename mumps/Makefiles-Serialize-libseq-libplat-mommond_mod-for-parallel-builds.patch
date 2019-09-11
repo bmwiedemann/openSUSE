@@ -81,12 +81,12 @@ index 88fc032..5a3c6e2 100644
  	$(MAKE) ARITH=z mumps_lib
  
  include $(topdir)/Makefile.inc
-@@ -74,6 +74,8 @@ OBJS_COMMON_OTHER = \
-         mumps_thread.o \
- 	mumps_save_restore_C.o
- 
+@@ -78,6 +78,8 @@
+         tools_common.o \
+         sol_common.o
+
 +common: $(OBJS_COMMON_MOD) $(OBJS_COMMON_OTHER)
 +
  OBJS_MOD =   \
+         $(ARITH)ana_aux.o \
          $(ARITH)ana_aux_par.o \
-         $(ARITH)ana_lr.o\

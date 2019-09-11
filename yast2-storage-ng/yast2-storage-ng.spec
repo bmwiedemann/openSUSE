@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.2.32
+Version:        4.2.35
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -37,13 +37,13 @@ BuildRequires:  yast2-ruby-bindings >= 4.0.6
 # yast2-xml dependency is added by yast2 but ignored in the
 # openSUSE:Factory project config
 BuildRequires:  yast2-xml
-BuildRequires:  rubygem(rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 # communicate with udisks
-BuildRequires:  rubygem(ruby-dbus)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:ruby-dbus)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # speed up the tests in SLE15-SP1+ or TW
 %if 0%{?sle_version} >= 150100 || 0%{?suse_version} > 1500
-BuildRequires:  rubygem(parallel_tests)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 %endif
 
 # findutils for xargs
@@ -57,7 +57,7 @@ Requires:       yast2-packager >= 3.3.7
 # for AbortException and handle direct abort
 Requires:       yast2-ruby-bindings >= 4.0.6
 # communicate with udisks
-Requires:       rubygem(ruby-dbus)
+Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 Requires(post): %fillup_prereq
 
 Obsoletes:      yast2-storage

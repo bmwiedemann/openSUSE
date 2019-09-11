@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  9 20:01:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Cleanup spec file, remove any conditionals for Leap 42.x and older.
+- Use correct Requires for Clang header files, located in libclang
+  package since Clang 6.
+
+-------------------------------------------------------------------
+Thu Sep  5 09:20:59 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.10.0 final:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Sep  4 06:41:38 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add libqt5-qttools-doc BuildRequires to fix build after the
+  recent dependency changes in libqt5-qttools
+
+-------------------------------------------------------------------
+Fri Aug  2 11:41:37 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 4.10.0 RC1:
+  * Language Server Client is now longer experimental
+  * For an overview of new features in the 4.10 series, see
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.10.0.md?h=4.10
+- Drop fix-build-isystem.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Sat Jun 29 18:08:26 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 4.9.2:

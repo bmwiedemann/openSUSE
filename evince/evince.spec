@@ -18,24 +18,23 @@
 
 %define _major_version 3.0
 %define pluginAPI 4
+
 Name:           evince
-Version:        3.32.0
+Version:        3.32.0+28
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/3.32/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM CVE-2019-11459.patch boo#1122607 mgorse@suse.com -- fix display of uninitialized memory if TiffReadRGBAImageOriented fails.
-Patch0:         CVE-2019-11459.patch
+Source0:        %{name}-%{version}.tar.xz
 
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
 BuildRequires:  gtk-doc >= 1.3
 BuildRequires:  libtiff-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-devel
 BuildRequires:  translation-update-upstream
@@ -60,7 +59,7 @@ BuildRequires:  pkgconfig(libnautilus-extension) >= 2.91.4
 BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
-BuildRequires:  pkgconfig(poppler-glib) >= 0.33.0
+BuildRequires:  pkgconfig(poppler-glib) >= 0.76.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
 BuildRequires:  pkgconfig(synctex) >= 1.19
 BuildRequires:  pkgconfig(x11)
@@ -203,27 +202,19 @@ A plugin for Evince to read XPS documents.
 
 %prep
 %autosetup -p1
-translation-update-upstream
+translation-update-upstream po %{name}
 
 %build
-%configure \
-	--disable-static \
+%meson \
 	--libexecdir=%{_libexecdir}/%{name} \
-	--enable-djvu \
-	--enable-dvi \
-	--enable-comics \
-	--enable-nautilus \
-	--enable-introspection \
-	--enable-multimedia \
-	--enable-gtk-doc \
-	--enable-ps \
+	-Dps=enabled \
+	-Dt1lib=disabled \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C} --metainfo %{name}
-find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n libevdocument3-4 -p /sbin/ldconfig

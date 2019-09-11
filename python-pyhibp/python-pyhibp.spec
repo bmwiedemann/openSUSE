@@ -17,22 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyhibp
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        An interface to Troy Hunt's 'Have I Been Pwned' public API
 License:        AGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/kitsunix/pyHIBP/pyHIBP
 Source:         https://files.pythonhosted.org/packages/source/p/pyhibp/pyhibp-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0 }
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tox}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.20.0
-Requires:       python-six >= 1.11.0
 BuildArch:      noarch
 %python_subpackages
 

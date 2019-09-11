@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luaposix
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define flavor @BUILD_FLAVOR@
 
 %define mod_name luaposix
-Version:        34.0
+Version:        34.1.1
 Release:        0
 Summary:        POSIX library for Lua
 License:        MIT
 Group:          Development/Libraries/Other
 Url:            https://github.com/luaposix/luaposix
 Source0:        https://github.com/luaposix/luaposix/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-Patch:          maint-sync-luke-with-upstream.patch
 
 BuildRequires:  %{flavor}-devel
 BuildRequires:  ncurses-devel
@@ -57,7 +56,6 @@ This package contains the documentation for %{flavor}-luaposix.
 
 %prep
 %setup -q -n luaposix-%{version}
-%patch -p1
 
 %build
 build-aux/luke PREFIX=%{_prefix} all
@@ -67,7 +65,8 @@ build-aux/luke PREFIX=%{buildroot}%{_prefix} INST_LIBDIR=%{buildroot}%{lua_archd
     INST_LUADIR=%{buildroot}%{lua_noarchdir} install
 
 %files
-%doc README.md NEWS.md LICENSE AUTHORS
+%doc README.md NEWS.md AUTHORS
+%license LICENSE
 %{lua_archdir}/posix
 %{lua_noarchdir}/posix
 

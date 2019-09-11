@@ -7,20 +7,20 @@ Subject: [PATCH] Handle /etc/resolv.conf
  DNS/Base.py | 10 +++++++---
  1 file changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/DNS/Base.py b/DNS/Base.py
-index 4a70613..b5d97c8 100644
---- a/DNS/Base.py
-+++ b/DNS/Base.py
-@@ -11,7 +11,7 @@ Changes for Python3 port © 2011-14 Scott Kitterman <scott@kitterman.com>
+Index: py3dns-3.2.1/DNS/Base.py
+===================================================================
+--- py3dns-3.2.1.orig/DNS/Base.py
++++ py3dns-3.2.1/DNS/Base.py
+@@ -11,7 +11,7 @@ Changes for Python3 port © 2011-14 Scot
      Base functionality. Request and Response classes, that sort of thing.
  """
  
 -import socket, string, types, time, select
 +import socket, string, types, time, select, warnings
+ import errno
  from . import Type,Class,Opcode
  import asyncore
- #
-@@ -49,8 +49,12 @@ defaults= { 'protocol':'udp', 'port':53, 'opcode':Opcode.QUERY,
+@@ -50,8 +50,12 @@ defaults= { 'protocol':'udp', 'port':53,
  
  def ParseResolvConf(resolv_path="/etc/resolv.conf"):
      "parses the /etc/resolv.conf file and sets defaults for name servers"
@@ -35,6 +35,3 @@ index 4a70613..b5d97c8 100644
  
  def ParseResolvConfFromIterable(lines):
      "parses a resolv.conf formatted stream and sets defaults for name servers"
--- 
-2.9.3
-

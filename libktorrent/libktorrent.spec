@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,45 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define ktor_ver 5.1
-
-Name:           libktorrent
-Version:        2.1
-Release:        0
+%define ktor_ver 5.1.2
 %define sonum   6
+Name:           libktorrent
+Version:        2.1.1
+Release:        0
 Summary:        Torrent Downloading Library
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-Url:            http://ktorrent.org/
-Source0:        http://download.kde.org/stable/ktorrent/%{ktor_ver}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE require-lower-LibGMP.patch
-Patch0:         require-lower-LibGMP.patch
-# PATCH-FIX-UPSTREAM fix-build-with-qt5.6.patch
-Patch1:         fix-build-with-qt5.6.patch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+URL:            https://kde.org/applications/internet/org.kde.ktorrent/
+Source0:        https://download.kde.org/stable/ktorrent/%{ktor_ver}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
-BuildRequires:  gmp-devel >= 5.1.3
-BuildRequires:  karchive-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
+BuildRequires:  gmp-devel >= 6.0.0
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  solid-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(Qca-qt5)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Xml)
 
 %description
 libktorrent is a torrent downloading library.
@@ -58,14 +48,16 @@ libktorrent is a torrent downloading library.
 %package devel
 Summary:        Development files for libktorrent
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} > 1325
-Requires:       libboost_headers-devel
-%else
-Requires:       boost-devel
-%endif
 Requires:       gmp-devel
 Requires:       libKF5Torrent%{sonum} = %{version}
-Requires:       libqca-qt5-devel
+Requires:       libboost_headers-devel
+Requires:       libgcrypt-devel
+Requires:       cmake(KF5Archive)
+Requires:       cmake(KF5Config)
+Requires:       cmake(KF5KIO)
+Requires:       cmake(Qca-qt5)
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5Network)
 
 %description devel
 This package includes the necessary files for development using libktorrent.
@@ -81,10 +73,9 @@ Obsoletes:      %{name} < %{version}
 libktorrent is a torrent downloading library.
 
 %lang_package
+
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%setup -q
 
 %build
 %cmake_kf5 -d build
@@ -96,21 +87,18 @@ libktorrent is a torrent downloading library.
 %find_lang libktorrent5 %{name}.lang
 
 %post -n libKF5Torrent%{sonum} -p /sbin/ldconfig
-
 %postun -n libKF5Torrent%{sonum} -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root,-)
 %{_kf5_includedir}/libktorrent/
 %{_kf5_libdir}/libKF5Torrent.so
 %{_kf5_cmakedir}/KF5Torrent/
 
 %files -n libKF5Torrent%{sonum}
-%defattr(-,root,root,-)
-%doc COPYING ChangeLog RoadMap
+%license COPYING
+%doc ChangeLog RoadMap
 %{_kf5_libdir}/libKF5Torrent.so.%{sonum}*
 
 %files lang -f %{name}.lang
-%defattr(-,root,root,-)
 
 %changelog

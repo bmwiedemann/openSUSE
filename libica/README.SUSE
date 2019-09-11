@@ -28,9 +28,9 @@ on SUSE Linux Enterprise Server 9 for S/390 and zSeries:
 
 2) Loading the z90crypt driver:
 
-      rcz90crypt start        to load z90crypt
+      systemctl start z90crypt to load z90crypt
 
-      rcz90crypt stop         to unload z90crypt
+      systemctl stop z90crypt to unload z90crypt
 
    this command will be available only after installation of the
    crypto driver packages.
@@ -38,7 +38,7 @@ on SUSE Linux Enterprise Server 9 for S/390 and zSeries:
    To load the driver automatically at every system boot, integrate it
    with the other boot scripts issuing
 
-      insserv z90crypt
+      systemctl enable z90crypt
 
 
 3) Checking if the z90crypt hardware driver can be accessed

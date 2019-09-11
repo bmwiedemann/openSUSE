@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:37:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- disable pie on power as it seems to cause problems on go
+
+-------------------------------------------------------------------
+Mon Sep  9 06:13:23 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Update to release 1.12
+
+Release Notes
+  The cluster health related fields in the elasticsearch input have been split
+  out from the elasticsearch_indices mesasurement into the new
+  elasticsearch_cluster_health_indices measurement as they were originally
+  combined by error.
+
+New Inputs
+  apcupsd - Contributed by @jonaz
+  docker_log - Contributed by @prashanthjbabu
+  fireboard - Contributed by @ronnocol
+  logstash - Contributed by @lkmcs @dmitryilyin @arkady-emelyanov
+  marklogic - Contributed by @influxdata
+  openntpd - Contributed by @aromeyer
+  uwsgi - Contributed by @blaggacao
+
+New Parsers
+  form_urlencoded - Contributed by @byonchev
+
+New Processors
+  date - Contributed by @influxdata
+  pivot - Contributed by @influxdata
+  tag_limit - Contributed by @memory
+  unpivot - Contributed by @influxdata
+
+New Outputs
+  exec - Contributed by @Jaeyo
+
+- Update to release 1.11
+
+Release Notes
+  The uptime_format field in the system input has been deprecated, use the
+  uptime field instead.
+  The cloudwatch input has been updated to use a more efficient API, it now
+  requires GetMetricData permissions instead of GetMetricStatistics. The
+  units tag is not available from this API and is no longer collected.
+
+New Inputs
+
+  bind - Contributed by @dswarbrick & @danielllek
+  cisco_telemetry_gnmi - Contributed by @sbyx
+  cisco_telemetry_mdt - Contributed by @sbyx
+  ecs - Contributed by @rbtr
+  github - Contributed by @influxdata
+  openweathermap - Contributed by @regel
+  powerdns_recursor - Contributed by @dupondje
+
+New Aggregators
+  final - Contributed by @oplehto
+
+New Outputs
+  syslog - Contributed by @javicrespo
+  health - Contributed by @influxdata
+
+New Serializers
+  wavefront - Contributed by @puckpuck
+
+- Update to release 1.10
+
+New Inputs
+  cloud_pubsub - Contributed by @emilymye
+  cloud_pubsub_push - Contributed by @influxdata
+  kinesis_consumer - Contributed by @influxdata
+  kube_inventory - Contributed by @influxdata
+  neptune_apex - Contributed by @MaxRenaud
+  nginx_upstream_check - Contributed by @dmitryilyin
+  multifile - Contributed by @martin2250
+  stackdriver - Contributed by @WuHan0608
+
+New Outputs
+  cloud_pubsub - Contributed by @emilymye
+
+New Serializers
+  nowmetric - Contributed by @JefMuller
+  carbon2 - Contributed by @frankreno
+
+- Update to release 1.9
+
+Release Notes
+  The http_listener input plugin has been renamed to influxdb_listener and
+  use of the original name is deprecated. The new name better describes the
+  intended use of the plugin as a InfluxDB relay. For general purpose
+  transfer of metrics in any format via HTTP, it is recommended to use
+  http_listener_v2 instead.
+
+  Input plugins are no longer limited from adding metrics when the output is
+  writing, and new metrics will move into the metric buffer as needed. This
+  will provide more robust degradation and recovery when writing to a slow
+  output at high throughput.
+
+  To avoid over consumption when reading from queue consumers: kafka_consumer,
+  amqp_consumer, mqtt_consumer, nats_consumer, and nsq_consumer use
+  the new option max_undelivered_messages to limit the number of outstanding
+  unwritten metrics.
+
+New Inputs
+  http_listener_v2 - Contributed by @jul1u5
+  ipvs - Contributed by @amoghe
+  jenkins - Contributed by @influxdata & @lpic10
+  nginx_plus_api - Contributed by @Bugagazavr
+  nginx_vts - Contributed by @monder
+  wireless - Contributed by @jamesmaidment
+
+New Outputs
+  stackdriver - Contributed by @jamesmaidment
+
+-------------------------------------------------------------------
 Wed Mar 27 11:32:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add systemd-rpm-macros and %systemd_ordering for %service_*.

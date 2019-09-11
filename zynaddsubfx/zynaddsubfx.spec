@@ -17,7 +17,7 @@
 
 
 Name:           zynaddsubfx
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A Real-Time Software Synthesizer for Linux
 License:        GPL-2.0-or-later

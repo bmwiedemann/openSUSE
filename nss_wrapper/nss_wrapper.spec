@@ -41,8 +41,8 @@ BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  netcfg
 
-Requires:       cmake
-Requires:       pkg-config
+Recommends:     cmake
+Recommends:     pkgconf
 
 %description
 There are projects which provide daemons that need to be able to create, modify
@@ -83,9 +83,7 @@ find %{buildroot}%{_bindir} -name "*.pl" \
     | xargs sed -i '1 s|/usr/bin/env\ perl|/usr/bin/perl|'
 
 %check
-pushd build
-make %{?_smp_mflags} test || cat $(find Testing -name "*.log")
-popd
+%ctest
 
 %post -p /sbin/ldconfig
 

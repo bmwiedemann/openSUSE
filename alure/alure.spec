@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -21,24 +21,24 @@ Name:           alure
 Version:        1.2
 Release:        0
 Summary:        Audio Library Tools REloaded
+# ALURE code is LGPL-2.0+; note -devel subpackage has its own license tag
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-# ALURE code is LGPL-2.0+; note -devel subpackage has its own license tag
-Url:            http://kcat.strangesoft.net/alure.html
+URL:            http://kcat.strangesoft.net/alure.html
 Source0:        http://kcat.strangesoft.net/%{name}-releases/%{name}-%{version}.tar.bz2
 # patch for build with gcc47
 Patch0:         alure-gcc47.patch
+# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
+Patch1:         alure-lib-suffix.patch
 BuildRequires:  cmake
 BuildRequires:  flac-devel
 BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libdumb-devel
 BuildRequires:  libmodplug-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 ALURE is a utility library to help manage common tasks with OpenAL
@@ -47,9 +47,9 @@ file loading, and streaming.
 
 %package        devel
 Summary:        Development files for %{name}
+# Devel doc includes some files under GPLv2+ from NaturalDocs
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-# Devel doc includes some files under GPLv2+ from NaturalDocs
 Requires:       %{name} = %{version}
 
 %description    devel
@@ -68,14 +68,17 @@ applications.
 %prep
 %setup -q
 %patch0
+%patch1
 
 %build
-%cmake -DBUILD_STATIC=OFF -DMPG123=OFF -DMODPLUG=ON
+#sed -i 's|SET(libdir "\\${exec_prefix}/lib${LIB_SUFFIX}")|SET(libdir $LIB_INSTALL_DIR)|' CMakeLists.txt
+cmake . -DBUILD_STATIC=OFF -DMPG123=OFF -DMODPLUG=ON -DCMAKE_INSTALL_PREFIX=%{_prefix}
+#-DLIB_INSTALL_DIR=%%{_libdir}
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
-%cmake_install
-find %{buildroot} -name '*.la' -type f -delete
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 # remove installed html doc
 rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
 
@@ -86,16 +89,13 @@ sed -i 's/\r$//' docs/html/javascript/main.js docs/html/styles/1.css
 %postun -n libalure1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/alure*
 
 %files -n libalure1
-%defattr(-,root,root)
 %{_libdir}/libalure.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %doc docs/html examples
 %{_includedir}/AL/
 %{_libdir}/*.so

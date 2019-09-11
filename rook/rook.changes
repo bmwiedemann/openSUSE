@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 23 12:29:48 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Make rook-k8s-yaml require the matching ceph version
+
+- Update rook to commit 692553221d8b18fec8aa3ccdc5872e51f05ca372:
+  +  uncomment ROOK_CSI_CEPH_IMAGE var
+
+-------------------------------------------------------------------
+Fri Aug 16 07:51:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundant wording from description.
+
+-------------------------------------------------------------------
 Mon Aug 12 11:05:32 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Update Rook to commit e9abbf4831673a9a5545971532ae326e95f3ea60
   + enable the ceph-csi driver by default
   + remove csi default settings from yaml
-  + add option to disable flex driver 
+  + add option to disable flex driver
   + allow the discovery daemon to be optional
   + automatically create the csi secret with the cluster
   + Allow to launch pods when memory request is set (but no memory limit)

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 22 19:38:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove pointless ldconfig call from chewing-utils subpackage.
+- Specfile update: remove implicit BuildRoot and defattrs.
+- Properly fulfill SLPP requirement that only the library file
+  is in the library subpackage.
+
+-------------------------------------------------------------------
 Fri Nov 24 10:37:05 UTC 2017 - opensuse-packaging@opensuse.org
 
 - Update to version 0.4.0+git20171114.3df07c9:

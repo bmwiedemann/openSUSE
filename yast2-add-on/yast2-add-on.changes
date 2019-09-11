@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 28 13:06:58 CEST 2019 - schubi@suse.de
+
+- Removed empty entry in desktop file (bsc#144894).
+- 4.2.6
+
+-------------------------------------------------------------------
+Tue Aug 27 18:53:03 CEST 2019 - schubi@suse.de
+
+- Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
+- 4.2.5
+
+-------------------------------------------------------------------
 Fri Jul 26 12:27:45 CEST 2019 - schubi@suse.de
 
 - AY: Adapted docu regarding <add_on_others> flag (bsc#1125411).

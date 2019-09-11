@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Clean
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,70 +12,62 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-HTML-Clean
+Version:        1.2
+Release:        0
+%define cpan_name HTML-Clean
+Summary:        Cleans up HTML code for web browsers, not humans
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Group:          Development/Libraries/Perl
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AZ/AZJADFTRE/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Version:        0.8
-Release:        0
-Provides:       HTML-Clean
-Conflicts:      perlmod
-Url:            http://cpan.org/modules/by-module/HTML/
-Source:         HTML-Clean-%{version}.tar.gz
-Patch:          %{name}-%{version}-IO.diff
-Summary:        Cleans up HTML code for web browsers, not humans
-License:        Artistic-1.0
-Group:          Development/Libraries/Perl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 
 %description
-The majority of the web pages of the internet today are much larger
-than they need to be.  The reason for this is that HTML tends to be
-stored in a human readable format, with indenting, newlines and
-comments.
+The HTML::Clean module encapsulates a number of common techniques for
+minimizing the size of HTML files. You can typically save between 10% and
+50% of the size of a HTML file using these methods. It provides the
+following features:
 
-However, all of these comments, whitespace etc. are ignored by the
-browser, and needlessly lengthen download times.
+* Remove unneeded whitespace (beginning of line, etc)
 
-Second, many people are using WYSIWYG HTML editors these days. This
-makes creating content easy.  However these editors can cause a number
-of compatibility problems by tying themselves to a particular browser
-or operating system.
+* Remove unneeded META elements.
 
+* Remove HTML comments (except for styles, javascript and SSI)
 
+* Replace tags with equivalent shorter tags (<strong> --> <b>)
 
-Authors:
---------
-    Paul Lindner <paul.lindner@itu.int>
+* etc.
 
-%prep 
-%setup -n HTML-Clean-%{version} -q
-%patch
+The entire process is configurable, so you can pick and choose what you want
+to clean.
+
+%prep
+%setup -q -n %{cpan_name}-%{version}
 
 %build
-perl Makefile.PL
-make %{?_smp_mflags} all
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
+
+%check
 make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install_vendor
+%perl_make_install
 %perl_process_packlist
+%perl_gen_filelist
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%files
-%defattr(-, root, root)
-%doc TODO Changes README
-%doc %{_mandir}/man?/*
-%{perl_vendorarch}/auto/HTML
-%{perl_vendorlib}/auto/HTML
-%{perl_vendorlib}/HTML
-%{_bindir}/htmlclean
+%files -f %{name}.files
+%defattr(-,root,root,755)
+%doc Changes README TODO
 
 %changelog

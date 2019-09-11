@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 15 23:44:35 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.12.9 (released 2019/08/15) includes fixes to the linker and
+  the os and math/big packages.
+  Refs boo#1141689.
+  * go#33557 cmd/link: stack depth check too shallow
+  * go#33424 os.RemoveAll: openFdAt function without O_CLOEXEC and cause fd escape to child process
+  * go#33040 cmd/link: missing section for relocation target
+  * go#32940 math/big: arm64 assembly code for shlVU is incorrect
+  * go#30401 doc: syscall: document Setrlimit behavior change on Go 1.12 on macOS
+
+-------------------------------------------------------------------
 Tue Aug 13 20:52:13 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.12.8 (released 2019/08/13) includes security fixes to the
-  net/http and net/url packages addressing:
+  net/http and net/url packages addressing CVEs:
   CVE-2019-9512 CVE-2019-9514 CVE-2019-14809
   Refs boo#1141689.
+  * bnc#1146111 VUL-0: CVE-2019-9512: go: HTTP/2: flood using PING frames results in unbounded memory growth
+  * bnc#1146115 VUL-0: CVE-2019-9514: go: HTTP/2 implementation is vulnerable to a reset flood, potentially leading to a denial of service
+  * bnc#1146123 VUL-0: CVE-2019-14809: go: malformed hosts in URLs leads to authorization bypass
   * go#33633 net/url: URL.Parse Multiple Parsing Issues
   * go#33631 net/http: Denial of Service vulnerabilities in the HTTP/2 implementation
 

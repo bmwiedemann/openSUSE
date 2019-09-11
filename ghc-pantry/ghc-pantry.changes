@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 28 02:02:36 UTC 2019 - psimons@suse.com
+
+- Update pantry to version 0.1.1.2.
+  * "enable-undecidable-instances-extension.patch" is obsolete.
+  * Module mapping insertions into the database are now atomic.
+    Previously, if you SIGTERMed at the wrong time while running a
+    script, you could end up with an inconsistent database state.
+
+-------------------------------------------------------------------
 Thu Jul 18 08:17:33 UTC 2019 - psimons@suse.com
 
 - Update pantry to version 0.1.1.1.

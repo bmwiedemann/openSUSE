@@ -27,15 +27,12 @@ Source:         https://freedesktop.org/software/pulseaudio/pavucontrol/%{name}-
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-# Only needed because we don't (and won't) support building xz tarballs by default... See bnc#697467
-BuildRequires:  xz
 BuildRequires:  pkgconfig(libpulse) >= 0.9.16
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.16
 BuildRequires:  pkgconfig(sigc++-2.0)
-Recommends:     %{name}-lang
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 2.99
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.16
+Requires:       pulseaudio
 
 %description
 PulseAudio Volume Control (pavucontrol) is a simple GTK based volume
@@ -55,16 +52,9 @@ make %{?_smp_mflags}
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file %{name}
 
 # This is documentation we prefer to have in the package doc directory
 rm -r %{buildroot}%{_datadir}/doc/%{name}
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
 
 %files
 %license LICENSE

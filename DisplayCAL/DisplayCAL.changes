@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Sep 06 10:28:25 UTC 2019 - obs-packaging@displaycal.net
+
+- Update to 3.8.6:
+  * [Enhancement] If the graphics drivers or hardware do not
+    support loadable gamma ramps or calibration, show a more
+    descriptive error message.
+  * [Enhancement] Increase the timeout for display & instrument
+    detection during application startup from 10 to 20 seconds, to
+    allow for slow opening of legacy serial ports.
+  * [Minor] Do not attempt to access properties of non-existent
+    objects if a subprocess is not succesfully terminated after
+    reaching a timeout during display & instrument detection at
+    application startup (unexpected failure).
+  * [Trivial] [UI] Disable the profile installation button if no
+    displays have been detected.
+  * [Trivial] [UI] Disable the measurement report menu item if no
+    instruments have been detected.
+
+-------------------------------------------------------------------
+Wed Aug 14 13:10:11 UTC 2019 - obs-packaging@displaycal.net
+
+- Update to 3.8.5:
+  * [Moderate] DisplayCAL 3.8.4 broke video levels (16..235) output
+    encoding/decoding for video card gamma table tags (profiles
+    using calibration with video output levels created by 3.8.4 can
+    be fixed by re-creating via menu “File”, “Create profile from
+    measurement data...” and selecting the existing profile).
+
+-------------------------------------------------------------------
+Sat Aug 10 21:21:54 UTC 2019 - obs-packaging@displaycal.net
+
+- Update to 3.8.4:
+  * [Enhancement] Do early detection of highly non-monotonic
+    luminance responses when doing on-the-fly generation of the
+    preconditioning profile for auto-optimized testcharts with 425
+    or more patches.
+  * [Enhancement] Always create a single shaper curve for the
+    fallback matrix tags of cLUT profiles with nonlinear
+    calibration.
+  * [Minor] Work-around Argyll applycal bug with gamma value TRC
+    curve tags in profiles (fixes generating HDR 3D LUTs from
+    display profiles with such tags).
+
+-------------------------------------------------------------------
 Tue Jul 02 21:04:00 UTC 2019 - obs-packaging@displaycal.net
 
 - Update to 3.8.3:

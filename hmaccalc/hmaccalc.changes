@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 14 06:17:57 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- hmac signatures were split from NSS core libs for SLE packaging
+  compatibility but recommended and therefore not installed by
+  the build process; now a build requirement (boo#1145414)
+
+-------------------------------------------------------------------
 Sun Jan 18 18:33:15 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 0.9.14
@@ -8,7 +15,7 @@ Sun Jan 18 18:33:15 UTC 2015 - p.drouand@gmail.com
 Wed May  7 12:21:21 UTC 2014 - coolo@suse.com
 
 - remove prelink buildrequire - completely unneeded and unnecessarily
-  increases core ring 
+  increases core ring
 
 -------------------------------------------------------------------
 Mon Apr 14 09:16:33 UTC 2014 - meissner@suse.com

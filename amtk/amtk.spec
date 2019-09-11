@@ -1,7 +1,7 @@
 #
 # spec file for package amtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,20 +13,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define api_ver 5
 %define libamtk libamtk-%{api_ver}-0
 Name:           amtk
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Amtk
-Source:         http://download.gnome.org/sources/amtk/5.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/amtk/5.0/%{name}-%{version}.tar.xz
+
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc >= 1.25
 BuildRequires:  pkgconfig

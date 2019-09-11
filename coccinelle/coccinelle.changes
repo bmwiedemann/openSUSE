@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 22 14:04:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.7
+  * Allow constraints on any metavariables. Constraints can be
+    specified by comprehension (= { … } or != { … }, with each
+    item referring to a constant identifier or an inherited
+    meta-variable, and curly-brackets can be omitted for a single
+    item), regular expression (~ "..." or !~ "..."), integer
+    comparison (<, <, >=, >) or scripts (:script:…). Constraints
+    can be used in conjunctions (&&), disjunctions (||) and can
+    be negated (!) and parenthesed.
+  * Allow script finalizers for parallel computation. See
+    tests/countcalls.cocci and tests/countcalls_python.cocci
+  * Allow disjunctions on a wider range of syntactic
+    constructions (function definitions, variable declarations,
+    …).
+
+-------------------------------------------------------------------
 Mon Jul 29 09:43:52 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pre-shipped binaries for spgen and spgen.opt: since these

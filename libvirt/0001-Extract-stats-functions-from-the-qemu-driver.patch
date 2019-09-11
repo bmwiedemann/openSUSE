@@ -18,10 +18,10 @@ them.
  create mode 100644 src/conf/domain_stats.c
  create mode 100644 src/conf/domain_stats.h
 
-Index: libvirt-5.6.0/src/conf/domain_stats.c
+Index: libvirt-5.7.0/src/conf/domain_stats.c
 ===================================================================
 --- /dev/null
-+++ libvirt-5.6.0/src/conf/domain_stats.c
++++ libvirt-5.7.0/src/conf/domain_stats.c
 @@ -0,0 +1,139 @@
 +/*
 + * domain_stats.c: domain stats extraction helpers
@@ -162,10 +162,10 @@ Index: libvirt-5.6.0/src/conf/domain_stats.c
 +}
 +
 +#undef STATS_ADD_NET_PARAM
-Index: libvirt-5.6.0/src/conf/domain_stats.h
+Index: libvirt-5.7.0/src/conf/domain_stats.h
 ===================================================================
 --- /dev/null
-+++ libvirt-5.6.0/src/conf/domain_stats.h
++++ libvirt-5.7.0/src/conf/domain_stats.h
 @@ -0,0 +1,64 @@
 +/*
 + * domain_stats.h: domain stats extraction helpers
@@ -231,11 +231,11 @@ Index: libvirt-5.6.0/src/conf/domain_stats.h
 +                               int *maxparams);
 +
 +#endif /* __DOMAIN_STATS_H */
-Index: libvirt-5.6.0/src/libvirt_private.syms
+Index: libvirt-5.7.0/src/libvirt_private.syms
 ===================================================================
---- libvirt-5.6.0.orig/src/libvirt_private.syms
-+++ libvirt-5.6.0/src/libvirt_private.syms
-@@ -694,6 +694,9 @@ virDomainConfNWFilterInstantiate;
+--- libvirt-5.7.0.orig/src/libvirt_private.syms
++++ libvirt-5.7.0/src/libvirt_private.syms
+@@ -695,6 +695,9 @@ virDomainConfNWFilterInstantiate;
  virDomainConfNWFilterTeardown;
  virDomainConfVMNWFilterTeardown;
  
@@ -245,7 +245,7 @@ Index: libvirt-5.6.0/src/libvirt_private.syms
  
  # conf/interface_conf.h
  virInterfaceDefFormat;
-@@ -1645,6 +1648,7 @@ virCgroupGetMemoryUsage;
+@@ -1648,6 +1651,7 @@ virCgroupGetMemoryUsage;
  virCgroupGetMemSwapHardLimit;
  virCgroupGetMemSwapUsage;
  virCgroupGetPercpuStats;
@@ -253,11 +253,11 @@ Index: libvirt-5.6.0/src/libvirt_private.syms
  virCgroupHasController;
  virCgroupHasEmptyTasks;
  virCgroupKillPainfully;
-Index: libvirt-5.6.0/src/qemu/qemu_driver.c
+Index: libvirt-5.7.0/src/qemu/qemu_driver.c
 ===================================================================
---- libvirt-5.6.0.orig/src/qemu/qemu_driver.c
-+++ libvirt-5.6.0/src/qemu/qemu_driver.c
-@@ -68,6 +68,7 @@
+--- libvirt-5.7.0.orig/src/qemu/qemu_driver.c
++++ libvirt-5.7.0/src/qemu/qemu_driver.c
+@@ -67,6 +67,7 @@
  #include "virarptable.h"
  #include "viruuid.h"
  #include "domain_conf.h"
@@ -265,7 +265,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  #include "domain_audit.h"
  #include "node_device_conf.h"
  #include "virpci.h"
-@@ -20662,21 +20663,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
+@@ -20767,21 +20768,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
                          int *maxparams,
                          unsigned int privflags ATTRIBUTE_UNUSED)
  {
@@ -288,7 +288,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -20866,37 +20853,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
+@@ -20998,37 +20985,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
                              int *maxparams)
  {
      qemuDomainObjPrivatePtr priv = dom->privateData;
@@ -327,7 +327,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -21092,44 +21049,6 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
+@@ -21224,44 +21181,6 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
      return ret;
  }
  
@@ -372,7 +372,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  static int
  qemuDomainGetStatsInterface(virQEMUDriverPtr driver ATTRIBUTE_UNUSED,
                              virDomainObjPtr dom,
-@@ -21137,68 +21056,9 @@ qemuDomainGetStatsInterface(virQEMUDrive
+@@ -21269,68 +21188,9 @@ qemuDomainGetStatsInterface(virQEMUDrive
                              int *maxparams,
                              unsigned int privflags ATTRIBUTE_UNUSED)
  {
@@ -442,7 +442,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  #define QEMU_ADD_BLOCK_PARAM_UI(record, maxparams, num, name, value) \
      do { \
          char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
-@@ -21431,10 +21291,10 @@ qemuDomainGetStatsBlockExportHeader(virD
+@@ -21560,10 +21420,10 @@ qemuDomainGetStatsBlockExportHeader(virD
  {
      int ret = -1;
  
@@ -455,7 +455,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
      if (src->id)
          QEMU_ADD_BLOCK_PARAM_UI(records, nrecords, recordnr, "backingIndex",
                                  src->id);
-@@ -21588,7 +21448,7 @@ qemuDomainGetStatsBlock(virQEMUDriverPtr
+@@ -21717,7 +21577,7 @@ qemuDomainGetStatsBlock(virQEMUDriverPtr
       * after the iteration than it is to iterate twice; but we still
       * want count listed first.  */
      count_index = record->nparams;
@@ -464,7 +464,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  
      for (i = 0; i < dom->def->ndisks; i++) {
          if (qemuDomainGetStatsBlockExportDisk(dom->def->disks[i], stats, nodestats,
-@@ -21613,8 +21473,6 @@ qemuDomainGetStatsBlock(virQEMUDriverPtr
+@@ -21742,8 +21602,6 @@ qemuDomainGetStatsBlock(virQEMUDriverPtr
  
  #undef QEMU_ADD_BLOCK_PARAM_ULL
  
@@ -473,7 +473,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  #define QEMU_ADD_IOTHREAD_PARAM_UI(record, maxparams, id, name, value) \
      do { \
          char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
-@@ -21666,7 +21524,7 @@ qemuDomainGetStatsIOThread(virQEMUDriver
+@@ -21795,7 +21653,7 @@ qemuDomainGetStatsIOThread(virQEMUDriver
      if (niothreads == 0)
          return 0;
  
@@ -482,7 +482,7 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  
      for (i = 0; i < niothreads; i++) {
          if (iothreads[i]->poll_valid) {
-@@ -21699,8 +21557,6 @@ qemuDomainGetStatsIOThread(virQEMUDriver
+@@ -21828,8 +21686,6 @@ qemuDomainGetStatsIOThread(virQEMUDriver
  
  #undef QEMU_ADD_IOTHREAD_PARAM_ULL
  
@@ -491,10 +491,10 @@ Index: libvirt-5.6.0/src/qemu/qemu_driver.c
  static int
  qemuDomainGetStatsPerfOneEvent(virPerfPtr perf,
                                 virPerfEventType type,
-Index: libvirt-5.6.0/src/util/vircgroup.c
+Index: libvirt-5.7.0/src/util/vircgroup.c
 ===================================================================
---- libvirt-5.6.0.orig/src/util/vircgroup.c
-+++ libvirt-5.6.0/src/util/vircgroup.c
+--- libvirt-5.7.0.orig/src/util/vircgroup.c
++++ libvirt-5.7.0/src/util/vircgroup.c
 @@ -2791,6 +2791,44 @@ virCgroupControllerAvailable(int control
      return ret;
  }
@@ -556,10 +556,10 @@ Index: libvirt-5.6.0/src/util/vircgroup.c
  int
  virCgroupNewPartition(const char *path ATTRIBUTE_UNUSED,
                        bool create ATTRIBUTE_UNUSED,
-Index: libvirt-5.6.0/src/util/vircgroup.h
+Index: libvirt-5.7.0/src/util/vircgroup.h
 ===================================================================
---- libvirt-5.6.0.orig/src/util/vircgroup.h
-+++ libvirt-5.6.0/src/util/vircgroup.h
+--- libvirt-5.7.0.orig/src/util/vircgroup.h
++++ libvirt-5.7.0/src/util/vircgroup.h
 @@ -285,3 +285,7 @@ int virCgroupSetOwner(virCgroupPtr cgrou
  int virCgroupHasEmptyTasks(virCgroupPtr cgroup, int controller);
  
@@ -568,10 +568,10 @@ Index: libvirt-5.6.0/src/util/vircgroup.h
 +int virCgroupGetStatsCpu(virCgroupPtr cgroup,
 +                         virDomainStatsRecordPtr record,
 +                         int *maxparams);
-Index: libvirt-5.6.0/src/conf/Makefile.inc.am
+Index: libvirt-5.7.0/src/conf/Makefile.inc.am
 ===================================================================
---- libvirt-5.6.0.orig/src/conf/Makefile.inc.am
-+++ libvirt-5.6.0/src/conf/Makefile.inc.am
+--- libvirt-5.7.0.orig/src/conf/Makefile.inc.am
++++ libvirt-5.7.0/src/conf/Makefile.inc.am
 @@ -26,6 +26,8 @@ DOMAIN_CONF_SOURCES = \
  	conf/domain_audit.h \
  	conf/domain_nwfilter.c \

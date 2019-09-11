@@ -1,7 +1,7 @@
 #
 # spec file for package boinc-client
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016 by Aaron Puchert <aaronpuchert@alice-dsl.net>
 # Copyright (c) 2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -41,9 +41,9 @@ Release:        0
 Summary:        The BOINC client
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
 Group:          Productivity/Clustering/Computing
-Url:            http://boinc.berkeley.edu/
+URL:            https://boinc.berkeley.edu/
 
-#Git-Clone:	git://github.com/BOINC/boinc
+#Git-Clone:     https://github.com/BOINC/boinc
 Source0:        https://github.com/BOINC/boinc/archive/client_release/%{minor_version}/%{version}.tar.gz
 Source1:        boinc-icons.tar.bz2
 Source2:        boinc-gui.desktop
@@ -157,6 +157,7 @@ Requires:       openssl-devel
 This package contains development files for libboinc.
 
 %prep
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %setup -q -n %{name}_release-%{minor_version}-%{version} -D -a 1
 %patch -P 1 -P 2 -P 4 -P 5 -P 6 -p1
 

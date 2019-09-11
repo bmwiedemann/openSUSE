@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 24 04:36:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable static libs (standard openSUSE behavior)
+
+-------------------------------------------------------------------
 Wed Aug 14 08:21:58 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
 - Remove installed .cvsignore file
@@ -17,7 +22,7 @@ Mon Jul  8 09:59:35 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
 -------------------------------------------------------------------
 Thu Jul  4 16:51:35 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
-- Update to v1047
+- Update to v1047 (FATE#327307, jsc#SLE-6593, jsc#SLE-9179).
   - now supports autotools
   - supports library versioning
   - installs tools with program prefx

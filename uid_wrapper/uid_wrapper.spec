@@ -39,11 +39,11 @@ Source3:        uid_wrapper.keyring
 
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconf
 BuildRequires:  system-user-nobody
 
-Requires:       cmake
-Requires:       pkg-config
+Recommends:     cmake
+Recommends:     pkgconf
 
 %description
 Some projects like a file server need privilege separation to be able to switch
@@ -74,11 +74,7 @@ make %{?_smp_mflags} VERBOSE=1
 %cmake_install
 
 %check
-pushd build
-ls -l tests
-ldd tests/test_uwrap_enabled
-ctest --output-on-failure
-popd
+%ctest
 
 %post -p /sbin/ldconfig
 

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 27 18:28:02 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- New upstream release 0.113.0
+- Changes since 0.112.0:
+  * Bump version for release
+  * Don't set version numbers as INT cache entries
+  * Move cmake_minimum_required to the top of CMakeLists.txt
+  * Remove support for Qt4
+  * Remove unneded documentation
+  * authority: add support for passing details to polkit
+  * Fix typo in comments
+  * Add .arcconfig
+  * Remove unused file
+  * polkitqtlistener.cpp - pedantic
+  * Fix build with -DBUILD_TEST=TRUE
+  * Allow compilation with older polkit versions
+  * Fix compilation with Qt5.6
+  * Drop use of deprecated Qt functions REVIEW: 126747
+  * Add wrapper for polkit_system_bus_name_get_user_sync
+  * Add .reviewboardrc
+  * Fix QDBusArgument assertion
+  * fix build with Qt4, which doesn't have QStringLiteral. so use QString instead.
+  * do not use global static systembus instance
+- Dropped patch, now upstream:
+  * do-not-use-global-static-systembus-instance.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Aug 13 20:32:57 UTC 2014 - hrvoje.senjan@gmail.com
 
 - Added do-not-use-global-static-systembus-instance.patch from

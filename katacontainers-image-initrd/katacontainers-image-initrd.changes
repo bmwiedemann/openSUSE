@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  3 17:05:15 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add support for non x86_64 archs, by using the default kernel flavor instead
+  of kvmsmall
+- Require golang >= 1.12
+- Update package summary and description
+- Set the list of exclusive archs (x86_64, aarch64, ppc64le, s390x)
+
+-------------------------------------------------------------------
+Fri Aug 30 11:27:06 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Vendor in vmlinuz from kernel-kvmsmall to avoid dependency on that package
+  and the side effect linked to installing a VM kernel on the host
+
+-------------------------------------------------------------------
+Thu Aug  8 14:31:08 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Have this package directly depend on kernel-kvmsmall. 
+
+-------------------------------------------------------------------
 Mon Aug  5 16:51:17 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Include kernel version in initrd image name, and symlink it to the generic

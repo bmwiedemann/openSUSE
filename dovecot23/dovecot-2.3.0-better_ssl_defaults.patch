@@ -1,7 +1,7 @@
-Index: dovecot-2.3.2/doc/example-config/conf.d/10-ssl.conf
+Index: dovecot-2.3.7.2/doc/example-config/conf.d/10-ssl.conf
 ===================================================================
---- dovecot-2.3.2.orig/doc/example-config/conf.d/10-ssl.conf
-+++ dovecot-2.3.2/doc/example-config/conf.d/10-ssl.conf
+--- dovecot-2.3.7.2.orig/doc/example-config/conf.d/10-ssl.conf
++++ dovecot-2.3.7.2/doc/example-config/conf.d/10-ssl.conf
 @@ -9,8 +9,8 @@
  # dropping root privileges, so keep the key file unreadable by anyone but
  # root. Included doc/mkcert.sh can be used to easily generate self-signed
@@ -13,7 +13,7 @@ Index: dovecot-2.3.2/doc/example-config/conf.d/10-ssl.conf
  
  # If key file is password protected, give the password here. Alternatively
  # give it when starting dovecot with -p parameter. Since this file is often
-@@ -57,6 +57,7 @@ ssl_key = </etc/ssl/private/dovecot.pem
+@@ -60,6 +60,7 @@ ssl_key = </etc/ssl/private/dovecot.pem
  #ssl_cipher_list = ALL:!kRSA:!SRP:!kDHd:!DSS:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK:!RC4:!ADH:!LOW@STRENGTH
  # To disable non-EC DH, use:
  #ssl_cipher_list = ALL:!DH:!kRSA:!SRP:!kDHd:!DSS:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK:!RC4:!ADH:!LOW@STRENGTH
@@ -21,7 +21,7 @@ Index: dovecot-2.3.2/doc/example-config/conf.d/10-ssl.conf
  
  # Colon separated list of elliptic curves to use. Empty value (the default)
  # means use the defaults from the SSL library. P-521:P-384:P-256 would be an
-@@ -65,6 +66,7 @@ ssl_key = </etc/ssl/private/dovecot.pem
+@@ -68,6 +69,7 @@ ssl_key = </etc/ssl/private/dovecot.pem
  
  # Prefer the server's order of ciphers over client's.
  #ssl_prefer_server_ciphers = no
@@ -29,16 +29,16 @@ Index: dovecot-2.3.2/doc/example-config/conf.d/10-ssl.conf
  
  # SSL crypto device to use, for valid values run "openssl engine"
  #ssl_crypto_device =
-@@ -73,3 +75,4 @@ ssl_key = </etc/ssl/private/dovecot.pem
+@@ -76,3 +78,4 @@ ssl_key = </etc/ssl/private/dovecot.pem
  #   compression - Enable compression.
  #   no_ticket - Disable SSL session tickets.
  #ssl_options =
 +ssl_options = no_compression
-Index: dovecot-2.3.2/src/lib-master/master-service-ssl-settings.c
+Index: dovecot-2.3.7.2/src/lib-master/master-service-ssl-settings.c
 ===================================================================
---- dovecot-2.3.2.orig/src/lib-master/master-service-ssl-settings.c
-+++ dovecot-2.3.2/src/lib-master/master-service-ssl-settings.c
-@@ -59,7 +59,7 @@ static const struct master_service_ssl_s
+--- dovecot-2.3.7.2.orig/src/lib-master/master-service-ssl-settings.c
++++ dovecot-2.3.7.2/src/lib-master/master-service-ssl-settings.c
+@@ -61,7 +61,7 @@ static const struct master_service_ssl_s
  	.ssl_client_cert = "",
  	.ssl_client_key = "",
  	.ssl_dh = "",

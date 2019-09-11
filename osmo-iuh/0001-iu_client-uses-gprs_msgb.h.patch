@@ -7,22 +7,22 @@ Subject: [PATCH] iu_client uses gprs_msgb.h
  src/Makefile.am |    5 +++--
  2 files changed, 4 insertions(+), 2 deletions(-)
 
-Index: osmo-iuh-0.3.0/configure.ac
+Index: osmo-iuh-0.5.0/configure.ac
 ===================================================================
---- osmo-iuh-0.3.0.orig/configure.ac
-+++ osmo-iuh-0.3.0/configure.ac
+--- osmo-iuh-0.5.0.orig/configure.ac
++++ osmo-iuh-0.5.0/configure.ac
 @@ -34,6 +34,7 @@ fi
  PKG_PROG_PKG_CONFIG([0.20])
  
- PKG_CHECK_MODULES(OSMOCORE, libosmocore >= 0.11.0)
+ PKG_CHECK_MODULES(OSMOCORE, libosmocore >= 0.12.0)
 +PKG_CHECK_MODULES([OSMOGB], [libosmogb])
- PKG_CHECK_MODULES(OSMOGSM, libosmogsm >= 0.11.0)
- PKG_CHECK_MODULES(OSMOVTY, libosmovty >= 0.11.0)
- PKG_CHECK_MODULES(OSMOCTRL, libosmoctrl >= 0.11.0)
-Index: osmo-iuh-0.3.0/src/Makefile.am
+ PKG_CHECK_MODULES(OSMOGSM, libosmogsm >= 0.12.0)
+ PKG_CHECK_MODULES(OSMOVTY, libosmovty >= 0.12.0)
+ PKG_CHECK_MODULES(OSMOCTRL, libosmoctrl >= 0.12.0)
+Index: osmo-iuh-0.5.0/src/Makefile.am
 ===================================================================
---- osmo-iuh-0.3.0.orig/src/Makefile.am
-+++ osmo-iuh-0.3.0/src/Makefile.am
+--- osmo-iuh-0.5.0.orig/src/Makefile.am
++++ osmo-iuh-0.5.0/src/Makefile.am
 @@ -42,9 +42,10 @@ gen_ranap.stamp: $(ASN1_ROOT)/ranap/RANA
  
  ranap_decoder.c ranap_encoder.c: gen_ranap.stamp

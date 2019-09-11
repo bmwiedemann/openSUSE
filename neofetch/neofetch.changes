@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Sep  2 12:06:27 UTC 2019 - mvetter@suse.com
+
+- Update to 6.1.0:
+  OS:
+  * Added support for KISS Linux.
+  * Added support for Bonsai Linux. @mitchweaver
+  * Added support for Radix Linux.
+  ASCII:
+  * ascii: Fixed bug causing ascii files to not work.
+  * Fix big Puffy ascii logo. Charlène
+  * ASCII: Updated Artix ASCII with new logo. @konimex
+  * Add ascii art for Clear Linux. @chrisweeksnz
+  * new logo for Ataraxia Linux. @protonesso
+  * ASCII: Add fedora_small. @zyg812
+  * Added a case for displaying the Ubuntu logo for i3buntu. @chrissxYT
+  * New Peppermint Logo. @Mark-Peppermint
+  * ascii: Fix void.
+  * update Red Hat with new 2019 logo. @infinitewarp
+  * ascii: Add back old redhat logo (--ascii_distro redhat_old).
+  * ASCII: Added Feren OS. @konimex
+  * Linux: Update ASCII for Sailfish OS. @konimex
+  * Linux: Fix ASCII for Sailfish OS. @Michal-Szczepaniak
+  * Small tweak to the colours used for the Feren OS Logo. @feren
+  Images:
+  * general: fix image sizing in VTE terminals.
+  * general: Fix issue with URxvt and no internal border.
+  * display_image: Allow Chafa backend to stretch image to desired size. @hpjansson
+  Terminal:
+  * term_font [kitty]: Fix bug with empty config.
+  * term_font: fix issue with konsole font detection. Michael Straube
+  * Robuster kitty font parsing. @SibrenVasse
+  * term_font: Fix crash when parsing Xresources.
+  * kitty font parsing where font name has whitespaces. @lebensterben
+  * term: Fix wrapper scripts in NixOS. Thanks Tdeo.
+  Memory:
+  * Memory [AIX]: Detect memory based on pages (like Solaris) for more accuracy. @konimex
+  CPU:
+  * CPU [Linux/ARM]: Use Hardware field directly. @konimex
+  GPU:
+  * Properly work with multiple GPUs. @lebensterben
+  * Fix GPU parsing.
+  Packages:
+  * Set nullglob for package counting. @14mRh4X0r
+  * packages: Check brew on Linux. @dawidd6
+  Theme:
+  * WM Theme: update for Mojave. @iandrewt
+  * Handle ${GTK2_RC_FILES} with multiple values. @edward-p
+  * use "$GTK2_RC_FILES". @edward-p
+  Song:
+  * song: add strawberry player. Michael Straube
+  * song: Added support for plasma-browser-integration.
+  * song: add gogglesmm. Michael Straube
+  * song: add xnoise. Michael Straube
+  IP:
+  * Retrieve public IP info via drill. @vaygr
+  Shell:
+  * support other versions of ksh. @mitchweaver
+
+-------------------------------------------------------------------
 Wed Jan  9 12:47:28 UTC 2019 - Alexander Graul <agraul@suse.com>
 
 - Update to 6.0.0:

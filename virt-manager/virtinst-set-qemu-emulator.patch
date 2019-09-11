@@ -5,7 +5,7 @@ Index: virt-manager-2.2.1/virtinst/guest.py
 ===================================================================
 --- virt-manager-2.2.1.orig/virtinst/guest.py
 +++ virt-manager-2.2.1/virtinst/guest.py
-@@ -739,6 +739,10 @@ class Guest(XMLBuilder):
+@@ -740,6 +740,10 @@ class Guest(XMLBuilder):
          self._add_default_memballoon()
  
          self.clock.set_defaults(self)

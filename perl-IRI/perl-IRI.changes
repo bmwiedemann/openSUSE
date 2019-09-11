@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug 30 18:45:09 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove outdated patch fix-package.diff (also not needed anymore)
+  Remove manual fix for inc::Module::Install
+
+-------------------------------------------------------------------
+Wed Apr  3 07:04:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.009  2018-10-30
+  
+   - (Update) Reduce Minimum Perl Version to 5.10 (#12 from @tehmoth).
+  
+  0.008  2017-08-06
+  
+   - (Update) Fix typo in regex rule causing problems parsing codepoints
+     beyond BMP (#11).
+  
+  0.007  2017-04-03
+  
+   - (Addition) Add query_form accessor and set_query_param constructor (#4).
+   - (Update) Updated Makefile.PL for perl 5.26.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:28:41 UTC 2017 - coolo@suse.com
 
 - patch the Makefile to build with perl 5.26

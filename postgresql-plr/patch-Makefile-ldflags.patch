@@ -1,6 +1,7 @@
-diff -rup a/Makefile b/Makefile
---- a/Makefile	2016-09-28 15:26:14.000000000 +0200
-+++ b/Makefile	2017-01-11 15:30:03.883047804 +0100
+Index: plr-REL8_3_0_18/Makefile
+===================================================================
+--- plr-REL8_3_0_18.orig/Makefile
++++ plr-REL8_3_0_18/Makefile
 @@ -21,7 +21,7 @@ MODULE_big	= plr
  PG_CPPFLAGS	+= $(r_includespec)
  SRCS		+= plr.c pg_conversion.c pg_backend_support.c pg_userfuncs.c pg_rsupport.c
@@ -8,7 +9,7 @@ diff -rup a/Makefile b/Makefile
 -SHLIB_LINK	+= -L$(r_libdir1x) -L$(r_libdir2x) -lR
 +SHLIB_LINK  += -L$(r_libdir1x) -L$(r_libdir2x) -lR $(LDFLAGS)
  DATA_built	= plr.sql
- DATA		= plr--8.3.0.17.sql plr--unpackaged--8.3.0.17.sql
+ DATA		= plr--8.3.0.18.sql plr--unpackaged--8.3.0.18.sql
  DOCS		= README.plr
 @@ -72,6 +72,7 @@ ifneq (,$(findstring yes, $(shared_libr)
  override CPPFLAGS := -I"$(srcdir)" -I"$(r_includespec)" $(CPPFLAGS)

@@ -16,11 +16,14 @@
 #
 
 
-%bcond_without system-audaspace
+%bcond_without system_audaspace
 %bcond_without collada
-%bcond_without wplayer
+%bcond_with opensubdiv
 %bcond_with openvdb
+%bcond_with alembic
+%bcond_with embree
 %bcond_without osl
+%bcond_with wplayer
 
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
@@ -30,8 +33,9 @@
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
 %define _version %(echo %{version} | cut -b 1-4)
+
 Name:           blender
-Version:        2.79b
+Version:        2.80
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -43,20 +47,7 @@ Source1:        http://download.blender.org/source/%{name}-%{version}.tar.gz.md5
 Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
-Source8:        blender.appdata.xml
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Added-extra-const-to-satisfy-the-strict-clang-versio.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Cycles-Fix-bad-register-cast-in-sseb.patch
-# The openvdb package is WIP
-#Patch2         blender-2.78c-openvdb3-abi.patch
-# PATCH-FIX-UPSTREAM from commit 1db47a2ccd1e68994bf8140eba6cc2a26a2bc91f fixes boo#1124964
-Patch3:         0001-Fix-PyRNA-class-registration-w-Python-3.7.patch
-# PATCH-FIX-UPSTREAM 0008-fix_building_with_latest_versions_of_FFmpeg.patch -- Fix build with current ffmpeg v4
-Patch4:         0008-fix_building_with_latest_versions_of_FFmpeg.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-for-GCC9-new-OpenMP-data-sharing.patch -- Fix build with GCC 9
-Patch5:         0001-Fix-for-GCC9-new-OpenMP-data-sharing.patch
-# libquicktime-devel
+Source8:        %{name}.appdata.xml
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenEXR-devel
 BuildRequires:  SDL2-devel
@@ -72,20 +63,32 @@ BuildRequires:  graphviz
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jack-audio-connection-kit-devel
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_wave-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  llvm-devel
 %if %{with openvdb}
-BuildRequires:  libboost_serialization-devel
 BuildRequires:  openvdb-devel
+BuildRequires:  cmake(TBB)
+BuildRequires:  pkgconfig(blosc)
+%endif
+%if %{with alembic}
+BuildRequires:  alembic-devel
+%endif
+%if %{with embree}
+BuildRequires:  embree-devel-static
 %endif
 BuildRequires:  libpng-devel
-BuildRequires:  libsndfile-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
@@ -96,7 +99,7 @@ BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libopenjpeg)
+BuildRequires:  pkgconfig(libopenjp2)
 %if 0%{?debugbuild} == 1
 BuildRequires:  pkgconfig(valgrind)
 %endif
@@ -114,28 +117,24 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glw)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(python3) >= 3.5
+BuildRequires:  pkgconfig(python3) >= 3.7
+BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
-Requires:       python3-base >= %{py3version}
-# See bnc#713346
-Requires:       python3-numpy
-Requires:       python3-requests
-Requires:       python3-xml
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libswscale)
 %if %{with collada}
 BuildRequires:  openCOLLADA-devel
 %endif
-%if %{with system-audaspace}
+%if %{with system_audaspace}
 BuildRequires:  pkgconfig(audaspace) >= 1.3
 Requires:       audaspace-plugins
 %endif
@@ -144,11 +143,17 @@ BuildRequires:  OpenImageIO-devel
 %if %{with osl}
 BuildRequires:  OpenShadingLanguage-devel
 %endif
-BuildRequires:  llvm-devel
+%if %{with opensubdiv}
+BuildRequires:  OpenSubdiv-devel
+%endif
 BuildRequires:  cmake(pugixml)
 %ifarch x86_64
 Requires:       %{name}-cycles-devel = %{version}
 %endif
+Requires:       python3-base >= %{py3version}
+Requires:       python3-numpy
+Requires:       python3-requests
+Requires:       python3-xml
 Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
 
@@ -196,11 +201,10 @@ popd
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
-echo %{_version}
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-%limit_build -m 800
+%limit_build -m 600
 # sse options only on supported archs
 %ifarch %{ix86} x86_64
 sseflags='-msse -msse2'
@@ -215,7 +219,8 @@ mkdir -p build && pushd build
 # It also puts _smp_mflags where it shouldn't, I had to write make -j1 to stop it.
 # NOTE: Don't use cmake macro.
 #
-cmake ../ -DBUILD_SHARED_LIBS:BOOL=off \
+# lean against build_files/cmake/config/blender_release.cmake
+cmake ../ \
 %if 0%{?debugbuild} == 1
       -DCMAKE_BUILD_TYPE:STRING=Debug \
       -DCMAKE_C_FLAGS_DEBUG:STRING="-fsanitize=address -ggdb" \
@@ -223,70 +228,109 @@ cmake ../ -DBUILD_SHARED_LIBS:BOOL=off \
       -DWITH_MEM_VALGRIND:BOOL=ON \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags}" \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags}" \
+      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags} -fopenmp" \
+      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags} -fopenmp" \
 %endif
+      -DCMAKE_VERBOSE_MAKEFILE=ON \
+      -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+      -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \
+      -DBUILD_SHARED_LIBS:BOOL=OFF \
+      -DWITH_INSTALL_PORTABLE:BOOL=OFF \
 %if 0%{?is_opensuse} == 1
       -DWITH_MEM_JEMALLOC:BOOL=ON \
 %endif
+%if %{with alembic}
+      -DWITH_ALEMBIC:BOOL=ON \
+%endif
       -DWITH_BUILDINFO:BOOL=ON \
-      -DWITH_LLVM:BOOL=ON \
-      -DWITH_FFTW3:BOOL=on \
-      -DWITH_JACK:BOOL=on \
-      -DWITH_JACK_DYNLOAD:BOOL=on \
-      -DWITH_CODEC_FFMPEG:BOOL=on \
-      -DWITH_CODEC_SNDFILE:BOOL=on \
-      -DWITH_IMAGE_OPENJPEG:BOOL=on \
-      -DWITH_SYSTEM_OPENJPEG:BOOL=on \
-      -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=on \
-%if %{with openvdb}
-     -DWITH_OPENVDB:BOOL=on \
-     -DWITH_OPENVDB_BLOSC:BOOL=on \
-%endif
-%if %{with collada}
-      -DWITH_OPENCOLLADA:BOOL=on \
-%else
-      -DWITH_OPENCOLLADA:BOOL=off \
-%endif
-%if %{with system-audaspace}
-      -DWITH_SYSTEM_AUDASPACE:BOOL=on \
-%endif
-      -DWITH_PYTHON:BOOL=on \
-      -DWITH_PYTHON_INSTALL:BOOL=off \
-      -DWITH_GAMEENGINE:BOOL=ON \
+      -DWITH_BULLET:BOOL=ON \
+      -DWITH_CODEC_AVI:BOOL=ON \
+      -DWITH_CODEC_FFMPEG:BOOL=ON \
+      -DWITH_CODEC_SNDFILE:BOOL=ON \
+      -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
 %ifarch ppc ppc64 ppc64le
       -DWITH_CYCLES:BOOL=OFF \
 %else
       -DWITH_CYCLES:BOOL=ON \
 %if %{with osl}
       -DWITH_CYCLES_OSL:BOOL=ON \
+%endif
+%if %{with embree}
+      -DWITH_CYCLES_EMBREE:BOOL=ON \
+%endif
+      -DWITH_LLVM:BOOL=ON \
       -DLLVM_LIBRARY:FILE=%{_libdir}/libLLVM.so \
 %endif
-      -DWITH_OPENIMAGEIO:BOOL=ON \
-      -DWITH_OPENCOLORIO:BOOL=ON \
-%endif
-      -DWITH_PLAYER:BOOL=on \
-      -DWITH_INSTALL_PORTABLE:BOOL=OFF \
+      -DWITH_DRACO:BOOL=ON \
+      -DWITH_FFTW3:BOOL=ON \
+      -DWITH_LIBMV:BOOL=ON \
+      -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=ON \
+      -DWITH_COMPOSITOR:BOOL=ON \
+      -DWITH_FREESTYLE:BOOL=ON \
+      -DWITH_GHOST_XDND:BOOL=ON \
+      -DWITH_IK_SOLVER:BOOL=ON \
+      -DWITH_IK_ITASC:BOOL=ON \
+      -DWITH_IMAGE_CINEON:BOOL=ON \
+      -DWITH_IMAGE_DDS:BOOL=ON \
+      -DWITH_IMAGE_HDR:BOOL=ON \
+      -DWITH_IMAGE_OPENEXR:BOOL=ON \
+      -DWITH_IMAGE_OPENJPEG:BOOL=ON \
+      -DOPENJPEG_LIBRARY:FILE=%{_libdir}/libopenjp2.so \
+      -DWITH_IMAGE_TIFF:BOOL=ON \
       -DWITH_INPUT_NDOF:BOOL=ON \
-      -DWITH_SYSTEM_GLEW:BOOL=ON \
-      -DWITH_SDL:BOOL=ON \
-      -DWITH_SDL_DYNLOAD:BOOL=on \
+      -DWITH_INTERNATIONAL:BOOL=ON \
+      -DWITH_JACK:BOOL=ON \
+      -DWITH_JACK_DYNLOAD:BOOL=ON \
+      -DWITH_LZMA:BOOL=ON \
+      -DWITH_LZO:BOOL=ON \
+      -DWITH_SYSTEM_LZO:BOOL=ON \
+      -DWITH_MOD_FLUID:BOOL=ON \
+      -DWITH_MOD_REMESH:BOOL=ON \
+      -DWITH_MOD_SMOKE:BOOL=ON \
 %ifnarch x86_64
-      -DWITH_RAYOPTIMIZATION:BOOL=OFF \
       -DWITH_MOD_OCEANSIM:BOOL=OFF \
 %else
-      -DWITH_RAYOPTIMIZATION:BOOL=on \
       -DWITH_MOD_OCEANSIM:BOOL=ON \
 %endif
-      -DCMAKE_VERBOSE_MAKEFILE=on \
-      -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-      -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \
+      -DWITH_AUDASPACE:BOOL=ON \
+%if %{with system_audaspace}
+      -DWITH_SYSTEM_AUDASPACE:BOOL=ON \
+%endif
+      -DWITH_OPENAL:BOOL=ON \
+%if %{with collada}
+      -DWITH_OPENCOLLADA:BOOL=ON \
+%else
+      -DWITH_OPENCOLLADA:BOOL=OFF \
+%endif
+      -DWITH_OPENCOLORIO:BOOL=ON \
+      -DWITH_OPENIMAGEIO:BOOL=ON \
+      -DWITH_OPENMP:BOOL=ON \
+%if %{with opensubdiv}
+      -DWITH_OPENSUBDIV:BOOL=ON \
+      -DOPENSUBDIV_OSDGPU_LIBRARY:FILE=%{_libdir}/libosdGPU.so \
+%endif
+%if %{with openvdb}
+      -DWITH_OPENVDB:BOOL=ON \
+      -DWITH_OPENVDB_BLOSC:BOOL=ON \
+%endif
+      -DWITH_PYTHON:BOOL=ON \
+      -DWITH_PYTHON_INSTALL:BOOL=OFF \
       -DPYTHON_VERSION=$psver \
       -DPYTHON_LIBPATH=%{_libexecdir} \
       -DPYTHON_LIBRARY=python$pver \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
-      -DWITH_PYTHON_INSTALL_NUMPY=off \
-      -DWITH_SYSTEM_LZO:BOOL=ON
+      -DWITH_PYTHON_INSTALL_NUMPY=OFF \
+%ifnarch x86_64
+      -DWITH_RAYOPTIMIZATION:BOOL=OFF \
+%else
+      -DWITH_RAYOPTIMIZATION:BOOL=ON \
+%endif
+      -DWITH_SDL:BOOL=ON \
+      -DWITH_SYSTEM_GLEW:BOOL=ON \
+      -DWITH_X11_XINPUT:BOOL=ON \
+      -DWITH_X11_XF86VMODE:BOOL=ON \
+      -DWITH_DOC_MANPAGE:BOOL=ON \
+      -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
 
 make %{?_smp_mflags}
 popd
@@ -304,7 +348,7 @@ find %{buildroot} -name "*.py" -perm 0644 -print0 | \
 	xargs -0r grep -l '#!' | xargs -d'\n' chmod -f 0755;
 # Copy text files to correct place.
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -v    %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
+cp -rv %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
 rm -rf %{buildroot}%{_datadir}/doc/blender
 # install blender sample.
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/
@@ -344,13 +388,15 @@ popd
 #cp -v %%{SOURCE5} %%{buildroot}%%{_mandir}/man1
 %endif
 
+# don't package thumbnailer
+rm %{buildroot}%{_bindir}/%{name}-thumbnailer.py
+
 %if 0%{?sles_version}
-%suse_update_desktop_file -i -n blender
+%suse_update_desktop_file -i -n %{name}
 %else
 # Validate blender.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/blender.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
-find . -name blender-softwaregl -print -exec cp -v {} %{buildroot}%{_bindir}/ \;
 
 %post
 %mime_database_post
@@ -363,28 +409,25 @@ find . -name blender-softwaregl -print -exec cp -v {} %{buildroot}%{_bindir}/ \;
 %icon_theme_cache_post
 
 %files lang -f %{name}.lang
+%dir %{_datadir}/%{name}/%{_version}/datafiles/locale
 %{_datadir}/%{name}/%{_version}/datafiles/locale/
 
 %files
 %{_bindir}/*
-%{_mandir}/man1/*
+%{_mandir}/man1/%{name}.1.gz
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/%{_version}
 %dir %{_datadir}/%{name}/%{_version}/datafiles
-%ifnarch ppc %power64
-%if 0%{?is_opensuse} == 1
-%{_datadir}/%{name}/%{_version}/datafiles/colormanagement/
-%endif
-%endif
+%exclude %{_datadir}/%{name}/%{_version}/datafiles/locale
 %ifarch x86_64
 %exclude %{_datadir}/%{name}/%{_version}/scripts/addons/cycles
 %endif
 %{_datadir}/%{name}/%{_version}/scripts/
-%{_datadir}/applications/blender.desktop
-%{_datadir}/icons/hicolor/*/apps/blender.png
-%{_datadir}/icons/hicolor/scalable/apps/blender.svg
+%{_datadir}/%{name}/%{_version}/datafiles/
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}*.svg
 %dir %{_datadir}/appdata
-%{_datadir}/appdata/*.appdata.xml
+%{_datadir}/appdata/%{name}.appdata.xml
 %doc %{_docdir}/%{name}
 
 %ifarch x86_64

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 29 15:01:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Place a mildly useful text in the %description section.
+
+-------------------------------------------------------------------
+Tue Aug 27 12:15:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 7.2.0
+  * new itertools: distinct_combinations, set_partitions, filter_except,
+    map_except, ichunked, only, time_limited, partitions, substrings_indexes
+  * Python 2.7 is no longer supported. All future releases will target 
+    the active versions of Python 3.
+  * The six library is no longer a dependency.
+  * collapse now treats bytes objects the same as str objects.
+  * numeric_range now supports ranges specified by datetime.datetime 
+    and datetime.timedelta objects
+
+-------------------------------------------------------------------
 Fri May 24 12:20:33 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 5.0.0

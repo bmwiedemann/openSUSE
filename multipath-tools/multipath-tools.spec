@@ -49,7 +49,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.2+11+suse.0f6a649
+Version:        0.8.2+27+suse.3ff280b
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -62,6 +62,7 @@ Source2:        dont-del-part-nodes.rules
 # Dracut conf file to make sure 11-dm-parts.rules is included in initrd
 Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
+Patch01:        libmultipath-set-enable_foreign-to-NONE-by-default.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 BuildRequires:  device-mapper-devel
@@ -156,7 +157,9 @@ This package provides development files and documentation for libdmmp.
 
 %prep
 %setup -q -n multipath-tools-%{version}
+# This must be before autopatch for code 12, otherwise build error
 cp %{SOURCE4} .
+%autopatch -p1
 
 %build
 [ -n "$SOURCE_DATE_EPOCH" ] && export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH

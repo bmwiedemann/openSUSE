@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  8 19:48:01 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+  1.22  2019-09-07 MANWAR
+        - Fixed issue RT# 130454, samesite parameter missing from sub cookie().
+
+-------------------------------------------------------------------
 Sun Oct 21 12:39:46 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 1.21

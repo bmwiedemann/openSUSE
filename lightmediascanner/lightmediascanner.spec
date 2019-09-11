@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           lightmediascanner
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Lightweight media scanner
 License:        LGPL-2.1
@@ -65,8 +65,6 @@ application that use %{name}.
 
 %prep
 %setup -q -n %{name}-release_%{version}
-
-sed -i 's/CODEC_ID_MP3/AV_CODEC_ID_MP3/' $(grep -rl CODEC_ID_MP3)
 
 %build
 export CFLAGS="%{optflags} -I$(pkg-config --variable=includedir libavformat)"

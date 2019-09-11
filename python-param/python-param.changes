@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 15:53:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Include a .version file.  Other packages need this to determine
+  this package's version.
+
+-------------------------------------------------------------------
 Mon Jun  3 10:57:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.9.1:

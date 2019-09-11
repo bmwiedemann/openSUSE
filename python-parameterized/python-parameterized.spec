@@ -27,7 +27,7 @@ Url:            https://github.com/wolever/parameterized
 Source:         https://files.pythonhosted.org/packages/source/p/parameterized/parameterized-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

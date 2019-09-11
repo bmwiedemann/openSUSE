@@ -22,12 +22,16 @@ Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.gnupg.org/
+URL:            https://www.gnupg.org/
 Source:         ftp://ftp.gnupg.org/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2
 Source1:        ftp://ftp.gnupg.org/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2.sig
 # http://www.gnupg.org/signature_key.en.html
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch0:         gawk5.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -37,7 +41,6 @@ pinentry, SmartCard Daemon, and possibly more in the future.
 
 %package -n libgpg-error0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
-#
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Provides:       libgpg-error = %{version}
@@ -50,7 +53,6 @@ pinentry, SmartCard Daemon, and possibly more in the future.
 
 %package devel
 Summary:        Development package for libgpg-error
-#
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
@@ -63,8 +65,10 @@ Files needed for software development using libgpg-error.
 
 %prep
 %setup -q -n libgpg-error-%{version}
+%patch0 -p1
 
 %build
+autoreconf -fvi
 %configure \
 	--disable-static \
 	--with-pic
@@ -80,8 +84,8 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 
 %check
 make check %{?_smp_mflags}
-%{buildroot}/%{_bindir}/gpg-error-config --libs | grep -q -v "\-lpthread"
-%{buildroot}/%{_bindir}/gpg-error-config --mt --libs | grep -q "\-lpthread"
+%{buildroot}/%{_bindir}/gpg-error-config --libs | grep -q -v "\-pthread"
+%{buildroot}/%{_bindir}/gpg-error-config --mt --libs | grep -q "\-pthread"
 
 %post -n libgpg-error0 -p /sbin/ldconfig
 %post devel

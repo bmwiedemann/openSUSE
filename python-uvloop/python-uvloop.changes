@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:29:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.0:
+  * Implement Server.start_serving() and related APIs
+  * Make Server an asynchronous context manager.
+  * Start using high-performance uv_udp_t handle. This
+    should result in a significantly faster UDP support.
+  * Make address validation faster in udp.sendto().
+
+-------------------------------------------------------------------
 Tue May 14 20:31:01 UTC 2019 -  Drew Balliet <aballiet@suse.com>
 
 - Commented out testing since it is timing out at 5400 seconds in build service

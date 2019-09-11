@@ -22,5 +22,5 @@ Index: ack-2.14/lib/App/Ack/ConfigDefault.pm
 +--type-add=rpm:ext:spec
 +
  # Ruby
- # http://www.ruby-lang.org/
+ # https://www.ruby-lang.org/
  --type-add=ruby:ext:rb,rhtml,rjs,rxml,erb,rake,spec

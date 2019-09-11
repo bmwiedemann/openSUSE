@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:27:27 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.daily as we don't want to require cron
+- pwdutils is long time gone, use shadow
+
+-------------------------------------------------------------------
 Mon Mar 18 21:45:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Do not hide errors from useradd.

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 30 11:35:00 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.10.0
+  * Changes
+    + This version of Phonon GStreamer is compatible with Phonon
+      4.11+ and its revised build systems. Older versions of Phonon
+      GStreamer no longer build against newer Phonon releases.
+      Conversely this version no longer builds with older Phonon
+      releases.
+    + Qt4 support has been removed. Qt5 is now the default.
+  * Bug Fixes
+    + Subtitles no longer outlive the media they were associated
+      with.
+
+-------------------------------------------------------------------
 Fri Jul 19 22:37:46 UTC 2019 - wbauer@tmo.at
 
 - Update to 4.9.1

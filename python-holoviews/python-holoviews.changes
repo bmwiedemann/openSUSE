@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Aug 31 04:47:26 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.12.5:
+  * Compatibility:
+    + The DaskInterface no longer attempts to import dask.dataframe
+      unless it is already imported (#3900)
+    + Scatter3D matplotlib rendering no longer errors with matplotlib
+      >= 3.1 (#3898)
+  * Bug fixes:
+    + Fixed bug converting datetime64 to datetime for dates <1970
+      (#3879)
+
+- changes from version 1.12.4:
+  * Enhancements:
+    + Add numpy log to dim transforms (#3731)
+    + Make Buffer stream following behavior togglable (#3823)
+    + Added internal methods to access dask arrays and made histogram
+      operation operate on dask arrays (#3854)
+    + Optimized range finding if Dimension.range is set (#3860)
+    + Add ability to use functions annotated with param.depends as
+      DynamicMap callbacks (#3744)
+  * Bug fixes:
+    + Fixed handling datetimes on Spikes elements (#3736)
+    + Fix graph plotting for unsigned integer node indices (#3773)
+    + Fix sort=False on GridSpace and GridMatrix (#3769)
+    + Fix extent scaling on VLine/HLine annotations (#3761)
+    + Fix BoxWhisker to match convention (#3755)
+    + Improved handling of custom array types (#3792)
+    + Allow setting cmap on HexTiles in matplotlib (#3803)
+    + Fixed handling of data_aspect in bokeh backend (#3848, #3872)
+    + Fixed legends on bokeh Path plots (#3809)
+    + Ensure Bars respect xlim and ylim (#3853)
+    + Allow setting Chord edge colors using explicit colormapping
+      (#3734)
+    + Fixed bug in decimate operation (#3875)
+  * Compatibility:
+    + Improve compatibility with deprecated matplotlib rcparams
+      (#3745, #3804)
+  * Backwards incompatible changes:
+    + Unfortunately due to a major mixup the data_aspect option added
+      in 1.12.0 was not correctly implemented and fixing it changed
+      its behavior significantly (inverting it entirely in some
+      cases).
+    + A mixup in the convention used to compute the whisker of a
+      box-whisker plots was fixed resulting in different results going
+      forward.
+
+-------------------------------------------------------------------
 Tue May 28 20:31:35 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - update to version 1.12.3

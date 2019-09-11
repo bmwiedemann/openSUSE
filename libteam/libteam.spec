@@ -18,22 +18,22 @@
 
 %bcond_without python2
 Name:           libteam
-Version:        1.27
+Version:        1.29
 Release:        0
 Summary:        Utilities for controlling 802.1AX team network device
 License:        LGPL-2.1+
 Group:          System/Kernel
-Url:            http://libteam.org/
+URL:            http://libteam.org/
 
-#Git-Web:	https://github.com/jpirko/libteam
-#Git-Clone:	git://github.com/jpirko/libteam
+#Git-Clone:	https://github.com/jpirko/libteam
 Source:         http://libteam.org/files/%name-%version.tar.gz
-Patch0:         check_if_psr_ops_were_initialized.patch
-Patch1:         start_teamd_from_usr_sbin.patch
-Patch2:         ignore_ebusy_for_team_hwaddr_set.patch
-Patch3:         0001-allow-send_interface-dbus.patch
+Patch1:         check_if_psr_ops_were_initialized.patch
+Patch2:         start_teamd_from_usr_sbin.patch
+Patch3:         ignore_ebusy_for_team_hwaddr_set.patch
+Patch4:         0001-allow-send_interface-dbus.patch
 BuildRequires:  doxygen
 BuildRequires:  libcap-devel
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  swig
 BuildRequires:  pkgconfig(dbus-1)
@@ -120,19 +120,13 @@ This package should be installed if you want to develop Python
 programs that will manipulate team network devices.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 %configure --includedir="%_includedir/%name" --bindir="%_sbindir" \
-	--disable-silent-rules \
-	--disable-static \
-	--with-run-dir=%teamd_daemon_directory \
-	--with-user=%teamd_user \
-	--with-group=%teamd_group
+	--disable-silent-rules --disable-static \
+	--with-run-dir="%teamd_daemon_directory" \
+	--with-user="%teamd_user" --with-group=%teamd_group
 # Use CFLAGS= to kill -Werror
 make %{?_smp_mflags} CFLAGS="%optflags"
 %if %{with python2}
@@ -155,11 +149,8 @@ rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_unitdir"
 install -pm0644 teamd/redhat/systemd/*.service "$b/%_unitdir/"
 %endif
-
-%if 0%{?_sysconfdir:1}
 mkdir -p "$b/%teamd_dbus_policy_directory/"
 install -pm0644 teamd/dbus/teamd.conf "$b/%teamd_dbus_policy_directory/%teamd_dbus_policy_name"
-%endif
 
 %check
 make check

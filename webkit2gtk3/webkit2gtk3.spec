@@ -42,7 +42,7 @@
 %bcond_with python3
 %endif
 Name:           webkit2gtk3
-Version:        2.24.3
+Version:        2.26.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -53,15 +53,13 @@ Source1:        https://webkitgtk.org/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 
-Patch1:         webkit2gtk3-bwo197558-hang.patch
-
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libGLESv1_CM-devel
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  bison >= 2.3
-#BuildRequires:  bubblewrap
+BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  gobject-introspection-devel
@@ -73,7 +71,7 @@ BuildRequires:  ninja
 BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  ruby >= 1.8.7
-#BuildRequires:  xdg-dbus-proxy
+BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
 BuildRequires:  pkgconfig(cairo) >= 1.10.2
@@ -99,7 +97,7 @@ BuildRequires:  pkgconfig(harfbuzz) >= 0.9.2
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.1
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
-#BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.61.90
 BuildRequires:  pkgconfig(libwebp)
@@ -107,6 +105,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
+#BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
+#BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} == 1315
@@ -130,12 +130,8 @@ BuildRequires:  python2-xml
 %if %{_gold_linker}
 BuildRequires:  binutils-gold
 %endif
-%if 0%{?is_opensuse}
-# We require gtk2 for the Gtk2 plugin wrapper
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.10
-%endif
-#Requires:       bubblewrap
-#Requires:       xdg-dbus-proxy
+Requires:       bubblewrap
+Requires:       xdg-dbus-proxy
 
 %description
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -153,6 +149,7 @@ Group:          System/Libraries
 Requires:       webkit2gtk-4_0-injected-bundles
 Recommends:     %{_pkgname_no_slpp}-lang
 Provides:       %{_pkgname_no_slpp} = %{version}
+Obsoletes:      webkit2gtk3-plugin-process-gtk2
 
 %description -n libwebkit2gtk%{_wk2sover}
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -162,16 +159,6 @@ embedded in other applications, such as mail readers, or web browsers.
 It is able to display content such as HTML, SVG, XML, and others. It
 also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
 more.
-
-%if 0%{?is_opensuse}
-%package        plugin-process-gtk2
-Summary:        GTK+ 2 based NPAPI plugins support for %{name}
-Group:          Development/Libraries/C and C++
-Requires:       libwebkit2gtk%{_wk2sover} = %{version}
-
-%description    plugin-process-gtk2
-Support for GTK+ 2 based NPAPI plugins (such as Adobe Flash) for %{name}.
-%endif
 
 %package -n webkit2gtk-4_0-injected-bundles
 Summary:        Injected bundles for %{name}
@@ -340,13 +327,11 @@ export PYTHON=%{_bindir}/python3
 %if %{with python3}
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
 %endif
-%if !0%{?is_opensuse}
-  -DENABLE_PLUGIN_PROCESS_GTK2=OFF \
-%endif
 %ifarch armv6hl ppc ppc64 ppc64le riscv64 s390 s390x
   -DENABLE_JIT=OFF \
 %endif
   -DUSE_SYSTEM_MALLOC=ON \
+  -DUSE_WPE_RENDERER=OFF \
 
 %ninja_build -j $max_link_jobs
 
@@ -360,21 +345,12 @@ export PYTHON=%{_bindir}/python3
 %postun -n libjavascriptcoregtk%{_sover} -p /sbin/ldconfig
 
 %files -n libwebkit2gtk%{_wk2sover}
-%if 0%{?is_opensuse}
-# Exclude Gtk2 plugin support from this package. That goes into plugin-process-gtk2.
-%exclude %{_libexecdir}/libwebkit2gtk%{_wk2sover}/WebKitPluginProcess2
-%endif
 # Exclude jsc and MiniBrowser - we package them on their own
 %exclude %{_libexecdir}/libwebkit2gtk%{_wk2sover}/jsc
 %exclude %{_libexecdir}/libwebkit2gtk%{_wk2sover}/MiniBrowser
 %{_libexecdir}/libwebkit2gtk%{_wk2sover}/
 %{_libdir}/libwebkit2gtk-4.0.so.*
 %{_bindir}/WebKitWebDriver
-
-%if 0%{?is_opensuse}
-%files plugin-process-gtk2
-%{_libexecdir}/libwebkit2gtk%{_wk2sover}/WebKitPluginProcess2
-%endif
 
 %files -n webkit2gtk-4_0-injected-bundles
 %dir %{_libdir}/webkit2gtk-4.0

@@ -1,7 +1,7 @@
 #
 # spec file for package datamash
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# bypass https://bugzilla.opensuse.org/show_bug.cgi?id=1149348
+%ifarch ppc64le ppc64 aarch64
+%define _lto_cflags %{nil}
+%endif
 
 Name:           datamash
 Version:        1.4

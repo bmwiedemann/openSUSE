@@ -32,7 +32,7 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -40,9 +40,9 @@ Group:          System/Kernel
 Url:            https://sourceforge.net/projects/makedumpfile/
 Source:         https://sourceforge.net/projects/makedumpfile/files/makedumpfile/%{version}/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-Patch0:         %{name}-coptflags.diff
 Patch1:         %{name}-override-libtinfo.patch
 Patch2:         %{name}-ppc64-VA-range-SUSE.patch
+Patch3:         %{name}-Increase-SECTION_MAP_LAST_BIT-to-4.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libebl-devel
 BuildRequires:  libelf-devel
@@ -70,18 +70,19 @@ via gdb or crash utility.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
+export CFLAGS="%{optflags}"
 %if %{have_snappy}
 export USESNAPPY=on
 %endif
 export USELZO=on
 export LINKTYPE=dynamic
-make %{?_smp_mflags} COPTFLAGS="%{optflags}" LDFLAGS="-Wl,-rpath,%{_libdir}/%{name}-%{version}"
-make %{?_smp_mflags} COPTFLAGS="%{optflags}" eppic_makedumpfile.so %{?ncurses_make_opts}
+make %{?_smp_mflags} LDFLAGS="-Wl,-rpath,%{_libdir}/%{name}-%{version}"
+make %{?_smp_mflags} eppic_makedumpfile.so %{?ncurses_make_opts}
 
 %install
 install -D -m 0755 makedumpfile %{buildroot}%{_bindir}/makedumpfile

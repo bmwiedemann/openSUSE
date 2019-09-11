@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 23 13:23:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 1.2.12+hg695
+  * Fixed TALOS-2019-0821 CVE-2019-5052
+  * Fixed TALOS-2019-0841 CVE-2019-5057 boo#1143763
+  * Fixed TALOS-2019-0842 CVE-2019-5058 boo#1143764
+  * Fixed TALOS-2019-0843 CVE-2019-5059 boo#1143766
+  * Fixed TALOS-2019-0844 CVE-2019-5060 boo#1143768
+  * Fixed CVE-2019-7635
+  * Fixed CVE-2019-13616 boo#1141844
+- Drop CVE-2019-13616.patch (merged)
+
+-------------------------------------------------------------------
+Thu Aug 22 19:51:00 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE-2019-13616.patch: fix heap buffer overflow when reading
+  a crafted bmp file (boo#1141844 CVE-2019-13616).
+
+-------------------------------------------------------------------
 Thu Jan  8 09:34:38 UTC 2015 - jengelh@inai.de
 
 - Improve package summary and description. Drop --with-pic which
@@ -14,7 +33,7 @@ Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
 -------------------------------------------------------------------
 Thu Jan  3 02:02:36 UTC 2013 - crrodriguez@opensuse.org
 
-- Disable dynamic loading of common libraries, this 
+- Disable dynamic loading of common libraries, this
  is a bad idea to beging with.
 
 - Cleanup buildRequires. metpackage xorg-x11-devel is not required
@@ -93,7 +112,7 @@ Tue May 19 15:42:59 CEST 2009 - prusnak@suse.cz
 Sat Feb 28 00:11:03 CET 2009 - crrodriguez@suse.de
 
 - remove static libraries and "la" files, useless without
-  SDL static libraries too. 
+  SDL static libraries too.
 - fix -devel package dependencies.
 
 -------------------------------------------------------------------
@@ -115,7 +134,7 @@ Fri Jan 25 12:58:25 CET 2008 - prusnak@suse.cz
 -------------------------------------------------------------------
 Sun Dec 16 21:40:05 CET 2007 - sndirsch@suse.de
 
-- fixed BuildRequires for SUSE < 10.2 
+- fixed BuildRequires for SUSE < 10.2
 
 -------------------------------------------------------------------
 Wed Jul 25 17:47:08 CEST 2007 - prusnak@suse.cz
@@ -203,7 +222,7 @@ Tue Jun 11 15:50:33 CEST 2002 - meissner@suse.de
 -------------------------------------------------------------------
 Fri May 10 15:43:04 CEST 2002 - ro@suse.de
 
-- libdir fixed 
+- libdir fixed
 
 -------------------------------------------------------------------
 Fri Feb  1 00:26:06 CET 2002 - ro@suse.de

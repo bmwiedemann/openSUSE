@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 06:58:49 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Use -ffat-lto-objects to provide a proper static library. 
+
+-------------------------------------------------------------------
 Tue Jul 16 08:32:53 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add BuildRequires blacs-devel-headers for non-hpc when required.

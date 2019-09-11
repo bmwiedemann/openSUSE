@@ -26,7 +26,7 @@
 %define pkg_logdir   %_localstatedir/log/%name
 %define pkg_cachedir %_localstatedir/cache/%name
 Name:           varnish
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -40,6 +40,7 @@ Source5:        varnish.logrotate
 Source7:        varnish.service
 Source8:        varnishlog.service
 Patch1:         varnish-5.1.2-add-fallthrough-comments.patch
+Patch2:         uninit.patch
 BuildRequires:  python3-docutils
 BuildRequires:  python3-Sphinx
 BuildRequires:  libxslt
@@ -98,7 +99,7 @@ This package holds the development files for varnish.
 %autosetup -p1
 
 %build
-export CFLAGS="%optflags -fstack-protector -Wno-error=clobbered"
+export CFLAGS="%optflags -fstack-protector -Wno-error=clobbered -Werror=maybe-uninitialized"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -ffloat-store -fexcess-precision=standard"
 %endif

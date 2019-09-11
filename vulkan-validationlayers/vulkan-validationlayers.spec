@@ -16,23 +16,25 @@
 #
 
 
-%define version_unconverted 1.1.112
+%define version_unconverted 1.1.120
 
 Name:           vulkan-validationlayers
-Version:        1.1.112
+Version:        1.1.120
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
+
 Source:         Vulkan-ValidationLayers-%version.tar.xz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
-BuildRequires:  glslang-devel >= 7.11.3188
+BuildRequires:  glslang-devel >= 7.12
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
+#BuildRequires:  python3-spec_tools >= 1.1.112
 BuildRequires:  spirv-tools-devel >= 2019.4~git33
-BuildRequires:  pkgconfig(vulkan) >= 1.1.107
+BuildRequires:  pkgconfig(vulkan) >= 1.1.112
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 
@@ -44,7 +46,7 @@ graphics applications such as games and interactive media.
 This package contains the Khronos official Vulkan validation layers.
 
 %prep
-%setup -qn Vulkan-ValidationLayers-%version
+%autosetup -n Vulkan-ValidationLayers-%version
 
 %build
 %cmake -DGLSLANG_INSTALL_DIR="%_bindir"

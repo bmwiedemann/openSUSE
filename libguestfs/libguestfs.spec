@@ -642,6 +642,7 @@ chmod 0755 %{buildroot}/%{_datadir}/guestfs/*
 rm -rfv %{buildroot}/%{_libdir}/ocaml
 %endif
 rm -rfv %{buildroot}/%{guestfs_docdir}
+rm -rfv %{buildroot}/etc/libguestfs-tools.conf
 find %{buildroot}/ -type f \( \
 	-name "virt-list-filesystems" -o -name "virt-list-filesystems.*" -o \
 	-name "virt-list-partitions" -o -name "virt-list-partitions.*" -o \
@@ -839,7 +840,6 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %if %{with p2v}
 %exclude %{_bindir}/virt-p2v-*
 %endif
-%config(noreplace) /etc/libguestfs-tools.conf
 /etc/virt-builder
 %dir /etc/xdg/virt-builder
 %dir /etc/xdg/virt-builder/repos.d

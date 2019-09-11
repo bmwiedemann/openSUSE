@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tie-Hash-DBD
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Tie-Hash-DBD
-Version:        0.18
+Version:        0.20
 Release:        0
 %define cpan_name Tie-Hash-DBD
-Summary:        Tie a Plain Hash to a Database Table
+Summary:        Tie a plain hash to a database table
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Tie-Hash-DBD/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -34,11 +34,11 @@ BuildRequires:  perl(DBI) >= 1.613
 BuildRequires:  perl(Test::More) >= 0.9
 Requires:       perl(DBI) >= 1.613
 Requires:       perl(Test::More) >= 0.9
-Recommends:     perl(DBD::CSV) >= 0.51
-Recommends:     perl(DBD::Pg) >= v3.7.4
-Recommends:     perl(DBD::SQLite) >= 1.58
-Recommends:     perl(DBI) >= 1.641
-Recommends:     perl(Test::More) >= 1.302133
+Recommends:     perl(DBD::CSV) >= 0.54
+Recommends:     perl(DBD::Pg) >= v3.9.1
+Recommends:     perl(DBD::SQLite) >= 1.64
+Recommends:     perl(DBI) >= 1.642
+Recommends:     perl(Test::More) >= 1.302167
 %{perl_requires}
 
 %description
@@ -60,11 +60,11 @@ provides into 'Tie::DBI'.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

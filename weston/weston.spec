@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           weston
 %define lname	libweston0
-%define major   6
-%define realver	6.0.1
-Version:        6
+%define major   7
+%define realver	7.0.0
+Version:        7
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        MIT AND CC-BY-SA-3.0
 Group:          System/X11/Servers
-Url:            http://wayland.freedesktop.org/
+URL:            https://wayland.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/wayland/weston
-#Git-Web:	http://cgit.freedesktop.org/wayland/weston/
-Source:         http://wayland.freedesktop.org/releases/%name-%realver.tar.xz
+#Git-Web:	https://cgit.freedesktop.org/wayland/weston/
+Source:         https://wayland.freedesktop.org/releases/weston-%realver.tar.xz
 Source3:        %name.keyring
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake >= 1.11
@@ -141,7 +141,7 @@ to develop plugins for Weston.
 %else
 	-Dsimple-dmabuf-drm= \
 %endif
-	-Dtest-junit-xml=false \
+	-Dtest-junit-xml=false -Dpipewire=false \
 	--includedir="%_includedir/%name"
 %meson_build
 
@@ -175,7 +175,7 @@ popd
 %_libdir/%name/
 %_datadir/%name/
 %_datadir/wayland-sessions/
-%_datadir/libweston/
+%_datadir/libweston-%major/
 %_mandir/man?/*.*
 
 %files -n libweston-%major-0

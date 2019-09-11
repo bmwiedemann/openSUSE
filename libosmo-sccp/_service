@@ -2,8 +2,8 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">git://git.osmocom.org/libosmo-sccp</param>
-		<param name="revision">1.0.0</param>
-		<param name="versionformat">1.0.0</param>
+		<param name="revision">1.1.0</param>
+		<param name="versionformat">1.1.0</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

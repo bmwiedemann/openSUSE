@@ -22,8 +22,6 @@ Release:        0
 Summary:
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          
 Url:            
 Source:         
 BuildRequires:  

@@ -1,7 +1,7 @@
 #
 # spec file for package libdb-4_8
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,18 @@ Release:        0
 Summary:        Berkeley DB Database Library Version 4.8
 License:        Sleepycat
 Group:          System/Libraries
-Url:            http://oracle.com/technetwork/products/berkeleydb/
+URL:            https://oracle.com/technetwork/products/berkeleydb/
 Source:         http://download.oracle.com/berkeley-db/db-%{version}.tar.gz
 Source1:        %{name}.changes
 Source2:        baselibs.conf
-Source9:        getpatches
 Patch0:         db-%{version}.patch
 # PATCH-FIX-OPENSUSE Fix build with GCC8, conflict with reserved builtin name
 Patch1:         libdb-fix-atomic.patch
+Patch2:         0001-OPD-deadlock-RH-BZ-1349779.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 Provides:       db = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Berkeley DB Database is a programmatic toolkit that provides
@@ -94,6 +93,7 @@ This package contains the header files and libraries.
 %setup -q -n %{generic_name}-%{version}
 %patch0
 %patch1
+%patch2 -p1
 
 %build
 cd dist
@@ -111,11 +111,13 @@ export CFLAGS CXXFLAGS CC
 #
 mkdir ../build_nptl
 cd ../build_nptl
-../dist/configure --prefix=%{_prefix} \
-        --libdir=%{_libdir} --enable-compat185 --disable-dump185 \
-        --enable-shared --disable-static --enable-cxx \
+%define _configure ../dist/configure
+%configure \
+        --enable-compat185 --disable-dump185 \
+        --enable-shared --disable-static \
+        --enable-cxx \
         --with-mutex="POSIX/pthreads/library" \
-%ifarch %arm
+%ifarch %{arm}
         %{_target_cpu}-suse-linux-gnueabi
 %else
         %{_target_cpu}-suse-linux
@@ -133,7 +135,7 @@ make %{?_smp_mflags} LIBSO_LIBS='$(LIBS)' LIBXSO_LIBS='$(LIBS)'" -L%{_libdir} -l
 mkdir -p %{buildroot}%{_includedir}/db4
 mkdir -p %{buildroot}%{_libdir}
 cd build_nptl
-make prefix=%{buildroot}%{_prefix} libdir=%{buildroot}%{_libdir} strip=true install
+%make_install STRIP=true
 cd ..
 # make ldd happy:
 chmod 755 %{buildroot}%{_libdir}/libdb*.so
@@ -176,7 +178,6 @@ done
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 %post -n db48-utils
 for i in %{util_list}; do
 	update-alternatives --install "%{_bindir}/db_$i" \
@@ -189,17 +190,15 @@ for i in %{util_list}; do
 done
 
 %files
-%defattr(-,root,root)
 %{_libdir}/libdb-%{major}.%{minor}.so
 %{_libdir}/libdb_cxx-%{major}.%{minor}.so
 
 %files -n db48-doc
-%defattr(-,root,root)
 %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/LICENSE
+%license %{_docdir}/%{name}/LICENSE
 %doc %{_docdir}/%{name}/README
 %doc %{_docdir}/%{name}/index.html
-%doc %{_docdir}/%{name}/license
+%license %{_docdir}/%{name}/license
 %doc %{_docdir}/%{name}/articles
 %doc %{_docdir}/%{name}/api_reference
 %doc %{_docdir}/%{name}/examples_c
@@ -210,7 +209,6 @@ done
 %doc %{_docdir}/%{name}/tutorial
 
 %files -n db48-utils
-%defattr(-,root,root)
 %{_bindir}/db48_*
 %ghost %{_sysconfdir}/alternatives/db_archive
 %ghost %{_sysconfdir}/alternatives/db_checkpoint
@@ -227,7 +225,6 @@ done
 %{_bindir}/db_*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/db4
 %{_includedir}/db.h
 %{_includedir}/db_185.h

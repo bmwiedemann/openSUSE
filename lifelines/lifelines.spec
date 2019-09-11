@@ -1,7 +1,7 @@
 #
 # spec file for package lifelines
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lifelines
+%global commit      3ad4571
+%global longcommit  3ad457132c47fde69545d6647d5804c573764631
+Version:        3.1.1+%{commit}
+Release:        0
+Summary:        The Lifelines Genealogy Program
+License:        MIT
+Group:          Productivity/Scientific/Other
+Url:            https://github.com/lifelines/lifelines
+Source0:        https://github.com/%{name}/%{name}/archive/%{commit}.tar.gz#/%{name}-%{commit}.tar.gz
+Source1:        %{name}-rpmlintrc
+# PATCH-FIX-SUSE mainly to get paths correct if installed as system package
+Patch0:         lifelines-%{commit}.dif
+# PATCH-FIX-SUSE avoid memory leak as well as no initialized array
+Patch1:         lifelines-%{commit}-array.dif
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  dblatex
 BuildRequires:  docbook-utils
 BuildRequires:  dos2unix
 BuildRequires:  libjpeg-devel
@@ -30,36 +45,23 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  perl-XML-SAX
 BuildRequires:  perl-libwww-perl
 BuildRequires:  texlive
-BuildRequires:  texlive-jadetex
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-xmltex
-%if 0%{?suse_version} > 1220
+BuildRequires:  texlive-babel
+BuildRequires:  texlive-babel-swedish
+BuildRequires:  texlive-cmap
 BuildRequires:  texlive-courier
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-ec
+BuildRequires:  texlive-fancybox
 BuildRequires:  texlive-helvetic
+BuildRequires:  texlive-jadetex
+BuildRequires:  texlive-jknapltx
+BuildRequires:  texlive-latex
 BuildRequires:  texlive-times
-%endif
-Version:        3.0.62
-Release:        0
-Summary:        The Lifelines Genealogy Program
-License:        MIT
-Group:          Productivity/Scientific/Other
-Url:            http://lifelines.sourceforge.net/
-Source:         http://download.sourceforge.net/lifelines/lifelines-3.0.62.tar.bz2
-Source1:        sh.rellink
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch0:         lifelines-3.0.62.dif
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch1:         lifelines-3.0.59-funcptr.dif
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch2:         lifelines-3.0.60-array.dif
-# PATCH-FIX-UPSTREAM Fix conflicting declaration
-Patch3:         lifelines-decl.patch
+BuildRequires:  texlive-xmltex
 BuildRequires:  tidy
+BuildRequires:  w3m
+BuildRequires:  xmlto
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%global         _sysconfdir /etc
-%global         ncursesw_config %(set -- %{_bindir}/ncursesw*-config; echo ${@:$#})
 
 %description
 Lifelines is terminal-based program that allows the tracking of
@@ -67,82 +69,59 @@ genealogical information.  The lifelines reports are the power of the
 system but requires knowledge in the ll format.
 
 %prep
-%setup -q
-%patch0  -p 0
-%patch1 -p 0
-%patch2 -p 0
-%patch3 -p1
+%setup -q -c -T -n %{name}-%{commit}
+tar -x  --strip-components=1 -z -f %{SOURCE0} 
+%patch0 -p0 -b .p0
+%patch1 -p0 -b .p1
 
 %build
-CFLAGS="%{optflags} -fno-strict-aliasing -pipe $(%{ncursesw_config} --cflags)"
+if test $(getconf LONG_BIT) -gt 32
+then
+    arch=--with-64bit
+else
+    arch=--with-32bit
+fi
+CFLAGS="%{optflags} -fno-strict-aliasing -pipe $(pkg-config ncursesw --cflags) $(getconf LFS_CFLAGS)"
 CPPFLAGS="-D_GNU_SOURCE -D_XOPEN_CURSES"
-LDFLAGS="$(%{ncursesw_config} --libs)"
+LIBS="$(pkg-config ncursesw --libs)"
 CC=gcc
-export CC CFLAGS CPPFLAGS LDFLAGS
+export CC CFLAGS CPPFLAGS LIBS
 autoreconf -fi
-./configure --prefix=%{_prefix} -exec-prefix=%{_prefix}	\
-	    --libexecdir=%{_libdir}		\
-	    --sysconfdir=%{_sysconfdir}		\
-	    --libdir=%{_libdir}			\
-	    --mandir=%{_mandir}			\
-	    --infodir=%{_infodir}		\
-	    --disable-rpath			\
+%configure  --disable-rpath			\
 	    --with-gnu-ld			\
 	    --with-docs				\
-	    --without-included-gettex		\
-	    --with-libintl-prefix=%{_prefix}	\
-	    --with-included-gettext=%{_prefix}
-make
-#chmod 644 docs/*.1
-rm -f docs/*.pdf
+	    $arch				\
+	    --with-libintl-prefix=%{_prefix}
+make %{?_smp_mflags}
 make -C docs/
+dos2unix lines.cfg
 
 %install
-. %{SOURCE1}
-make DESTDIR=%{buildroot}			\
-     docdir=%{_defaultdocdir}/lifelines/doc	\
-     pkgdatadir=%{_defaultdocdir}/lifelines/doc	\
+make DESTDIR=%{buildroot}		\
+     docdir=%{_defaultdocdir}/%{name}	\
+     pkgdatadir=%{_datadir}/%{name}	\
      install
-make -C docs/ DESTDIR=%{buildroot}		\
-     docdir=%{_defaultdocdir}/lifelines/doc	\
-     pkgdatadir=%{_defaultdocdir}/lifelines/doc	\
+make -C docs/ DESTDIR=%{buildroot}	\
+     docdir=%{_defaultdocdir}/%{name}	\
+     pkgdatadir=%{_datadir}/%{name}	\
      install
-mkdir -p %{buildroot}%{_mandir}/man1
-install -m 644 docs/*.1 %{buildroot}%{_mandir}/man1/
-mkdir -p %{buildroot}%{_datadir}/lifelines/reports/st
-install -m 644 reports/*.l[li]    %{buildroot}%{_datadir}/lifelines/reports/
-install -m 644 reports/st/*.l[li] %{buildroot}%{_datadir}/lifelines/reports/st/
-mkdir -p %{buildroot}%{_datadir}/lifelines/tt
-install -m 644 tt/*.tt  %{buildroot}%{_datadir}/lifelines/tt/
-mkdir -p %{buildroot}%{_defaultdocdir}/lifelines/reports
-install -m 644 reports/CREDIT %{buildroot}%{_defaultdocdir}/lifelines/reports/
-install -m 644 reports/index.html reports/boc.gif reports/ll.png %{buildroot}%{_defaultdocdir}/lifelines/reports/
-install -m 644 README ChangeLog NEWS AUTHORS LICENSE %{buildroot}%{_defaultdocdir}/lifelines/
-rm -f  %{buildroot}%{_defaultdocdir}/lifelines/doc/*.l[li]
-path=$(relpath %{buildroot}%{_datadir}/lifelines/reports %{buildroot}%{_defaultdocdir}/lifelines/doc)
-for l in %{buildroot}%{_datadir}/lifelines/reports/*.l[li] ; do
-    ln -sf ${path}/${l##*/} %{buildroot}%{_defaultdocdir}/lifelines/doc/
-done
-rm -f  %{buildroot}%{_defaultdocdir}/lifelines/doc/{README,NEWS,LICENSE,CREDIT,AUTHORS}
-rm -f  %{buildroot}%{_defaultdocdir}/lifelines/doc/{INSTALL,README.MAINTAINERS.win32}
-if test -e %{buildroot}%{_defaultdocdir}/lifelines/doc/.linesrc ; then
-    mv %{buildroot}%{_defaultdocdir}/lifelines/doc/.linesrc \
-       %{buildroot}%{_defaultdocdir}/lifelines/doc/dot.linesrc
-fi
-if test -e %{buildroot}%{_defaultdocdir}/lifelines/doc/lines.cfg ; then
-    mv %{buildroot}%{_defaultdocdir}/lifelines/doc/lines.cfg \
-       %{buildroot}%{_defaultdocdir}/lifelines/doc/lines.cfg.tmp
-    dos2unix -n %{buildroot}%{_defaultdocdir}/lifelines/doc/lines.cfg.tmp \
-                %{buildroot}%{_defaultdocdir}/lifelines/doc/lines.cfg
-    rm -f %{buildroot}%{_defaultdocdir}/lifelines/doc/lines.cfg.tmp
-fi
 %find_lang %{name}
+rm -vf %{buildroot}%{_defaultdocdir}/%{name}/INSTALL
+mkdir -p %{buildroot}%{_sysconfdir}/skel
+mv %{buildroot}%{_defaultdocdir}/%{name}/.linesrc \
+   %{buildroot}%{_sysconfdir}/skel/
+chmod 755 %{buildroot}%{_datadir}/%{name}/gen_index
+rm -vf %{buildroot}%{_datadir}/%{name}/desc-tex2/tree.tex
+rm -vf %{buildroot}%{_datadir}/%{name}/pedtex/tree.tex
+ln -sf ../tree.tex %{buildroot}%{_datadir}/%{name}/desc-tex2/tree.tex
+ln -sf ../tree.tex %{buildroot}%{_datadir}/%{name}/pedtex/tree.tex
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/lifelines
+%config %{_sysconfdir}/skel/.linesrc
+%doc %{_defaultdocdir}/%{name}
 %{_bindir}/*
-%{_datadir}/lifelines
+%{_datadir}/%{name}
 %doc %{_mandir}/man1/*.gz
 
 %changelog

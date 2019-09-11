@@ -1,7 +1,7 @@
-Index: mathgl-2.4.1/examples/CMakeLists.txt
+Index: mathgl-2.4.3/examples/CMakeLists.txt
 ===================================================================
---- mathgl-2.4.1.orig/examples/CMakeLists.txt
-+++ mathgl-2.4.1/examples/CMakeLists.txt
+--- mathgl-2.4.3.orig/examples/CMakeLists.txt
++++ mathgl-2.4.3/examples/CMakeLists.txt
 @@ -4,6 +4,10 @@ file(COPY ${CMAKE_SOURCE_DIR}/examples/s
  file(COPY ${CMAKE_SOURCE_DIR}/examples/wnd_samples.cpp DESTINATION ${CMAKE_BINARY_DIR}/examples)
  add_executable(mgl_example wnd_samples.cpp full_test.cpp samples.cpp)
@@ -43,7 +43,7 @@ Index: mathgl-2.4.1/examples/CMakeLists.txt
  endif(MGL_HAVE_WX)
  
  if(QT_ENABLED)
-@@ -25,17 +41,33 @@ if(QT_ENABLED)
+@@ -34,17 +50,33 @@ if(QT_ENABLED)
  	if(enable-qt5)
  		include(../scripts/qt5.cmake)
  		target_link_libraries(mgl_qt_example mgl-qt5)

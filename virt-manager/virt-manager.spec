@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,6 +33,10 @@ Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
 Patch1:         3c6e8537-guest-fix-warning-message-when-machine-type-is-changed-for-secure-boot.patch
+Patch2:         0c223ab2-guest-Dont-set-default-uefi-if-firmware-is-set.patch
+Patch3:         414ffa5e-virt-install-Use-minutes-instead-of-seconds-on-get_time_string.patch
+Patch4:         53245827-urlfetcher-Force-a-flush-after-writing-to-a-file.patch
+Patch5:         3009888a-urlfetcher-Dont-override-fullurl-when-its-explicitly-set.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -166,6 +170,10 @@ machine).
 %setup -q
 # Upstream Patches
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

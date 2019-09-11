@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 20 06:29:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.0.6. Bugs fixed:
+  * Hardly distinguishable line colors in reports (kde#408361)
+  * Open sqlite database under kmymoney versions >= 5.0 (kde#410091)
+  * Access to german online banking requires product key (kde#410865)
+  * Attempt to move one split to new category moves all splits with same
+    category (kde#411030)
+  * The default price precision for the Indonesian Rupiah in new files has been
+    raised to 10 decimals.
+- Drop Fix-build-with-Qt-5_13.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Mon Aug 12 09:32:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
-- Update Fix-build-with-Qt-5_13.patch
+- Add Fix-build-with-Qt-5_13.patch
 
 -------------------------------------------------------------------
 Wed Jul 10 11:06:32 UTC 2019 - wbauer@tmo.at

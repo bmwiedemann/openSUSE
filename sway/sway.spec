@@ -17,7 +17,7 @@
 
 
 Name:           sway
-Version:        1.1.1
+Version:        1.2
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -37,7 +37,6 @@ BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  wlroots-devel >= 0.5
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
-# pixbuf is optional. for swaybg.
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(json-c) >= 0.12.1
 BuildRequires:  pkgconfig(libcap)

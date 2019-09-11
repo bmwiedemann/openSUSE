@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zetup
-Version:        0.2.48
+Version:        0.2.63
 Release:        0
 Summary:        Project setups tools
 License:        LGPL-3.0-only
@@ -27,16 +27,17 @@ URL:            https://github.com/zimmermanncode/zetup
 Source:         https://files.pythonhosted.org/packages/source/z/zetup/zetup-%{version}.tar.gz
 BuildRequires:  %{python_module nbconvert >= 5.4}
 BuildRequires:  %{python_module path.py >= 11.5}
-BuildRequires:  %{python_module pytest >= 3.8}
-BuildRequires:  %{python_module setuptools >= 40.8}
-BuildRequires:  %{python_module setuptools_scm >= 3.1}
+BuildRequires:  %{python_module pytest >= 4.6.2}
+BuildRequires:  %{python_module setuptools >= 39.1}
+BuildRequires:  %{python_module setuptools_scm >= 3.0.0}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-jinjatools >= 0.1.8
-Recommends:     python-nbconvert >= 5.4
+Recommends:     python-jinjatools >= 0.1.11
+Recommends:     python-moretools >= 0.1.12
+Recommends:     python-nbconvert >= 5.4.1
 Recommends:     python-path.py >= 11.5
 Recommends:     python-pip >= 19.0
 Recommends:     python-pytest

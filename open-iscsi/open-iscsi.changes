@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 12:08:11 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO on aarch64 as the gcc9 package issue is fixed:
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=91386
+
+-------------------------------------------------------------------
 Thu Aug  1 18:52:00 UTC 2019 - Lee Duncan <lduncan@suse.com>
 
 - Disable LTO (Link Time Optimization) on aarch64 since it seems

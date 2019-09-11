@@ -16,26 +16,27 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-randomly
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/pytest-randomly
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-randomly/pytest-randomly-%{version}.tar.gz
-# Reverse of https://github.com/pytest-dev/pytest-randomly/commit/7ca48ad.patch
-Patch0:         tests-restore-python2.7.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-entrypoints
 Requires:       python-pytest
 Recommends:     python-Faker
 Suggests:       python-numpy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
+BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -65,7 +66,6 @@ Features:
 
 %prep
 %setup -q -n pytest-randomly-%{version}
-%patch0 -p1
 # Disregard Python 3.4+ restriction
 sed -i '/python_requires/d' setup.py
 
@@ -78,7 +78,8 @@ sed -i '/python_requires/d' setup.py
 
 %check
 export PYTHONDONTWRITEBYTECODE=true
-%pytest
+# test_entrypoint_injection needs installed module for pytest to use
+%pytest -k 'not test_entrypoint_injection'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst

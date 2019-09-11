@@ -2,7 +2,7 @@
 # spec file for package byobu
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
+# Copyright (c) 2019 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           byobu
-Version:        5.127
+Version:        5.129
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
 Group:          System/Console
-URL:            http://byobu.org/
+URL:            https://byobu.org/
 Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}_%{version}.orig.tar.gz
 Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/..-%{name}_%{version}.orig.tar.gz.asc#/%{name}_%{version}.orig.tar.gz.asc
 Source2:        %{name}.keyring

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:12:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.1.5
+  * bugfix release 
+
+-------------------------------------------------------------------
+Wed Aug 14 18:51:18 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Build radeonsi and libvdpau_radeonsi on ppc64le 
+
+-------------------------------------------------------------------
+Mon Aug 12 08:42:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 19.1.4:
+  * Mostly, as usual, in fixes for different drivers (anv, radv,
+    radeon, nv50, nvc0) as well as in backend parts (egl, spirv,
+    nir, ...).
+  * Of those fixes, we could highlight several ones:
+    - Vulkan 24/48 bit formats are now not supported on Ivybridge.
+    - R8G8B8_UNORM_SRGB is not supported on Haswell.
+    - A fix for hair artifacts in Max Payne 3 on AMD/RADV.
+    - Vulkan transform feedback extension is disabled on Intel
+      gen7.
+
+-------------------------------------------------------------------
 Tue Jul 23 19:50:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 19.1.3:

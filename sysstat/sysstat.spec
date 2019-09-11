@@ -17,7 +17,7 @@
 
 
 Name:           sysstat
-Version:        12.0.5
+Version:        12.0.6
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
@@ -34,12 +34,12 @@ Patch0:         sysstat-8.1.6-sa1sa2lock.diff
 # use getpagesize() instead of kb_shift for hugetable archs
 Patch2:         sysstat-8.0.4-pagesize.diff
 BuildRequires:  findutils
+BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(systemd)
-Requires:       gettext
 Requires:       procmail
 Requires:       xz
 %{?systemd_requires}

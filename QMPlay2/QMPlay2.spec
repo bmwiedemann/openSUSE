@@ -17,16 +17,13 @@
 
 
 Name:           QMPlay2
-Version:        18.12.26
+Version:        19.09.03
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE vs. WARNING: invalid-desktopfile contains group,
-# but ones extending the format should start with "X-".
-Patch2:         QMPlay2-desktop-warnings.diff
 %if 0%{?suse_version} > 1320
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -39,6 +36,7 @@ BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
@@ -83,7 +81,6 @@ It's a development package for %{name}.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch2 -p1
 
 %build
 test -x "$(type -p gcc)" && export CC="$_"
@@ -92,6 +89,7 @@ test -x "$(type -p gcc-7)" && export CC="$_"
 test -x "$(type -p g++-7)" && export CXX="$_"
 %cmake \
   -DUSE_PROSTOPLEER=OFF \
+  -DSOLID_ACTIONS_INSTALL_PATH="/usr/share/solid/actions" \
 %make_jobs
 
 %install
@@ -99,7 +97,7 @@ test -x "$(type -p g++-7)" && export CXX="$_"
 
 # Let's use %%doc macro. AUTHORS & ChangeLog are required for help window
 cd %{buildroot}/%{_datadir}/qmplay2
-rm LICENSE README.md TODO
+rm LICENSE README.md
 
 # WARNING: gzipped-svg-icon. Not all DE that support SVG icons support
 # them gzipped (.svgz). Install the icon as plain uncompressed SVG.
@@ -118,11 +116,14 @@ gunzip -S svgz %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
 %mime_database_postun
 
 %files
-%doc LICENSE README.md TODO
+%doc LICENSE README.md
 %{_bindir}/%{name}
 %{_libdir}/qmplay2
 %{_libdir}/libqmplay2.so
 %{_datadir}/applications/%{name}*.desktop
+%dir %{_datadir}/solid
+%dir %{_datadir}/solid/actions
+%{_datadir}/solid/actions/%{name}*.desktop
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.png

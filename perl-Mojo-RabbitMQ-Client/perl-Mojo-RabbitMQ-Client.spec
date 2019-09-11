@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojo-RabbitMQ-Client
-Version:        0.2.3
+Version:        0.3.1
 Release:        0
 %define cpan_name Mojo-RabbitMQ-Client
 Summary:        Mojo::IOLoop based RabbitMQ client
@@ -26,8 +26,6 @@ Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SE/SEBAPOD/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-# https://github.com/inway/mojo-rabbitmq-client/pull/36
-Patch0:         0001-Prevent-warning-about-undefined-object-on-closed-cha.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -55,7 +53,6 @@ Mojo::IOLoop.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
 
 %build
 perl Build.PL --installdirs=vendor

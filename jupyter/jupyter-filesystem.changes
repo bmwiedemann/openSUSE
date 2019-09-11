@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 22:34:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Have jupyterlab-filesystem provide/obsolete jupyterlab-widgets.
+  jupyterlab-widgets is no longer available as a python package.
+
+-------------------------------------------------------------------
 Fri May 24 02:52:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Use %{_rpmmacrodir}

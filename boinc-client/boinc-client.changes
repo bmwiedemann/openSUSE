@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:24:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Build boinc-client using -ffat-lto-objects
+
+-------------------------------------------------------------------
 Sat Dec 15 17:37:27 UTC 2018 - aaronpuchert@alice-dsl.net
 
 - Update to version 7.14.2.

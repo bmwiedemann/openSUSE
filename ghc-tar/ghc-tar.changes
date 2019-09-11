@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 27 02:02:08 UTC 2019 - psimons@suse.com
+
+- Update tar to version 0.5.1.1.
+  See also http://pvp.haskell.org/faq
+
+  0.5.1.1 Herbert Valerio Riedel <hvr@gnu.org> March 2018
+
+    * Add support for GHC 8.8.1 / base-4.13
+
+-------------------------------------------------------------------
 Fri Oct 19 13:14:47 UTC 2018 - Peter Simons <psimons@suse.com>
 
 - Update Cabal build instructions to support ghc-8.6.1.

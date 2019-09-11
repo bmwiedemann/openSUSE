@@ -16,15 +16,16 @@
 #
 
 
-%define version_unconverted 1.1.112
+%define version_unconverted 1.1.120
 
 Name:           vulkan-tools
-Version:        1.1.112
+Version:        1.1.120
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://www.khronos.org/
+
 #Git-URL:       https://github.com/KhronosGroup/Vulkan-Tools
 Source:         Vulkan-Tools-%version.tar.xz
 BuildRequires:  cmake >= 3.4

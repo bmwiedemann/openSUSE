@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sentry-sdk
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -55,7 +55,7 @@ BuildRequires:  %{python_module tox}
 %python_subpackages
 
 %description
-The new Python SDK for Sentry.io.
+A Python SDK for Sentry.io.
 https://sentry.io/for/python/
 
 %prep

@@ -32,8 +32,10 @@ Patch2:         tcsh-6.16.00-norm-cmd.dif
 Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
+# PATCH-FIX-UPSTREAM Do not (re)run SIGHUP handler during rewrite history
+Patch7:         tcsh-6.21.00-sighup-deadlock.patch
 # PATCH-FIX-SUSE add history file locking (bsc#901076)
-Patch9:         tcsh-6.18.03-history-file-locking.patch
+Patch9:         tcsh-6.21.0-history-file-locking.patch
 Patch10:        tcsh-6.18.03-history-merge.dif
 # PATCH-FIX-SUSE fix history file locking: first unlock then close
 Patch11:        tcsh-6.19.00-history-file-locking-order.patch
@@ -64,6 +66,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch4      -b .colorls
 %patch5      -b .dspmbyte
 %patch6      -b .catalogs
+%patch7 -p1  -b .sighup
 %patch9      -b .histlock
 %patch10     -b .histmerg
 %patch11     -b .histlckord

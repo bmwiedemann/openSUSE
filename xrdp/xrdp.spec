@@ -42,6 +42,8 @@ Patch3:         xrdp-default-config.patch
 Patch4:         xrdp-disable-8-bpp-vnc-support.patch
 # PATCH-FIX-OPENSUSE xrdp-support-KillDisconnected-for-Xvnc.patch boo#1101506 - fezhang@suse.com -- Support the KillDisconnected option for TigerVNC Xvnc sessions
 Patch5:         xrdp-support-KillDisconnected-for-Xvnc.patch
+# PATCH-FIX-OPENSUSE xrdp-systemd-services.patch boo#1138954 boo#1144327 - fezhang@suse.com -- Let systemd handle the daemons
+Patch6:         xrdp-systemd-services.patch
 # PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support
 Patch11:        xrdp-avahi.diff
 # PATCH-FIX-SLE xrdp-filter-tab-from-mstsc-on-focus-change.patch bnc#601996 bnc#623534 - dliang@novell.com -- filter the fake tab key which is used to notify the session
@@ -102,6 +104,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %if ! 0%{?is_opensuse}
 %patch11 -p1
 %patch12 -p1

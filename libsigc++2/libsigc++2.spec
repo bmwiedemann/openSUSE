@@ -24,10 +24,9 @@ Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libsigc.sourceforge.net/
-Source:         http://download.gnome.org/sources/libsigc++/2.10/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsigc++/2.10/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE libsigc++-std-c11.patch dimstar@opensuse.org -- Add -std=c11 to CFLAGS when using libsigc++ to build. This is not upstreamable in this form as the used CXX macro should handle that, so needs more work (and entry points in mm-common)
-Patch0:         libsigc++-std-c11.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  m4
 BuildRequires:  pkgconfig
@@ -70,13 +69,10 @@ of use unmatched by other C++ callback libraries.
 
 %prep
 %setup -q -n %{_name}-%{version}
-if [ $(gcc -dumpversion | awk -F. '{print $1}') -lt 6 ]; then
-%patch0 -p1
-fi
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -84,7 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 export MALLOC_CHECK_=2 MALLOC_PERTURB_=$((${RANDOM:-256} % 256))
-make %{?_smp_mflags} check
+%make_build check
 unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %post -n libsigc-2_0-0 -p /sbin/ldconfig

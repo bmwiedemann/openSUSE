@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 27 11:10:25 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
+
+- add bug number (bsc#1148310)
+
+-------------------------------------------------------------------
+Tue Aug 27 09:27:56 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Handle arch_riscv
+- 4.1.1
+
+-------------------------------------------------------------------
 Tue Feb 26 14:05:49 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - Version bump (bsc#1124009)

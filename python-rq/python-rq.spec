@@ -40,8 +40,8 @@ Requires:       python-redis >= 3.0.0
 
 %description
 RQ (Redis Queue) is a simple Python library for queueing jobs and processing
-them in the background with workers. It is backed by Redis and it is designed
-to have a low barrier to entry. It can be integrated in your web stack easily.
+them in the background with workers. It is backed by Redis. It can be
+integrated into web stacks.
 
 %prep
 %setup -q -n %{mod_name}-%{version}

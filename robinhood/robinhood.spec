@@ -1,7 +1,7 @@
 #
 # spec file for package robinhood
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,22 +25,21 @@
 %define installdir_www %{_localstatedir}/lib/
 
 Name:           robinhood
-Version:        3.1
+Version:        3.1.5
 Release:        0
 Summary:        Policy engine and reporting tool for large filesystems
 License:        CECILL-C
 Group:          System/Monitoring
 Url:            https://github.com/cea-hpc/robinhood
-Source0:        https://sourceforge.net/projects/robinhood/files/robinhood/3.1/robinhood-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/cea-hpc/robinhood/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
 Patch1:         web-gui.patch
 Patch2:         rbh-config.patch
 Patch3:         avoid-version.patch
-Patch4:         xattr-location.patch
-Patch5:         removed-check-ENOATTR.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel
+BuildRequires:  jemalloc-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtool
 BuildRequires:  mailx
@@ -103,8 +102,6 @@ Tests and examples for the robinhood policy engine.
 sed -i 's,WWWROOT,%{installdir_www}robinhood,g' web_gui/robinhood.conf
 %patch2
 %patch3
-%patch4 -p 2
-%patch5 -p 2
 # remove spurious executeable bits
 find ./doc/templates -type f -executable -exec chmod 644 {} +
 
@@ -159,7 +156,8 @@ mkdir -p %{buildroot}/%{_sysconfdir}/robinhood.d/
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README.md COPYING
+%license COPYING
+%doc ChangeLog README.md
 %doc ./doc/templates/
 
 %{_mandir}/man1/robinhood*
@@ -167,6 +165,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}/robinhood.d/
 %{_sbindir}/rbh-undelete
 %{_sbindir}/rbh_cksum.sh
 %{_sbindir}/rbh-config
+%{_sbindir}/rbh-rebind
 %{_sbindir}/robinhood
 %{_sbindir}/rcrobinhood
 

@@ -18,9 +18,8 @@
 %global with_python2 1
 %endif
 
-
 Name:           ceph-iscsi
-Version:        3.0+1560249372.g70ec7a9
+Version:        3.2+1568099844.g09c5205
 Release:        1%{?dist}
 Group:          System/Filesystems
 Summary:        Python modules for Ceph iSCSI gateway configuration management
@@ -34,32 +33,37 @@ Source0:        %{name}-%{version}.tar.gz
 %if 0%{?suse_version}
 Source98:       checkin.sh
 Source99:       README-checkin.txt
-%endif
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+%endif
 
 Obsoletes:      ceph-iscsi-config
 Obsoletes:      ceph-iscsi-cli
 
+Requires:       tcmu-runner >= 1.4.0
 %if 0%{?with_python2}
 BuildRequires:  python2-devel
 BuildRequires:  python2-setuptools
 Requires:       python-rados >= 10.2.2
 Requires:       python-rbd >= 10.2.2
 Requires:       python-netifaces >= 0.10.4
-Requires:       python-rtslib >= 2.1.fb67
-Requires:       rpm-python >= 4.11
+Requires:       python-rtslib >= 2.1.fb68
 Requires:       python-cryptography
 Requires:       python-flask >= 0.10.1
 Requires:       python-configshell
+%if 0%{?rhel} == 7
+Requires:       pyOpenSSL
+%else
+Requires:       python-pyOpenSSL
+%endif
 %else
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-rados >= 10.2.2
 Requires:       python3-rbd >= 10.2.2
 Requires:       python3-netifaces >= 0.10.4
-Requires:       python3-rtslib >= 2.1.fb67
+Requires:       python3-rtslib >= 2.1.fb68
 Requires:       python3-cryptography
-Requires:       python3-rpm >= 4.11
+Requires:       python3-pyOpenSSL
 %if 0%{?suse_version}
 BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
@@ -71,7 +75,7 @@ Requires:       python3-configshell
 %endif
 %endif
 
-%if 0%{?rhel} == 7
+%if 0%{?rhel}
 BuildRequires: systemd
 %else
 BuildRequires: systemd-rpm-macros
@@ -130,7 +134,6 @@ mkdir -p %{buildroot}%{_mandir}/man8
 install -m 0644 gwcli.8 %{buildroot}%{_mandir}/man8/
 gzip %{buildroot}%{_mandir}/man8/gwcli.8
 mkdir -p %{buildroot}%{_unitdir}/rbd-target-gw.service.d
-install -m 0644 .%{_sysconfdir}/systemd/system/rbd-target-gw.service.d/dependencies.conf %{buildroot}%{_unitdir}/rbd-target-gw.service.d/
 %if 0%{?suse_version}
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rcrbd-target-gw
@@ -177,7 +180,6 @@ ln -s service %{buildroot}%{_sbindir}/rcrbd-target-api
 %service_del_postun rbd-target-gw.service rbd-target-api.service
 %endif
 
-
 %files
 %license LICENSE
 %license COPYING
@@ -197,7 +199,6 @@ ln -s service %{buildroot}%{_sbindir}/rcrbd-target-api
 %attr(0770,root,root) %dir %{_localstatedir}/log/rbd-target-gw
 %attr(0770,root,root) %dir %{_localstatedir}/log/rbd-target-api
 %dir %{_unitdir}/rbd-target-gw.service.d
-%{_unitdir}/rbd-target-gw.service.d/dependencies.conf
 %if 0%{?suse_version}
 %{_sbindir}/rcrbd-target-gw
 %{_sbindir}/rcrbd-target-api

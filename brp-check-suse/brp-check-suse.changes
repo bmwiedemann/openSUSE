@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 07 14:06:17 UTC 2019 - mliska@suse.cz
+
+- Update to version 84.87+git20190807.d5563f2:
+  * Strip .gnu.debuglto_* and __gnu_lto_v1 in archives.
+
+-------------------------------------------------------------------
+Mon Aug  5 13:11:53 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 84.87+git20190801.8862c43
+  * remove python 2.5 check (#19)
+  * remove legacy brp-60-hook check (#20)
+- rerequest changes from git20190729.e01ed36
+
+-------------------------------------------------------------------
+Mon Jul 29 08:09:45 UTC 2019 - coolo@suse.com
+
+- Update to version 84.87+git20190729.e01ed36:
+  * make desktop category error message more meaningful (#17)
+  * redefine Science and Education to comply with guidelines (#18)
+
+-------------------------------------------------------------------
 Mon Jul 08 13:33:44 UTC 2019 - mliska@suse.cz
 
 - Update to version 84.87+git20190702.bac0cab:

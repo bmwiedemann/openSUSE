@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 24 06:02:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim time-dependent wording from description.
+
+-------------------------------------------------------------------
+Mon Aug 19 20:18:33 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Update to 0.11.1
+  - Remove a faulty assertion (observed in environment with
+    Django Channels and ASGI).
+
+-------------------------------------------------------------------
 Fri Aug 16 21:37:16 UTC 2019 - Jimmy Berry <jberry@suse.com>
 
 - Update to 0.11.0

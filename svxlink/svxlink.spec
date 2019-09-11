@@ -25,9 +25,9 @@
 %define SVXLINK			1.5.0
 %define REMOTERX		1.2.0
 # Sounds version
-%define SOUNDS			18.03.1
+%define SOUNDS			19.09
 Name:           svxlink
-Version:        17.12.2
+Version:        19.09.1
 Release:        0
 Summary:        Multi purpose voice services system for ham radio
 License:        GPL-2.0-only
@@ -43,11 +43,16 @@ BuildRequires:  groff-full
 BuildRequires:  gzip
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  libqt4-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tcl-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(popt)
@@ -63,10 +68,11 @@ Author Tobias Blomberg (SM0SVX)
 
 %package -n svxlink-server
 Version:        %{SVXLINK}
+Release:        0
 Summary:        SvxLink - A general purpose voice services system
 Group:          Productivity/Hamradio/Other
 Requires:       logrotate
-Requires:       pwdutils
+Requires:       shadow
 
 %description -n svxlink-server
 The SvxLink server is a general purpose voice services system for ham radio use.
@@ -78,6 +84,7 @@ It can act both as a simplex node and as a repeater controller.
 
 %package -n qtel
 Version:        %{QTEL}
+Release:        0
 Summary:        The QT EchoLink Client
 Group:          Productivity/Hamradio/Other
 
@@ -89,6 +96,7 @@ want, install the svxlink-server package.
 
 %package -n libecholib1_3
 Version:        %{ECHOLIB}
+Release:        0
 Summary:        EchoLink library
 Group:          Productivity/Hamradio/Other
 
@@ -97,6 +105,7 @@ EchoLink communications library
 
 %package -n libecholib1_3-devel
 Version:        %{ECHOLIB}
+Release:        0
 Summary:        Development files for the EchoLink
 Group:          Development/Libraries/Other
 Requires:       libecholib1_3 = %{version}
@@ -106,6 +115,7 @@ Development files for the EchoLink communications library
 
 %package -n libasync
 Version:        %{LIBASYNC}
+Release:        0
 Summary:        SvxLink Async libs
 Group:          Productivity/Hamradio/Other
 
@@ -114,6 +124,7 @@ The Async library files.
 
 %package -n libasync-devel
 Version:        %{LIBASYNC}
+Release:        0
 Summary:        SvxLink Async development files
 Group:          Development/Libraries/Other
 Requires:       libasync = %{version}
@@ -172,6 +183,7 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 %{_mandir}/man5/ModulePropagationMonitor.conf.5%{?ext_man}
 %{_mandir}/man5/ModuleSelCallEnc.conf.5%{?ext_man}
 %{_mandir}/man5/ModuleTclVoiceMail.conf.5%{?ext_man}
+%{_mandir}/man5/ModuleTrx.conf.5%{?ext_man}
 %{_mandir}/man5/remotetrx.conf.5%{?ext_man}
 %{_mandir}/man5/svxlink.conf.5%{?ext_man}
 %{_mandir}/man5/svxreflector.conf.5%{?ext_man}

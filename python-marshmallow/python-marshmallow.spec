@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-marshmallow
-Version:        2.19.5
+Version:        3.0.1
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        MIT AND BSD-3-Clause
@@ -27,8 +28,6 @@ URL:            https://marshmallow.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/marshmallow-%{version}.tar.gz
 # https://github.com/humitos/sphinx-version-warning/issues/22
 Patch0:         python-marshmallow-no-version-warning.patch
-Patch1:         reproducible.patch
-Patch2:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,12 +37,12 @@ Suggests:       python-simplejson
 BuildArch:      noarch
 # SECTION doc build requirements
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-alabaster
 BuildRequires:  python3-sphinx-issues
 BuildRequires:  python3-sphinx-version-warning
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module simplejson}
 # /SECTION
@@ -63,9 +62,6 @@ HTML Documentation and examples for %{name}.
 %prep
 %setup -q -n marshmallow-%{version}
 %autopatch -p1
-
-# remove py3 only tests
-rm -r tests/test_py3
 
 %build
 %python_build

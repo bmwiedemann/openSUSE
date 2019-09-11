@@ -23,7 +23,7 @@ Release:        0
 Summary:        Tools to work with functools
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.functools
+URL:            https://github.com/jaraco/jaraco.functools
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.functools/jaraco.functools-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module jaraco.classes}
@@ -38,11 +38,10 @@ BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-backports.unittest_mock
 Requires:       python-jaraco.base >= 6.1
 Requires:       python-more-itertools
+BuildArch:      noarch
 %ifpython2
 Requires:       python-backports.functools_lru_cache
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -76,10 +75,8 @@ rm -rf jaraco.functools.egg-info
 
 %check
 # Ignore method_cache doctest because of gh#jaraco/jaraco.functools#12
-%{python_expand py.test-%{$python_bin_suffix} \
-  --ignore=_build.python2 --ignore=_build.python3 \
-  -k 'not method_cache'
-}
+# test_function_throttled - can randomly fail
+%pytest -k 'not method_cache and not test_function_throttled'
 
 %files %{python_files}
 %license LICENSE

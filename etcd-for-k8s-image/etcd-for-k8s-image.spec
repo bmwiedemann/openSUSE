@@ -1,7 +1,7 @@
 #
 # spec file for package etcd-for-k8s-image
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           etcd-for-k8s-image
 Version:        3.3.10
@@ -24,8 +25,8 @@ Group:          System/Management
 Url:            https://github.com/coreos/etcd
 Source:         etcd-%{version}.tar.xz
 Source1:        etcd-3.2.24.tar.xz
+BuildRequires:  go
 BuildRequires:  golang-packaging
-BuildRequires:	go
 ExcludeArch:    %ix86
 ExcludeArch:    s390
 Conflicts:      etcd
@@ -54,13 +55,20 @@ mv ../go/bin/etcd* bin
 #mkdir bin
 #mv ../go/bin/etcd* bin
 
-
 %install
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sbindir}
 install -m 0755 bin/etcd %{buildroot}%{_sbindir}/etcd-%{version}
 install -m 0755 bin/etcdctl %{buildroot}%{_bindir}/etcdctl-%{version}
-ln -sf etcd-%{version} %{buildroot}%{_sbindir}/etcd
+#ln -sf etcd-%{version} %{buildroot}%{_sbindir}/etcd
+# we need a wrapper script to be able to set some environment
+# variables.
+echo "#!/bin/bash" > %{buildroot}%{_sbindir}/etcd
+%ifarch aarch64
+echo "export ETCD_UNSUPPORTED_ARCH=arm64" >> %{buildroot}%{_sbindir}/etcd
+%endif
+echo "exec %{_sbindir}/etcd-%{version} \"\$@\"" >> %{buildroot}%{_sbindir}/etcd
+chmod 755 %{buildroot}%{_sbindir}/etcd
 ln -sf etcdctl-%{version} %{buildroot}%{_bindir}/etcdctl
 
 #cd ../etcd-3.2.24

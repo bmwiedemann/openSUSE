@@ -15,14 +15,14 @@ Index: ack-v3.0.2/lib/App/Ack/ConfigDefault.pm
 --- ack-v3.0.2.orig/lib/App/Ack/ConfigDefault.pm
 +++ ack-v3.0.2/lib/App/Ack/ConfigDefault.pm
 @@ -70,6 +70,9 @@ sub _options_block {
- # http://mercurial.selenic.com/
+ # https://www.mercurial-scm.org/
  --ignore-directory=is:.hg
  
 +# openSUSE Commander
 +--ignore-directory=is:.osc
 +
- # quilt
- # http://directory.fsf.org/wiki/Quilt
+ # Quilt
+ # https://directory.fsf.org/wiki/Quilt
  --ignore-directory=is:.pc
 Index: ack-v3.0.2/t/ack-dump.t
 ===================================================================

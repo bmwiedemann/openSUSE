@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Aug 22 20:40:24 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.0
+
+Important
+  * version 2.4.0 carries quite a number of relatively small changes (see: 
+    Bugfixes and Features below) that are subtle but may impact runtime 
+    behavior nevertheless; you should verify an upgrade in a test environment 
+    before rolling out to production
+  * this release deprecates the OAuth 2.0 Resource Server functionality 
+    which is now implemented as a separate module mod_oauth2.
+
+Bugfixes
+  * URL-encode client_id/client_secret when using client_secret_basic according to:
+    https://tools.ietf.org/html/rfc6749#section-2.3.1
+  * fix parsing and caching of OIDCOAuthServerMetadataURL; thanks Lance Fannin
+  * fix oidc_proto_html_post auto-post-submit so it no longer results in
+    duplicate parentheses; closes #440; thanks @gobreak
+  * fix RSA JWK x5c parsing issue (e.g. when parsing n fails): explicitly set the kid into to JWK
+  * fix OIDCOAuthAcceptTokenAs post so POST data is propagated and not lost; see #443
+  * fix JWT decryption crashing on non-null terminated input
+  * fix not clearing claims in session when setting claims to null; closes #445; thanks @FilipVujicic
+
+Features
+  * support refresh and access tokens revocation from an RFC 7009 endpoint 
+    upon OIDC session logout
+  * make sure the content handler is called for every request to the 
+    configured Redirect URI so all Apache processing is executed (e.g. 
+    setting headers with mod_headers) before returning the response; thanks 
+    Don Sengpiehl (NB: this may affect browser behavior and backwards 
+    compatibility)
+  * add ability to view session info in HTML via the session info hook via <redirect_uri)?info=html
+  * enable per-provider signing and encryption keys in multi-provider setups (with limitations)
+  * no longer use the fixup handler for environment variable setting but do it as part of the authn handler
+  * add logout_on_error option to OIDCRefreshAccessTokenBeforeExpiry to 
+    kill the session when refreshing an access token fails; thanks @rickyepoderi
+  * be smart about picking the token endpoint authentication method when 
+    not configured explicitly: don't choose the first one published by the OP 
+    but prefer client_secret_basic if that is listed as well see: 
+    panva/node-oidc-provider#514; thanks @richard-drummond and @panva
+
+Other
+  * remove option OIDCScrubRequestHeaders that allows for skipping 
+    scrubbing request headers, thus avoiding potentially insecure setups
+  * log the original URL for expired state cookies, useful for debugging 
+    SPA/JS issues
+  * add debug logs in oidc_proto_generate_random_string to allow for 
+    spotting lack of entropy in the random number generator (on VM 
+    environments) more easily
+  * add USE_URANDOM compile time option to use /dev/urandom explicitly for 
+    non-blocking random number generation: configure with 
+    APXS2_OPTS="-DUSE_URANDOM"
+  * allow removing an access token from the cache ("remove_at_cache") when 
+    running in OAuth 2.0 RS mode only
+
+-------------------------------------------------------------------
 Wed Mar 13 20:36:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.11

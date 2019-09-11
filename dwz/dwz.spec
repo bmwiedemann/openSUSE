@@ -12,25 +12,70 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           dwz
-Version:        0.12
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%bcond_with ringdisabled
+
+%if "%flavor" == "testsuite"
+%if %{with ringdisabled}
+ExclusiveArch:  do_not_build
+%endif
+%define build_main 0
+%define build_testsuite 1
+%else
+%define build_main 1
+%define build_testsuite 0
+%endif
+
+%if %{build_testsuite}
+%define debug_package %{nil} 
+%endif
+
+%if %{build_main}
+%define name_suffix %{nil}
+%else
+%define name_suffix -%{flavor}
+%endif
+
+Name:           dwz%{name_suffix}
+Version:        0.13
 Release:        0
+%if %{build_main}
 Summary:        DWARF optimization and duplicate removal tool
-#Git-Clone:	git://sourceware.org/git/dwz
-#Git-Web:	https://sourceware.org/git/?p=dwz.git;a=summary
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Tools/Building
-Source:         %{name}-%{version}.tar.xz
-Patch0:         dwz-0.12-ignore-nobits.patch
-Patch1:         dwz-0.12-DW_OP_GNU_variable_value.patch
-Patch2:         dwz-low-mem-Fix-DW_OP_GNU_parameter_ref-handling-in-read_exprloc.patch
+%endif
+%if %{build_testsuite}
+Summary:        Testsuite results from DWZ
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          Development/Tools/Building
+%endif
+#Git-Clone:	git://sourceware.org/git/dwz
+#Git-Web:	https://sourceware.org/git/?p=dwz.git;a=summary
+Source:         dwz-%{version}.tar.xz
+Url:            https://sourceware.org/dwz/
 BuildRequires:  libelf-devel
 BuildRequires:  xz
+%if %{build_testsuite}
+BuildRequires:  dejagnu
+BuildRequires:  elfutils
+BuildRequires:  gdb
+%ifnarch riscv64
+BuildRequires:  binutils-gold
+%endif
+%endif
 
+%if !%{build_main}
+NoSource:       0
+%endif
+
+Patch1:         dwz-update-version-copyright-message.patch
+
+%if %{build_main}
 %description
 dwz optimizes DWARF debugging information contained in ELF shared
 libraries and executables for size, by replacing DWARF information
@@ -48,22 +93,42 @@ When not using the -m option (multifile mode), GDB CVS snapshot (soon to be
 7.5) is sufficient, when using -m option, GDB from a git branch
 http://sources.redhat.com/git/?p=archer.git;a=shortlog;h=refs/heads/archer-tromey-dwz-multifile
 is needed.
+%endif
+
+%if %{build_testsuite}
+%description
+This package contains the testsuite results from DWZ.
+%endif
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%setup -q -n dwz
 %patch1 -p1
-%patch2 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
 
-%install
-%make_install
+%check
+%if %{build_testsuite}
+make -k check
+%endif
 
+%install
+%if %{build_main}
+%make_install
+%endif
+
+%if %{build_main}
 %files
 %license COPYING
 %{_bindir}/dwz
 %{_mandir}/man1/dwz.1%{?ext_man}
+%endif
+
+%if %{build_testsuite}
+%files
+%defattr(-,root,root)
+%doc dwz.sum
+%doc dwz.log
+%endif
 
 %changelog

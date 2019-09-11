@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        3.46.0
+Version:        3.47.1
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -114,7 +114,6 @@ BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 Requires:       chmlib >= 0.40
 Requires:       dbus-1-python >= 1.2.0
 Requires:       liberation-fonts
-Requires:       libicu >= 4.4
 Requires:       libmtp9 >= 1.1.5
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5

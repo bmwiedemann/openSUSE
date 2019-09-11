@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,16 +21,15 @@
 Name:           python-immutables
 Version:        0.9
 Release:        0
-License:        Apache-2.0
 Summary:        Immutable collections for Python
-Url:            https://github.com/MagicStack/immutables
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description

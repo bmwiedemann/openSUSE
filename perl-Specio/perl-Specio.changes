@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 15 05:29:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.44
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.44     2019-08-14
+  
+  - Replaced the use of B with XString if it is installed. The latter is much
+    smaller and provides the one subroutine from B we cared about. Based on GH
+    #15. Implemented by Nicolas R.
+
+-------------------------------------------------------------------
 Thu Nov  8 06:56:40 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.43

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 10:04:26 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Prevent parallel installation of xscreensaver by dropping
+  xscreensaver-data recommendation and make sure xscreensaver is
+  removed from existing systems (boo#1149209)
+
+-------------------------------------------------------------------
 Fri Aug 16 13:01:06 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

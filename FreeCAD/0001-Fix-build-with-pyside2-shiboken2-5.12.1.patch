@@ -1,0 +1,88 @@
+From 7d362752633f0e47cebc44f52db8dffbc3b3c2e6 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 13 Jun 2019 14:15:07 +0200
+Subject: [PATCH] Fix build with pyside2/shiboken2 >= 5.12.1
+
+Starting with 5.12.2, pyside2 and shiboken2 now create CMake build targets.
+The old variables were removed, leading to linker errors when building FreeCAD.
+---
+ src/Gui/CMakeLists.txt | 54 ++++++++++++++++++++++++------------------
+ 1 file changed, 31 insertions(+), 23 deletions(-)
+
+diff --git a/src/Gui/CMakeLists.txt b/src/Gui/CMakeLists.txt
+index 3bd96e0..93babc5 100644
+--- a/src/Gui/CMakeLists.txt
++++ b/src/Gui/CMakeLists.txt
+@@ -137,38 +137,46 @@ IF(OCULUS_FOUND)
+     )
+ ENDIF(OCULUS_FOUND)
+ 
+-if(SHIBOKEN_INCLUDE_DIR)
+-    if (BUILD_QT5)
++if(BUILD_QT5)
++    if(Shiboken2_FOUND)
+         add_definitions(-DHAVE_SHIBOKEN2)
+-    else()
++        if("${Shiboken2_VERSION}" VERSION_GREATER 5.12.1)
++            list(APPEND FreeCADGui_LIBS Shiboken2::libshiboken)
++        else()
++            include_directories(${SHIBOKEN_INCLUDE_DIR})
++            list(APPEND FreeCADGui_LIBS ${SHIBOKEN_LIBRARY})
++        endif()
++    endif()
++    if(PySide2_FOUND)
++        add_definitions(-DHAVE_PYSIDE2)
++        if("${PySide2_VERSION}" VERSION_GREATER 5.12.1)
++            list(APPEND FreeCADGui_LIBS PySide2::pyside2)
++            # Needed to '#include pyside2_<module_name>_python.h'
++            get_target_property(PYSIDE_INCLUDE_DIR PySide2::pyside2 INTERFACE_INCLUDE_DIRECTORIES)
++        else()
++            list(APPEND FreeCADGui_LIBS ${PYSIDE_LIBRARY})
++        endif()
++        include_directories(${PYSIDE_INCLUDE_DIR}/QtWidgets)
++    endif()
++else()
++    if(SHIBOKEN_INCLUDE_DIR)
+         add_definitions(-DHAVE_SHIBOKEN)
++        include_directories(${SHIBOKEN_INCLUDE_DIR})
++        list(APPEND FreeCADGui_LIBS ${SHIBOKEN_LIBRARY})
+     endif()
+-    include_directories(
+-        ${SHIBOKEN_INCLUDE_DIR}
+-    )
+-    list(APPEND FreeCADGui_LIBS
+-        ${SHIBOKEN_LIBRARY}
+-    )
+-endif(SHIBOKEN_INCLUDE_DIR)
++    if(PYSIDE_INCLUDE_DIR)
++        add_definitions(-DHAVE_PYSIDE)
++        list(APPEND FreeCADGui_LIBS ${PYSIDE_LIBRARY})
++    endif()
++endif()
+ 
+-if(PYSIDE_INCLUDE_DIR)
++if(DEFINED PYSIDE_INCLUDE_DIR)
+     include_directories(
+         ${PYSIDE_INCLUDE_DIR}
+         ${PYSIDE_INCLUDE_DIR}/QtCore
+         ${PYSIDE_INCLUDE_DIR}/QtGui
+     )
+-    list(APPEND FreeCADGui_LIBS
+-        ${PYSIDE_LIBRARY}
+-    )
+-    if (BUILD_QT5)
+-        include_directories(
+-            ${PYSIDE_INCLUDE_DIR}/QtWidgets
+-        )
+-        add_definitions(-DHAVE_PYSIDE2)
+-    else()
+-        add_definitions(-DHAVE_PYSIDE)
+-    endif()
+-endif(PYSIDE_INCLUDE_DIR)
++endif()
+ 
+ generate_from_xml(DocumentPy)
+ generate_from_xml(PythonWorkbenchPy)
+-- 
+2.22.0
+

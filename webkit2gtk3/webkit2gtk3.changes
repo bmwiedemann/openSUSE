@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:59:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.26.0:
+  + Add support for subprocess sandboxing.
+  + Add support for HSTS (HTTP Strict Transport Security).
+  + Use libwpe with fdo backend to implement accelerated
+    compositing under wayland.
+  + Remove support for GTK2 NPAPI plugins.
+  + Add support for datalist element in text input fields.
+  + Show the emoji chooser popover for editable content.
+  + Improve rendering of form controls when GTK theme is dark.
+  + Fix rendering artifacts in youtube volume button and github
+    comment box.
+  + Single process model has been deprecated for security reasons.
+
+-------------------------------------------------------------------
+Tue Sep  3 12:11:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.25.92:
+  + Add WEBKIT_USE_SINGLE_WEB_PROCESS environment variable to force
+    single process model in all WebKitWebContext. This is a
+    temporary solution for applications still depending on the
+    single process mode behavior. It will be only available in 2.26
+    series.
+  + Add new API to remove a filter from an user content manager
+    given its identifier.
+  + Add support for HSTS.
+  + Several improvements and bug fixes in MSE media player.
+  + Fix building without unified sources.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 11:25:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable pkgconfig(wpe-1.0) and pkgconfig(wpebackend-fdo-1.0)
+  BuildRequires and pass DUSE_WPE_RENDERER=OFF to cmake. Needs more
+  work upstream.
+
+-------------------------------------------------------------------
+Fri Aug 30 02:25:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.25.4:
+  + Switch to use libsoup WebSockets API.
+  + Add support for permessage-deflate WebSocket extension.
+  + Add support for datalist element in text input fields.
+  + Fix a crash with empty video source.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Fri Aug 30 02:25:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.25.3:
+  + Remove support for GTK2 NPAPI plugins.
+  + Fix web view updates after swapping web process if accelerated
+    compositing mode is forced.
+  + Make kinetic scrolling work again.
+  + Fix position of emoji chooser when page is scrolled.
+  + Fix web process deadlock when scrolling twitter timeline which
+    contains HLS videos.
+  + Make navigation gesture use dark fallback background color
+    color on dark themes.
+  + Make Previous/Next gesture work in RTL mode.
+  + Support cancelling touchscreen back/forward gesture.
+  + Add user agent quirk to make github work in FreeBSD.
+  + Fix content disappearing when using CSS transforms.
+  + Fix some radio streams that could not be played.
+  + Fix video pause that sometimes caused to skip to finish.
+  + Fix volume level changes when playing a video.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.25.2:
+  + Enable process switch on cross site navigation.
+  + Use libwpe with fdo backend to implement accelerated
+    compositing under wayland.
+  + Fix rendering artifacts in youtube volume button.
+  + Fix trapezoid artifact in github comment box.
+  + Ensure web extensions directory is readable when sandbox is
+    enabled.
+  + Fix the executable name of WebDriver process, renamed by
+    mistake in 2.25.1.
+  + Enable hyperlink auditing setting by default.
+  + Remove the option to build without using the redirected
+    XComposite window.
+  + Fix HLS streams being slow to start.
+  + Make accessibility work when sandbox is enabled.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.25.1:
+  + Add support for subprocess sandboxing.
+  + Add API to get the web process unique identifier of a
+    WebKitFrame.
+  + Add WebKitWebPage::did-associate-form-controls-for-frame signal
+    and deprecate did-associate-form-controls.
+  + Implement AtkComponentIface scroll_to methods.
+  + Improve rendering of form controls when GTK theme is dark and
+    enable prefers-color-scheme media query.
+  + Show the emoji chooser popover for editable content.
+  + Fix touch capabilities detection for websites checking touch
+    events properties present in window or pointer media queries.
+  + Fix several crashes and rendering issues.
+- Drop webkit2gtk3-bwo197558-hang.patch: Fixed upstream.
+- Add pkgconfig(wpe-1.0) and pkgconfig(wpebackend-fdo-1.0)
+  BuildRequires: New dependencies.
+- Enable bubblewrap, xdg-dbus-proxy and pkgconfig(libseccomp)
+  BuildRequires as well as bubblewrap and xdg-dbus-proxy Requires:
+  Sandbox feature is enabled again.
+- Drop conditional pkgconfig(gtk+-2.0) BuildRequires and
+  webkit2gtk3-plugin-process-gtk2 sub-package, support for gtk2
+  plugins are now dropped upstream. Add Obsoletes in libwebkit2gtk.
+
+-------------------------------------------------------------------
+Wed Aug 28 12:40:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.24.4 (boo#1148931):
+  + Updated the user agent string to make happy certain websites
+    which would claim that the browser being used was unsupported.
+  + Improve loading of multimedia streams to avoid memory
+    exhaustion due to excessive caching.
+  + Fix display of documents with MIME type application/xml in the
+    Web Inspector, when loaded using XmlHttpRequest.
+  + Fix a hang while scrolling certain websites which include HLS
+    video content (Twitter, for example).
+  + Fix rounding artifacts in volume levels for media playback.
+  + Fix several crashes and rendering issues.
+  + Fix the build with video track support disabled.
+  + Fix the build with OpenGL support disabled.
+  + Fix build issue which would cause media controls to disappear
+    when Python 3.x was used during the build process.
+  + Security fixes: CVE-2019-8644, CVE-2019-8649, CVE-2019-8658,
+    CVE-2019-8669, CVE-2019-8678, CVE-2019-8680, CVE-2019-8683,
+    CVE-2019-8684, CVE-2019-8688.
+- Drop webkit2gtk3-bwo197558-hang.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sun Jul 14 14:21:58 UTC 2019 - Rich Coe <rcoe@wi.rr.com>
 
 - Add webkit2gtk3-bwo197558-hang.patch for hang (bwo#197558)
@@ -24,6 +157,8 @@ Tue Jul  2 11:17:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix the build with older versions of GStreamer.
   + Fix the build with video and audio disabled.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2019-8666, CVE-2019-8673, CVE-2019-8676,
+    CVE-2019-8681, CVE-2019-8687, CVE-2019-8689, CVE-2019-8690.
   + Updated translations.
 - Drop upstream fixed patches:
   + webkit2gtk3-bug196440-build-fix.patch.
@@ -48,7 +183,9 @@ Fri May 24 08:00:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix SSE2 detection at compile time, ensuring the right flags
     are passed to the compiler.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2019-8595, CVE-2019-8607, CVE-2019-8615.
+  + Security fixes: CVE-2019-8595, CVE-2019-8607, CVE-2019-8615,
+    CVE-2019-8671, CVE-2019-8672, CVE-2019-8677, CVE-2019-8679,
+    CVE-2019-8686.
   + Updated translations.
 - Drop webkit2gtk3-fix-i586-build.patch: Fixed upstream.
 

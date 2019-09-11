@@ -180,7 +180,7 @@ Requires(preun): update-alternatives
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        9.1.1+r274111
+Version:        9.2.1+r274709
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -191,7 +191,7 @@ Source1:        change_spec
 Source2:        gcc9-rpmlintrc
 Source3:        gcc9-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        nvptx-newlib.tar.xz
+Source5:        newlib-3.1.0.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -202,6 +202,8 @@ Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc9-value-prof.patch
+Patch19:        gcc9-add-flto=auto.patch
+Patch20:        gcc9-pr91307.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -259,7 +261,7 @@ namely gcc-ada, gcc-c++, gcc-fortran, gcc-obj, gcc-obj-c++ and gcc-go.
 %prep
 %if 0%{?nvptx_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s nvptx-newlib/newlib .
+ln -s newlib-3.1.0/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -278,6 +280,8 @@ ln -s nvptx-newlib/newlib .
 %patch16
 %patch17
 %patch18 -p1
+%patch19 -p1
+%patch20
 %patch51
 %patch60
 %patch61

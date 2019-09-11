@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Aug 21 19:30:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-a-crash-when-running-amarok-l-path-to-file.patch (kde#410870)
+
+-------------------------------------------------------------------
+Wed Aug 21 19:29:24 UTC 2019 - christophe@krop.fr
+
+- Update to version 2.9.70git.20190820T023444~600806141d:
+  * Fix the CI build
+  * Use identical internet-services icon
+
+-------------------------------------------------------------------
+Tue Jul 16 09:29:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove the taglib runtime Requires, these are just examples and
+  are not used, the automatic library dependencies are sufficient.
+
+-------------------------------------------------------------------
+Fri Jun 14 14:23:43 UTC 2019 - christophe@krop.fr
+
+- Update to version 2.9.70git.20190614T140058~cea336303a:
+  * Fix passing local file paths on the command line
+
+-------------------------------------------------------------------
+Tue May 28 15:55:37 UTC 2019 - wbauer@tmo.at
+
+- Add back gstreamer-plugins-ugly Recommends (if
+  phonon4qt5-backend-gstreamer is installed) to make mp3 playback
+  work out of the box
+- Require libqt5-qtquickcontrols instead of libqt5-qtquickcontrols2
+  as the former is used/needed too and the latter is required by
+  kirigami2 anyway
+
+-------------------------------------------------------------------
+Tue May 14 09:53:55 UTC 2019 - christophe@krop.fr
+
+- Update to version 2.9.70git.20190510T121601~fc370bbebf:
+  * Set urgency to Low for track changes
+  * Add DesktopEntry to notifyrc
+
+-------------------------------------------------------------------
+Tue May 14 09:53:35 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Work-around-QTBUG-75797-for-openQA.patch
+
+-------------------------------------------------------------------
+Sat May 04 09:49:27 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Enable 'changesgenerate' in the _service file.
+
+-------------------------------------------------------------------
+Mon Apr 22 14:41:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use a git snapshot for amarok.
+- Drop patches:
+  - Fix-build-with-gcc6.patch
+  - initial-preference.diff
+- Refresh disable-web-plugins-by-default.patch
+- Refresh flac_mimetype_bnc671581.diff
+- Add amarok_mariadb.patch
+
+-------------------------------------------------------------------
+Sat Apr 20 08:43:09 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Replace some hardcoded package names with pkgconfig() ones.
+- Tweak summary a bit: Amarok is not only for KDE.
+- Remove GCC workaround for ancient and unsupported openSUSE versions.
+
+-------------------------------------------------------------------
 Fri May 11 06:44:51 UTC 2018 - wbauer@tmo.at
 
 - Symlink service menu file to KF5 location so that it shows up
@@ -1306,7 +1375,7 @@ Mon May 18 19:33:57 CEST 2009 - cmorve69@yahoo.es
 
 - make mp4 support a build option
 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon May 11 11:25:01 CEST 2009 - beineri@opensuse.org
 
 - update to 2.1 Beta 2: several bugfixes and

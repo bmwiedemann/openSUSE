@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.8.3
-%define _vers 3_8_3
+%define vers 3.11.3
+%define _vers 3_11_3
 %define so_ver 3
 %define openblas_vers 0.3.6
 
@@ -38,7 +38,6 @@ ExcludeArch:    s390 s390x
 %endif
 
 %if "%flavor" == ""
-%dfine package_name %pname
 ExclusiveArch:  do_not_build
 %endif
 
@@ -201,11 +200,8 @@ Patch0:         petsc-3.3-p2-fix-shared-libs-sonames.patch
 Patch1:         petsc-3.3-p2-no-rpath.patch
 Patch2:         petsc-3.3-p2-dont-check-for-option-mistakes.patch
 Patch3:         petsc-3.3-fix-error-detection-in-makefile.patch 
-Patch4:         petsc-3.7-fix-pastix-detection.patch
-Patch5:         Python-Fix-a-number-of-scripts-to-by-Python-3-compliant.patch
-# PATCH-FIX-UPSTREAM [rebased] -- Fix building non-MPI flavors of packages depending on petsc
-Patch6:         petsc-fix-nonmpi.patch
-Url:            http://www.mcs.anl.gov/petsc/
+Patch4:         petsc-3.7-fix-pastix-detection.patch       
+Url:            https://www.mcs.anl.gov/petsc/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{!?makedoc:1}
 BuildRequires:  fdupes
@@ -341,8 +337,6 @@ yet supported by %{?is_opensuse:open}SUSE.
 %patch2 -p1 -b .option-mistakes
 %patch3 -p1 -b .error-detect
 %patch4 -p1 -b .pastix-detect
-%patch5 -p1
-%patch6 -p1
 
 %if 0%{?makedoc:1}
 %files doc
@@ -370,7 +364,7 @@ export PETSC_ARCH=%petsc_arch
 %hpc_setup
 module load phdf5 scalapack openblas
 %endif
-%ifarch ppc64le ppc64 s390 aarch64
+%ifarch ppc64le ppc64 s390 aarch64 x86_64
 export ARCHCFLAGS=-fPIC
 %endif
 
@@ -435,10 +429,14 @@ export PETSC_DIR=${RPM_BUILD_DIR}/petsc-%{version}
 export PETSC_ARCH=%petsc_arch
 %endif
 
-make install DESTDIR=%{buildroot}%p_prefix
+make install DESTDIR=%{buildroot}
+
 rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/examples/*/output/*.out
+rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/examples/*/*/output/*.out
 rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/examples/*/output/*.out
+rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/examples/*/*/output/*.out
 rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/*/examples/*/output/*.out
+rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/*/examples/*/*/output/*.out
 rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/*.log
 rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/.DIR
 
@@ -496,21 +494,15 @@ do
     rm -f %{buildroot}%{p_prefix}/$i
 done
 
-for file in %{hpc_bindir}/parseargs.py \
-    %{hpc_bindir}/petsc_conf.py \
-    %{hpc_bindir}/PetscBinaryIO.py \
-    %{hpc_bindir}/PetscBinaryIOTrajectory.py
+for file in %{hpc_prefix}/lib/petsc/bin/petsc_conf.py \
+    %{hpc_prefix}/lib/petsc/bin/PetscBinaryIO.py \
+    %{hpc_prefix}/lib/petsc/bin/PetscBinaryIOTrajectory.py
 do
     %{hpc_python_mv_to_sitearch $file}
 done
-rm -rf %{buildroot}/%{hpc_bindir}/win32fe
-rm -f  %{buildroot}/%{hpc_bindir}/uncrustify.cfg \
-       %{buildroot}/%{hpc_bindir}/sendToJenkins \
-       %{buildroot}/%{hpc_libdir}/rules
 
-%{hpc_shebang_prepend_list %{buildroot}%{hpc_bindir}/*.py}
-
-%hpc_shebang_sanitize_scripts %{buildroot}%{p_prefix}/bin
+%{hpc_shebang_prepend_list %{buildroot}%{p_prefix}/lib/petsc/bin/*.py}
+%hpc_shebang_sanitize_scripts %{buildroot}%{p_prefix}/lib/petsc/bin
 %hpc_shebang_sanitize_scripts %{buildroot}%{p_prefix}/lib/petsc
 
 tmp=$(mktemp /tmp/bad-XXXXXX})
@@ -520,7 +512,7 @@ done
 [ -s $tmp ] && { echo "One or more python script not Python 3 compliant!"; cat $tmp; exit 1; }
 rm -f $tmp
 
-pyton_sitesearch_path=%{hpc_python_sitearch_no_singlespec}
+#pyton_sitesearch_path=%{hpc_python_sitearch_no_singlespec}
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
 
@@ -556,15 +548,15 @@ if [ expr [ module-info mode load ] || [module-info mode display ] ] {
     }
 }
 
-prepend-path    PATH                %{hpc_bindir}
+prepend-path    PATH                %{hpc_prefix}/lib/petsc/bin
 prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
 if {[file isdirectory  $pyton_sitesearch_path]} {
 prepend-path    PYTHONPATH          $pyton_sitesearch_path
 }
 
 setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
-if {[file isdirectory  %{hpc_bindir}]} {
-setenv          %{hpc_upcase %pname}_BIN        %{hpc_bindir}
+if {[file isdirectory  %{hpc_prefix}/lib/petsc/bin]} {
+setenv          %{hpc_upcase %pname}_BIN        %{hpc_prefix}/lib/petsc/bin
 }
 if {[file isdirectory  %{hpc_includedir}]} {
 prepend-path    LIBRARY_PATH        %{hpc_libdir}
@@ -613,14 +605,14 @@ done
 
 %files -n %{libname %_vers}
 %doc docs/manual.pdf
-%if %{without hpc}
+  %if %{without hpc}
 %dir %{p_libdir}/petsc
 %dir %{p_libdir}/petsc/%{version}
-%else
+  %else
 %hpc_dirs
 %hpc_modules_files
 %{dirname:%{hpc_python_sitearch_no_singlespec}}
-%endif # with hpc
+  %endif # with hpc
 %dir %{p_prefix}
 %dir %{p_prefix}/lib
 %{p_libdir}/*.so.*
@@ -630,23 +622,22 @@ done
 %exclude %{p_prefix}/share/petsc/saws
 
 %files %{?n_pre}devel
-%{p_prefix}/bin
-%exclude %{p_prefix}/bin/saws
+%{p_prefix}/lib/petsc/bin/
+%exclude %{p_prefix}/lib/petsc/bin/saws
 %{p_prefix}/include
 %{p_prefix}/lib/petsc
 %{p_prefix}/%{!?with_hpc:lib}%{?with_hpc:%_lib}/pkgconfig
-%{p_include}/*
 %{p_libdir}/*.so
-%if %{without hpc}
+  %if %{without hpc}
 %{p_prefix}/lib/*.so
 %dir %{_datadir}/modules/%{name}-%{petsc_arch}
 %{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
-%endif
+  %endif
 %{p_prefix}/share/petsc/examples
 
 %if %{with hpc}
 %files saws
-%{p_prefix}/bin/saws
+%{p_prefix}/lib/petsc/bin/saws
 %{p_prefix}/share/petsc/saws
 %endif
 

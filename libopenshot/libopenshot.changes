@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 18 08:31:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to current master (devel) branch, fixes build for Factory.
+- Run spec-cleaner, use modern macros.
+- Enable ruby-devel BuildRequires, fixed upstream.
+- Replace ImageMagick-devel with disabled pkgconfig(Magick++)
+  BuildRequires, it's not detected either way.
+
+-------------------------------------------------------------------
+Fri May  3 08:08:51 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.2.3
+  * Bumping version to 0.2.3 (SO 17)
+  * Integration of resvg SVG library (optional during build) (#185)
+  * Improved Keyframe Performance (#197)
+  * MP3 Special Handling & Missing Frame Refactor (#196)
+  * Fix default sizes on readers without MAX_WIDTH and MAX_HEIGHT settings (#188)
+  * Adding new settings class to be used for changing realtime settings used by libopenshot, such as scaling mode for preview vs final render, or hardware decode, etc... (#183)
+  * Integrate Constant Rate Factor (CRF) for FFmpegWriter (#186)
+  * Improving cache performance by preventing the cache from getting behind the currently displaying frame # (#179)
+  * Set video bit rate to 0 if an invalid bit rate detected (which happens when using crf) (#191)
+  * Invalid SetMaxSize Logic and Invalid CRF q settings in FFmpegWriter (#198)
+  * Refactor FFmpegWriter Open() and PrepareStreams() methods, so that SetOption() can be called between them. (#193)
+  * Some polishing for the cmake ReSVG discovery (#187)
+  * Adding condition before calling av_frame_free (in AV_FREE_FRAME macro) (#184)
+  * tests/CMakeLists: Use same dependencies as src/ (#163)
+  * Remove Eclipse files and add to gitignore (#178)
+  * Fixing Scale Mode (None) in previews (#182)
+  * Exclude git tags from kicking off GitLab builds (for libopenshot)
+  * Update readme to use markdown and update copyright to 2019 (#94)
+  * Update README and INSTALL files (including build instructions) (#194)
+  * Add git log file with commits up to the previous release (#192)
+
+-------------------------------------------------------------------
 Mon Sep 24 09:56:15 UTC 2018 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.2.2

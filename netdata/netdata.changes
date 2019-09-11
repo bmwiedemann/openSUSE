@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Sep  4 08:03:47 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.17.0
+Improvements:
+  * Database engine:
+    + Variable granularity support for data collection
+    + Added tips on the UI to encourage users to try the new DB
+      Engine, when they reach the end of their metrics history
+
+  * Health:
+    + Added support for plain text only email notifications
+    + Started showing “hidden” alarm variables in the responses of
+      the chart and data API calls
+    + Added a new API call for alarm status counters, as a first
+      step towards badges that will show the total number of alarms
+
+  * Security:
+    + Added configurable default locations for trusted CA
+      certificates
+    + Added safer way to get container names
+    + Added SSL connection support to the python mongodb collector
+
+  * New collectors:
+    + VSphere collector
+
+  * Archiving:
+    + Added a new MongoDB backend
+
+  * Other:
+    + Added apps grouping debug messages
+    + GCC warning and linting improvements
+    + Added global configuration option to show charts with zero
+      metrics
+    + Improved the way we parse HTTP requests, so we can avoid
+      issues from edge cases
+
+  * Bug fixes:
+    + Fixed sensor chips filtering in python sensors collector
+    + Fixed user and group names in apps.plugin when running in a
+      container, by mounting and reading /etc/passwd
+    + Fixed possible buffer overflow in the JSON parser used for
+      health notification silencers
+    + Fixed handling of corrupted DB files in dbengine, that could
+      cause netdata to not start properly
+      (CRC and I/O error handling)
+    + Fixed an issue with Netdata snapshots that could sometimes
+      cause a problem during import
+    + Fixed bug that would cause netdata to attempt to kill already
+      terminated threads again, on shutdown
+    + Fixed out of memory (12) errors by reimplementing the
+      myopen() function family
+    + Fixed wrong redirection of users signing in after clicking
+      Nodes
+    + Fixed python.d smartd collector increasing CPU usage
+    + Fixed mongodb python collector stock configuration mistake,
+      by changing password to pass
+    + Fixed handling of UTF8 characters in badges and added
+      International Support to the URL parser
+    + Fixed nodes menu sizing (responsive)
+    + Fixed issues with http redirection to https and streaming
+      encryption
+    + Fixed broken links to arcstat.py and arc_summary.py in
+      dashboard_info.js
+    + Fixed bug with the nfacct plugin that resulted in missing
+      dimensions from the charts
+    + Stopped anonymous stats from trying to write a log under /tmp
+    + Properly delete obsolete dimensions for inactive disks in
+      smartd_log
+    + Fixed handling of disconnected sockets in unbound python.d
+      collector
+    + Fixed crash in malloc
+    + Fixed issue with mysql collector that resulted in showing
+      only a single slave_status chart, regardless of the number
+      of replication channels
+    + Fixed a segmentation fault in backends
+    + Fixed spigotmc plugin bugs
+    + Fixed dbengine 100% CPU usage due to corrupted transaction
+      payload handling
+
+-------------------------------------------------------------------
 Mon Jul  8 20:13:44 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to v1.16.0

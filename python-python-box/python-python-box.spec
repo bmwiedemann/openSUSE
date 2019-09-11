@@ -18,16 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-box
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cdgriffith/Box
 Source:         https://files.pythonhosted.org/packages/source/p/python-box/python-box-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,6 +46,7 @@ Advanced Python dictionaries with dot notation access
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# upstream does not distribute the data nor provides all tags
 #%%pytest
 
 %files %{python_files}

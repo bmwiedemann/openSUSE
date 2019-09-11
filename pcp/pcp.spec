@@ -73,7 +73,7 @@ Summary:        System-level performance monitoring and performance management
 License:        %{license_gplv2plus} AND %{license_lgplv2plus} AND %{license_cc_by}
 Group:          %{pcp_gr}
 Name:           pcp
-Version:        4.3.1
+Version:        4.3.4
 Release:        0
 %global buildversion 1
 
@@ -102,16 +102,10 @@ Patch6:         0006-pmsnap-control-var-www-srv-www.patch
 
 %global disable_snmp 0
 
-# There are no papi/libpfm devel packages for s390 nor for some rhels, disable
-%ifarch s390 s390x
-%global disable_papi 1
+# No libpfm devel packages for s390, armv7hl nor for some rhels, disable
+%ifarch s390 s390x armv7hl
 %global disable_perfevent 1
 %else
-%if 0%{?rhel} == 0 || 0%{?rhel} > 5 || 0%{?suse_version}
-%global disable_papi 0
-%else
-%global disable_papi 1
-%endif
 %if 0%{?fedora} >= 20 || 0%{?rhel} > 6 || 0%{?suse_version}
 %global disable_perfevent 0
 %else
@@ -266,9 +260,6 @@ BuildRequires:  python3-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
-%if !%{disable_papi}
-BuildRequires:  papi-devel
-%endif
 %if !%{disable_perfevent}
 BuildRequires:  libpfm-devel >= 4.4
 %endif
@@ -281,6 +272,7 @@ BuildRequires:  cairo-devel
 %if !%{disable_sdt}
 BuildRequires:  systemtap-sdt-devel
 %endif
+BuildRequires:  openssl-devel >= 1.1.1
 BuildRequires:  perl-ExtUtils-MakeMaker
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
@@ -393,10 +385,6 @@ Obsoletes:      pcp-pmda-nvidia < %{version}
 
 %if %{disable_infiniband}
 %global _with_ib --with-infiniband=no
-%endif
-
-%if !%{disable_papi}
-%global _with_papi --with-papi=yes
 %endif
 
 %if !%{disable_perfevent}
@@ -975,25 +963,6 @@ Performance Co-Pilot (PCP) front-end tools for exporting metric values
 to the Zabbix (https://www.zabbix.org/) monitoring software.
 %endif
 
-%if !%{disable_papi}
-#
-# pcp-pmda-papi
-#
-%package pmda-papi
-Summary:        Performance Co-Pilot (PCP) metrics for Performance API and hardware counters
-License:        %{license_gplv2plus}
-Group:          %{pcp_gr}
-Url:            https://pcp.io
-%if !0%{?suse_version}
-Requires:       %{lib_pkg} = %{version}-%{release}
-%endif
-BuildRequires:  papi-devel
-
-%description pmda-papi
-This package contains the PCP Performance Metrics Domain Agent (PMDA) for
-collecting hardware counters statistics through PAPI (Performance API).
-%endif
-
 %if !%{disable_perfevent}
 #
 # pcp-pmda-perfevent
@@ -1008,6 +977,8 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 Requires:       libpfm >= 4.4
 %endif
 BuildRequires:  libpfm-devel >= 4.4
+Obsoletes:      pcp-pmda-papi
+Obsoletes:      pcp-pmda-papi-debuginfo
 
 %description pmda-perfevent
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
@@ -1125,7 +1096,7 @@ collecting metrics about bonded network interfaces.
 # pcp-pmda-dbping
 #
 %package pmda-dbping
-Summary:        Performance Co-Pilot (PCP) metrics for Database response times and Availablility
+Summary:        Performance Co-Pilot (PCP) metrics for Database responsiveness
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
 Url:            https://pcp.io
@@ -2178,8 +2149,11 @@ License:        %{license_gplv2plus}
 Group:          %{lib_gr}
 Url:            https://pcp.io
 BuildRequires:  %{__python2}-devel
-%if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
+%if 0%{?suse_version}
+Requires:       libpcp_gui%{libpcp_gui_sover} = %{version}-%{release}
+Requires:       libpcp_import%{libpcp_import_sover} = %{version}-%{release}
+Requires:       libpcp_mmv%{libpcp_mmv_sover} = %{version}-%{release}
 %endif
 Requires:       %{__python2}
 Requires:       pcp = %{version}-%{release}
@@ -2205,6 +2179,11 @@ License:        %{license_gplv2plus}
 Group:          %{lib_gr}
 Url:            https://pcp.io
 Requires:       %{lib_pkg} = %{version}-%{release}
+%if 0%{?suse_version}
+Requires:       libpcp_gui%{libpcp_gui_sover} = %{version}-%{release}
+Requires:       libpcp_import%{libpcp_import_sover} = %{version}-%{release}
+Requires:       libpcp_mmv%{libpcp_mmv_sover} = %{version}-%{release}
+%endif
 Requires:       python3
 BuildRequires:  python3-setuptools
 
@@ -2336,7 +2315,6 @@ PCP_CFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" CCFLAGS="$RPM_OPT_FLAGS" CXX
    %{?_with_initd} \
    %{?_with_doc} \
    %{?_with_ib} \
-   %{?_with_papi} \
    %{?_with_perfevent} \
    %{?_with_json} \
    %{?_with_snmp} \
@@ -2443,12 +2421,10 @@ ln -sf /sbin/service $RPM_BUILD_ROOT/%{_sbindir}/rcpmwebd
 
 # SUSE requires use of %fillup_and_insserv
 mkdir -p $RPM_BUILD_ROOT/%{_fillupdir}
-mv $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/pmlogger \
-	$RPM_BUILD_ROOT/%{_fillupdir}/sysconfig.pmlogger
-mv $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/pmproxy \
-	$RPM_BUILD_ROOT/%{_fillupdir}/sysconfig.pmproxy
-mv $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/pmcd \
-	$RPM_BUILD_ROOT/%{_fillupdir}/sysconfig.pmcd
+for f in pmlogger pmproxy pmcd pmie_timers pmlogger_timers; do
+	mv $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/${f} \
+		$RPM_BUILD_ROOT/%{_fillupdir}/sysconfig.${f}
+done
 
 %else
 # default chkconfig off for Fedora and RHEL
@@ -2485,7 +2461,6 @@ ls -1 $RPM_BUILD_ROOT/%{_pmdasdir} |\
   grep -E -v '^nginx' |\
   grep -E -v '^nutcracker' |\
   grep -E -v '^oracle' |\
-  grep -E -v '^papi' |\
   grep -E -v '^pdns' |\
   grep -E -v '^postfix' |\
   grep -E -v '^postgresql' |\
@@ -2571,8 +2546,6 @@ ls -1 $RPM_BUILD_ROOT/%{_mandir}/man5 |\
 mv $RPM_BUILD_ROOT/%{_datadir}/pcp/demos $RPM_BUILD_ROOT/%{_docdir}/pcp
 ls -1 $RPM_BUILD_ROOT/%{_docdir}/pcp/demos/tutorials |\
   sed -e 's#^#'%{_docdir}/pcp/demos/tutorials'\/#' >>pcp-doc.list
-find $RPM_BUILD_ROOT/%{_datadir}/doc/pcp-doc |\
-	sed -e "s#^$RPM_BUILD_ROOT#/#" >>pcp-doc.list
 %else
 ls -1 $RPM_BUILD_ROOT/%{_datadir}/pcp/demos/tutorials |\
   sed -e 's#^#'%{_datadir}/pcp/demos/tutorials'\/#' >>pcp-doc.list
@@ -2899,6 +2872,8 @@ chmod 644 "$PCP_PMNS_DIR/.NeedRebuild"
 %{fillup_and_insserv pmlogger}
 %{fillup_and_insserv pmie}
 %{fillup_and_insserv pmproxy}
+%{fillup_and_insserv pmie_timers}
+%{fillup_and_insserv pmlogger_timers}
 %endif
 %else
 %if !%{disable_systemd}
@@ -3075,10 +3050,14 @@ fi
 %{_fillupdir}/sysconfig.pmlogger
 %{_fillupdir}/sysconfig.pmproxy
 %{_fillupdir}/sysconfig.pmcd
+%{_fillupdir}/sysconfig.pmie_timers
+%{_fillupdir}/sysconfig.pmlogger_timers
 %else
 %config(noreplace) %{_sysconfdir}/sysconfig/pmlogger
 %config(noreplace) %{_sysconfdir}/sysconfig/pmproxy
 %config(noreplace) %{_sysconfdir}/sysconfig/pmcd
+%config(noreplace) %{_sysconfdir}/sysconfig/pmie_timers
+%config(noreplace) %{_sysconfdir}/sysconfig/pmlogger_timers
 %endif
 %config %{_sysconfdir}/pcp.env
 %dir %{_confdir}/pmcd
@@ -3087,6 +3066,7 @@ fi
 %config(noreplace) %{_confdir}/pmcd/rc.local
 %dir %{_confdir}/pmproxy
 %config(noreplace) %{_confdir}/pmproxy/pmproxy.options
+%config(noreplace) %{_confdir}/pmproxy/pmproxy.conf
 %dir %{_confdir}/pmie
 %dir %{_confdir}/pmie/control.d
 %config(noreplace) %{_confdir}/pmie/control
@@ -3251,12 +3231,6 @@ fi
 %files import-collectl2pcp
 %defattr(-,root,root)
 %{_bindir}/collectl2pcp
-
-%if !%{disable_papi}
-%files pmda-papi
-%defattr(-,root,root)
-%{_pmdasdir}/papi
-%endif
 
 %if !%{disable_perfevent}
 %files pmda-perfevent
@@ -3570,6 +3544,10 @@ fi
 %exclude %{_docdir}/pcp/pcp.lsm
 %dir %{_docdir}/pcp/demos
 %dir %{_docdir}/pcp/demos/tutorials
+%dir %{_datadir}/doc/pcp-doc
+%{_datadir}/doc/pcp-doc/html
+%{_datadir}/doc/pcp-doc/pcp-programmers-guide.pdf
+%{_datadir}/doc/pcp-doc/pcp-users-and-administrators-guide.pdf
 %endif
 
 %if !%{disable_python2} || !%{disable_python3}

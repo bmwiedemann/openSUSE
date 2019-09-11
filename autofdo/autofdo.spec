@@ -1,7 +1,7 @@
 #
 # spec file for package autofdo
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           autofdo
-Version:        0.16
+Version:        0.18
 Release:        0
 Summary:        A tool to convert perf.data profile to AutoFDO profile
 License:        Apache-2.0
 Group:          Development/Tools/Other
-Url:            https://github.com/google/autofdo
+URL:            https://github.com/google/autofdo
 Source:         https://github.com/google/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -35,7 +35,7 @@ BuildRequires:  llvm-devel
 %endif
 
 %description
-The repository contains a tool to convert perf.data profile to AutoFDO
+This package contains a tool to convert perf.data profile to AutoFDO
 profile that can be used by GCC and LLVM.
 
 Each compiler is supported by a different tool. For GCC, use
@@ -56,8 +56,8 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc README COPYING
+%license COPYING
+%doc README
 %{_bindir}/create_gcov
 %{_bindir}/dump_gcov
 %{_bindir}/sample_merger

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 30 09:38:25 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- added patches required for NVIDIA's PRIME render offload support,
+  which is available since release 435.xx:
+  0001-xsync-Add-resource-inside-of-SyncCreate-export-SyncC.patch,
+  0002-GLX-Add-a-per-client-vendor-mapping.patch,
+  0003-GLX-Use-the-sending-client-for-looking-up-XID-s.patch,
+  0004-GLX-Add-a-function-to-change-a-clients-vendor-list.patch,
+  0005-GLX-Set-GlxServerExports-major-minor-Version.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 12:35:53 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - move xorg.conf.d snippets from /etc/X11/xorg.conf.d to

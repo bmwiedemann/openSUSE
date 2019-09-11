@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep  8 20:34:12 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+
+- Update to version 2.12.4
+  Bug fixes:
+  * Fix invocation of hub --paginate
+  * Consistently expand all occurrences of {owner} and {repo} in
+    hub api
+  * Docs: unlist %NC/%Nc among available fields in
+    hub pr list --format
+  Enhancements:
+  * GitHub Actions compatibility: infer GITHUB_USER value from
+    GITHUB_REPOSITORY if available
+  * Handle TERM signal during password prompt in terminal
+  * Use consistent quote style in hub sync output
+
+- Update to version 2.12.3
+  * Allow hub use within GitHub Actions by specifying GITHUB_USER
+  * Show friendlier error message when GITHUB_TOKEN is set, but
+    fetching the current user fails
+
+-------------------------------------------------------------------
 Fri Jul 12 19:26:57 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.2

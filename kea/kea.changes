@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Mon Sep  9 17:18:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Corrected multiple occurrences of out of bounds vector reads.
+  * Corrected a bug in the Kea MySQL Configuration Backend which
+    caused the Kea DHCPv6 server to incorrectly require the
+    server tag to be provided with the remote-subnet6-option-set
+    command.
+  * Corrected a bug in the Kea MySQL Configuration Backend which
+    prevented the DHCP servers from discovering and fetching the
+    changes applied with the new commands.
+  * Prevent the DHCP servers from asserting when malformed
+    hostname or FQDN options are received.
+
+-------------------------------------------------------------------
+Tue Aug 27 14:36:52 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update keyring file
+- Temporarily hardcode version in upstream URLs
+
+-------------------------------------------------------------------
+Wed Aug 21 15:08:38 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.6.0~beta2
+  * Default file locations for lease file, server-duid, log files and lock 
+    files have changed. Files previously stored in `/var/kea` are now stored 
+    in `/var/run/kea`. Server hooks previously installed in `/usr/lib/hooks` 
+    are now installed in `/usr/lib/kea/hooks`. The log files are now stored 
+    in `/var/log/kea`.
+  * The kea-admin commands (lease-init, lease-version, lease-upgrade) were 
+    renamed to better reflect the fact that the database can store much more 
+    than just leases. They're now called db-init, db-version, db-upgrade.
+  * The Logging entry in the configuration file has moved to specific 
+    daemon sections. This require a simple configuration file modification. 
+    You need to move Logging entry from its global scope into the Dhcp4, 
+    Dhcp6, DhcpDdns, Control-agent or Netconf scope.
+
+Please see 1.6 migration wiki
+https://gitlab.isc.org/isc-projects/kea/wikis/migrating-to-kea-1.6
+
+For release notes, see
+https://ftp.isc.org/isc/kea/1.6.0-beta2/Kea160beta2ReleaseNotes.txt
+
+- Fix building of perfdhcp
+- Enable building of kea-shell
+- Update sonames of all affected libraries and ship only libraries,
+  allowing `ldconfig` to actually make the symlinks
+- Rework spec file to abstract soversions
+
+-------------------------------------------------------------------
+Fri Dec 28 23:05:17 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.5.0
+  * Support for YANG/NETCONF, the ability to store major
+    configuration elements in a YANG model and manipulate it
+    using NETCONF.
+  * Support for global host reservations (previously each host
+    reservation had to be associated with a specific subnet)
+  * Class commands – a new hook that allows dynamic changes
+    to be made to client classes without restarting.
+  * Performance and resiliency improvements to the High
+    Availability hook.
+  * A new congestion control feature to mitigate the effects of
+    heavy DHCP traffic conditions.
+  * Improvements to the High Availability feature, including paged
+    updates between HA pairs to alleviate timeouts.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 19 22:45:35 UTC 2018 - jengelh@inai.de
+
+- Remove unnecessary ldconfig call for kea-hooks: files are
+  outside standard search dirs.
+- Drop --disable-dependency-tracking, this is already part of
+  %configure.
+
+-------------------------------------------------------------------
+Mon Jun 18 10:00:52 UTC 2018 - adam.majer@suse.de
+
+- update to new upstream release 1.4.0
+- fix licence - Mozilla Public License v2.0
+- package default hook libraries
+- regenerate parser and documentation
+- add ISC keyring (2017 & 2018)
+
+-------------------------------------------------------------------
+Fri Jun 30 19:55:50 UTC 2017 - jengelh@inai.de
+
+- Stop on errors from useradd/groupadd
+
+-------------------------------------------------------------------
+Thu Jun 30 10:02:50 UTC 2017 - obs@botter.cc
+
+- compile in support for MySQL and PostgresQL
+- add symlink to rckea
+- add environment variable for PID_FILE_DIR to service file
+
+-------------------------------------------------------------------
+Sat May 27 13:06:10 UTC 2017 - obs@botter.cc
+
+- Update to new upstream release 1.2.0 
+
+-------------------------------------------------------------------
+Fri Jan 22 11:00:02 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.0.0
+
+-------------------------------------------------------------------
+Mon Dec  8 08:38:54 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 0.9.g20262) for build.opensuse.org

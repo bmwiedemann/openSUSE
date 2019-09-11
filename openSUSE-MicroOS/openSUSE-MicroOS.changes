@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 22 15:29:49 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Enable chronyd instead of systemd-timesyncd, that's what the DVD
+  install uses
+
+-------------------------------------------------------------------
+Wed Aug 21 09:08:00 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add kubic_admin, kubic_loadbalancer and kubic_worker patterns to
+  the Kubic-kubeadm flavor.
+
+-------------------------------------------------------------------
 Tue Apr 30 15:17:09 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Rename to MicroOS:

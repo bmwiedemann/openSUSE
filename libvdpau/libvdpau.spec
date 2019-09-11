@@ -12,28 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libvdpau
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        VDPAU wrapper and trace libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://www.freedesktop.org/wiki/Software/VDPAU/
-Source:         https://gitlab.freedesktop.org/vdpau/libvdpau/uploads/14b620084c027d546fa0b3f083b800c6/%{name}-%{version}.tar.bz2
+Source:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        http://people.freedesktop.org/~aplattner/vdpau/vdpauinfo-1.0.tar.gz
 Source2:        README
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(x11)
@@ -84,15 +82,12 @@ Its usage is documented in the README.
 %setup -q -b1
 
 %build
-autoreconf -fi
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-rm %{buildroot}%{_libdir}/libvdpau.la
-rm %{buildroot}%{_libdir}/vdpau/libvdpau_trace.la
 /sbin/ldconfig -n %{buildroot}/%{_libdir}/vdpau
 rm %{buildroot}%{_libdir}/vdpau/libvdpau_trace.so
 

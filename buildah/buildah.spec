@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           buildah
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -43,6 +43,7 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) >= 1.10
+Requires:       patterns-base-apparmor
 Requires:       libcontainers-common
 Requires:       libcontainers-image
 Requires:       libcontainers-storage
@@ -78,18 +79,8 @@ rm -rf $HOME/go/src/%{project}/*
 cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
-# TODO: remove this in a later release of buildah and let the make targets
-# discover the tags correctly
-%if 0%{?with_libostree}
-echo "Compiling with libostree support"
-export BUILDTAGS="seccomp apparmor"
-%else
-echo "Compiling without libostree support"
-export BUILDTAGS="seccomp apparmor containers_image_ostree_stub"
-%endif
-
 # Build buildah
-make %{?_smp_mflags} BUILDTAGS='$BUILDTAGS' GIT_COMMIT=unknown EXTRALDFLAGS=-buildmode=pie
+make %{?_smp_mflags} GIT_COMMIT=unknown EXTRALDFLAGS=-buildmode=pie
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 17:52:10 UTC 2019 - XLiang@suse.com
+
+- use help2man to generate init/join/remove man page (bsc#1138353)
+
+-------------------------------------------------------------------
 Tue Nov 28 14:11:14 UTC 2017 - kgronlund@suse.com
 
 - Switch to Python 3 (bsc#1070140) 

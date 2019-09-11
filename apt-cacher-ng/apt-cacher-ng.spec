@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Suggests:       cron
 Suggests:       logrotate
 %{?systemd_ordering}
@@ -117,6 +117,7 @@ getent passwd apt-cacher-ng >/dev/null || \
 %dir %{_sysconfdir}/avahi
 %config %{_sysconfdir}/avahi/services/%{name}.service
 %config %{_sysconfdir}/logrotate.d/%{name}
+%attr (755,root,root) %{_sysconfdir}/cron.daily
 %config %{_sysconfdir}/cron.daily/%{name}
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}

@@ -33,15 +33,16 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/astropy/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
+# Backport of https://github.com/astropy/pytest-doctestplus/pull/37
+Patch0:         pr_37.patch
+Patch1:         https://github.com/astropy/pytest-doctestplus/commit/0a7176531d8395a381bf76ce8ae2e59eef1a60ea.patch#/merged_pr_63.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.10
 Requires:       python-pytest >= 3.0
 Requires:       python-six
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module pytest-doctestplus >= %{version}}
 BuildRequires:  %{python_module six}
@@ -55,6 +56,7 @@ advanced doctest support and enables the testing of reStructuredText
 
 %prep
 %setup -q -n pytest-doctestplus-%{version}
+%autopatch -p1
 # do not change the pytest behaviour for us
 rm -f setup.cfg
 
@@ -70,7 +72,8 @@ rm -f setup.cfg
 %if %{with test}
 %check
 export LANG=en_US.UTF8
-%python_expand PYTHONPATH=%{$python_sitelib} py.test-%{$python_bin_suffix} tests/ --doctest-plus --doctest-rst
+# README.rst contains Python 3 only imports
+%pytest --doctest-plus --doctest-rst -k 'not README.rst'
 %endif
 
 %if !%{with test}

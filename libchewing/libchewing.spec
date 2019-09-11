@@ -1,7 +1,7 @@
 #
 # spec file for package libchewing
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Name:           libchewing
 Version:        0.5.1+git20171114.3df07c9
 Release:        0
 Summary:        Intelligent Phonetic Input Method Library for Traditional Chinese
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 Url:            https://github.com/chewing
 Source:         %{name}-%{version}.tar.xz
@@ -53,7 +53,6 @@ BuildRequires:  python-devel
 BuildRequires:  sqlite3-devel
 Requires(post):	info
 Requires(postun):	info
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Intelligent phonetic input method library for traditional Chinese.
@@ -110,8 +109,7 @@ or developers will need it.
 
 
 %prep
-%setup -q
-%patch -p1
+%autosetup -p1
 
 %build
 # build libchewing main
@@ -177,36 +175,27 @@ popd
 %preun -n %{name}%{soname}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
-%post -n chewing-utils -p /sbin/ldconfig
-
-%postun -n chewing-utils -p /sbin/ldconfig
-
 %files -n %{name}%{soname}
-%defattr(-, root, root)
 %doc AUTHORS COPYING NEWS README.md TODO
-%{_bindir}/simple-select
 %{_libdir}/libchewing.so.3
 %{_libdir}/libchewing.so.3.3.1
-%{_infodir}/*.gz
 
 %files -n chewing-data
-%defattr(-, root, root)
 %{_datadir}/%{name}/
 
 %files -n python-chewing
-%defattr(-, root, root)
 %{python_sitearch}/chewing
 
 %files -n chewing-utils
-%defattr(-, root, root)
 %{_bindir}/che
+%{_bindir}/simple-select
 %{_bindir}/zhuindict_compile
 %doc %{_docdir}/chewing-utils
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/chewing/
 %{_libdir}/libchewing.so
 %{_libdir}/pkgconfig/chewing.pc
+%{_infodir}/*.gz
 
 %changelog

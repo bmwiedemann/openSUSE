@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Aug 20 13:34:49 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- version update from 6.2.2 to 6.5
+  - Support for Memory-preserving IPL (MPIPL)
+  - Support for the Swift platform and NPU3 hardware.
+  - Support for the Mihawk platform 
+  - npu2-opencapi: Add opencapi support on ZZ
+  - platforms/nicole: Add new platform
+  - platform/zz: Add new platform type
+  - nvram: Flag dangerous NVRAM options
+  - hw/phb3: Add verbose EEH output
+  - Experimental support for building without FSP code
+  - doc: travis-ci deploy docs!
+  - Big OPAL API Documentation improvement
+  - opal/hmi: Report NPU2 checkstop reason
+  - opal-msg: Enhance opal-get-msg API
+  - core/opal: Increase opal-msg-size size
+  - hw/npu2-opencapi: Add initial support for allocating OpenCAPI LPC memory
+  - core/fast-reboot: Add im-feeling-lucky option
+  - platforms/astbmc: Check for SBE validation step
+  - Add P9 DIO interrupt support
+  - hw/imc: Enable opal calls to init/start/stop IMC Trace mode
+  - xive: Add calls to save/restore the queues and VPs HW state
+  - witherspoon: Add nvlink2 interconnect information
+  - platforms/romulus: Also support talos
+  - OpenCAPI support!
+  - opal/hmi: set a flag to inform OS that TOD/TB has failed.
+  - astbmc: Enable IPMI HIOMAP for AMI platforms
+  - power-mgmt : occ : Add 'freq-domain-mask' DT property
+  - powercap: occ: Fix the powercapping range allowed for user
+  - Add NVDIMM support
+  - core/exceptions: implement support for MCE interrupts in powersave
+  - core/exceptions: implement an exception handler for non-powersave sresets
+  - Add PVR_TYPE_P9P
+  - Expose PNOR Flash partitions to host MTD driver via devicetree
+  - Write boot progress to LPC port 80h
+  - Write boot progress to LPC ports 81 and 82
+  - Add Talos II platform
+  - cpufeatures: Add tm-suspend-hypervisor-assist and tm-suspend-xer-so-bug node
+- details release notes since previous v6.2.2:
+  https://github.com/open-power/skiboot/tree/master/doc/release-notes
+- remove patches embeded in new version
+  libffs-fix-string-truncation.patch
+  struct-p9_sbe_msg-doesn-t-need-to-be-packed.patch
+  hdata-vpd-fix-printing-char-0x00.patch
+  errorlog-Prevent-alignment-error-buiding-with-gcc9.patch
+
+-------------------------------------------------------------------
 Tue Jul 23 08:18:39 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix aligment error with gcc9.

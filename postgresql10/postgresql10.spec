@@ -96,7 +96,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        10.9
+Version:        10.10
 Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
 Source1:        baselibs.conf
@@ -351,13 +351,14 @@ touch -r configure tmp
 %patch4
 %patch6 -p1
 %patch8 -p1
-%patch9 -p1
+%patch9
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete
 find -name .gitignore -delete
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export PYTHON=python3
 PACKAGE_TARNAME=%name %configure \
         --bindir=%pgbindir \

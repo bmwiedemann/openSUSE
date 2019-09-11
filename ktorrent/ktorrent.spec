@@ -1,7 +1,7 @@
 #
 # spec file for package ktorrent
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ktorrent
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-URL:            http://ktorrent.org/
-Source0:        http://download.kde.org/stable/ktorrent/%{version}/%{name}-%{version}.tar.xz
+URL:            https://kde.org/applications/internet/org.kde.ktorrent/
+Source0:        https://download.kde.org/stable/ktorrent/%{version}/%{name}-%{version}.tar.xz
 Source2:        ktorrent.1
 Source3:        ktupnptest.1
 # PATCH-FIX-OPENSUSE initial-preference.diff cmorve69@yahoo.es -- InitialPreference to set it as the default torrent downloader
 Patch0:         initial-preference.diff
-%if 0%{?suse_version} < 1330
-# PATCH-FIX-OPENSUSE fix-build-with-qt5.6.patch -- make it build with Qt < 5.7.0 (i.e. on Leap 42.x)
-Patch1:         fix-build-with-qt5.6.patch
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  libktorrent-devel >= 2.1
-BuildRequires:  phonon4qt5-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  plasma5-workspace-devel
-BuildRequires:  syndication-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -60,11 +53,15 @@ BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Plotting)
 BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5Syndication)
 BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5Torrent) >= 2.1
 BuildRequires:  cmake(KF5WebKit)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(LibKWorkspace)
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
@@ -72,21 +69,6 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(taglib)
 Recommends:     %{name}-lang = %{version}
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
-%if 0%{?suse_version} < 1330
-#!BuildIgnore:  libgcc_s1
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc5
-BuildRequires:  gcc5-c++
-%else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
-%endif
 
 %description
 KTorrent is a BitTorrent application by KDE which allows you to download files
@@ -101,22 +83,11 @@ for BitTorrent.
 %autopatch -p1
 
 %build
-%if 0%{?suse_version} < 1330
-%if 0%{?sle_version} < 120300
-%cmake_kf5 -d build -- -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_CXX_COMPILER=g++-5
-%else
-%cmake_kf5 -d build -- -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7
-%endif
-%else
 %cmake_kf5 -d build
-%endif
 %make_jobs
 
 %install
 %kf5_makeinstall -C build
-
-# Not needed, fix "devel-file-in-non-devel-package" rpmlint warning
-rm -f %{buildroot}%{_libdir}/libktcore.so
 
 # Add man pages from help2man edited.
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -124,7 +95,7 @@ cp -a %{SOURCE2} %{buildroot}%{_mandir}/man1
 cp -a %{SOURCE3} %{buildroot}%{_mandir}/man1
 
 # Fix any .py files with shebangs and wrong permissions.
-if test -z `find %{buildroot} -name *.py -perm 0644 -print0|xargs -0r grep -l '#!'`; \
+if test -z "`find %{buildroot} -name *.py -perm 0644 -print0|xargs -0r grep -l '#!'`"; \
 then break;
 else chmod -f 0755 `find %{buildroot} -name *.py -perm 0644 -print0|xargs -0r grep -l '#!'`; \
 fi
@@ -134,6 +105,7 @@ fi
 %fdupes -s %{buildroot}
 
 %find_lang %{name}
+%kf5_find_htmldocs
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -141,7 +113,6 @@ fi
 %files
 %license COPYING
 %doc ChangeLog RoadMap
-%dir %{_kf5_appstreamdir}
 %{_kf5_bindir}/ktmagnetdownloader
 %{_kf5_bindir}/ktorrent
 %{_kf5_bindir}/ktupnptest
@@ -151,16 +122,13 @@ fi
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_iconsdir}/hicolor/*/*/*.svgz
 %{_kf5_kxmlguidir}/ktorrent/
+%{_kf5_libdir}/libktcore.so.*
 %{_kf5_mandir}/man1/ktorrent.1%{?ext_man}
 %{_kf5_mandir}/man1/ktupnptest.1%{?ext_man}
 %{_kf5_notifydir}/ktorrent.notifyrc
 %{_kf5_plugindir}/
 %{_kf5_sharedir}/ktorrent/
-%{_libdir}/libktcore.so.*
 
 %files lang -f %{name}.lang
-%{_kf5_htmldir}/*/ktorrent/
-%dir %{_kf5_htmldir}/pt_BR
-%exclude %{_kf5_htmldir}/en/ktorrent/
 
 %changelog

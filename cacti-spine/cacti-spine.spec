@@ -17,7 +17,7 @@
 
 
 Name:           cacti-spine
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Url:            https://github.com/Cacti/spine
 Source:         https://github.com/Cacti/spine/archive/release/%{version}.tar.gz

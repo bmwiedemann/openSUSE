@@ -65,7 +65,7 @@ Index: PackageKit-1.1.12/data/packagekit-background.sh
 ===================================================================
 --- /dev/null
 +++ PackageKit-1.1.12/data/packagekit-background.sh
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,102 @@
 +#!/bin/bash
 +# Copyright (C) 2008 Richard Hughes <richard@hughsie.com>
 +#
@@ -77,7 +77,51 @@ Index: PackageKit-1.1.12/data/packagekit-background.sh
 +# the Free Software Foundation; either version 2 of the License, or
 +# (at your option) any later version.
 +
-+[ -f /etc/sysconfig/packagekit-background ] && . /etc/sysconfig/packagekit-background
++## Type:    yesno
++## Default: no
++#
++# Run the cron job.
++#
++ENABLED=no
++
++## Type:    yesno
++## Default: no
++#
++# Check if updates are available, instead of installing.
++#
++CHECK_ONLY=no
++
++## Type:    yesno
++## Default: no
++#
++# Trigger updates, so they will be installed on reboot.
++#
++UPDATE_OFFLINE=no
++
++## Type:    string
++## Default: ""
++#
++# If MAILTO is set, the mail command is used to deliver PackageKit output.
++# By default MAILTO is unset, so crond mails the output by itself.
++#
++MAILTO=""
++
++## Type:    string
++## Default: ""
++#
++# You may set SYSTEM_NAME if you want your PackageKit emails tagged differently.
++# Default is output of hostname command.
++#
++SYSTEM_NAME=""
++
++## Type:    integer
++## Default: 3600
++#
++# Update checks will sleep random time before contacting the servers to
++# avoid hammering them with thousands of request at the same time - this
++# is the maximum sleep time (in seconds) for the random wait period.
++#
++SLEEP_MAX=3600
 +
 +# are we disabled?
 +if [ "$ENABLED" = "no" ]; then
@@ -115,7 +159,7 @@ Index: PackageKit-1.1.12/data/packagekit-background.sh
 +if [ $PKCON_RETVAL -ne 5 ]; then
 +	# send email
 +	if [ -n "$MAILTO" ]; then
-+		mail -s "System updates available: $SYSTEM_NAME" $MAILTO < $PKTMP
++		mail -Ssendwait -s "System updates available: $SYSTEM_NAME" $MAILTO < $PKTMP
 +	else
 +		# default behavior is to use cron's internal mailing of output from cron-script
 +		cat $PKTMP

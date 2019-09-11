@@ -13,9 +13,9 @@ diff --git a/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk b/
 index 87359af..045563a 100644
 --- a/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk
 +++ b/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk
-@@ -2,10 +2,10 @@
- GO111MODULE := on
- GO_TAGS := containers_image_openpgp sylog
+@@ -3,10 +3,10 @@
+ GO_TAGS := containers_image_openpgp sylog imgbuild_engine oci_engine singularity_engine fakeroot_engine
+ GO_TAGS_SUID := containers_image_openpgp sylog singularity_engine fakeroot_engine
  GO_LDFLAGS :=
 -GO_BUILDMODE := -buildmode=default
 +GO_BUILDMODE := -buildmode=pie

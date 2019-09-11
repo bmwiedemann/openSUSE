@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  8 19:54:48 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.11    2019-09-07
+          [CHANGES]
+           * Use wrap_keyword_plugin() instead of direct access to
+             PL_keyword_plugin
+          [BUGFIXES]
+           * Build OP_ENTER/OP_LEAVE structure the correct way so perl 5.31.3
+             doesn't crash
+           * Fix OP_NEXT/OP_LAST/OP_REDO mangling for perl 5.31.3 to avoid
+             CPU spin (RT129975)
+
+-------------------------------------------------------------------
 Fri Jun 14 05:30:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.10

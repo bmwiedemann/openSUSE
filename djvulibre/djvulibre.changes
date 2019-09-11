@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  3 06:21:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture, bias, and metadata repetitions from description.
+- Trim descriptions in subpackages for length. (Main package keeps
+  the bigger one.)
+- Use some more macros and limit fdupes to the /usr volume.
+
+-------------------------------------------------------------------
+Mon Sep  2 12:13:57 UTC 2019 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2019-15142 [bsc#1146702]
+  + djvulibre-CVE-2019-15142.patch
+  CVE-2019-15143 [bsc#1146569]
+  + djvulibre-CVE-2019-15143.patch
+  CVE-2019-15144 [bsc#1146571]
+  + djvulibre-CVE-2019-15144.patch
+  CVE-2019-15145 [bsc#1146572]
+  + djvulibre-CVE-2019-15145.patch
+  do not segfault when libtiff encounters corrupted TIFF (upstream issue #295)
+  + djvulibre-invalid-tiff.patch
+
+-------------------------------------------------------------------
 Tue Jan  8 23:17:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove rsvg-convert BuildRequires, just use the prebuilt pngs

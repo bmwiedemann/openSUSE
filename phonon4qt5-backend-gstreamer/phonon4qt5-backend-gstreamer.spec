@@ -17,31 +17,29 @@
 
 
 %define filename phonon-backend-gstreamer
-%define _phonon4qt5_version 4.7.0
+%define _phonon4qt5_version 4.10.60
+%bcond_without lang
 Name:           phonon4qt5-backend-gstreamer
-Version:        4.9.1
+Version:        4.10.0
 Release:        0
 Summary:        Phonon Multimedia Platform Abstraction
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://phonon.kde.org/
 Source:         https://download.kde.org/stable/phonon/%{filename}/%{version}/%{filename}-%{version}.tar.xz
-BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
+BuildRequires:  cmake(Phonon4Qt5) >= %{_phonon4qt5_version}
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(phonon4qt5) >= %{_phonon4qt5_version}
 Requires:       libphonon4qt5 >= %{_phonon4qt5_version}
 Supplements:    packageand(gstreamer-plugins-base:phonon4qt5)
 # the icons were in phonon-backend-gstreamer previously
@@ -60,16 +58,18 @@ used.
 %lang_package
 
 %prep
-%setup -q -n phonon-gstreamer-%{version}
+%setup -q -n phonon-backend-gstreamer-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DPHONON_BUILD_PHONON4QT5=ON
+  %cmake_kf5 -d build
   %make_jobs
 
 %install
   %kf5_makeinstall -C build
 
+%if %{with lang}
   %find_lang phonon_gstreamer %{name}.lang --with-qt
+%endif
 
 %files
 %license COPYING*
@@ -77,6 +77,8 @@ used.
 %{_kf5_plugindir}/phonon4qt5_backend/phonon_gstreamer.so
 %{_kf5_iconsdir}/hicolor/*/apps/phonon-gstreamer.*
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog

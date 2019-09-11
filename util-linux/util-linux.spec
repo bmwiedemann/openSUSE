@@ -115,16 +115,10 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.33.2
+Version:        2.34
 Release:        0
-# util-linux is a base package and uuidd pre-requiring pwdutils pulls
-# that into the core build cycle.  pwdutils also pulls in the whole
-# ldap stack into it.  Avoid this whole mess which is done only to
-# make the rpm install check of uuidd happy which has support to work without
-# these tools as well
-#!BuildIgnore:  pwdutils
 Url:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.33/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-%{version}.tar.xz
 Source1:        util-linux-rpmlintrc
 Source2:        util-linux-login_defs-check.sh
 Source4:        raw.service
@@ -135,7 +129,7 @@ Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.33/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -145,12 +139,7 @@ Source51:       blkid.conf
 Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
-# PATCH-FIX-UPSTREAM util-linux-login_defs-priority1.patch bsc1121197 sbrabec@suse.com -- Fix priorities of login.defs values.
-Patch3:         util-linux-login_defs-priority1.patch
-# PATCH-FIX-UPSTREAM util-linux-login_defs-priority2.patch bsc1121197 sbrabec@suse.com -- Fix priorities of login.defs values.
-Patch4:         util-linux-login_defs-priority2.patch
-# PATCH-FIX-UPSTREAM util-linux-login_defs-SYS_UID.patch bsc1121197 sbrabec@suse.com -- Fix discrepancies in SYS_UID* fallback.
-Patch5:         util-linux-login_defs-SYS_UID.patch
+Patch813:       e3bb9bfb76c17b1d05814436ced62c05c4011f48.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 %if %build_util_linux
@@ -170,8 +159,12 @@ Provides:       rfkill = 0.5
 Obsoletes:      eject <= 2.1.0
 # File conflict of login (up to 12.1 and SLE11).
 Obsoletes:      login <= 4.0
-# File confluct (man page) of rfkill (up to Leap 15 and SLE 15).
+# File conflict (man page) of rfkill (up to Leap 15 and SLE 15).
 Obsoletes:      rfkill <= 0.5
+# util-linux-2.34 integrates hardlink (up to Leap 15.1 and SLE 15.1).
+# The last version was 1.0+git.e66999f.
+Provides:       hardlink = 1.1
+Obsoletes:      hardlink < 1.1
 # bnc#805684:
 %ifarch s390x
 Obsoletes:      s390-32
@@ -216,16 +209,16 @@ mount program, the fdisk configuration tool, and more.
 
 %package -n libblkid1
 Summary:        Filesystem detection library
-Group:          System/Libraries
 License:        LGPL-2.1-or-later
+Group:          System/Libraries
 
 %description -n libblkid1
 Library for filesystem detection.
 
 %package -n libblkid-devel
 Summary:        Development files for the filesystem detection library
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libblkid1 = %{version}
 
 %description -n libblkid-devel
@@ -234,8 +227,8 @@ detection.
 
 %package -n libblkid-devel-static
 Summary:        Development files for the filesystem detection library
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libblkid-devel = %{version}
 
 %description -n libblkid-devel-static
@@ -244,16 +237,16 @@ detection.
 
 %package -n libuuid1
 Summary:        Library to generate UUIDs
-Group:          System/Libraries
 License:        BSD-3-Clause
+Group:          System/Libraries
 
 %description -n libuuid1
 A library to generate universally unique IDs (UUIDs).
 
 %package -n libuuid-devel
 Summary:        Development files for libuuid
-Group:          Development/Libraries/C and C++
 License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
 Requires:       libuuid1 = %{version}
 
 %description -n libuuid-devel
@@ -262,8 +255,8 @@ unique IDs (UUIDs).
 
 %package -n libuuid-devel-static
 Summary:        Development files for libuuid
-Group:          Development/Libraries/C and C++
 License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
 Requires:       libuuid-devel = %{version}
 
 %description -n libuuid-devel-static
@@ -272,8 +265,8 @@ unique IDs (UUIDs).
 
 %package -n libmount1
 Summary:        Device mount library
-Group:          System/Libraries
 License:        LGPL-2.1-or-later
+Group:          System/Libraries
 
 %description -n libmount1
 Library designed to be used in low-level utils like
@@ -281,8 +274,8 @@ mount(8) and /usr/sbin/mount.<type> helpers.
 
 %package -n libmount-devel
 Summary:        Development files for libmount
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libmount1 = %{version}
 
 %description -n libmount-devel
@@ -290,8 +283,8 @@ Files to develop applications using the libmount library.
 
 %package -n libmount-devel-static
 Summary:        Development files for libmount
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libmount-devel = %{version}
 
 %description -n libmount-devel-static
@@ -299,16 +292,16 @@ Files to develop applications using the libmount library.
 
 %package -n libsmartcols1
 Summary:        Column-based text sort engine
-Group:          System/Libraries
 License:        LGPL-2.1-or-later
+Group:          System/Libraries
 
 %description -n libsmartcols1
 Library to sort human readable column-based text output.
 
 %package -n libsmartcols-devel
 Summary:        Development files for libsmartcols
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libsmartcols1 = %{version}
 
 %description -n libsmartcols-devel
@@ -316,8 +309,8 @@ Files to develop applications using the libsmartcols library.
 
 %package -n libsmartcols-devel-static
 Summary:        Development files for libsmartcols
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libsmartcols-devel = %{version}
 
 %description -n libsmartcols-devel-static
@@ -325,16 +318,16 @@ Files to develop applications using the libsmartcols library.
 
 %package -n libfdisk1
 Summary:        Filesystem detection library
-Group:          System/Libraries
 License:        LGPL-2.1-or-later
+Group:          System/Libraries
 
 %description -n libfdisk1
 Library for filesystem detection.
 
 %package -n libfdisk-devel
 Summary:        Development files for the filesystem detection library
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libfdisk1 = %{version}
 
 %description -n libfdisk-devel
@@ -343,8 +336,8 @@ detection.
 
 %package -n libfdisk-devel-static
 Summary:        Development files for the filesystem detection library
-Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 Requires:       libfdisk-devel = %{version}
 
 %description -n libfdisk-devel-static
@@ -357,6 +350,7 @@ detection.
 %if %build_util_linux
 %package systemd
 Summary:        %summary_uls
+License:        GPL-2.0-or-later
 Group:          %group_uls
 Supplements:    packageand(util-linux:systemd)
 # Split-provides for upgrade from SLE < 12 and openSUSE <= 13.1
@@ -372,6 +366,7 @@ This package contains low-level util-linux utilities that use systemd.
 
 %package -n uuidd
 Summary:        Helper daemon to guarantee uniqueness of time-based UUIDs
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(uuidd)
@@ -393,6 +388,7 @@ SMP systems.
 %if %build_util_linux
 %package -n python3-libmount
 Summary:        %summary_pl
+License:        GPL-2.0-or-later
 Group:          %group_pl
 
 %description -n python3-libmount
@@ -409,15 +405,12 @@ cp -a %{S:2} .
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch813 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 bash ./util-linux-login_defs-check.sh
 %if %build_util_linux
-#
 #BEGIN SYSTEMD SAFETY CHECK
 # With systemd, some utilities are built differently. Keep track of these
 # sources to prevent building of systemd-less versions.
@@ -627,6 +620,8 @@ install -m 644 %{SOURCE15} %{buildroot}%{_sysconfdir}/pam.d/runuser-l
 install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/pam.d/su
 install -m 644 %{SOURCE16} %{buildroot}%{_sysconfdir}/pam.d/su-l
 install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/default/su
+sed 's/\bsu\b/runuser/g' <%{SOURCE11} >runuser.default
+install -m 644 runuser.default %{buildroot}%{_sysconfdir}/default/runuser
 %endif
 #
 # util-linux install
@@ -756,6 +751,7 @@ ln -sf /sbin/service %{buildroot}/usr/sbin/rcfstrim
 %service_add_post raw.service
 %set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
+#
 # Safely migrate PAM files from coreutils to util-linux
 # (openSUSE 12.3->13.1, SLE11->SLE12)
 #
@@ -767,15 +763,25 @@ ln -sf /sbin/service %{buildroot}/usr/sbin/rcfstrim
 # no changes, we should restore admin modification, and rename the
 # clean file to .rpmnew, as it would happen if the file was not moved
 # from one package to another.
-for PAM_FILE in default/su pam.d/su pam.d/su-l ; do
-	if test -f %{_sysconfdir}/$PAM_FILE.rpmsave ; then
-		mv %{_sysconfdir}/$PAM_FILE %{_sysconfdir}/$PAM_FILE.rpmnew
-		mv %{_sysconfdir}/$PAM_FILE.rpmsave %{_sysconfdir}/$PAM_FILE
+for PAM_FILE in su su-l ; do
+	if test -f %{_sysconfdir}/pam.d/$PAM_FILE.rpmsave ; then
+		mv %{_sysconfdir}/pam.d/$PAM_FILE %{_sysconfdir}/pam.d/$PAM_FILE.rpmnew
+		mv %{_sysconfdir}/pam.d/$PAM_FILE.rpmsave %{_sysconfdir}/pam.d/$PAM_FILE
 	fi
 done
-# %{_sysconfdir}/default/su is tagged as noreplace.
+#
+# If outdated PAM file is detected, issue a warning.
+for PAM_FILE in login remote runuser runuser-l su su-l ; do
+	if test -f %{_sysconfdir}/pam.d/$PAM_FILE.rpmnew ; then
+		echo "Your %{_sysconfdir}/pam.d/$PAM_FILE is outdated. Please check %{_sysconfdir}/pam.d/$PAM_FILE.rpmnew!" >&2
+	fi
+done
+#
+# /etc/default/su is tagged as noreplace.
 # But we want to migrate variables to /etc/login.defs (bsc#1121197).
 # Perform one-time config replace.
+# Applies for: Update from SLE11, online update for SLE15 SP1, Leap15.1.
+# Not needed for /etc/default/runuser. It was first packaged after the change.
 if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; then
 	if test -f %{_sysconfdir}/default/su.rpmnew ; then
 		if ! test -f %{_sysconfdir}/default/su.rpmorig ; then
@@ -891,6 +897,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %{_sysconfdir}/pam.d/runuser-l
 %config(noreplace) %{_sysconfdir}/pam.d/su
 %config(noreplace) %{_sysconfdir}/pam.d/su-l
+%config(noreplace) %{_sysconfdir}/default/runuser
 %config(noreplace) %{_sysconfdir}/default/su
 %config %dir %{_sysconfdir}/issue.d
 #UsrMerge
@@ -946,6 +953,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/findmnt
 %{_bindir}/flock
 %{_bindir}/getopt
+%{_bindir}/hardlink
 %{_bindir}/hexdump
 %{_bindir}/ionice
 %{_bindir}/ipcmk
@@ -1048,6 +1056,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man1/fincore.1.gz
 %{_mandir}/man1/flock.1.gz
 %{_mandir}/man1/getopt.1.gz
+%{_mandir}/man1/hardlink.1.gz
 %{_mandir}/man1/hexdump.1.gz
 %{_mandir}/man1/ipcrm.1.gz
 %{_mandir}/man1/ipcs.1.gz

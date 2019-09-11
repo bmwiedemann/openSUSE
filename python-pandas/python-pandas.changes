@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:32:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.25.1
+  + Bug fixes
+    > Categorical
+      * Bug in :meth:`Categorical.fillna` that would replace all values, not just those that are ``NaN``
+    > Datetimelike
+      * Bug in :func:`to_datetime` where passing a timezone-naive :class:`DatetimeArray` or :class:`DatetimeIndex` and ``utc=True`` would incorrectly return a timezone-naive result
+      * Bug in :meth:`Period.to_timestamp` where a :class:`Period` outside the :class:`Timestamp` implementation bounds (roughly 1677-09-21 to 2262-04-11) would return an incorrect :class:`Timestamp` instead of raising ``OutOfBoundsDatetime``
+      * Bug in iterating over :class:`DatetimeIndex` when the underlying data is read-only
+    > Timezones
+      * Bug in :class:`Index` where a numpy object array with a timezone aware :class:`Timestamp` and ``np.nan`` would not return a :class:`DatetimeIndex`
+    > Numeric
+      * Bug in :meth:`Series.interpolate` when using a timezone aware :class:`DatetimeIndex`
+      * Bug when printing negative floating point complex numbers would raise an ``IndexError``
+      * Bug where :class:`DataFrame` arithmetic operators such as :meth:`DataFrame.mul` with a :class:`Series` with axis=1 would raise an ``AttributeError`` on :class:`DataFrame` larger than the minimum threshold to invoke numexpr
+      * Bug in :class:`DataFrame` arithmetic where missing values in results were incorrectly masked with ``NaN`` instead of ``Inf``
+    > Conversion
+      * Improved the warnings for the deprecated methods :meth:`Series.real` and :meth:`Series.imag`
+    > Interval
+      * Bug in :class:`IntervalIndex` where `dir(obj)` would raise ``ValueError``
+    > Indexing
+      * Bug in partial-string indexing returning a NumPy array rather than a ``Series`` when indexing with a scalar like ``.loc['2015']``
+      * Break reference cycle involving :class:`Index` and other index classes to allow garbage collection of index objects without running the GC.
+      * Fix regression in assigning values to a single column of a DataFrame with a ``MultiIndex`` columns.
+      * Fix regression in ``.ix`` fallback with an ``IntervalIndex``.
+    > Missing
+      * Bug in :func:`pandas.isnull` or :func:`pandas.isna` when the input is a type e.g. ``type(pandas.Series())``
+    > I/O
+      * Avoid calling ``S3File.s3`` when reading parquet, as this was removed in s3fs version 0.3.0
+      * Better error message when a negative header is passed in :func:`pandas.read_csv`
+      * Follow the ``min_rows`` display option (introduced in v0.25.0) correctly in the HTML repr in the notebook.
+    > Plotting
+      * Added a ``pandas_plotting_backends`` entrypoint group for registering plot backends. See :ref:`extending.plotting-backends` for more.
+      * Fixed the re-instatement of Matplotlib datetime converters after calling
+        :meth:`pandas.plotting.deregister_matplotlib_converters`.
+      * Fix compatibility issue with matplotlib when passing a pandas ``Index`` to a plot call.
+    > Groupby/resample/rolling
+      * Fixed regression in :meth:`pands.core.groupby.DataFrameGroupBy.quantile` raising when multiple quantiles are given
+      * Bug in :meth:`pandas.core.groupby.DataFrameGroupBy.transform` where applying a timezone conversion lambda function would drop timezone information
+      * Bug in :meth:`pandas.core.groupby.GroupBy.nth` where ``observed=False`` was being ignored for Categorical groupers
+      * Bug in windowing over read-only arrays
+      * Fixed segfault in `pandas.core.groupby.DataFrameGroupBy.quantile` when an invalid quantile was passed
+    > Reshaping
+      * A ``KeyError`` is now raised if ``.unstack()`` is called on a :class:`Series` or :class:`DataFrame` with a flat :class:`Index` passing a name which is not the correct one
+      * Bug :meth:`merge_asof` could not merge :class:`Timedelta` objects when passing `tolerance` kwarg
+      * Bug in :meth:`DataFrame.crosstab` when ``margins`` set to ``True`` and ``normalize`` is not ``False``, an error is raised.
+      * :meth:`DataFrame.join` now suppresses the ``FutureWarning`` when the sort parameter is specified
+      * Bug in :meth:`DataFrame.join` raising with readonly arrays
+    > Sparse
+      * Bug in reductions for :class:`Series` with Sparse dtypes
+    > Other
+      * Bug in :meth:`Series.replace` and :meth:`DataFrame.replace` when replacing timezone-aware timestamps using a dict-like replacer
+      * Bug in :meth:`Series.rename` when using a custom type indexer. Now any value that isn't callable or dict-like is treated as a scalar.
+
+-------------------------------------------------------------------
 Mon Jul 22 15:36:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to Version 0.25.0

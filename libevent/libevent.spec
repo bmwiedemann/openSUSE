@@ -19,8 +19,8 @@
 Name:           libevent
 %define     version_base 2
 %define     version_minor 1
-%define     version_release 10
-%define     abi_release 6
+%define     version_release 11
+%define     abi_release 7
 %define     version_suffix stable
 %define     libsoname %{name}-%{version_base}_%{version_minor}-%{abi_release}
 
@@ -116,6 +116,7 @@ This package holds the static libraries for libevent2.
 %patch0 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
 %configure \
 	--disable-libevent-regress

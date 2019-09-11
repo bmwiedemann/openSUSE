@@ -33,11 +33,12 @@
 
 %define use_sz2 0
 
-%define vers 1.10.4
-%define _vers 1_10_4
+%define vers 1.10.5
+%define _vers 1_10_5
 %define short_ver 1.10
 %define src_ver %{version}
 %define pname hdf5
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -181,7 +182,11 @@ ExclusiveArch:  do_not_build
 %{?with_mpi:%global hpc_module_pname p%{pname}}
  %define my_prefix %hpc_prefix
  %define my_bindir %hpc_bindir
+   %ifarch x86_64
+ %define my_libdir %hpc_prefix/lib64
+   %else
  %define my_libdir %hpc_libdir
+   %endif
  %define my_incdir %hpc_includedir
  %define package_name   %{hpc_package_name %_vers}
  %define libname(l:s:)   lib%{pname}%{-l*}%{hpc_package_name_tail %{?_vers}}
@@ -210,7 +215,7 @@ ExclusiveArch:  do_not_build
 # do not match the so numbers that are actually built.
 %define sonum 103
 %define sonum_CXX 103
-%define sonum_F 100
+%define sonum_F 102
 %define sonum_HL 100
 %define sonum_HL_CXX 100
 %define sonum_HL_F 100
@@ -233,9 +238,9 @@ Patch4:         hdf5-1.8.10-tests-arm.patch
 %endif
 Patch5:         PPC64LE-Fix-long-double-handling.patch
 Patch6:         hdf5-Remove-timestamps-from-binaries.patch
+# Could be ported but it's unknown if it's still needed
 Patch7:         hdf5-mpi.patch
 Patch8:         Disable-phdf5-tests.patch
-Patch9:         0001-Fix-return-value-in-test_libver_bounds_open.patch
 BuildRequires:  fdupes
 %if 0%{?use_sz2}
 BuildRequires:  libsz2-devel
@@ -465,9 +470,8 @@ library packages.
 %endif
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
+# %%patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly

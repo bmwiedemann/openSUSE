@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  2 08:55:19 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.1.5, please read ChangeLog for changes.
+- Update Source0 to use GitHub insterad of sourceforge.
+- New BuildRequires on jemalloc-devel
+- New binary rbh-rebind
+- Use %license
+- Patches removed, merged upstream:
+  * xattr-location.patch
+  * removed-check-ENOATTR.patch
+
+-------------------------------------------------------------------
 Tue Oct 23 12:39:32 UTC 2018 - cgoll@suse.com
 
 -  moved packages tools webgui and tests from Applications/System

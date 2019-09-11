@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep  2 13:45:12 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Documentation is only available online now. Remove the -doc package. 
+
+-------------------------------------------------------------------
+Thu Aug 29 16:11:53 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 2.17.0
+  * Changed open source license to dual MIT/Apache-2.0
+  * Removed FEI_mv/ml subdirectory and several FEI header files
+  * Various bug fixes.
+  * Added new '--enable-mixedint' configure option.
+  * Various GPU optimizations
+  * Changed documentation to use Sphinx and Doxygen.
+- Update License field to reflect the new dual licensing.
+- Update source, there is a new GitHub group for hypre.
+- Refresh patches:
+  * hypre_Makefile_examples.patch
+  * hypre_CMakeLists.patch
+
+-------------------------------------------------------------------
 Wed Feb 27 09:16:16 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Build the examples and docs as a separate HPC package.

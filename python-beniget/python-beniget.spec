@@ -20,7 +20,7 @@
 Name:           python-beniget
 Version:        0.1.0
 Release:        0
-Summary:        Extract semantic information about static Python code
+Summary:        Module to extract semantic information about static Python code
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/serge-sans-paille/beniget/
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module gast >= 0.2.2}
 %python_subpackages
 
 %description
-Extract semantic information about static Python code.
+A module to extract semantic information about static Python code.
 
 %prep
 %setup -q -n beniget-%{version}

@@ -18,7 +18,7 @@
 
 %define         _peazipinstalldir %{_libdir}/peazip
 Name:           peazip
-Version:        6.9.0
+Version:        6.9.2
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only

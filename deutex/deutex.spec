@@ -17,18 +17,18 @@
 
 
 Name:           deutex
-Version:        5.1.2
+Version:        5.2.1
 Release:        0
 Summary:        WAD composer for Doom and related games
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-#Historic-Url:  http://www.teaser.fr/~amajorel/deutex/
+#Historic-URL:  http://www.teaser.fr/~amajorel/deutex/
 URL:            https://github.com/Doom-Utils/deutex
 Source:         https://github.com/Doom-Utils/deutex/releases/download/v%version/%name-%version.tar.xz
 Source2:        https://github.com/Doom-Utils/deutex/releases/download/v%version/%name-%version.tar.xz.sig
 BuildRequires:  asciidoc
 BuildRequires:  automake
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 DeuTex is a .wad file composer for Doom, Heretic, Hexen and Strife.
@@ -42,7 +42,7 @@ example, from PPM to Doom picture format). In addition, DeuTex has
 functions such as merging WADs.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv

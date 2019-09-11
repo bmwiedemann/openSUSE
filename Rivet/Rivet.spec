@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_name lib%{name}-2_6_0
+%define so_name lib%{name}-2_7_2
 Name:           Rivet
-Version:        2.6.0
+Version:        2.7.2
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
@@ -26,8 +26,10 @@ Group:          Productivity/Scientific/Physics
 URL:            http://rivet.hepforge.org/
 Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.bz2
 Patch0:         sover.diff
+# PATCH-FIX-UPSTREAM Rivet-fix-ambiguous-namespace.patch badshah400@gmail.com -- Fixed Et -> Kin::Et to avoid ambiguous namespace; patch taken from upstream commit
+Patch1:         Rivet-fix-ambiguous-namespace.patch
 BuildRequires:  HepMC2-devel
-BuildRequires:  YODA-devel >= 1.0.6
+BuildRequires:  YODA-devel >= 1.7.4
 BuildRequires:  doxygen
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
@@ -125,6 +127,7 @@ This package provides all the analysis plugins for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # REMOVE EXISTING rivet.pc FILE, ALLOW make TO GENERATE rivet.pc FROM rivet.pc.in
 rm -f rivet.pc
@@ -159,6 +162,11 @@ mv %{buildroot}%{_libdir}/Rivet*Analyses.so %{buildroot}%{_libdir}/%{name}-plugi
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/%{name}-plugins" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
 # /SECTION
+
+chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info
+sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python_sitearch}/rivet/spiresbib.py
+
+%fdupes %{buildroot}%{_datadir}/Rivet/
 
 %post -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig

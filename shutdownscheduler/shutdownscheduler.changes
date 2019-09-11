@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 26 18:45:25 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.0:
+  * Fix size
+  * Merge pull request #39 from Fatih20/icon-redesign
+  * Changed as requested and pixel fitted
+  * Min windows size
+  * Add color red to shutdown button
+  * Icons Redesign
+
+-------------------------------------------------------------------
+Mon Aug 26 09:20:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim false claims from description.
+
+-------------------------------------------------------------------
 Mon Jul  8 11:30:50 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.5.1:

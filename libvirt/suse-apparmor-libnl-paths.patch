@@ -8,10 +8,10 @@ It was also noticed that the per-domain profiles need a libnl rule
 to squelch a denial when starting confined domains.
 
 Found while investigating bsc#1058847
-Index: libvirt-5.6.0/src/security/apparmor/libvirt-qemu
+Index: libvirt-5.7.0/src/security/apparmor/libvirt-qemu
 ===================================================================
---- libvirt-5.6.0.orig/src/security/apparmor/libvirt-qemu
-+++ libvirt-5.6.0/src/security/apparmor/libvirt-qemu
+--- libvirt-5.7.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-5.7.0/src/security/apparmor/libvirt-qemu
 @@ -63,6 +63,7 @@
    #/dev/fb* rw,
  
@@ -20,13 +20,13 @@ Index: libvirt-5.6.0/src/security/apparmor/libvirt-qemu
    @{HOME}/.pulse-cookie rwk,
    owner /root/.pulse-cookie rwk,
    owner /root/.pulse/ rw,
-Index: libvirt-5.6.0/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
+Index: libvirt-5.7.0/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
 ===================================================================
---- libvirt-5.6.0.orig/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
-+++ libvirt-5.6.0/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
-@@ -17,7 +17,7 @@ profile virt-aa-helper /usr/{lib,lib64}/
-   owner @{PROC}/[0-9]*/status r,
-   @{PROC}/filesystems r,
+--- libvirt-5.7.0.orig/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
++++ libvirt-5.7.0/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
+@@ -20,7 +20,7 @@ profile virt-aa-helper /usr/{lib,lib64}/
+   # Used when internally running another command (namely apparmor_parser)
+   @{PROC}/@{pid}/fd/ r,
  
 -  /etc/libnl-3/classid r,
 +  /etc/libnl*/classid r,

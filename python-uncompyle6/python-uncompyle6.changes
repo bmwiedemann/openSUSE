@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:34:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.0:
+  * The main change is to add a tree-transformation phase
+  * Various bugfixes
+
+-------------------------------------------------------------------
 Mon Jul 22 11:54:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.3.5:

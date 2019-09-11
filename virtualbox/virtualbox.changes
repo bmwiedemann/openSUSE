@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Sep  7 21:28:46 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+Added file "README.build" to documentation with instructions for me and any eventual successors.
+
+- Version update to 6.0.12 (released September 03 2019 by Oracle)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+OCI export: handle empty disk image correctly
+API: fix potential crash when using the medium I/O functionality
+VBoxManage: fixed documentation of VBoxManage modifyvm uarttype documentation (bug #18759)
+Network: scrub inbound TCP URG pointer, working around incorrect OOB handling
+USB: Improved identification of power-saved devices on Windows hosts
+Audio: in the AC97 work around buggy guest drivers which reprogram the sampling rate, breaking audio in and/or audio out
+Linux host and guest: fix kernel module build for SLES 12 SP4 kernel
+3D: fixed state saving and loading when the VBoxVGA graphics adapter is used with 3D enabled (bug #18802, 6.0.10 regression)
+Windows guests: fixed mouse cursor visibility updating
+Windows guests: fixed graphics corruption in Windows 10 search menu with VBoxSVGA adapter
+Windows guests: fixed dwm.exe crashes related to the WDDM driver for VBoxSVGA adapter when the VM has lots of RAM
+MacOS Guest Additions fail to start in 6.0.10 (bug #18793)
+Windows guests: fixed crashes when using shared folders (bug #18766)
+Linux guests: unprivileged users unable to create files inside shared folders (bug #18737)
+Linux guests: improve compatibility of vboxvideo.ko kernel module build logic (bug #18869)
+ 
+
+-------------------------------------------------------------------
 Mon Jul 29 06:40:41 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 - Merge host kmp and guest kmp into a single kmp. The existence of two different kernel module

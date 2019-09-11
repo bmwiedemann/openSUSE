@@ -1,7 +1,7 @@
 #
 # spec file for package mpv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Jiri Slaby <jslaby@suse.de>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -21,7 +21,7 @@
 
 %define _waf_ver 2.0.9
 %define _mbc_ver 3.3.17
-%define _mpv_ver 0.29.1
+%define _mpv_ver 0.30.0+git.1567376743.6d90517275
 %define lname   libmpv1
 Name:           mpv
 Version:        %{_mpv_ver}
@@ -30,7 +30,7 @@ Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 Url:            http://mpv.io/
-Source:         http://github.com/mpv-player/%{name}/archive/v%{_mpv_ver}.tar.gz#/%{name}-%{_mpv_ver}.tar.gz
+Source:         %{name}-%{_mpv_ver}.tar.xz
 Source1:        https://waf.io/waf-%{_waf_ver}
 Source2:        %{name}.changes
 # mpv-bash-completion is licensed with GPL-3.0+
@@ -71,6 +71,7 @@ BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libkms)
+BuildRequires:  pkgconfig(libplacebo) >= 1.18.0
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libswresample) >= 3.0.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
@@ -196,7 +197,7 @@ This package contains a library that can other apps use to utilize the mpv
 features.
 
 %prep
-%setup -q -a 3 -n %{name}-%{_mpv_ver}
+%setup -q -a 3
 %patch0 -p1
 
 # As we downloaded specific waf version we need to put and prepare it in place.

@@ -18,7 +18,7 @@
 
 
 Name:           intel-cmt-cat
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Command line interface to CMT, MBM, CAT and CDP technologies
 License:        BSD-3-Clause
@@ -49,7 +49,7 @@ provides an interface to read and write the MSR registers but
 it requires root privileges.
 
 %package     -n libpqos%{libpqosMajor}
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Runtime pqos library
 Group:          System/Libraries
@@ -60,7 +60,7 @@ Cache Monitoring Technology (CMT), Memory Bandwidth Monitoring (MBM),
 Cache Allocation Technology (CAT), Code and Data Prioritization (CDP) Technology.
 
 %package     -n libpqos-devel
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Development package for libpqos%{libpqosMajor}
 Group:          Development/Libraries/C and C++

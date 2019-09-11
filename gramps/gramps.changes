@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 25 06:19:50 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Add gramps-5.1.0-remove_false_nonrelease_warning.patch: Remove
+  false non-release warning that upstream forgot to remove in
+  5.1.0:
+  https://gramps-project.org/bugs/view.php?id=11274
+  Here, the simple fix of
+  https://github.com/gramps-project/gramps/pull/876#issuecomment-524582815
+  is applied. Likely not required in newer versions:
+  https://github.com/gramps-project/gramps/pull/872
+
+-------------------------------------------------------------------
+Thu Aug 22 07:30:23 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Update to version 5.1.0, a maintenance release. Full changelog
+  available at
+  https://github.com/gramps-project/gramps/releases/tag/v5.1.0
+- Add comment about currently missing optional python3-fontconfig
+  dependency.
+
+-------------------------------------------------------------------
 Fri Jan 18 14:00:52 UTC 2019 - schubert.seb@gmail.com
 
 - Recommend python3-PyICU on all systems, not only Leap 42.3. It is

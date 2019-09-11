@@ -1,7 +1,3 @@
---- .pkgextract
-+++ .pkgextract
-@@ -0,0 +1 @@
-+bzcat ../texi2roff.patch.bz2 | patch -p0 -s -b --suffix=.Bader
 --- Makefile
 +++ Makefile
 @@ -1,14 +1,14 @@
@@ -56,3 +52,13 @@
  .DA 1 Jan 90
  .SH NAME
  texi2roff, texi2index \- convert Texinfo documents for formatting by troff.
+--- texi2roff.c
++++ texi2roff.c	2019-09-09 12:11:54.145422485 +0000
+@@ -28,6 +28,7 @@ int transparent = NO;	/* for -t flag */
+  *	- initialize tables and other strings
+  * 	- open files and pass them to process().
+  */
++int
+ main(argc, argv)
+ int argc;
+ char *argv[];

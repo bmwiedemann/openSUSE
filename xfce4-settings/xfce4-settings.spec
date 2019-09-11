@@ -12,12 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with git
+
 Name:           xfce4-settings
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -25,25 +27,25 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-settings/start
 Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.14/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(garcon-1)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.13
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.9.0
-BuildRequires:  pkgconfig(libxklavier)
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(libxklavier)
+BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xorg-libinput)
 BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  update-desktop-files
 %if 0%{?suse_version} > 1500
 BuildRequires:  xorgproto-devel
 %endif

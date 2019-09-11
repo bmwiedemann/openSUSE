@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Agu 19 15:31:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
+
+- Update to RabbitMQ version 3.7.17
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.17
+- RabbitMQ 3.7.17 is a maintenance release. It focuses on bug fixes and upgrades
+  a JavaScript dependency in the management UI to patch three CVEs in that library.
+
+-------------------------------------------------------------------
 Mon Jul 15 09:38:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
 - Update to RabbitMQ version 3.7.16

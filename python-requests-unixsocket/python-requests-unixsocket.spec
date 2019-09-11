@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-unixsocket
-Version:        0.1.5
+Version:        0.2.0
 Release:        0
 Summary:        UNIX domain socket backend for python-requests
 License:        Apache-2.0
@@ -57,7 +57,7 @@ sed -i -e '/addopts/d' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v requests_unixsocket/tests
+%pytest requests_unixsocket/tests
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 19 12:43:55 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.1.0+git.1566218232.dbdf060c:
+  * Fix: utils: fix logic for process non comments line(bsc#1145823)
+  * Low: unittest: add unittest for bsc#1145823
+
+-------------------------------------------------------------------
 Tue Jul 16 07:19:00 UTC 2019 - kgronlund@suse.com
 
 - Update to version 4.1.0+git.1563261260.3b251242:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 24 15:11:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile, update for new homepage.
+
+-------------------------------------------------------------------
 Thu Nov 15 02:01:54 UTC 2012 - jengelh@inai.de
 
 - Rip out %make(_)install, this does not realiably work,
@@ -17,4 +22,3 @@ Fri Nov 30 15:29:48 CET 2007 - mkoenig@suse.de
 
 - Initial package for autobuild
   imported from buildservice, kudos to M. Pley
-

@@ -1,0 +1,54 @@
+From b468dda439a02c4d1b7f85a0be6c0a227d16c2de Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.com>
+Date: Fri, 30 Nov 2018 16:38:45 +1100
+Subject: [PATCH] Let systemd know when rpc.statd is needed.
+
+A recent change to set IgnoreOnIsolate for rpc-statd
+isn't quite sufficient (though it doesn't hurt).
+While rpc-statd does remain when
+  systemctl isolate multi-user
+is run, its dependencies don't remain, so rpcbind might
+get killed, which makes rpc.statd rather useless.
+
+The reason this is all an issue is that systemd doesn't know that
+rpc-statd is needed - mount.nfs explicitly starts it rather than
+having a dependency start it.
+This can be rectified by explicitly telling systemd about the
+dependency using "systemctl add-wants".  This can be done in the
+start-statd script, at the same time that rpc-statd is started.
+
+As --runtime dependency is used so that it doesn't persist across
+reboots.  A new dependency will be created on next boot if an NFSv3
+filesystem is mounted.
+
+With this in place, both rpc.statd and rpcbind remain.
+Actually, rpcbind.service is stopped, but rpcbind.socket remains,
+and when anything tries to contact rpcbind, rpcbind.service
+is automatically started and it re-reads its saved state.
+
+Signed-off-by: NeilBrown <neilb@suse.com>
+---
+ utils/statd/start-statd | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/utils/statd/start-statd b/utils/statd/start-statd
+index 82715b40c1af..54ced822016a 100755
+--- a/utils/statd/start-statd
++++ b/utils/statd/start-statd
+@@ -20,7 +20,12 @@ fi
+ # First try systemd if it's installed.
+ if [ -d /run/systemd/system ]; then
+     # Quit only if the call worked.
+-    systemctl start rpc-statd.service && exit
++    if systemctl start rpc-statd.service; then
++        # Ensure systemd knows not to stop rpc.statd or its dependencies
++        # on 'systemctl isolate ..'
++        systemctl add-wants --runtime remote-fs.target rpc-statd.service
++        exit 0
++    fi
+ fi
+ 
+ cd /
+-- 
+2.14.0.rc0.dirty
+

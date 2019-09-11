@@ -17,7 +17,7 @@
 
 
 Name:           perl-Minion
-Version:        9.12
+Version:        9.13
 Release:        0
 %define cpan_name Minion
 Summary:        Job queue

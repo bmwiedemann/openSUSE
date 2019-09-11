@@ -26,14 +26,14 @@ Index: glslang-7.9.2933.g33/SPIRV/CMakeLists.txt
  endif(ENABLE_NV_EXTENSIONS)
  
  add_library(SPIRV ${LIB_TYPE} ${SOURCES} ${HEADERS})
-+set_target_properties(SPIRV PROPERTIES SOVERSION suse6)
++set_target_properties(SPIRV PROPERTIES SOVERSION suse7)
  set_property(TARGET SPIRV PROPERTY FOLDER glslang)
  set_property(TARGET SPIRV PROPERTY POSITION_INDEPENDENT_CODE ON)
  target_include_directories(SPIRV PUBLIC ..)
  
  if (ENABLE_SPVREMAPPER)
      add_library(SPVRemapper ${LIB_TYPE} ${SPVREMAP_SOURCES} ${SPVREMAP_HEADERS})
-+    set_target_properties(SPVRemapper PROPERTIES SOVERSION suse6)
++    set_target_properties(SPVRemapper PROPERTIES SOVERSION suse7)
      set_property(TARGET SPVRemapper PROPERTY FOLDER glslang)
      set_property(TARGET SPVRemapper PROPERTY POSITION_INDEPENDENT_CODE ON)
  endif()
@@ -44,7 +44,7 @@ Index: glslang-7.9.2933.g33/StandAlone/CMakeLists.txt
 @@ -1,5 +1,6 @@
  add_library(glslang-default-resource-limits
              ${CMAKE_CURRENT_SOURCE_DIR}/ResourceLimits.cpp)
-+set_target_properties(glslang-default-resource-limits PROPERTIES SOVERSION suse6)
++set_target_properties(glslang-default-resource-limits PROPERTIES SOVERSION suse7)
  set_property(TARGET glslang-default-resource-limits PROPERTY FOLDER glslang)
  set_property(TARGET glslang-default-resource-limits PROPERTY POSITION_INDEPENDENT_CODE ON)
  
@@ -56,7 +56,7 @@ Index: glslang-7.9.2933.g33/glslang/CMakeLists.txt
  glslang_pch(SOURCES MachineIndependent/pch.cpp)
  
  add_library(glslang ${LIB_TYPE} ${BISON_GLSLParser_OUTPUT_SOURCE} ${SOURCES} ${HEADERS})
-+set_target_properties(glslang PROPERTIES SOVERSION suse6)
++set_target_properties(glslang PROPERTIES SOVERSION suse7)
  set_property(TARGET glslang PROPERTY FOLDER glslang)
  set_property(TARGET glslang PROPERTY POSITION_INDEPENDENT_CODE ON)
  target_link_libraries(glslang OGLCompiler OSDependent)
@@ -68,7 +68,7 @@ Index: glslang-7.9.2933.g33/hlsl/CMakeLists.txt
  glslang_pch(SOURCES pch.cpp)
  
  add_library(HLSL ${LIB_TYPE} ${SOURCES} ${HEADERS})
-+set_target_properties(HLSL PROPERTIES SOVERSION suse6)
++set_target_properties(HLSL PROPERTIES SOVERSION suse7)
  set_property(TARGET HLSL PROPERTY FOLDER hlsl)
  set_property(TARGET HLSL PROPERTY POSITION_INDEPENDENT_CODE ON)
  

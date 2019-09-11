@@ -1,7 +1,7 @@
 #
 # spec file for package lapack-man
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -48,6 +48,7 @@ Algebra subprograms) routines, in the form of man pages.
 %setup -q -n %{_name}-%{version}
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 cp make.inc.example make.inc
 # Create man pages - and do some cleanup
 make man %{?_smp_mflags}

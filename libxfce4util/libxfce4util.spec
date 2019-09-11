@@ -25,7 +25,7 @@ Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:         https://archive.xfce.org/src/xfce/libxfce4util/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.14/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
 BuildRequires:  intltool
 BuildRequires:  perl
@@ -60,11 +60,20 @@ Obsoletes:      libxfce4util <= 4.8.2
 libxfce4util is a general-purpose utility library with core application support
 for the Xfce Desktop Environment.
 
+%package -n typelib-1_0-libxfce4util-1_0
+Summary:        Utility Library for the Xfce Desktop Environment
+Group:          System/Libraries
+
+%description -n typelib-1_0-libxfce4util-1_0
+libxfce4util is a general-purpose utility library with core application support
+for the Xfce Desktop Environment.
+
 %package devel
 Summary:        Development Files for libxfce4util
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name}-tools = %{version}
+Requires:       typelib-1_0-libxfce4util-1_0 = %{version}
 
 %description devel
 This package contains the API documentation and development files needed for
@@ -114,8 +123,10 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,ur_PK,tl_PH}
 %license COPYING
 %{_libdir}/libxfce4util.so.*
 
-%files devel
+%files -n typelib-1_0-libxfce4util-1_0
 %{_libdir}/girepository-1.0/libxfce4util-1.0.typelib
+
+%files devel
 %{_libdir}/pkgconfig/libxfce4util-*.pc
 %{_libdir}/libxfce4util.so
 %dir %{_includedir}/xfce4

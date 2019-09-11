@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  9 20:01:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.8.1:
+  + Bugs fixed: Selections: fixed possible crash after reordering
+    the files.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 27 18:56:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.8.0:

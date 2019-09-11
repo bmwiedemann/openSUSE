@@ -19,7 +19,7 @@
 %global pkg_name mono-traversable
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.11.0
+Version:        1.0.12.0
 Release:        0
 Summary:        Type classes for mapping, folding, and traversing monomorphic containers
 License:        MIT

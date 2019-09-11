@@ -1,0 +1,19 @@
+Index: sunwait-20041208/Makefile
+===================================================================
+--- sunwait-20041208/Makefile	2019-03-07 18:54:00.998492523 +0100
++++ sunwait-20041208/Makefile	2019-03-07 18:54:28.906683825 +0100
+@@ -1,10 +1,10 @@
+-CFLAGS = -g 
++CFLAGS = -g $(RPM_OPT_FLAGS)
+ LIBS = -lm
+ OBJS = main.o print.o sunriset.o 
+ 
+ 
+ sunwait: $(OBJS)
+-	$(CC) -o sunwait $(CFLAGS) $(OBJS) -lm
++	$(CC) -o sunwait $(CFLAGS) $(OBJS) $(LIBS)
+ 
+ clean:
+-	rm *.o sunwait
+\ No newline at end of file
++	$(RM) *.o sunwait

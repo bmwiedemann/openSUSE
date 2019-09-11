@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:20:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.0:
+  * Add plugins via entry points pytest_randomly.random_seeder to allow
+    outside packages to register additional random generators to seed.
+    This has added a dependency on the entrypoints package.
+- Drop patch tests-restore-python2.7.patch
+
+-------------------------------------------------------------------
 Mon Jun  3 09:13:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.0:

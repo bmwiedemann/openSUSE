@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  8 10:59:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/aclocal: when we might switch to pkgconf instead
+  of pkg-config, nothing in the build root is 'accidentally' owning
+  this directory for us.
+
+-------------------------------------------------------------------
 Fri Mar 22 13:38:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_unifdef-LBXPROXY_t-and-TEST_t.patch

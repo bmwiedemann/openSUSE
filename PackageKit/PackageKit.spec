@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,6 +27,7 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+
 Name:           PackageKit
 Version:        1.1.12
 Release:        0
@@ -34,17 +35,16 @@ Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://www.freedesktop.org/software/PackageKit/
-Source0:        http://www.freedesktop.org/software/PackageKit/releases/%{name}-%{version}.tar.xz
-Source1:        http://www.freedesktop.org/software/PackageKit/releases/%{name}-%{version}.tar.xz.asc
+Source0:        %{url}/releases/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/%{name}-%{version}.tar.xz.asc
 Source2:        baselibs.conf
 Source3:        PackageKit.tmpfiles
 Source99:       PackageKit.keyring
-# PATCH-FIX-OPENSUSE PackageKit-cron-without-sleep.patch boo#1071521 dimstar@opensuse.org -- Do not sleep in the cron job; our cron mechansim has sufficient randomization
-Patch0:         PackageKit-cron-without-sleep.patch
+
 # PATCH-FIX-UPSTREAM PackageKit-return-on-transactions-going-backwards.patch gh#hughsie/PackageKit#301, bsc#1038425 sckang@suse.com -- transaction: Return directly when its state is going backwards
 Patch1:         PackageKit-return-on-transactions-going-backwards.patch
-# PATCH-FIX-UPSTREAM PackageKit-remove-default-thread-check.patch gh#hughsie/PackageKit#303, bsc#1038425 sckang@suse.com -- Remove pk_is_thread_default() check in pk_backend_is_eula_valid
-Patch2:         PackageKit-remove-default-thread-check.patch
+# PATCH-FIX-UPSTREAM PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch gh#hughsie/PackageKit#303, bsc#1038425 sckang@suse.com -- Remove pk_is_thread_default() check in pk_backend_is_eula_valid
+Patch2:         PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch
 # PATCH-FEATURE-OPENSUSE PackageKit-systemd-timers.patch bsc#1115410 sckang@suse.com -- Migrate from cron to systemd timers
 Patch3:         PackageKit-systemd-timers.patch
 Patch4:         zypp-Switch-to-doUpgrade-solver-when-required-by-distribution.patch
@@ -53,13 +53,18 @@ Patch5:         PackageKit-remove-polkit-rules.patch
 Patch6:         zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-newest-filter.patch bsc#1137019 gh#hughsie/PackageKit#329 sckang@suse.com -- zypp: Emit installed package for newest filter
 Patch7:         PackageKit-zypp-fix-newest-filter.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-what-provides-newest-filter.patch bsc#984865, gh#hughsie/PackageKit#335 sckang@suse.com -- zypp: Add support for newest filter in what-provides
+Patch8:         PackageKit-zypp-fix-what-provides-newest-filter.patch
+# PATCH-FIX-UPSTREAM PackageKit-drop-gtk2.patch gh#/hughsie/PackageKit#333 - Port away from gtk2 dependency
+Patch9:         PackageKit-drop-gtk2.patch
+
+BuildRequires:  autoconf-archive
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  gtk-doc
-BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libarchive-devel
@@ -231,22 +236,11 @@ This package provides the upstream default configuration for PackageKit.
 %lang_package
 
 %prep
-%setup -q
-%if 0%{suse_version} < 1500
-%patch0 -p1
-%endif
-%patch1 -p1
-%patch2 -p1
-%if 0%{suse_version} >= 1500
-%patch3 -p1
-%endif
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%autosetup -p1
 translation-update-upstream
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %if !0%{?is_opensuse}
 export CFLAGS="%{optflags} -DSLE"
 %endif
@@ -259,17 +253,17 @@ export CFLAGS="%{optflags} -DSLE"
 %else
 	--enable-command-not-found \
 %endif
-        --enable-systemd \
+	--enable-systemd \
 %if %{with offline_updates}
-        --enable-offline-update \
+	--enable-offline-update \
 %else
-        --disable-offline-update \
+	--disable-offline-update \
 %endif
 %if 0%{suse_version} >= 1500
-        --disable-cron \
+	--disable-cron \
 %endif
-        %{nil}
-make %{?_smp_mflags}
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -441,7 +435,6 @@ fi
 %dir %{_libdir}/gnome-settings-daemon-3.0/gtk-modules
 %{_libdir}/gnome-settings-daemon-3.0/gtk-modules/pk-gtk-module.desktop
 %{_libdir}/gtk-3.0/modules/*
-%{_libdir}/gtk-2.0/modules/*
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/PackageKit

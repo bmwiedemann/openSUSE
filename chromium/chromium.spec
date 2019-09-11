@@ -57,7 +57,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        76.0.3809.100
+Version:        76.0.3809.132
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -110,6 +110,7 @@ Patch31:        chromium-76-quiche.patch
 #  (default on) compared to the PR
 Patch100:       chromium-vaapi.patch
 Patch101:       old-libva.patch
+Patch102:       chromium-vaapi-fix.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel

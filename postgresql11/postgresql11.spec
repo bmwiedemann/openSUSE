@@ -112,7 +112,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        11.4
+Version:        11.5
 Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
 Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2.sha256
@@ -420,6 +420,7 @@ find src/test/ -name '*.orig' -delete
 find -name .gitignore -delete
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export PYTHON=python3
 PACKAGE_TARNAME=%pgname %configure \
         --bindir=%pgbindir \

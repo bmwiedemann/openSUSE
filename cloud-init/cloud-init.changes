@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 19 16:46:35 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-add-static-routes.diff (bsc#1141969)
+  + Properly handle static routes. The EphemeralDHCP context manager did
+    not parse or handle rfc3442 classless static routes which prevented
+    reading datasource metadata in some clouds.
+
+-------------------------------------------------------------------
+Mon Aug 19 15:24:26 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-trigger-udev.patch (bsc#1144363)
+  - The __str__ implementation no longer delivers the name of the interface,
+    use the "name" attribute instead to form a proper path in the
+    sysfs tree
+
+-------------------------------------------------------------------
+Fri Aug 16 19:54:28 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch (bsc#1144881)
+  + If no routes are set for a subnet but the subnet has a gateway
+    specified, set the gateway as the default route for the interface
+
+-------------------------------------------------------------------
+Fri Jul  5 18:58:22 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Follow the ever changing inconsistencies of version definitions and
+  detection in the build service.
+  + No more suse_version in SUSE internal instance for SLES 15 SP1
+
+-------------------------------------------------------------------
 Tue Jun 11 12:37:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

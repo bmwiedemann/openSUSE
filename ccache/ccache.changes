@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:57:55 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.7.3:
+  * The cache size (which is counted in “used disk blocks”) is now correct on filesystems that use more or less disk blocks than conventional filesystems, e.g. ecryptfs or btrfs/zfs with transparent compression. This also fixes a related problem with ccache’s own test suite when run on such file systems.
+Fixed a regression in 3.7.2 when using the compiler option “-Werror” and then “-Wno-error” later on the command line.
+- Changes n version 3.7.2:
+  * The compiler option -gdwarf* no longer forces “run_second_cpp = true”.
+  * Added verification that the value passed to the -o/--set-config option is valid.
+  * Fixed detection of precompiled headers in the depend mode.
+  * Bail out on too hard Clang option -ftime-trace.
+  * ccache now updates the correct stats file when adding/updating manifest files. This bug previously made the file and size statistics counters incorrect over time.
+  * Fixed warnings from Clang about unused arguments during preprocessing.
+  * Unknown manifest versions are now handled gracefully in --dump-manifest.
+  * Fixed make check with “funny” locales.
+
+-------------------------------------------------------------------
 Thu May  2 08:36:20 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix upstream urls

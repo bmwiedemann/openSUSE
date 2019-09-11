@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 21 21:25:13 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Change suse_version >= 1315 (was 1550) defines short_version 1.12
+  go1.12 packages are available for SLE-12.
+
+-------------------------------------------------------------------
+Mon Mar 11 19:09:49 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump the package only to 1.12 for distros where this actually
+  builds
+
+-------------------------------------------------------------------
+Mon Mar 11 05:26:57 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.12 (released 2019/02/25) includes changes in the implementation of the
+  toolchain, runtime, and libraries. As always, the release maintains the Go 1
+  promise of compatibility. Upstream expects almost all Go programs to continue
+  to compile and run as before.
+  * GO111MODULE=on enables module-aware operations outside of a module directory
+  * GODEBUG=tls13=1 enables opt-in support for TLS 1.3 in the crypto/tls package
+    per RFC 8446. Will be default in go1.13.
+  * trace tool now supports plotting mutator utilization curves, including
+    cross-references to the execution trace. These are useful for analyzing the
+    impact of the garbage collector on application latency and throughput.
+  * arm64 assembler platform register renamed from R18 to R18_PLATFORM
+  * improvements to gc
+  * race detector is now supported on linux/arm64
+  * cgo is now supported on linux/ppc64
+  * go1.12 is the last release that will support binary-only packages.
+
+-------------------------------------------------------------------
 Thu Jan 24 04:34:37 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.11.5 (released 2019/01/23) security release fixes CVE-2019-6486.

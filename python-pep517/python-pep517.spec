@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep517
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
@@ -30,10 +30,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-pytoml
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytoml}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module mock}
 %python_subpackages
 
 %description
@@ -51,7 +51,8 @@ sed -i 's/--flake8//' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+#test_meta.py: xFx (F like "failed to download package via pip")
+%pytest --ignore tests/test_meta.py
 
 %files %{python_files}
 %doc README.rst

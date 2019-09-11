@@ -5,13 +5,8 @@
 #  - source1
 #  - source2
 patches:
- #PATCH-FIX-OPENSUSE - ro@suse.de - fix build in chroot/buildservice
- RPC-XML-0.60-rev127.dif:
- RPC-XML-0.76-extern_ent.dif:
  #PATCH-FIX-UPSTREAM - coolo@suse.de RT#86187
  RPC-XML-0.77-fixtest.dif: -p1
- #PATCH-FIX-OPENSUSE - coolo@suse.de reproducible builds
- RPC-XML-0.78-reproducible.diff: -p1
 #  foo.patch: -p1
 #  bar.patch:
 #preamble: |-

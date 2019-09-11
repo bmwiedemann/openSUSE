@@ -18,16 +18,15 @@
 
 Name:           libt3widget
 %define lname	libt3widget2
-Version:        1.0.3
+Version:        1.0.6
 Release:        0
 Summary:        The Tilde terminal dialog toolkit
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://os.ghalkes.nl/t3/libt3widget.html
+Url:            https://os.ghalkes.nl/t3/libt3widget.html
 
 #Git-Clone:	git://github.com/gphalkes/t3widget
-Source:         http://os.ghalkes.nl/dist/%name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -73,7 +72,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libt3widget.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --docdir="%_docdir/%name"
@@ -88,12 +87,10 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %postun -p /sbin/ldconfig -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libt3widget.so.2*
-%doc COPYING
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/t3/
 %_libdir/libt3widget.so
 %_libdir/pkgconfig/libt3widget.pc

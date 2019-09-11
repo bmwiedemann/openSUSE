@@ -27,7 +27,7 @@
 %define	name_source2 sysconfig.crio
 %define	name_source3 crio.conf
 Name:           cri-o
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -62,6 +62,7 @@ Requires:       libcontainers-image
 Requires:       libcontainers-storage
 Requires:       runc >= 1.0.0~rc6
 Requires:       socat
+Recommends:     katacontainers
 # Provide generic cri-runtime dependency (needed by kubernetes)
 Provides:       cri-runtime
 # disable stripping of binaries

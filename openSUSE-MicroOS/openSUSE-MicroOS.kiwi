@@ -415,6 +415,12 @@
         <package name="patterns-containers-container_runtime_kubernetes"/>
         <namedCollection name="kubeadm"/>
         <package name="patterns-containers-kubeadm"/>
+        <namedCollection name="kubic_admin"/>
+        <package name="patterns-containers-kubic_admin"/>
+        <namedCollection name="kubic_loadbalancer"/>
+        <package name="patterns-containers-kubic_loadbalancer"/>
+        <namedCollection name="kubic_worker"/>
+        <package name="patterns-containers-kubic_worker"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen">
         <!-- XEN specific packages -->

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Aug 28 06:22:19 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
+
+- Downgrade to 4.20.2 to enable aqbanking 5 builds
+  * Fix crash with FinTS
+
+-------------------------------------------------------------------
+Tue Apr 23 15:44:53 UTC 2019 - Michele Bologna <michele.bologna@suse.com>
+
+- Fixed typo in changelog file
+
+-------------------------------------------------------------------
+Tue Apr 23 12:17:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic which has no effect with --disable-static.
+- Redo summaries without em dashes.
+
+-------------------------------------------------------------------
+Mon Mar 25 17:48:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Prepare the KDE4/Qt4 removal from factory.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 30 21:34:35 CET 2019 - sbrabec@suse.com
+
+- Update to version 4.99.8 (beta) required by libchipcard-5.1.2:
+  * Generalization in the generic TLV to GWEN DB parser.
+  * Speedup of GWEN_Date_dup (about factor 16).
+  * Correctly read a UTF-8-encoded MT940 file.
+  * Updated Gwengui-Gtk3.
+  * API improvements.
+  * Other fixes.
+
+-------------------------------------------------------------------
 Tue May 15 15:36:12 UTC 2018 - dimstar@opensuse.org
 
 - Update to version 4.20.1:

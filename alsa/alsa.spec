@@ -165,8 +165,8 @@ Architecture.
 %patch101 -p1
 
 %build
-# need the extra option for some workround (bsc#1133086)
-%global _lto_cflags %{_lto_cflags} -flto-partition=none
+# disable LTO; otherwise some apps confused with versioned symbols (boo#1149461)
+%define _lto_cflags %{nil}
 export AUTOMAKE_JOBS="%{?_smp_mflags}"
 # build alsa-lib
 autoreconf -fi

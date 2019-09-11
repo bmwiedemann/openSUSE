@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:57:53 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2:
+  * This release improves compatibility with i3 4.17,
+    adds a small number of new features, and fixes many bugs.
+  * For details see https://github.com/swaywm/sway/releases/tag/1.2
+
+-------------------------------------------------------------------
 Tue Jun  4 05:54:22 UTC 2019 - mvetter@suse.com
 
 - Update to 1.1.1:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 10 10:03:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * Fixed unwrapped local functions causing errors (PR by Kimiyuki Onaka)
+  * Fixed AttributeError when documenting the __init__() method of a data class
+  * Added support for type hint comments (PR by Markus Unterwaditzer)
+  * Added flag for rendering classes with their fully qualified names (PR by Holly Becker)
+- Remove merged patch sphinx21.patch
+
+-------------------------------------------------------------------
 Wed Jul  3 09:13:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new sphinx:

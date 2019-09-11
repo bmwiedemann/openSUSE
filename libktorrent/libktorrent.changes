@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  1 19:42:51 UTC 2019 - wbauer@tmo.at
+
+- Update to version 2.1.1
+  * Fix HTTP seeding (kde#382375)
+  * Fix a few issues found by clang-tidy
+  * Some build fixes that get triggered on certain versions of
+    Qt/KF5 frameworks
+- Drop fix-build-with-qt5.6.patch, merged upstream
+- Drop require-lower-LibGMP.patch, no longer necessary as all
+  current distribution versions have gmp 6
+- Remove conditionals for no longer supported distribution versions
+- Add missing requirements to the devel package
+- Update URL, ktorrent.org doesn't exist any more
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Sep  2 09:20:11 UTC 2017 - wbauer@tmo.at
 
 - Update to version 2.1.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:41:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Use GitHub release tarball due to missing files in sdist
+- Activate and fix tests, skipping tests requiring VCS or Internet
+
+-------------------------------------------------------------------
 Thu Jul 25 19:51:41 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Remove version requirement for python3-pyqtwebengine

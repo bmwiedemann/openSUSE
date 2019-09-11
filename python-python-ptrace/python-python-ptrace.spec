@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-ptrace
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pkg_name python-ptrace
 Name:           python-%{pkg_name}
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Python binding for ptrace
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Languages/Python
-Url:            http://python-ptrace.readthedocs.io/
+URL:            https://github.com/vstinner/python-ptrace
 Source:         https://github.com/haypo/%{pkg_name}/archive/%{version}.tar.gz#!./%{pkg_name}-%{version}.tar.gz
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages
@@ -66,7 +67,7 @@ chmod 0644 examples/*.py
 %python_uninstall_alternative gdb.py
 
 %files %{python_files}
-%doc COPYING
+%license COPYING
 %doc README.rst
 %doc doc/* examples
 %python_alternative %{_bindir}/gdb.py

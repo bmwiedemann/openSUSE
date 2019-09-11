@@ -1,7 +1,7 @@
 #
 # spec file for package cudd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,22 +20,22 @@ Name:           cudd
 %define lname	libcudd-3_0_0-0
 Version:        3.0.0
 Release:        0
-Summary:        Manipulation of Binary Decision Diagrams
+Summary:        Binary Decision Diagram manipulation library
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Url:            http://vlsi.colorado.edu/~fabio/
+URL:            http://vlsi.colorado.edu/~fabio/
 
-Source:         ftp://vlsi.colorado.edu/pub/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#Source:         ftp://vlsi.colorado.edu/pub/%name-%version.tar.gz (website shutdown)
+Source:         %name-%version.tar.gz
 BuildRequires:  gcc-c++
 
 %description
-CUDD is a package for the manipulation of Binary Decision Diagrams
-(BDDs), Algebraic Decision Diagrams (ADDs) and Zero-suppressed Binary
-Decision Diagrams (ZDDs).
+CUDD (Colorado University Decision Diagram) is a package for the
+manipulation of Binary Decision Diagrams (BDDs), Algebraic Decision
+Diagrams (ADDs) and Zero-suppressed Binary Decision Diagrams (ZDDs).
 
 %package -n %lname
-Summary:        CUDD libraries
+Summary:        Binary Decision Diagram manipulation library
 Group:          System/Libraries
 
 %description -n %lname
@@ -57,27 +57,24 @@ This subpackage contains the include files and library links for
 developing against cudd's libraries.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --enable-shared --disable-static
 make %{?_smp_mflags}
 
 %install
-b="%buildroot"
-make %{?_smp_mflags} install DESTDIR="$b"
-rm -f "$b/%_libdir"/*.la
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %_libdir/libcudd*.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/cudd*
 %_libdir/libcudd*.so
 

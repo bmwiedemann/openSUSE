@@ -18,20 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-h11
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        A pure-Python, bring-your-own-I/O implementation of HTTP/11
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/njsmith/h11
+URL:            https://github.com/python-hyper/h11
 Source:         https://files.pythonhosted.org/packages/source/h/h11/h11-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest < 5}
+# /SECTION
 %python_subpackages
 
 %description

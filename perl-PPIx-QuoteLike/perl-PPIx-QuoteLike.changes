@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 17 05:22:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.008		2019-08-16	T. R. Wyant
+      Fix broken POD links, and add test to ensure they stay fixed.
+
+-------------------------------------------------------------------
 Sat Jun  1 05:17:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.007

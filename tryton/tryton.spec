@@ -19,7 +19,7 @@
 
 %define majorver 4.6
 Name:           tryton
-Version:        %{majorver}.21
+Version:        %{majorver}.22
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-only

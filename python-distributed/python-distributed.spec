@@ -21,7 +21,7 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.2.0
+Version:        2.3.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -94,7 +94,7 @@ clusters.
 
 %if %{with test}
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} distributed/tests/
+%pytest distributed/tests/
 %endif
 
 %files %{python_files}

@@ -19,7 +19,7 @@
 Name:           radeontop
 Version:        1.2
 Release:        0
-Summary:        View Radeon GPU utilization
+Summary:        Tool to view Radeon GPU utilization
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://github.com/clbr/radeontop
@@ -34,9 +34,9 @@ BuildRequires:  pkgconfig(xcb-dri2)
 Recommends:     %{name}-lang = %{version}
 
 %description
-View Radeon GPU utilization, both for the total activity percent and individual
-blocks.
-Supported cards R600 and up, even Southern Islands should work fine. Works with
+A tool to view Radeon GPU utilization, both for the total activity
+percent and individual blocks.
+Supported cards are R600 and up, even Southern Islands should work fine. Works with
 both the open drivers and AMD Catalyst.
 The total GPU utilization is also valid for OpenCL loads; the other blocks are
 only useful in GL loads.

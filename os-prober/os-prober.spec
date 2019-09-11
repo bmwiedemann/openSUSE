@@ -23,7 +23,7 @@ Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later
 Group:          System/Boot
 Url:            https://salsa.debian.org/installer-team/os-prober
-Source0:        %{name}_%{version}.tar.xz
+Source0:        https://salsa.debian.org/installer-team/os-prober/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        COPYING-note.txt
 # move newns binary outside of os-prober subdirectory, so that debuginfo
 # can be automatically generated for it
@@ -73,6 +73,8 @@ Patch27:        os-prober-make-btrfsprogs-optional.patch
 # PATCH-FIX-OPENSUSE: os-prober isn't compatible with transactional update (boo#1125729)
 # PATCH-FIX-OPENSUSE: os-prober deletes subvolume on btrfs disk (boo#1130669)
 Patch28:        os-prober-use-tmp-over-var-lib-for-transient-files.patch
+# PATCH-FIX-OPENSUSE: Two TW selections is shown in GRUB after installing system with multi-device Btrfs (bsc#1142858)
+Patch29:        os-prober-btrfs-multiple-device.patch
 Requires:       /bin/grep
 Requires:       /bin/sed
 Requires:       /sbin/modprobe
@@ -118,6 +120,7 @@ cp %{SOURCE1} .
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch29 -p1
 find . -name \*.orig -delete
 
 %build

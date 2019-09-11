@@ -17,7 +17,7 @@
 
 
 Name:           perl-Date-Manip
-Version:        6.77
+Version:        6.78
 Release:        0
 %define cpan_name Date-Manip
 Summary:        Date manipulation routines
@@ -30,10 +30,7 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::Find::Rule)
 BuildRequires:  perl(Test::Inter) >= 1.09
-BuildRequires:  perl(Test::Pod) >= 1.00
-BuildRequires:  perl(Test::Pod::Coverage) >= 1.00
 %{perl_requires}
 
 %description

@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-more-itertools
-Version:        5.0.0
+Version:        7.2.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/erikrose/more-itertools
+URL:            https://github.com/erikrose/more-itertools
 Source:         https://files.pythonhosted.org/packages/source/m/more-itertools/more-itertools-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
@@ -33,15 +34,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-I love itertools; it's one of the most beautiful, composable standard libs.
-Whenever I have an iteration problem, there's almost always an itertools
-routine that fits it perfectly. Sometimes, however, neither itertools nor the
-recipes included in its docs do quite what I need.
-
-Here I've collected several routines I've reached for but not found. Since
-they are deceptively tricky to get right, I've wrapped them up into a library.
-We've also included implementations of the recipes from the itertools
-documentation. Enjoy! Any additions are welcome; just file a pull request.
+Additional building blocks, recipes, and routines for working with
+Python iterables.
 
 %prep
 %setup -q -n more-itertools-%{version}
@@ -52,7 +46,7 @@ rm -rf more_itertools.egg-info
 
 %install
 %python_install
-%python_exec %fdupes -s %{buildroot}%{$python_sitelib}
+%python_exec %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

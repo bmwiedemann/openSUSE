@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 30 02:45:32 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Conditionally remove dependecy on jemalloc for SLE-12 
+
+-------------------------------------------------------------------
+Mon Aug 19 12:27:38 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Require correct library from devel package - boo#1125689
+
+-------------------------------------------------------------------
+Mon Aug 19 12:02:09 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.39.2 (bsc#1146184, bsc#1146182):
+  * This release fixes CVE-2019-9511 “Data Dribble” and CVE-2019-9513
+  “Resource Loop” vulnerability in nghttpx and nghttpd. Specially crafted HTTP/2
+  frames cause Denial of Service by consuming CPU time. Check out
+  https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md
+  for details. For nghttpx, additionally limiting inbound traffic by
+  --read-rate and --read-burst options is quite effective against
+  this kind of attack.
+
+  * Add nghttp2_option_set_max_outbound_ack API function
+  * nghttpx: Fix request stall
+
+-------------------------------------------------------------------
 Tue Aug 13 13:22:01 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.39.1:

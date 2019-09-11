@@ -123,6 +123,7 @@ cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_ver
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
 export LIBTOOL="libtool --quiet"
 make %{?_smp_mflags} -C src \

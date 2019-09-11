@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rubygem-packaging_rake_tasks
-Version:        1.4.7
+Version:        1.4.10
 Release:        0
 %define mod_name packaging_rake_tasks
 %define mod_full_name %{mod_name}-%{version}

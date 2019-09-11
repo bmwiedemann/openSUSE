@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-contact-list
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        Telepathy contact list
 License:        LGPL-2.1-or-later

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zstd
-Version:        1.4.1.0
+Version:        1.4.3.2
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libzstd) >= 1.4.1
+BuildRequires:  pkgconfig(libzstd) >= 1.4.3
 %python_subpackages
 
 %description

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:45:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore higher summary specifity.
+- Drop old-age %clean, %defattr.
+
+-------------------------------------------------------------------
+Mon Sep  9 07:09:37 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1149945, update to 8e93a5d93 (drbd-9.0 branch)
+ * Coccinelle support
+ * compat with up to Linux-5.3
+- Remove patch compat_no_bioset_initialized.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 03:06:11 UTC 2019 - nwang@suse.com
 
 - Update to 9.0.19-1

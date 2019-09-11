@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:03:13 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.13.1/?h=v5.13.1
+- Refresh patches:
+  * 0002-xcb-Use-the-screen-s-physical-DPI-as-logical-DPI-unl.patch
+- Drop patches, now upstream:
+  * 0001-Decrease-focusInTimer-timer-from-400-to-200.patch
+  * 0003-Add-an-ID-for-recognition-of-UGEE-tablets.patch
+  * 0001-Fix-crash-with-drag-cursor-handling.patch
+  * 0001-Fix-meta-file-replacements-if-matches-are-empty.patch
+  * 0002-Do-not-write-Libs-into-.pc-files-if-TEMPLATE-is-not-.patch
+  * 0003-Make-sure-.pc-.prl-and-.la-files-are-created-for-hea.patch
+- Replace reverts with upstream fix:
+  * D 0001-Revert-Fix-QMAKE_PRL_INSTALL_REPLACE-for-macOS.patch
+  * D 0001-Revert-qmake-link-qt-libraries-by-full-path.patch
+  * D 0002-Revert-Replace-absolute-Qt-lib-dir-in-.prl-files.patch
+  * D 0003-Revert-Fix-prl-replacements-if-libdir-is-in-QMAKE_DE.patch
+  * A 0001-Fix-CMake-config-files-for-libdir-different-from-lib.patch
+
+-------------------------------------------------------------------
+Mon Sep  2 08:26:30 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash during Drag-and-Drop:
+  * 0001-Fix-crash-with-drag-cursor-handling.patch
+
+-------------------------------------------------------------------
 Sun Aug 11 20:57:31 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix qmake pkconfig generation, broken .pc files become apparent

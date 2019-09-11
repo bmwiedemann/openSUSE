@@ -16,18 +16,20 @@
 #
 
 
-%define cpan_name YAML-LibYAML
 Name:           perl-YAML-LibYAML
-Version:        0.79
+Version:        0.80
 Release:        0
+%define cpan_name YAML-LibYAML
 Summary:        Perl YAML Serialization using XS and libyaml
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
-Patch0:         %{name}-no-plan.patch
+Source1:        cpanspec.yml
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::More) >= 0.88
 %{perl_requires}
 
 %description
@@ -35,19 +37,14 @@ Perl YAML Serialization using XS and libyaml
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
-
-# This patch is only necessary for systems without Test::More >= 0.87_01
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%patch0 -p1
-%endif
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -56,7 +53,7 @@ make %{?_smp_mflags} test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
+%doc Changes CONTRIBUTING README
 %license LICENSE
-%doc Changes README
 
 %changelog

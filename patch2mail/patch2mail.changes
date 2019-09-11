@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:26:06 CEST 2019 - kukuk@suse.de
+
+- BuildRequire cron, as it contains now the cron directories
+
+-------------------------------------------------------------------
 Thu Nov 23 13:52:29 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

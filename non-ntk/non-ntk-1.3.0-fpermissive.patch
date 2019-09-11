@@ -1,0 +1,19 @@
+diff -up non-ntk-1.3.0/fluid/Fl_Type.h.orig non-ntk-1.3.0/fluid/Fl_Type.h
+--- non-ntk-1.3.0/fluid/Fl_Type.h.orig	2019-09-08 10:24:53.000000000 +0200
++++ non-ntk-1.3.0/fluid/Fl_Type.h	2019-09-08 10:39:55.607762387 +0200
+@@ -42,10 +42,14 @@
+ 
+ void set_modflag(int mf);
+ 
++// forward declaration:
++class Fl_Type;
++Fl_Widget *make_type_browser(int,int,int,int,const char *l=0);
++
+ class Fl_Type {
+ 
+   friend class Widget_Browser;
+-  friend Fl_Widget *make_type_browser(int,int,int,int,const char *l=0);
++  friend Fl_Widget *make_type_browser(int,int,int,int,const char*);
+   friend class Fl_Window_Type;
+   virtual void setlabel(const char *); // virtual part of label(char*)
+ 

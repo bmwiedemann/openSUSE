@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            http://crossbar.io/autobahn
 Source:         https://files.pythonhosted.org/packages/source/t/txaio/txaio-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module mock}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +41,7 @@ Recommends:     python-trollius
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Twisted >= 12.1.0}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages

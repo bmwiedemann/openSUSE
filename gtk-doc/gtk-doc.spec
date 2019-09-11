@@ -29,7 +29,6 @@ Source0:        https://download.gnome.org/sources/gtk-doc/1.29/%{name}-%{versio
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libtool
 BuildRequires:  libxml2-tools
-BuildRequires:  openjade
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  sgml-skel
@@ -39,7 +38,6 @@ Requires:       docbook-xsl-stylesheets
 Requires:       docbook_4
 Requires:       glib2-devel
 Requires:       libxml2-tools
-Requires:       openjade
 Requires:       xsltproc
 Recommends:     %{name}-lang
 Recommends:     source-highlight

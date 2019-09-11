@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 25 17:57:25 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.34.0:
+  * The from_type() strategy now knows to look up the subclasses of
+    abstract types, which cannot be instantiated directly. This is
+    very useful for hypothesmith to support libCST.
+
+- changes from version 4.33.1:
+  * This patch works around a crash when an incompatible version of
+    Numpy is installed under PyPy 5.10 (Python 2.7).
+
+- changes from version 4.33.0:
+  * This release improves the domains() strategy, as well as the
+    urls() and the emails() strategies which use it. These strategies
+    now use the full IANA list of Top Level Domains and are correct as
+    per RFC 1035. Passing tests using these strategies may now
+    fail.Thanks to TechDragon for this improvement.
+
+- changes from version 4.32.3 :
+  * This patch tidies up the repr of several settings-related objects,
+    at runtime and in the documentation, and deprecates the
+    undocumented edge case that phases=None was treated like
+    phases=tuple(Phase). It also fixes from_lark() with lark 0.7.2 and later.
+
+-------------------------------------------------------------------
 Sun Aug  4 15:07:54 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.32.2:

@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.0.5
+Version:        0.4.1.5
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -32,9 +32,8 @@ Source1:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz.asc
 Source2:        tor.keyring
 Source3:        tor.service
 Source4:        tor.tmpfiles
-Source5:        tor.firewall
 Patch0:         tor-0.2.5.x-logrotate.patch
-Patch2:         tor-0.3.5.8-no-ssl-version-warning.patch
+Patch1:         fix-test.patch
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils
@@ -76,7 +75,7 @@ for high-stakes anonymity.
 %prep
 %setup -q
 %patch0 -p1
-%patch2 -p1
+%patch1 -p1
 
 %build
 %configure \
@@ -85,7 +84,6 @@ for high-stakes anonymity.
 	--with-tor-group=%{torgroup} \
 	--enable-systemd \
 	--enable-unittests \
-	--enable-gcc-warnings \
 	--enable-gcc-warnings-advisory \
 	--docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
@@ -106,9 +104,6 @@ install -m 644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
 install -d -m 0755 %{buildroot}%{_libexecdir}/tmpfiles.d/
 install -m 0644 %{SOURCE4} %{buildroot}%{_libexecdir}/tmpfiles.d/%{name}.conf
 ln -s -f service %{buildroot}%{_sbindir}/rc%{name}
-
-# firewall config
-install -m 644 -D %{SOURCE5} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 
 # control script
 install -p -m 755 contrib/dist/torctl %{buildroot}/%{_bindir}
@@ -156,7 +151,6 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/tor.conf || :
 %dir %attr(0755,root,%{torgroup}) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0644,root,%{torgroup}) %{_sysconfdir}/%{name}/torrc
 %config %attr(0644,root,%{torgroup}) %{_sysconfdir}/%{name}/torrc.*
-%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 %attr(0700,%{toruser},%{torgroup}) %dir %{_localstatedir}/lib/%{name}
 %attr(0750,%{toruser},%{torgroup}) %dir %{_localstatedir}/log/%{name}
 %{_unitdir}/%{name}.service

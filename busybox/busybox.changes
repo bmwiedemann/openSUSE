@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 15:27:18 CEST 2019 - kukuk@suse.de
+
+- Drop busybox-rpm-E.patch, not needed anymore
+- Create new "container" subpackage with special stripped down
+  version for container images (8MB instead of 15MB).
+
+-------------------------------------------------------------------
 Thu Jul 25 15:29:03 CEST 2019 - kukuk@suse.de
 
 - Provide "useradd_or_adduser_dep" for sysuser-shadow

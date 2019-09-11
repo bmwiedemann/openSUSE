@@ -23,7 +23,7 @@
 %bcond_without lang
 
 Name:           kcontacts
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later

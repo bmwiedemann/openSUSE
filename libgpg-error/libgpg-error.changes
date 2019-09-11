@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 07:46:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix buidling with gawk 5.0 and newer:
+  * gawk5.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 12:07:00 UTC 2019 - Karol Babioch <kbabioch@suse.de>
 
 - Update to 1.36:

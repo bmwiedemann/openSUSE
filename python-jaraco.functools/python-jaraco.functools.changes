@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:43:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip another test that is randomly failing
+
+-------------------------------------------------------------------
 Wed Apr 17 16:02:33 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Skip method_cache doctest test (gh#jaraco/jaraco.functools#12).

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-directory-thumbnailer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnome-directory-thumbnailer
-Version:        0.1.10
+Version:        0.1.11
 Release:        0
 Summary:        Directory Thumbnailer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/GnomeDirectoryThumbnailer
-Source0:        http://download.gnome.org/sources/gnome-directory-thumbnailer/0.1/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-directory-thumbnailer/0.1/%{name}-%{version}.tar.xz
+
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5

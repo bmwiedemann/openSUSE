@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 07:34:21 UTC 2019 - mvetter@suse.com
+
+- Update to 1.7.3:
+  * FIXED: Was not loading KDE icon theme.
+  * FIXED: Headings menu was incorrectly shown in German.
+  * Replaced deprecated code.
+  * Translations: Friulian, German, Korean.
+
+-------------------------------------------------------------------
 Tue Mar 12 08:04:26 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update Qt dependencies

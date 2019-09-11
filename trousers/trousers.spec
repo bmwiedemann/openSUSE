@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,6 +27,7 @@ Url:            http://trousers.sourceforge.net/
 Source0:        http://downloads.sf.net/trousers/%{name}-%{version}.tar.gz
 Source1:        tcsd.service
 Source2:        baselibs.conf
+Patch0:         fix-lto.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
@@ -79,10 +80,11 @@ system. It is a character device file major 10 minor 224, 0600 tss:tss.
 
 %prep
 %setup -q -c %{name}-%{version}
+%patch0 -p1
 
 %build
     CC=gcc
-CFLAGS="%{optflags} -Wall -fno-strict-aliasing -fgnu89-inline"
+CFLAGS="%{optflags} -Wall -fno-strict-aliasing -fgnu89-inline -ffat-lto-objects"
  SHARE=%{_prefix}/share
    DOC=%{_defaultdocdir}
 export CC CFLAGS

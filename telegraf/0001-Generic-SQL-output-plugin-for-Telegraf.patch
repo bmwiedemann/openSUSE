@@ -1,16 +1,17 @@
-diff -urN telegraf-1.8.3/plugins/outputs/all/all.go telegraf-1.8.3-patch/plugins/outputs/all/all.go
---- telegraf-1.8.3/plugins/outputs/all/all.go	2018-10-30 23:13:52.000000000 +0200
-+++ telegraf-1.8.3-patch/plugins/outputs/all/all.go	2018-11-01 10:00:53.949179483 +0200
-@@ -28,5 +28,6 @@
- 	_ "github.com/influxdata/telegraf/plugins/outputs/riemann"
- 	_ "github.com/influxdata/telegraf/plugins/outputs/riemann_legacy"
- 	_ "github.com/influxdata/telegraf/plugins/outputs/socket_writer"
-+    _ "github.com/influxdata/telegraf/plugins/outputs/sql"
+Index: telegraf-1.12.0/plugins/outputs/all/all.go
+===================================================================
+--- telegraf-1.12.0.orig/plugins/outputs/all/all.go
++++ telegraf-1.12.0/plugins/outputs/all/all.go
+@@ -34,4 +34,5 @@ import (
+ 	_ "github.com/influxdata/telegraf/plugins/outputs/stackdriver"
+ 	_ "github.com/influxdata/telegraf/plugins/outputs/syslog"
  	_ "github.com/influxdata/telegraf/plugins/outputs/wavefront"
++        _ "github.com/influxdata/telegraf/plugins/outputs/sql"
  )
-diff -urN telegraf-1.8.3/plugins/outputs/sql/README.md telegraf-1.8.3-patch/plugins/outputs/sql/README.md
---- telegraf-1.8.3/plugins/outputs/sql/README.md	1970-01-01 02:00:00.000000000 +0200
-+++ telegraf-1.8.3-patch/plugins/outputs/sql/README.md	2018-11-01 09:59:15.296965030 +0200
+Index: telegraf-1.12.0/plugins/outputs/sql/README.md
+===================================================================
+--- /dev/null
++++ telegraf-1.12.0/plugins/outputs/sql/README.md
 @@ -0,0 +1,73 @@
 +# SQL plugin
 +
@@ -85,9 +86,10 @@ diff -urN telegraf-1.8.3/plugins/outputs/sql/README.md telegraf-1.8.3-patch/plug
 +## TODO
 +1) Test with other databases
 +2) More sane testing
-diff -urN telegraf-1.8.3/plugins/outputs/sql/sql.go telegraf-1.8.3-patch/plugins/outputs/sql/sql.go
---- telegraf-1.8.3/plugins/outputs/sql/sql.go	1970-01-01 02:00:00.000000000 +0200
-+++ telegraf-1.8.3-patch/plugins/outputs/sql/sql.go	2018-11-01 09:59:15.300965038 +0200
+Index: telegraf-1.12.0/plugins/outputs/sql/sql.go
+===================================================================
+--- /dev/null
++++ telegraf-1.12.0/plugins/outputs/sql/sql.go
 @@ -0,0 +1,256 @@
 +package sql
 +
@@ -345,9 +347,10 @@ diff -urN telegraf-1.8.3/plugins/outputs/sql/sql.go telegraf-1.8.3-patch/plugins
 +		TagTableSuffix:      "_tag",
 +	}
 +}
-diff -urN telegraf-1.8.3/plugins/outputs/sql/sql_test.go telegraf-1.8.3-patch/plugins/outputs/sql/sql_test.go
---- telegraf-1.8.3/plugins/outputs/sql/sql_test.go	1970-01-01 02:00:00.000000000 +0200
-+++ telegraf-1.8.3-patch/plugins/outputs/sql/sql_test.go	2018-11-01 09:59:15.300965038 +0200
+Index: telegraf-1.12.0/plugins/outputs/sql/sql_test.go
+===================================================================
+--- /dev/null
++++ telegraf-1.12.0/plugins/outputs/sql/sql_test.go
 @@ -0,0 +1,29 @@
 +package sql
 +
@@ -378,14 +381,15 @@ diff -urN telegraf-1.8.3/plugins/outputs/sql/sql_test.go telegraf-1.8.3-patch/pl
 +		t.Skip("Skipping integration test in short mode")
 +	}
 +}
-diff -urN telegraf-1.8.3/README.md telegraf-1.8.3-patch/README.md
---- telegraf-1.8.3/README.md	2018-10-30 23:13:52.000000000 +0200
-+++ telegraf-1.8.3-patch/README.md	2018-11-01 10:00:11.129086395 +0200
-@@ -237,6 +237,7 @@
+Index: telegraf-1.12.0/README.md
+===================================================================
+--- telegraf-1.12.0.orig/README.md
++++ telegraf-1.12.0/README.md
+@@ -272,6 +272,7 @@ For documentation on the latest developm
  * [snmp](./plugins/inputs/snmp)
  * [socket_listener](./plugins/inputs/socket_listener)
  * [solr](./plugins/inputs/solr)
 +* [sql](./plugins/outputs/sql) (sql generic output)
  * [sql server](./plugins/inputs/sqlserver) (microsoft)
+ * [stackdriver](./plugins/inputs/stackdriver)
  * [statsd](./plugins/inputs/statsd)
- * [swap](./plugins/inputs/swap)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 17 19:56:43 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix build on i586: Add cuishark-0.1.2-fix-32bit-build.patch.
+
+-------------------------------------------------------------------
 Mon May  6 14:00:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.1.2

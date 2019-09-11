@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-bdd
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        BDD for pytest
 License:        MIT

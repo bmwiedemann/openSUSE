@@ -26,7 +26,8 @@ License:        Zlib
 Group:          Development/Libraries/Python
 URL:            https://github.com/rogerbinns/apsw/
 Source:         https://github.com/rogerbinns/apsw/archive/%{tarver}.tar.gz
-Patch0:         python38.patch
+Patch0:         0001-py3.8-avoid-invalid-escapes.patch
+Patch1:         0002-Skip-one-test-on-python3.8.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  pkgconfig
@@ -42,7 +43,7 @@ complete SQLite API into Python.
 
 %prep
 %setup -q -n apsw-%{tarver}
-%patch0 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

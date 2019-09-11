@@ -23,8 +23,8 @@ Release:        0
 Summary:        Graphical wireless scanning for Linux
 License:        GPL-3.0-only
 Group:          System/Monitoring
-Url:            http://sourceforge.net/projects/linssid/
-Source0:        http://sourceforge.net/projects/linssid/files/LinSSID_%{version}/linssid_%{version}.orig.tar.gz
+URL:            https://sourceforge.net/projects/linssid/
+Source0:        https://sourceforge.net/projects/linssid/files/LinSSID_%{version}/linssid_%{version}.orig.tar.gz
 # PATCH-FIX-OPENSUSE linssid-icons.patch -- puts icons in the proper paths
 Patch0:         linssid-icons.patch
 # PATCH-FIX-OPENSUSE linssid-icons.patch linssid-use-shared-qwt-qt5.patch -- uses shared qwt6 as packaged on openSUSE
@@ -47,7 +47,8 @@ BuildRequires:  pkgconfig(Qt5UiTools)
 Requires:       iw
 
 %description
-LinSSID is graphically and functionally similar to Inssider (Microsoft™ Windows®).
+LinSSID is graphically and functionally similar to Inssider (from
+Microsoft Windows).
 It is written in C++ using Linux wireless tools and Qt5.
 
 %prep

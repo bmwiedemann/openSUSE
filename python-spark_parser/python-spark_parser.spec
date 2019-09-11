@@ -17,25 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-spark_parser
-Version:        1.8.7
+Version:        1.8.9
 Release:        0
 Summary:        An Earley-Algorithm Context-free grammar Parser Toolkit
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/rocky/python-spark/
 Source:         https://files.pythonhosted.org/packages/source/s/spark_parser/spark_parser-%{version}.tar.gz
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module nose >= 1.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module nose >= 1.0}
-BuildRequires:  %{python_module pytest}
-%endif
 %python_subpackages
 
 %description
@@ -57,10 +54,8 @@ grammar. These are grammars which are left-recursive.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %pytest test
-%endif
 
 %files %{python_files}
 %license LICENSE

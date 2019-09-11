@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Sep  2 13:23:00 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- no py2 on gnome live
+
+-------------------------------------------------------------------
+Mon Sep  2 07:19:52 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Install opensuse-welcome explicitly on Xfce and KDE, but blacklist on GNOME
+
+-------------------------------------------------------------------
+Fri Aug 30 08:54:24 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Install opensuse-welcome explicitly
+
+-------------------------------------------------------------------
+Mon Aug 26 09:49:41 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Xfce Image:
+  - Dropped evince (xreader already installed by pattern)
+  - Dropped gparted (gnome-disks-utility already installed by pattern)
+
+-------------------------------------------------------------------
+Fri Aug 16 06:58:23 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use "openSUSE" bootsplash for leap
+
+-------------------------------------------------------------------
+Thu Aug 15 09:22:47 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use %OS_VERSION_ID% for Leap version and add the
+  kiwi_metainfo_helper OBS service
+
+-------------------------------------------------------------------
 Fri Jul 26 12:08:16 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Move deltarpm ignore to list-x11 to allow libzypp-plugin-appdata

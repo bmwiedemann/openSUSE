@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Aug 20 14:23:47 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#19
+- decode: Fix compiler warning
+- 2.4
+
+--------------------------------------------------------------------
 Wed Apr 24 06:37:42 UTC 2019 - snwint@suse.de
 
 - merge gh#wfeldt/libx86emu#15

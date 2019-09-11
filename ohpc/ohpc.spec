@@ -1,7 +1,7 @@
 #
 # spec file for package ohpc
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %include %{_sourcedir}/OHPC_macros
-Summary:   OpenHPC compatibility environment setup
-Name:      ohpc
-Version:   1.2
-Release:   1
-License:   BSD-3-Clause
-Group:     Productivity/Clustering/Computing
-URL:       https://github.com/openhpc/ohpc
-BuildArch: noarch
-Source0:   OHPC_macros
-Source1:   LICENSE
+Summary:        OpenHPC compatibility environment setup
+License:        BSD-3-Clause
+Group:          Productivity/Clustering/Computing
+Name:           ohpc
+Version:        1.3
+Release:        0
+URL:            https://github.com/openhpc/ohpc
+BuildArch:      noarch
+Source0:        OHPC_macros
+Source1:        LICENSE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires: sed
-Requires:  lua-lmod
+BuildRequires:  sed
+Requires:       lua-lmod
 
 %description
 Provide rpm macros for compatibility with the OpenHPC project
@@ -44,6 +46,6 @@ sed -e "s#global ##" -e "s#^%%debug_package.*##" < %{S:0}  > %{buildroot}/%{_sys
 %files
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/rpm/macros.ohpc
-%doc LICENSE
+%license LICENSE
 
 %changelog

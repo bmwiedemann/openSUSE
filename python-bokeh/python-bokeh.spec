@@ -17,15 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Tests fail due to missing git data
+# Tests fail due to missing git data,
+# and building the JS from source doesn't work
 %bcond_with     tests
 Name:           python-bokeh
-Version:        1.3.0
+Version:        1.3.4
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://bokeh.pydata.org/
+URL:            https://github.com/bokeh/bokeh/
 Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2 >= 2.7}
 BuildRequires:  %{python_module Pillow >= 4.0}
@@ -39,7 +40,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.5.2}
 BuildRequires:  %{python_module tornado >= 4.3}
 BuildRequires:  fdupes
-# Python2 dependencies
 BuildRequires:  python-futures >= 3.0.3
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak

@@ -13,7 +13,7 @@ Sun Jun  2 13:10:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Sun Mar 17 10:06:38 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
-- updated to 2.4.0 (bsc#1128828)
+- updated to 2.4.0 (bsc#1128828 CVE-2019-9893)
   - Update the syscall table for Linux v5.0-rc5
   - Added support for the SCMP_ACT_KILL_PROCESS action
   - Added support for the SCMP_ACT_LOG action and SCMP_FLTATR_CTL_LOG attribute

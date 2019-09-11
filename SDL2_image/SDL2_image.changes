@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 23 14:04:59 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE-2019-13616.patch: fix heap buffer overflow when reading
+  a crafted bmp file (boo#1141844 CVE-2019-13616).
+
+-------------------------------------------------------------------
+Fri Aug 23 09:53:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.0.5
+  * Fixed TALOS-2019-0820 CVE-2019-5051
+  * Fixed TALOS-2019-0821 CVE-2019-5052
+  * Fixed TALOS-2019-0841 CVE-2019-5057 boo#1143763
+  * Fixed TALOS-2019-0842 CVE-2019-5058 boo#1143764
+  * Fixed TALOS-2019-0843 CVE-2019-5059 boo#1143766
+  * Fixed TALOS-2019-0844 CVE-2019-5060 boo#1143768
+- Not mentioned by upstream, but issues seemingly further fixed:
+  * Fixed CVE-2019-12218 boo#1135789
+  * Fixed CVE-2019-12217 boo#1135787
+  * Fixed CVE-2019-12220 boo#1135806
+  * Fixed CVE-2019-12221 boo#1135796
+  * Fixed CVE-2019-12222 boo#1136101
+
+-------------------------------------------------------------------
 Wed Nov  7 20:56:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 2.0.4

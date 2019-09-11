@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Aug 30 11:53:46 UTC 2019 - olaf@aepfle.de
+
+- lsblk: force to print PKNAME for partition with
+  e3bb9bfb76c17b1d05814436ced62c05c4011f48.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 15:27:03 CEST 2019 - kukuk@suse.de
+
+- Remove outdated buildignore for pwdutils, had no effect with
+  shadow anyways
+
+-------------------------------------------------------------------
+Tue Aug  6 03:39:25 UTC 2019 - Stanislav Brabec <sbrabec@suse.com>
+
+- Issue a warning for outdated pam files
+  (bsc#1082293, boo#1081947#c68).
+- Fix comments and unify look of PAM files (login.pamd,
+  remote.pamd, runuser-l.pamd, runuser.pamd, su-l.pamd, su.pamd).
+
+-------------------------------------------------------------------
+Wed Jul 31 18:08:29 CEST 2019 - sbrabec@suse.com
+
+- Update to version 2.34:
+  * new command hardlink
+  * rewrite of lsblk, now supports --dedup
+  * support for FUSE in umount
+  * support for "--all -o remount" in mount
+  * su: prefer /etc/default/su over /etc/login.defs and ENV_SUPATH
+    over ENV_ROOTPATH (bsc#1121197), improved --pty
+  * unshare: add -S/--setuid, -G/--setgid, -R/--root and -w/--wd
+  * fstrim: do not suppress warnings unless --quiet is used
+  * lscpu: print 'Frequency boost' and 'Vulnerability' fields, add
+    --caches
+  * logger: merge multiple MESSAGE= lines
+  * libblkid: do not depend on libuuid, supports DRBD9 detection
+  * libsmartcols: support N:M relationships in tree-like output
+  * fstrim and uuidd systemd services: hardening settings to
+    improve security and service isolation
+  * fstrim: trim root filesystem on --fstab, check for read-only
+    filesystems on --all and --fstab (boo#1106214).
+  * fstrim -A: properly de-duplicate sub-volumes (boo#1127701).
+  * Obsoletes util-linux-login_defs-priority1.patch,
+    util-linux-login_defs-priority2.patch and
+    util-linux-login_defs-SYS_UID.patch.
+  * Many Other fixes, see
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.34/v2.34-ReleaseNotes
+- Provide and obsolete hardlink package.
+- util-linux-login_defs-check.sh: Update checksum, login now
+  supports LASTLOG_UID_MAX.
+
+-------------------------------------------------------------------
+Mon Jul 22 17:19:22 CEST 2019 - sbrabec@suse.com
+
+- Fix /etc/default/su comments and create /etc/default/runuser
+  (bsc#1121197#31).
+- Remove /etc/default/su migration from coreutils.
+
+-------------------------------------------------------------------
 Mon Jul  1 23:45:55 CEST 2019 - sbrabec@suse.com
 
 - Fix license of libraries: LGPL-2.1-or-later and BSD-3-Clause for

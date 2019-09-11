@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 23 16:21:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable DUMB backend because of its removal from Factory
+
+-------------------------------------------------------------------
 Wed Jan 23 15:32:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable DUMB music backend

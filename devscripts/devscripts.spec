@@ -18,7 +18,7 @@
 
 %define _xsl_stylesheet %{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
 Name:           devscripts
-Version:        2.18.10
+Version:        2.19.5
 Release:        0
 Summary:        Scripts to make the life of a Debian Package maintainer easier
 License:        GPL-2.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later AND GPL-3.0-only AND Artistic-2.0 AND (GPL-1.0-or-later OR Artistic-1.0) AND SUSE-Public-Domain AND ISC
@@ -46,6 +46,8 @@ BuildRequires:  zlib-devel
 Requires:       checkbashisms >= %{version}
 Requires:       dpkg
 Requires:       html2text
+# provides same %_bindir/hardening-check binary
+Conflicts:      hardening-check
 Provides:       deb:%{_bindir}/debchange
 %{?perl_requires}
 
@@ -95,6 +97,11 @@ make %{?_smp_mflags} V=1 \
 %install
 %make_install \
   XSL_STYLESHEET="%{_xsl_stylesheet}"
+
+# remove completion that was provided in older bash completion
+%if 0%{?suse_version} <= 1500
+rm %{buildroot}%{_datadir}/bash-completion/completions/bts
+%endif
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 install -Dpm 0644 scripts/*.1 -t %{buildroot}%{_mandir}/man1/

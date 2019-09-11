@@ -15,8 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%ifarch x86_64 aarch64 ppc64le %{arm} %{ix86} %{ppc}
+%bcond_without  test
+%else
 %bcond_with     test
+%endif
 %define         X_display         ":98"
 Name:           spyder3
 Version:        3.3.6
@@ -25,7 +28,7 @@ Url:            https://www.spyder-ide.org/
 Summary:        The Scientific Python Development Environment
 License:        MIT
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/s/spyder/spyder-%{version}.tar.gz
+Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder3-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,6 +54,7 @@ BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 %if %{with test}
+BuildRequires:  git-core
 BuildRequires:  python3-Cython
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-flaky
@@ -251,12 +255,17 @@ python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/sp
 
 %if %{with test}
 %check
+export LANG=en_US.UTF-8
 export DISPLAY=%{X_display}
 export PYTHONDONTWRITEBYTECODE=1
 Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
-python3 -B -m pytest spyder
+# test_github_backend and test_update require Internet
+# test_vcs_root and test_git_revision expect build root to be a git clone
+# test_introspection times out on armv7l, and is skipped on upstream CI
+# with reason "It makes other tests to segfault in our CIs"
+python3 -B -m pytest -vvvv spyder -k 'not (test_github_backend or test_update or test_vcs_root or test_git_revision or test_introspection)'
 %endif
 
 %files

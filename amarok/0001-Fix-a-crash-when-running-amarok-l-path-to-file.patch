@@ -1,0 +1,44 @@
+From 6875f9656ef3f0abb3f076cf264cf7a2cc9c61eb Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 21 Aug 2019 20:36:15 +0200
+Subject: [PATCH] Fix a crash when running 'amarok -l /path/to/file'
+
+Summary: BUG: 410870
+
+Test Plan:
+amarok -l <somefile>
+
+Before: Assert "you need to call AmarokConfig::instance before using"
+
+After: the file is queued and played.
+
+Subscribers: #amarok, amarok-devel
+
+Differential Revision: https://phabricator.kde.org/D23326
+---
+ src/App.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/App.cpp b/src/App.cpp
+index 3ac7fe7de1..ec5a729d5f 100644
+--- a/src/App.cpp
++++ b/src/App.cpp
+@@ -443,14 +443,13 @@ App::continueInit()
+ 
+     PERF_LOG( "Begin App::continueInit" )
+ 
++    AmarokConfig::instance( "amarokrc" );
+     newInstance();
+ 
+     const bool restoreSession = m_args->positionalArguments().isEmpty() || m_args->isSet( "append" )
+                                 || m_args->isSet( "queue" )
+                                 || Amarok::config().readEntry( "AppendAsDefault", false );
+ 
+-    AmarokConfig::instance( "amarokrc" );
+-
+ #ifdef DEBUG_BUILD_TYPE
+     new DebugLogger( this );
+ #endif // DEBUG_BUILD_TYPE
+-- 
+2.23.0
+

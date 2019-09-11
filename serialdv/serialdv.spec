@@ -20,7 +20,7 @@
 %define sover   1
 %define libname libserialdv%{sover}
 Name:           serialdv
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Library for audio de-/encoding with ABME3000 based devices
 License:        GPL-3.0-only
@@ -60,6 +60,7 @@ applications that want to make use of libserialdv.
 
 %build
 %cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -68,6 +69,8 @@ applications that want to make use of libserialdv.
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
+%license LICENSE
+%doc Readme.md
 %{_libdir}/libserialdv.so.%{sover}*
 
 %files devel

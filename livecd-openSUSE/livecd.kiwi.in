@@ -16,7 +16,7 @@
     <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="@VOLID@" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
-    <bootsplash-theme>bgrt</bootsplash-theme>
+    <bootsplash-theme>@BOOTSPLASH@</bootsplash-theme>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <locale>en_US</locale>
@@ -26,7 +26,7 @@
     <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="@VOLID@" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
-    <bootsplash-theme>bgrt</bootsplash-theme>
+    <bootsplash-theme>@BOOTSPLASH@</bootsplash-theme>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <locale>en_US</locale>

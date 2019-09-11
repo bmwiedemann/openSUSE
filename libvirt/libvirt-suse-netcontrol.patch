@@ -1,8 +1,8 @@
-Index: libvirt-5.6.0/configure.ac
+Index: libvirt-5.7.0/configure.ac
 ===================================================================
---- libvirt-5.6.0.orig/configure.ac
-+++ libvirt-5.6.0/configure.ac
-@@ -261,6 +261,7 @@ LIBVIRT_ARG_LIBSSH
+--- libvirt-5.7.0.orig/configure.ac
++++ libvirt-5.7.0/configure.ac
+@@ -285,6 +285,7 @@ LIBVIRT_ARG_LIBSSH
  LIBVIRT_ARG_LIBXML
  LIBVIRT_ARG_MACVTAP
  LIBVIRT_ARG_NETCF
@@ -10,7 +10,7 @@ Index: libvirt-5.6.0/configure.ac
  LIBVIRT_ARG_NLS
  LIBVIRT_ARG_NSS
  LIBVIRT_ARG_NUMACTL
-@@ -304,6 +305,7 @@ LIBVIRT_CHECK_LIBSSH
+@@ -328,6 +329,7 @@ LIBVIRT_CHECK_LIBSSH
  LIBVIRT_CHECK_LIBXML
  LIBVIRT_CHECK_MACVTAP
  LIBVIRT_CHECK_NETCF
@@ -18,7 +18,7 @@ Index: libvirt-5.6.0/configure.ac
  LIBVIRT_CHECK_NLS
  LIBVIRT_CHECK_NUMACTL
  LIBVIRT_CHECK_NWFILTER
-@@ -988,6 +990,7 @@ LIBVIRT_RESULT_LIBXL
+@@ -1025,6 +1027,7 @@ LIBVIRT_RESULT_LIBXL
  LIBVIRT_RESULT_LIBXML
  LIBVIRT_RESULT_MACVTAP
  LIBVIRT_RESULT_NETCF
@@ -26,10 +26,10 @@ Index: libvirt-5.6.0/configure.ac
  LIBVIRT_RESULT_NLS
  LIBVIRT_RESULT_NSS
  LIBVIRT_RESULT_NUMACTL
-Index: libvirt-5.6.0/tools/virsh.c
+Index: libvirt-5.7.0/tools/virsh.c
 ===================================================================
---- libvirt-5.6.0.orig/tools/virsh.c
-+++ libvirt-5.6.0/tools/virsh.c
+--- libvirt-5.7.0.orig/tools/virsh.c
++++ libvirt-5.7.0/tools/virsh.c
 @@ -561,6 +561,8 @@ virshShowVersion(vshControl *ctl ATTRIBU
      vshPrint(ctl, " Interface");
  # if defined(WITH_NETCF)
@@ -39,10 +39,10 @@ Index: libvirt-5.6.0/tools/virsh.c
  # elif defined(WITH_UDEV)
      vshPrint(ctl, " udev");
  # endif
-Index: libvirt-5.6.0/src/interface/interface_backend_netcf.c
+Index: libvirt-5.7.0/src/interface/interface_backend_netcf.c
 ===================================================================
---- libvirt-5.6.0.orig/src/interface/interface_backend_netcf.c
-+++ libvirt-5.6.0/src/interface/interface_backend_netcf.c
+--- libvirt-5.7.0.orig/src/interface/interface_backend_netcf.c
++++ libvirt-5.7.0/src/interface/interface_backend_netcf.c
 @@ -21,7 +21,12 @@
  
  #include <config.h>
@@ -117,7 +117,7 @@ Index: libvirt-5.6.0/src/interface/interface_backend_netcf.c
 +     * TODO: finer-grained check?  E.g. is_nm_enabled()
 +     */
 +    if (ncf_init(&netcf, NULL) != 0) {
-+        VIR_WARN("Failed to intialize libnetcontrol.  Management of interface devices is disabled");
++        VIR_WARN("Failed to initialize libnetcontrol.  Management of interface devices is disabled");
 +        return 0;
 +    }
 +
@@ -126,10 +126,10 @@ Index: libvirt-5.6.0/src/interface/interface_backend_netcf.c
      if (virRegisterConnectDriver(&interfaceConnectDriver, false) < 0)
          return -1;
      if (virSetSharedInterfaceDriver(&interfaceDriver) < 0)
-Index: libvirt-5.6.0/src/interface/interface_driver.c
+Index: libvirt-5.7.0/src/interface/interface_driver.c
 ===================================================================
---- libvirt-5.6.0.orig/src/interface/interface_driver.c
-+++ libvirt-5.6.0/src/interface/interface_driver.c
+--- libvirt-5.7.0.orig/src/interface/interface_driver.c
++++ libvirt-5.7.0/src/interface/interface_driver.c
 @@ -30,8 +30,15 @@ interfaceRegister(void)
      if (netcfIfaceRegister() == 0)
          return 0;
@@ -147,10 +147,10 @@ Index: libvirt-5.6.0/src/interface/interface_driver.c
      if (udevIfaceRegister() == 0)
          return 0;
  #endif /* WITH_UDEV */
-Index: libvirt-5.6.0/m4/virt-netcontrol.m4
+Index: libvirt-5.7.0/m4/virt-netcontrol.m4
 ===================================================================
 --- /dev/null
-+++ libvirt-5.6.0/m4/virt-netcontrol.m4
++++ libvirt-5.7.0/m4/virt-netcontrol.m4
 @@ -0,0 +1,39 @@
 +dnl The libnetcontrol library
 +dnl
@@ -191,10 +191,10 @@ Index: libvirt-5.6.0/m4/virt-netcontrol.m4
 +AC_DEFUN([LIBVIRT_RESULT_NETCONTROL],[
 +  LIBVIRT_RESULT_LIB([NETCONTROL])
 +])
-Index: libvirt-5.6.0/src/interface/Makefile.inc.am
+Index: libvirt-5.7.0/src/interface/Makefile.inc.am
 ===================================================================
---- libvirt-5.6.0.orig/src/interface/Makefile.inc.am
-+++ libvirt-5.6.0/src/interface/Makefile.inc.am
+--- libvirt-5.7.0.orig/src/interface/Makefile.inc.am
++++ libvirt-5.7.0/src/interface/Makefile.inc.am
 @@ -6,6 +6,7 @@ INTERFACE_DRIVER_SOURCES = \
  	$(NULL)
  

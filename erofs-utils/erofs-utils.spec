@@ -17,23 +17,21 @@
 
 
 Name:           erofs-utils
-Version:        0.0.1~23
+Version:        0.1+20190826
 Release:        0
 Summary:        Utilities for the Extendable Read-Only Filesystem (EROFS)
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/
+URL:            https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/
+
 Source:         %name-%version.tar.xz
-Source2:        https://github.com/lz4/lz4/archive/v1.8.3.tar.gz#/lz4-1.8.3.tar.gz
-Patch1:         no-date.diff
+Patch1:         long.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Supplements:    filesystem(erofs)
-# erofs depends on an unstable nonexported API
-Provides:       bundled(lz4) = 1.8.3
+BuildRequires:  liblz4-devel >= 1.9
 
 %description
 mkfs.erofs is a user-space tool to create erofs filesystem images. It
@@ -47,17 +45,11 @@ uncompressed:
    file should be inlined or not properly.
 
 %prep
-%setup -qa2
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
-pushd lz4-1.8.3/
-make %{?_smp_mflags} CFLAGS="%{optflags}" V=1
-popd
 autoreconf -fiv
-export CPPFLAGS="-I$PWD/lz4-1.8.3/lib"
-%configure --disable-static --with-lz4-include="$PWD/lz4-1.8.3/lib" \
-	--with-lz4-lib="$PWD/lz4-1.8.3/lib" --bindir="%_sbindir"
+%configure --bindir="%_sbindir"
 make %{?_smp_mflags}
 
 %install

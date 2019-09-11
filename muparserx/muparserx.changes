@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sat Jul  6 20:36:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundant %defattr entries
+- Limit %fdupes to /usr
+- Update summaries
+
+-------------------------------------------------------------------
+Sat Jul  6 09:19:22 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 4.0.8
+  * v4.0.8: Service release. No major changes, updates to the build system.
+  * v4.0.7: This is a maintainance Release. Changes since last release:
+    Issue 68: Assertion fails (i.e "abs(-3)>abs(2)")
+    untracked issue: cbrt function did not work properly
+    new functions: atan2, reminder, fmod
+  * V4.0.5:
+    New Noncomplex Functions: cbrt - Cubic root
+    hypot - Length of a 2d vector
+    pow - Power function
+    New complex functions: pow - Power function
+    Value construction and assignment from int is supported again (removed
+    when going from in 3.x to 4.x).
+  * v4.0.4
+    Contains a variety of buf fixes for exotic syntax errors.
+    should be more robust in fringe cases
+
+-------------------------------------------------------------------
+Thu Dec 31 09:28:53 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use cmake macro
+- Install license
+- Mention initial version in changelog
+
+-------------------------------------------------------------------
+Fri Aug 14 02:50:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Initial build for version 3.0.5

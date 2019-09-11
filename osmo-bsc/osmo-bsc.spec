@@ -17,6 +17,8 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 Name:           osmo-bsc
 Version:        1.4.0
 Release:        0

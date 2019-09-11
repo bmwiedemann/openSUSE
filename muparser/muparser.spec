@@ -23,13 +23,12 @@ Release:        0
 Summary:        A math parser library
 License:        MIT
 Group:          Productivity/Scientific/Math
-Url:            http://muparser.beltoforion.de/
+URL:            http://muparser.beltoforion.de/
 
 Source:         https://github.com/beltoforion/muparser/archive/v%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         muparser-optflags.patch
 Patch2:         muparser-abiversion.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -61,8 +60,7 @@ works by transforming a mathematical expression into bytecode and
 precalculating constant parts of the expression.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
 sh build/autoconf/acregen.sh
@@ -78,12 +76,10 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libmuparser.so.2*
-%doc License.txt
+%license License.txt
 
 %files devel
-%defattr(-,root,root)
 %_includedir/muParser*.h
 %_libdir/libmuparser.so
 %_libdir/pkgconfig/muparser.pc

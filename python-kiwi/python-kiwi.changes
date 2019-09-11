@@ -1,4 +1,243 @@
 -------------------------------------------------------------------
+Thu Aug 29 16:38:30 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.12 → 9.18.13
+
+-------------------------------------------------------------------
+Thu Aug 29 11:38:56 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Add --add-bootstrap-packages option
+
+  The prepare and build commands now allows to specify additional
+  packages to be installed as part of the early bootstrap phase
+  This Fixes #1151
+
+-------------------------------------------------------------------
+Wed Aug 28 16:07:31 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Detect raid disks in oem dump module
+
+  The current disk detection only takes lsblk entries into
+  account that marks the device as 'disk'. However on raid
+  disks like fake raid controllers the disk is mapped via
+  dmraid and marked as 'raidX' device. This commit also takes
+  those devices into account for deployment. Issue #1181
+
+-------------------------------------------------------------------
+Tue Aug 27 11:13:30 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fix return value of is_prepared method
+
+  The method is expected to return a bool value. In fact it
+  returned a list. An empty list is evalutated as False in
+  python, a list with content as True. So the way the method
+  is used is correct but the return value should be a real
+  bool value to match the docs and expectations. Also the
+  unit test for this code was wrong. This Fixes #1175
+
+-------------------------------------------------------------------
+Mon Aug 26 17:58:33 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation regarding fstab adaptions
+
+-------------------------------------------------------------------
+Mon Aug 26 17:08:49 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Add support for custom fstab script extension
+
+  In addition to fstab append and patch features we also allow
+  an fstab.script file that is called chrooted. The change is
+  needed to support overlay mounting of filesystems as part
+  of the initrd. If system filesystems needs to be changed in
+  a way that they can be used in an overlay mount, the standard
+  mount entry has to take the x-initrd.mount capability which
+  requires a modification of the fstab which is cumbersome to
+  handle as a patch file. This concept is currently used as
+  part of the MicroOS project in SUSE and is applied in the
+  integration test build maintained for this target. This
+  Fixes bsc#1129566
+
+-------------------------------------------------------------------
+Fri Aug 23 14:24:12 CEST 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix GitLab CI jobs for building on Fedora
+
+  Mock is incorrectly using systemd sysusers now without a systemd dependency or
+  working sysusers scriptlets. For now, manually create the mock group.
+
+  In addition, let's go ahead and upgrade to a Fedora 30 chroot for the mock builds.
+
+-------------------------------------------------------------------
+Fri Aug 23 11:28:36 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Avoid default installation of dracut kiwi modules
+
+  With this commit dracut modules won't be installed by default
+  in the initrd unless they are requested by the commandline calling
+  dracut or by a dracut configuration file.
+
+  Fixes bsc#1142899 bsc#1136444
+  Fixes #1103
+
+-------------------------------------------------------------------
+Fri Aug 23 11:13:29 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update live iso integration test build
+
+  Our live iso test is setup for EFI. Since the switch to grub
+  no isolinux will be used with the test. Thus there is no need
+  to install the gfxboot branding package anymore
+
+-------------------------------------------------------------------
+Thu Aug 22 15:43:27 CEST 2019 - Dan Čermák <dcermak@suse.com>
+
+- Stop inheriting from object
+
+  This is no longer required in Python3
+
+-------------------------------------------------------------------
+Thu Aug 22 09:47:59 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Add crypt dependency to kiwi-lib dracut module
+
+  This commit fixes the dependencies of the kiwi-lib dracut module to
+  include crypt module required by kiwi-luks-lib.sh.
+
+  In addition it also updates the check() section to return 255 instead of
+  0. In check section a return code of 0 means install it, 255 install
+  only if required by another module, anything else, do not install.
+
+  Related with bsc#1142899
+
+-------------------------------------------------------------------
+Wed Aug 21 16:03:10 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Create ssh host keys for MicroOS test image
+
+-------------------------------------------------------------------
+Wed Aug 21 15:15:54 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Added network setup for MicroOS test build
+
+-------------------------------------------------------------------
+Tue Aug 20 09:58:40 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed conflict in integration build tests
+
+  pkgconf-pkg-config conflicts with pkg-config on TW
+
+-------------------------------------------------------------------
+Tue Aug 20 09:48:00 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.11 → 9.18.12
+
+-------------------------------------------------------------------
+Mon Aug 19 18:33:50 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Added MicroOS integration test
+
+  The future technologies team is implementing a coreOS derivate
+  based on btrfs and some overlay technology. For supporting them
+  some changes were required in kiwi and thus we should add an
+  integration test build which makes use of this features.
+
+-------------------------------------------------------------------
+Mon Aug 19 18:28:46 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Add required cryptomount coding for EFI boot
+
+  For non EFI boot grub2-install has code which gets activated
+  through the GRUB_ENABLE_CRYPTODISK setting. However for the
+  EFI boot case no installation of boot code is needed and
+  therefore the grub earlyboot script has to run cryptomount
+
+-------------------------------------------------------------------
+Mon Aug 19 14:34:08 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Add /mnt to list of protected paths
+
+  On recursive removal make sure /mnt belong to the protected
+  elements. This Fixes #1170
+
+-------------------------------------------------------------------
+Mon Aug 19 11:17:35 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Added full encrypted image build test
+
+-------------------------------------------------------------------
+Fri Aug 16 17:49:09 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Extended LUKS encryption support
+
+  We supported luks encrypted images with the exception of the
+  boot partition because grub was not able to read from an
+  encrypted device at that time. Since some time grub is able
+  to read from an encrypted partition and this commit add
+  support for it. With this patch luks encrypted images will
+  no longer create an extra boot partition and the entire
+  system will be encrypted. The opening of the luks container
+  happens on the grub level only once. Customers can still
+  specify to use an unencrypted extra boot partition with the
+  bootpartition="true" flag. In this case the opening of the
+  luks containers happens on the systemd level as before.
+  This is related to Issue #1162
+
+-------------------------------------------------------------------
+Thu Aug 15 09:52:27 CEST 2019 - Stefan Seyfried <stefan.seyfried@sap.com>
+
+- remove '-z' option from rsync local copy calls
+
+  rsync's "compress" option just does not make any sense when rsync is
+  used to copy files locally, it only increases CPU usage and slows down
+  the process ;-)
+
+-------------------------------------------------------------------
+Wed Aug 14 14:45:13 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Delete SuSEfirewall2 from test builds
+
+  The package seems to be no longer present on suse
+
+-------------------------------------------------------------------
+Wed Aug 14 12:01:34 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.10 → 9.18.11
+
+-------------------------------------------------------------------
+Mon Aug 12 18:17:02 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Allow dracut initrd to be used with pxe type
+
+  The pxe image type builds a simple filesystem image plus a
+  custom initrd. That initrd is usually build from the kiwi
+  netboot image descriptions which implements a workflow to
+  fetch the filesystem image and deploy it as rootfs for a
+  pxe client. User who wants to implement their own handling
+  of the rootfs image in e.g a custom dracut module were not
+  able to build this image type because we did not allow
+  the initrd_system attribute for the pxe type
+
+-------------------------------------------------------------------
+Mon Aug 12 10:53:08 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Use message variable for long message text
+
+-------------------------------------------------------------------
+Mon Aug 12 10:42:11 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed handling of bool values in initrd code
+
+  Some values evaluated in the initrd code are created in
+  the kiwi builder and passed in as a profile file. bool
+  values created by kiwi for use in shell scripts takes
+  the string 'true' or 'false' or are not set at all if not
+  specified in the kiwi XML description. Some code paths
+  in the initrd code uses the '-n' switch to check for bool
+  values, however if the string 'false' is passed '-n' will
+  do the wrong thing. Therefore a method for the initrd
+  code has been introduced to clearly handle bool values
+
+-------------------------------------------------------------------
 Mon Aug 05 09:55:02 CEST 2019 - David Cassany <dcassany@suse.com>
 
 - Bump version: 9.18.9 → 9.18.10

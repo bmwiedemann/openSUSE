@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Url:            https://nomacs.org/
 Source:         https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         Fix-build-with-GCC9.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -56,6 +57,7 @@ differences (e.g. schemes of architects to show the progress).
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i 's/\r$//g' ImageLounge/Readme/*
 
 %build

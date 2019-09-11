@@ -20,7 +20,7 @@
 Name:           python-pymarc
 Version:        3.1.13
 Release:        0
-Summary:        Read, write and modify MARC bibliographic data
+Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/edsu/pymarc
@@ -37,7 +37,11 @@ BuildRequires:  %{python_module six >= 1.9.0}
 %python_subpackages
 
 %description
-Read, write and modify MARC bibliographic data
+pymarc is a Python library for working with bibliographic data
+encoded in MARC21. It provides an API for reading, writing and
+modifying MARC records. It was originally designed to be an emergency
+eject seat for getting data assets out of MARC and into some kind of
+saner representation.
 
 %prep
 %setup -q -n pymarc-%{version}

@@ -21,7 +21,7 @@ Summary:        Build Result Compare Script
 License:        GPL-2.0+
 Group:          Development/Tools/Building
 Url:            https://github.com/openSUSE/build-compare
-Version:        20190219T103140.3277313
+Version:        20190814T133923.4dfa207
 Release:        0
 Source1:        COPYING
 Source2:        same-build-result.sh

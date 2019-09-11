@@ -24,7 +24,7 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Email/Clients
 Version:        2.21
 Release:        0
-Url:            http://alpine.x10host.com/alpine/
+URL:            http://alpine.x10host.com/alpine/
 
 # direct download does not work for openSUSE:Factory
 # Source:         http://patches.freeiz.com/alpine/release/src/%name-%version.tar.xz
@@ -40,6 +40,7 @@ Patch7:         alpine-pinepw.patch
 Patch10:        pico-fix-spurious-undef-warnings.diff
 Patch20:        pine-expression-warnings.diff
 Patch60:        signal-and-panic-improvements.diff
+Patch61:        return-values.diff
 #
 # Eduardo Chappa's patches.
 # http://patches.freeiz.com/alpine/
@@ -52,7 +53,6 @@ Patch605:       chappa-WrtAcc.patch
 Patch614:       chappa-fillpara.patch
 Patch615:       chappa-fromheader.patch
 Patch616:       chappa-rules.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  krb5-devel
 BuildRequires:  libtool
@@ -111,7 +111,7 @@ if [ ! -s %{_sourcedir}/compile-warnings-%{suse_version}-%{_arch}.log ]; then
 	echo "that build to the rpm build process so that it's found here".
 else
 	sed 's/:[0-9]*//' %{_sourcedir}/compile-warnings-%{suse_version}-%{_arch}.log \
-		>compile-warnings-allowed.log 
+		>compile-warnings-allowed.log
 fi
 #
 # "Chappa" patches
@@ -136,6 +136,7 @@ fi
 %patch10 -p1
 %patch20 -p1
 %patch60 -p1
+%patch61 -p1
 %endif # End of "if !{build_vanilla}"
 
 %build
@@ -155,7 +156,7 @@ export CFLAGS="${RPM_OPT_FLAGS/-O2/-Os} \
 # they are always true and can be safely removed from the expression,
 # but the code is safe nontheless.
 #
-# -Waddress generates >100 warnings in alpine and we disabled them to 
+# -Waddress generates >100 warnings in alpine and we disabled them to
 # concentrate on the really important warnings which could be real bugs better.
 #
 :
@@ -166,10 +167,10 @@ export LDFLAGS="-rdynamic" # -rdynamic is used for backtrace_symbols:
 :
 autoreconf -fiv
 %configure \
-	--with-ssl-dir=/usr				\
-	--with-smtp-msa=/usr/sbin/sendmail		\
-	--with-password-prog=/usr/bin/passwd		\
-	--with-npa=/usr/bin/inews			\
+	--with-ssl-dir="%{_prefix}"			\
+	--with-smtp-msa="%{_sbindir}/sendmail"		\
+	--with-password-prog="%{_bindir}/passwd"	\
+	--with-npa="%{_bindir}/inews"			\
 	--with-spellcheck-prog="please set Speller to eg. 'aspell -c' in SETUP/Configuration"\
 	--with-system-pinerc=%_sysconfdir/pine.conf		\
 	--with-system-fixed-pinerc=%_sysconfdir/pine.conf.fixed \
@@ -199,17 +200,17 @@ make install DESTDIR=%buildroot
 #
 # When called as alpinef, alpine uses function keys instead of Control keys:
 #
-ln $RPM_BUILD_ROOT%{_bindir}/alpine $RPM_BUILD_ROOT%{_bindir}/alpinef
-install    -m755 imap/mailutil/mailutil $RPM_BUILD_ROOT%{_bindir}
-install -m644 imap/src/mailutil/mailutil.1	$RPM_BUILD_ROOT%{_mandir}/man1/
-install -D -m644 %{SOURCE1} $RPM_BUILD_ROOT/usr/share/pixmaps/%name.png
-install -D -m644 %{SOURCE2} $RPM_BUILD_ROOT/usr/share/applications/%name.desktop
+ln %{buildroot}/%{_bindir}/alpine %{buildroot}/%{_bindir}/alpinef
+install    -m755 imap/mailutil/mailutil %{buildroot}/%{_bindir}
+install -m644 imap/src/mailutil/mailutil.1	%{buildroot}/%{_mandir}/man1/
+install -D -m644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%name.png
+install -D -m644 %{SOURCE2} %{buildroot}/%{_datadir}/applications/%name.desktop
 %suse_update_desktop_file %name
 :
-ln -sf		 alpine			$RPM_BUILD_ROOT%{_bindir}/pine
+ln -sf		 alpine			%{buildroot}/%{_bindir}/pine
 :
-install -m755 pico/{pico,pilot}		$RPM_BUILD_ROOT%{_bindir}
-install -m644 doc/man1/{pico.1,pilot.1}	$RPM_BUILD_ROOT%{_mandir}/man1/
+install -m755 pico/{pico,pilot}		%{buildroot}/%{_bindir}
+install -m644 doc/man1/{pico.1,pilot.1}	%{buildroot}/%{_mandir}/man1/
 
 %check
 #since where are no logs in the package at the moment, there are no checks,
@@ -265,7 +266,6 @@ if [  -s %{_sourcedir}/compile-warnings-%{suse_version}-%{_arch}.log ]; then
 fi
 
 %files
-%defattr(-, root, root)
 %doc %{_mandir}/man1/alpine.*
 %doc %{_mandir}/man1/rpdump.*
 %doc %{_mandir}/man1/rpload.*
@@ -276,16 +276,14 @@ fi
 %{_bindir}/alpinef
 %{_bindir}/rp*
 %{_bindir}/mailutil
-/usr/share/applications/%name.desktop
-/usr/share/pixmaps/%name.png
+%{_datadir}/applications/%name.desktop
+%{_datadir}/pixmaps/%name.png
 
 %files -n pico
-%defattr(-, root, root)
 %{_bindir}/pico
 %doc %{_mandir}/man1/pico.*
 
 %files -n pilot
-%defattr(-, root, root)
 %{_bindir}/pilot
 %doc %{_mandir}/man1/pilot.*
 

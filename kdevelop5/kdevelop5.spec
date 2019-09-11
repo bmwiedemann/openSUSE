@@ -19,7 +19,7 @@
 %define rname   kdevelop
 %define libkdev_major 54
 Name:           kdevelop5
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later

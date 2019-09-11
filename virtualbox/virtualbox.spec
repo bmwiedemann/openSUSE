@@ -47,7 +47,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 %define _udevrulesdir /usr/lib/udev/rules.d
 Name:           virtualbox
 # ********* If the VB version exceeds 6.0.x, notify the libvirt maintainer!!
-Version:        6.0.10
+Version:        6.0.12
 Release:        0
 Summary:        VirtualBox is an Emulator
 License:        GPL-2.0-or-later
@@ -78,6 +78,7 @@ Source21:       vboxweb-service.service
 Source22:       vboxweb-service.sh
 Source23:       vboxautostart.service
 Source24:       vboxautostart.sh
+Source97:       README.build
 Source98:       %{name}-rpmlintrc
 Source99:       %{name}-patch-source.sh
 #rework init scripts to fit suse needs
@@ -454,6 +455,8 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 
 #copy user manual
 cp %{SOURCE1} UserManual.pdf
+#copy README.build
+cp %{SOURCE97} README.build
 #copy kbuild config
 cp %{SOURCE10} LocalConfig.kmk
 #copy autostart doc
@@ -916,7 +919,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 
 %files
 %defattr(-, root, root)
-%doc README.autostart UserManual.pdf
+%doc README.autostart UserManual.pdf README.build
 %{_bindir}/VBoxManage
 %{_bindir}/VBoxHeadless
 %{_bindir}/VBoxTunctl

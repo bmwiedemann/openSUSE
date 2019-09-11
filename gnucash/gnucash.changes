@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:01:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Fix-CMakeLists-error.patch to fix a build error.
+
+-------------------------------------------------------------------
+Wed Aug 21 16:36:33 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 3.6
+  + Bugfixes
+
+-------------------------------------------------------------------
 Sat Jul 13 22:10:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable LTO, gnucash fails to build with it.

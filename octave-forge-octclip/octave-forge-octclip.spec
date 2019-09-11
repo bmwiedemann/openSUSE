@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-octclip
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,14 @@ Name:           octave-forge-%{octpkg}
 Version:        1.0.8
 Release:        0
 Summary:        Octave clipping polygons tool
-License:        GPL-3.0+ and BSD-3-Clause
+License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
+URL:            http://octave.sourceforge.net
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM octclip-openmp.patch -- Fix build with OpenMP
-Patch1:         octclip-openmp.patch
+Patch0:         octclip-openmp.patch
+# PATCH-FIX-UPSTREAM compile-with-gcc-9.patch
+Patch1:         compile-with-gcc-9.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
@@ -39,7 +41,10 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch1 -p0
+pushd %{octpkg}-%{version}
+%patch0 -p1
+%patch1 -p1
+popd
 %octave_pkg_src
 
 %build
@@ -58,7 +63,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 

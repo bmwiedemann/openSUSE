@@ -6,9 +6,9 @@
  support/nfs/exports.c |    2 ++
  1 file changed, 2 insertions(+)
 
---- nfs-utils-1.3.1.orig/support/nfs/exports.c
-+++ nfs-utils-1.3.1/support/nfs/exports.c
-@@ -649,6 +649,8 @@ bad_option:
+--- a/support/nfs/exports.c
++++ b/support/nfs/exports.c
+@@ -658,6 +658,8 @@ bad_option:
  		} else if (strncmp(opt, "replicas=", 9) == 0) {
  			ep->e_fslocmethod = FSLOC_REPLICA;
  			ep->e_fslocdata = strdup(opt+9);

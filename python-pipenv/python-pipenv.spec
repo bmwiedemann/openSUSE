@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipenv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,7 +128,7 @@ BuildRequires:  %{python_module pytoml}
 BuildRequires:  %{python_module retrying}
 # Testing dependencies
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module pytest-instafail}
 # Dependency of fixture pytest-pypi
 BuildRequires:  %{python_module Flask}

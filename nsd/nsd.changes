@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep  8 14:13:02 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- New upstream release 4.2.2:
+  * Fix #20: CVE-2019-13207 Stack-based Buffer Overflow in the
+    dname_concatenate() function.  Reported by Frederic Cambus.
+    It causes the zone parser to crash on a malformed zone file,
+    with assertions enabled, an assertion catches it.
+  * Fix #19: Out-of-bounds read caused by improper validation of
+    array index.  Reported by Frederic Cambus.  The zone parser
+    fails on type SIG because of mismatched definition with RRSIG.
+  * PR #23: Fix typo in nsd.conf man-page.
+  * Fix that NSD warns for wrong length of the hash in SSHFP records.
+  * Fix #25: NSD doesn't refresh zones after extended downtime,
+    it refreshes the old zones.
+  * Set no renegotiation on the SSL context to stop client
+    session renegotiation.
+  * Fix #29: SSHFP check NULL pointer dereference.
+  * Fix #30: SSHFP check failure due to missing domain name.
+  * Fix to timeval_add in minievent for remaining second in microseconds.
+  * PR #31: nsd-control: Add missing stdio header.
+  * PR #32: tsig: Fix compilation without HAVE_SSL.
+  * Cleanup tls context on xfrd exit.
+  * Fix #33: Fix segfault in service of remaining streams on exit.
+  * Fix error message for out of zone data to have more information.
+
+-------------------------------------------------------------------
 Tue Jul  9 17:52:44 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - New upstream release 4.2.1:

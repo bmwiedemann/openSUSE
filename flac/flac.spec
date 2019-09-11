@@ -17,7 +17,7 @@
 
 
 Name:           flac
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Free Lossless Audio Codec
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only
@@ -25,10 +25,10 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://xiph.org/flac/
 #Git-Web:	https://git.xiph.org/?p=flac.git
 #Git-Clone:	git://git.xiph.org/flac
-Source:         http://downloads.xiph.org/releases/flac/%{name}-%{version}.tar.xz
+#Changelog:     https://xiph.org/flac/changelog.html
+Source:         https://downloads.xiph.org/releases/flac/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch0:         flac-cflags.patch
-Patch1:         flac-CVE-2017-6888.patch
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake >= 1.11
 BuildRequires:  gcc-c++
@@ -86,9 +86,7 @@ This package contains the files needed to compile programs that use the
 FLAC library.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
@@ -102,7 +100,7 @@ autoreconf -fvi
 make %{?_smp_mflags}
 
 %install
-%make_install
+%make_install docdir="%{_docdir}/%{name}"
 find %{buildroot} -type f -name "*.la" -delete -print
 # wrongy installed docs
 rm -rf %{buildroot}%{_datadir}/doc/%{name}-%{version}/
@@ -116,7 +114,7 @@ make check %{?_smp_mflags}
 %postun -n libFLAC++6 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS README
+%doc README
 %{_bindir}/*
 %{_mandir}/man*/*
 
@@ -133,5 +131,7 @@ make check %{?_smp_mflags}
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/*.m4
+%{_docdir}/%{name}/
+%exclude %{_docdir}/%{name}/README
 
 %changelog

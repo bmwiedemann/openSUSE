@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 24 19:01:13 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.25.12
+  * Fix dynamic build with gcc -fsanitize=address (check for all
+    dl functions before deciding that separate -ldl is not
+    needed).
+  libmpg123:
+  * Fix an out-of-bounds read of maximal two bytes for truncated
+    RVA2 frames (oss-fuzz-bug 15975). The earlier fix around the
+    same location needed one thought more. Actually, another
+    though was needed, oss-fuzz-bug 16009 documents the
+    incomplete fix.
+  * Fix an invalid write of one zero byte for empty ID3v2 frames
+    that demand de-unsyncing (oss-fuzz-bug 16050).
+  * Correct preprocessor syntax in mangle.h, no #error in a
+    #define line. (bug 273, thanks to nmlgc).
+
+-------------------------------------------------------------------
 Thu Jul 18 08:55:03 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.25.11

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:01:11 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- No code change since 19.08.0
+
+-------------------------------------------------------------------
+Wed Sep  4 05:55:34 UTC 2019 - wbauer@tmo.at
+
+- Recommend libkcddb from libKF5Cddb5 to have the settings module
+  available when the libs are installed
+
+-------------------------------------------------------------------
 Fri Aug  9 14:13:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.08.0

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Aug  2 09:41:37 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.13.1
+  0.13.1
+   * Python3: Use no_proxy
+     https://github.com/httplib2/httplib2/pull/140
+  0.13.0
+    * Allow setting TLS max/min versions
+      https://github.com/httplib2/httplib2/pull/138
+  0.12.3
+    * No changes to library. Distribute py3 wheels.
+  0.12.1
+    * Catch socket timeouts and clear dead connection
+      https://github.com/httplib2/httplib2/issues/18
+      https://github.com/httplib2/httplib2/pull/111
+    * Officially support Python 3.7 (package metadata)
+      https://github.com/httplib2/httplib2/issues/123
+  0.12.0
+    * Drop support for Python 3.3
+    * ca_certs from environment HTTPLIB2_CA_CERTS or certifi
+      https://github.com/httplib2/httplib2/pull/117
+    * PROXY_TYPE_HTTP with non-empty user/pass raised TypeError: bytes required
+      https://github.com/httplib2/httplib2/pull/115
+    * Revert http:443->https workaround
+      https://github.com/httplib2/httplib2/issues/112
+    * eliminate connection pool read race
+      https://github.com/httplib2/httplib2/pull/110
+    * cache: stronger safename
+      https://github.com/httplib2/httplib2/pull/101
+  0.11.3
+    * No changes, just reupload of 0.11.2 after fixing automatic release conditions in Travis.
+  0.11.2
+    * proxy: py3 NameError basestring
+      https://github.com/httplib2/httplib2/pull/100
+  0.11.1
+    * Fix HTTP(S)ConnectionWithTimeout AttributeError proxy_info
+      https://github.com/httplib2/httplib2/pull/97
+  0.11.0
+    * Add DigiCert Global Root G2 serial 033af1e6a711a9a0bb2864b11d09fae5
+      https://github.com/httplib2/httplib2/pull/91
+    * python3 proxy support
+      https://github.com/httplib2/httplib2/pull/90
+    * If no_proxy environment value ends with comma then proxy is not used
+      https://github.com/httplib2/httplib2/issues/11
+    * fix UnicodeDecodeError using socks5 proxy
+      https://github.com/httplib2/httplib2/pull/64
+    * Respect NO_PROXY env var in proxy_info_from_url
+      https://github.com/httplib2/httplib2/pull/58
+    * NO_PROXY=bar was matching foobar (suffix without dot delimiter)
+      New behavior matches curl/wget:
+      - no_proxy=foo.bar will only skip proxy for exact hostname match
+      - no_proxy=.wild.card will skip proxy for any.subdomains.wild.card
+      https://github.com/httplib2/httplib2/issues/94
+    * Bugfix for Content-Encoding: deflate
+      https://stackoverflow.com/a/22311297
+- deleted patches
+  - httplib2-use-system-certs.patch (not needed)
+    httplib2 started to use certifi and this is already bent to
+    use system certificate bundle by
+    python-certifi-shipped-requests-cabundle.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 16:31:07 UTC 2018 - snica@suse.com
 
 - update httplib2-use-system-certs.patch: handle

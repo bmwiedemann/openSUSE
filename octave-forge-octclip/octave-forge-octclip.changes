@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 26 21:13:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add compile-with-gcc-9.patch from Debian
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jul  7 17:28:26 UTC 2015 - dmitry_r@opensuse.org
 
 - Update to version 1.0.8

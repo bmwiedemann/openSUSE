@@ -16,41 +16,42 @@
 #
 
 
-%define shortversion 3.14
-# exclude for SLE 12 and Leap 42.x
-%if 0%{?suse_version} == 1315
-%define system_libuv OFF
-%else
-%define system_libuv ON
-BuildRequires:  libuv-devel >= 1.10
-%endif
-Name:           cmake
-Version:        3.14.5
-Release:        0
-Summary:        Cross-platform, open-source make system
+%define flavor @BUILD_FLAVOR@%{nil}
+%define shortversion 3.15
+%if "%flavor" == "gui"
+Name:           cmake-%{flavor}
+Summary:        CMake graphical user interface
 License:        BSD-3-Clause
 Group:          Development/Tools/Building
+%else
+Name:           cmake
+Summary:        Cross-platform make system
+License:        BSD-3-Clause
+Group:          Development/Tools/Building
+%endif
+Version:        3.15.3
+Release:        0
 URL:            https://www.cmake.org/
-Source0:        https://www.cmake.org/files/v%{shortversion}/%{name}-%{version}.tar.gz
+Source0:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}.tar.gz
 Source1:        cmake.macros
 # bnc#947585 - Let CMake produces automatic RPM provides
 Source3:        cmake.attr
 Source4:        cmake.prov
-Source5:        https://www.cmake.org/files/v%{shortversion}/%{name}-%{version}-SHA-256.txt
-Source6:        https://www.cmake.org/files/v%{shortversion}/%{name}-%{version}-SHA-256.txt.asc
+Source5:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt
+Source6:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
 Patch2:         cmake-fix-ruby-test.patch
 # PATCH-FIX-UPSTREAM form.patch -- set the correct include path for the ncurses includes
 Patch4:         form.patch
-# PATCH-FIX-UPSTREAM system-libs.patch -- allow choosing between bundled and system jsoncpp & form libs
-Patch5:         system-libs.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch7:         feature-suse-python-interp-search-order.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libarchive-devel >= 3.0.2
 BuildRequires:  libbz2-devel
+BuildRequires:  libcurl-mini-devel
 BuildRequires:  libexpat-devel
+BuildRequires:  libuv-devel >= 1.10
 BuildRequires:  ncurses-devel
 # this is commented as it would create dependancy cycle between jsoncpp and cmake
 #if 0 % { ? suse_version} > 1320
@@ -61,23 +62,37 @@ BuildRequires:  rhash-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(liblzma)
 Requires:       make
+%if "%flavor" == "gui"
+BuildRequires:  python-sphinx
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Widgets)
+Requires:       cmake
+Recommends:     cmake-man
+%else
 # bnc#953842 - A python file is shipped so require python base so it can be run.
 Requires:       python3-base
-Recommends:     cmake-man
-%if 0%{?suse_version} >= 1330
-BuildRequires:  libcurl-mini-devel
-%else
-BuildRequires:  libcurl-devel
 %endif
-
+%if "%flavor" == "gui"
 %description
-CMake is a cross-platform, open-source build system
+This is a Graphical User Interface for CMake, a cross-platform
+build system.
+
+%package -n cmake-man
+Summary:        Manual pages for cmake, a cross-platform make system
+Group:          Development/Tools/Building
+
+%description -n cmake-man
+Manual pages for cmake, a cross-platform make system.
+%else
+%description
+CMake is a cross-platform build system.
+%endif
 
 %prep
 # The publisher doesn't sign the source tarball, but a signatures file containing multiple hashes.
 # Verify hashes in that file against source tarball.
-echo "`grep %{name}-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
-%setup -q
+echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
+%setup -q -n cmake-%{version}
 %autopatch -p1
 
 %build
@@ -86,21 +101,37 @@ export CXXFLAGS="%{optflags}"
 # This is not autotools configure
 ./configure \
     --prefix=%{_prefix} \
-    --datadir=/share/%{name} \
-    --docdir=/share/doc/packages/%{name} \
+    --datadir=/share/cmake \
+    --docdir=/share/doc/packages/cmake \
     --mandir=/share/man \
     --system-libs \
     --no-system-jsoncpp \
+    --no-system-libarchive \
+    --no-system-zstd \
     --parallel=0%{jobs} \
     --verbose \
+    %if "%flavor" == "gui"
+    --qt-gui \
+    --sphinx-man \
+    %else
     --no-qt-gui \
-    -- \
-    -DCMAKE_USE_SYSTEM_LIBRARY_LIBUV=%{system_libuv}
+    %endif
+    --
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %make_install
 mkdir -p %{buildroot}%{_libdir}/cmake
+%if "%flavor" == "gui"
+%suse_update_desktop_file  -r %{name} CMake Development IDE Tools Qt
+
+# delete files that belong to the 'cmake' package
+rm -rf %{buildroot}%{_bindir}/{cpack,cmake,ctest,ccmake}
+rm -rf %{buildroot}%{_datadir}/cmake
+rm -rf %{buildroot}%{_datadir}/aclocal/cmake.m4
+rm -rf %{buildroot}%{_docdir}/cmake
+%else
+
 find %{buildroot}%{_datadir}/cmake -type f -print0 | xargs -0 chmod 644
 # rpm macros
 install -m644 %{SOURCE1} -D %{buildroot}%{_rpmconfigdir}/macros.d/macros.cmake
@@ -118,7 +149,7 @@ done
 
 # cmake-mode.el
 %define cmake_mode_el %{_datadir}/emacs/site-lisp/%{name}-mode.el
-install -D -p -m 0644 Auxiliary/cmake-mode.el %{buildroot}%{cmake_mode_el}
+install -D -p -m 0644 Auxiliary/cmake-mode.el %{buildroot}%cmake_mode_el
 rm %{buildroot}%{_datadir}/%{name}/editors/emacs/cmake-mode.el
 # fix: W: files-duplicate  (%license covers already)
 rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
@@ -133,7 +164,25 @@ rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
 #    suse specific brp-25-symlink cramps the symlinks, hence the CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne) fail
 ./bin/ctest --force-new-ctest-process --output-on-failure %{?_smp_mflags} \
     -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM)"
+%endif
 
+%if "%flavor" == "gui"
+%files
+%license Copyright.txt
+%{_bindir}/cmake-gui
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/mime/packages/cmakecache.xml
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/*
+%{_datadir}/icons/hicolor/128x128/apps/CMakeSetup.png
+%{_datadir}/icons/hicolor/32x32/apps/CMakeSetup.png
+
+%files -n cmake-man
+%license Copyright.txt
+%{_mandir}/man7/*
+%{_mandir}/man1/*
+%else
 %files
 %license Copyright.txt
 %doc README.rst
@@ -149,7 +198,8 @@ rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
 %{_datadir}/aclocal/cmake.m4
 %doc %{_docdir}/%{name}
 %{_datadir}/bash-completion
-%{cmake_mode_el}
-%dir %{dirname:%{cmake_mode_el}}
+%cmake_mode_el
+%dir %{dirname:%cmake_mode_el}
+%endif
 
 %changelog

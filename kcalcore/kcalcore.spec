@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalcore
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        KDE PIM Libraries: KCalCore
 License:        LGPL-2.1-or-later
@@ -66,8 +66,7 @@ This package contains necessary include files and libraries needed
 to develop KDE PIM applications.
 
 %prep
-%setup -q -n kcalcore-%{version}
-%autopatch -p1
+%autosetup -p1 -n kcalcore-%{version}
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -89,6 +88,7 @@ to develop KDE PIM applications.
 %license COPYING*
 %{_kf5_cmakedir}/KF5CalendarCore/
 %{_kf5_includedir}/KCalendarCore/
+%{_kf5_includedir}/kcalcore_version.h
 %{_kf5_includedir}/kcalendarcore_version.h
 %{_kf5_libdir}/libKF5CalendarCore.so
 %{_kf5_mkspecsdir}/qt_KCalendarCore.pri

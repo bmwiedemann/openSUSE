@@ -1,7 +1,7 @@
 #
 # spec file for package clisp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -80,7 +80,10 @@ BuildRequires:  pkgconfig(zlib)
 # to BuildRequires
 #
 %define debug   no
+%define _lto_cflags %{nil}
 %global rlver   %(rpm -q --qf '%%{VERSION}' readline-devel | sed 's/\\.//g')
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
 Requires(pre):  vim
 Requires(pre):  vim-data
 Requires:       ffcall
@@ -136,6 +139,7 @@ contains two nice applications.
 %patch16 -p1 -b .p16
 
 %build
+%add_optflags -g3 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
 #
 # Overwrite stack size limit (hopefully a soft limit only)
 #
@@ -161,7 +165,7 @@ fi
 %ifarch s390x
 ##RPM_OPT_FLAGS="$(echo %{optflags}|sed -r 's/-fstack-protector-strong ?//g;s/-f(stack-clash-protection)/-fno-\1/') -fno-stack-limit"
 %endif
-CC="${CC} -g ${RPM_OPT_FLAGS} -fno-strict-aliasing -fPIC -pipe"
+CC="${CC} -g %{optflags} -fno-strict-aliasing -fPIC -pipe"
 case "$(uname -m)" in
     i[0-9]86)
 	    CC="${CC} -ffloat-store"  ;;

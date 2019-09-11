@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 26 09:31:45 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.2
+
+-------------------------------------------------------------------
+Wed Aug 14 16:11:04 UTC 2019 - kukuk@suse.de
+
+- MicroOS update [bsc#1135342]
+  - Add NTP configuration
+- Kubic Node dialog
+  - NTP configuration
+  - salt-minion configuration
+- 4.2.1
+
+-------------------------------------------------------------------
 Wed Jun 12 11:28:35 CEST 2019 - schubi@suse.de
 
 - Enabling chrony-wait service too (bsc#1137196).

@@ -1,7 +1,7 @@
 #
 # spec file for package normaliz
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           normaliz
-Version:        3.6.3
+%define lname	libnormaliz3
+Version:        3.8.0
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://www.normaliz.uni-osnabrueck.de/
+URL:            https://www.normaliz.uni-osnabrueck.de/
 
 Source:         https://github.com/Normaliz/Normaliz/releases/download/v%version/%name-%version.tar.gz
-BuildRequires:  boost-devel
-BuildRequires:  cmake >= 2.6
 #maybe with flint-devel later on
+BuildRequires:  boost-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  libtool
 BuildRequires:  mpfr-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Normaliz is an open source tool for computations in affine monoids,
@@ -50,11 +50,11 @@ Computation goals
 * generalized (or weighted) Ehrhart series and Lebesgue integrals of
   polynomials over rational polytopes via NmzIntegrate
 
-%package -n libnormaliz0
+%package -n %lname
 Summary:        C++ API for Normaliz, a tool for computation of rotational cones
 Group:          System/Libraries
 
-%description -n libnormaliz0
+%description -n %lname
 Normaliz is an open source tool for computations in affine monoids,
 vector configurations, lattice polytopes, and rational cones.
 
@@ -64,9 +64,9 @@ the Normaliz computations from any C++ program.
 %package devel
 Summary:        Development files for Normaliz, a tool for computation of rotational cones
 Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
 Requires:       boost-devel
 Requires:       gmp-devel
-Requires:       libnormaliz0 = %version
 
 %description devel
 Normaliz is an open source tool for computations in affine monoids,
@@ -76,33 +76,28 @@ Normaliz offers an API - libnormaliz - that allows the user to access
 the Normaliz computations from any C++ program.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-pushd source/
-%cmake
+autoreconf -fi
+%configure --disable-static
 make %{?_smp_mflags}
-popd
 
 %install
-pushd source/
-%cmake_install
-popd
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n libnormaliz0 -p /sbin/ldconfig
-%postun -n libnormaliz0 -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/normaliz
 %license COPYING
 
-%files -n libnormaliz0
-%defattr(-,root,root)
-%_libdir/libnormaliz.so.*
+%files -n %lname
+%_libdir/libnormaliz.so.3*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/libnormaliz/
 %_libdir/libnormaliz.so
 

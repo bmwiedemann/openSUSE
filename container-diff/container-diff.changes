@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 23 17:53:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary field.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:25:02 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update container-diff to v0.15.0
+  * Fix result switch while viewing with type history
+  * Use PKG-INFO and METADATA to infer package names in pip analysis
+  * Use top_level.txt when analyzing pip modules
+  * Strip colons from file path before creating cache dir
+  * Enhancement - save to file
+  * Fixed concurrent map write in image diffing
+  * Split lines prior to diffing
+  * Move all image processing logic into utils, and expose publicly
+
+-------------------------------------------------------------------
 Wed Oct 31 08:14:13 UTC 2018 - David Cassany <dcassany@suse.com>
 
 - Update container-diff to v0.13.1

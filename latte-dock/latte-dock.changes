@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:18:06 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.2
+  * Do not hide contents/icons when qtquick software rendering is
+    used (kde#410920, kde#411037)
+  * Reverse scrolling direction for desktops and activities through
+    empty areas (kde#411086)
+  * After dragging active windows send a leave event and restore
+    this way applets in normal state
+  * Close multiple windows from previews when using middle-click
+    (kde#411461)
+  * Activate single windows directly with left click in non
+    compositing mode, and do not show the preview window in that
+    case
+  * Send tasks progress information to latte indicators
+  * Latte indicators can offset their icons if they want
+  * Latte indicators can provide different length padding values
+    for applets compared to tasks
+  * Autostart Latte earlier in order to catch up with windows
+    global menu activation. You need to reactivate it in order to
+    work. (kde#411341)
+  * Forced solidness for panels has higher priority compared to
+    panel backgrounds in isBusy state
+  * Disable panel shadow if the user has enabled the corresponding
+    option
+  * Do not draw the panel background outline if the plasma default
+    behavior was chosen for popups
+  * Do not draw progress badge if user has disabled it
+  * Support struts with thickness < 24px (kde#410707)
+  * Fixes for Clang
+
+-------------------------------------------------------------------
 Mon Aug  5 19:31:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Include COPYING* as %license

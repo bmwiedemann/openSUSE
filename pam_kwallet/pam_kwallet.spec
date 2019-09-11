@@ -17,7 +17,7 @@
 
 
 Name:           pam_kwallet
-Version:        5.16.4
+Version:        5.16.5
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        LGPL-2.1-only AND GPL-2.0-or-later AND GPL-3.0-only

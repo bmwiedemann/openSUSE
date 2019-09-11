@@ -1,4 +1,68 @@
 --------------------------------------------------------------------
+Sun Aug 25 03:11:26 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Chinese (China))
+- 4.2.2
+
+--------------------------------------------------------------------
+Fri Aug 23 11:00:42 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#663
+- update packaging documentation
+- 4.2.1
+
+--------------------------------------------------------------------
+Fri Aug 23 09:38:32 UTC 2019 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#662
+- merge gh#openSUSE/libstorage-ng#661
+- Adapt Dockerfile for SLE-15-SP1
+- Translated using Weblate (Slovak)
+- Translated using Weblate (Catalan)
+- Translated using Weblate (Czech)
+- Translated using Weblate (Japanese)
+- Translated using Weblate (Arabic)
+- Translated using Weblate (Chinese (China))
+- Translated using Weblate (Chinese (Taiwan))
+- Translated using Weblate (Dutch)
+- Translated using Weblate (French)
+- Translated using Weblate (German)
+- Translated using Weblate (Hungarian)
+- Translated using Weblate (Italian)
+- Translated using Weblate (Korean)
+- Translated using Weblate (Polish)
+- Translated using Weblate (Russian)
+- Translated using Weblate (Spanish)
+- Translated using Weblate (Swedish)
+- Translated using Weblate (Portuguese (Brazil))
+- Translated using Weblate (Finnish)
+- Fix dectection of surrounding region (bsc#1146686)
+- Bump lib version
+- Fix surrounding detection
+- Revert "Translated using Weblate (Catalan)"
+- Revert "Translated using Weblate (Finnish)"
+- Revert "Translated using Weblate (Dutch)"
+- Revert "Translated using Weblate (Portuguese (Brazil))"
+- Revert "Translated using Weblate (Swedish)"
+- Revert "Translated using Weblate (Spanish)"
+- Revert "Translated using Weblate (Russian)"
+- Revert "Translated using Weblate (Polish)"
+- Revert "Translated using Weblate (Korean)"
+- Revert "Translated using Weblate (Italian)"
+- Revert "Translated using Weblate (Hungarian)"
+- Revert "Translated using Weblate (German)"
+- Revert "Translated using Weblate (French)"
+- Revert "Translated using Weblate (Chinese (Taiwan))"
+- Revert "Translated using Weblate (Chinese (China))"
+- Revert "Translated using Weblate (Arabic)"
+- Revert "Translated using Weblate (Japanese)"
+- Revert "Translated using Weblate (Czech)"
+- Revert "Translated using Weblate (Slovak)"
+- Revert "Adapt Dockerfile for SLE-15-SP1"
+- Merge SLE-15-SP1
+- 4.2.0
+
+--------------------------------------------------------------------
 Sat Aug 17 04:32:14 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Chinese (China))

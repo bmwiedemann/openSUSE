@@ -17,7 +17,7 @@
 
 
 Name:           perl-Protocol-Redis-Faster
-Version:        0.002
+Version:        0.003
 Release:        0
 %define cpan_name Protocol-Redis-Faster
 Summary:        Optimized pure-perl Redis protocol parser/encoder

@@ -24,13 +24,13 @@
 %endif
 %{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
 Group:          Productivity/Text/Utilities
 URL:            https://beyondgrep.com/
-Source:         http://cpan.metacpan.org/authors/id/P/PE/PETDANCE/ack-v%{version}.tar.gz
+Source:         https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/ack-v%{version}.tar.gz
 Patch1:         ack-ignore-osc.patch
 Patch3:         ack-add_spec.patch
 BuildRequires:  make

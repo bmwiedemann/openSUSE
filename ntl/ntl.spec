@@ -23,11 +23,10 @@ Release:        0
 Summary:        Library for Number Theory
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://shoup.net/ntl/
+URL:            https://shoup.net/ntl/
 
-Source:         http://shoup.net/ntl/ntl-%version.tar.gz
+Source:         https://shoup.net/ntl/ntl-%version.tar.gz
 Patch1:         no-static.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gf2x-devel
@@ -72,8 +71,7 @@ matrices, and polynomials over the integers and over finite fields.
 This package contains the documentation for the NTL API.
 
 %prep
-%setup -qn ntl-%version
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 pushd src/
@@ -94,11 +92,10 @@ rm -fv "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libntl.so.*
+%license doc/copying.txt
 
 %files devel
-%defattr(-,root,root)
 %_includedir/NTL/
 %_libdir/libntl.so
 

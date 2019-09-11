@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_bgi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL_bgi
 %define lname	libSDL_bgi2
-Version:        2.2.4
+Version:        2.3.0
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
 License:        Zlib AND GPL-2.0-or-later
@@ -31,13 +31,11 @@ BuildRequires:  automake >= 1.11
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 SDL_bgi is largely compatible with BGI, the Borland Graphics
-Interface that was the de-facto standard in PC graphics back in DOS
-days. It is easy to use, and it also provides extensions for RGB
-colours and mouse support.
+Interface that was a standard in PC graphics back in the DOS days.
+SDL_bgi also provides extensions for RGB colors and mouse support.
 
 %package -n %lname
 Summary:        SDL Graphics Routines for Primitives and Other Support Functions

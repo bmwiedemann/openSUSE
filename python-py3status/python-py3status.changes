@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:49:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.20:
+  * introduce entry point based discovery of packaged custom modules
+  * many other fixes, see CHANGELOG
+
+-------------------------------------------------------------------
 Sat May 25 09:57:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use the pytest macro

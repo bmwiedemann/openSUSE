@@ -1,7 +1,7 @@
 #
 # spec file for package qrencode
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define so_ver 4
 Name:           qrencode
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        C library for encoding data in a QR Code symbol
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 Url:            https://github.com/fukuchi/libqrencode
-Source0:        http://fukuchi.org/works/qrencode/%{name}-%{version}.tar.bz2
+Source0:        https://fukuchi.org/works/qrencode/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM -- qrencode-fix_installation.patch
 Patch0:         qrencode-fix-installation.patch
@@ -76,7 +76,8 @@ This package contains the development files for libqrencode.
 %postun -n libqrencode%{so_ver} -p /sbin/ldconfig
 
 %files
-%doc README TODO NEWS COPYING ChangeLog
+%license COPYING
+%doc README TODO NEWS ChangeLog
 %{_mandir}/man1/qrencode.1%{ext_man}
 %{_bindir}/qrencode
 

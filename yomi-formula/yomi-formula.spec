@@ -20,7 +20,7 @@
 %define fdir  %{_datadir}/salt-formulas
 
 Name:           yomi-formula
-Version:        0.0.1+git.1565191883.64eabeb
+Version:        0.0.1+git.1566569312.4133e8e
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
@@ -73,8 +73,8 @@ cp -a monitor %{buildroot}%{_bindir}/
 cat <<EOF > %{buildroot}%{_datadir}/%{fname}/pillar.conf
 pillar_roots:
   base:
-    - /usr/share/yomi/pillar
     - /srv/pillar
+    - /usr/share/yomi/pillar
 EOF
 
 # Configuration and UUIDs for autosign

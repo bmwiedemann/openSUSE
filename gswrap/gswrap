@@ -1,0 +1,259 @@
+#!/bin/bash
+#
+# Copyright (c) 2019 SuSE GmbH Nuernberg, Germany.
+# Copyright (c) 2019 Werner Fink
+#
+# Wrapper script for ghostscript based on bwrap, the container setup
+# utility, which does use e.g. unshare(2) system call to create a
+# safe container environment.
+#
+# Please report bugfixes or comments at https://www.suse.com/feedback/
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+#
+
+ghostscript=@@GS@@
+
+user=nobody
+home=/home/$user
+uid=$(id -u $user)
+gid=$(id -g $user)
+
+finish ()
+{
+    # Used with trap to copy output files back to original cwd or directory
+    # to be able to hide the original cwd or directory from ghostscript process
+    local dir="$1"
+    local tmp="$2"
+    test -d "$dir" || return
+    test -d "$tmp" || return
+    for ps in "$tmp/"*
+    do
+	test -e "$ps" || continue
+	test -p "$ps" && continue
+	mv -f "$ps" "$dir"
+    done
+    rm -rf "$tmp"
+}
+
+typeset -i safer=0
+typeset    pipecmd=""
+typeset -i pipepos
+typeset -a opts
+typeset -i o=0
+for lib in $(ldd $ghostscript | sed -rn 's|.*=>[[:blank:]]+||;s|[[:blank:]]*(/[^[:blank:]]+)[[:blank:]]+.*|\1|p')
+do
+    opts[o++]="--ro-bind $lib $lib"
+done
+for dir in /lib/tls /lib64/tls /lib64/x86_64 /usr/lib/ghostscript /usr/lib64/ghostscript /etc/ghostscript
+do
+    test -d "$dir" || continue
+    opts[o++]="--ro-bind $dir $dir"
+done
+typeset -i argc=0
+typeset -a argv=("$@")
+for ((argc=0; argc < ${#argv[@]}; argc++))
+do
+    arg="${argv[argc]}"
+    case "$arg" in
+    -dSAFER)
+	let safer++
+	;;
+    -sOutputFile=*)
+	case "${arg#-sOutputFile=}" in
+	%stdout%|%stderr%|-|"")
+	    continue ;;
+	%pipe%*)
+	    pipecmd=${arg#-sOutputFile=%pipe%}
+	    let pipepos=argc
+	    ;;
+	esac
+	file="${arg#-sOutputFile=}"
+	dir="${file%/*}"
+	file="${file##*/}"
+	if test -n "$file"
+	then
+	    if test -n "$dir" -a "$dir" = "/dev"
+	    then
+		# Only /dev/null or /dev/zero allowed
+		if test "$file" != null -a "$file" != zero
+		then
+		    echo "GS: only /dev/null or /dev/zero allowed" 1>&2
+		    exit 1
+		fi
+		opts[o++]="--dir $home/out"
+	    elif test -n "$dir" -a -d "$dir"
+	    then
+		tmp=$(mktemp -d "$dir/.gswrap-XXXXXXXXXX") || exit 1
+		trap "finish '$dir' '$tmp'" ERR EXIT SIGINT SIGHUP
+		opts[o++]="--bind ${tmp+"$tmp"} $home/out"
+	    else
+		tmp=$(mktemp -d "$PWD/.gswrap-XXXXXXXXXX") || exit 1
+		trap "finish '$PWD' '$tmp'" ERR EXIT SIGINT SIGHUP
+		opts[o++]="--bind ${tmp+"$tmp"} $home/out"
+	    fi
+	    # change to new working directory in sandbox
+	    opts[o++]="--chdir $home/out"
+	fi
+	argv[argc]="-sOutputFile=$home/out/${file}"
+	continue
+	;;
+    -sDEVICE=*)
+	case "${arg#-sDEVICE=}" in
+	x11*)
+	    ;;
+	*)
+	    unset DISPLAY
+	    ;;
+	esac
+	continue
+	;;
+    -*)
+	continue
+	;;
+    esac
+    test -e "$arg" || continue
+    if test "${arg##*/}" = "$arg"
+    then
+	opts[o++]="--ro-bind $arg $home/$arg"
+    else
+	test "$arg" != / || continue
+	test "$arg" != /home || continue
+	test "$arg" != $home || continue
+	opts[o++]="--ro-bind $arg $arg"
+    fi
+done
+# If no -dSAFER then execute the orignal ghostscript program now
+if ((safer == 0))
+then
+    exec -a ${0} $ghostscript ${1+"$@"}
+fi
+if test -n "$pipecmd"
+then
+    mkfifo -m 666 ${tmp}/fd
+    fd=${tmp}/fd
+    exec $pipecmd < $fd &
+    argv[pipepos]="-sOutputFile=$home/fifo"
+    opts[o++]="--bind $fd $home/fifo"
+fi
+# User might have some own font configurations as well
+if test -d /var/cache/fontconfig
+then
+    opts[o++]="--ro-bind /var/cache/fontconfig /var/cache/fontconfig"
+fi
+if test -s "$HOME/.fonts.conf"
+then
+    opts[o++]="--ro-bind ${HOME+"$HOME"}/.fonts.conf $home/.fonts.conf"
+fi
+for dir in "$HOME/.fontconfig" "$HOME/.config/fontconfig" "$HOME/.cache/fontconfig"
+do
+    test -d "$dir" || continue
+    opts[o++]="--ro-bind $dir ${home}${dir#$HOME}"
+done
+# Display
+if test -n "$DISPLAY"
+then
+    : ${XAUTHORITY:="$HOME/.Xauthority"}
+    for dir in /usr/lib/ghostscript /usr/lib64/ghostscript
+    do
+	test -d "$dir" || continue
+	for x11 in $dir/*/X11.so
+	do
+	    test -e "$x11" || continue
+	    for lib in $(ldd "$x11" | sed -rn 's|.*=>[[:blank:]]+||;s|[[:blank:]]*(/[^[:blank:]]+)[[:blank:]]+.*|\1|p')
+	    do
+		case "${opts[@]}" in
+		*[:blank:]${lib}[:blank:]*) continue ;;
+		esac
+		opts[o++]="--ro-bind $lib $lib"
+	    done
+	done
+    done
+    opts[o++]="--ro-bind /tmp/.X11-unix /tmp/.X11-unix"
+    opts[o++]="--ro-bind ${XAUTHORITY+"$XAUTHORITY"} $home/.Xauthority"
+    opts[o++]="--setenv XAUTHORITY $home/.Xauthority"
+    opts[o++]="--setenv DISPLAY ${DISPLAY+"$DISPLAY"}"
+    if test -n "${DISPLAY%:*}"
+    then
+	# For display over e.g. local network as with slogin -X skip --unshare-net
+	# and allow hostname resolution via running nscd (that is nscd should be up)
+ 	opts[o++]="--ro-bind /var/run/nscd/socket /var/run/nscd/socket"
+	opts[o++]="--unshare-user-try --unshare-ipc --unshare-pid --unshare-uts --unshare-cgroup-try"
+    else
+	opts[o++]="--unshare-all"
+    fi
+else
+    opts[o++]="--unshare-all"
+fi
+if test -e /proc/$$/uid_map
+then
+    opts[o++]="--uid $uid"
+fi
+if test -e /proc/$$/gid_map
+then
+    opts[o++]="--gid $gid"
+fi
+# This is for debugging only
+# add you binary like /bin/ls or /usr/bin/strace for further usage
+# as replacement or prefix of ghostscript in the last line.
+# Clearly the `false´ should then changed to `true´
+if false
+then
+    for bin in /usr/bin/strace
+    do
+	opts[o++]="--ro-bind $bin $bin"
+	for lib in $(ldd "$bin" | sed -rn 's|.*=>[[:blank:]]+||;s|[[:blank:]]*(/[^[:blank:]]+)[[:blank:]]+.*|\1|p')
+	do
+	    case "${opts[@]}" in
+	    *[:blank:]${lib}[:blank:]*) continue ;;
+	    esac
+	    opts[o++]="--ro-bind $lib $lib"
+	done
+    done
+fi
+unset o argc arg
+set -- "${argv[@]}"
+set -euo pipefail
+(exec -c -a gs /usr/bin/bwrap \
+      --as-pid-1 \
+      --ro-bind /bin/false /bin/false \
+      --ro-bind $ghostscript /usr/bin/gs \
+      --ro-bind /usr/share/ghostscript /usr/share/ghostscript \
+      --ro-bind /usr/share/fonts /usr/share/fonts \
+      --ro-bind /etc/fonts /etc/fonts \
+      --dev /dev \
+      --proc /proc \
+      --tmpfs /run \
+      --tmpfs /tmp \
+      --dir /run/user/$uid \
+      --dir /var \
+      --symlink ../run var/run \
+      --symlink ../tmp var/tmp \
+      --dir $home \
+      --chdir $home \
+      ${opts[@]} \
+      --new-session \
+      --sync-fd 0 \
+      --sync-fd 1 \
+      --sync-fd 2 \
+      --die-with-parent \
+      --setenv XDG_RUNTIME_DIR "/run/user/$uid" \
+      --setenv USER $user \
+      --setenv LOGNAME $user \
+      --setenv SHELL /bin/false \
+      --setenv HOME $home \
+      --setenv PATH /bin:/usr/bin \
+      --setenv MAIL /dev/null \
+      /usr/bin/gs ${1+"$@"})

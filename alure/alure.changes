@@ -1,9 +1,7 @@
 -------------------------------------------------------------------
-Sun Jan 13 16:37:35 UTC 2019 - schwab@suse.de
+Thu Aug 29 07:19:44 UTC 2019 - mvetter@suse.com
 
-- Use %cmake/%cmake_install
-- Use %license
-- alure-lib-suffix.patch: remove
+- Remove libdumb-devel BuildReq
 
 -------------------------------------------------------------------
 Wed Jun 28 07:32:16 UTC 2017 - jengelh@inai.de

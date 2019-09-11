@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot-audio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 %define sover 6
+
 Name:           libopenshot-audio
-Version:        0.1.7
+Version:        0.1.8+88
 Release:        0
 Summary:        Audio library for the OpenShot video editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://openshot.org/
+URL:            https://openshot.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}.changes
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -61,14 +63,14 @@ This package contains header files and libraries needed to develop
 application that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export SOURCE_DATE_EPOCH=$(date +%s -r %{S:99})
 %cmake \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed"
-
-make %{?_smp_mflags}
+	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
+	%{nil}
+%cmake_build
 
 %install
 %cmake_install
@@ -77,13 +79,11 @@ make %{?_smp_mflags}
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
 %doc AUTHORS
 %license COPYING
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/openshot*
 %{_libdir}/%{name}.so
 %{_includedir}/%{name}

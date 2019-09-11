@@ -68,7 +68,8 @@ Test suite for the Standards Based Linux Instrumentation Base Providers
 %build
 autoreconf -fi
 %configure TESTSUITEDIR=%{_datadir}/sblim-testsuite --disable-static
-make %{?jobs:-j%jobs}
+# build without parallelism because of broken build system deps
+make
 
 %install
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}

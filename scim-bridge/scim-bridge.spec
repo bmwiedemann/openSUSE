@@ -28,12 +28,17 @@ Source1:        xim.d-%{name}
 Source99:       baselibs.conf
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
+BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 BuildRequires:  libqt4-devel
+%endif
 BuildRequires:  libtool
 BuildRequires:  scim-devel
 Recommends:     scim-bridge-gtk2 = %{version}
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 Recommends:     scim-bridge-qt4 = %{version}
+%endif
 Provides:       scim-bridge-agent
 
 %description
@@ -59,6 +64,7 @@ Obsoletes:      scim-bridge-gtk <= %{version}
 Scim-bridge-gtk2 is the gtk+-2.0 client of scim-bridge, it provides
 another gtk-immodule for SCIM.
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %package qt4
 Summary:        Scim-bridge immodule for Qt4
 Group:          System/I18n/Japanese
@@ -71,6 +77,7 @@ Obsoletes:      scim-bridge-qt <= %{version}
 %description qt4
 Scim-bridge-qt4 is the qt4 client of scim-bridge, it provides
 another qt-immodule for SCIM.
+%endif
 
 %prep
 %setup -q
@@ -84,7 +91,11 @@ export CFLAGS="%{optflags}"
     --enable-agent \
     --enable-gtk2-immodule \
     --disable-qt3-immodule \
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
     --enable-qt4-immodule \
+%else
+    --disable-qt4-immodule \
+%endif
     --enable-documents \
     --enable-debug
 
@@ -112,9 +123,11 @@ pushd %{buildroot}%{_sysconfdir}/X11/xim.d/
 popd
 
 # fix path
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 mkdir -p %{buildroot}%{_libdir}/qt4/plugins/inputmethods
 mv %{buildroot}%{_libdir}/plugins/inputmethods/*.so %{buildroot}%{_libdir}/qt4/plugins/inputmethods/
 rm -rf %{buildroot}%{_libdir}/plugins
+%endif
 mkdir -p %{buildroot}%{_libdir}/gtk-2.0/2.10.0/immodules
 mv %{buildroot}%{_libdir}/gtk-2.0/immodules/*.so %{buildroot}%{_libdir}/gtk-2.0/2.10.0/immodules/
 rm -rf %{buildroot}%{_libdir}/gtk-2.0/immodules
@@ -133,8 +146,11 @@ rm doc/Makefile*
 /sbin/ldconfig
 %{scim_gtk2_immodule_postun}
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %post qt4 -p /sbin/ldconfig
 %postun qt4 -p /sbin/ldconfig
+%endif
+
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -149,7 +165,9 @@ rm doc/Makefile*
 %files gtk2
 %{_libdir}/gtk-2.0/2.10.0/immodules/im-%{name}.so
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %files qt4
 %{_libdir}/qt4/plugins/inputmethods/im-%{name}.so
+%endif
 
 %changelog

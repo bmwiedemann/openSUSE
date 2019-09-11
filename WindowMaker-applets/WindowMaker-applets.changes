@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:46:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bash-specific += operator in build recipe.
+- Replace $RPM_* shell vars (where possible) by macros.
+- Remove %defattr, BuildRoot and the redundant %clean section.
+
+-------------------------------------------------------------------
 Wed Nov 29 13:23:23 UTC 2017 - crrodriguez@opensuse.org
 
 - wmSun-1.03.dif, wmnd_0.2.2.patch: Fix build with as-needed

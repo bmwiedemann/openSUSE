@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 26 13:24:05 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.2.0
+  * Fix support for Python 2
+  * Relax Pyfilesystem2 version in install dependencies.
+
+-------------------------------------------------------------------
+Mon Aug 26 05:48:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use expanded description.
+
+-------------------------------------------------------------------
 Wed Jul 17 11:50:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix runtime deps

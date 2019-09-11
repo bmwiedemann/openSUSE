@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 20 15:27:35 UTC 2019 - Marcus Schaefer <ms@suse.com>
+
+- Make application ID check in searchImageISODevice() case-insensitive
+
+-------------------------------------------------------------------
 Mon Jul 29 09:26:18 UTC 2019 - Marcus Schaefer <ms@suse.com>
 
 - Use %suse_version instead of %sle_version do detect SLE 15 (SP*)

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:27:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.16.5
+  * ENH: Add project URLs to setup.py
+  * TEST, ENH: fix tests and ctypes code for PyPy
+  * BUG: use npy_intp instead of int for indexing array
+  * TST: Ignore DeprecationWarning during nose imports
+  * BUG: Fix use-after-free in boolean indexing
+  * MAINT/BUG/DOC: Fix errors in _add_newdocs
+  * BUG: fix byte order reversal for datetime64[ns]
+  * MAINT,BUG: Use nbytes to also catch empty descr during allocation
+  * BUG: np.array cleared errors occured in PyMemoryView_FromObject
+  * BUG: Fixes for Undefined Behavior Sanitizer (UBSan) errors.
+  * BUG: ensure that casting to/from structured is properly checked.
+  * MAINT: fix histogram*d dispatchers
+  * BUG: further fixup to histogram2d dispatcher.
+  * BUG: Replace contextlib.suppress for Python 2.7
+  * BUG: fix compilation of 3rd party modules with Py_LIMITED_API...
+  * BUG: Fix memory leak in dtype from dict contructor
+  * DOC: Document array_function at a higher level.
+  * BUG, DOC: add new recfunctions to `__all__`
+  * BUG: Remove stray print that causes a SystemError on python 3.7
+  * TST: Pin pytest version to 5.0.1.
+  * ENH: Enable huge pages in all Linux builds
+  * BUG: fix behavior of structured_to_unstructured on non-trivial...
+  * REL: Prepare for the NumPy 1.16.5 release.
+
+-------------------------------------------------------------------
 Mon Jul 29 18:37:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Make sure to provide oldpython names

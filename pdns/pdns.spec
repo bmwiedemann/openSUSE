@@ -43,7 +43,7 @@
 %bcond_without pdns_pkcs11
 %bcond_without pdns_zeromq
 Name:           pdns
-Version:        4.1.13
+Version:        4.2.0
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
@@ -365,7 +365,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %service_del_postun %{name}.service
 
 %files
-%doc AUTHORS NEWS NOTICE README*
+%doc NOTICE README*
 %license COPYING
 %exclude %{_docdir}/%{name}/*.sql
 %exclude %{_docdir}/%{name}/*.schema
@@ -373,6 +373,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_unitdir}/%{name}@.service
 %config(noreplace) %attr(640,root,pdns) %{_sysconfdir}/%{name}/%{name}.conf
 %{_bindir}/dnsbulktest
+%{_bindir}/dnspcap2calidns
 %{_bindir}/dnsreplay
 %{_bindir}/dnsscan
 %{_bindir}/dnsscope
@@ -399,6 +400,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/dnspcap2protobuf.1%{?ext_man}
 %endif
 %{_mandir}/man1/dnsbulktest.1%{?ext_man}
+%{_mandir}/man1/dnspcap2calidns.1%{?ext_man}
 %{_mandir}/man1/dnsgram.1%{?ext_man}
 %{_mandir}/man1/dnsscan.1%{?ext_man}
 %{_mandir}/man1/ixplore.1%{?ext_man}

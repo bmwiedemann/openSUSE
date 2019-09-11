@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 13:59:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Implement EULA handling (boo#1148168):
+  * 0001-Add-support-for-license-prompts.patch
+- Enable install updates functionality on Tumbleweed again (boo#1030829):
+  * Drop 0001-Hide-option-to-install-updates-on-Tumbleweed.patch
+
+-------------------------------------------------------------------
 Mon Jun 24 07:06:16 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - More spec file cleanup

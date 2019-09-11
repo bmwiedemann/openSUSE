@@ -1,0 +1,112 @@
+From 56c0a71fdd94a008e5d746261f70a713c4767f93 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Thu, 2 May 2019 07:17:21 -0600
+Subject: [PATCH] GLX: Add a function to change a clients vendor list.
+
+Add a new function, GlxServerExports::setClientScreenVendor, which will change
+the vendor that handles GLX requests for a screen, but only for requests from
+a specific client.
+
+v2: Increment the GLXVND minor version number.
+v3: Note the GLXVND version requirement for setClientScreenVendor.
+
+Signed-off-by: Aaron Plattner <aplattner@nvidia.com>
+Reviewed-by: Aaron Plattner <aplattner@nvidia.com>
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+---
+ glx/vndext.c           |  1 +
+ glx/vndserver.h        |  1 +
+ glx/vndservermapping.c | 21 +++++++++++++++++++++
+ include/glxvndabi.h    | 13 ++++++++++++-
+ 4 files changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/glx/vndext.c b/glx/vndext.c
+index 20c0648cc..582e60b6e 100644
+--- a/glx/vndext.c
++++ b/glx/vndext.c
+@@ -324,6 +324,7 @@ _X_EXPORT const GlxServerExports glxServer = {
+     .getContextTagPrivate = GlxGetContextTagPrivate,
+     .getVendorForScreen = GlxGetVendorForScreen,
+     .forwardRequest =  GlxForwardRequest,
++    .setClientScreenVendor = GlxSetClientScreenVendor,
+ };
+ 
+ const GlxServerExports *
+diff --git a/glx/vndserver.h b/glx/vndserver.h
+index 613fef0fe..772b458a1 100644
+--- a/glx/vndserver.h
++++ b/glx/vndserver.h
+@@ -107,6 +107,7 @@ GlxContextTagInfo *GlxLookupContextTag(ClientPtr client, GLXContextTag tag);
+ void GlxFreeContextTag(GlxContextTagInfo *tagInfo);
+ 
+ Bool GlxSetScreenVendor(ScreenPtr screen, GlxServerVendor *vendor);
++Bool GlxSetClientScreenVendor(ClientPtr client, ScreenPtr screen, GlxServerVendor *vendor);
+ GlxScreenPriv *GlxGetScreen(ScreenPtr pScreen);
+ GlxServerVendor *GlxGetVendorForScreen(ClientPtr client, ScreenPtr screen);
+ 
+diff --git a/glx/vndservermapping.c b/glx/vndservermapping.c
+index 4efab8b81..04788ffbd 100644
+--- a/glx/vndservermapping.c
++++ b/glx/vndservermapping.c
+@@ -189,6 +189,27 @@ Bool GlxSetScreenVendor(ScreenPtr screen, GlxServerVendor *vendor)
+     return TRUE;
+ }
+ 
++Bool GlxSetClientScreenVendor(ClientPtr client, ScreenPtr screen, GlxServerVendor *vendor)
++{
++    GlxClientPriv *cl;
++
++    if (screen == NULL || screen->isGPU) {
++        return FALSE;
++    }
++
++    cl = GlxGetClientData(client);
++    if (cl == NULL) {
++        return FALSE;
++    }
++
++    if (vendor != NULL) {
++        cl->vendors[screen->myNum] = vendor;
++    } else {
++        cl->vendors[screen->myNum] = GlxGetVendorForScreen(NULL, screen);
++    }
++    return TRUE;
++}
++
+ GlxServerVendor *GlxGetVendorForScreen(ClientPtr client, ScreenPtr screen)
+ {
+     // Note that the client won't be sending GPU screen numbers, so we don't
+diff --git a/include/glxvndabi.h b/include/glxvndabi.h
+index b78306d23..71f36e722 100644
+--- a/include/glxvndabi.h
++++ b/include/glxvndabi.h
+@@ -75,7 +75,7 @@
+  * will still work.
+  */
+ #define GLXSERVER_VENDOR_ABI_MAJOR_VERSION 0
+-#define GLXSERVER_VENDOR_ABI_MINOR_VERSION 0
++#define GLXSERVER_VENDOR_ABI_MINOR_VERSION 1
+ 
+ #if defined(__cplusplus)
+ extern "C" {
+@@ -236,6 +236,17 @@ typedef struct GlxServerExportsRec {
+      * \param client The client.
+      */
+     int (* forwardRequest) (GlxServerVendor *vendor, ClientPtr client);
++
++    /**
++     * Sets the vendor library to use for a screen for a specific client.
++     *
++     * This function changes which vendor should handle GLX requests for a
++     * screen. Unlike \c setScreenVendor, this function can be called at any
++     * time, and only applies to requests from a single client.
++     *
++     * This function is available in GLXVND version 0.1 or later.
++     */
++    Bool (* setClientScreenVendor) (ClientPtr client, ScreenPtr screen, GlxServerVendor *vendor);
+ } GlxServerExports;
+ 
+ extern _X_EXPORT const GlxServerExports glxServer;
+-- 
+2.16.4
+

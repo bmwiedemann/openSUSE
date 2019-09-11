@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Unity\\)
 
 Name:           eolie
-Version:        0.9.62
+Version:        0.9.63
 Release:        0
 Summary:        Web browser for GNOME
 License:        GPL-3.0-or-later

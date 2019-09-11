@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,34 @@
 #
 
 
-%define openCryptoki_32bit_arch %{arm} %{ix86} s390 ppc
+%define openCryptoki_32bit_arch %{ix86} s390 ppc %{arm}
 # support in the workings for: ppc64
 # no support in sight for: ia64
-%define openCryptoki_64bit_arch aarch64 s390x ppc64 ppc64le x86_64
+%define openCryptoki_64bit_arch s390x ppc64 ppc64le x86_64 aarch64
 # autobuild:/work/cd/lib/misc/group
 #   openCryptoki    pkcs11:x:64:
 %define pkcs11_group_id 64
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
 Group:          Productivity/Security
-URL:            https://sourceforge.net/projects/opencryptoki/
-Source:         %{oc_cvs_tag}-%{version}.tar.gz
+URL:            https://github.com/opencryptoki/opencryptoki
+Source:         https://github.com/opencryptoki/%{oc_cvs_tag}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        openCryptoki.pkcsslotd
 Source2:        openCryptoki-TFAQ.html
-Source3:        openCryptoki-tmp.conf
-Source4:        openCryptoki-rpmlintrc
+Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
-Patch2:         ocki-3.11-Fix-target_list-passing-for-EP11-session.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  libitm1
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel >= 1.0
@@ -52,7 +51,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
 BuildRequires:  trousers-devel
 BuildRequires:  pkgconfig(systemd)
-Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/usermod
 
@@ -88,13 +86,12 @@ co-processor (with the PKCS#11 firmware loaded) and the IBM eServer
 Cryptographic Accelerator (FC 4960 on pSeries).
 
 %ifarch %{openCryptoki_32bit_arch}
-
 %package 32bit
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 # this is needed to make sure the pkcs11 group exists before
 # installation:
 Group:          Productivity/Security
-PreReq:         openCryptoki
+Requires:       openCryptoki
 ExclusiveArch:  %{openCryptoki_32bit_arch}
 
 %description 32bit
@@ -109,13 +106,12 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %endif
 
 %ifarch %{openCryptoki_64bit_arch}
-
 %package 64bit
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 # this is needed to make sure the pkcs11 group exists before
 # installation:
 Group:          Productivity/Security
-PreReq:         openCryptoki
+Requires:       openCryptoki
 ExclusiveArch:  %{openCryptoki_64bit_arch}
 
 %description 64bit
@@ -132,15 +128,23 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
-%patch2 -p1
 
 cp %{SOURCE2} .
 
 %build
-autoreconf --force --install
-%configure \
-	--enable-tpmtok \
-	--with-systemd=%{_unitdir}
+./bootstrap.sh
+
+%configure --with-systemd=%{_unitdir} \
+    --enable-tpmtok \
+%ifarch aarch64  # Apparently, gcc for aarch64 doesn't support transactional memory
+    --enable-locks \
+%endif
+%ifarch s390 s390x
+    --enable-pkcsep11_migrate
+%else
+    --disable-ccatok
+%endif
+
 make %{?_smp_mflags}
 dos2unix doc/README.ep11_stdll
 
@@ -151,19 +155,19 @@ install -d %{buildroot}%{_localstatedir}/lib/opencryptoki
 install -d %{buildroot}%{_initddir}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_prefix}/lib/tmpfiles.d
-install -m 644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpkcsslotd
 rm -rf %{buildroot}/tmp
+
 # Remove all development files
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_libdir}/opencryptoki/methods
 
 %pre
+%{service_add_pre pkcsslotd.service}
 # autobuild:/work/cd/lib/misc/group
 # openCryptoki    pkcs11:x:64:
-%{_bindir}/getent group %{pkcs11_group_id} >/dev/null || %{_sbindir}/groupadd -g %{pkcs11_group_id} -r pkcs11
+%{_sbindir}/groupadd -g %{pkcs11_group_id} -r pkcs11 2>/dev/null || true
 %{_sbindir}/usermod -a -G pkcs11 root
-%{service_add_pre pkcsslotd.service}
 
 %preun
 %{service_del_preun pkcsslotd.service}
@@ -188,7 +192,6 @@ fi
 %{service_del_postun pkcsslotd.service}
 
 %ifarch %{openCryptoki_32bit_arch}
-
 %postun 32bit
 if [ -L %{_sysconfdir}/pkcs11 ] ; then
 	rm %{_sysconfdir}/pkcs11
@@ -212,7 +215,6 @@ cd stdll
 %endif
 
 %ifarch %{openCryptoki_64bit_arch}
-
 %post 64bit
 # Old library name for 64bit libs were under /usr/lib/pkcs11. For migration purposes only.
 test -d %{_prefix}/lib/pkcs11 || mkdir -p %{_prefix}/lib/pkcs11
@@ -221,32 +223,35 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %endif
 
 %files
-%defattr(-,root,root)
 %doc openCryptoki-TFAQ.html FAQ
 %doc doc/*
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
 %ifarch s390 s390x
-%{_sbindir}/pkcsep11_session
-%config %{_sysconfdir}/opencryptoki/ep11tok.conf
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
+%config %{_sysconfdir}/opencryptoki/ep11tok.conf
 %{_sbindir}/pkcsep11_migrate
 %endif
 %{_unitdir}/pkcsslotd.service
 %{_tmpfilesdir}/opencryptoki.conf
 %{_sbindir}/rcpkcsslotd
   # utilities
+%ifarch s390 s390x
+%{_sbindir}/pkcsep11_session
+%{_sbindir}/pkcscca
+%endif
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
 %{_sbindir}/pkcsicsf
-%{_sbindir}/pkcscca
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
   # State and lock directories
 %dir %attr(755,root,pkcs11) %{_localstatedir}/lib/opencryptoki
+%ifarch s390 s390x
 %dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/ccatok
 %dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
+%endif
 %dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/swtok
 %dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/swtok/TOK_OBJ
 %dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/tpm
@@ -261,21 +266,21 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_mandir}/man*/*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
 %{_includedir}/opencryptoki
 
 %ifarch %{openCryptoki_32bit_arch}
 %files 32bit
-%defattr(-,root,root)
   # these don't conflict because they only exist as 64bit binaries if
   # there is no 32bit version of them usable
 %{_libdir}/opencryptoki/libopencryptoki.so
 %ghost %{_libdir}/opencryptoki/PKCS11_API.so
 %{_libdir}/opencryptoki/*.0
+%ifarch s390
 %{_libdir}/opencryptoki/stdll/libpkcs11_cca.so
 %ghost %{_libdir}/opencryptoki/stdll/PKCS11_CCA.so
+%endif
 %{_libdir}/opencryptoki/stdll/libpkcs11_tpm.so
 %ghost %{_libdir}/opencryptoki/stdll/PKCS11_TPM.so
 %{_libdir}/opencryptoki/stdll/libpkcs11_sw.so
@@ -298,7 +303,6 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 
 %ifarch %{openCryptoki_64bit_arch}
 %files 64bit
-%defattr(-,root,root)
 %dir %{_libdir}/opencryptoki
 %{_libdir}/opencryptoki/*.so
 %{_libdir}/opencryptoki/*.0

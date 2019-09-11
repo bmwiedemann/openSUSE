@@ -17,14 +17,14 @@
 
 
 # grep -r define.VERSION (sometimes also noted down in schily-%rver/AN-%rver)
-%global box_version	2019.07.22
+%global box_version	2019.08.13
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2019-07-22
+%define rver	2019-08-13
 
 Name:           schily
 Version:        %box_version
@@ -37,11 +37,10 @@ URL:            http://cdrtools.sourceforge.net/private/cdrecord.html
 
 Source:         https://downloads.sf.net/schilytools/%name-%rver.tar.bz2
 Source1:        README-FIRST
-Patch1:         iconv-name.diff
-Patch2:         schily-2018-05-25_star_configuration.patch
 # Honor https://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Upstream_policy
 # and submit patches upstream FIRST (cc to the bspkg maintainer perhaps).
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         iconv-name.diff
+Patch2:         schily-2018-05-25_star_configuration.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -735,7 +734,6 @@ fi
 %_mandir/man1/btcflash.1*
 
 %files -n cdda2wav
-%defattr(-,root,root)
 %license CDDL.Schily.txt
 %doc cdda2wav/Changelog cdda2wav/FAQ cdda2wav/Frontends cdda2wav/HOWTOUSE
 %doc cdda2wav/NEEDED cdda2wav/README cdda2wav/THANKS cdda2wav/TODO
@@ -754,7 +752,6 @@ fi
 %_mandir/man1/cdda2wav.1*
 
 %files -n cdrecord
-%defattr(-,root,root)
 %license CDDL.Schily.txt cdrecord/COPYING
 %doc cdrecord/README*
 %config %_sysconfdir/default/cdrecord
@@ -899,7 +896,6 @@ fi
 %_libdir/libxtermcap.so.1.0
 
 %files -n mkisofs
-%defattr(-,root,root)
 %license mkisofs/COPYING
 %doc mkisofs/ChangeLog mkisofs/ChangeLog.mkhybrid mkisofs/README*
 %doc mkisofs/RELEASE

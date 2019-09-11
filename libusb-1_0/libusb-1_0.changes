@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 29 20:04:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.23
+  * Core: abandon synchronous transfers when device closure is
+    detected.
+  * Core: fix error in handling the removal of file descriptors
+    while handling events.
+  * New API libusb_set_log_cb() to redirect global and per context
+    log messages to the provided log handling function.
+  * New API libusb_wrap_sys_device to allow the user to specify
+    the usb device to use.
+  * Various other bug fixes and improvements.
+
+-------------------------------------------------------------------
 Sun Mar 25 10:05:47 UTC 2018 - mardnh@gmx.de
 
 - Update to version 1.0.22

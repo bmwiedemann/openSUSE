@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,6 +31,17 @@ Source5:        https://ftp.samba.org/pub/linux-cifs/%{name}/%{name}-%{version}.
 Source6:        cifs-utils.keyring
 Source100:      README.cifstab.migration
 Source1:        cifs.init
+
+Patch0:         0001-smbinfo-Improve-help-usage-and-add-h-option.patch
+Patch1:         0002-smbinfo-Add-bash-completion-support-for-smbinfo.patch
+Patch2:         0003-getcifsacl-Add-support-to-accept-more-paths.patch
+Patch3:         0004-getcifsacl-Fix-usage-message-to-include-multiple-fil.patch
+Patch4:         0005-smbinfo-add-GETCOMPRESSION-support.patch
+Patch5:         0006-getcifsacl-Add-support-for-R-recursive-option.patch
+Patch6:         0007-smbinfo-add-bash-completion-support-for-getcompressi.patch
+Patch7:         0008-mount.cifs.c-fix-memory-leaks-in-main-func.patch
+Patch8:         0009-Zero-fill-the-allocated-memory-for-new-struct-cifs_n.patch
+Patch9:         0010-Zero-fill-the-allocated-memory-for-a-new-ACE.patch
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
@@ -72,11 +83,6 @@ BuildRequires:  fdupes
 BuildRequires:  libwbclient-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
-BuildRequires:  (samba-libs-python3 if samba-libs >= 4.9.3)
-%else
-BuildRequires:  samba-libs-python3
-%endif
 Requires:       keyutils
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
@@ -112,6 +118,16 @@ provide these credentials to the kernel automatically at login.
 %prep
 %setup -q
 cp -a ${RPM_SOURCE_DIR}/README.cifstab.migration .
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"

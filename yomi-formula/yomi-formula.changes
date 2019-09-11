@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Aug 26 11:43:31 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Lower the priority of /usr/share/yomi/pillar 
+
+-------------------------------------------------------------------
+Fri Aug 23 14:09:03 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1566569312.4133e8e:
+  * storage.wipe: state to wipe all devices
+
+-------------------------------------------------------------------
+Fri Aug 23 13:03:26 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1566565353.86af2cb:
+  * devices.hwinfo: parse the hwinfo report
+
+-------------------------------------------------------------------
+Tue Aug 13 08:02:08 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565683297.a242917:
+  * pillar: make grub2_console persent in config
+
+-------------------------------------------------------------------
+Mon Aug 12 16:23:41 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565626987.fdda5d6:
+  * grub2_mkconfig: do not use gfxterm when in console mode
+  * docs: update links to Factory
+  * pillar: use better default pattern
+
+-------------------------------------------------------------------
+Mon Aug 12 11:06:22 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565607953.281fdae:
+  * bootloader: provides a default value to kernel
+
+-------------------------------------------------------------------
+Mon Aug 12 08:06:59 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565597137.7fbd398:
+  * devices.hwinfo provide a basic report module
+  * devices.wipe: remove GRUB signature
+  * bootloader: check for the second stage
+  * reboot: replace kexec config option with reboot
+
+-------------------------------------------------------------------
 Wed Aug 07 15:32:14 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1565191883.64eabeb:

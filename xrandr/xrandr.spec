@@ -1,7 +1,7 @@
 #
 # spec file for package xrandr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xrandr
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Primitive command line interface to RandR extension
 License:        MIT
 Group:          System/X11/Utilities
 Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM xrandr-print-outputs-per-provider.patch federico@suse.com - Make the --listproviders option also print which outputs are supported by each provider
 Patch1:         xrandr-print-outputs-per-provider.patch
-Patch2:         U_xrandr_suppress-misleading-indentation-warning.patch
-Patch3:         U_xrandr_add-filter-flag.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -49,8 +47,6 @@ the outputs for a screen. It can also set the screen size.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 %configure
@@ -63,7 +59,7 @@ rm %{buildroot}%{_bindir}/xkeystone
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %{_bindir}/xrandr
 %{_mandir}/man1/xrandr.1%{?ext_man}
 

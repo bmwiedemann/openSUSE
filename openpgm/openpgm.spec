@@ -39,6 +39,8 @@ Patch0:         libpgm-5.2.122-reproducible.patch
 Patch1:         libpgm-5.2.122-reproducible-architecture.patch
 # PATCH-FIX-UPSTREAM bluca https://github.com/steve-o/openpgm/pull/57
 Patch2:         libpgm-5.2.122-pkg-config-do-not-add-I-to-non-existing-directory.patch
+# upstream pending patch https://github.com/steve-o/openpgm/pull/63
+Patch3:         libpgm-5.2.122-configure-rdtsc-checking-chg.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -82,6 +84,7 @@ This subpackage contains the header files for OpenPGM.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 mkdir -p m4

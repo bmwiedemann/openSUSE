@@ -19,12 +19,12 @@
 
 # changed with every update
 %define major          68
-%define mainver        %major.0.1
-%define orig_version   68.0.1
-%define orig_suffix    %{nil}
-%define update_channel release
+%define mainver        %major.1.0
+%define orig_version   68.1.0
+%define orig_suffix    esr
+%define update_channel esr68
 %define branding       1
-%define releasedate    20190717172542
+%define releasedate    20190826132627
 %define source_prefix  firefox-%{orig_version}
 
 # always build with GCC as SUSE Security Team requires that
@@ -134,7 +134,7 @@ Summary:        Mozilla %{appname} Web Browser
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
 Url:            http://www.mozilla.org/
-Source:         http://ftp.mozilla.org/pub/firefox/releases/%{version}/source/firefox-%{orig_version}%{orig_suffix}.source.tar.xz
+Source:         http://ftp.mozilla.org/pub/firefox/releases/%{version}%{orig_suffix}/source/firefox-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        MozillaFirefox.desktop
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
@@ -156,7 +156,7 @@ Source16:       MozillaFirefox.changes
 # please get your own set of keys.
 Source18:       mozilla-api-key
 Source19:       google-api-key
-Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{version}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
+Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
@@ -168,13 +168,12 @@ Patch6:         mozilla-bmo1463035.patch
 Patch7:         mozilla-cubeb-noreturn.patch
 Patch8:         mozilla-fix-aarch64-libopus.patch
 Patch9:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
-Patch10:        mozilla-gcc-internal-compiler-error.patch
-Patch11:        mozilla-s390-context.patch
-Patch12:        mozilla-s390-bigendian.patch
-Patch13:        mozilla-reduce-rust-debuginfo.patch
-Patch14:        mozilla-ppc-altivec_static_inline.patch
-Patch15:        mozilla-bmo1005535.patch
-Patch16:        fix-build-after-y2038-changes-in-glibc.patch
+Patch10:        mozilla-s390-context.patch
+Patch11:        mozilla-s390-bigendian.patch
+Patch12:        mozilla-reduce-rust-debuginfo.patch
+Patch13:        mozilla-ppc-altivec_static_inline.patch
+Patch14:        mozilla-bmo1005535.patch
+Patch15:        mozilla-bmo1568145.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -294,14 +293,13 @@ cd $RPM_BUILD_DIR/%{source_prefix}
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 %ifarch s390x
-%patch12 -p1
+%patch11 -p1
 %endif
+%patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -413,6 +411,10 @@ ac_add_options --with-arch=armv7-a
 %endif
 %ifarch aarch64 %arm s390x
 ac_add_options --disable-webrtc
+%endif
+# mitigation/workaround for bmo#1512162
+%ifarch ppc64le
+ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)

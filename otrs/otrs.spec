@@ -23,8 +23,8 @@
 
 Name:           otrs
 
-%define otrs_ver 6.0.20
-%define itsm_ver 6.0.20
+%define otrs_ver 6.0.22
+%define itsm_ver 6.0.22
 %define itsm_min 6
 %define otrs_root /srv/%{name}
 %define otrsdoc_dir_files AUTHORS* CHANGES* COPYING* CREDITS README* UPGRADING.SUSE doc

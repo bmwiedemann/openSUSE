@@ -23,11 +23,10 @@
 %define _uaver  601
 %define _socxx  1
 %define _revsn  335528
-%ifarch x86_64
-%bcond_without libcxx
-%else
+
+# Superseded by llvm7.
 %bcond_with libcxx
-%endif
+
 %ifarch ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp
 %else
@@ -52,7 +51,7 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without pyclang
+%bcond_with pyclang
 
 Name:           llvm6
 Version:        6.0.1
@@ -97,7 +96,6 @@ Patch14:        llvm-do-not-install-static-libraries.patch
 Patch15:        opt-viewer-Do-not-require-python-2.patch
 Patch16:        n_clang_allow_BUILD_SHARED_LIBRARY.patch
 Patch17:        polly-cmake-Trust-pkg-config-in-FindJsoncpp.patch
-Patch18:        llvm-build-tests-with-rtti.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        llvm6-fix-gdb-index-crash.patch
 Patch22:        lldb-fix-build-with-python-3.7.patch
@@ -166,8 +164,8 @@ Requires:       llvm%{_sonum}-polly-devel
 Requires:       ncurses-devel
 Requires:       pkgconfig
 Requires:       pkgconfig(libedit)
-Provides:       llvm-devel-provider
-Conflicts:      llvm-devel-provider
+Provides:       llvm-devel-provider = %{version}
+Conflicts:      llvm-devel-provider < %{version}
 Conflicts:      cmake(LLVM)
 %if %{with ffi}
 Requires:       pkgconfig(libffi)
@@ -193,8 +191,6 @@ Recommends:     clang%{_sonum}-checker
 Recommends:     libc++-devel
 Recommends:     libomp%{_sonum}-devel
 Recommends:     llvm-gold-devel
-Recommends:     scan-build
-Recommends:     scan-view
 %if %{with cxx}
 Requires:       libc++%{_socxx}
 %endif
@@ -211,10 +207,10 @@ Group:          Development/Languages/Other
 Requires:       libclang%{_sonum}
 # Due to a packaging error in clang3_8 we have to conflict.
 Conflicts:      clang3_8
-Conflicts:      scan-build
-Conflicts:      scan-view
-Provides:       scan-build
-Provides:       scan-view
+Conflicts:      scan-build < %{version}
+Conflicts:      scan-view < %{version}
+Provides:       scan-build = %{version}
+Provides:       scan-view = %{version}
 
 %description -n clang%{_sonum}-checker
 This package contains scan-build and scan-view, command line
@@ -225,10 +221,10 @@ Summary:        Automatically add missing includes
 # Avoid multiple provider errors
 Group:          Development/Languages/Other
 Requires:       libclang%{_sonum} = %{version}
-Conflicts:      clang-include-fixer
-Conflicts:      find-all-symbols
-Provides:       clang-include-fixer
-Provides:       find-all-symbols
+Conflicts:      clang-include-fixer < %{version}
+Conflicts:      find-all-symbols < %{version}
+Provides:       clang-include-fixer = %{version}
+Provides:       find-all-symbols = %{version}
 
 %description -n clang%{_sonum}-include-fixer
 One of the major nuisances of C++ compared to other languages
@@ -278,8 +274,8 @@ Summary:        Link-time optimizer for LLVM (devel package)
 Group:          Development/Languages/Other
 Requires:       %{name}-devel = %{version}
 Requires:       libLTO%{_sonum}
-Conflicts:      libLTO.so
-Provides:       libLTO.so
+Conflicts:      libLTO.so < %{version}
+Provides:       libLTO.so = %{version}
 
 %description LTO-devel
 This package contains the link-time optimizer for LLVM.
@@ -291,8 +287,8 @@ Summary:        Gold linker plugin for LLVM
 Group:          Development/Languages/Other
 Requires:       %{name}-devel = %{version}
 Requires:       libLLVM%{_sonum}
-Conflicts:      llvm-gold-provider
-Provides:       llvm-gold-provider
+Conflicts:      llvm-gold-provider < %{version}
+Provides:       llvm-gold-provider = %{version}
 
 %description gold
 This package contains the Gold linker plugin for LLVM.
@@ -302,8 +298,8 @@ Summary:        MPI plugin for LLVM
 # Avoid multiple provider errors
 Group:          Development/Languages/Other
 Requires:       libLLVM%{_sonum}
-Conflicts:      libomp-devel
-Provides:       libomp-devel
+Conflicts:      libomp-devel < %{version}
+Provides:       libomp-devel = %{version}
 
 %description -n libomp%{_sonum}-devel
 This package contains the OpenMP MPI plugin for LLVM.
@@ -324,8 +320,8 @@ Summary:        C++ standard library implementation (devel package)
 Group:          Development/Languages/C and C++
 Requires:       libc++%{_socxx} = %{version}
 Requires:       libc++abi-devel = %{version}
-Conflicts:      libc++.so
-Provides:       libc++.so
+Conflicts:      libc++.so < %{version}
+Provides:       libc++.so = %{version}
 
 %description -n libc++-devel
 This package contains libc++, a new implementation of the C++
@@ -343,8 +339,8 @@ of the C++ standard library, targeting C++11.
 Summary:        C++ standard library ABI (devel package)
 Group:          Development/Languages/C and C++
 Requires:       libc++-devel
-Conflicts:      libc++abi.so
-Provides:       libc++abi.so
+Conflicts:      libc++abi.so < %{version}
+Provides:       libc++abi.so = %{version}
 
 %description -n libc++abi-devel
 This package contains the ABI for libc++, a new implementation
@@ -356,8 +352,8 @@ of the C++ standard library, targeting C++11.
 Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
 Supplements:    packageand(llvm3_9-devel:vim)
-Conflicts:      vim-plugin-llvm
-Provides:       vim-plugin-llvm
+Conflicts:      vim-plugin-llvm < %{version}
+Provides:       vim-plugin-llvm = %{version}
 BuildArch:      noarch
 
 %description    vim-plugins
@@ -367,8 +363,8 @@ This package contains vim plugins for LLVM like syntax highlighting.
 Summary:        Emacs plugins for LLVM
 Group:          Productivity/Text/Editors
 Supplements:    packageand(llvm3_9-devel:emacs)
-Conflicts:      emacs-llvm
-Provides:       emacs-llvm
+Conflicts:      emacs-llvm < %{version}
+Provides:       emacs-llvm = %{version}
 BuildArch:      noarch
 
 %description    emacs-plugins
@@ -403,8 +399,8 @@ Requires:       python3
 Requires:       python3-PyYAML
 Requires:       python3-Pygments
 BuildArch:      noarch
-Conflicts:      opt-viewer
-Provides:       opt-viewer
+Conflicts:      opt-viewer < %{version}
+Provides:       opt-viewer = %{version}
 
 %description opt-viewer
 Set of tools for visualising the LLVM optimization records generated with -fsave-optimization-record. Used for compiler-assisted performance analysis.
@@ -460,8 +456,8 @@ Requires:       pkgconfig(libedit)
 Requires:       pkgconfig(libffi)
 Requires:       pkgconfig(libxml-2.0)
 Requires:       pkgconfig(zlib)
-Provides:       lldb-devel-provider
-Conflicts:      lldb-devel-provider
+Provides:       lldb-devel-provider = %{version}
+Conflicts:      lldb-devel-provider < %{version}
 
 %description -n lldb%{_sonum}-devel
 This package contains the development files for LLDB.
@@ -485,8 +481,8 @@ This package contains the Python bindings to clang (C language) frontend for LLV
 %package polly
 Summary:        Polly is a high-level loop and data-locality optimizer and optimization infrastructure for LLVM.
 Group:          Development/Languages/Other
-Conflicts:      llvm-polly-provider
-Provides:       llvm-polly-provider
+Conflicts:      llvm-polly-provider < %{version}
+Provides:       llvm-polly-provider = %{version}
 
 %description polly
 Polly uses an abstract mathematical representation based on integer polyhedra
@@ -500,8 +496,8 @@ code generation.
 Summary:        Development files for Polly
 Group:          Development/Languages/Other
 Requires:       llvm%{_sonum}-polly = %{version}
-Conflicts:      llvm-polly-devel-provider
-Provides:       llvm-polly-devel-provider
+Conflicts:      llvm-polly-devel-provider < %{version}
+Provides:       llvm-polly-devel-provider = %{version}
 
 %description polly-devel
 This package contains the development files for Polly.
@@ -518,7 +514,6 @@ This package contains the development files for Polly.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
-%patch18 -p1
 %patch20 -p1
 %patch21 -p1
 %patch23 -p1
@@ -597,8 +592,6 @@ sed -i s,LLVM_REVISION,\"%{_revsn}\",g tools/clang/lib/Basic/Version.cpp
 #    the following stage.
 flags=$(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=./-D_FORTIFY_SOURCE=0/;s/\B-g\b//g')
 
-flags+=" -fno-strict-aliasing"
-
 %ifarch armv6hl
 flags+=" -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfp"
 %endif
@@ -622,22 +615,29 @@ TARGETS_TO_BUILD="host;AMDGPU;BPF;NVPTX"
 %endif
 
 # do not eat all memory
+mem_per_compile_job=900000
+%ifarch i586 ppc armv6hl armv7hl
+mem_per_compile_job=600000
+%endif
+%ifarch x86_64
+mem_per_compile_job=800000
+%endif
+
 max_link_jobs="%{?jobs:%{jobs}}"
 max_compile_jobs="%{?jobs:%{jobs}}"
 echo "Available memory:"
 cat /proc/meminfo
 echo "System limits:"
 ulimit -a
-max_mem=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
+avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 if test -n "$max_link_jobs" -a "$max_link_jobs" -gt 1 ; then
     mem_per_link_job=3000000
-    max_jobs="$(($max_mem / $mem_per_link_job))"
+    max_jobs="$(($avail_mem / $mem_per_link_job))"
     test "$max_link_jobs" -gt "$max_jobs" && max_link_jobs="$max_jobs" && echo "Warning: Reducing number of link jobs to $max_jobs because of memory limits"
     test "$max_link_jobs" -le 0 && max_link_jobs=1 && echo "Warning: Not linking in parallel at all becuse of memory limits"
 fi
 if test -n "$max_compile_jobs" -a "$max_compile_jobs" -gt 1 ; then
-    mem_per_compile_job=1500000
-    max_jobs="$(($max_mem / $mem_per_compile_job))"
+    max_jobs="$(($avail_mem / $mem_per_compile_job))"
     test "$max_compile_jobs" -gt "$max_jobs" && max_compile_jobs="$max_jobs" && echo "Warning: Reducing number of compile jobs to $max_jobs because of memory limits"
     test "$max_compile_jobs" -le 0 && max_compile_jobs=1 && echo "Warning: Not compiling in parallel at all becuse of memory limits"
 fi
@@ -712,8 +712,7 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
     -DENABLE_LINKER_BUILD_ID=ON \
     -DLLVM_TABLEGEN="${LLVM_TABLEGEN}" \
     -DCLANG_TABLEGEN="${CLANG_TABLEGEN}" \
-    -DLLVM_REQUIRES_RTTI=ON \
-    -DLLVM_ENABLE_TIMESTAMPS=OFF \
+    -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
@@ -799,6 +798,7 @@ mv %{buildroot}%{_datadir}/clang/clang-format-diff.py %{buildroot}%{_bindir}/cla
 mv %{buildroot}%{_datadir}/clang/clang-tidy-diff.py %{buildroot}%{_bindir}/clang-tidy-diff
 mv %{buildroot}%{_datadir}/clang/run-clang-tidy.py %{buildroot}%{_bindir}/run-clang-tidy
 
+install -d %{buildroot}%{python3_sitelib}
 mv %{buildroot}%{_datadir}/opt-viewer/opt-diff.py %{buildroot}%{_bindir}/opt-diff
 mv %{buildroot}%{_datadir}/opt-viewer/opt-stats.py %{buildroot}%{_bindir}/opt-stats
 mv %{buildroot}%{_datadir}/opt-viewer/opt-viewer.py %{buildroot}%{_bindir}/opt-viewer
@@ -874,6 +874,7 @@ manfiles=( FileCheck bugpoint dsymutil llc lli \
 
 # Fix the clang -> clang-X.Y symlink to work with update-alternatives
 mv %{buildroot}%{_bindir}/clang-%{_minor} %{buildroot}%{_bindir}/clang
+ln -s %{_bindir}/clang-%{_relver} %{buildroot}%{_bindir}/clang-%{_sonum}
 ln -s %{_bindir}/clang-%{version} %{buildroot}%{_bindir}/clang-%{_minor}
 
 # Add clang++-X.Y symbolic link as well - it seems to be expected by some
@@ -903,21 +904,21 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 #
 
 # Version information
-_llvm_version %{version}
-_llvm_relver %{_relver}
-_llvm_minorver %{_minor}
-_llvm_sonum  %{_sonum}
-_libcxx_sonum %{_socxx}
-_llvm_revision  %{_revsn}
+%_llvm_version %{version}
+%_llvm_relver %{_relver}
+%_llvm_minorver %{_minor}
+%_llvm_sonum  %{_sonum}
+%_libcxx_sonum %{_socxx}
+%_llvm_revision  %{_revsn}
 
 # Build information
-_llvm_with_libcxx %{with libcxx}
-_llvm_with_openmp %{with openmp}
-_llvm_with_ffi %{with ffi}
-_llvm_with_oprofile %{with oprofile}
-_llvm_with_valgrind %{with valgrind}
-_llvm_with_pyclang %{with pyclang}
-_llvm_with_lldb %{with lldb}
+%_llvm_with_libcxx %{with libcxx}
+%_llvm_with_openmp %{with openmp}
+%_llvm_with_ffi %{with ffi}
+%_llvm_with_oprofile %{with oprofile}
+%_llvm_with_valgrind %{with valgrind}
+%_llvm_with_pyclang %{with pyclang}
+%_llvm_with_lldb %{with lldb}
 
 EOF
 
@@ -1376,7 +1377,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/llvm-lib.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llvm-link.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llvm-nm.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/llvm-pdbuti.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/llvm-pdbutil.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llvm-profdata.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llvm-readobj.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llvm-stress.1%{ext_man}
@@ -1386,6 +1387,7 @@ fi
 
 %files -n clang%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
+%{_bindir}/clang-%{_sonum}
 %{_bindir}/clang-%{_minor}
 %{_bindir}/clang++-%{_minor}
 %{_bindir}/c-index-test

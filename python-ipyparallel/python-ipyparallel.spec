@@ -148,7 +148,7 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-ipyparallel/
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
-%pytest -k 'not test_disambiguate_ip and not test_bind_kernel and not test_autopx_blocking'
+%pytest -k 'not test_disambiguate_ip and not test_bind_kernel and not test_autopx_blocking and not test_warning_on_hostname_match'
 
 %post
 %{python_install_alternative ipcluster ipcontroller ipengine}

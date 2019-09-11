@@ -24,6 +24,9 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Projects/GnomeVideoEffects
 Source0:        https://download.gnome.org/sources/gnome-video-effects/0.5/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-video-effects-meson-pkgconfig-fix.patch -- Various meson improvements and fixes
+Patch0:         gnome-video-effects-meson-pkgconfig-fix.patch
+
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig

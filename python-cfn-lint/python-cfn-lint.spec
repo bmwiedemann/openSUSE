@@ -26,6 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/aws-cloudformation/cfn-python-lint
 Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%{version}.tar.gz#/cfn-python-lint-%{version}.tar.gz
 Patch0:         cl_drop-compatible-releases-operator.patch
+Patch1:         cl_fix-lambda-runtimes-EOL-dates.patch
+Patch2:         cl_fix-config-expand-paths-test.patch
+%if 0%{?suse_version} < 1500
+BuildRequires:  python
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -77,6 +82,8 @@ resource properties and best practices.
 %prep
 %setup -q -n cfn-python-lint-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %python_build

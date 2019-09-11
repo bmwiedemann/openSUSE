@@ -19,7 +19,7 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.27.0
+Version:        2.28.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause

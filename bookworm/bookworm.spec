@@ -1,7 +1,7 @@
 #
 # spec file for package bookworm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bookworm
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        E-book reader
 License:        GPL-3.0-or-later
@@ -25,9 +25,8 @@ Group:          Productivity/Office/Other
 URL:            https://babluboy.github.io/bookworm
 Source:         https://github.com/babluboy/bookworm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ImageMagick
-BuildRequires:  cmake
+BuildRequires:  meson
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -60,13 +59,11 @@ It uses poppler for decoding and read formats like EPUB, PDF, mobi, cbr, etc.
 chmod -x AUTHORS
 
 %build
-%cmake \
-    -DGSETTINGS_COMPILE=OFF
-
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 
 # fix env-script-interpreter
 pushd %{buildroot}%{_datadir}
@@ -101,16 +98,28 @@ find %{buildroot} -name \*.txt -exec chmod 0644 {} +
 %find_lang com.github.babluboy.bookworm %{name}.lang
 %fdupes %{buildroot}/%{_datadir}
 
-%files
-%license LICENSE
+# dirlist HiDPI icons (see: hicolor/index.theme)
+touch $PWD/dir.lst
+_dirlist=$PWD/dir.lst
+pushd %{buildroot}
+find ./ | while read _list; do
+    echo $_list | grep '[0-9]\@[0-9]' || continue
+    _path=$(echo $_list | sed 's/[^/]//')
+    if ! ls ${_path%/*}; then
+        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
+    fi
+done
+popd
+
+%files -f dir.lst
+%license COPYING
 %doc AUTHORS README.md
 %{_bindir}/com.github.babluboy.bookworm
 %{_datadir}/applications/com.github.babluboy.bookworm.desktop
+%{_datadir}/com.github.babluboy.bookworm/
 %{_datadir}/glib-2.0/schemas/com.github.babluboy.bookworm.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/*bookworm*.??g
+%{_datadir}/icons/hicolor/*/*/com.github.babluboy.bookworm.??g
 %{_datadir}/metainfo/com.github.babluboy.bookworm.appdata.xml
-%{_datadir}/bookworm/
-%{_datadir}/contractor/
 
 %files lang -f %{name}.lang
 

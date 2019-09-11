@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 18 15:04:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop python-numpy-devel BuildRequires and python-numpy Requires:
+  No longer build the optional numpy support.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:39:05 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

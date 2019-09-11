@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5RemoteObjects5
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtremoteobjects-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtremoteobjects-everywhere-src-5.13.1
 Name:           libqt5-qtremoteobjects
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 RemoteObjects Library
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
@@ -113,7 +113,7 @@ mkdir .git
 %qmake5_install
 
 # kill .la files
-rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
+rm -f %{buildroot}%{_libqt5_libdir}/*.la
 
 # put all the binaries to %%_bindir and symlink them back to %%_qt5_bindir
 mkdir -p %{buildroot}%{_bindir}

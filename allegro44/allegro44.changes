@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Sep 21 13:53:17 UTC 2017 - rpm@fthiessen.de
+
+- Renamed to allegro44
+
+-------------------------------------------------------------------
+Sun May 17 09:12:43 UTC 2015 - meissner@suse.com
+
+- info deinstall needs to be in preun section
+
+-------------------------------------------------------------------
+Mon Dec 22 22:24:01 UTC 2014 - nemysis@gmx.ch
+
+- Use for patch(es) %{name}-version instead of %{name}-%{version}
+
+-------------------------------------------------------------------
+Fri Dec 19 04:53:49 UTC 2014 - nemysis@gmx.ch
+
+- Use SED-FIX-OPENSUSE for sed
+
+-------------------------------------------------------------------
+Thu Dec 18 22:34:16 UTC 2014 - nemysis@gmx.ch
+
+- Rename allegro4 to allegro
+- Change Summary
+- Change URL for The giftware licence
+- Use for patches %{name}-%{version} instead of liballeg4_4 or
+  allegro-4.4.2 and add descriptions for patches
+- Add patch allegro4-4.4.2-src_x_xkeyboard.c.patch
+- Use check for openSUSE %if 0%{?suse_version}
+- Change Description
+- Add sed, fix include xf86dga.h
+
+-------------------------------------------------------------------
+Sun Dec  7 20:44:36 UTC 2014 - mailaender@opensuse.org
+
+- fixed rpmlint warnings
+
+-------------------------------------------------------------------
+Fri May  2 09:47:59 UTC 2014 - bwiedemann@suse.com
+
+- Add 32bit modules.lst via baselibs.conf
+
+-------------------------------------------------------------------
+Sat Sep 22 09:36:19 UTC 2012 - reddwarf@opensuse.org
+
+- Add texinfo BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr 19 16:39:35 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 4.4.2
+
+-------------------------------------------------------------------
+Sun May 15 17:50:12 UTC 2011 - reddwarf@opensuse.org
+
+- Fix main pkg-config, requiring X11 related packages.
+  Through RPM magic automatically fixes the package dependencies.
+
+-------------------------------------------------------------------
+Fri May 13 00:11:38 UTC 2011 - reddwarf@opensuse.org
+
+- Fix module loading
+
+-------------------------------------------------------------------
+Wed Jul 14 13:30:49 CEST 2010 - uli@suse.de
+
+- build baselibs
+
+-------------------------------------------------------------------
+Sun Mar 28 10:46:53 UTC 2010 - reddwarf@opensuse.org
+
+- First release 4.4.1.1
+

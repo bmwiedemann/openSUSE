@@ -12,10 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define lname libXpresent1
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 Name:           libXpresent
 Version:        1.0.0
@@ -25,9 +27,9 @@ License:        MIT
 Group:          Development/Libraries/X11
 Url:            https://gitlab.freedesktop.org/xorg/lib/libxpresent
 Source:         https://www.x.org/releases/individual/lib/%{name}-%{version}.tar.bz2
-BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xrandr)
 %if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(presentproto)
 %endif
@@ -45,8 +47,8 @@ synchronizing with the display refresh and potentially using a more
 efficient mechanism than copying the contents of the source pixmap.
 
 %package -n %{lname}
-Summary:      An X Window System client interface to the Present extension to the X protocol
-Group:        System/Libraries
+Summary:        An X Window System client interface to the Present extension to the X protocol
+Group:          System/Libraries
 
 %description -n %{lname}
 libXpresent provides an X Window System client interface to the
@@ -58,9 +60,9 @@ synchronizing with the display refresh and potentially using a more
 efficient mechanism than copying the contents of the source pixmap.
 
 %package devel
-Summary:      Development files for the Xpresent library
-Group:        Development/Libraries/X11
-Requires:     %{lname} = %{version}
+Summary:        Development files for the Xpresent library
+Group:          Development/Libraries/X11
+Requires:       %{lname} = %{version}
 
 %description devel
 This package contains header files and documentation for the Xpresent library.

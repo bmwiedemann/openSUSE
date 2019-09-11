@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msm
-Version:        0.7.8
+Version:        0.8.2
 Release:        0
 Summary:        Mycroft Skills Manager
 License:        Apache-2.0

@@ -22,7 +22,7 @@
 %bcond_without prebuiltman
 
 Name:           drbd-utils
-Version:        9.9.0
+Version:        9.10.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0+
@@ -37,6 +37,9 @@ Patch3:         fence-after-pacemaker-down.patch
 # PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
+# Bach port patch for kernel v5.2
+Patch6:         netlink-prepare-for-kernel-v5.2.patch
+Patch7:         netlink-Add-NLA_F_NESTED-flag-to-nested-attribute.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -87,6 +90,8 @@ raid 1. It is a building block for setting up clusters.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
@@ -121,6 +126,20 @@ make OPTFLAGS="%{optflags}" %{?_smp_mflags}
 mkdir -p %{buildroot}%{_localstatedir}/lib/drbd
 %ifnarch %ix86 x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
+%else
+d=%{_libexecdir}/xen/scripts
+mkdir -p %{buildroot}$d
+mv %{buildroot}%{_sysconfdir}/xen/scripts/block-drbd %{buildroot}$d
+%if %{suse_version} > 1500
+rm -rf %{buildroot}%{_sysconfdir}/xen
+%else
+tee %{buildroot}%{_sysconfdir}/xen/scripts/block-drbd <<_EOS_
+#!/bin/sh
+# SUSE versions up to SLE15 populated /etc with files.
+# This wrapper exists to remain compatible with their expected script path
+exec $d/block-drbd "\$@"
+_EOS_
+%endif
 %endif
 
 %pre
@@ -169,9 +188,12 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 /sbin/drbdmon
 %endif
 %ifarch %ix86 x86_64
+%if %{suse_version} <= 1500
 %dir %attr(700,root,root) %{_sysconfdir}/xen
 %dir %{_sysconfdir}/xen/scripts
-%{_sysconfdir}/xen/scripts/block-drbd
+%attr(755,root,root) %{_sysconfdir}/xen/scripts/block-drbd
+%endif
+%{_libexecdir}/xen
 %endif
 %{_prefix}/lib/ocf/resource.d/linbit/drbd
 %{_prefix}/lib/ocf/resource.d/linbit/drbd.shellfuncs.sh

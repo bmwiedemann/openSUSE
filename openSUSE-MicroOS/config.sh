@@ -84,8 +84,8 @@ suseInsertService cloud-init
 suseInsertService cloud-config
 suseInsertService cloud-final
 
-# Enable systemd-timesyncd
-suseInsertService systemd-timesyncd
+# Enable chrony
+suseInsertService chronyd
 
 #======================================
 # Sysconfig Update

@@ -20,7 +20,7 @@
 Name:           python-md2workflow
 Version:        1.4.8
 Release:        0
-Summary:        Create a JIRA or other Workflow from markdown files
+Summary:        Tool to create a JIRA or other Workflow from markdown files
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/lkocman/md2workflow.git
@@ -40,7 +40,9 @@ Provides:       md2workfow = %{version}
 %endif
 
 %description
-Create a JIRA or other Workflow from markdown files.
+A tool which can convert typically "VCS managed" mardown checklist
+into e.g. a linked structure of Jira Epics. This tool can not only
+create checklists, but also update them.
 
 %python_subpackages
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:00:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
 Mon Mar 25 04:17:12 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to https://github.com/geopy/geopy
@@ -16,9 +21,9 @@ Mon Mar 25 04:17:12 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 Thu Feb 18 15:12:48 UTC 2016 - eshmarnev@suse.com
 
 - update to version 1.11.0:
-  * ADDED: Photon geocoder. 
+  * ADDED: Photon geocoder.
   * ADDED: Bing supports structured query parameters.
-  * CHANGED: Geocoders send a User-Agent header, which by default is geopy/1.11.0. 
+  * CHANGED: Geocoders send a User-Agent header, which by default is geopy/1.11.0.
   * FIXED: Index out of range error with no results using Yandex.
   * FIXED: Nominatim was incorrectly sending view_box when not requested, and formatting it incorrectly.
 
@@ -221,11 +226,11 @@ Wed Dec 11 01:23:31 UTC 2013 - p.drouand@gmail.com
     `geopy.geocoders.base.GeocoderResultError` -> `geopy.exc.GeocoderQueryError`
     `geopy.geocoders.base.GTooManyQueriesError` -> `geopy.exc.GeocoderQuotaExceeded`
 
-  + OpenStreetMap Nominatim geocoder implemented. 
+  + OpenStreetMap Nominatim geocoder implemented.
   + Yahoo! BOSS Geo PlaceFinder geocoder implemented.
   + SmartyStreets LiveAddress geocoder implemented.
   + GeoNames geocoder is implements GeoNames' new username
-    requirement and `api.geonames.org` endpoint. 
+    requirement and `api.geonames.org` endpoint.
   + Bing geocoder supports `user_location` (`Point`) parameter. Bing will
     prefer results near the coordinates of `user_location`.
   + `GoogleV3.geocode_first()` no longer throws exception on multiple
@@ -236,7 +241,7 @@ Wed Dec 11 01:23:31 UTC 2013 - p.drouand@gmail.com
     not present.
   + Miscellaneous inconsistent behavior and errors in geolocating.
   + Google V2 geocoder has been removed as its API was shutdown.
-- Changes from 
+- Changes from 0.95.1
   + Fix #12, where `DeprecationWarning` was showing for GoogleV2 even if
     it wasn't being used (due to `geopy.geocoders` importing it).
   + `GoogleV3.geocode` "address" kwarg renamed to "string" to match

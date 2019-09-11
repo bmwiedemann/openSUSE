@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 16 22:11:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.4
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.4_point_release
+- Drop upstream patches:
+  * 0001-Improve-HTTP-redirect-handling-and-add-test.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 18:22:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix building with booost 1.69:

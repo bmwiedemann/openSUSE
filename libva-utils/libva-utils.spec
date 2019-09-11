@@ -17,14 +17,13 @@
 
 
 Name:           libva-utils
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        A collection of utilities and examples to exercise VA-API
 License:        MIT AND EPL-1.0
 Group:          Development/Tools/Other
 Url:            https://github.com/intel/libva-utils
-Source0:        https://github.com/intel/libva-utils/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#Source1:        https://github.com/intel/libva-utils/archive/%%{version}.tar.gz.sha1sum#/%{name}-%{version}.tar.gz.sha1sum
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
@@ -44,10 +43,12 @@ Provides:       vaapi-wayland-tools = %{version}
 Obsoletes:      vaapi-wayland-tools < %{version}
 
 %description
-libva-utils is a collection of utilities and examples to exercise VA-API in accordance with the libva project. --enable-tests (default = no) provides a suite of unit-tests based on Google Test Framework. A driver implementation is necessary to properly operate.
+libva-utils is a collection of utilities and examples to exercise
+VA-API in accordance with the libva project.
+A driver implementation is necessary to properly operate.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \
@@ -65,7 +66,7 @@ libva-utils is a collection of utilities and examples to exercise VA-API in acco
 %license COPYING
 %doc NEWS
 %{_bindir}/avcenc
-%{_bindir}/h264enc
+%{_bindir}/h264encode
 %{_bindir}/jpegenc
 %{_bindir}/loadjpeg
 %{_bindir}/mpeg2vaenc

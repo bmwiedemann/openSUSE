@@ -16,81 +16,74 @@
 #
 
 
-%bcond_without  h3d_gridbox
-%if 0%{suse_version} > 1310
-%define qtver 5
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname gnuplot
+%if "%{flavor}" == ""
 %else
-%define qtver 4
+%global psuffix -%{flavor}
 %endif
-Name:           gnuplot
+
+%bcond_without  h3d_gridbox
+Name:           gnuplot%{?psuffix}
 BuildRequires:  ImageMagick
 BuildRequires:  automake
 BuildRequires:  cairo-devel
-BuildRequires:  emacs-nox
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gd-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gtk2-devel
+BuildRequires:  libqt5-linguist-devel
+BuildRequires:  lua-devel
 BuildRequires:  netpbm
 BuildRequires:  pango-devel
+BuildRequires:  plotutils-devel
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(caca)
-BuildRequires:  pkgconfig(gdlib)
-BuildRequires:  pkgconfig(x11)
-%if %qtver >= 5
-BuildRequires:  libqt5-linguist-devel
+BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  zziplib
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
-%else
-BuildRequires:  libqt4-devel >= 4.5
-%endif 
-BuildRequires:  fdupes
-BuildRequires:  latex2html
-BuildRequires:  lua-devel
-BuildRequires:  makeinfo
-BuildRequires:  plotutils-devel
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-epstopdf
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-latexconfig
-BuildRequires:  texlive-tex
-BuildRequires:  texlive-tex4ht
-BuildRequires:  texlive-texinfo
-BuildRequires:  texlive-ucs
-BuildRequires:  texlive-ucs
-BuildRequires:  zziplib
+BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(libcerf)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(x11)
+%if "%{flavor}" == "doc"
+BuildRequires:  emacs-nox
+BuildRequires:  gnuplot
+BuildRequires:  latex2html
+BuildRequires:  makeinfo
+BuildRequires:  texlive-epstopdf
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-latexconfig
+BuildRequires:  texlive-pdftex
+BuildRequires:  texlive-tex4ht
+BuildRequires:  texlive-texinfo
+BuildRequires:  texlive-ucs
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(hyperref.sty)
 BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
-%if 0%{?suse_version} > 0 && 0%{?suse_version} <= 1310
-BuildRequires:  wxWidgets-devel
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-%else
-BuildRequires:  wxWidgets-devel >= 3
 %endif
 Url:            http://www.gnuplot.info/
 Version:        5.2.7
 Release:        0
+%if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more
 License:        SUSE-Gnuplot AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
+%else
+Summary:        Documentation of GNUplot
+License:        SUSE-Gnuplot AND GPL-2.0-or-later
+Group:          Documentation/Other
+%endif
 Source0:        http://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
 Source2:        gnuplot-fr.doc.bz2
 Source3:        README.whynot
-# According to the gnuplot 5.0.0 release notes, the emacs .el should now be
-# available at https://github.com/rudi/gnuplot-el but it doesn't exist anymore.
-# Use the files from the lisp/ directory from gnuplot' CVS just before it was
-# removed on 6 March 2014.
-Source4:        gnuplot-el.tar.bz2
 # http://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
 # That's a build requirement, not provided by Tex Live
 Source5:        picins.sty
@@ -103,48 +96,30 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-gd.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
-%if "%_exec_prefix" == "/usr/X11R6"
-%define _x11lib     %{_exec_prefix}/%{_lib}
-%define _x11data    %{_exec_prefix}/lib/X11
-%define _libx11     %{_x11data}
-%define _x11inc     %{_exec_prefix}/include
-%define _appdef     %{_x11data}/app-defaults
-%else
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
-%define _x11inc     %{_includedir}
 %define _appdef     %{_x11data}/app-defaults
-%endif
 %define _gnplttex   tex/latex/gnuplot
-
-%description
-GNUplot is a command line driven interactive function plotting utility.
- GNUplot supports many different types of terminals, plotters, and
-printers (including many color devices and pseudodevices like LaTeX)
-and can easily be extended to include new devices.
-
-%package doc
-Summary:        Documentation of GNUplot
-Group:          Productivity/Graphics/Visualization/Graph
-Requires:       %{name}
+%if "%{flavor}" == "doc"
+Requires:       %{sname}
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
 BuildArch:      noarch
+%endif
 
-%description doc
-GNUplot documentation files including the man and info pages. GNUplot
-is a command line driven interactive function plotting utility. 
+%description
+GNUplot is a command line driven interactive function plotting utility.
 GNUplot supports many different types of terminals, plotters, and
 printers (including many color devices and pseudodevices like LaTeX)
 and can easily be extended to include new devices.
 
-%{name} documentation files including the man and info pages
+%if "%{flavor}" == "doc"
+%{sname} documentation files including the info pages.
+%endif
 
 %prep
-%setup -qa 4
+%setup -q -n %{sname}-%{version}
 bunzip2 -dc %{_sourcedir}/gnuplot-fr.doc.bz2 > docs/gnuplot-fr.doc
 test $? -eq 0 || exit 1
 cp %{_sourcedir}/picins.sty docs
@@ -159,10 +134,9 @@ cp %{_sourcedir}/picins.sty docs
 %build
 autoreconf -fi
 
-    SECSVGA="-DSVGA_IS_SECURE=1"
-    export  CPPFLAGS="-I%{_x11inc} -I%{_includedir}/gd -DAppDefDir=\\\"%{_appdef}\\\""
-    export  CPPFLAGS="$CPPFLAGS -DGNUPLOT_LIB_DEFAULT=\\\"%{_docdir}/%{name}/demo\\\""
-    export  CFLAGS="${RPM_OPT_FLAGS} -pipe ${SECSVGA} -D_GNU_SOURCE"
+    export  CPPFLAGS="-I%{_includedir}/gd -DAppDefDir=\\\"%{_appdef}\\\""
+    export  CPPFLAGS="$CPPFLAGS -DGNUPLOT_LIB_DEFAULT=\\\"%{_docdir}/%{sname}/demo\\\""
+    export  CFLAGS="${RPM_OPT_FLAGS} -pipe -D_GNU_SOURCE"
     export  CXXFLAGS="$CFLAGS -fno-strict-aliasing"
     export  LDFLAGS="-L%{_x11lib} -Wl,--as-needed"
     export  ARCHLIB=%_lib
@@ -173,32 +147,22 @@ autoreconf -fi
     export  CFLAGS="$CFLAGS -DDIST_CONTACT='https://bugzilla.suse.com/'"
 %endif
 %endif
-    for f in docs/makefile*; do
-	test -e $f || continue
-	mv $f $f.bak
-    done
-
-    autoreconf -fi
-#    sed -i "s;bin/uic;bin/uic-qt5;g" ./configure
-#    sed -i "s;bin/moc;bin/moc-qt5;g" ./configure
-#    sed -i "s;bin/rcc;bin/rcc-qt5;g" ./configure
-#    sed -i "s;bin/lrelease;bin/lrelease-qt5;g" ./configure
-#    sed -i "s;UIC=uic;UIC=uic-qt5;g" ./configure
-#    sed -i "s;MOC=moc;MOC=moc-qt5;g" ./configure
-#    sed -i "s;RCC=rcc;RCC=rcc-qt5;g" ./configure
-#    sed -i "s;LRELEASE=lrelease;LRELEASE=lrelease-qt5;g" ./configure
 
     %configure	\
 	--enable-stats		\
 	--with-x		\
-	--with-x-dcop		\
 	--x-includes=%{_x11inc}	\
 	--x-libraries=%{_x11lib}\
 	--with-x-app-defaultdir=%{_appdef}\
-	--with-texdir=/usr/share/texmf/%{_gnplttex} \
+	--with-texdir=%{_datadir}/texmf/%{_gnplttex} \
+	--with-kpsexpand=%{_bindir}/kpsexpand \
+%if "%{flavor}" == "doc"
+	--with-latex=yes \
+%else
+	--with-latex=force \
+%endif
 	--with-readline=gnu	\
 	--enable-history-file	\
-	--with-linux-vga	\
 	--with-bitmap-terminals	\
 	--with-gpic		\
 	--with-mif		\
@@ -213,18 +177,17 @@ autoreconf -fi
 	--enable-backwards-compatibility\
 	--with-gd=%{_usr}		\
 	--without-row-help	\
-	--with-kpsexpand	\
 	--with-caca		\
-	--with-qt=qt%{qtver}
+	--with-qt=qt5
 
-%if %{qtver} >= 5
-  make %{?_smp_mflags} UIC=/usr/bin/uic-qt5  MOC=/usr/bin/moc-qt5 RCC=/usr/bin/rcc-qt5 LRELEASE=/usr/bin/lrelease-qt5 
-%else
-  make %{?_smp_mflags}
+%if "%{flavor}" == ""
+  make %{?_smp_mflags} UIC=/usr/bin/uic-qt5  MOC=/usr/bin/moc-qt5 RCC=/usr/bin/rcc-qt5 LRELEASE=/usr/bin/lrelease-qt5
 %endif
 
+%if "%{flavor}" == "doc"
+  mv src/Makefile{,_INACESSIBLE}
   pushd docs/
-	make srcdir=. clean all html pdf
+	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean html pdf
 	make srcdir=. gnuplot.texi
 	patch -p0 < %{S:6}
 	make srcdir=. info
@@ -235,27 +198,30 @@ autoreconf -fi
   pushd tutorial/
 	make srcdir=. clean pdf
   popd
-  pushd lisp/
-        for el_file in gnuplot.el gnuplot-gui.el; do
-            emacs -batch -q -no-site-file -l "dot.el" -f batch-byte-compile \
-                  "$el_file"
-        done
- popd
+%endif
 
 %install
     rm -rf %{buildroot}
+
+%if "%{flavor}" == ""
     make DESTDIR=%{buildroot} appdefaultdir=%{_appdef} install
-    mkdir -p %{buildroot}/%{_infodir}
     mkdir -p %{buildroot}/%{_mandir}/ja/man1
+    mv %{buildroot}/%{_mandir}/man1/gnuplot-ja.1 %{buildroot}/%{_mandir}/ja/man1/gnuplot.1
+%endif
+
+%if "%{flavor}" == "doc"
+    mkdir -p %{buildroot}/%{_infodir}
     mkdir -p %{buildroot}/%{_docdir}/gnuplot/doc
     mkdir -p %{buildroot}/%{_docdir}/gnuplot/doc/html
     mkdir -p %{buildroot}/%{_docdir}/gnuplot/demo
-    mkdir -p %{buildroot}/%{_datadir}/emacs/site-lisp
     rm  -vf docs/htmldocs/images.{aux,idx,log,out,tex}
     rm  -vf docs/htmldocs/*.pl
+    rm  -vf docs/htmldocs/*.aux
     rm  -vf docs/htmldocs/*.sty
     rm  -vf docs/htmldocs/WARNINGS
     rm  -vf docs/htmldocs/VERSION
+    rm  -vf docs/figure_*.pdf
+    rm  -vf tutorial/eg7.pdf
     rm -rvf demo/html
     install -m 0444 docs/*.info*      %{buildroot}/%{_infodir}/
     install -m 0444 docs/*.pdf        %{buildroot}/%{_docdir}/gnuplot/doc/
@@ -268,35 +234,39 @@ autoreconf -fi
     install -m 0444 tutorial/*.pdf    %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 demo/*.*          %{buildroot}/%{_docdir}/gnuplot/demo/
     install -m 0444 README*           %{buildroot}/%{_docdir}/gnuplot/
-    install -m 0444 Copyright         %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 VERSION           %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 NEWS BUGS	      %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 %{SOURCE3}        %{buildroot}/%{_docdir}/gnuplot/
-    install -m 0444 lisp/gnuplot*.el* %{buildroot}/%{_datadir}/emacs/site-lisp/
-    mv %{buildroot}/%{_mandir}/man1/gnuplot-ja.1 %{buildroot}/%{_mandir}/ja/man1/gnuplot.1
     rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
+%endif
     %fdupes -s %{buildroot}
 
-%post doc
-%install_info --info-dir=.%{_infodir} .%{_infodir}/%{name}.info.gz
+%if "%{flavor}" == "doc"
+%post
+%install_info --info-dir=.%{_infodir} .%{_infodir}/%{sname}.info.gz
 
-%preun doc
-%install_info_delete --info-dir=.%{_infodir} .%{_infodir}/%{name}.info.gz
+%preun
+%install_info_delete --info-dir=.%{_infodir} .%{_infodir}/%{sname}.info.gz
+%endif
 
+%if "%{flavor}" == ""
 %files
-%defattr(-,root,root)
+%license Copyright
 %{_bindir}/gnuplot
 %{_libexecdir}/gnuplot
 %{_datadir}/gnuplot
-%{_datadir}/texmf/%{_gnplttex}/
-%{_datadir}/emacs/site-lisp/
+%dir %{_datadir}/texmf
+%{_datadir}/texmf/*
+%dir %{_appdef}
 %{_appdef}/Gnuplot
-
-%files doc
-%defattr(-,root,root,-)
-%doc %{_docdir}/gnuplot/
-%doc %{_infodir}/%{name}.info.gz
 %doc %{_mandir}/man1/gnuplot.1.gz
 %doc %{_mandir}/ja/man1/gnuplot.1.gz
+%endif
+
+%if "%{flavor}" == "doc"
+%files
+%doc %{_docdir}/gnuplot/
+%doc %{_infodir}/%{sname}.info.gz
+%endif
 
 %changelog

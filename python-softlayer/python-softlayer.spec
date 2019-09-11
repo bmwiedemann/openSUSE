@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-softlayer
-Version:        5.7.2
+Version:        5.8.0
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
@@ -28,10 +28,10 @@ Source:         https://github.com/softlayer/softlayer-python/archive/v%{version
 BuildRequires:  %{python_module PrettyTable >= 0.7.0}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module prompt_toolkit >= 0.5.3}
+BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pygments >= 2.0.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.18.4}
+BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.7.0}
 BuildRequires:  %{python_module testtools}
@@ -40,9 +40,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable >= 0.7.0
 Requires:       python-click
-Requires:       python-prompt_toolkit >= 0.5.3
+Requires:       python-prompt_toolkit >= 2
 Requires:       python-pygments >= 2.0.0
-Requires:       python-requests >= 2.18.4
+Requires:       python-requests >= 2.20.0
 Requires:       python-setuptools
 Requires:       python-six >= 1.7.0
 Requires:       python-urllib3 >= 1.24
@@ -60,8 +60,8 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 %install
 %python_install
 # do not install tests
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests/
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest

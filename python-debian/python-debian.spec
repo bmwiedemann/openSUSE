@@ -1,7 +1,7 @@
 #
 # spec file for package python-debian
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017 Free Software Foundation Europe e.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-debian
-Version:        0.1.31
+Version:        0.1.36
 Release:        0
 Summary:        Debian package related modules
 License:        GPL-3.0-or-later
@@ -60,7 +60,7 @@ data. Currently handled are:
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc README
+%doc README.rst
 %{python_sitelib}/*
 
 %changelog

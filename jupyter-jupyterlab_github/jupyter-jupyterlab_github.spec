@@ -17,7 +17,7 @@
 
 
 Name:           jupyter-jupyterlab_github
-Version:        0.7.0
+Version:        1.0.0
 Release:        0
 Summary:        Notebook server extension for GitHub API requests
 License:        BSD-3-Clause
@@ -56,7 +56,7 @@ pip%{python3_bin_suffix} install --root=%{buildroot} %{SOURCE0}
 
 %files
 %{python3_sitelib}/jupyterlab_github-%{version}.dist-info
-%license %{python3_sitelib}/jupyterlab_github-%{version}.dist-info/LICENSE.txt
+%license %{python3_sitelib}/jupyterlab_github-%{version}.dist-info/LICENSE
 %{python3_sitelib}/jupyterlab_github/
 %config %{_jupyter_servextension_confdir}/jupyterlab_github.json
 

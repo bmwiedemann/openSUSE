@@ -77,3 +77,5 @@ sed -i "s/%{2}/%{1}_tests/g" $tempest_egg_path/PKG-INFO \
 # Compatibility macro
 # currently does nothing on Suse platforms
 %__openstack_set_env  %{nil}
+
+%sphinx_build /usr/bin/sphinx-build

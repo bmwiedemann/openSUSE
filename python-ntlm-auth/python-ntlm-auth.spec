@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ntlm-auth
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        NTLM low-level Python library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jborean93/ntlm-auth
+URL:            https://github.com/jborean93/ntlm-auth
 Source:         https://github.com/jborean93/ntlm-auth/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
@@ -31,8 +31,8 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-ordereddict
 Recommends:     python-cryptography
+Suggests:       python-ordereddict
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,7 +54,7 @@ header.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %license LICENSE

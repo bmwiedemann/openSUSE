@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 10:40:44 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.37.2
+  * Turn off session tickets for apache plugin by default
+  * Stop disabling TLS session tickets in Apache as it caused TLS 
+    failures on some systems.
+
+-------------------------------------------------------------------
 Wed Jul 17 13:35:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.36.0 (bsc#1141928)

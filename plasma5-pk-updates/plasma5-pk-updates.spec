@@ -39,8 +39,8 @@ Patch6:         0003-Use-own-eventIds-and-ComponentName-instead-of-generi.patch
 Patch7:         0004-Make-the-notifications-less-obtrusive.patch
 Patch8:         0006-Remove-explicit-initialization-of-default-constructe.patch
 Patch9:         0007-Port-away-from-KDELibs4Support-use-Solid-Power-inter.patch
-# PATCH-FEATURE-OPENSUSE
-Patch100:       0001-Hide-option-to-install-updates-on-Tumbleweed.patch
+# PATCH-FEATURE-UPSTREAM
+Patch10:        0001-Add-support-for-license-prompts.patch
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= 1.3.0

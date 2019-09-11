@@ -23,7 +23,7 @@
 BuildRequires:  pkgconfig(udev)
 %endif
 Name:           upower
-Version:        0.99.10
+Version:        0.99.11
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -152,7 +152,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
 %{_udevrulesdir}/*.rules
 %{_unitdir}/upower.service
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.UPower.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.UPower.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.Device.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.UPower.KbdBacklight.xml

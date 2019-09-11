@@ -34,16 +34,18 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 %endif
-BuildRequires:  glibmm2-devel
-BuildRequires:  gstreamer-devel
-BuildRequires:  gstreamermm-devel >= 1.0.0
-BuildRequires:  gtkmm3-devel >= 3.10
 BuildRequires:  intltool
 BuildRequires:  iso-codes-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(glibmm-2.4) >= 2.16.3
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-base-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gstreamermm-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.10
 BuildRequires:  pkgconfig(libxml++-2.6)
 
 %description

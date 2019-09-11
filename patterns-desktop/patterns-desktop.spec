@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-desktop
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,7 +34,7 @@ This is an internal package that is used to create the patterns as part
 of the installation source setup.  Installation of this package does
 not make sense.
 
-TThis particular package contains all the desktop related patterns that are not 
+This particular package contains all the desktop related patterns that are not 
 specific too one particular desktop environment
 
 ################################################################################
@@ -117,33 +117,10 @@ Provides:       pattern-visible()
 Requires:       pattern() = x11
 Provides:       patterns-openSUSE-imaging = %{version}
 Obsoletes:      patterns-openSUSE-imaging < %{version}
-Recommends:     pattern() = imaging_opt
 # from data/IMAGE
 Recommends:     gimp
-Suggests:       exiftool
-
-%description imaging
-Handling of digital photos and graphics.
-
-%files imaging
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/imaging.txt
-
-################################################################################
-
-%package imaging_opt
-%pattern_desktopfunctions
-Summary:        Graphics
-Group:          Metapackages
-Provides:       patterns-openSUSE-imaging_opt = %{version}
-Provides:       pattern() = imaging_opt
-Provides:       pattern-extends() = imaging
-Provides:       pattern-icon() = package_graphics
-Provides:       pattern-order() = 1840
-Obsoletes:      patterns-openSUSE-imaging_opt < %{version}
-Requires:       pattern() = x11
-# from data/IMAGE-OPT
 Recommends:     gimp-help
+Suggests:       exiftool
 Suggests:       ufraw
 Suggests:       gimp-ufraw
 Suggests:       pfstools
@@ -151,12 +128,12 @@ Suggests:       pfstmo
 Suggests:       pfscalibration
 Suggests:       calibre
 
-%description imaging_opt
+%description imaging
 Handling of digital photos and graphics.
 
-%files imaging_opt
+%files imaging
 %dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/imaging_opt.txt
+/usr/share/doc/packages/patterns/imaging.txt
 
 ################################################################################
 
@@ -205,11 +182,13 @@ Provides:       pattern-icon() = pattern-multimedia
 Provides:       pattern-order() = 1580
 Provides:       pattern-visible()
 Obsoletes:      patterns-openSUSE-multimedia < %{version}
-Recommends:     pattern() = multimedia_opt
 
 Recommends:     yast2-sound
 Recommends:     dvd+rw-tools
 Recommends:     vorbis-tools
+Recommends:     ImageMagick
+Recommends:     mjpegtools
+Suggests:       blender
 Suggests:       ripit
 # maintained by coolo - must be good
 Suggests:       abcde
@@ -225,30 +204,6 @@ Multimedia players, sound editing tools, video and image manipulation applicatio
 %files multimedia
 %dir /usr/share/doc/packages/patterns
 /usr/share/doc/packages/patterns/multimedia.txt
-
-################################################################################
-
-%package multimedia_opt
-%pattern_desktopfunctions
-Summary:        Multimedia
-Group:          Metapackages
-Provides:       patterns-openSUSE-multimedia_opt = %{version}
-Provides:       pattern() = multimedia_opt
-Provides:       pattern-extends() = multimedia
-Provides:       pattern-icon() = yast-tv
-Provides:       pattern-order() = 1560
-Obsoletes:      patterns-openSUSE-multimedia_opt < %{version}
-
-Recommends:     ImageMagick
-Recommends:     mjpegtools
-Suggests:       blender
-
-%description multimedia_opt
-Multimedia players, sound editing tools, video and image manipulation applications.
-
-%files multimedia_opt
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/multimedia_opt.txt
 
 ################################################################################
 
@@ -325,7 +280,7 @@ Authoring tools and editors for creating technical documentation.
 
 %install
 mkdir -p "%{buildroot}/usr/share/doc/packages/patterns"
-for i in books imaging imaging_opt laptop multimedia multimedia_opt \
+for i in books imaging laptop multimedia \
     technical_writing; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}/usr/share/doc/packages/patterns/$i.txt"

@@ -1,6 +1,7 @@
 #
 # spec file for package libacars
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %define sover   1
 %define libname libacars%{sover}
 Name:           libacars
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A library for decoding various ACARS message payloads
 License:        MIT
@@ -100,7 +101,6 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %{_bindir}/adsc_get_position
 %{_bindir}/cpdlc_get_position
 %{_bindir}/decode_acars_apps
-%{_bindir}/decode_arinc
 %{_bindir}/media_advisory
 
 %changelog

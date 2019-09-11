@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Tue Jul 23 16:46:21 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- update sed to use /bin/bash for setting up the shellbang
+
+-------------------------------------------------------------------
+Tue Jul 16 13:12:30 UTC 2019 - mvetter@suse.com
+
+- Use clojure-tools
+- Drop custom clojure.1 and clojure
+- Drop suse_version macros
+
+-------------------------------------------------------------------
+Tue Jul 16 10:34:12 UTC 2019 - mvetter@suse.com
+
+- Require java 1.8.0
+
+-------------------------------------------------------------------
+Tue Jul 16 10:28:57 UTC 2019 - mvetter@suse.com
+
+- Remove PKGBUILD. Not interested in Arch package in oS devel repo
+
+-------------------------------------------------------------------
+Tue Jul 16 10:26:16 UTC 2019 - mvetter@suse.com
+
+- Update to 0.10.1:
+  + Changelog at https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1101
+- Upstream ships jar instead of zip now
+- Remove files installed as doc because no zip file anymore
+
+-------------------------------------------------------------------
+Tue Jul 16 10:19:13 UTC 2019 - mvetter@suse.com
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Tue Aug  2 06:54:29 UTC 2016 - kkaempf@suse.com
+
+- Update to 1.8.0
+  + Changelog at https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-18
+  + Direct linking
+  + New string functions
+  + Socket server and REPL
+  + Enhancements
+    + Error handling
+    + Documentation strings
+    + Performance
+  + Bug fixes
+
+-------------------------------------------------------------------
+Sun Jul  5 14:24:55 UTC 2015 - kgronlund@suse.com
+
+- Update to 1.7.0
+  + Changelog at https://github.com/clojure/clojure/blob/master/changes.md
+  + Transducers
+  + Reader Conditionals
+  + Keyword and Symbol Construction
+  + Warn on Boxed Math
+  + update - like update-in for first level
+  + Faster reduce and iterator paths
+  + Printing as data
+  + run!
+
+-------------------------------------------------------------------
+Fri Aug 29 16:12:16 UTC 2014 - kgronlund@suse.com
+
+- Update to 1.6.0 
+
+-------------------------------------------------------------------
+Sun Jan 12 07:10:29 UTC 2014 - kgronlund@suse.com
+
+- Initial version.
+

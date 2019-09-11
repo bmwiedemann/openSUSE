@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  9 07:47:02 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update Source0, file is gz and not bzip2
+- Use -ffat-lto-objects to provide proper static library.
+
+-------------------------------------------------------------------
+Wed Aug 28 18:59:46 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 5.2.1:
+  * See ChangeLog file or at http://mumps.enseeiht.fr/index.php?page=dwnld
+- Refresh patch:
+  * Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
+- Install the new binaries provided with the examples.
+
+-------------------------------------------------------------------
 Wed Jul 17 09:42:01 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add BuildRequires libopenblas-gnu-hpc >=  0.3.6 for hpc to  avoid

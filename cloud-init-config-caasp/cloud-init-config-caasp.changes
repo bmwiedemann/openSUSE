@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 22 11:52:56 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Drop explicit list of data sources (boo#1146802)
+
+-------------------------------------------------------------------
 Wed Dec 19 11:38:23 CET 2018 - kukuk@suse.de
 
 - Remove ds-identify.cfg: does harm too much if there is no

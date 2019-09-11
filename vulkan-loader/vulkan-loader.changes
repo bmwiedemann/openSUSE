@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 21 08:51:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.120
+  * loader: Make instance version report patch version
+
+-------------------------------------------------------------------
+Sun Aug 18 16:08:57 UTC 2019 - Aaron Stern <ukbeast89@ptotonmail.com>
+
+- Update to new upstream release 1.1.119
+  * Additionally, ran `generate_source.py`.
+
+-------------------------------------------------------------------
 Fri Jun 28 07:32:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.112

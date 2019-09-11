@@ -12,31 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
 Version:        2.3.0
 Release:        0
+Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
-Summary:        Seamless operability between C++11 and Python
-Url:            https://github.com/pybind/pybind11
 Group:          Development/Languages/Python
+Url:            https://github.com/pybind/pybind11
 Source:         https://files.pythonhosted.org/packages/53/bc/0880e869d1a4bfd7954835d67e6d5e2c8a30c3fd6372134a4be79a842a4c/pybind11-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %python_subpackages
 
 %description
-Seamless operability between C++11 and Python
+pybind11 is a header-only library that exposes C++ types in Python
+and vice versa, mainly to create Python bindings of existing C++
+code. It can reduce boilerplate code in traditional extension modules
+by inferring type information using compile-time introspection.
 
 %package devel
-Summary: Development files for pybind11
+Summary:        Development files for pybind11
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Requires:       python-devel

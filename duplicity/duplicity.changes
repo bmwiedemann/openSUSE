@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:27:44 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.04:
+  + b2 backend requires additional import.
+  + Duplicity crashes when using --file-prefix.
+  + Removed socket.settimeout from backend.py.
+    It was already set in commandline.py.
+  + Removed pycryptopp from README requirements.
+  + Add packaging code for Snapcraft/Snap packages.
+  + Ran futurize selectively filter-by-filter to find the ones
+    that work.
+  + Change README-TESTING to be correct for running individual
+    tests now that we have moved to Tox/Pytest.
+  + Encode Azure back-end paths
+  + Removed a couple of unused files.
+  + Merged in translation updates.
+- Rebase duplicity-remove_shebang.patch.
+
+-------------------------------------------------------------------
 Mon Aug 12 15:31:08 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.03:

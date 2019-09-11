@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 15 21:43:19 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- bump versoin to 20190807 (stable)
+  * General changes:
+    * further tweaks, refactoring, and improvements to building LAMMPS with CMake
+    * refactoring of header file handling for improved consistency and removal of cross dependencies
+    * refactoring of include keyword processing to lift some limitations and to enable KIM simulator models (see below)
+  * Updates for packages:
+    * major update of the KIM package to use KIM-API v2.1.x with support for Simulator models and new commands to generate variables for transparent unit conversion in input files
+    * optimizations and corrections to the KOKKOS packages, especially when used with CUDA, update of KOKKOS library included in LAMMPS to version 2.9.0
+    * updates and bugfixes of the USER-COLVARS package bringing it up to version 2019-08-05
+    * new PPPM and Ewald solvers for electric dipoles and nuclear spins
+    * optimizations and improvements to pair style and computes in the SNAP package
+    * updates, bugfixes and portability improvements for USER-PLUMED package (supports plumed 2.5.2)
+    * update to USER-CGDNA package in preparation of supporting an RNA coarse grain force field
+    * new keyword hybrid/pair for compute pressure
+    * new compute gyration/shape to compute eigenvalues and shape parameters from gyration radius tensor
+    * new compute momentum command
+
+-------------------------------------------------------------------
 Thu Jun  6 01:58:04 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - bump version to 20190605 (stable)

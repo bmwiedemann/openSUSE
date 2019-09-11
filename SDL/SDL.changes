@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:42:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Actually apply CVE-2019-7637.patch.
+
+-------------------------------------------------------------------
+Thu Aug 22 19:24:03 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add patches for several heap-based buffer overreads:
+  * CVE-2019-7577.patch (boo#1124800 CVE-2019-7577)
+  * CVE-2019-7575.patch (boo#1124806 CVE-2019-7575)
+  * CVE-2019-7574.patch (boo#1124803 CVE-2019-7574)
+  * CVE-2019-7572.patch (boo#1124806 CVE-2019-7572)
+  * CVE-2019-7637.patch (boo#1124825 CVE-2019-7637)
+  * CVE-2019-7578.patch (boo#1125099 boo#1124799 CVE-2019-7578
+    CVE-2019-7573)
+  * CVE-2019-7635.patch (boo#1124827 CVE-2019-7635)
+  * CVE-2019-7636.patch (boo#1124826 boo#1124824 CVE-2019-7636
+    CVE-2019-7638)
+  * CVE-2019-13616.patch (boo#1141844 CVE-2019-13616)
+
+-------------------------------------------------------------------
+Mon Aug  5 04:22:30 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Do not provide an empty static archive.
+
+-------------------------------------------------------------------
 Sun Mar  3 19:35:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:

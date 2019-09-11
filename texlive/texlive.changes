@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  8 10:27:36 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- source-poppler0.79.0.patch: fix build with poppler 0.79
+
+-------------------------------------------------------------------
 Thu Jul  4 06:35:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Clean patch source.dif that is remove left over from TeXLive 2018  (boo#1140203)

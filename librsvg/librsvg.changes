@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  2 21:56:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.15:
+  + Fix glgo#GNOME/librsvg#11: Respect the "direction" property for
+    bidirectional text.
+  + Fix glgo#GNOME/librsvg#462: Fix usage of std::f64::EPSILON for
+    Rust 1.28.
+  + Fix glgo#GNOME/librsvg#497: Don't panic on paths with
+    all-invalid commands.
+  + Fix glgo#GNOME/librsvg#496: Ensure all lengths and angles parse
+    as finite numbers.
+  + Fix glgo#GNOME/librsvg#426: Detect files vs. URIs in
+    rsvg_handle_new_from_file() on Windows.
+  + Fix a memory leak in the test suite.
+
+-------------------------------------------------------------------
 Tue May 14 11:15:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.14:

@@ -28,10 +28,10 @@ URL:            http://gjiten.sourceforge.net/
 #  cvs -d:pserver:anonymous@gjiten.cvs.sourceforge.net:/cvsroot/gjiten login
 #  (empty password)
 #  cvs -d:pserver:anonymous@gjiten.cvs.sourceforge.net:/cvsroot/gjiten checkout gjiten
-Source:         %{url}/%{name}-%{version}.tar.gz
+Source:         %url/%name-%version.tar.gz
 
-Patch0:         %{name}.patch
-Patch1:         %{name}-desktop.patch
+Patch0:         %name.patch
+Patch1:         %name-desktop.patch
 Patch2:         configure-set-foreign.patch
 Patch3:         stop-using-gnome-common.patch
 Patch4:         skip-validation.patch
@@ -75,25 +75,26 @@ NOCONFIGURE=1 ./autogen.sh
 
 %install
 %make_install
-ln -fsv "%{_datadir}/edict/radkfile" "%{buildroot}/%{_datadir}/%{name}/radkfile.utf8"
-%find_lang %{name}
-%suse_update_desktop_file %{name} Office Dictionary
+b="%buildroot"
+ln -fsv "%_datadir/edict/radkfile" "$b/%_datadir/%name/radkfile.utf8"
+mkdir "$b/%_datadir/%name/dics"
+for i in %_datadir/edict/*; do
+	ln -s "$i" "$b/%_datadir/%name/dics/"
+done
+%find_lang %name
+%suse_update_desktop_file %name Office Dictionary
 
-%files -f %{name}.lang
-%{_bindir}/%{name}
-%dir %{_datadir}/application-registry
-%{_datadir}/application-registry/%{name}.desktop
-%{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/doc/%{name}
-%{_datadir}/doc/%{name}/%{name}-doc.ja.html
-%{_datadir}/GConf/gsettings/%{name}.convert
-%{_datadir}/glib-2.0/schemas/net.sf.%{name}.gschema.xml
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/pixmaps/*
-%dir %{_datadir}/gnome
-%dir %{_datadir}/gnome/help
-%dir %{_datadir}/omf
-%{_mandir}/man1/%{name}.1%{ext_man}
+%files -f %name.lang
+%_bindir/%name
+%_datadir/application-registry/
+%_datadir/applications/*
+%_datadir/doc/*
+%_datadir/GConf/
+%_datadir/glib-2.0/
+%_datadir/omf/
+%_datadir/%name/
+%_datadir/pixmaps/*
+%_datadir/gnome/
+%_mandir/man1/*.1*
 
 %changelog

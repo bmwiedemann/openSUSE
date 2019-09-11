@@ -35,14 +35,13 @@ BuildRequires:  libcuefile-devel
 BuildRequires:  libreplaygain-devel
 
 %description
-Musepack is an audio compression format with a strong emphasis on high quality.
-It's not lossless, but it is designed for transparency, so that you won't be
-able to hear differences between the original wave file and the much smaller MPC
-file.
+Musepack is an audio compression format with an emphasis on audio
+quality. It is not lossless, but it is designed for transparency, so
+that differences between the original wave file and the much smaller
+MPC file are indiscernible (given enough of a bitrate, as usual).
 
-It is based on the MPEG-1 Layer-2 / MP2 algorithms, but has rapidly developed and
-vastly improved and is now at an advanced stage in which it contains heavily
-optimized and patentless code.
+It is based on the MPEG-1 Layer-2 / MP2 algorithms, but has further
+been developed.
 
 %package devel
 Summary:        Development Files for Musepack
@@ -60,14 +59,13 @@ License:        BSD-3-Clause AND Zlib
 Group:          System/Libraries
 
 %description -n libmpcdec%{so_ver}
-Musepack is an audio compression format with a strong emphasis on high quality.
-It's not lossless, but it is designed for transparency, so that you won't be
-able to hear differences between the original wave file and the much smaller MPC
-file.
+Musepack is an audio compression format with an emphasis on audio
+quality. It is not lossless, but it is designed for transparency, so
+that differences between the original wave file and the much smaller
+MPC file are indiscernible (given enough of a bitrate, as usual).
 
-It is based on the MPEG-1 Layer-2 / MP2 algorithms, but has rapidly developed and
-vastly improved and is now at an advanced stage in which it contains heavily
-optimized and patentless code.
+It is based on the MPEG-1 Layer-2 / MP2 algorithms, but has further
+been developed.
 
 %prep
 %setup -q -n %{name}_src_%{version}

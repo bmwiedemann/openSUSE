@@ -22,10 +22,10 @@ License:        GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause
 Group:          Hardware/Other
 Version:        2018.02.0
 Release:        0
-Url:            https://github.com/linux-can/can-utils
+URL:            https://github.com/linux-can/can-utils
 
-Source:         can-utils-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://github.com/linux-can/can-utils/archive/v%version.tar.gz
+Patch1:         0001-fix-include-to-find-SIOCGSTAMP-with-latest-kernel.patch
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 Obsoletes:      canutils-linuxcan
@@ -47,7 +47,7 @@ isotpsend, isotpserver, isotpsniffer, isotptun, log2asc, log2long,
 slcan_attach, slcand and slcanpty.
 
 %prep
-%setup -q -n can-utils-%version
+%autosetup -n can-utils-%version -p1
 
 %build
 ./autogen.sh
@@ -59,7 +59,6 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%defattr(-,root,root)
 %_bindir/*
 
 %changelog

@@ -17,10 +17,6 @@
 #
 
 
-%if ! %{defined make_build}
-# Temporary fix for Leap 42.3
-%define make_build %{_bindir}/make %{?_smp_mflags}
-%endif
 Name:           gcompris-qt
 Version:        0.96
 Release:        0
@@ -56,6 +52,7 @@ BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5Xml) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.6.0
+BuildRequires: update-desktop-files
 # Runtime requirements, it doesn't start without them (boo#1011125)
 Requires:       %{name}-activities = %{version}
 Requires:       libQt5Multimedia5 >= 5.6.0
@@ -127,30 +124,20 @@ rm -fr %{buildroot}/%{_prefix}/man
 # Install desktop file
 install -d %{buildroot}/%{_datadir}/applications
 install org.kde.gcompris.desktop %{buildroot}/%{_datadir}/applications/org.kde.gcompris.desktop
+%suse_update_desktop_file org.kde.gcompris Education Math Languages
 # Install icon file
 install -d %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/
-install images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/gcompris-qt.svg
-# Install Appdata file
-install -d %{buildroot}/%{_datadir}/appdata
-install org.kde.gcompris.appdata.xml %{buildroot}/%{_datadir}/appdata/org.kde.gcompris.desktop
+install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/gcompris-qt.svg
 
 %files
 %license COPYING
 %doc README.rst
 %{_bindir}/%{name}
-%defattr(0755,root,root,-)
-%if 0%{?suse_version} < 1325
-%{_datadir}/icons/hicolor/scalable/apps
-%{_datadir}/appdata
-%{_datadir}/metainfo
-%endif
 %{_datadir}/icons/hicolor/256x256/
 %{_datadir}/icons/hicolor/256x256/apps
-%defattr(0644,root,root,-)
 %{_datadir}/applications/org.kde.gcompris.desktop
 %{_datadir}/icons/hicolor/256x256/apps/gcompris-qt.png
 %{_datadir}/icons/hicolor/scalable/apps/gcompris-qt.svg
-%{_datadir}/appdata/org.kde.gcompris.desktop
 %{_datadir}/metainfo/org.kde.gcompris.appdata.xml
 
 %files activities

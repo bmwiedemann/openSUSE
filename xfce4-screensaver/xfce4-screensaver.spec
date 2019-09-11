@@ -51,7 +51,7 @@ BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       xfconf
 Recommends:     %{name}-lang
-Recommends:     xscreensaver-data
+Conflicts:      xscreensaver
 
 %description
 xfce4-screensaver is a screen saver and locker that integrates with the Xfce desktop.

@@ -1,7 +1,7 @@
 #
 # spec file for package xbrz
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xbrz
-%define lname   libxbrz-1_6
-Version:        1.6
+%define lname   libxbrz-1_7
+Version:        1.7
 Release:        0
 Summary:        Pattern recognition rule-based bitmap upscaler
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/xbrz/
 
-Source:         downloads.sf.net/xbrz/xBRZ_%version.zip
+Source:         http://downloads.sf.net/xbrz/xBRZ_%version.zip
 BuildRequires:  c++_compiler
 BuildRequires:  unzip
 

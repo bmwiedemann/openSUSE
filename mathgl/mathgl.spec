@@ -1,7 +1,7 @@
 #
 # spec file for package mathgl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@
 %define enable_octave 0
 %endif
 Name:           mathgl
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Library for making scientific graphics
 License:        GPL-3.0-only
@@ -46,8 +46,6 @@ Patch3:         mathgl-doc-path.patch
 Patch4:         udav-help-path.patch
 # PATCH-FIX-OPENSUSE mathgl-texmf-dir.patch -- set correct path to texmf directory
 Patch5:         mathgl-texmf-dir.patch
-# PATCH-FIX-UPSTREAM mathgl-fltk-includedir.patch badshah400@gmail.com -- Fix inclusion of fltk headers
-Patch6:         mathgl-fltk-includedir.patch
 # PATCH-FIX-OPENSUSE mathgl-no-default-qt.patch -- do not set a default qt
 Patch7:         mathgl-no-default-qt.patch
 BuildRequires:  cmake >= 2.8.12
@@ -247,7 +245,7 @@ This package provides the documentation for MathGL in HTML format.
 
 %package        doc-pdf
 Summary:        Documentation for MathGL
-Group:          Documentation/PDF
+Group:          Documentation/Other
 BuildArch:      noarch
 
 %description    doc-pdf
@@ -387,7 +385,6 @@ execute MGL scripts, set up, rotate graphics, and so on.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 %patch7 -p1
 
 # Correct octave-mathgl version
@@ -401,11 +398,11 @@ sed -i "s|<numpy/arrayobject.h>|\"${numpy_h}\"|" lang/numpy.i
 sed -i 's/\r$//' AUTHORS README
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 if [ -f %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh ]; then
   source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
 fi
 
-# FIXME: you should use %%cmake macros
 cmake \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}  \
       -DMathGL_INSTALL_LIB_DIR:PATH=%{_lib}   \
@@ -477,7 +474,7 @@ install -m 644 texinfo/{classes.pdf,mgl_en.pdf} %{buildroot}%{_docdir}/%{name}/
 
 # move mgl.cgi
 install -d %{buildroot}/srv/www/cgi-bin/
-mv %{buildroot}%{_datadir}/%{name}/mgl.cgi %{buildroot}/srv/www/cgi-bin/mgl.cgi
+mv %{buildroot}%{_libexecdir}/cgi-bin/mgl.cgi %{buildroot}/srv/www/cgi-bin/mgl.cgi
 
 # LaTeX package (based on TeXLive spec files)
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-scripts
@@ -597,7 +594,9 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %{_includedir}/mgl2/
 %{_libdir}/libmgl*.so
 %dir %{_libdir}/cmake/mathgl
+%dir %{_libdir}/cmake/mathgl2
 %{_libdir}/cmake/mathgl/*.cmake
+%{_libdir}/cmake/mathgl2/*.cmake
 
 %files lang -f %{name}.lang
 
@@ -665,6 +664,7 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %defattr(-,root,root)
 %{_bindir}/mglconv
 %{_bindir}/mglview
+%{_bindir}/mgltask
 %if 0%{?suse_version} > 1320
 %{_mandir}/man1/mglconv.1%{ext_man}
 %{_mandir}/man1/mglview.1%{ext_man}

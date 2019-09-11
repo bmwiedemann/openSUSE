@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 16 06:46:24 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- remove 0004-prometheus-buildmode-pie.patch
+  + this patch produces binaries that crash immediately
+- add -v to promu build command for better build debugging
+- reorder some %install tasks
+
+-------------------------------------------------------------------
 Fri Aug  2 11:22:25 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
 
 - Add network-online (Wants and After) dependency to systemd unit bsc#1143913

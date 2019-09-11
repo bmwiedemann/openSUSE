@@ -18,7 +18,7 @@
 
 %bcond_with socks
 Name:           irssi
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Modular IRC Client
 License:        GPL-2.0-or-later

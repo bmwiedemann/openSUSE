@@ -17,7 +17,7 @@
 
 
 Name:           perl-Scalar-List-Utils
-Version:        1.51
+Version:        1.52
 Release:        0
 %define cpan_name Scalar-List-Utils
 Summary:        Common Scalar and List utility subroutines

@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20190206.586e9f1
+Version:        1.0+git20190607.11f8587
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later
@@ -26,12 +26,15 @@ Url:            https://github.com/openSUSE/read-only-root-fs
 Source:         read-only-root-fs-%{version}.tar.xz
 Source1:        README.packaging.txt
 BuildRequires:  dracut
+BuildRequires:  update-bootloader-rpm-macros
 Requires:       dracut
 Requires(post): coreutils
 Requires(post): gawk
+Requires(post): snapper
 # Required if system with new /etc/fstab entries is supposed to be updated
-Conflicts:      transactional-update < 2.12
+Conflicts:      transactional-update < 2.15
 BuildArch:      noarch
+%{update_bootloader_requires}
 
 %description
 Files, scripts and directories to run the system with a
@@ -60,7 +63,7 @@ have a writable /root or /home, additional fstab entries can be added.
 %build
 
 %install
-cp -a usr %{buildroot}
+cp -a etc usr %{buildroot}
 mkdir -p %{buildroot}%{_localstatedir}/lib/overlay/work-etc
 
 %post
@@ -68,11 +71,16 @@ if [ "$1" = 1 ] ; then
     %{_sbindir}/setup-fstab-for-overlayfs
     mkdir -p %{_localstatedir}/lib/overlay/1/etc
 fi
+if [ ! -e /boot/writable -a "`findmnt -n -o FSTYPE -l /`" = "btrfs" ]; then
+    %{_sbindir}/mksubvolume /boot/writable
+fi
+%{?update_bootloader_refresh_post}
 
 %posttrans
 if [ -f /etc/zypp/zypp.conf ]; then
     sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
 fi
+%{?update_bootloader_posttrans}
 exit 0
 
 %files
@@ -81,6 +89,8 @@ exit 0
 %{_localstatedir}/lib/overlay
 %{_prefix}/lib/dracut/dracut.conf.d/10-read-only-root-fs.conf
 %{_prefix}/lib/systemd/system-preset/*
+%dir %{_sysconfdir}/grub.d
+%config(noreplace) %{_sysconfdir}/grub.d/01_suse_ro_root
 
 %files volatile
 %license COPYING

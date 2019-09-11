@@ -51,7 +51,6 @@ BuildRequires:  dcraw
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-mini
-BuildRequires:  libjasper-devel
 %if 0%{?suse_version} >= 1315
 BuildRequires:  libjbig-devel
 BuildRequires:  libltdl-devel

@@ -79,6 +79,7 @@ Recommends:     texlive-covington
 Recommends:     texlive-endnotes
 Recommends:     texlive-esint
 Recommends:     texlive-esint-type1
+Recommends:     texlive-fixme
 Recommends:     texlive-forest
 Recommends:     texlive-fragments
 Recommends:     texlive-ifsym
@@ -95,6 +96,7 @@ Recommends:     texlive-rotfloat
 Recommends:     texlive-splitindex
 Recommends:     texlive-tcolorbox
 Recommends:     texlive-textgreek
+Recommends:     texlive-todonotes
 Recommends:     texlive-units
 Recommends:     texlive-wrapfig
 Recommends:     texlive-zhmetrics

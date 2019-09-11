@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 26 17:03:12 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.10.1
+  * Raw_input function working with special characters in python 2.7
+- Split out jupyter kernel into own subpackage.
+
+-------------------------------------------------------------------
 Fri May 17 18:07:03 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Don't split the jupyter and python components.

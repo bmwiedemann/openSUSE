@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 24 16:11:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.4.3
+  * New features:
+  * fsytrf: a symmetric triangular factorization
+  * fsyrk, fsyr2k, ftrssyr2k, ftrstr:
+    subroutines for symmetric operations.
+  * parallelization of fgemm-rns, fsytrf, echelon forms,
+    det, rank, etc.
+  * API for parallel routines outside of par-block
+    (for e.g. SageMath)
+
+-------------------------------------------------------------------
 Fri Jul 13 04:38:53 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to disable compile-time CPU detection (boo#1100677)

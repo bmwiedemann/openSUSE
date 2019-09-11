@@ -81,6 +81,9 @@ Recommends:     %{name}-lang
 BuildRequires:  libgcrypt20-hmac
 Requires:       libgcrypt20-hmac
 %endif
+# boo#1148406. Last version in factory 2.0.3-2.7
+Provides:       keepassx = 2.0.4
+Obsoletes:      keepassx < 2.0.4
 
 %description
 A password manager or safe which manages your passwords. Databases
@@ -95,6 +98,7 @@ are encrypted using AES and Twofish.
 %setup -q
 
 %build
+%define _lto_cflags %{nil}
 %cmake \
   -DKEEPASSXC_BUILD_TYPE="Release" \
   -DWITH_XC_UPDATECHECK=OFF        \

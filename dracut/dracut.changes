@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 26 14:40:04 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git108.6c9d1156:
+  * dracut-init.sh: Nuke unused install_kmod_with_fw function
+  * dracut-install: Support the compressed firmware files correctly (boo#1146769)
+  * dracut: let module handling function accept optional path option
+  * dracut.sh: Fix udevdir detection
+
+-------------------------------------------------------------------
 Fri Jul 19 14:18:34 UTC 2019 - daniel.molkentin@suse.com
 
 - Update to version 049+git104.1244eed7:

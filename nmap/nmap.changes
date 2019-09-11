@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:28:22 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 7.80: 
+  * 11 new NSE scripts
+  * Added AF_VSOCK (Linux VM sockets) functionality to Nsock and Ncat
+  * Deprecate and disable the -PR (ARP ping) host discovery option. ARP ping is
+    already used whenever possible.
+  * Temporary RSA keys are now 2048-bit to resolve a compatibility issue with
+    OpenSSL library configured with security level 2.
+  * See https://nmap.org/changelog#7.80 for the complete changelog.
+- Removed patches included upstream: 
+  * nmap-7.70-CVE-2018-15173_pcre_limits.patch
+  * nmap-7.70-fix_infinite_loop.patch
+- Added netmask_negativ_bitshift.patch to fix netmask calculation for certain
+  architectures.
+
+-------------------------------------------------------------------
 Tue Jul 30 10:28:34 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - add nmap-7.70-fix_infinite_loop.patch to fix infinite loop in

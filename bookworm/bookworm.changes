@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 12 15:28:55 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Added FB2 mimetype for Files contract - Issue #215
+  * Fix for opening last read book and also open the context menu
+    for word meaning and annotations only if a selection is made
+  * Merge branch 'origin/master' into Weblate.
+  * Merge pull request #266 from comradekingu/patch-5
+  * Spelling: MIME → media type, full screen → fullscreen
+  * Added support for .fb2.zip (Issue #215)
+  * Updated support for FB2, FB2 image extraction done (Issue
+    #215)
+  * re-added pl.po
+  * Updating pl.po
+  * Changes for extracting images from FB2 files(Issue #215)
+  * Initial imlementation of the FB2 format
+  * Updated debian control with granite version 0.5 (Issue #253)
+  * Fixed library button status ahead of the user action (Issue
+    #263)
+  * Fixed the blank library page issue when the number of books
+    is a multiple of the library size (issue #263
+  * Fix for pagination boundary conditions - last page skiped
+    (Issue #232)
+  * Added search, keyboard shortcuts and preference items for
+    pagination of library
+  * Added search for paginated library (Issue #232)
+  * Initial changes for library pagination (Issue #232)
+  * Fix for #257
+- Switch to meson
+- Add HiDPI icons
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Tue Oct 16 17:30:46 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.1.1:
@@ -11,16 +44,16 @@ Mon Oct  8 11:33:14 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
   * Updated for Appcenter Juno release
   * Fixed CSS causing overlapping text (Issue #210)
   * Updated CSS to work for both Loki and Juno
-  * Removed stateful from SimpleAction on context menu (Issue 
+  * Removed stateful from SimpleAction on context menu (Issue
     #203)
   * Added functionality for dictionary word lookup (Issue #185)
-  * Fix to prevent external links to be loaded on Bookworm (Issue 
+  * Fix to prevent external links to be loaded on Bookworm (Issue
     #180)
   * Changes to add icons/files to GResource (Issue #81)
   * Added html2text to ReadMe for build instructions
   * Merge pull request #204 from fabianfreyer/master
   * Install scripts with group permissions
-  * Changes to add highlight colour to prefferences menu (Issue 
+  * Changes to add highlight colour to prefferences menu (Issue
     #202)
   * Merge branch 'origin/master' into Weblate
   * Update desktop entry to use standardised Keywords key.
@@ -41,10 +74,10 @@ Fri Feb 16 19:08:11 UTC 2018 - avvissu@yandex.by
   * Updated snapcraft for snap release
   * Fixes for loading a book from right click in Files
   * Fixed the issue of cover image being stretched (Issue #19)
-  * Adjusted scrollbar on the reading view to expand for easier 
+  * Adjusted scrollbar on the reading view to expand for easier
     mouse grabing (Issue #175)
   * Merge branch 'loki' of https://github.com/babluboy/bookworm
-  * Fix for table of contents not using anchors correctly (Isse 
+  * Fix for table of contents not using anchors correctly (Isse
     #154)
   * Added branding color (Issue #174)
   * Used libxml for xml parsing for ePubs (Issue #169)
@@ -53,7 +86,7 @@ Fri Feb 16 19:08:11 UTC 2018 - avvissu@yandex.by
   * Typo: “comma seperated” → comma-separated
   * Fixed xml parsing issue for ToC with namespace (Issue #160)
   * Updating travis to have trusty as the distribution
-  * Fixed the issue of long titles not wrapping on the default 
+  * Fixed the issue of long titles not wrapping on the default
     cover (Issue #167)
   * Moved default covers out of 256x256 folder
   * Merge branch 'master' of https://github.com/babluboy/bookworm
@@ -67,9 +100,9 @@ Sun Dec 24 06:54:09 UTC 2017 - avvissu@yandex.by
   * Updated RDNN executable change in contract and desktop files
   * Fixed RDNN issues for desktop icon (#158)
   * Renamed binary to match RDNN (#157)
-  * Fixed an issue of bookworm hanging if the watched folder is 
+  * Fixed an issue of bookworm hanging if the watched folder is
     not set
-  * Fixed the issue of covers getting different numbers when 
+  * Fixed the issue of covers getting different numbers when
     moving from 0.9.2 to 0.9.5
   * Improvements for Search and Annotation Highlighting
   * Replaced nb.po with nb_NO.po and removed no.po
@@ -90,5 +123,5 @@ Mon Dec  4 20:38:35 UTC 2017 - avvissu@yandex.by
 -------------------------------------------------------------------
 Wed Nov  8 12:45:56 UTC 2017 - avvissu@yandex.by
 
-- Initial package  
+- Initial package
 

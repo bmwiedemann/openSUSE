@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 30 12:30:36 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.06      2019-08-29 14:23:17Z
+    - Delimit IPv6 numeric address with brackets and URI-quote an IPv6 zone
+      separator in url() method output (GH#32) (Petr Pisar)
+    - Handle undef and empty LocalAddr value in new() constructor as an
+      unspecified address (GH#24, RT#123069) (Petr Pisar)
+    - Use IO::Socket::IP for IPv6 support. (GH#31) (Chase Whitener)
+
+-------------------------------------------------------------------
 Sat Jul 27 05:10:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 6.05

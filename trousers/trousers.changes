@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  9 14:12:22 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
+
+- add fix-lto.patch: This fixes the rpmlint error:
+
+  trousers-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libtddl.a
+
+  objcopy/strip seem not to support the LTO linking and discard the actual
+  text section from libtddl.a. By passing -ffat-lto-objects the object format
+  is kept compatible with unaware tools and fixes the error.
+
+-------------------------------------------------------------------
 Fri Apr 26 10:33:38 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils

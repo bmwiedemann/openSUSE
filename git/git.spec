@@ -29,7 +29,7 @@
 %bcond_without git_libsecret
 %bcond_without docs
 Name:           git
-Version:        2.22.1
+Version:        2.23.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only

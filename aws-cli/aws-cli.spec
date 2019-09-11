@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.16.189
+Version:        1.16.223
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 Requires:       python3
 Requires:       python3-PyYAML     <= 6.0.0
 Requires:       python3-PyYAML     >= 3.10
-Requires:       python3-botocore  >= 1.12.179
+Requires:       python3-botocore  >= 1.12.213
 Requires:       python3-colorama  <= 0.4.1
 Requires:       python3-colorama  >= 0.2.5
 Requires:       python3-docutils  >= 0.10

@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_image
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           SDL_image
 %define lname	libSDL_image-1_2-0
-Version:        1.2.12
+Version:        1.2.12+hg695
 Release:        0
 Summary:        SDL image loading library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
-Url:            http://libsdl.org/projects/SDL_image/release-1.2.html
+URL:            https://libsdl.org/projects/SDL_image/release-1.2.html
 
-# removed VisualC.zip, VisualCE.zip, Watcom-OS2.zip, Xcode.tar.gz, Xcode_iPhone.tar.gz from upstream tarball [bnc#508084]
-Source:         %name-%version-repack.tar.bz2
+#Hg-Clone:	http://hg.libsdl.org/SDL_image/
+Source:         %name-%version.tar.xz
 Source3:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkg-config
+BuildRequires:  xz
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sdl)
@@ -65,7 +65,7 @@ surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-png-shared --disable-jpg-shared --disable-tif-shared \
@@ -80,12 +80,11 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc CHANGES COPYING README
+%license COPYING
 %_libdir/libSDL_image-1*.so.*
 
 %files -n libSDL_image-devel
-%defattr(-,root,root)
+%doc CHANGES README
 %_includedir/SDL/
 %_libdir/libSDL_image.so
 %_libdir/pkgconfig/SDL_image.pc

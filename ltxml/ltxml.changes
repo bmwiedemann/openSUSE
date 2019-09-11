@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 21:18:13 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+- Run spec-cleaner
+- Trim the package summary
+
+-------------------------------------------------------------------
 Mon Dec 19 13:22:14 UTC 2011 - coolo@suse.de
 
 - update PyLTXML from upstream URL

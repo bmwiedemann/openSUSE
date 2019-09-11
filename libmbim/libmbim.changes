@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  2 22:48:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libmbim-fix-build-commits.patch: Fix build with new glib2.
+- Follwing the above patch, add libtool BuildRequires and pass
+  autoreconf as the patch touches the buildsystem. 
+- Use modern macros and url's.
+
+-------------------------------------------------------------------
 Sun Apr 14 11:01:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
-- Fix wording in the package summary
-- Update to version 1.18.2
-  + mbim-proxy:
-    - Increased empty lifetime to 300s.
+- Update to version 1.18.2:
+  + mbim-proxy: Increased empty lifetime to 300s.
+- Fix wording in the package summary.
+
 -------------------------------------------------------------------
 Tue Jan  8 20:40:43 UTC 2019 - mardnh@gmx.de
 

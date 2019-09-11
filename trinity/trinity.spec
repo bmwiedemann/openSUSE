@@ -16,9 +16,9 @@
 #
 
 
-%define version_unconverted 1.9+git.20190701
+%define version_unconverted 1.9+git.20190801
 Name:           trinity
-Version:        1.9+git.20190701
+Version:        1.9+git.20190801
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only

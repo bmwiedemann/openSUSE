@@ -1,7 +1,7 @@
 #
 # spec file for package atheme
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           atheme
 %define lname	libathemecore1
-Version:        7.2.9
+%define rversion	7.2.10-r2
+Version:        7.2.10.r2
 Release:        0
-Url:            http://atheme.net/
 Summary:        Extensible IRC services
 License:        MIT
 Group:          Productivity/Networking/IRC
+URL:            https://atheme.github.io/atheme.html
 
-Source:         https://github.com/atheme/atheme/releases/download/v%version/%name-%version.tar.bz2
+Source:         https://github.com/atheme/atheme/releases/download/v%rversion/%name-v%rversion.tar.xz
 Source9:        example.conf
 Patch1:         atheme-lockmodes.diff
 Patch2:         atheme-nodate.diff
 Patch3:         atheme-serno.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cracklib-devel
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
@@ -71,8 +71,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -P 3 -p1
+%autosetup -p1 -n %name-v%rversion
 # nudge atheme in the direction of using the system-provided libmowgli
 rm -Rf libmowgli-2
 # ignore contrib modules

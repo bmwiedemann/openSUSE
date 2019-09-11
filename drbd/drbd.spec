@@ -1,7 +1,7 @@
 #
 # spec file for package drbd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -24,28 +24,28 @@
 %endif
 
 Name:           drbd
-Version:        9.0.19+git.6f5fa5d3
+Version:        9.0.19~1+git.8e93a5d9
 Release:        0
-Summary:        DRBD driver for Linux
-License:        GPL-2.0+
+Summary:        Linux driver for the "Distributed Replicated Block Device"
+License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
-Url:            http://drbd.linbit.com/
+URL:            https://drbd.linbit.com/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        preamble
 #In kernel is: kernel/drivers/block/drbd/drbd.ko
 Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
-Patch2:         compat_no_bioset_initialized.patch
-Patch3:         rely-on-sb-handlers.patch
+Patch2:         rely-on-sb-handlers.patch
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
-BuildRequires:  module-init-tools
+#https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
+BuildRequires:  coccinelle
+BuildRequires:  modutils
 Requires:       drbd-utils >= 9.2.0
 Supplements:    drbd-utils >= 9.2.0
 Obsoletes:      drbd-kmp < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    i586 s390
 %kernel_module_package -n drbd -p %{_sourcedir}/preamble
 %if 0%{?buildrt} == 1
@@ -54,12 +54,12 @@ BuildRequires:  kernel-syms-rt
 %endif
 
 %description
-Drbd is a distributed replicated block device. It mirrors a block
+DRBD is a distributed replicated block device. It mirrors a block
 device over the network to another machine. Think of it as networked
 raid 1. It is a building block for setting up clusters.
 
 %package KMP
-Summary:        Kernel driver for DRBD
+Summary:        Kernel driver
 Group:          Productivity/Clustering/HA
 Url:            http://drbd.linbit.com/
 
@@ -72,7 +72,6 @@ installed kernel.
 %setup -q -n drbd-%{version}
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 mkdir source
 cp -a drbd/. source/. || :
@@ -93,6 +92,7 @@ for flavor in %{flavors_to_build}; do
     cp %{_sourcedir}/Module.supported $flavor
     export DRBDSRC="$PWD/obj/$flavor"
     make -C %{kernel_source $flavor} modules M=$PWD/$flavor
+
     #Check the compat result
     cat $PWD/$flavor/compat.h
 done
@@ -108,11 +108,7 @@ mkdir -p %{buildroot}/%{_sbindir}
 ln -s -f %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 rm -f drbd.conf
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc COPYING
 %doc ChangeLog
 %{_sbindir}/rc%{name}

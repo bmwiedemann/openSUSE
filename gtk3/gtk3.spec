@@ -22,7 +22,7 @@
 %define _name   gtk+
 %bcond_without  broadway
 Name:           gtk3
-Version:        3.24.10
+Version:        3.24.11
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -58,7 +58,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.53.4
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.4
-BuildRequires:  pkgconfig(glib-2.0) >= 2.49.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.57.2
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9

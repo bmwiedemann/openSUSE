@@ -17,7 +17,7 @@
 
 
 Name:           yast2-proxy
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        YaST2 - Proxy Configuration
 License:        GPL-2.0-or-later
@@ -29,8 +29,8 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-buildtools >= 4.2.2
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 Requires:       yast2
 Requires:       yast2-ruby-bindings >= 1.0.0

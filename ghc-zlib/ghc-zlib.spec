@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-zlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name zlib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.2
+Version:        0.6.2.1
 Release:        0
 Summary:        Compression and decompression in the gzip and zlib formats
 License:        BSD-2-Clause

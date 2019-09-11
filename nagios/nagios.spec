@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -96,7 +96,7 @@ Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} < 01200
 Requires(pre):  %insserv_prereq
 %endif
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Recommends:     %{name}-www
 Recommends:     cron
 # this package contains shared tools with icinga
@@ -145,7 +145,7 @@ Requires(pre):  grep
 Requires(pre):  sed
 %if 0%{?suse_version}
 Requires(pre):  apache2
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 %else
 Requires(pre):  httpd
 Requires(pre):  shadow-utils
@@ -538,6 +538,7 @@ fi
 %ghost %dir %{nslockfile_dir}
 %attr(0644,%{nagios_user},%{nagios_group}) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) %{nslockfile}
 %endif
+%dir %{_sysconfdir}/cron.weekly
 %attr(0755,root,root) %{_sysconfdir}/cron.weekly/*
 %config(noreplace) %{nagios_sysconfdir}/*.cfg
 %config(noreplace) %{nagios_sysconfdir}/objects/*.cfg

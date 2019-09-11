@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 19:01:18 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop mailx BuildRequires. The "sync directories over mail" feature
+  has been removed in 4.11.1.
+
+-------------------------------------------------------------------
 Mon Aug  6 08:54:30 UTC 2018 - schwab@suse.de
 
 - gnulib-libio.patch: Update gnulib for libio.h removal

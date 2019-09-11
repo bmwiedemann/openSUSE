@@ -2,7 +2,7 @@
 #
 # spec file for package webrtc-audio-processing
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -98,6 +98,7 @@ sed -i 's/\r$//' AUTHORS
 %patch101
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
 make %{?_smp_mflags} V=1
 

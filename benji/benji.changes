@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 30 08:53:26 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.1:
+  * This release pins two package dependencies to older versions
+    as newer releases of these dependencies broke Benji.
+  * Fixes #49.
+  * Fixes #51.
+
+-------------------------------------------------------------------
 Mon Jul 29 05:48:46 UTC 2019 - mvetter@suse.com
 
 - Update to 0.7.0:

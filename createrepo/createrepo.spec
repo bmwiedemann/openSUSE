@@ -67,24 +67,24 @@ sed -i -e 's|PYLIBDIR = $(PYSYSDIR)/lib/python$(PYVER)|PYLIBDIR = %{py_libdir}|g
        -e 's|PKGDIR = $(PYLIBDIR)/site-packages/$(PKGNAME)|PKGDIR = %{python_sitearch}/%{name}|g' \
        createrepo/Makefile
 %makeinstall sysconfdir=%{_sysconfdir}
-mv $RPM_BUILD_ROOT/%{_sysconfdir}/bash_completion.d/createrepo $RPM_BUILD_ROOT/%{_sysconfdir}/bash_completion.d/createrepo.sh
-for i in genpkgmetadata.py mergerepo mergerepo.py modifyrepo modifyrepo.py ; do rm -f $RPM_BUILD_ROOT/%{_sysconfdir}/bash_completion.d/$i ; done
+mv %{buildroot}/%{_sysconfdir}/bash_completion.d/createrepo %{buildroot}/%{_sysconfdir}/bash_completion.d/createrepo.sh
+for i in genpkgmetadata.py mergerepo mergerepo.py modifyrepo modifyrepo.py ; do rm -f %{buildroot}/%{_sysconfdir}/bash_completion.d/$i ; done
 
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/alternatives
+mkdir -p %{buildroot}/%{_sysconfdir}/alternatives
 for i in createrepo mergerepo modifyrepo ; do
-  mv $RPM_BUILD_ROOT/%{_bindir}/$i $RPM_BUILD_ROOT/%{_bindir}/${i}_yum
-  ln -s %{_bindir}/${i}_yum $RPM_BUILD_ROOT/%{_sysconfdir}/alternatives/$i
-  ln -s %{_sysconfdir}/alternatives/$i $RPM_BUILD_ROOT/%{_bindir}/$i
+  mv %{buildroot}/%{_bindir}/$i %{buildroot}/%{_bindir}/${i}_yum
+  ln -s %{_bindir}/${i}_yum %{buildroot}/%{_sysconfdir}/alternatives/$i
+  ln -s %{_sysconfdir}/alternatives/$i %{buildroot}/%{_bindir}/$i
 done
 for i in mergerepo modifyrepo ; do
-  mv $RPM_BUILD_ROOT/%{_mandir}/man1/$i.1 $RPM_BUILD_ROOT/%{_mandir}/man1/${i}_yum.1
-  ln -s %{_mandir}/man1/${i}_yum.1.gz $RPM_BUILD_ROOT/%{_sysconfdir}/alternatives/$i.1.gz
-  ln -s %{_sysconfdir}/alternatives/$i.1.gz $RPM_BUILD_ROOT/%{_mandir}/man1/$i.1.gz
+  mv %{buildroot}/%{_mandir}/man1/$i.1 %{buildroot}/%{_mandir}/man1/${i}_yum.1
+  ln -s %{_mandir}/man1/${i}_yum.1.gz %{buildroot}/%{_sysconfdir}/alternatives/$i.1.gz
+  ln -s %{_sysconfdir}/alternatives/$i.1.gz %{buildroot}/%{_mandir}/man1/$i.1.gz
 done
 for i in createrepo ; do
-  mv $RPM_BUILD_ROOT/%{_mandir}/man8/$i.8 $RPM_BUILD_ROOT/%{_mandir}/man8/${i}_yum.8
-  ln -s %{_mandir}/man8/${i}_yum.8.gz $RPM_BUILD_ROOT/%{_sysconfdir}/alternatives/$i.8.gz
-  ln -s %{_sysconfdir}/alternatives/$i.8.gz $RPM_BUILD_ROOT/%{_mandir}/man8/$i.8.gz
+  mv %{buildroot}/%{_mandir}/man8/$i.8 %{buildroot}/%{_mandir}/man8/${i}_yum.8
+  ln -s %{_mandir}/man8/${i}_yum.8.gz %{buildroot}/%{_sysconfdir}/alternatives/$i.8.gz
+  ln -s %{_sysconfdir}/alternatives/$i.8.gz %{buildroot}/%{_mandir}/man8/$i.8.gz
 done
 
 %post

@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 16 17:37:33 UTC 2019 - kukuk@suse.de
+
+- Update to version 1.2:
+  - use /usr/etc as second fallback directory
+
+-------------------------------------------------------------------
 Tue Jul 16 13:10:49 CEST 2019 - kukuk@suse.de
 
 - Update to version 1.1:
   - enhance comments in common-*-pc files
+
+-------------------------------------------------------------------
+Wed May  1 19:14:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
 
 -------------------------------------------------------------------
 Tue Mar 26 14:08:37 CET 2019 - kukuk@suse.de

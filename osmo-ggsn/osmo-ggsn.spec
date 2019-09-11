@@ -16,9 +16,11 @@
 #
 
 
+%define _lto_cflags %nil
+
 Name:           osmo-ggsn
-%define lname   libgtp4
-Version:        1.3.0
+%define lname   libgtp5
+Version:        1.4.0
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -32,12 +34,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libgtpnl) >= 1.2.0
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
-BuildRequires:  pkgconfig(libosmocore) >= 0.11.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 0.11.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.1.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.1.0
 BuildRequires:  pkgconfig(libosmogsm)
-BuildRequires:  pkgconfig(libosmovty) >= 0.11.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.1.0
 Obsoletes:      openggsn
-%{?systemd_requires}
 
 %description
 Osmo-GGSN is a C-language implementation of a GGSN (Gateway GPRS
@@ -77,7 +78,7 @@ make %{?_smp_mflags} V=1
 %install
 b="%buildroot"
 %make_install
-find $b -type f -name "*.la" -delete -print
+find "$b" -type f -name "*.la" -delete -print
 install -d "$b/%_sbindir"
 ln -s "%_sbindir/service" "$b/%_sbindir/rc%name"
 install -d "$b/%_sysconfdir/osmocom"
@@ -115,7 +116,7 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %config(noreplace) %_sysconfdir/osmocom/sgsnemu.conf
 
 %files -n %lname
-%_libdir/libgtp.so.4*
+%_libdir/libgtp.so.5*
 
 %files -n libgtp-devel
 %_includedir/%name/

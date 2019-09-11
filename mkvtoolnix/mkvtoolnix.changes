@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep  2 13:02:43 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 37.0.0
+  New features and enchancements:
+  * MKVToolNix GUI: the list of often used languages now contains those from
+    Wikipedia's "List of languages by native speakers" by default. Also by
+    default only those languages will be shown in the language drop-down boxes.
+  * mkvmerge: mkvmerge now allows appending AV1, VP8, VP9, H.264/AVC and
+    H.265/HEVC tracks whose pixel dimensions differ. Implements #2582.
+  Bug fixes:
+  * MKVToolNix GUI: multiplexer: fixed a bug in the "make destination file names
+    unique" logic that caused an existing number-in-parenthesis at the end of
+    the file base name to be removed in certain situations (e.g. when the first
+    added file was named `m (3).mkv` and both `m (3) (1).mkv` and `m (3)
+    (2).mkv` existed already, the GUI was suddenly use `m.mkv` instead of `m (3)
+    (3).mkv`).
+  * MKVToolNix GUI: on Windows the GUI is built with a slightly older version of
+    the Qt library again (5.12.4). The Qt version used in release v36.0.0,
+    v5.13.0, lead to crashes when doing certain things such as selecting
+    multiple tracks in the multiplexer. Fixes #2605 and #26008.
+  * source code: fixed building with Boost 1.71.0. Fixes #2599.
+  * all: fixed the spelling of the H.264 & H.265 codec names.
+  * mkvmerge: Blu-ray MPLS handling: mkvmerge will now find corresponding M2TS
+    files even if the `clip_codec_identifier` playlist item field is not set to
+    `M2TS` in the MPLS file. Fixes #2601.
+  * mkvmerge: fixed handling of text files that use both DOS-style and
+    Unix-style line endings resulting in problems such as text subtitle files
+    not being parsed correctly. Fixes #2594.
+
+-------------------------------------------------------------------
 Wed Jun 26 13:22:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 35.0.0

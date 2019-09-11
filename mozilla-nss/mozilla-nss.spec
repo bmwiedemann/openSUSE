@@ -2,7 +2,7 @@
 # spec file for package mozilla-nss
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2006-2018 Wolfgang Rosenauer
+# Copyright (c) 2006-2019 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 
-%global nss_softokn_fips_version 3.36
+%global nss_softokn_fips_version 3.45
 %define NSPR_min_version 4.21
 
 Name:           mozilla-nss
@@ -26,9 +26,9 @@ BuildRequires:  mozilla-nspr-devel >= %{NSPR_min_version}
 BuildRequires:  pkg-config
 BuildRequires:  sqlite-devel
 BuildRequires:  zlib-devel
-Version:        3.44.1
+Version:        3.45
 Release:        0
-%define underscore_version 3_44_1
+%define underscore_version 3_45
 # bug437293
 %ifarch ppc64
 Obsoletes:      mozilla-nss-64bit
@@ -129,7 +129,7 @@ any system or user configured modules.
 %package -n libfreebl3
 Summary:        Freebl library for the Network Security Services
 Group:          System/Libraries
-Provides:       libfreebl3-hmac
+Recommends:     libfreebl3-hmac = %{version}-%{release}
 
 %description -n libfreebl3
 Network Security Services (NSS) is a set of libraries designed to
@@ -141,11 +141,21 @@ certificates, and other security standards.
 This package installs the freebl library from NSS.
 
 
+%package -n libfreebl3-hmac
+Summary:        Freebl library checksums for the Network Security Services
+Group:          System/Libraries
+Requires:       libfreebl3 = %{version}-%{release}
+
+%description -n libfreebl3-hmac
+Checksums for libraries contained in the libfreebl3 package
+used in the FIPS 140-2 mode.
+
+
 %package -n libsoftokn3
 Summary:        Network Security Services Softoken Module
 Group:          System/Libraries
 Requires:       libfreebl3 = %{version}-%{release}
-Provides:       libsoftokn3-hmac
+Recommends:     libsoftokn3-hmac = %{version}-%{release}
 
 %description -n libsoftokn3
 Network Security Services (NSS) is a set of libraries designed to
@@ -155,6 +165,16 @@ TLS v1.0, v1.1, v1.2, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3
 certificates, and other security standards.
 
 Network Security Services Softoken Cryptographic Module
+
+
+%package -n libsoftokn3-hmac
+Summary:        Network Security Services Softoken Module checksums
+Group:          System/Libraries
+Requires:       libsoftokn3 = %{version}-%{release}
+
+%description -n libsoftokn3-hmac
+Checksums for libraries contained in the libsoftokn3 package
+used in the FIPS 140-2 mode.
 
 
 %package certs
@@ -184,6 +204,7 @@ cd nss
 #make generate
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 cd nss
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{S:99}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -389,15 +410,21 @@ fi
 %files -n libfreebl3
 %defattr(-, root, root)
 /%{_lib}/libfreebl3.so
-/%{_lib}/libfreebl3.chk
 /%{_lib}/libfreeblpriv3.so
+
+%files -n libfreebl3-hmac
+%defattr(-, root, root)
+/%{_lib}/libfreebl3.chk
 /%{_lib}/libfreeblpriv3.chk
 
 %files -n libsoftokn3
 %defattr(-, root, root)
 %{_libdir}/libsoftokn3.so
-%{_libdir}/libsoftokn3.chk
 %{_libdir}/libnssdbm3.so
+
+%files -n libsoftokn3-hmac
+%defattr(-, root, root)
+%{_libdir}/libsoftokn3.chk
 %{_libdir}/libnssdbm3.chk
 
 %files certs

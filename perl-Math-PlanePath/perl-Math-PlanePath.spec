@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-PlanePath
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Math-PlanePath
-Version:        126
+Version:        127
 Release:        0
-#Upstream: GPL-1.0+
+#Upstream: GPL-1.0-or-later
 %define cpan_name Math-PlanePath
-Summary:        Points On a Path Through the 2-D Plane
+Summary:        Points on a path through the 2-D plane
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Math-PlanePath/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KR/KRYDE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -194,11 +194,11 @@ printout of numbers from selected paths or all paths.
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

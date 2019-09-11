@@ -19,7 +19,7 @@
 %define libver 2
 
 Name:           shadowsocks-libev
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Libev port of Shadowsocks
 License:        GPL-3.0-or-later

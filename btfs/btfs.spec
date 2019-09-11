@@ -17,7 +17,7 @@
 
 
 Name:           btfs
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        A BitTorrent file system based on FUSE
 License:        GPL-3.0-or-later

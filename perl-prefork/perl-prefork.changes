@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 22 21:28:25 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove patch and use PERL_USE_UNSAFE_INC
+
+-------------------------------------------------------------------
+Wed Apr  3 07:47:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-prefork/Changes
+
+-------------------------------------------------------------------
 Wed Sep 12 13:20:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - add fix-build.diff from RT#120832

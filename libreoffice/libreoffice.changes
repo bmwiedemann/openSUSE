@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Aug 29 01:37:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.3.1.1:
+  * 6.3.1 RC1
+- Remove merged patch:
+  * gcc.patch
+
+-------------------------------------------------------------------
+Fri Aug 23 07:36:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add one more patch for the old boost:
+  * old-boost2.patch
+
+-------------------------------------------------------------------
+Tue Aug 20 10:27:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building on SLE12:
+  * old-boost.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 11:49:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with SLE12 boost:
+  * 0001-Fix-buidling-with-older-boost.patch
+
+-------------------------------------------------------------------
+Fri Aug 16 11:43:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix syntax for RPM on SLE12
+
+-------------------------------------------------------------------
+Fri Aug 16 08:31:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with mdds-1.5:
+  * mdds-1-5.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 13:56:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.2.6.2 bsc#1146098 CVE-2019-9850
+  bsc#1146105 CVE-2019-9851 bsc#1146107 CVE-2019-9852:
+  * Various bugfixes of 6.2 branch
+
+-------------------------------------------------------------------
 Thu Aug  8 08:23:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.3.0.4:
@@ -32,6 +76,12 @@ Mon Jul  8 10:36:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
   * First release of 6.3 series bringing more new features
 - Remove merged patch:
   * 0001-Use-sort-on-finds-to-improve-deterministic-build.patch
+
+-------------------------------------------------------------------
+Sat Jul  6 20:40:44 UTC 2019 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1133534 LO-L3: [PPTX] SmartArt: Basic rendering of Trapezoid List
+  * bsc1133534.patch
 
 -------------------------------------------------------------------
 Mon Jul  1 10:29:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

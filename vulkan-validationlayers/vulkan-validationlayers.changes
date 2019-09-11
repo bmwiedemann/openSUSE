@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 21 09:20:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.120
+  * layers: Add VK_KHR_uniform_buffer_standard_layout.
+  * layers: Split record/validation of Pipeline/Shaders.
+  * layers: Add accel structure tracking and validation.
+  * layers: Add validation for
+    VK_EXT_shader_demote_to_helper_invocation,
+    VK_EXT_texel_buffer_alignment,
+    VK_KHR_pipeline_executable_properties,
+    VK_EXT_line_rasterization, VkGeometryNV,
+    VkCommandBufferInheritanceInfo.
+  * layers: Added vu checks for imageless framebuffer.
+- Drop 0001-layers-Use-correct-apiversion-for-properties-check.patch
+
+-------------------------------------------------------------------
+Fri Jul 12 02:56:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-layers-Use-correct-apiversion-for-properties-check.patch
+  [boo#1140976]
+
+-------------------------------------------------------------------
 Fri Jun 28 08:07:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.112

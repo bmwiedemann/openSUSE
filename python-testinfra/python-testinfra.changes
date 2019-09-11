@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 28 12:26:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 3.1.0
+  * ssh connections uses persistent connections by default.
+  * ansible ssh connections now use ssh backend instead of paramiko.
+  * Add a new ansible connection options “force_ansible”, when set 
+    to True, testinfra will always call ansible for all commands 
+    he need to run.
+  * Handle all ansible connections types by setting force_ansible=True 
+    for connections which doesn’t have a testinfra equivalent connection 
+    (for example “network_cli”).
+
+-------------------------------------------------------------------
+Tue Aug 27 06:30:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Language fixes to the description.
+
+-------------------------------------------------------------------
 Tue Aug 13 16:55:33 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to 3.0.6:
@@ -26,7 +44,7 @@ Fri May 24 19:26:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu May 16 20:39:31 UTC 2019 - ranand@suse.com
 
-- Removed _multibuild, not needed here. 
+- Removed _multibuild, not needed here.
 
 -------------------------------------------------------------------
 Thu May 16 20:27:54 UTC 2019 - ranand@suse.com
@@ -58,10 +76,10 @@ Tue Apr 16 10:10:11 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 2.1.0
   * socket: fix parsing of ipv6 addresses with new versions of ss
   * Add addr module, used to test network connectivity
-  * Drop deprecated "testinfra" command, you should use "py.test" 
+  * Drop deprecated "testinfra" command, you should use "py.test"
     instead
   * Drop support for ansible <= 2.4
-  * Drop deprecated top level fixtures, access them through the 
+  * Drop deprecated top level fixtures, access them through the
     fixture "host" instead.
   1.1?.0
   * Fix pytest 4 compatibility
@@ -156,4 +174,4 @@ Mon Aug 28 22:20:05 UTC 2017 - sean.marlow@suse.com
 -------------------------------------------------------------------
 Wed May 17 22:24:33 UTC 2017 - sean.marlow@suse.com
 
-- Initial release (v1.6.1) 
+- Initial release (v1.6.1)

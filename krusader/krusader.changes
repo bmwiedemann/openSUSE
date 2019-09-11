@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 26 07:18:41 UTC 2019 - wbauer@tmo.at
+
+- Update to 2.7.2
+  * FIXED: Memory leak in the Locate dialog
+  * FIXED: UDSEntry::insert deprecation warnings
+  * FIXED: synchronize directory window: column widths 
+    are incorrect (kde#167410)
+  * FIXED: Context menu item "copy selected to clipboard" copies
+    all result items (kde#328918)
+  * FIXED: "Information - Krusader" dialog does not fit to screen
+    width; text non-copyable (kde#330788)
+  * FIXED: After trying to rename the file that's being updated,
+    rename function stops working on any file on this tab
+    (kde#392750)
+  * FIXED: New Text File is created with 600 (-rw-------)
+    permissions (kde#395609)
+  * FIXED: Misleading ‘Created’ date in file properties
+    (kde#397398)
+  * FIXED: Compilation error because of QOverload usage
+    (kde#405212)
+  * FIXED: The list of search results doesn't get the focus
+    (kde#410118)
+  * FIXED: Krusader does not search correctly if the "Follow links"
+    checkbox is disabled (kde#410120)
+  * FIXED: Okteta support for versions >= 0.26 (due to oktetapart
+    file layout change)
+- Drop Prefer-to-find-oktetapart-by-desktop-file.patch, merged
+  upstream
+- Don't add -fpermissive to compiler options, no longer necessary
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Tue Mar 12 06:41:59 UTC 2019 - wbauer@tmo.at
 
 - Add Prefer-to-find-oktetapart-by-desktop-file.patch to make it

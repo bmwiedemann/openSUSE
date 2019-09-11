@@ -65,9 +65,9 @@
 %define build_http2 0
 %endif
 Name:           apache2
-Version:        2.4.39
+Version:        2.4.41
 Release:        0
-Summary:        The Apache Web Server Version 2.4
+Summary:        The Apache Web Server
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 Url:            http://httpd.apache.org/

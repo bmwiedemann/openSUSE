@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:19:22 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.850
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.850 Mon Sep 09 12:30:00 EST 2019
+  
+    * Bumped version to coincide with the stable MCE::Shared 1.850 release.
+  
+  1.849 Sun Sep 08 23:30:00 EST 2019
+  
+    * Fixed edge case in MCE::Child when reaping inside a signal handler.
+    * Added list_pids class method to MCE::Child.
+
+-------------------------------------------------------------------
+Thu Sep  5 08:35:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.848
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.848 Tue Sep 03 23:30:00 EST 2019
+  
+    * Improved IO::All::{ File, Pipe, STDIO } output via MCE->print($io, ...),
+      printf, and say. This resolves a bug introduced in 1.845 when using
+      App::Cmd::Tester to capture output.
+
+-------------------------------------------------------------------
+Wed Sep  4 07:48:26 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.847
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.847 Mon Sep 02 23:30:00 EST 2019
+  
+    * Obsolete RedHat MCE-1.840-Sereal-deps.patch file. This patch file 
+      is no longer needed and finally resolved with this release.
+  
+    * PDL random numbers now unique between threads. Thank you, PerlMonks (vr).
+      See https://www.perlmonks.org/?node_id=1214439.
+  
+    * Replaced "PF_UNIX" with "AF_UNIX" in MCE::Util.
+
+-------------------------------------------------------------------
+Tue Aug 27 05:12:53 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.846
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.846 Mon Aug 26 21:30:00 EST 2019
+  
+    * Fixed code tags in documentation. Thank you, Mohammad S Anwar.
+
+-------------------------------------------------------------------
+Mon Aug 26 05:13:45 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.845
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.845 Sun Aug 25 22:00:00 EST 2019
+  
+    * Croak if is_joinable, is_running, or join is called by a non-managed
+      process in MCE::Child. Added LIMITATION section to the documentation.
+  
+    * Improved is_joinable, is_running, list_joinable, and list_running
+      in MCE::Child. Thank you, Philippe Baumgart.
+  
+    * Added example (Consumer requests item) to MCE::Channel documentation.
+  
+    * Support the task_end option regardless if user_tasks is specified.
+  
+    * Support IO::All::{ File, Pipe, STDIO } for input data including
+      output via MCE->print($io, ...), printf, and say.
+  
+    * Support gather => MCE::Candy::out_iter_fh($io) using MCE::Candy.
+
+-------------------------------------------------------------------
 Thu Aug 15 05:13:33 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.844

@@ -1,7 +1,7 @@
 #
 # spec file for package libabw
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libabw-0_1-1
 Name:           libabw
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Library for parsing the Abiword file format structure
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            https://wiki.documentfoundation.org/DLP/Libraries/libabw
+URL:            https://wiki.documentfoundation.org/DLP/Libraries/libabw
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -105,7 +105,8 @@ cp -p COPYING.* ChangeLog %{buildroot}%{_docdir}/%{name}-devel/
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%doc COPYING.* ChangeLog
+%license COPYING.*
+%doc ChangeLog
 %{_libdir}/*.so.*
 
 %files devel
@@ -119,7 +120,8 @@ cp -p COPYING.* ChangeLog %{buildroot}%{_docdir}/%{name}-devel/
 %doc %{_docdir}/%{name}-devel/html/
 
 %files tools
-%doc COPYING.* ChangeLog
+%license COPYING.*
+%doc ChangeLog
 %{_bindir}/*
 
 %changelog

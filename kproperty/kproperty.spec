@@ -28,14 +28,13 @@ Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.t
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-build-with-gcc48.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 
 %description
@@ -80,6 +79,9 @@ Development package for the property editing Framework
   %kf5_makeinstall -C build
   %find_lang %{name} %{name}.lang --all-name --with-qt
 
+  # The pkgconfig files contain incorrect stuff
+  rm -f %{buildroot}%{_libdir}/pkgconfig/KProperty*.pc
+
 %post -n libKPropertyCore3-%{sover} -p /sbin/ldconfig
 %postun -n libKPropertyCore3-%{sover} -p /sbin/ldconfig
 
@@ -101,7 +103,7 @@ Development package for the property editing Framework
 %{_libdir}/libKPropertyCore3.so
 %{_libdir}/cmake/KPropertyCore3/
 %{_libdir}/cmake/KPropertyWidgets3/
-%{_libdir}/pkgconfig/KProperty*.pc
+# %%{_libdir}/pkgconfig/KProperty*.pc
 
 %files
 %{_datadir}/kproperty3/

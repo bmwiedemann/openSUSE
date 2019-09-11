@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Sep  3 11:56:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.1:
+  + Depend on a newer version of ruamel.yaml (>= 0.16).
+
+-------------------------------------------------------------------
+Mon Sep  2 16:54:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.0:
+  + Elements may now specify 'build-depends' and 'runtime-depends'
+    fields to avoid having to specify the dependency type for every
+    entry in 'depends'.
+  + Elements may now specify cross-junction dependencies as simple
+    strings using the format '{junction-name}:{element-name}'.
+  + New `fatal-warnings` has been added to the project.conf format,
+    allowing projects to specify which warnings they want to
+    consider as fatal.
+  + Support for the following warnings is included:
+    - overlaps: When staged artifact files overlap (deprecates:
+     'fail-on-overlap').
+    - ref-not-in-track: When the source implementation finds that
+      the ref is out of bounds for the tracking config.
+    - git:inconsistent-submodule: A .gitmodules file is present but
+      the submodule was never added to the repo.
+    - git:unlisted-submodule: A submodule exists but is not
+      specified in the YAML declaration.
+    - git:invalid-submodule: A submodule is specified in the YAML
+      declaration but does not exist at the given ref in the git
+      repository.
+  + BuildStream now depends on python3 ujson (for some internal
+    serializations).
+  + Workspaces can now be opened as relative paths. Existing open
+    workspaces will not be converted to relative paths, (they need
+    to be closed and opened again to get the new behavior).
+  + Dependencies can now be specified as strict to force rebuild in
+    non-strict mode. This is useful for statically linked
+    dependencies.
+  + Git source plugins can optionally track human readable refs
+    using the output of `git describe`.
+
+-------------------------------------------------------------------
 Tue Jul 16 17:36:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.8:

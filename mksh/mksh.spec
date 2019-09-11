@@ -22,7 +22,7 @@
 
 Name:           mksh
 Version:        57
-Release:        0
+Release:        2
 Summary:        MirBSD Korn Shell
 License:        MirOS AND ISC
 Group:          System/Shells
@@ -73,6 +73,7 @@ ed -s mksh.1 <<-'EOF'
 ln -s . examples
 
 %build
+%define _lto_cflags %{nil}
 #
 # sys_errlist and sys_siglist *are* deprecated
 # Be aware of the _SYS_SIGLIST and _SYS_ERRLIST macros as well

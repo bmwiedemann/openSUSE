@@ -2,9 +2,9 @@
 	<service name="tar_scm" mode="disabled">
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/Vulkan-Tools</param>
-		<param name="revision">v1.1.112</param>
-		<param name="parent-tag">v1.1.112</param>
-		<param name="versionformat">1.1.112</param>
+		<param name="revision">e36c760b</param>
+		<param name="parent-tag">v1.1.119</param>
+		<param name="versionformat">1.1.120</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

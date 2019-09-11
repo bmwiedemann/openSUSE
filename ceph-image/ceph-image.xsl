@@ -102,8 +102,8 @@
   </repository>
 
   <packages type="image">
+
     <namedCollection name="ceph_base"/>
-    <package name="patterns-ceph-containers-ceph_base"/>
 
     <xsl:for-each select="param/packages_image/package">
       <package>

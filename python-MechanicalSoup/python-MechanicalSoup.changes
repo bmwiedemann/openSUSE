@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:01:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.0:
+  + Main changes:
+    * Changes in official python version support: added 3.7 and dropped 3.4.
+    * Added ability to submit a form without updating ``StatefulBrowser`` internal
+      state: ``submit_selected(..., update_state=False)``. This means you get a
+      response from the form submission, but your browser stays on the same page.
+      Useful for handling forms that result in a file download or open a new tab.
+  + Bug fixes
+    * Improve handling of form enctype to behave like a real browser.
+    * HTML ``type`` attributes are no longer required to be lowercase.
+    * Form controls with the ``disabled`` attribute will no longer be submitted
+      to improve compliance with the HTML standard. If you were relying on this
+      bug to submit disabled elements, you can still achieve this by deleting the
+      ``disabled`` attribute from the element in the :class:`~mechanicalsoup.Form`
+      object directly.
+    * When a form containing a file input field is submitted without choosing a
+      file, an empty filename & content will be sent just like in a real browser.
+    * ``<option>`` tags without a ``value`` attribute will now use their text as
+      the value.
+    * The optional ``url_regex`` argument to ``follow_link`` and ``download_link``
+      was fixed so that it is no longer ignored.
+    * Allow duplicate submit elements instead of raising a LinkNotFoundError.
+- Drop upstream-included bs4-47.patch
+
+-------------------------------------------------------------------
 Tue Mar  5 16:57:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with beautifulsoup4-4.7+:

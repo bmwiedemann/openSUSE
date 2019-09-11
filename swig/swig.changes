@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed May  8 12:57:04 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 4.0.0
+  - Support for Doxygen documentation comments which are parsed and
+    converted into JavaDoc or PyDoc comments.
+  - STL wrappers improved for C#, Java and Ruby.
+  - C++11 STL containers added for Java, Python and Ruby.
+  - Improved support for parsing C++11 and C++14 code.
+  - Various fixes for shared_ptr.
+  - Various C preprocessor corner case fixes.
+  - Corner case fixes for member function pointers.
+  - Python module overhaul by simplifying the generated code and turning
+    most optimizations on by default.
+  - %template improvements wrt scoping to align with C++ explicit
+    template instantiations.
+  - Added support for a command-line options file (sometimes
+    called a response file).
+  - Numerous enhancements and fixes for all supported target languages.
+  - SWIG now classifies the status of target languages into either
+    'Experimental' or 'Supported' to indicate the expected maturity
+    level.
+  - Support for CFFI, Allegrocl, Chicken, CLISP, S-EXP, UFFI, Pike,
+    Modula3 has been removed.
+  - Octave 4.4-5.1 support added.
+  - PHP5 support removed, PHP7 is now the supported PHP version.
+  - Minimum Python version required is now 2.7, 3.2-3.7 are the only
+    other versions supported.
+  - Added support for Javascript NodeJS versions 2-10.
+  - OCaml support is much improved and updated, minimum OCaml version
+    required is now 3.12.0.
+
+  See https://raw.githubusercontent.com/swig/swig/master/CHANGES
+
+- Drop patches (all included)
+  swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_FixMetho.patch
+  swig-3.0.12-Fix-generated-code-for-constant-expressions-containi.patch
+  swig-perl526.patch
+  swig-3.0.12-fix-collections.patch
+  swig-3.0.12-Fix-Coverity-issue-reported-for-setslice-pycontainer.patch
+  swig-3.0.12-Coverity-fix-issue-reported-for-wrapper-argument-che.patch
+  swig-3.0.12-support-octave-4.4.patch
+  swig-ocaml-int64.patch
+  swig-3.0.12-Coverity-fix-issue-reported-for-SWIG_Python_ConvertF.patch
+
+-------------------------------------------------------------------
 Fri Nov 30 12:58:08 UTC 2018 - badshah400@gmail.com
 
 - Add swig-3.0.12-support-octave-4.4.patch to add support for

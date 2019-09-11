@@ -462,8 +462,6 @@
     <ignore name="simple-scan"/>
     <package name="aaa_base" replaces="ghostscript"/>
     <ignore name="ghostscript"/>
-    <package name="aaa_base" replaces="orca"/>
-    <ignore name="orca"/>
     <package name="aaa_base" replaces="myspell-en_US"/>
     <ignore name="myspell-en_US"/>
     <package name="aaa_base" replaces="gnome-control-center-color"/>
@@ -484,6 +482,8 @@
     <ignore name="inkscape"/>
     <package name="aaa_base" replaces="deja-dup"/>
     <ignore name="deja-dup"/>
+    <package name="aaa_base" replaces="libpython2_7-1_0"/>
+    <ignore name="libpython2_7-1_0"/>
     <package name="aaa_base" replaces="gimp"/>
     <ignore name="gimp"/>
     <package name="aaa_base" replaces="noto-coloremoji-fonts"/>
@@ -514,6 +514,8 @@
     <package name="gnome-sudoku"/>
     <package name="quadrapassel"/>
     <package name="cifs-utils"/>
+    <package name="aaa_base" replaces="opensuse-welcome"/>
+    <ignore name="opensuse-welcome"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>

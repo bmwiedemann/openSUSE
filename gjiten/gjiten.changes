@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:51:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- As a result of port-to-GSettings.patch(?), gjiten no longer found
+  its dictionaries. Add more symlinks from /usr/share/gjiten to
+  /usr/share/edict and drop the GJITEN_DICDIR change from
+  gjiten-dirs.patch.
+
+-------------------------------------------------------------------
 Thu Aug  8 15:04:14 UTC 2019 - bjorn.lie@gmail.com
 
 - Add patches from debian porting gjiten to a more modern build.

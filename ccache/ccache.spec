@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        3.7.1
+Version:        3.7.3
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -60,7 +60,7 @@ ln -sf ../../bin/%{name} clang++
 ln -sf ../../bin/%{name} cc
 ln -sf ../../bin/%{name} c++
 
-%ifnarch %ix86
+%ifnarch %{ix86}
 # Testsuite fails on i586
 %check
 make %{?_smp_mflags} check

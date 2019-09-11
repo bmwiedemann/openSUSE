@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.0.0+git1862.ge9abbf48
+Version:        1.0.0+git1899.g69255322
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -54,9 +54,9 @@ Requires:       tini
 Requires:       pattern() = ceph_base
 
 %description
-Rook is an open source cloud-native storage orchestrator for Kubernetes,
-providing the platform, framework, and support for a diverse set of storage
-solutions to natively integrate with cloud-native environments.
+Rook is a cloud-native storage orchestrator for Kubernetes, providing
+the platform, framework, and support for a diverse set of storage
+solutions to integrate with cloud-native environments.
 
 See https://github.com/rook/rook for more information.
 
@@ -78,21 +78,23 @@ operations.
 Summary:        Kubernetes YAML file manifests for deploying a Ceph cluster
 Group:          System/Management
 BuildArch:      noarch
+%requires_eq    ceph
 
 %description k8s-yaml
-This package contains the yaml files requried deploy and run the
+This package contains the yaml files required to deploy and run the
 Rook-Ceph operator and Ceph clusters in a Kubernetes cluster.
 
 ################################################################################
 # Rook integration test binary metadata
 ################################################################################
+
 %package integration
 Summary:        Application which runs Rook integration tests
 Group:          System/Benchmark
 
 %description integration
-This package is intended to be used only for testing. Please don't install in 
-production.
+This package is intended to be used only for testing. Please don't install it
+in production clusters.
 
 Rook's integration tests conveniently get built into a standalone binary. The
 tests require a running Kubernetes cluster, and the image being tested must be
@@ -172,7 +174,7 @@ cp -pr cluster/examples/kubernetes/ceph/* %{buildroot}%{_datadir}/k8s-yaml/rook/
 ################################################################################
 # Update manifests with images coming from Build Service
 ################################################################################
-rook_container_version='1.0.0.1862'  # this is udpated by update-tarball.sh
+rook_container_version='1.0.0.1899'  # this is udpated by update-tarball.sh
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service

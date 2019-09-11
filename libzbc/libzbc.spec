@@ -17,8 +17,8 @@
 
 
 Name:           libzbc
-%define lname   libzbc-5_8_0
-Version:        5.8.0
+%define lname   libzbc-5_8_2
+Version:        5.8.2
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -26,7 +26,6 @@ Group:          Hardware/Other
 URL:            https://github.com/hgst/libzbc
 
 Source:         https://github.com/hgst/libzbc/archive/v%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -77,7 +76,7 @@ libzbc is a simple library providing functions for manipulating Zoned
 Block Command (ZBC), Zoned-device ATA command set (ZAC) disks.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -99,21 +98,17 @@ make -C obj check %{?_smp_mflags}
 %postun -n %lname -p /sbin/ldconfig
 
 %files tools
-%defattr(-,root,root)
 %_bindir/zbc_*
 %doc COPYING.LESSER
 
 %files gui
-%defattr(-,root,root)
-%_bindir/gzbc
+%_bindir/gz*
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libzbc-*.so
 %doc COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/libzbc.so
 %_libdir/pkgconfig/libzbc.pc

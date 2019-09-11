@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pebble
 Version:        4.3.10
 Release:        0
+Summary:        Threading and multiprocessing eye-candy for Python
 License:        LGPL-3.0-only
-Summary:        Threading and multiprocessing eye-candy
-Url:            https://github.com/noxdafox/pebble
 Group:          Development/Languages/Python
+URL:            https://github.com/noxdafox/pebble
 Source:         https://files.pythonhosted.org/packages/source/P/Pebble/Pebble-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-futures
 BuildRequires:  fdupes
 BuildRequires:  git
+BuildRequires:  python-futures
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -40,7 +41,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Threading and multiprocessing eye-candy.
+Pebble provides an API to manage threads and processes within an application.
+It wraps Python’s standard library threading and multiprocessing objects.
 
 %prep
 %setup -q -n Pebble-%{version}

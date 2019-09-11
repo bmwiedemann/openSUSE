@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug  1 10:26:28 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5.1:
+  * correct upstream source packaging problems
+- new in 3.5:
+  * gcm_crypt will now call the underlying block cipher to process
+    more than one block at a time
+  * Support for CFB8 (Cipher Feedback Mode, processing a single
+    octet per block cipher operation)
+  * Support for CMAC (RFC 4493)
+  * Support for XTS mode
+  * various improvements
+
+-------------------------------------------------------------------
 Wed Jan  2 13:48:54 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 3.4.1 release

@@ -1,7 +1,7 @@
 #
 # spec file for package eigen3
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           eigen3
+%global flavor @BUILD_FLAVOR@%{nil}
+%global pkgname eigen3
+
+%bcond_with tests
+
+%if "%{flavor}" == "docs"
+%define pkgsuffix -doc
+%endif
+
+Name:           eigen3%{?pkgsuffix}
 Version:        3.3.7
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
-License:        MPL-2.0 and LGPL-2.1+ and BSD-3-Clause
+License:        MPL-2.0 AND LGPL-2.1-only AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Url:            http://eigen.tuxfamily.org/
-Source0:        https://bitbucket.org/eigen/eigen/get/%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source0:        https://bitbucket.org/eigen/eigen/get/%{version}.tar.bz2#/%{pkgname}-%{version}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
 # PATCH-FIX-OPENSUSE eigen_pkgconfig.patch asterios.dramis@gmail.com -- Fix pkg-config file includedir
@@ -34,37 +43,33 @@ Patch3:         01_install_FindEigen3.patch
 Patch4:         eigen3-3.3.1-fixcmake.patch
 BuildRequires:  adolc-devel
 BuildRequires:  cmake
-BuildRequires:  doxygen
-BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  glew-devel
 BuildRequires:  gmp-devel
-BuildRequires:  graphviz
-BuildRequires:  graphviz-gd
 BuildRequires:  gsl-devel
-%if 0%{?suse_version} > 1320
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
-%if 0%{?suse_version} == 1315
-BuildRequires:  libqt4-devel
-%endif
+BuildRequires:  metis-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  pkg-config
 BuildRequires:  sparsehash-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  superlu-devel
+%if "%{flavor}" == "docs"
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-latex
-BuildRequires:  pkgconfig(gl)
-BuildArch:      noarch
-%if 0%{?suse_version} > 1310
-BuildRequires:  metis-devel
+BuildRequires:  tex(newunicodechar.sty)
 %endif
+%if %{with tests}
+BuildRequires:  freeglut-devel
+BuildRequires:  glew-devel
+BuildRequires:  pkgconfig(gl)
+%endif
+BuildArch:      noarch
 
 %description
 Eigen is a C++ template library for linear algebra: matrices, vectors,
@@ -81,13 +86,14 @@ Obsoletes:      libeigen3-devel < %{version}
 Eigen is a C++ template library for linear algebra: matrices, vectors,
 numerical solvers, and related algorithms.
 
-%package doc
+%if "%{flavor}" == "docs"
 Summary:        Documentation for the Eigen3 C++ Template Library for Linear Algebra
 Group:          Documentation/HTML
 
-%description doc
+%description
 Documentation in HTML format for the Eigen3 C++ Template Library
 for Linear Algebra
+%endif
 
 %prep
 %setup -q -n eigen-eigen-323c052e1731
@@ -108,23 +114,35 @@ echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
  -DCMAKE_BUILD_TYPE=Release \
  -DINCLUDE_INSTALL_DIR=%{_includedir}/eigen3 \
  -DGOOGLEHASH_INCLUDES=%{_includedir}
-make %{?_smp_mflags} all doc
-rm -f doc/html/*.tgz `find doc -name _formulas.log`
+
+%if "%{flavor}" == ""
+make %{?_smp_mflags} all
+%else
+make %{?_smp_mflags} doc
+%endif
+
+rm -f doc/html/*.tgz
+find doc -name _formulas.log -print -delete
 
 %install
+%if "%{flavor}" == ""
 %cmake_install
+%else
 %fdupes -s build/doc/html/
+%endif
 
+%if "%{flavor}" == "docs"
+%files
+%doc build/doc/html/
+
+%else
 %files devel
-%defattr(-,root,root,-)
-%doc COPYING.*
+%license COPYING.*
 %{_includedir}/eigen3/
 %{_datadir}/eigen3/
 %{_datadir}/pkgconfig/eigen3.pc
 %{_datadir}/cmake/Modules/FindEigen3.cmake
 
-%files doc
-%defattr(-,root,root,-)
-%doc build/doc/html/
+%endif
 
 %changelog

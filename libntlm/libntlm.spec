@@ -1,7 +1,7 @@
 #
 # spec file for package libntlm
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libntlm
 %define lname	libntlm0
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Implementation of Microsoft's NTLMv1 authentication
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Url:            http://www.nongnu.org/libntlm/
 
@@ -31,7 +31,6 @@ Source:         http://www.nongnu.org/libntlm/releases/%name-%version.tar.gz
 Source2:        http://www.nongnu.org/libntlm/releases/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libntlm provides routines to manipulate the structures used for the
@@ -58,32 +57,30 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libntlm.
 
 %prep
-%{?gpg_verify: %gpg_verify %{S:2}}
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags};
+make %{?_smp_mflags}
 
 %install
-make install DESTDIR="%buildroot";
-rm -f "%buildroot/%_libdir"/*.la;
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
 %check
 make check
 
-%post -n %lname -p /sbin/ldconfig
-
+%post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING THANKS
+%license COPYING
 %_libdir/libntlm.so.0*
 
 %files devel
 %defattr(-,root,root)
-%doc NEWS README
+%doc ChangeLog NEWS README
 %_includedir/ntlm.h
 %_libdir/libntlm.so
 %_libdir/pkgconfig/libntlm.pc

@@ -20,7 +20,7 @@
 # are only ever run inside the disk image build chroot).
 %global         __requires_exclude_from ^%{python3_sitelib}/diskimage_builder/elements/.*$
 Name:           diskimage-builder
-Version:        2.25.0
+Version:        2.27.0
 Release:        0
 Summary:        Image Building Tools for OpenStack
 License:        Apache-2.0

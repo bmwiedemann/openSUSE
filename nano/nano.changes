@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 27 01:24:55 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.4:
+  * At startup, the cursor can be put on the first or last
+    occurrence of a string by preceding the filename with +/string
+    or +?string.
+  * When automatic hard-wrapping occurs (--breaklonglines), any
+    leading quoting characters will be automatically copied to the
+    new line.
+  * M-6 works again also when the cursor is at end of buffer.
+
+-------------------------------------------------------------------
 Mon Aug 12 21:04:23 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Nano 4.3:

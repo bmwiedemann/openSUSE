@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 20 15:43:45 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 0.4.1.5
+  * Onion service clients now add padding cells at the start of their
+    INTRODUCE and RENDEZVOUS circuits to make it look like
+    Exit traffic
+  * Add a generic publish-subscribe message-passing subsystem
+  * Controller commands are now parsed using a generalized parsing
+    subsystem
+  * Implement authenticated SENDMEs as detailed in proposal 289
+  * Our node selection algorithm now excludes nodes in linear time
+  * Construct a fast secure pseudorandom number generator for
+    each thread, to use when performance is critical
+  * Consider our directory information to have changed when our list
+    of bridges changes
+  * Do not count previously configured working bridges towards our
+    total of working bridges
+  * When considering upgrading circuits from "waiting for guard" to
+    "open", always ignore circuits that are marked for close
+  * Properly clean up the introduction point map when circuits change
+    purpose
+  * Fix an unreachable bug in which an introduction point could try to
+    send an INTRODUCE_ACK
+  * Clients can now handle unknown status codes from INTRODUCE_ACK
+    cells
+- Remove upstreamed tor-0.3.5.8-no-ssl-version-warning.patch
+- Compile without -Werror to build with LTO (boo#1146548)
+- Add fix-test.patch to workaround a LTO-induced test-failure
+
+-------------------------------------------------------------------
+Fri Jul 26 12:23:05 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
 Mon May 20 12:55:12 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing zlib requirement.

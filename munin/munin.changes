@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:53:15 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.d as this is now part of cron which we don't
+  want to require
+
+-------------------------------------------------------------------
 Wed Jun 12 15:09:10 UTC 2019 - dimstar@opensuse.org
 
 - Allow OBS to pick better candidates to shorten rebuild queues

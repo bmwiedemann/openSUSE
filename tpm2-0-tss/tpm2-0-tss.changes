@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 23 12:06:22 UTC 2019 - matthias.gerstner@suse.com
+
+- update to upstream version 2.2.3:
+  - changes in version 2.2.3:
+    * Fix computation of session name
+    * Fixed PolicyPassword handling of session Attributes
+    * Fixed windows build from dist ball
+    * Fixed default tcti configure option
+    * Fixed nonce size calculation in ESYS sessions
+  - changes in version 2.2.2:
+    * Fixed wrong encryption flag in EncryptDecrypt
+    * Fixing openssl engine invocation
+
+-------------------------------------------------------------------
 Fri Apr 26 10:37:23 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils

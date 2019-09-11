@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           fltk
 Version:        1.3.4
 Release:        0
 Summary:        C++ GUI Toolkit for the X Window System, OpenGL, and WIN32
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 Url:            http://www.fltk.org/
 Source:         http://fltk.org/pub/fltk/%{version}/fltk-%{version}-source.tar.gz
@@ -91,6 +91,7 @@ installation of this package requires a 3D library such as Mesa.
 %patch2
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure \
   --enable-shared \
   --enable-threads

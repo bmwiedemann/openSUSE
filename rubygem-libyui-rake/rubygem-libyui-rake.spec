@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-libyui-rake
-Version:        0.1.14
+Version:        0.1.19
 Release:        0
 %define mod_name libyui-rake
 %define mod_full_name %{mod_name}-%{version}
@@ -32,10 +32,10 @@ License:        LGPL-2.1-only
 Group:          Development/Languages/Ruby
 
 %description
-Rake tasks that support work-flow of libyui developer. It allows packaging
-a repo, sending it to build service, creating submit request
-to target repo or running client from git repo.
-Heavily inspired in yast-rake.
+Rake tasks that support the workflow of a libyui developer. It allows packaging
+a repo, sending it to the build service, creating a submit request to the
+target repo or running the client from the git repo.
+Heavily inspired by yast-rake.
 
 %prep
 

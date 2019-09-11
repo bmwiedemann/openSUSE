@@ -18,7 +18,7 @@
 
 
 Name:           enigmail
-Version:        2.0.12
+Version:        2.1.2
 Release:        0
 Summary:        OpenPGP addon for Thunderbird and SeaMonkey
 License:        MPL-2.0

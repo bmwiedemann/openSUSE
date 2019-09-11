@@ -1,7 +1,7 @@
 #
 # spec file for package audio-recorder
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           audio-recorder
-Version:        2.1.3
+Version:        3.0.5
 Release:        0
 Summary:        An audio recorder application for the GNOME 2/3
 License:        GPL-3.0
 Group:          Productivity/Multimedia/Sound/Utilities
 Url:            https://launchpad.net/~audio-recorder
-Source:         https://launchpadlibrarian.net/368233767/audio-recorder_%{version}~bionic.tar.gz
+Source:         https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+sourcefiles/audio-recorder/%{version}~disco/audio-recorder_%{version}~disco.tar.gz
 # PATCH-FIX-OPENSUSE audio-recorder-correct-desktop-menu.patch badshah400@gmail.com -- Fixes the .desktop file by removing unity related tags from it.
 Patch0:         audio-recorder-correct-desktop-menu.patch
 BuildRequires:  autoconf

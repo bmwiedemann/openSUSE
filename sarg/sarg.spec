@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Name:           sarg
 Version:        2.3.10
 Release:        0
 Summary:        Squid Analysis Report Generator
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Url:            http://sarg.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -107,6 +107,9 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 %files
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/sarg.conf
+%dir %{_sysconfdir}/cron.daily
+%dir %{_sysconfdir}/cron.weekly
+%dir %{_sysconfdir}/cron.monthly
 %{_sysconfdir}/cron.*/suse.de-sarg
 %dir /etc/apache2
 %dir /etc/apache2/conf.d
@@ -130,6 +133,7 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 /srv/www/htdocs/sarg-php
 %{_mandir}/man1/%{name}*
 %{_mandir}/man8/%{name}-report*
-%doc CONTRIBUTORS COPYING ChangeLog DONATIONS LICENSE README
+%license COPYING LICENSE
+%doc CONTRIBUTORS ChangeLog DONATIONS README
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 05 16:09:07 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20190905.0016c47:
+  * whitelist new systemd-resolved actions (bnc#1149216)
+
+-------------------------------------------------------------------
+Tue Aug 27 14:52:51 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20190827.0cc2a82:
+  * make new systemd rules more restrictive (boo#1146300,
+    boo#1145639)
+
+-------------------------------------------------------------------
+Fri Aug 23 11:39:36 UTC 2019 - lnussel@suse.de
+
+- Update to version 13.2+20190823.a5f89c3:
+  * systemd-networkd (boo#1146300)
+  * systemd-portabled (boo#1145639)
+
+-------------------------------------------------------------------
 Tue Aug 06 09:00:25 UTC 2019 - jsegitz@suse.de
 
 - Update to version 13.2+20190806.841a06b:

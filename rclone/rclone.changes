@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:58:09 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.49.2
+  * New Features
+    - build: Add Docker workflow support (Alfonso Montero)
+  * Bug Fixes
+    - accounting: Fix locking in Transfer to avoid deadlock with --progress (Nick Craig-Wood)
+    - docs: Fix template argument for mktemp in install.sh (Cnly)
+    - operations: Fix -u/--update with google photos / files of unknown size (Nick Craig-Wood)
+    - rc: Fix docs for config/create /update /password (Nick Craig-Wood)
+  * Google Cloud Storage
+    - Fix need for elevated permissions on SetModTime (Nick Craig-Wood)
+
+-------------------------------------------------------------------
+Thu Aug 29 05:18:55 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.49.1
+  * Bug Fixes
+    - config: Fix generated passwords being stored as empty password (Nick Craig-Wood)
+    - rcd: Added missing parameter for web-gui info logs. (Chaitanya)
+  * Googlephotos
+    - Fix crash on error response (Nick Craig-Wood)
+  * Onedrive
+    - Fix crash on error response (Nick Craig-Wood)
+
+-------------------------------------------------------------------
+Mon Aug 26 17:55:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.49.0
+  * New backends
+    - 1fichier (Laura Hausmann)
+    - Google Photos (Nick Craig-Wood)
+    - Putio (Cenk Alti)
+    - premiumize.me (Nick Craig-Wood)
+  * New Features
+    - Experimental web GUI (Chaitanya Bankanhal)
+    - Implement --compare-dest & --copy-dest (yparitcher)
+    - Implement --suffix without --backup-dir for backup to current dir (yparitcher)
+    - config reconnect to re-login (re-run the oauth login) for the backend. (Nick Craig-Wood)
+    - config userinfo to discover which user you are logged in as. (Nick Craig-Wood)
+    - config disconnect to disconnect you (log out) from the backend. (Nick Craig-Wood)
+    - Add --use-json-log for JSON logging (justinalin)
+    - Add context propagation to rclone (Aleksandar Jankovic)
+    - Reworking internal statistics interfaces so they work with rc jobs (Aleksandar Jankovic)
+    - Add Higher units for ETA (AbelThar)
+    - Update rclone logos to new design (Andreas Chlupka)
+    - hash: Add CRC-32 support (Cenk Alti)
+    - help showbackend: Fixed advanced option category when there are no standard options (buengese)
+    - ncdu: Display/Copy to Clipboard Current Path (Gary Kim)
+    - operations:
+      + Run hashing operations in parallel (Nick Craig-Wood)
+      + Don’t calculate checksums when using --ignore-checksum (Nick Craig-Wood)
+      + Check transfer hashes when using --size-only mode (Nick Craig-Wood)
+      + Disable multi thread copy for local to local copies (Nick Craig-Wood)
+      + Debug successful hashes as well as failures (Nick Craig-Wood)
+    - rc
+      + Add ability to stop async jobs (Aleksandar Jankovic)
+      + Return current settings if core/bwlimit called without parameters (Nick Craig-Wood)
+      + Rclone-WebUI integration with rclone (Chaitanya Bankanhal)
+      + Added command line parameter to control the cross origin resource sharing (CORS) in the rcd. (Security Improvement) (Chaitanya Bankanhal)
+      + Add anchor tags to the docs so links are consistent (Nick Craig-Wood)
+      + Remove _async key from input parameters after parsing so later operations won’t get confused (buengese)
+      + Add call to clear stats (Aleksandar Jankovic)
+    - rcd
+      + Auto-login for web-gui (Chaitanya Bankanhal)
+      + Implement --baseurl for rcd and web-gui (Chaitanya Bankanhal)
+    - serve dlna
+      + Only select interfaces which can multicast for SSDP (Nick Craig-Wood)
+      + Add more builtin mime types to cover standard audio/video (Nick Craig-Wood)
+      + Fix missing mime types on Android causing missing videos (Nick Craig-Wood)
+    - serve ftp
+      + Refactor to bring into line with other serve commands (Nick Craig-Wood)
+      + Implement --auth-proxy (Nick Craig-Wood)
+    - serve http: Implement --baseurl (Nick Craig-Wood)
+    - serve restic: Implement --baseurl (Nick Craig-Wood)
+    - serve sftp
+      + Implement auth proxy (Nick Craig-Wood)
+      + Fix detection of whether server is authorized (Nick Craig-Wood)
+    - serve webdav
+      + Implement --baseurl (Nick Craig-Wood)
+      + Support --auth-proxy (Nick Craig-Wood)
+  * Bug Fixes
+    - Make “bad record MAC” a retriable error (Nick Craig-Wood)
+    - copyurl: Fix copying files that return HTTP errors (Nick Craig-Wood)
+    - march: Fix checking sub-directories when using --no-traverse (buengese)
+    - rc
+      + Fix unmarshalable http.AuthFn in options and put in test for marshalability (Nick Craig-Wood)
+      + Move job expire flags to rc to fix initalization problem (Nick Craig-Wood)
+      + Fix --loopback with rc/list and others (Nick Craig-Wood)
+    - rcat: Fix slowdown on systems with multiple hashes (Nick Craig-Wood)
+    - rcd: Fix permissions problems on cache directory with web gui download (Nick Craig-Wood)
+  * Mount
+    - Default --deamon-timout to 15 minutes on macOS and FreeBSD (Nick Craig-Wood)
+    - Update docs to show mounting from root OK for bucket based (Nick Craig-Wood)
+    - Remove nonseekable flag from write files (Nick Craig-Wood)
+  * VFS
+    - Make write without cache more efficient (Nick Craig-Wood)
+    - Fix --vfs-cache-mode minimal and writes ignoring cached files (Nick Craig-Wood)
+  * Local
+    - Add --local-case-sensitive and --local-case-insensitive (Nick Craig-Wood)
+    - Avoid polluting page cache when uploading local files to remote backends (Michał Matczuk)
+    - Don’t calculate any hashes by default (Nick Craig-Wood)
+    - Fadvise run syscall on a dedicated go routine (Michał Matczuk)
+  * Azure Blob
+    - Azure Storage Emulator support (Sandeep)
+    - Updated config help details to remove connection string references (Sandeep)
+    - Make all operations work from the root (Nick Craig-Wood)
+  * B2
+    - Implement link sharing (yparitcher)
+    - Enable server side copy to copy between buckets (Nick Craig-Wood)
+    - Make all operations work from the root (Nick Craig-Wood)
+  * Drive
+    - Fix server side copy of big files (Nick Craig-Wood)
+    - Update API for teamdrive use (Nick Craig-Wood)
+    - Add error for purge with --drive-trashed-only (ginvine)
+  * Fichier
+    - Make FolderID int and adjust related code (buengese)
+  * Google Cloud Storage
+    - Reduce oauth scope requested as suggested by Google (Nick Craig-Wood)
+    - Make all operations work from the root (Nick Craig-Wood)
+  * HTTP
+    - Add --http-headers flag for setting arbitrary headers (Nick Craig-Wood)
+  * Jottacloud
+    - Use new api for retrieving internal username (buengese)
+    - Refactor configuration and minor cleanup (buengese)
+  * Koofr
+    - Support setting modification times on Koofr backend. (jaKa)
+  * Opendrive
+    - Refactor to use existing lib/rest facilities for uploads (Nick Craig-Wood)
+  * Qingstor
+    - Upgrade to v3 SDK and fix listing loop (Nick Craig-Wood)
+    - Make all operations work from the root (Nick Craig-Wood)
+  * S3
+    - Add INTELLIGENT_TIERING storage class (Matti Niemenmaa)
+    - Make all operations work from the root (Nick Craig-Wood)
+  * SFTP
+    - Add missing interface check and fix About (Nick Craig-Wood)
+    - Completely ignore all modtime checks if SetModTime=false (Jon Fautley)
+    - Support md5/sha1 with rsync.net (Nick Craig-Wood)
+    - Save the md5/sha1 command in use to the config file for efficiency (Nick Craig-Wood)
+    - Opt-in support for diffie-hellman-group-exchange-sha256 diffie-hellman-group-exchange-sha1 (Yi FU)
+  * Swift
+    - Use FixRangeOption to fix 0 length files via the VFS (Nick Craig-Wood)
+    - Fix upload when using no_chunk to return the correct size (Nick Craig-Wood)
+    - Make all operations work from the root (Nick Craig-Wood)
+    - Fix segments leak during failed large file uploads. (nguyenhuuluan434)
+  * WebDAV
+    - Add --webdav-bearer-token-command (Nick Craig-Wood)
+    - Refresh token when it expires with --webdav-bearer-token-command (Nick Craig-Wood)
+    - Add docs for using bearer_token_command with oidc-agent (Paul Millar)
+
+-------------------------------------------------------------------
 Thu Jun 20 11:38:16 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix executable permission

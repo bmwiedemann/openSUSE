@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep  8 08:27:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- links 2.20.1:
+  * libevent bug fixes
+- includes changes from 2.20:
+  * Security bug fixed: when links was connected to tor, it would
+    send real dns requests outside the tor network when the
+    displayed page contains link elements with rel=dns-prefetch
+    boo#1149886
+  * stability improvements
+  * file urls support local hostnames
+  * mouse support improvement
+  * improve interaction with Google
+  * Support the zstd compression algorithm
+  * Use proper cookie expiry
+
+-------------------------------------------------------------------
 Fri Apr 05 00:59:34 UTC 2019 - seanlew@opensuse.org
 
 - links 2.19

@@ -34,10 +34,11 @@
 %endif
 %endif
 
-%define configACRN %{_datarootdir}/defaults/kata-containers/configuration-acrn.toml
-%define configFC   %{_datarootdir}/defaults/kata-containers/configuration-fc.toml
-%define configNEMU %{_datarootdir}/defaults/kata-containers/configuration-nemu.toml
-%define configQEMU %{_datarootdir}/defaults/kata-containers/configuration-qemu.toml
+%define configPath %{_datarootdir}/defaults/kata-containers/
+%define configACRN configuration-acrn.toml
+%define configFC   configuration-fc.toml
+%define configNEMU configuration-nemu.toml
+%define configQEMU configuration-qemu.toml
 %ifarch x86_64
 # Note: braces used for bash brace expansion
 %define defaultConfigFiles \{%{configACRN},%{configFC},%{configNEMU},%{configQEMU}\}
@@ -48,7 +49,7 @@
 Name:           katacontainers
 Version:        1.9.0~alpha0
 Release:        <CI_CNT>.<B_CNT>
-Summary:        Kata Containers core components
+Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/kata-containers
@@ -59,18 +60,13 @@ Source3:        ksm-throttler-%{version}.tar.gz
 Source4:        kata-fc
 Source5:        kata-qemu
 Source6:        katacontainers.rpmlintrc
+ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 BuildRequires:  fdupes
-%if 0%{?suse_version}
-BuildRequires:  golang(API) = 1.11
-%else
-BuildRequires:  go = 1.11
-%endif
+BuildRequires:  golang(API) >= 1.12
 Requires:       katacontainers-image-initrd  = %{version}
-Requires:       kernel-kvmsmall
 # Requires: are also required for build, to correctly detect the kernel
 # version to use
 BuildRequires:  katacontainers-image-initrd  = %{version}
-BuildRequires:  kernel-kvmsmall
 # Required for build to correctly detect the kernel version to use
 %ifarch x86_64
 Requires:       qemu-x86
@@ -133,11 +129,19 @@ make \
     QEMUCMD=%{QEMUCMD} \
     install
 
-# Using initrd, so delete the image config line
-sed -i -E -e '/^image =/d' %{buildroot}/%{defaultConfigFiles}
+# Only initrd is supported: delete the "image =" entries only in files where
+# both "image =" and "initrd =" is specified
+for f in %{buildroot}%{configPath}/%{defaultConfigFiles}; do
+  grep -q "^image =" "$f" && grep -q "^initrd = " "$f" && sed -i -E -e '/^image =/d' $f
+done
 
-# Properly set libexec path
-sed -i -E -e 's,/usr/libexec,%{_libexecdir},' %{buildroot}/%{defaultConfigFiles}
+# Replace /usr/libexec path with /usr/lib
+sed -i -E \
+    -e "s,/usr/libexec,%{_libexecdir}," \
+    -e "s,^kernel =.*$,kernel = \"%{_datarootdir}/kata-containers/vmlinuz\"," \
+    %{buildroot}%{configPath}/%{defaultConfigFiles}
+
+install -m 644 -D %{buildroot}%{configPath}/configuration.toml %{buildroot}%{_sysconfdir}/kata-containers/configuration.toml
 
 cd $HOME/go/src/%{kata_project}/proxy
 make \
@@ -188,12 +192,6 @@ install -m 755 %{SOURCE5} %{buildroot}%{_bindir}/kata-qemu
 %post
 %service_add_post kata-ksm-throttler.service
 %service_add_post kata-vc-throttler.service
-# Set config to use a matching kernel and initrd version. This is done in %post,
-# so that it is using whatever versions the user has installed on its system.
-kversion=$(readlink "%{_datarootdir}/kata-containers/kata-containers-initrd.img" | sed -E -e "s,^.*kata-containers-initrd-(.+).img,\1,")
-[ -n "${kversion}" ] || { echo "Failed to detect the initrd kernel version"; exit -1; }
-ln -sf "/boot/vmlinuz-${kversion}" "%{_datarootdir}/kata-containers/vmlinuz"
-sed -i -E -e "s,^kernel =.*$,kernel = \"%{_datarootdir}/kata-containers/vmlinuz\"," %{defaultConfigFiles}
 
 %preun
 %service_del_preun kata-ksm-throttler.service
@@ -215,16 +213,14 @@ sed -i -E -e "s,^kernel =.*$,kernel = \"%{_datarootdir}/kata-containers/vmlinuz\
 %{_libexecdir}/kata-containers/kata-netmon
 %{_bindir}/kata-collect-data.sh
 # Manpages
+# Configs
+%dir %{_sysconfdir}/kata-containers
+%config(noreplace) %{_sysconfdir}/kata-containers/configuration.toml
 # Default configs
 %dir %{_datarootdir}/defaults
 %dir %{_datarootdir}/defaults/kata-containers
-%doc %{_datarootdir}/defaults/kata-containers/configuration-qemu.toml
-%ifarch x86_64
-%doc %{_datarootdir}/defaults/kata-containers/configuration-acrn.toml
-%doc %{_datarootdir}/defaults/kata-containers/configuration-fc.toml
-%doc %{_datarootdir}/defaults/kata-containers/configuration-nemu.toml
-%endif
-%doc %{_datarootdir}/defaults/kata-containers/configuration.toml
+%config %{_datarootdir}/defaults/kata-containers/configuration.toml
+%config %{_datarootdir}/defaults/kata-containers/configuration-*.toml
 # Completion
 %{_datarootdir}/bash-completion/completions/kata-runtime
 

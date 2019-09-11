@@ -18,30 +18,32 @@
 
 Name:           findutils
 Url:            http://www.gnu.org/software/findutils/
-Version:        4.6.0
+Version:        4.7.0
 Release:        0
 Summary:        The GNU versions of find utilities (find and xargs)
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 
-# For upgrading you now just need to increase the version, remove the old
-# tarballs, then run osc service localrun download_files, osc addremove,
-# osc vc and osc ci and you are done.
-Source0:        http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
-#Source1:        https://ftp.gnu.org/gnu/%%{name}/%%{name}-%%{version}.tar.gz.sig
-#Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%%{name}&download=1&file=./%%{name}.keyring
+# Upstream development:
+# cgit-URL:	https://git.savannah.gnu.org/cgit/findutils.git/
+# Git-Clone:	git://git.sv.gnu.org/findutils
+
+# For upgrading the upstream version, increase the version number (above),
+# then remove the old tarball and signature files and let OSC download
+# those files of the new version:
+#    osc rm findutils-*.tar.xz findutils-*.tar.xz.sig
+#    osc service localrun download_files
+#    osc addremove
+# Then adjust the downstream patches (using quilt).
+# Finally, add a changelog entry and commit:
+#    osc vc
+#    osc ci
+Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1&file=./%{name}.keyring
 
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
-Patch0:         findutils-4.4.2-xautofs.patch
-Patch1:         disable-broken-tests.patch
-
-# Upstream patch, to be removed with version 4.7.0.
-Patch100:       sv-bug-48030-find-exec-plus-does-not-pass-all-arguments.patch
-
-# Update gnulib for libio.h removal
-Patch101:       gnulib-libio.patch
-# Update gnulib for <sys/sysmacros.h> requirement (simplified to avoid configure changes)
-Patch102:       sysmacros.patch
+Patch0:         findutils-xautofs.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # BuildRequire dejagnu for 'runtest' to execute all tests.
@@ -72,10 +74,6 @@ useful for finding things on your system.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
-%patch100
-%patch101 -p1
-%patch102 -p1
 
 %build
 %if 0%{?qemu_user_space_build}
@@ -89,13 +87,6 @@ export DEFAULT_ARG_SIZE="(31u * 1024u)"
 make %{?_smp_mflags}
 
 %check
-if [ "%{version}" != '4.6.0' ]; then
-  echo "ERROR: remove this if-else-fi block from the spec file with findutils version >4.6.0." >&2
-  exit 1
-else
-  # Make the test script added with 'sv-48030*.patch' executable.
-  chmod +x find/testsuite/sv-48030-exec-plus-bug.sh
-fi
 make check \
   || { cat tests/test-suite.log; exit 1; }
 

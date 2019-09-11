@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  9 19:42:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Bugs fixed: Prevents CTRL+F to be activated twice for a single
+    key press.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr 10 08:44:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

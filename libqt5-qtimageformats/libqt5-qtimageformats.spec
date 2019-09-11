@@ -19,21 +19,18 @@
 %define qt5_snapshot 0
 
 Name:           libqt5-qtimageformats
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 Image Format Plugins
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtimageformats-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtimageformats-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE jas_version.patch
-Patch0:         jas_version.patch
-BuildRequires:  libjasper-devel
 BuildRequires:  libmng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig(Qt5Gui) >= %{version}
@@ -57,7 +54,6 @@ handling.
 Summary:        Qt Development Kit
 Group:          Development/Libraries/X11
 Requires:       %name = %version
-Requires:       libjasper-devel
 Requires:       libmng-devel
 Requires:       libtiff-devel
 Requires:       pkgconfig(Qt5Gui) >= %{version}
@@ -73,7 +69,6 @@ You need this package, if you want to compile programs with qtimageformats.
 
 %prep
 %setup -q -n %{tar_version}
-%patch0 -p1
 
 %build
 %if %qt5_snapshot

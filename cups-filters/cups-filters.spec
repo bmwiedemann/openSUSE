@@ -40,6 +40,7 @@ Name:           cups-filters
 Version:        1.25.0
 Release:        0
 Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%{version}.tar.xz
+Patch1:         add-cstring-include.patch
 # Upstream fix for https://bugs.linuxfoundation.org/show_bug.cgi?id=1421
 # in https://github.com/OpenPrinting/cups-filters/commit/6db3b08d3b20332b1525b8dd1a47950381b8f637
 # dowloaded via
@@ -103,8 +104,8 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  xz
+BuildRequires:  pkgconfig(systemd)
 %systemd_requires
 # test requires
 BuildRequires:  dejavu-fonts
@@ -217,6 +218,7 @@ This package contains the development files for cups-filters.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 # Just do what is described in the upstream INSTALL file

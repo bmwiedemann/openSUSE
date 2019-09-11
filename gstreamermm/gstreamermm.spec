@@ -38,11 +38,12 @@ Patch2:         gstreamermm-copy_metadata_vfunc3.patch
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  glibmm2-devel
 BuildRequires:  gstreamer-devel >= 1.10.0
 BuildRequires:  gstreamer-plugins-base-devel >= 1.10.0
 BuildRequires:  gtkmm3-devel
 BuildRequires:  libxml++-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(giomm-2.4)
 
 %description
 gstreamermm provides C++ bindings for the GStreamer streaming multimedia
@@ -53,7 +54,6 @@ develop applications that work with multimedia in C++.
 Summary:        C++ bindings for the GStreamer streaming multimedia library
 Group:          Development/Libraries/C and C++
 Requires:       glib2-devel
-Requires:       glibmm2-devel
 Requires:       gstreamer-devel >= 1.10.0
 Requires:       gstreamer-plugins-base-devel >= 1.10.10
 Requires:       gtkmm2-devel

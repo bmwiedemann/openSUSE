@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -189,6 +189,7 @@ touch %{buildroot}%{_localstatedir}/log/%{name}.log
 %ghost %verify(not md5 size mtime) %config(noreplace)%{_localstatedir}/log/%{name}.log
 %defattr(750,root,root,-)
 %{_bindir}/%{name}
+%dir %{_sysconfdir}/cron.daily
 %{_sysconfdir}/cron.daily/suse.de-%{name}
 %{_libdir}/%{name}/scripts/*.pl
 %{_libdir}/%{name}/scripts/*.sh

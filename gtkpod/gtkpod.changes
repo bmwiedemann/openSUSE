@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 10:28:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid use of ®/™ signs in specfiles as per guidelines.
+- Specfile modernization: remove %clean, %defattr and BuildRoot.
+
+-------------------------------------------------------------------
 Fri Feb  3 20:11:54 UTC 2017 - zaitor@opensuse.org
 
 - Drop pkgconfig(webkitgtk-3.0) BuildRequires: No longer depend on
@@ -23,7 +29,7 @@ Thu Jun 11 08:21:48 UTC 2015 - dimstar@opensuse.org
   + Add pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-base-1.0),
     pkgconfig(gstreamer-plugins-base-1.0) and
     pkgconfig(gstreamer-pbutils-1.0).
-- Replace pkgconfig(libmusicbrainz4) BuildRequires with 
+- Replace pkgconfig(libmusicbrainz4) BuildRequires with
   pkgconfig(libmusicbrainz5), following upstreams port.
 - Add pkgconfig(iso-codes) BuildRequires to detect iso3166 support
   during build.
@@ -316,14 +322,14 @@ Thu Jul 16 10:10:37 CEST 2009 - dominique-obs@leuenberger.net
     does exist
   * The Photo "playlist" is a separate object in the Playlist view
   * Numerous memory leaks fixed
-  * Many other bug fixes and cleanups. 
+  * Many other bug fixes and cleanups.
 - dropped gtkpod-non_static_decl.patch
 - refactored gtkpod-pref.patch
 
 -------------------------------------------------------------------
 Mon Feb 11 21:03:08 CET 2008 - crrodriguez@suse.de
 
-- fix ogg/vorbis support for real  
+- fix ogg/vorbis support for real 
 
 -------------------------------------------------------------------
 Sat Feb  9 19:14:24 CET 2008 - crrodriguez@suse.de
@@ -359,7 +365,7 @@ Thu Sep 13 12:13:03 CEST 2007 - hvogel@suse.de
 -------------------------------------------------------------------
 Wed Jul  4 15:05:53 CEST 2007 - hvogel@suse.de
 
-- Update to version 0.99.10 
+- Update to version 0.99.10
   * various bugfixes
   * translation updates
   * on-the-fly conversion of WAV, FLAC and OGG
@@ -369,7 +375,7 @@ Wed Jul  4 15:05:53 CEST 2007 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu Apr 19 13:22:47 CEST 2007 - pgajdos@suse.cz
 
-- extend literal_comparsion.patch to avoid next new gcc warnings 
+- extend literal_comparsion.patch to avoid next new gcc warnings
 
 -------------------------------------------------------------------
 Tue Apr 17 09:47:05 CEST 2007 - pgajdos@suse.cz
@@ -385,12 +391,12 @@ Fri Mar 30 11:30:24 CEST 2007 - ssommer@suse.de
 -------------------------------------------------------------------
 Mon Feb  5 23:56:34 CET 2007 - ro@suse.de
 
-- fix build with current libgpod 
+- fix build with current libgpod
 
 -------------------------------------------------------------------
 Mon Jan  8 00:21:38 CET 2007 - ro@suse.de
 
-- GNOME moved to /usr 
+- GNOME moved to /usr
 
 -------------------------------------------------------------------
 Mon Oct 23 14:19:39 CEST 2006 - hvogel@suse.de
@@ -431,7 +437,7 @@ Wed Jan 25 21:36:23 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Fri Jan 13 14:59:05 CET 2006 - hvogel@suse.de
 
-- Update to version 0.99.2 
+- Update to version 0.99.2
 
 -------------------------------------------------------------------
 Mon Aug 22 11:32:24 CEST 2005 - hvogel@suse.de
@@ -459,7 +465,7 @@ Tue Apr 26 11:34:27 CEST 2005 - hvogel@suse.de
 Fri Mar 18 11:47:53 CET 2005 - hvogel@suse.de
 
 - Should now work with the shuffle -- forgot to change a
-  version number in the iTunesDB file 
+  version number in the iTunesDB file
 
 -------------------------------------------------------------------
 Fri Mar 11 12:09:49 CET 2005 - hvogel@suse.de
@@ -475,7 +481,7 @@ Thu Mar  3 19:29:18 CET 2005 - hvogel@suse.de
 Thu Mar  3 17:12:00 CET 2005 - hvogel@suse.de
 
 - update to version 0.87.3 which includes:
-  o Evolution Contacts/Calender/Tasks sync 
+  o Evolution Contacts/Calender/Tasks sync
   o drag and drop for other formats than mp3
   o fix an charset bug
   o ignore "the" and the like in sorting	
@@ -495,7 +501,7 @@ Tue Dec  7 16:04:26 CET 2004 - hvogel@suse.de
 -------------------------------------------------------------------
 Mon Nov 22 16:01:42 CET 2004 - hvogel@suse.de
 
-- update to version 0.80.5 
+- update to version 0.80.5
 
 -------------------------------------------------------------------
 Mon Jul 19 16:38:51 CEST 2004 - hvogel@suse.de
@@ -507,44 +513,44 @@ Mon Jul 19 16:38:51 CEST 2004 - hvogel@suse.de
 Mon Jul 12 11:41:51 CEST 2004 - hvogel@suse.de
 
 - Update to version 0.80
-- add icon to the desktop file 
+- add icon to the desktop file
 
 -------------------------------------------------------------------
 Sat Mar 13 16:02:37 CET 2004 - hvogel@suse.de
 
-- patch mount point 
-- patch mp3 namings 
+- patch mount point
+- patch mp3 namings
 
 -------------------------------------------------------------------
 Thu Jan 29 13:02:03 CET 2004 - hvogel@suse.de
 
-- bzip2 the source package 
+- bzip2 the source package
 
 -------------------------------------------------------------------
 Tue Jan 20 16:05:25 CET 2004 - hvogel@suse.de
 
 - update to version 0.72
-- needs libid3tag now instead of id3lib 
+- needs libid3tag now instead of id3lib
 
 -------------------------------------------------------------------
 Mon Dec  1 10:51:46 CET 2003 - hvogel@suse.de
 
-- update to version 0.70 
+- update to version 0.70
 
 -------------------------------------------------------------------
 Thu Nov 13 15:36:42 CET 2003 - hvogel@suse.de
 
-- dont build as root 
+- dont build as root
 
 -------------------------------------------------------------------
 Mon Oct 13 15:37:01 CEST 2003 - hvogel@suse.de
 
-- update to version 0.60 
+- update to version 0.60
 
 -------------------------------------------------------------------
 Fri Sep 19 19:41:59 CEST 2003 - hvogel@suse.de
 
-- fixed category 
+- fixed category
 
 -------------------------------------------------------------------
 Thu Sep  4 14:50:23 CEST 2003 - hvogel@suse.de
@@ -560,15 +566,14 @@ Fri Aug  1 13:22:03 CEST 2003 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu Jul 31 16:38:57 CEST 2003 - hvogel@suse.de
 
-- created .desktop file 
+- created .desktop file
 
 -------------------------------------------------------------------
 Fri Jul 18 11:50:29 CEST 2003 - hvogel@suse.de
 
-- update to Version 0.52 
+- update to Version 0.52
 
 -------------------------------------------------------------------
 Mon Jun  2 15:49:23 CEST 2003 - hvogel@suse.de
 
-- Initial Package, Version 0.51 
-
+- Initial Package, Version 0.51

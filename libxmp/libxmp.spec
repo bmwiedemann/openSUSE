@@ -1,7 +1,7 @@
 #
 # spec file for package libxmp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,14 +21,13 @@ Name:           libxmp
 Version:        4.4.1
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://xmp.sf.net/
+URL:            http://xmp.sf.net/
 
 #Freshcode-URL:	https://freshcode.club/projects/libxmp
 #Git-Clone:	git://git.code.sf.net/p/xmp/libxmp
 Source:         http://downloads.sf.net/xmp/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkg-config
 
 %description
@@ -62,15 +61,16 @@ This subpackage contains headers and library development files for
 libxmp.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%global _lto_cflags %nil
 %configure
 make %{?_smp_mflags} V=1
 
 %install
 b="%buildroot"
-make install DESTDIR="$b"
+%make_install
 mkdir -p "$b/%_mandir/man3" "$b/%_docdir/%name"
 install -pm0644 docs/Changelog docs/[a-z]* "$b/%_docdir/%name/"
 # Remove file due to bnc#808655, and because they are hardware-specific
@@ -85,12 +85,10 @@ make check %{?_smp_mflags}
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libxmp.so.4*
-%doc docs/COPYING.LIB
+%license docs/COPYING.LIB
 
 %files devel
-%defattr(-,root,root)
 %_includedir/xmp.h
 %_libdir/libxmp.so
 %_libdir/pkgconfig/libxmp.pc

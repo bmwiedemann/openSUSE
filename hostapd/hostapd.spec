@@ -17,7 +17,7 @@
 
 
 Name:           hostapd
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Daemon for running a WPA capable Access Point
 License:        GPL-2.0-only OR BSD-3-Clause

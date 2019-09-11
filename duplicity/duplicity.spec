@@ -17,7 +17,7 @@
 
 
 Name:           duplicity
-Version:        0.8.03
+Version:        0.8.04
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later

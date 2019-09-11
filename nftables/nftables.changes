@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 12:37:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.9.2
+  * Transport header port matching, e.g. "th dport 53"
+  * Support for matching on IPv4 options
+  * Support for synproxy
+
+-------------------------------------------------------------------
 Sat Jan 19 20:53:09 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove unused dblatex BuildRequires, only needed for the optional

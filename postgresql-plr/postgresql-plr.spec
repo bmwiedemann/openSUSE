@@ -1,7 +1,7 @@
 #
-# spec file for package postgresql##-plr
+# spec file for package postgresql-plr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+
 %define pgname @BUILD_FLAVOR@
 %if "%{pgname}" == ""
 %define pgname postgresql
 %endif
 # Thanks upstream :-)
 %define sname plr
-%define sversion REL8_3_0_17
+%define sversion REL8_3_0_18
 # Make our path like what postgresql packager decide
 
 %if 0%{?sles_version} == 11
@@ -32,24 +33,25 @@
 %define extensiondir %{pgshare}/extension
 
 Summary:        PL/R - R Procedural Language for PostgreSQL
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 Name:           %{pgname}-%{sname}
-Version:        8.3.0.17
+Version:        8.3.0.18
 Release:        1.0
 Source:         https://github.com/postgres-plr/plr/archive/%{sversion}.tar.gz
 Source1:        readme.SUSE
 Source2:        plr-US.pdf
+Source99:       series
 Patch0:         patch-Makefile-ldflags.patch
-Url:            http://www.joeconway.com/plr/
+Url:            https://github.com/postgres-plr/plr/
+BuildRequires:  %{pgname}-server
+BuildRequires:  %{pgname}-server-devel
 BuildRequires:  R-base
 BuildRequires:  R-base-devel
 BuildRequires:  pkg-config
 BuildRequires:  post-build-checks
-BuildRequires:  %{pgname}-devel
-BuildRequires:  %{pgname}-server
-Requires:       R-base
 Requires:       %{pgname}-server
+Requires:       R-base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if "%{pgname}" == "postgresql"
 ExclusiveArch:  do_not_build

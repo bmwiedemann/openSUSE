@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           step
-Version:        19.08.0
+Version:        19.08.1
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
@@ -98,6 +98,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_configkcfgdir}
 %dir %{_kf5_kxmlguidir}/step/
+%dir %{_kf5_sharedir}/mime/
+%dir %{_kf5_sharedir}/mime/packages
 %{_kf5_applicationsdir}/org.kde.step.desktop
 %{_kf5_appsdir}/step/
 %{_kf5_appstreamdir}/org.kde.step.appdata.xml
@@ -105,6 +107,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/step.kcfg
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/step/stepui.rc
+%{_kf5_sharedir}/mime/packages/org.kde.step.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang

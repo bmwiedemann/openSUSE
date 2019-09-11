@@ -20,7 +20,7 @@
 
 %define clamav_check --enable-check
 Name:           clamav
-Version:        0.101.3
+Version:        0.101.4
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only

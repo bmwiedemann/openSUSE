@@ -1,7 +1,7 @@
 #
 # spec file for package xmorph
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch2:         xmorph-gcc_warnings.patch
 Patch3:         xmorph-missing-include.patch
 Patch4:         xmorph-20060817-autotools.patch
 Patch5:         xmorph-automake-1.13.patch
+Patch6:         xmorph-fixbuild.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ctags
@@ -75,6 +76,7 @@ cat %{SOURCE2} >>acinclude.m4
 %patch3
 %patch4
 %patch5 -p1
+%patch6 -p1
 
 %build
 autoreconf -fiv

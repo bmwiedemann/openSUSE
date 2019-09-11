@@ -1,7 +1,7 @@
 #
 # spec file for package libaal
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libaal
-Summary:        A library providing application abstraction mechanisms used by reiser4progs
-License:        GPL-2.0
+Summary:        Application abstraction mechanism library used by reiser4progs
+License:        GPL-2.0-only
 Group:          System/Filesystems
 Version:        1.0.7
 Release:        0
-Url:            http://sf.net/projects/reiser4/
+URL:            https://sf.net/projects/reiser4/
 
-Source:         http://downloads.sf.net/reiser4/libaal-%version.tar.gz
+Source:         https://downloads.sf.net/reiser4/libaal-%version.tar.gz
 Patch1:         libaal-1.0.5-rpmoptflags.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -35,24 +34,24 @@ BuildRequires:  libtool
 libaal includes device abstraction, libc independence code, and more.
 
 %package -n libaal-1_0-7
-Summary:        A library providing application abstraction mechanisms used by reiser4progs
-License:        GPL-2.0
+Summary:        Application abstraction mechanism library used by reiser4progs
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libaal-1_0-7
 libaal includes device abstraction, libc independence code, and more.
 
 %package -n libaal-minimal0
-Summary:        A library providing application abstraction mechanisms used by reiser4progs
-License:        GPL-2.0
+Summary:        Application abstraction mechanism library used by reiser4progs
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libaal-minimal0
 libaal includes device abstraction, libc independence code, and more.
 
 %package devel
-Summary:        A library providing application abstraction mechanisms used by reiser4progs
-License:        GPL-2.0+
+Summary:        Header files for reiser4progs's application abstraction mechanism library
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libaal-1_0-7 = %version
 Requires:       libaal-minimal0 = %version
@@ -61,8 +60,7 @@ Requires:       libaal-minimal0 = %version
 libaal includes device abstraction, libc independence code, and more.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -79,17 +77,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n libaal-minimal0 -p /sbin/ldconfig
 
 %files -n libaal-1_0-7
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_libdir/libaal-1.0.so.7*
 
 %files -n libaal-minimal0
-%defattr(-,root,root)
 %_libdir/libaal-minimal.so.0*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS BUGS CREDITS ChangeLog README THANKS TODO
+%doc BUGS ChangeLog README TODO
 %_libdir/libaal*.so
 %_includedir/aal
 %_datadir/aclocal

@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-cheroot
+%define pypi_name cheroot
+Name:           python-%{pypi_name}
 Version:        6.5.5
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/cherrypy/cheroot
-Source:         https://files.pythonhosted.org/packages/source/c/cheroot/cheroot-%{version}.tar.gz
+URL:            https://github.com/cherrypy/%{pypi_name}
+Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch1:         cheroot_fix_so_peercred_ppc.patch
 BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 2.8}
@@ -55,9 +57,13 @@ Requires:       python-backports.functools_lru_cache
 Cheroot is the pure-Python HTTP server used by CherryPy.
 
 %prep
-%setup -q -n cheroot-%{version}
+%autosetup -n cheroot-%{version} -p1
 # do not require cov/xdist/etc
 sed -i -e '/addopts/d' pytest.ini
+for file in "%{pypi_name}.egg-info/requires.txt" "setup.cfg"; do
+    sed -i "s/backports.functools_lru_cache$/backports.functools_lru_cache ; python_version < '3.3'/" \
+        "${file}"
+done
 
 %build
 %python_build

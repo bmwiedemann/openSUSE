@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 25 05:41:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-namespace-autoclean/Changes
+
+  0.29      2019-08-24 17:07:22Z
+    - switch from Test::Requires to Test::Needs
+    - report on the installed versions of more optional modules
+
+-------------------------------------------------------------------
 Fri Oct 16 09:53:23 UTC 2015 - coolo@suse.com
 
 - updated to 0.28

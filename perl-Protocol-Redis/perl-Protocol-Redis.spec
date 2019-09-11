@@ -16,20 +16,22 @@
 #
 
 
-%define cpan_name Protocol-Redis
 Name:           perl-Protocol-Redis
-Version:        1.0006
+Version:        1.0010
 Release:        0
+%define cpan_name Protocol-Redis
 Summary:        Redis protocol parser/encoder with asynchronous capabilities
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-URL:            http://search.cpan.org/dist/Protocol-Redis/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/U/UN/UNDEF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.88
-BuildArch:      noarch
+BuildRequires:  perl(Test::More) >= 0.94
+Requires:       perl(Test::More) >= 0.94
 %{perl_requires}
 
 %description
@@ -45,7 +47,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install

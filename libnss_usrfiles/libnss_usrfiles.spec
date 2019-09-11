@@ -29,22 +29,16 @@ BuildRequires:  autoconf
 BuildRequires:  libtool
 
 %description
-The NSS usrfiles plugin additionally looks in /usr/etc for passwd and
-group data.
+The NSS usrfiles plugin additionally looks in /usr/etc for passwd,
+group, rpc, services, protocols and more.
 
 %package -n libnss_usrfiles2
 Summary:        NSS usrfiles plugin for glibc
-# we need cp
 Group:          System/Libraries
-Requires(post): coreutils
-Requires(post): glibc
-Requires(post): sed
-Requires(postun): glibc
-Requires(postun): sed
 
 %description -n libnss_usrfiles2
-The NSS usrfiles plugin looks additional in %{_prefix}%{_sysconfdir} for passwd and
-group data.
+The NSS usrfiles plugin additionally looks in /usr/etc for passwd,
+group, rpc, services, protocols and more.
 
 %prep
 %setup -q
@@ -56,31 +50,14 @@ make %{?_smp_mflags}
 %install
 %make_install
 rm -v %{buildroot}/%{_lib}/%{name}.{a,la,so}
-mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}
 
-%post -n libnss_usrfiles2
-/sbin/ldconfig
-if [ "$1" = 1 ] ; then
-    cp -a %{_sysconfdir}/nsswitch.conf %{_sysconfdir}/nsswitch.conf.nss_usrfiles
-    sed -i -e 's|^passwd: compat$|passwd: files usrfiles|g' -e 's|^group:  compat$|group:  files usrfiles|g' %{_sysconfdir}/nsswitch.conf
-    for service in aliases ethers protocols rpc services ; do
-	sed -i -e "s|\(^${service}:[[:space:]]\+files\)|\1 usrfiles|g" %{_sysconfdir}/nsswitch.conf
-    done
-fi
+%post -n libnss_usrfiles2 -p /sbin/ldconfig
 
-%postun -n libnss_usrfiles2
-/sbin/ldconfig
-if [ "$1" = 0 ] ; then
-    sed -i -e 's|^passwd: files usrfiles$|passwd: compat|g' -e 's|^group:  files usrfiles$|group:  compat|g' %{_sysconfdir}/nsswitch.conf
-    for service in aliases ethers protocols rpc services ; do
-        sed -i -e "s|usrfiles||g" %{_sysconfdir}/nsswitch.conf
-    done
-fi
+%postun -n libnss_usrfiles2 -p /sbin/ldconfig
 
 %files -n libnss_usrfiles2
 %license COPYING
 %doc README.md
 /%{_lib}/libnss_usrfiles.so.2*
-%dir %{_prefix}%{_sysconfdir}
 
 %changelog

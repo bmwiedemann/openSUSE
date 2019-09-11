@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-mysqlclient
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ URL:            https://github.com/PyMySQL/mysqlclient-python
 Source:         https://files.pythonhosted.org/packages/source/m/mysqlclient/mysqlclient-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python3-attrs
 BuildRequires:  fdupes
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  python-rpm-macros

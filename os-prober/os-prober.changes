@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 13 08:12:58 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Fix duplicated distro detected on btrfs multiple device (bsc#1142858)
+  * os-prober-btrfs-multiple-device.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 07:48:14 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Update URL for downloading source archive from Debain Salsa server
+  * os-prober.spec
+- Added
+  * os-prober-1.76.tar.bz2
+- Removed
+  * os-prober_1.76.tar.xz
+
+-------------------------------------------------------------------
 Tue Apr 23 07:42:32 UTC 2019 - mchang <mchang@suse.com>
 
 - Fix accidental deletion of btrfs subvolume (boo#1130669)

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-tldr
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        A pytest plugin that limits the output to just the things you need
 License:        BSD-3-Clause

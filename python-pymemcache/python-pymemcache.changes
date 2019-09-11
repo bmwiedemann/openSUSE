@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:58:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.2:
+  * Fix long_description string in Python packaging.
+  * Fix flags when setting multiple differently-typed values at once.
+  * Use setup.cfg metadata instead setup.py config to generate package.
+  * Add default_noreply parameter to HashClient.
+  * Add encoding parameter to Client constructors (defaults to ascii).
+  * Add flags parameter to write operation methods.
+  * Handle unicode key values in MockMemcacheClient correctly.
+  * Improve ASCII encoding failure exception.
+  * Fix setup.py dependency on six already being installed.
+
+-------------------------------------------------------------------
 Mon Mar 18 18:19:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions.

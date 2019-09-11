@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Aug 22 00:29:55 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to release version 19.08.16
+- Upstream changes:
+  *Changed Playlist > Open As Clip to simply Open. This action now opens the playlist item directly in the Source player, and all changes made in Source (trim in/out), Properties, Filters, and Keyframes apply to the playlist item immediately without an explicit update.
+  *Added Playlist > Copy that opens a copy of the playlist item in Source just like the old behavior. This is useful if you want to trim out another shot from the same source clip or create a different sub-clip with different filtering.
+  *Changed double-click on a playlist item to Open the clip instead of Copy it.
+  *Added keyboard shortcut Shift+C to Copy a playlist item.
+  *Now, when you drag a clip from Playlist to Timeline the timeline shows an appropriately-size box on a track.
+  *Fixed a performance regression (since v19.06) in the following filters: Chroma Hold, Flip, LUT 3D, Mirror, Noise: Fast, Reduce Noise: Smart Blur.
+  *Fixed reloading the filter UI for Rutt-Etra-Izer, Text: 3D, and Text: HTML resets the filter trimming in Keyframes.
+  *Added support for keyframes to the Lens Correction and Mosaic video filters.
+  *Fixed Swirl when maximum = 0%.
+  *Changed the minimum values for Mosaic to 0%.
+  *Removed the scrolling animation from the Blank Web Animations HTML template.
+  *Fixed pasting filters changes the trim and keyframes of the existing filters.
+  *Fixed Crop: Circle and Crop: Rectangle not clearing the canvas resulting in trails in some situations.
+  *Fixed color incorrect when using the LUT 3D filter with some other filters following it.
+  *Fixed reliability of the Stabilize video filter to write its results (.stab) file.
+  *Fixed showing vidstab.trf as a missing file.
+  *Fixed updating Stabilize and Normalize: Two Pass results to clips copied between Source, Playlist, and Timeline.
+  *Added the ability for the Stabilize and Normalize: Two Pass filters' analysis jobs to update pending export jobs.
+  *Added the option to run pending Stabilize and Normalize: Two Pass filters' analysis jobs on export. This only works for Stabilize if you are using the project folder feature. Or, if not using the project folder feature, you must click Analyze to assign a results file name, but you can stop the analysis job.
+  *The combination of the above fixes and changes means you can now easily batch convert files while applying image stabilization and audio normalization!
+  *Added support for interlace output to Properties > Reverse and Convert to Edit-friendly including overrides for Scan mode and field order.
+  *Improved detection of interlaced video in some files such as Ut Video in Matroska.
+  *Added Comments to image properties along with a menu button with: Copy Full File Path, Show in Folder, and Set Creation Time...
+  *Add resolution and refresh rates to the screens in Settings > External Monitor to make them easier to differentiate.
+  *Fixed switching between different external screens on the same GPU.
+  *Fixed external screen not showing on correct screen in some arrangements.
+  *Changed the default video quality to 55% for the Default and YouTube presets. This aligns with the x264 default crf of 23 and produces a smaller file that most people desire for upload without significant quality loss.
+  *Added text after Export > Advanced > Codec > Quality to show the generated codec-specific quality level (e.g. crf for x264).
+  *Fixed Stream broken by check for writable file.
+  *Fixed double-click in Recent Projects loading twice.
+  *Fixed disabling meters in the Audio Loudness scope not shrinking space.
+  *Added version metadata to the AppImage for Linux.
+  *Added md5sums.txt and sha256sums.txt to the GitHub releases page.
+  *Added saving Timeline track height to configuration, not only a project file.
+  *Fixed trimming an unselected clip in Timeline does not correctly adjust its filters.
+  *Changed Settings > Interpolation > Nearest Neighbor to no longer relax seek accuracy. Instead, seek accuracy is now relaxed only during trick playback (reverse, rewind, fast forward).
+  *Added a Korean translation.
+
+-------------------------------------------------------------------
 Thu Aug  8 08:59:27 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Update to release version 19.08.05

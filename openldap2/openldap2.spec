@@ -267,6 +267,7 @@ mv ../%{name_ppolicy_check_module}-%{version_ppolicy_check_module} contrib/slapd
 cp %{S:201} contrib/slapd-modules/%{name_ppolicy_check_module}/Makefile
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -Wno-format-extra-args -fno-strict-aliasing -DNDEBUG -DSLAP_CONFIG_DELETE -DSLAP_SCHEMA_EXPOSE -DLDAP_COLLECTIVE_ATTRIBUTES -DLDAP_USE_NON_BLOCKING_TLS"
 export STRIP=""
 ./configure \

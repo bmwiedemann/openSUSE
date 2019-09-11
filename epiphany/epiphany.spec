@@ -17,7 +17,7 @@
 
 
 Name:           epiphany
-Version:        3.32.4
+Version:        3.32.5
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
@@ -32,8 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.2
-BuildRequires:  pkgconfig(evince-document-3.0)
-BuildRequires:  pkgconfig(evince-view-3.0)
 BuildRequires:  pkgconfig(gcr-3) >= 3.5.5
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep  1 19:13:09 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update source URL
+
+-------------------------------------------------------------------
+Sun Sep  1 18:39:52 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.6.1:
+  * new visibility mode: At least one window is shown
+  * option to draw buttons in inactive state (for both c++ and
+    aurorae decorations)
+  * fix the current buttons decoration discovery, the user can now
+    change between different decorations and the buttons style is
+    updated runtime
+  * hide when the last maximized window is closed and the visibility
+    mode is ActiveMaximized
+  * fix multi-screens behavior for Latte panels
+  * fix typo that broke builds at some systems
+
+-------------------------------------------------------------------
 Fri Jul 12 21:49:19 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to version 0.5.0:

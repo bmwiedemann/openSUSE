@@ -1,14 +1,14 @@
-diff -Nru botocore-1.12.156.orig/setup.py botocore-1.12.156/setup.py
---- botocore-1.12.156.orig/setup.py	2019-05-24 20:11:40.000000000 +0200
-+++ botocore-1.12.156/setup.py	2019-05-25 17:15:57.371868069 +0200
+diff -Nru botocore-1.12.213.orig/setup.py botocore-1.12.213/setup.py
+--- botocore-1.12.213.orig/setup.py	2019-08-21 20:18:28.000000000 +0200
++++ botocore-1.12.213/setup.py	2019-08-22 14:01:22.936089669 +0200
 @@ -23,31 +23,31 @@
      raise RuntimeError("Unable to find version string.")
  
  
 -requires = ['jmespath>=0.7.1,<1.0.0',
--            'docutils>=0.10']
+-            'docutils>=0.10,<0.16']
 +# requires = ['jmespath>=0.7.1,<1.0.0',
-+#             'docutils>=0.10']
++#             'docutils>=0.10,<0.16']
  
  
 -if sys.version_info[:2] == (2, 6):

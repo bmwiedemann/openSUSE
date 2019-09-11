@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/patterns
 Source0:        create_macros
+Source1:        macros.patterns
 BuildRequires:  perl(URI::Escape)
 BuildArch:      noarch
 
@@ -34,6 +35,7 @@ This package contains SUSE RPM macros to aid creating patterns.
 
 %build
 perl %{SOURCE0} > macros.patterns
+cat %{SOURCE1} >> macros.patterns
 
 %install
 mkdir -p %{buildroot}%{_rpmmacrodir}

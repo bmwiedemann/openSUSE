@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 21 21:53:49 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use python3 shebangs everywhere (boo#1146533).
+- Drop obsolete opt-viewer-Do-not-require-python-2.patch.
+
+-------------------------------------------------------------------
+Fri Aug 16 09:53:24 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove unneccesary dependencies:
+  * groff, bison and flex don't seem to be used.
+  * jsoncpp is no longer used since r338461.
+  * Move some BuildRequires to subpackages.
+  * Don't recommend scan-{build,view} in clang (boo#1145444).
+  * Devel packages are only required in other devel packages,
+    when their headers are included in the installed headers.
+- Add versions to Provides/Conflicts except for files.
+- Remove unused (since r268685) CMake flags LLVM_ENABLE_TIMESTAMPS.
+- Fix installation of opt-viewer files when python3-clang is no
+  longer built.
+
+-------------------------------------------------------------------
 Sat Jul 20 18:45:23 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.0.1.

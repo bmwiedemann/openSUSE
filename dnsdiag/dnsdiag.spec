@@ -44,11 +44,24 @@ BuildRequires:  python3-dnspython >= 1.15.0
 %endif
 
 %description
-Set of tools to perform basic audits on your DNS requests and responses to make sure your DNS is working as you expect. Dnsping can be used to measure the response time of a given DNS server for arbitrary requests. Just like a traditional ping utility, it provides similar functionality for DNS requests.
+A set of tools to perform basic audits on DNS requests and responses
+to make sure DNS is working as expected. Dnsping can be used to
+measure the response time of a given DNS server for arbitrary
+requests. Just like a traditional ping utility, it provides similar
+functionality for DNS requests.
 
-Dnstraceroute can be used to trace the path a DNS request takes to destination. Its purpose is to detect whether a request is redirected or hijacked. This can be done by comparing different DNS queries being sent to the same DNS server using dnstraceroute and observe if there is any difference between the path.
+Dnstraceroute can be used to trace the path a DNS request takes to
+its destination. Its purpose is to detect whether a request is
+redirected or hijacked. This can be done by comparing different DNS
+queries being sent to the same DNS server using dnstraceroute and
+observe if there is any difference between the path.
 
-dnseval evaluates multiple DNS resolvers and helps you choose the best DNS server for your network. It is highly recommended to use your own DNS resolver as opposed to a third-party DNS server, but in case you need to choose the best DNS forwarder for your network, dnseval lets you compare different DNS servers from performance (latency) and reliability (loss) point of view.
+dnseval evaluates multiple DNS resolvers and helps choosing the best
+DNS server for the network. It is recommended to use one's own DNS
+resolver as opposed to a third-party DNS server. dnseval can compare
+different DNS servers from a performance (latency) and reliability
+(loss) point of view for when DNS forwarders need to be used instead
+of a resolver.
 
 %prep
 %setup -q -n dnsdiag-%{version}

@@ -1,0 +1,83 @@
+From df1caa8fa6551f880202649a7f4133343da5da0f Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Tue, 3 Sep 2019 15:17:38 +0200
+Subject: [PATCH] virt.volume_infos needs to ignore inactive pools (#174)
+
+libvirt raises an error when getting the list of volumes of a pool that
+is not active. Rule out those pools from virt.volume_infos since we
+still need to give infos on the other pools' volumes.
+---
+ salt/modules/virt.py            | 7 +++++--
+ tests/unit/modules/test_virt.py | 9 +++++++++
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 953064cc2c..0353e6a1f5 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -5021,7 +5021,9 @@ def _get_all_volumes_paths(conn):
+ 
+     :param conn: libvirt connection to use
+     '''
+-    volumes = [vol for l in [obj.listAllVolumes() for obj in conn.listAllStoragePools()] for vol in l]
++    volumes = [vol for l in
++                [obj.listAllVolumes() for obj in conn.listAllStoragePools()
++                    if obj.info()[0] == libvirt.VIR_STORAGE_POOL_RUNNING] for vol in l]
+     return {vol.path(): [path.text for path in ElementTree.fromstring(vol.XMLDesc()).findall('.//backingStore/path')]
+             for vol in volumes if _is_valid_volume(vol)}
+ 
+@@ -5086,7 +5088,8 @@ def volume_infos(pool=None, volume=None, **kwargs):
+                 'used_by': used_by,
+             }
+ 
+-        pools = [obj for obj in conn.listAllStoragePools() if pool is None or obj.name() == pool]
++        pools = [obj for obj in conn.listAllStoragePools()
++                    if (pool is None or obj.name() == pool) and obj.info()[0] == libvirt.VIR_STORAGE_POOL_RUNNING]
+         vols = {pool_obj.name(): {vol.name(): _volume_extract_infos(vol)
+                                   for vol in pool_obj.listAllVolumes()
+                                   if (volume is None or vol.name() == volume) and _is_valid_volume(vol)}
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index b343b9bc31..e644e62452 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -2743,6 +2743,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         mock_pool_data = [
+             {
+                 'name': 'pool0',
++                'state': self.mock_libvirt.VIR_STORAGE_POOL_RUNNING,
+                 'volumes': [
+                     {
+                         'key': '/key/of/vol0',
+@@ -2755,6 +2756,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             },
+             {
+                 'name': 'pool1',
++                'state': self.mock_libvirt.VIR_STORAGE_POOL_RUNNING,
+                 'volumes': [
+                     {
+                         'key': '/key/of/vol0bad',
+@@ -2784,6 +2786,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         for pool_data in mock_pool_data:
+             mock_pool = MagicMock()
+             mock_pool.name.return_value = pool_data['name']  # pylint: disable=no-member
++            mock_pool.info.return_value = [pool_data['state']]
+             mock_volumes = []
+             for vol_data in pool_data['volumes']:
+                 mock_volume = MagicMock()
+@@ -2817,6 +2820,12 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             mock_pool.listAllVolumes.return_value = mock_volumes  # pylint: disable=no-member
+             mock_pools.append(mock_pool)
+ 
++        inactive_pool = MagicMock()
++        inactive_pool.name.return_value = 'pool2'
++        inactive_pool.info.return_value = [self.mock_libvirt.VIR_STORAGE_POOL_INACTIVE]
++        inactive_pool.listAllVolumes.side_effect = self.mock_libvirt.libvirtError('pool is inactive')
++        mock_pools.append(inactive_pool)
++
+         self.mock_conn.listAllStoragePools.return_value = mock_pools  # pylint: disable=no-member
+ 
+         with patch('salt.modules.virt._get_domain', MagicMock(return_value=mock_vms)):
+-- 
+2.20.1
+
+

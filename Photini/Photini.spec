@@ -17,7 +17,7 @@
 
 
 Name:           Photini
-Version:        2019.5.0
+Version:        2019.8.0
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later

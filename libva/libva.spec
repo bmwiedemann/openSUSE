@@ -29,7 +29,7 @@
 
 Name:           libva
 %define _name   libva
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Video Acceleration (VA) API
 License:        MIT

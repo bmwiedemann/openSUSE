@@ -17,7 +17,7 @@
 
 
 Name:           ckb-next
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
 License:        GPL-2.0-only AND BSD-3-Clause
@@ -70,7 +70,8 @@ including full RGB animations.
 %build
 %cmake \
        -DDISABLE_UPDATER=1 \
-       -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
+       -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
+       -DUDEV_RULE_DIRECTORY=%{_udevrulesdir}
 %make_jobs
 
 %install

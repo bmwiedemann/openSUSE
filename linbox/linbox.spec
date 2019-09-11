@@ -1,7 +1,7 @@
 #
 # spec file for package linbox
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,14 @@
 
 Name:           linbox
 %define lname   liblinbox0
-Version:        1.5.2
+Version:        1.6.3
 Release:        0
 Summary:        C++ library for computation with matrices over ints and finite fields
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://linalg.org/
+URL:            https://linalg.org/
 
 Source:         https://github.com/linbox-team/linbox/releases/download/v%version/linbox-%version.tar.gz
-Patch1:         0001-remove-unnecessary-double-template-fixing-gcc-8.1-co.patch
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake >= 1.8
 BuildRequires:  gcc-c++
@@ -46,7 +45,6 @@ BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
 %endif
 BuildRequires:  pkgconfig(fflas-ffpack) >= 2.3.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LinBox is a C++ template library for exact, high-performance linear
@@ -76,8 +74,7 @@ This subpackage contains the include files and library links for
 developing against the Givaro library.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -97,16 +94,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/liblinbox.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_bindir/*-config
 %_includedir/%name/
 %_libdir/liblinbox.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man1/*.1*
-%doc COPYING*
+%license COPYING*
 
 %changelog

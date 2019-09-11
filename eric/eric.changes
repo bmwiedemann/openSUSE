@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:01:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix URL
+
+-------------------------------------------------------------------
+Sat Sep  7 12:46:40 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 19.9
+  + bug fixes
+  + added widgets to support development for embedded controllers
+    with MicroPython (ESP8266/ESP32, CircuitPython and BBC micro:bit)
+  + Main Window
+    + added an action to the Windows menu to activate the current
+      editor
+  + Mercurial Interface
+    + added an action to commit a merge
+  + Web Browser (NG)
+    + added support for the QWebEnginePage.Notifications as Qt 5.13.0
+  + API Files
+    + added API files for BBC micro:bit MicroPython and updated
+      the PyQt5 API files
+  + API Generator
+    + added the -i switch to ignore the existence of builtin modules
+      when creating API files
+
+- Update to version 19.8
+  + bug fixes
+  + Third Party packages
+    + upgraded pyflakes to version 2.1.1 plus repository changes
+      to fix some issues (until 2019-07-09)
+
+- Update to version 19.7
+  + bug fixes
+  + Code Style Checker
+    + added check for commented code that should be removed
+    + added check for line continuation methods not suggested by PEP-8
+    + added checks for naive uses of datetime classes
+
+- Update to version 19.6
+  + bug fixes
+  + Code Style Checker
+    + added checks for use of 'gettattr' and 'setattr', base super() 
+      calls and 'assert False' statements
+  + Editor
+    + Python Typing
+      + added support for 'from ... import (...)'
+      + changed the indentation when the previous line ends with
+        '(', '[' or '{'
+    + Ruby Typing
+      + changed the indentation when the previous line ends with
+        '(', '[' or '{'
+  + Mercurial Interface
+    + extended the log browser to start with showing all incoming
+      and the first batch of local changesets
+    + show different icons for incoming, outgoing and normal
+      changesets
+    + added capability to search and filter based on the changeset
+      phase
+    + added support for the 'closehead' extension (as of Mercurial
+      4.8)
+    + added support for the '--keep' flag of the shelve command
+      (as of Mercurial 5.0)
+  + Shell
+    + added capability to place the Shell window in the left or
+      right side container
+  + setup.py Wizard
+    + updated the Trove classifiers list
+    + added capability to retrieve the Trove classifiers list from
+      PyPI
+  + Variables Viewer
+    + reimplemented Variables Viewer using QTreeView with
+      unlimited access to big arrays, dicts, etc. because elements
+      are lazy loaded
+    + highlighting of still unloaded (default: yellow background)
+      and last
+  + changed variable(s) (default: green background)
+    + colors for highlighting are configurable through
+      Debugger->General
+    + expand / collapse variables with children on double click on
+      first column,
+  + in all other cases display detail window
+    + handling of dict views improved (can be expanded like lists)
+    + show tooltips on all elements which don't fit into current
+      column width
+    + new options in the context menu, e.g. expand / collapse all
+      child nodes
+  + Third Party packages
+    + updated EditorConfig to 0.12.2
+
+- Update to version 19.5
+  + bug fixes
+  + General
+    + added functionality to provide eric6 via PyPI. Installation
+      can be accomplished via 'pip install eric-ide'
+  + Python AST Viewer
+    + added a tool to visualize the AST for a Python source file
+  + Snapshot Tool
+    + added code to support screenshots on Wayland desktops (KDE
+      and Gnome)
+- Deal with relocated docs
+
+-------------------------------------------------------------------
 Sun Apr 07 03:00:12 UTC 2019 - seanlew@opensuse.org
 
 - Update to 19.04

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jul 18 11:01:30 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.18.3
+  * AddonManager: Skip non-github addons
+  * Sketcher: Fix Carbon copy leads to unsolvable sketch
+  * Sketcher: Fix carbon copy construction points
+  * fixes #0003993: Memory leak with Python3
+  * code simplification in PythonWrapper
+  * issue #0003984: Creating a Path Job object fails with 'PySide2.QtWidgets.QDialog' object has no attribute 'templateGroup'
+  * Fixes bug #4008: removes phantom path cause
+  * Fix crash in case encoding of Python paths fails
+  * [Material] Respect unicode filenames Fixes #4027
+  * BrowserView: fix QWebEngine crash
+  * Py3: no __builtin__ module available
+  * fixes 0004010: Box Selection + Part -> MakeCompound will crash FreeCAD
+  * FEM: solver elmer tasks, Py3 decode fix
+  * make OpenSCAD utilities working again with Py2
+
+-------------------------------------------------------------------
+Fri Jul 12 22:23:09 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove MPI dependencies, as these are not used for the built package,
+  but adversely affect build times and rebuilds.
+  Proper MPI integration needs more work and has to ensure the base version
+  of FreeCAD can be used without prior manual setup of an MPI environment.
+  Remove 0001-find-openmpi2-include-files.patch, mpicc/mpicxx would
+  pick up the correct include path by themselfs.
+- Sort BuildRequires: again
+
+-------------------------------------------------------------------
+Thu Jun 13 12:25:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch to fix
+  build with recent shiboken2/pyside2 releases.
+
+-------------------------------------------------------------------
+Sun May 12 07:21:14 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.18.2
+  * replace insecure use of eval() with proper use of units
+  * py3/py2: use exec as function
+  * Arch: Fixed error in roof - Fixes #3864
+  * Draft: Fixed 0.18.1 bug in DXF importer
+  * Py3 fix: correctly convert a Python str to const char*
+  * Py3 fix reading/writing from/to OBJ file
+  * fixes 0003913: libspnav crash on linux wayland during startup
+
+-------------------------------------------------------------------
 Fri Apr  5 11:56:11 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.18.1

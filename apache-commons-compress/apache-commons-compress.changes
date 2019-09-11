@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:57:02 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Updated to 1.19 [bsc#1148475, CVE-2019-12402]
+  * ZipFile could get stuck in an infinite loop when parsing ZIP archives
+    with certain strong encryption headers (CVE-2019-12402).
+  * ZipArchiveInputStream and ZipFile will no longer throw an exception if
+    an extra field generally understood by Commons Compress is malformed
+    but rather turn them into UnrecognizedExtraField instances.  You can
+    influence the way extra fields are parsed in more detail by using the
+    new getExtraFields(ExtraFieldParsingBehavior) method of ZipArchiveEntry now.
+  * Some of the ZIP extra fields related to strong encryption will now
+    throw ZipExceptions rather than ArrayIndexOutOfBoundsExceptions in
+    certain cases when used directly. There is no practical difference
+    when they are read via ZipArchiveInputStream or ZipFile.
+  * ParallelScatterZipCreator now writes entries in the same order they have
+    been added to the archive.
+  * ZipArchiveInputStream and ZipFile are more forgiving when parsing extra
+    fields by default now.
+  * TarArchiveInputStream has a new lenient mode that may allow it to read
+    certain broken archives.
+- Rebased patch fix_java_8_compatibility.patch
+
+-------------------------------------------------------------------
 Mon Mar 25 17:32:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pom parent, since we don't use it when not building with

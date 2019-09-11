@@ -111,6 +111,7 @@ ln -sf storeBackup.pl.1 %{buildroot}/%{_mandir}/man1/storeBackup.1
 %dir /etc/storebackup.d/
 # %attr(755, root, root) %config(noreplace) /etc/storebackup.d/storebackup.config
 %attr(755, root, root) /usr/bin/*
+%attr(755, root, root) %dir /etc/cron.daily
 %attr(755, root, root) /etc/cron.daily/storebackup
 
 %changelog

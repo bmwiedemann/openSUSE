@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 24 02:01:25 UTC 2019 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.6.
+  [1.17.6]
+
+    * Walk: export walk and query helpers (Albert Krewinkel) [API change].
+      The `walk*M` and `query*` functions are helpful when defining new
+      `Walkable` instances.
+    * Allow QuickCheck 2.13.
+    * Document meaning of Int in ListAttributes (#45).
+    * Update copyright year spans to include 2019 (Albert Krewinkel).
+    * Remove CPP instructions for GHC versions < 7.10 (Albert Krewinkel).
+    *  update list of GHC versions used for testing (Albert Krewinkel).
+    * Fix compiler and hlint warnings (Pete Ryland).
+
+-------------------------------------------------------------------
 Tue Jun 11 14:29:15 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file for more accurate build dependencies.

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:56:44 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- whitelist systemd-portabled dbus files (boo#1145639)
+
+-------------------------------------------------------------------
+Tue Aug 20 07:40:56 UTC 2019 - kukuk@suse.com
+
+- Update to version master:
+  * Allow /usr/etc as discussed on opensuse-factory and opensuse-packaging
+
+-------------------------------------------------------------------
+Wed Aug 14 08:53:25 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add user/group zabbix and zabbixs (bsc#1144018)
+
+-------------------------------------------------------------------
+Fri Aug  9 12:01:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch patch to align with:
+  38fc30cafe99d38059ca54b98bc87f5544f0bb4e
+-------------------------------------------------------------------
+Thu Aug  8 13:14:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Development/Languages/Go group.
+
+-------------------------------------------------------------------
+Thu Aug  8 12:45:30 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch patch to align with:
+  80126f7c7854d962cc64e54a6ab7e97067bb490d
+
+-------------------------------------------------------------------
+Fri Aug  2 07:53:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch patch to align with:
+  https://github.com/rpm-software-management/rpmlint/commit/c59324fd68ba86c8382fe09d43f12de32d764354
+
+-------------------------------------------------------------------
+Sun Jul 28 15:04:34 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch patch
+  to:
+  https://github.com/rpm-software-management/rpmlint/commit/97d6caf9ac3eb011e3f30dbc473f079b20fb56f9
+
+-------------------------------------------------------------------
+Mon Jul 22 11:44:51 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
+  as a backport of:
+  https://github.com/rpm-software-management/rpmlint/commit/2c809f34354d6ea690986541b268d47a3ca59092
+
+-------------------------------------------------------------------
 Tue May 14 10:01:51 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Update to rpmlint-checks to version master:

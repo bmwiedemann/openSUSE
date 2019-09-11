@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define _name libsigc++
 Name:           libsigc++3
-Version:        2.99.12
+Version:        3.0.0
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libsigc.sourceforge.net/
-Source:         http://download.gnome.org/sources/libsigc++/2.99/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsigc++/3.0/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  gcc-c++
 BuildRequires:  mm-common >= 0.9.12
 BuildRequires:  pkgconfig
@@ -87,7 +88,7 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %files -n libsigc-3_0-0
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_libdir}/libsigc-3.0.so.*
 
 %files devel

@@ -1,0 +1,12 @@
+Index: davix-0.7.4/src/fileops/S3IO.cpp
+===================================================================
+--- davix-0.7.4.orig/src/fileops/S3IO.cpp
++++ davix-0.7.4/src/fileops/S3IO.cpp
+@@ -235,6 +235,7 @@ dav_ssize_t S3IO::writeFromCb(IOChainCon
+    }
+ 
+    commitChunks(iocontext, uploadId, etags);
++   return 0;
+ }
+ 
+ DynafedUris S3IO::retrieveDynafedUris(IOChainContext & iocontext, const std::string &uploadId, const std::string &pluginId, size_t nchunks) {

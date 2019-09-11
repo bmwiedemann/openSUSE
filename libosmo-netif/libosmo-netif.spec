@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 0.4.0
+%define version_unconverted 0.6.0
 
 Name:           libosmo-netif
 Summary:        Osmocom library for muxed audio
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-Version:        0.4.0
+Version:        0.6.0
 Release:        0
 Url:            https://osmocom.org/projects/libosmo-netif
 
@@ -42,19 +42,19 @@ BuildRequires:  pkgconfig(talloc)
 %description
 Network interface demuxer library for OsmoCom projects.
 
-%package -n libosmonetif6
+%package -n libosmonetif8
 Summary:        Osmocom library for muxed audio
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmonetif6
+%description -n libosmonetif8
 Network interface demuxer library for OsmoCom projects.
 
 %package -n libosmonetif-devel
 Summary:        Development files for the Osmocom muxed audio library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmonetif6 = %version
+Requires:       libosmonetif8 = %version
 
 %description -n libosmonetif-devel
 Network interface demuxer library for OsmoCom projects.
@@ -84,12 +84,12 @@ if ! make %{?_smp_mflags} check; then
 	# timing issue
 fi
 
-%post   -n libosmonetif6 -p /sbin/ldconfig
-%postun -n libosmonetif6 -p /sbin/ldconfig
+%post   -n libosmonetif8 -p /sbin/ldconfig
+%postun -n libosmonetif8 -p /sbin/ldconfig
 
-%files -n libosmonetif6
+%files -n libosmonetif8
 %defattr(-,root,root)
-%_libdir/libosmonetif.so.6*
+%_libdir/libosmonetif.so.8*
 
 %files -n libosmonetif-devel
 %defattr(-,root,root)

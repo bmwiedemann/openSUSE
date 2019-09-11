@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libosmo-sccp
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
@@ -87,6 +87,8 @@ Summary:        Development files for the Osmocom SCCP library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmo-sccp-%libversion = %version
+# previously wrongly shipped .so file
+Conflicts:      libosmo-sccp-1_0_0
 
 %description -n libosmo-sccp-devel
 SCCP is a network layer protocol that provides routing, flow control,
@@ -216,7 +218,6 @@ fi
 
 %files -n libosmo-sccp-%libversion
 %defattr(-,root,root)
-%_libdir/libosmo-sccp.so
 %_libdir/libosmo-sccp-%version.so
 
 %files -n libosmo-sccp-devel
@@ -224,6 +225,7 @@ fi
 %dir %_includedir/%name
 %dir %_includedir/%name/osmocom
 %_includedir/%name/osmocom/sccp/
+%_libdir/libosmo-sccp.so
 %_libdir/pkgconfig/libosmo-sccp.pc
 
 %files -n libosmo-sigtran3

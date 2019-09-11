@@ -1,0 +1,50 @@
+From 10289fbed9db3f803571607e09ce93ee5e183e3d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 5 Sep 2019 20:54:32 +0200
+Subject: [PATCH] Replace SWIG Python obj0/swig_obj[0] with version agnostic
+ $self
+
+"obj0" was only meant as a porting helper and should not be used, even
+with swig 3.0, see swig/swig@cd8fc0a.
+Use the correct "$self" notation, which is expanded to the correct
+code regardless of swig version and options.
+---
+ gdal/swig/include/gdal_array.i             | 6 +++---
+ gdal/swig/include/python/typemaps_python.i | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/swig/include/gdal_array.i b/swig/include/gdal_array.i
+index ff7bcde6c7..5dd3679cb2 100644
+--- a/swig/include/gdal_array.i
++++ b/swig/include/gdal_array.i
+@@ -878,11 +878,11 @@ retStringAndCPLFree* GetArrayFilename(PyArrayObject *psArray)
+ 
+     /* Keep a reference to the VirtualMem object */
+ %#if NPY_API_VERSION >= 0x00000007
+-    PyArray_SetBaseObject(ar, obj0);
++    PyArray_SetBaseObject(ar, $self);
+ %#else
+-    PyArray_BASE(ar) = obj0;
++    PyArray_BASE(ar) = $self;
+ %#endif
+-    Py_INCREF(obj0);
++    Py_INCREF($self);
+     Py_DECREF($result);
+     $result = (PyObject*) ar;
+ }
+diff --git a/swig/include/python/typemaps_python.i b/swig/include/python/typemaps_python.i
+index 104b214ac1..9517c72ebd 100644
+--- a/swig/include/python/typemaps_python.i
++++ b/swig/include/python/typemaps_python.i
+@@ -1911,7 +1911,7 @@ DecomposeSequenceOfCoordinates( PyObject *seq, int nCount, double *x, double *y,
+ %#if PY_VERSION_HEX >= 0x02070000
+   /* %typemap(argout) (void** pptr, size_t* pnsize, GDALDataType* pdatatype, int* preadonly)*/
+   Py_buffer *buf=(Py_buffer*)malloc(sizeof(Py_buffer));
+-  if (PyBuffer_FillInfo(buf,  obj0,  *($1), *($2), *($4), PyBUF_ND)) {
++  if (PyBuffer_FillInfo(buf, $self, *($1), *($2), *($4), PyBUF_ND)) {
+     // error, handle
+   }
+   if( *($3) == GDT_Byte )
+-- 
+2.23.0
+

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 25 05:39:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.61
+   see /usr/share/doc/packages/perl-XML-RSS/Changes
+
+  1.61    2019-08-24
+      - Clarified the docs regarding DateTime objects.
+          - Thanks to shtrb
+      - Add 2.0 to the version list, fix broken links to versions
+          - Thanks to E. Choroba
+      - Changed to explicit imports in "use" statements.
+
+-------------------------------------------------------------------
 Mon Mar  5 07:13:21 UTC 2018 - coolo@suse.com
 
 - updated to 1.60

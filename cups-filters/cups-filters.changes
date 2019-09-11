@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  3 11:53:40 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add add-cstring-include.patch to include cstring for memcpy
+  and strcmp
+
+-------------------------------------------------------------------
 Wed Jun 12 15:08:52 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

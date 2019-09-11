@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
+Patch0:         pytest5.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout >= 3.0}
 BuildRequires:  %{python_module attrs >= 17.3.0}
@@ -33,12 +34,6 @@ BuildRequires:  %{python_module chardet >= 2.0}
 BuildRequires:  %{python_module devel >= 3.5.3}
 BuildRequires:  %{python_module multidict >= 4.0}
 BuildRequires:  %{python_module setuptools}
-%if 0%{suse_version} < 1550
-BuildRequires:  %{python_module idna_ssl >= 1.0}
-BuildRequires:  %{python_module typing_extensions >= 3.6.5}
-Requires:       python-idna_ssl
-Requires:       python-typing_extensions
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python >= 3.5.3
@@ -49,10 +44,15 @@ Requires:       python-chardet >= 2.0
 Requires:       python-gunicorn
 Requires:       python-multidict >= 4.0
 Requires:       python-yarl >= 1.0
-Requires:       python-yarl >= 1.0
 Recommends:     python-aiodns
 Recommends:     python-cChardet
 Suggests:       %{name}-doc
+%if 0%{?suse_version} < 1550
+BuildRequires:  %{python_module idna_ssl >= 1.0}
+BuildRequires:  %{python_module typing_extensions >= 3.6.5}
+Requires:       python-idna_ssl
+Requires:       python-typing_extensions
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module brotlipy}
@@ -94,6 +94,7 @@ HTML documentation on the API and examples for %{name}.
 
 %prep
 %setup -q -n aiohttp-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"

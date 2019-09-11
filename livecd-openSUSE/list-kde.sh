@@ -63,3 +63,5 @@ buildignore cyrus-sasl
 # From rest_cd_core
 install alsa-firmware
 
+# From x11_enhanced, but that pattern can't be installed
+install opensuse-welcome

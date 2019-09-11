@@ -16,11 +16,12 @@
 #
 
 
-%define version_unconverted 7.11.3276.git10
-%define lname libglslang-suse6
+# lname needs a bump for every change in commit (_service)
+%define version_unconverted 7.12.3352
+%define lname libglslang-suse7
 
 Name:           glslang
-Version:        7.11.3276.git10
+Version:        7.12.3352
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -72,13 +73,15 @@ compressor's dictionary can find better cross module commonality.
 %autosetup -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 make %{?_smp_mflags}
 
 %install
-b="%buildroot"
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %cmake_install
+b="%buildroot"
 mkdir -p "$b/%_includedir"
 cp -a SPIRV glslang "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
@@ -91,7 +94,7 @@ cp build/StandAlone/libglslang-default-resource-limits.so "$b/%_libdir/"
 
 %files -n %lname
 %defattr(-,root,root)
-%_libdir/*.so.suse6*
+%_libdir/*.so.suse7*
 
 %files devel
 %defattr(-,root,root)

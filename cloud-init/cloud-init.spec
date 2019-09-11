@@ -46,6 +46,8 @@ Patch43:        cloud-init-write-routes.patch
 Patch47:        cloud-init-trigger-udev.patch
 # FIXME (lp#1669875) patch by mvoelker@launchpad
 Patch48:        cloud-init-detect-nova.diff
+# FIXME (lp##1821102)
+Patch49:        cloud-init-add-static-routes.diff
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -75,7 +77,7 @@ BuildRequires:  python-requests
 BuildRequires:  python-setuptools
 BuildRequires:  python-six
 %endif
-%if 0%{?is_opensuse} || 0%{?suse_version} == 1310 || 0%{?suse_version} == 1320
+%if 0%{?is_opensuse}
 BuildRequires:  openSUSE-release
 %else
 BuildRequires:  sles-release
@@ -190,6 +192,7 @@ Documentation and examples for cloud-init tools
 %patch43
 %patch47
 %patch48 -p1
+%patch49 -p1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315

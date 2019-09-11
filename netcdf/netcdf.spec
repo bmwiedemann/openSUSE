@@ -20,9 +20,10 @@
 
 %define _do_check 1
 
-%define ver 4.6.1
-%define _ver 4_6_1
+%define ver 4.7.0
+%define _ver 4_7_0
 %define pname netcdf
+%define sonum   15
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
 %undefine DisOMPI3
@@ -203,12 +204,9 @@ License:        NetCDF
 Group:          Productivity/Scientific/Other
 Version:        %ver
 Release:        0
-%define sonum   13
-Url:            http://www.unidata.ucar.edu/software/netcdf/
-Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-%{version}.tar.gz
+URL:            https://www.unidata.ucar.edu/software/netcdf/
+Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source1:        nc-config.1.gz
-Source100:      netcdf-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gawk
 BuildRequires:  libtool
 BuildRequires:  m4
@@ -388,7 +386,7 @@ for NetCDF.
 
 %prep
 %{?with_hpc:%hpc_debug}
-%setup -q -n %{pname}-%{version}
+%setup -q -n %{pname}-c-%{version}
 m4 libsrc/ncx.m4 > libsrc/ncx.c
 
 # Create baselib.conf dynamically (non-HPC build only).
@@ -402,6 +400,7 @@ EOF
 chmod a-x RELEASE_NOTES.md
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %{?with_hpc:%{hpc_setup}}
 %{?with_hpc:module load %{hdf5_module_file}}
 
@@ -413,7 +412,7 @@ export FC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpif90
 export CXX=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpic++
 %endif
 autoreconf -fv
-export CFLAGS="-fno-strict-aliasing %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
+export CFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 export CXXFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 export FCFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 %{?with_hpc:export LDFLAGS="-L$HDF5_LIB"}
@@ -585,7 +584,7 @@ module load %{hdf5_module_file}
 %{_datadir}/modules/%{pname}-%{mpi_flavor}%{?mpi_ext}
  %endif
 %endif
-%{p_libdir}/libnetcdf.so.*
+%{p_libdir}/libnetcdf.so.%{sonum}*
 
 %if %{without mpi}
 %files devel-data

@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/openSUSE/libeconf.git</param>
+    <param name="changesrevision">af0058a82a453b558c2c7614979d2377a2091ee8</param>
+ </service>
+</servicedata>

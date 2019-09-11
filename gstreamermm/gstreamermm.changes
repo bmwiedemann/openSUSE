@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  9 16:56:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace glibmm2-devel with pkgconfig and pkgconfig(giomm-2.4)
+  BuildRequires: Ensure we only pull in one and the correct
+  glibmm-devel package.
+- Drop unneeded hard glibmm2-devel Requires from devel sub-package.
+
+-------------------------------------------------------------------
 Sat Jun 23 18:44:50 UTC 2018 - bjorn.lie@gmail.com
 
 - Add gstreamermm-copy_metadata_vfunc.patch,

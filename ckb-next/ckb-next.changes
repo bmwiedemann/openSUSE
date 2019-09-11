@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Aug 27 18:22:08 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.1
+  Important bugfixes:
+  * Specified keyboard layout is no longer being reverted on
+    restart
+  * Pipe animation no longer quits if it can't read data
+  * Media keys work again on the legacy K65
+  * Daemon no longer crashes on quit on macOS
+  * Devices are now re-activated after resume on Linux
+  * Gradient animation no longer flickers with dithering enabled
+  * HiDPI has been disabled by default due to screen resolution
+    misdetection
+  * Max DPI is now per-device
+  * Extra words are now filtered from the device name
+  * gpg2 is preferred over gpg for signature verification
+  New features:
+  * An uninstall button has been added for macOS users that
+    allows complete uninstallation, including older versions
+  * Life animation has a new transparent preset
+  * Confirmation dialog boxes have been added when deleting
+    profiles, modes, and animations
+  * Animation preview now gets temporarily disabled while
+    ckb-next is out of focus
+  * Support for multiple animation paths has been added
+  * Pollrate can now be changed through the GUI
+  Notes for packagers:
+  * Udev rules are now installed by default in /lib/udev/rules.d.
+  * Udev rule installation path can be changed with
+    UDEV_RULE_DIRECTORY in cmake
+  * Init systems can manually be force-enabled with
+    FORCE_INIT_SYSTEM in cmake
+
+- Refreshed ckb-next-use-run.patch and ckb-next-systemd.patch
+
+-------------------------------------------------------------------
 Wed May 29 03:55:59 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add 422.patch to fix animations dir (boo#1135528)

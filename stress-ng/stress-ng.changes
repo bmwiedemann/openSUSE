@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Sep  2 19:09:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.04
+  * Remove execute bit on bash completion script
+  * stress-cpu: fix build time checks for __cpuid()
+  * stress-cpu: add a collatz sequence stressor
+  * stress-dev: temporarily disable hpet test
+  * stress-stack: use memory backed mmap'd alternative stack
+  * stress-inode-flags: detect failures in pthread and propagate
+    these back to parent (LP: #1841900)
+  * Add a pthread return pointer to pthread args
+  * Add new 5.3 sched_attr fields, fixes EFBIG on sched_{get|set}attr
+  * core-helper: don't call sched_getcpu on s390x
+
+-------------------------------------------------------------------
+Tue Aug 27 09:35:54 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.02
+  * stress-pthread: protect counter with spinlock not mutex lock
+  * stress-pthread: don't block forever on pthread_cond_wait()
+  * core-cache: use a fixed size buffer for reading in /sys info
+  * stress-pty: don't report a failure on EINTR (LP: #1840512)
+  * stress-cpu: add an x86 cpuid instruction exerciser
+  * stress-cpu: add a 64 bit division stressor
+  * stress-pthread: don't tkill pthreads, can lead to futex blocking
+
+- Update to version 0.10.01
+  * stress-procfs: disable read to read-only buffer
+  * stress-procfs: don't use large filenames on small pthread stacks
+  * bash-completion: remove the shebang at the start
+  * stress-ramfs: fix umounting races
+  * stress-ramfs: add capability check before running
+  * Add ramfs stressor, this also exercises the new mount system calls
+  * Add brk emulation for systems that don't support brk()
+  * stress-clone: add CLONE_PIDFD (new with Linux 5.2)
+  * stress-cpu: warn if CPU affinity may have been set
+  * stress-vforkmany: fix build error
+  * stress-vforkmany: wrap vfork syscall and put pragmas around it
+  * stress-fork: move pragmas to outside the stress_vfork function
+  * stress-memrate: handle memory sizes < 1MB
+
+-------------------------------------------------------------------
 Thu Jul 11 20:44:08 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.00

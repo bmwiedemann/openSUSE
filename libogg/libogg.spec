@@ -1,7 +1,7 @@
 #
 # spec file for package libogg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _SO_nr 0
 
 Name:           libogg
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Ogg Bitstream Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.vorbis.com/
-Source:         http://downloads.xiph.org/releases/ogg/%{name}-%{version}.tar.xz
+URL:            http://www.vorbis.com/
+Source:         https://downloads.xiph.org/releases/ogg/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch1:         lib64.dif
 Patch2:         m4.diff
 BuildRequires:  pkg-config
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libogg is a library for manipulating Ogg bitstreams.  It handles both
@@ -76,7 +75,7 @@ sed -i s,-O20,-O3,g configure
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} docdir=%{_docdir}/%{name}-devel install
+%make_install docdir="%{_docdir}/%{name}-devel"
 # remove unneeded files
 rm -f %{buildroot}%{_libdir}/*.la
 
@@ -88,13 +87,11 @@ make check
 %postun -n libogg%{_SO_nr} -p /sbin/ldconfig
 
 %files -n libogg%{_SO_nr}
-%defattr(0644,root,root,0755)
 %doc AUTHORS CHANGES README.md
 %license COPYING
 %{_libdir}/libogg.so.%{_SO_nr}*
 
 %files devel
-%defattr(0644,root,root,0755)
 %{_docdir}/%{name}-devel
 %{_includedir}/ogg
 %{_libdir}/libogg.so

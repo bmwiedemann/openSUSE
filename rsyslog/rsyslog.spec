@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -230,7 +230,6 @@ Source7:        module-mysql
 Source8:        module-snmp
 Source9:        module-udpspoof
 Source14:       http://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-%{version}.tar.gz
-Source15:       rsyslog.firewall
 Source16:       journald-rsyslog.conf
 Source17:       acpid.frule
 Source18:       firewall.frule
@@ -842,9 +841,6 @@ install -m0600 %{SOURCE19} %{buildroot}%{_sysconfdir}/rsyslog.d/
   install -m0640 %{SOURCE9} %{buildroot}%{APPARMOR_PROFILE_PATH}/rsyslog.d/
 %endif
 
-# firewall config
-install -m 644 -D %{SOURCE15} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
-
 %clean
 if [ -n "%{buildroot}" ] && [ "%{buildroot}" != "/" ] ; then
 	rm -rf "%{buildroot}"
@@ -1055,7 +1051,6 @@ fi
 %endif
 %{APPARMOR_PROFILE_PATH_DIR_COMMANDS}
 %config %{APPARMOR_PROFILE_PATH}/usr.sbin.rsyslogd
-%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 
 %files doc
 %defattr(-,root,root)

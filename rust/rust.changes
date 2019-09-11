@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Aug 28 01:00:37 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 1.37.0
+  + Language
+    - #[must_use] will now warn if the type is contained in a tuple,
+      Box, or an array and unused.
+    - You can now use the `cfg` and `cfg_attr` attributes on
+      generic parameters.
+    - You can now use enum variants through type alias. e.g. You can
+      write the following:
+      ```
+      type MyOption = Option<u8>;
+
+      fn increment_or_zero(x: MyOption) -> u8 {
+          match x {
+              MyOption::Some(y) => y + 1,
+              MyOption::None => 0,
+          }
+      }
+      ```
+    - You can now use `_` as an identifier for consts. e.g. You can write
+      `const _: u32 = 5;`.
+    - You can now use `#[repr(align(X)]` on enums.
+    - The  `?` Kleene macro operator is now available in the
+      2015 edition.
+  + Compiler
+    - You can now enable Profile-Guided Optimization with the `-C profile-generate`
+      and `-C profile-use` flags. For more information on how to use profile
+      guided optimization, please refer to the rustc book.
+    - The `rust-lldb` wrapper script should now work again.
+  + Libraries
+    - `mem::MaybeUninit<T>` is now ABI-compatible with `T`.
+  + Stabilized APIs
+    - BufReader::buffer
+    - BufWriter::buffer
+    - Cell::from_mut
+    - Cell<[T]>::as_slice_of_cells
+    - Cell<slice>::as_slice_of_cells
+    - DoubleEndedIterator::nth_back
+    - Option::xor
+    - Wrapping::reverse_bits
+    - i128::reverse_bits
+    - i16::reverse_bits
+    - i32::reverse_bits
+    - i64::reverse_bits
+    - i8::reverse_bits
+    - isize::reverse_bits
+    - slice::copy_within
+    - u128::reverse_bits
+    - u16::reverse_bits
+    - u32::reverse_bits
+    - u64::reverse_bits
+    - u8::reverse_bits
+    - usize::reverse_bits
+  + Cargo
+    - Cargo.lock files are now included by default when publishing executable crates
+      with executables.
+    - You can now specify `default-run="foo"` in `[package]` to specify the
+      default executable to use for `cargo run`.
+    - cargo-vendor is now provided as a sub-command of cargo
+  + Compatibility Notes
+    - Using `...` for inclusive range patterns will now warn by default.
+      Please transition your code to using the `..=` syntax for inclusive
+      ranges instead.
+    - Using a trait object without the `dyn` will now warn by default.
+      Please transition your code to use `dyn Trait` for trait objects instead.
+
+-------------------------------------------------------------------
 Tue Jul  9 09:57:46 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
 
 - Remove fix-llvm8-build.patch, fixed upstream

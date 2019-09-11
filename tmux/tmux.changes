@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 13:06:07 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v2.9a
+  - Fix bugs in select-pane and the main-horizontal and main-vertical layouts.
+
+-------------------------------------------------------------------
 Tue Jun  4 06:49:49 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Add trailing newline to tmpfiles.d/tmux.conf. On newer systems (such as Leap

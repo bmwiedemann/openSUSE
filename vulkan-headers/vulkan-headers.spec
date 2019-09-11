@@ -16,9 +16,9 @@
 #
 
 
-%define version_unconverted 1.1.112
+%define version_unconverted 1.1.120
 Name:           vulkan-headers
-Version:        1.1.112
+Version:        1.1.120
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0

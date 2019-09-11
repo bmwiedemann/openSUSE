@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           libsmpp34
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        PDU SMPP packaging and unpackaging tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -52,7 +52,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libsmpp34-%sover = %version
 # Wrong package name
-Obsoletes:      libsmpp34-0-devel <= %version-%release
+Obsoletes:      libsmpp34-0-devel < %version-%release
 Provides:       libsmpp34-0-devel = %version-%release
 
 %description devel

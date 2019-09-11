@@ -60,7 +60,7 @@
 %define talloc_version 2.1.16
 %define tevent_version 0.9.39
 %define tdb_version    1.3.18
-%define ldb_version    1.5.4
+%define ldb_version    1.5.5
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -170,7 +170,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.10.5+git.105.2bd98587873
+Version:        4.10.8+git.124.a2010fbd0de
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1030,7 +1030,7 @@ CONFIGURE_OPTIONS="\
 	--enable-ceph-reclock \
 %endif
 	--with-pam \
-	--with-pammodulesdir=%{_lib}/security \
+	--with-pammodulesdir=/%{_lib}/security \
 	--with-piddir=%{PIDDIR} \
 	--with-relro \
 %if 0%{?suse_version} > 1220
@@ -1216,7 +1216,7 @@ install -m 0644 config/samba.reg %{buildroot}/%{_sysconfdir}/slp.reg.d/samba.reg
 install -m 0644 config/samba.pamd-common %{buildroot}/%{_sysconfdir}/pam.d/samba
 install -m 0644 config/dhcp.conf %{buildroot}/%{_fillupdir}/samba-client-dhcp.conf
 install -m 0644 config/sysconfig.dhcp-samba-client %{buildroot}/%{_fillupdir}/sysconfig.dhcp-samba-client
-for script in dhcpcd-hook-samba dhcpcd-hook-samba-functions samba-winbindd; do
+for script in samba-winbindd; do
 	install -m 0755 "tools/${script}" "%{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/${script}"
 done
 %if 0%{?suse_version} < 1221
@@ -1229,7 +1229,7 @@ done
 %endif
 %endif
 # Create ghosts for the symlinks
-for script in 21-dhcpcd-hook-samba 55-samba-winbindd; do
+for script in 55-samba-winbindd; do
 	touch %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-{down,up}.d/${script}
 done
 %if 0%{?suse_version} < 1221
@@ -1422,31 +1422,23 @@ fi
 
 %post client
 /sbin/ldconfig
+%if 0%{?suse_version} < 1221
 if [ ${1:-0} -eq 1 ]; then
-# Only insserv cifs if we're not in update mode.
 %if 0%{?suse_version} < 1131
+# Only insserv cifs if we're not in update mode.
 %{?insserv_force_if_yast:%{insserv_force_if_yast %{cifs_init_script}}}
 %endif
-	ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-down.d/21-dhcpcd-hook-samba
-	ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-up.d/21-dhcpcd-hook-samba
-%if 0%{?suse_version} < 1221
 	ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/%{cifs_init_script} %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-down.d/21-%{cifs_init_script}
 	ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/%{cifs_init_script} %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-up.d/21-%{cifs_init_script}
-%endif
 else
 	for if_case in if-down.d if-up.d; do
-		test -h %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/dhcpcd-hook-samba || \
-			continue
-		rm -f %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/dhcpcd-hook-samba
-		ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/21-dhcpcd-hook-samba
-%if 0%{?suse_version} < 1221
 		test -h %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/%{cifs_init_script} || \
 			continue
 		rm -f %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/%{cifs_init_script}
 		ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/%{cifs_init_script} %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/21-%{cifs_init_script}
-%endif
 	done
 fi
+%endif
 for fn in MACHINE.SID idmap2.tdb idmap_test.tdb netlogon_creds_cli.tdb passdb.tdb secrets.tdb smbpasswd; do
 	test ! -e %{LOCKDIR}/private/$fn && test -e %{CONFIGDIR}/$fn && \
 		mv %{CONFIGDIR}/$fn %{LOCKDIR}/private/
@@ -1713,10 +1705,6 @@ exit 0
 %dir %{_sysconfdir}/openldap
 %dir %{_sysconfdir}/openldap/schema
 %attr(0444,root,root) %config %{_sysconfdir}/openldap/schema/samba3.schema
-%ghost %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-down.d/21-dhcpcd-hook-samba
-%ghost %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-up.d/21-dhcpcd-hook-samba
-%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba
-%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba-functions
 %if 0%{?suse_version} > 1100
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-client
 %endif

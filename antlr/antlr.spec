@@ -122,6 +122,7 @@ cp -p %{SOURCE1} build.xml
 find | grep "\(ShowString.java$\|StreamConverter.java$\)" && exit 42 || :
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ant \
     -Dj2se.apidoc=%{_javadocdir}/java \
     -Dant.build.javac.source=8 -Dant.build.javac.target=8 \

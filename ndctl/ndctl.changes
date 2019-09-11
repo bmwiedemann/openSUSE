@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Aug 21 18:15:16 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Refresh patches with upstream status:
+   ndctl_check_Ensure_mmap_of_BTT_sections_work_with_64K_page-sizes.patch
+   ndctl-namespace-Handle-create-namespace-in-label-less-mode.patch
+   ndctl-list-Introduce-region-capability-objects.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 13:19:55 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- ndctl/namespace: Handle 'create-namespace' in label-less mode (bsc#1145471 ltc#179886).
+  + ndctl-namespace-Handle-create-namespace-in-label-less-mode.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 11:27:59 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- ndctl: Use the same align value as original namespace on reconfigure (bsc#1145577 ltc#178224).
+  + ndctl-Use-the-same-align-value-as-original-namespace-on-reconfigure.patch
+- ndctl/lib: Fix duplicate bus detection (bsc#1145573 ltc#180249).
+  + ndctl-ndctl-lib-Fix-duplicate-bus-detection.patch
+
+-------------------------------------------------------------------
+Fri Aug 16 14:31:46 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- ndctl/list: Introduce region capability objects (bsc#1145772 ltc#178159).
+  + ndctl-list-Introduce-region-capability-objects.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 12:56:24 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- ndctl, check: Ensure mmap of BTT sections work with 64K page-sizes (bsc#1145421 ltc#176079).
+  + ndctl_check_Ensure_mmap_of_BTT_sections_work_with_64K_page-sizes.patch
+
+-------------------------------------------------------------------
 Tue Mar 05 09:15:45 UTC 2019 - jthumshirn@suse.de 
 
 - Update to version 64.1 (bsc#1127799):

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  8 17:49:46 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use FAT LTO objects in order to provide proper static library.
+- Some specfile cleanup (defattr, license)
+
+-------------------------------------------------------------------
 Sat Mar 17 11:56:20 CET 2018 - ro@suse.de
 
 - add hdf-ppc64le.patch (bsc#1085754)

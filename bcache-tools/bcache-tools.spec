@@ -1,7 +1,7 @@
 #
 # spec file for package bcache-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@ Name:           bcache-tools
 Summary:        Configuration utilities for bcache
 License:        GPL-2.0-only
 Group:          System/Base
-Version:        1.0.9
+Version:        1.0.8+suse5
 Release:        0
 Url:            http://bcache.evilpiepirate.org/
 
 #Git-Clone:	http://evilpiepirate.org/git/bcache-tools.git
 Source:         %name-%version.tar.xz
-Patch1001:      1001-udev-do-not-rely-on-DRIVER-variable.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         1001-udev-do-not-rely-on-DRIVER-variable.patch
 BuildRequires:  libblkid-devel
 BuildRequires:  libsmartcols-devel
 BuildRequires:  libuuid-devel
@@ -39,8 +37,7 @@ BuildRequires:  xz
 This package contains utilities for configuring the bcache Module.
 
 %prep
-%setup -qn %name
-%patch1001 -p1
+%autosetup -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -61,13 +58,12 @@ mkdir -p "$b/%_prefix/lib"
 mv "$b/lib/udev" "$b/%_prefix/lib/"
 
 %files
-%defattr(-,root,root)
 %_sbindir/bcache-super-show
 %_sbindir/make-bcache
 %_sbindir/bcache
 %_prefix/lib/udev
 %_libexecdir/dracut/
 %_mandir/man8/*.8*
-%doc COPYING
+%license COPYING
 
 %changelog

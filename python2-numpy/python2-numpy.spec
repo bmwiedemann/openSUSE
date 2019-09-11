@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _ver 1_16_4
+%define _ver 1_16_5
 %define pname python-numpy
 
 %bcond_with ringdisabled
@@ -79,7 +79,7 @@ ExclusiveArch:  do_not_build
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python3 1
 Name:           %{package_name}
-Version:        1.16.4
+Version:        1.16.5
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause

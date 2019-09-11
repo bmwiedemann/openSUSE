@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:56:26 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.9.4
+  * BEANUTILS-520: BeanUtils mitigate CVE-2014-0114
+- Security fix: [bsc#1146657, CVE-2019-10086]
+  * PropertyUtilsBean (and consequently BeanUtilsBean) now disallows class
+    level property access by default, thus protecting against CVE-2014-0114.
+- Fix build version in build.xml
+  * Added apache-commons-beanutils-fix-build-version.patch
+
+-------------------------------------------------------------------
 Tue Oct 23 17:30:33 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Cleanup the maven pom files installation

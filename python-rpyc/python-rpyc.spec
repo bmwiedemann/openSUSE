@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-rpyc%{psuffix}
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT

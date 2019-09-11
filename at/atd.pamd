@@ -2,9 +2,10 @@
 # The PAM configuration file for the at daemon
 #
 #
-auth		sufficient	pam_rootok.so
-auth    	include		common-auth   
-account		include		common-account
-password	include		common-password
-session		required	pam_loginuid.so
-session		include		common-session
+auth            sufficient      pam_rootok.so
+auth            include	        common-auth   
+account         include	        common-account
+password        include         common-password
+session         optional        pam_keyinit.so force revoke
+session         required        pam_loginuid.so
+session         include         common-session

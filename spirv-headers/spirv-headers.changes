@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 21 07:26:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 1.4.1.g36
+  * Add INTEL_shader_integer_functions2,
+    SPV_EXT_fragment_shader_interlock,
+    SPV_EXT_demote_to_helper_invocation.
+  * Add support for SPV_NV_sm_shader_builtins.
+  * Add Volatile to Memory Semantics, for
+    SPV_KHR_vulkan_memory_model.
+  * Add SPV_KHR_shader_clock to spirv-headers.
+
+-------------------------------------------------------------------
 Tue Jun  4 12:12:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new snapshot 1.4.1.g17

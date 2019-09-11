@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 10:10:24 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- disable LTO for ppc64 ppc64le aarch64 bypass boo#1149348
+
+-------------------------------------------------------------------
 Wed Dec 26 20:05:24 UTC 2018 - astieger@suse.com
 
 - update to 1.4:

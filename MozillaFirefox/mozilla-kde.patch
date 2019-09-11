@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  f11c2d7239c0caa4dc74272716d9e30ced1a1ca3
+# Parent  93495ad6fa0fe292eadcbfef14e0e27273528497
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -701,23 +701,29 @@ new file mode 100644
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1042,30 +1042,60 @@ nsUnknownContentTypeDialog.prototype = {
- 
-       if (params.handlerApp &&
-           params.handlerApp.executable &&
-           params.handlerApp.executable.isFile()) {
+@@ -1204,36 +1204,66 @@ nsUnknownContentTypeDialog.prototype = {
+         params.handlerApp &&
+         params.handlerApp.executable &&
+         params.handlerApp.executable.isFile()
+       ) {
          // Remember the file they chose to run.
          this.chosenApp = params.handlerApp;
        }
      } else if ("@mozilla.org/applicationchooser;1" in Cc) {
 -      var nsIApplicationChooser = Ci.nsIApplicationChooser;
--      var appChooser = Cc["@mozilla.org/applicationchooser;1"]
--                         .createInstance(nsIApplicationChooser);
--      appChooser.init(this.mDialog, this.dialogElement("strings").getString("chooseAppFilePickerTitle"));
+-      var appChooser = Cc["@mozilla.org/applicationchooser;1"].createInstance(
+-        nsIApplicationChooser
+-      );
+-      appChooser.init(
+-        this.mDialog,
+-        this.dialogElement("strings").getString("chooseAppFilePickerTitle")
+-      );
 -      var contentTypeDialogObj = this;
 -      let appChooserCallback = function appChooserCallback_done(aResult) {
 -        if (aResult) {
--           contentTypeDialogObj.chosenApp = aResult.QueryInterface(Ci.nsILocalHandlerApp);
+-          contentTypeDialogObj.chosenApp = aResult.QueryInterface(
+-            Ci.nsILocalHandlerApp
+-          );
 -        }
 -        contentTypeDialogObj.finishChooseApp();
 -      };
@@ -754,13 +760,19 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 +        });
 +      } else {
 +        var nsIApplicationChooser = Ci.nsIApplicationChooser;
-+        var appChooser = Cc["@mozilla.org/applicationchooser;1"]
-+                           .createInstance(nsIApplicationChooser);
-+        appChooser.init(this.mDialog, this.dialogElement("strings").getString("chooseAppFilePickerTitle"));
++        var appChooser = Cc["@mozilla.org/applicationchooser;1"].createInstance(
++          nsIApplicationChooser
++        );
++        appChooser.init(
++          this.mDialog,
++          this.dialogElement("strings").getString("chooseAppFilePickerTitle")
++        );
 +        var contentTypeDialogObj = this;
 +        let appChooserCallback = function appChooserCallback_done(aResult) {
 +          if (aResult) {
-+             contentTypeDialogObj.chosenApp = aResult.QueryInterface(Ci.nsILocalHandlerApp);
++            contentTypeDialogObj.chosenApp = aResult.QueryInterface(
++              Ci.nsILocalHandlerApp
++            );
 +          }
 +          contentTypeDialogObj.finishChooseApp();
 +        };
@@ -770,12 +782,12 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 +      }
      } else {
        var nsIFilePicker = Ci.nsIFilePicker;
-       var fp = Cc["@mozilla.org/filepicker;1"]
-                  .createInstance(nsIFilePicker);
-       fp.init(this.mDialog,
-               this.dialogElement("strings").getString("chooseAppFilePickerTitle"),
-               nsIFilePicker.modeOpen);
- 
+       var fp = Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+       fp.init(
+         this.mDialog,
+         this.dialogElement("strings").getString("chooseAppFilePickerTitle"),
+         nsIFilePicker.modeOpen
+       );
 diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 --- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 +++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp

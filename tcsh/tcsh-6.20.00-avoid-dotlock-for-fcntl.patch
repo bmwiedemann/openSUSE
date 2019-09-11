@@ -4,7 +4,7 @@
 
 --- sh.hist.c
 +++ sh.hist.c	2017-07-19 10:01:20.795354927 +0000
-@@ -1274,6 +1274,11 @@ rechist(Char *fname, int ref)
+@@ -1278,6 +1278,11 @@ rechist(Char *fname, int ref)
  	}
  
  	if (merge) {
@@ -16,7 +16,7 @@
  	    if (lock) {
  #ifndef WINNT_NATIVE
  		char *lockpath = strsave(short2str(fname));
-@@ -1283,6 +1288,7 @@ rechist(Char *fname, int ref)
+@@ -1287,6 +1292,7 @@ rechist(Char *fname, int ref)
  		    cleanup_push(lockpath, dotlock_cleanup);
  #endif
  	    }

@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.16.4
+Version:        5.16.5
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
@@ -109,6 +109,7 @@ Provides KDE's control center modules. Development files.
 %dir %{_kf5_sharedir}/kpackage/genericqml
 %{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
 %{_kf5_debugdir}/*.categories
+%{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
 
 %files devel
 %{_kf5_libdir}/libsystemsettingsview.so

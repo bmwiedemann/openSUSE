@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 06:48:00 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fwupd-bsc1143905-hash-the-source-files.patch to hash the
+  source files instead of libfwupdprivate.a to avoid the checksum
+  change due to the random naming LTO profile sections
+  (bsc#1143905)
+
+-------------------------------------------------------------------
 Wed Jul 24 08:12:17 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 1.2.10:

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:56:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.0:
+  * Base64 support removed and binary mode is now required
+  * Low level WebSocket protocol handling now has its own class
+  * Authentication now optionally required for web server
+  * Server hostname can be used as the token
+  * JWT/JWS/JWE can be used for the token
+  * redis can be used for the token
+  * Can now log to syslog
+  * Improved latency by disabling Nagle for proxied connection
+  * Added client certificate authentication
+  * Support for password protected certificate key file
+  * TLS ciphers and options are now configurable
+  * Can be invoked via inetd
+  * Lots of minor fixes...
+- Remove upstream merged:
+  * u_added_jwt_tokens_capability.patch
+  * u_Add-support-for-inetd.patch
+  * u_Fix-inetd-mode-on-python-2.patch
+  * fix-tests-py3.6.patch
+- Drop suse specific PyJWT-token-plugin.patch, will be easier
+  to actually pull in new dependency on jwcrypto if needed
+  * The tests were failing when using PyJWT...
+
+-------------------------------------------------------------------
 Mon Apr  8 14:33:03 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Fix PyJWT / jwcrypto dependency problem (boo#1131024)

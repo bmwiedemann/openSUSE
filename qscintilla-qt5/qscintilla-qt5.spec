@@ -112,6 +112,7 @@ popd
 %doc NEWS README
 %{_datadir}/qt5/qsci/
 %{_datadir}/qt5/translations/
+%dir %{_libdir}/qt5/plugins/designer
 %{_libdir}/qt5/plugins/designer/libqscintillaplugin.so
 
 %files -n libqscintilla2_qt5-%{sonum}

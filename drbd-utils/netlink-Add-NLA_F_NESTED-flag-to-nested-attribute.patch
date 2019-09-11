@@ -1,0 +1,47 @@
+From 859151b228d3b3aacefb09d06d515a2589c22e35 Mon Sep 17 00:00:00 2001
+From: He Zhe <zhe.he@windriver.com>
+Date: Fri, 12 Jul 2019 15:07:27 +0800
+Subject: [PATCH 2/2] netlink: Add NLA_F_NESTED flag to nested attribute
+
+The mainline kernel v5.2 commit b424e432e770
+("netlink: add validation of NLA_F_NESTED flag") imposes strict validation
+against nested attribute as follow.
+
+"
+Add new validation flag NL_VALIDATE_NESTED which adds three consistency
+checks of NLA_F_NESTED_FLAG:
+
+  - the flag is set on attributes with NLA_NESTED{,_ARRAY} policy
+  - the flag is not set on attributes with other policies except NLA_UNSPEC
+  - the flag is set on attribute passed to nla_parse_nested()
+"
+
+Sending messages with nested attribute without NLA_F_NESTED would cause failed
+validation. For example,
+
+$ drbdsetup new-resource r0
+Invalid argument
+
+This patch adds NLA_F_NESTED flag to all nested attributes.
+
+Signed-off-by: He Zhe <zhe.he@windriver.com>
+---
+ user/shared/libgenl.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/user/shared/libgenl.h b/user/shared/libgenl.h
+index 4e9888ca..d900a945 100644
+--- a/user/shared/libgenl.h
++++ b/user/shared/libgenl.h
+@@ -863,7 +863,7 @@ static inline struct nlattr *nla_nest_start(struct msg_buff *msg, int attrtype)
+ {
+ 	struct nlattr *start = (struct nlattr *)msg->tail;
+ 
+-	if (nla_put(msg, attrtype, 0, NULL) < 0)
++	if (nla_put(msg, attrtype | NLA_F_NESTED, 0, NULL) < 0)
+ 		return NULL;
+ 
+ 	return start;
+-- 
+2.12.3
+

@@ -1,0 +1,38 @@
+From 415dea8db90785c3063bbd74fff34cb6a4830f06 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.com>
+Date: Fri, 30 Nov 2018 16:44:29 +1100
+Subject: [PATCH] systemd: run statd-notify even when nfs-client isn't enabled.
+
+When NFS filesytems are mounted, nfs-client.target really should
+be enabled.  However it is possible to mount NFS filesystems
+without this (providing gss isn't used) and it mostly works.
+
+One aspect that doesn't work is that sm-notify isn't run, so the server
+isn't told to drop any locks from the previous client instance.
+This can result in confusing failures: if a client crashes while
+holding a lock, it won't be able to get the same lock after a reboot.
+
+While this isn't a complete solution (nfs-client really should be
+enabled), adding a dependency from rpc-statd to rpc-statd-notify is
+easy, has no down sides, and could help avoid confusion.
+
+Signed-off-by: NeilBrown <neilb@suse.com>
+---
+ systemd/rpc-statd.service | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/systemd/rpc-statd.service b/systemd/rpc-statd.service
+index 1f4e6a8b92ab..3e92cf71add0 100644
+--- a/systemd/rpc-statd.service
++++ b/systemd/rpc-statd.service
+@@ -4,6 +4,7 @@ DefaultDependencies=no
+ Conflicts=umount.target
+ Requires=nss-lookup.target rpcbind.socket
+ Wants=network-online.target
++Wants=rpc-statd-notify.service
+ After=network-online.target nss-lookup.target rpcbind.socket
+ 
+ PartOf=nfs-utils.service
+-- 
+2.14.0.rc0.dirty
+

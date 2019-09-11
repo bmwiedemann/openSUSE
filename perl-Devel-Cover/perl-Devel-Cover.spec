@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Devel-Cover
-Version:        1.31
+Version:        1.33
 Release:        0
 %define cpan_name Devel-Cover
 Summary:        Code coverage metrics for Perl
@@ -29,10 +29,10 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(B::Debug) >= 1.26
-# soon to be CPAN-only
-BuildRequires:  perl-B-Debug
+BuildRequires:  perl(B::Debug)
 BuildRequires:  perl(HTML::Entities) >= 3.69
+BuildRequires:  perl(Test::More) >= 0.88
+Requires:       perl(B::Debug)
 Requires:       perl(HTML::Entities) >= 3.69
 Recommends:     perl(Browser::Open)
 Recommends:     perl(Capture::Tiny)
@@ -51,6 +51,10 @@ Recommends:     perl(Sereal::Encoder)
 Recommends:     perl(Template) >= 2.00
 Recommends:     perl(Test::Differences)
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl-B-Debug
+Requires:       perl-B-Debug
+# MANUAL END
 
 %description
 This module provides code coverage metrics for Perl. Code coverage metrics
@@ -119,6 +123,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes Contributors docs LICENCE queue.db README.md tests utils
+%doc Changes Contributors docs README.md
+%license LICENCE
 
 %changelog

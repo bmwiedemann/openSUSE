@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 20 12:52:59 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.5.1
+  * Update configure.ac bug URL for gitlab migration
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish init the name to 0
+  * autogen.sh: use quoted string variables
+  * xrandr: fix crash if some modes cannot be found
+  * xrandr: document that we accept '--dpi output'
+  * xrandr: suppress misleading indentation warning
+  * xrandr: allow a single value for --scale
+  * xrandr: stricter --scale argument parsing
+  * xrandr.man: grammar tuning
+  * xrandr: allow single value for --gamma
+  * xrandr.man: document the monitor manipulation options
+  * xrandr: gamma and scaling factors must be positive
+  * xrandr: Add a "--filter" flag
+  * xrandr: Fix deleting inactive monitors
+  * man: Document the new --filter option
+  * Document format of --dpi option in non-ambiguous way
+  * Document that --dpi and --fbmm options set DPI of whole X screen
+  * Update README for gitlab migration
+- superseded U_xrandr_suppress-misleading-indentation-warning.patch,
+  U_xrandr_add-filter-flag.patch
+
+-------------------------------------------------------------------
 Mon Nov 20 23:06:03 UTC 2017 - zaitor@opensuse.org
 
 - Add U_xrandr_suppress-misleading-indentation-warning.patch: When

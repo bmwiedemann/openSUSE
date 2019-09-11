@@ -18,11 +18,11 @@ Change-Id: If52a0657de0f524a2c40cb51a6e9c36aac87024d
  ssl/CMakeLists.txt      | 6 ++++++
  5 files changed, 29 insertions(+)
 
-diff --git a/BUILDING.md b/BUILDING.md
-index 924f6c924..69cecefc4 100644
---- a/BUILDING.md
-+++ b/BUILDING.md
-@@ -71,6 +71,9 @@ Windows, where functions need to be tagged with `dllimport` when coming from a
+Index: boringssl-20190523/BUILDING.md
+===================================================================
+--- boringssl-20190523.orig/BUILDING.md
++++ boringssl-20190523/BUILDING.md
+@@ -79,6 +79,9 @@ Windows, where functions need to be tagg
  shared library, define `BORINGSSL_SHARED_LIBRARY` in any code which `#include`s
  the BoringSSL headers.
  
@@ -32,19 +32,19 @@ index 924f6c924..69cecefc4 100644
  In order to serve environments where code-size is important as well as those
  where performance is the overriding concern, `OPENSSL_SMALL` can be defined to
  remove some code that is especially large.
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1f18782f3..b8ea82c08 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+Index: boringssl-20190523/CMakeLists.txt
+===================================================================
+--- boringssl-20190523.orig/CMakeLists.txt
++++ boringssl-20190523/CMakeLists.txt
 @@ -1,5 +1,7 @@
  cmake_minimum_required(VERSION 2.8.11)
  
-+set(boringssl_SOVERSION 0)
++set(boringssl_SOVERSION 1)
 +
  # Report AppleClang separately from Clang. Their version numbers are different.
  # https://cmake.org/cmake/help/v3.0/policy/CMP0025.html
  if(POLICY CMP0025)
-@@ -503,6 +505,12 @@ endif()
+@@ -546,6 +548,12 @@ endif()
  # Add minimal googletest targets. The provided one has many side-effects, and
  # googletest has a very straightforward build.
  add_library(boringssl_gtest third_party/googletest/src/gtest-all.cc)
@@ -57,11 +57,11 @@ index 1f18782f3..b8ea82c08 100644
  target_include_directories(boringssl_gtest PRIVATE third_party/googletest)
  
  include_directories(third_party/googletest/include)
-diff --git a/crypto/CMakeLists.txt b/crypto/CMakeLists.txt
-index 863591020..31e1c2b96 100644
---- a/crypto/CMakeLists.txt
-+++ b/crypto/CMakeLists.txt
-@@ -404,6 +404,12 @@ add_library(
+Index: boringssl-20190523/crypto/CMakeLists.txt
+===================================================================
+--- boringssl-20190523.orig/crypto/CMakeLists.txt
++++ boringssl-20190523/crypto/CMakeLists.txt
+@@ -419,6 +419,12 @@ add_library(
    ${CRYPTO_ARCH_SOURCES}
    ${CRYPTO_FIPS_OBJECTS}
  )
@@ -74,10 +74,10 @@ index 863591020..31e1c2b96 100644
  
  add_dependencies(crypto global_target)
  
-diff --git a/decrepit/CMakeLists.txt b/decrepit/CMakeLists.txt
-index 1cb5e11f7..26d1a6dc9 100644
---- a/decrepit/CMakeLists.txt
-+++ b/decrepit/CMakeLists.txt
+Index: boringssl-20190523/decrepit/CMakeLists.txt
+===================================================================
+--- boringssl-20190523.orig/decrepit/CMakeLists.txt
++++ boringssl-20190523/decrepit/CMakeLists.txt
 @@ -21,6 +21,12 @@ add_library(
    x509/x509_decrepit.c
    xts/xts.c
@@ -91,10 +91,10 @@ index 1cb5e11f7..26d1a6dc9 100644
  
  add_dependencies(decrepit global_target)
  
-diff --git a/ssl/CMakeLists.txt b/ssl/CMakeLists.txt
-index d6c1294f1..102e015fd 100644
---- a/ssl/CMakeLists.txt
-+++ b/ssl/CMakeLists.txt
+Index: boringssl-20190523/ssl/CMakeLists.txt
+===================================================================
+--- boringssl-20190523.orig/ssl/CMakeLists.txt
++++ boringssl-20190523/ssl/CMakeLists.txt
 @@ -40,6 +40,12 @@ add_library(
    tls13_enc.cc
    tls13_server.cc
@@ -108,6 +108,3 @@ index d6c1294f1..102e015fd 100644
  
  add_dependencies(ssl global_target)
  
--- 
-2.21.0
-

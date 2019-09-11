@@ -1,0 +1,81 @@
+--- doc/man/pam.8.xml
++++ doc/man/pam.8.xml	2019/08/16 13:37:44
+@@ -53,11 +53,13 @@
+ 
+     <para>
+       Vendor-supplied PAM configuration files might be installed in
+-      the system directory <filename>/usr/lib/pam.d/</filename> instead
++      the system directory <filename>/usr/lib/pam.d/</filename> or
++      <filename>/usr/etc/pam.d/</filename> instead
+       of the machine configuration directory <filename>/etc/pam.d/</filename>.
+       If no machine configuration file is found, the vendor-supplied file
+       is used. All files in <filename>/etc/pam.d/</filename> override
+-      files with the same name in <filename>/usr/lib/pam.d/</filename>.
++      files with the same name in <filename>/usr/lib/pam.d/</filename>,
++      which override files with the same name in <filename>/usr/etc/pam.d/</filename>.
+     </para>
+ 
+ <para>From the point of view of the system administrator, for whom this
+@@ -157,6 +159,16 @@
+           </para>
+         </listitem>
+       </varlistentry>
++      <term><filename>/usr/etc/pam.d</filename></term>
++        <listitem>
++          <para>
++            the <emphasis remap='B'>Linux-PAM</emphasis> vendor configuration
++	    directory. Files in <filename>/etc/pam.d</filename> and
++	    <filename>/usr/lib/pam.d</filename> override files with the same
++	    name in this directory.
++          </para>
++        </listitem>
++      </varlistentry>
+     </variablelist>
+   </refsect1>
+ 
+--- libpam/pam_handlers.c
++++ libpam/pam_handlers.c	2019/08/16 13:35:31
+@@ -329,6 +329,21 @@
+ 	    *file = f;
+ 	    return PAM_SUCCESS;
+     }
++
++    /* System Configuration /usr/etc/pam.d/ */
++    _pam_drop(p);
++    if (asprintf (&p, PAM_CONFIG_DIST2_DF, service) < 0) {
++        pam_syslog(pamh, LOG_CRIT, "asprintf failed");
++        return PAM_BUF_ERR;
++    }
++    D(("opening %s", p));
++    f = fopen(p, "r");
++    if (f != NULL) {
++            *path = p;
++            *file = f;
++            return PAM_SUCCESS;
++    }
++
+     _pam_drop(p);
+ 
+     return PAM_ABORT;
+@@ -447,7 +462,8 @@
+ 
+ 	/* Is there a PAM_CONFIG_D directory? */
+ 	if ((stat(PAM_CONFIG_D, &test_d) == 0 && S_ISDIR(test_d.st_mode)) ||
+-	    (stat(PAM_CONFIG_DIST_D, &test_d) == 0 && S_ISDIR(test_d.st_mode))) {
++	    (stat(PAM_CONFIG_DIST_D, &test_d) == 0 && S_ISDIR(test_d.st_mode)) ||
++	    (stat(PAM_CONFIG_DIST2_D, &test_d) == 0 && S_ISDIR(test_d.st_mode))) {
+ 	    char *path = NULL;
+ 	    int read_something=0;
+ 
+--- libpam/pam_private.h
++++ libpam/pam_private.h	2019/08/16 13:33:04
+@@ -29,6 +29,9 @@
+ #define PAM_CONFIG_DF      "/etc/pam.d/%s"
+ #define PAM_CONFIG_DIST_D  "/usr/lib/pam.d"
+ #define PAM_CONFIG_DIST_DF "/usr/lib/pam.d/%s"
++#define PAM_CONFIG_DIST2_D  "/usr/etc/pam.d"
++#define PAM_CONFIG_DIST2_DF "/usr/etc/pam.d/%s"
++
+ 
+ #define PAM_DEFAULT_SERVICE        "other"     /* lower case */
+ 

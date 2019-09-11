@@ -1,0 +1,13 @@
+diff --git a/acinclude/ac_with_cclient.m4 b/acinclude/ac_with_cclient.m4
+index 24b7648..bd67119 100644
+--- a/acinclude/ac_with_cclient.m4
++++ b/acinclude/ac_with_cclient.m4
+@@ -126,7 +126,7 @@ AC_DEFUN(AC_WITH_CCLIENT,[
+ 	 void mm_nocritical(MAILSTREAM*a){}
+ 	 void mm_notify(MAILSTREAM*a,char*b,long c){}
+ 	 void mm_login(NETMBX*a,char*b,char*c,long d){}
+-	 long mm_diskerror(MAILSTREAM*a,long b,long c){}
++	 long mm_diskerror(MAILSTREAM*a,long b,long c){ return 0; }
+ 	 void mm_status(MAILSTREAM*a,char*b,MAILSTATUS*c){}
+ 	 void mm_lsub(MAILSTREAM*a,int b,char*c,long d){}
+ 	 void mm_list(MAILSTREAM*a,int b,char*c,long d){}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:08:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.5:
+  * various bugfixes
+
+-------------------------------------------------------------------
 Wed Apr 17 10:39:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Switch to pytest runner, which seems to be a way more stable in

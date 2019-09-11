@@ -7,8 +7,8 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  perl526.patch: -p1
+#patches:
+#  perl526.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

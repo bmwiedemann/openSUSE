@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 27 06:32:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Aug 13 18:36:31 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.47.11:
+  * Set document language for localised info pages
+  * Add French and Spanish translation of info documentation
+  * Add Spanish and Danish translations
+  * Add support for reproducible builds by using $SOURCE_DATE_EPOCH
+    as the date for the generated pages
+
+-------------------------------------------------------------------
 Tue Jul  9 07:53:10 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Add correct gpg keyring

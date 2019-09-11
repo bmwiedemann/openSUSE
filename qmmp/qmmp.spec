@@ -21,7 +21,7 @@
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -192,7 +192,7 @@ rm -rf %{buildroot}/%{_datadir}/icons/hicolor/56x56
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
-%if 0%{?sle_version} == 120300
+%if 0%{?suse_version} < 1500
 %dir %{_datadir}/metainfo
 %endif
 %{_datadir}/metainfo/%{name}.appdata.xml

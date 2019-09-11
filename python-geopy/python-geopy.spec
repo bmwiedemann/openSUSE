@@ -49,9 +49,9 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Geopy makes it easy for developers to locate the coordinates of addresses, cities,
-countries, and landmarks across the globe using third-party geocoders and other data
-sources, such as wikis.
+Geopy can determine the coordinates of addresses, cities, countries,
+and landmarks using third-party geocoders and other data sources such
+as wikis.
  
 Geopy currently includes support for six geocoders: Google Maps, Yahoo! Maps, Windows
 Local Live (Virtual Earth), geocoder.us, GeoNames, MediaWiki pages (with the GIS

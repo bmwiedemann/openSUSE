@@ -7,8 +7,11 @@
     </conditions>
     <hardware>
       <physicalmemory>
-        <size unit="M">7000</size>
+        <size unit="G">6</size>
       </physicalmemory>
+      <memory>
+        <size unit="G">10</size>
+      </memory>
     </hardware>
   </overwrite>
 
@@ -18,6 +21,9 @@
       <disk>
         <size unit="G">13</size>
       </disk>
+      <memory>
+        <size unit="G">8</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>

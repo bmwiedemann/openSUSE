@@ -1,7 +1,7 @@
 #
 # spec file for package libvisio
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libvisio-0_1-1
 Name:           libvisio
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Library for parsing the MS Visio file format structure
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            http://www.freedesktop.org/wiki/Software/libvisio
+URL:            https://www.freedesktop.org/wiki/Software/libvisio
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -130,8 +130,9 @@ make check %{?_smp_mflags}
 %doc %{_docdir}/%{name}-devel/html/
 
 %files tools
-%doc AUTHORS COPYING.* ChangeLog
+%license COPYING.*
+%doc AUTHORS ChangeLog
 %{_bindir}/*
-%{_mandir}/man1/*.1%{ext_man}
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog

@@ -28,7 +28,7 @@
 %bcond_with phantomjs
 
 Name:           grafana
-Version:        6.3.3
+Version:        6.3.5
 Release:        0
 Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
 License:        Apache-2.0

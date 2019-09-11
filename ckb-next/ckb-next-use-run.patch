@@ -1,7 +1,7 @@
-Index: ckb-next-0.3.2/ckb-next-dev-detect
+Index: ckb-next-0.4.1/ckb-next-dev-detect
 ===================================================================
---- ckb-next-0.3.2.orig/ckb-next-dev-detect
-+++ ckb-next-0.3.2/ckb-next-dev-detect
+--- ckb-next-0.4.1.orig/ckb-next-dev-detect
++++ ckb-next-0.4.1/ckb-next-dev-detect
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/bin/bash
@@ -14,13 +14,13 @@ Index: ckb-next-0.3.2/ckb-next-dev-detect
      fi
 -    OUT="${OUT}${N}${N}Dev nodes:${N}`find /dev/input/ckb* -print -type f -exec cat {} \; 2>&1`"
 +    OUT="${OUT}${N}${N}Dev nodes:${N}`find /run/ckb* -print -type f -exec cat {} \; 2>&1`"
-     OUT="${OUT}${N}${N}Environment:${N}`printenv | grep "QT\|XDG.*DESKTOP" 2>&1`"
+     OUT="${OUT}${N}${N}Environment:${N}`printenv | grep "QT\|XDG.*DESKTOP\|DISPLAY" 2>&1`"
      OUT="${OUT}${N}${N}Kernel command line:${N}`cat /proc/cmdline`"
  fi
-Index: ckb-next-0.3.2/src/daemon/devnode.c
+Index: ckb-next-0.4.1/src/daemon/devnode.c
 ===================================================================
---- ckb-next-0.3.2.orig/src/daemon/devnode.c
-+++ ckb-next-0.3.2/src/daemon/devnode.c
+--- ckb-next-0.4.1.orig/src/daemon/devnode.c
++++ ckb-next-0.4.1/src/daemon/devnode.c
 @@ -7,12 +7,7 @@
  #include "profile.h"
  #include <ckbnextconfig.h>
@@ -35,10 +35,10 @@ Index: ckb-next-0.3.2/src/daemon/devnode.c
  
  long gid = -1;
  #define S_GID_READ  (gid >= 0 ? S_CUSTOM_R : S_READ)
-Index: ckb-next-0.3.2/src/gui/kbmanager.cpp
+Index: ckb-next-0.4.1/src/gui/kbmanager.cpp
 ===================================================================
---- ckb-next-0.3.2.orig/src/gui/kbmanager.cpp
-+++ ckb-next-0.3.2/src/gui/kbmanager.cpp
+--- ckb-next-0.4.1.orig/src/gui/kbmanager.cpp
++++ ckb-next-0.4.1/src/gui/kbmanager.cpp
 @@ -1,10 +1,6 @@
  #include "kbmanager.h"
  

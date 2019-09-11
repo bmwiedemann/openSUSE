@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:43:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.17.0:
+  * Simplify installation instructions in the README
+  * Add OpenBSD installation instructions
+  * Make YAML file extensions configurable
+
+-------------------------------------------------------------------
 Fri Jun 14 11:46:41 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.16.0

@@ -1,7 +1,7 @@
 #
 # spec file for package charybdis
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           charybdis
-Version:        3.5.3
+Version:        4.1.1
 Release:        0
 Summary:        Scalable IRCv3.2 compliant chat daemon
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/IRC
-Url:            http://atheme.org/projects/charybdis.html
+URL:            https://github.com/charybdis-ircd/charybdis
 
 #Git-Clone:	https://github.com/charybdis-ircd/charybdis
 Source:         https://github.com/charybdis-ircd/charybdis/archive/%name-%version.tar.gz
 Source9:        example.conf
-Patch1:         charybdis-ratbox.diff
-Patch2:         charybdis-werror.diff
-Patch3:         charybdis-repro.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -53,8 +49,7 @@ customization is ircd-seven which powers Freenode, the largest IRC
 network in the world.
 
 %prep
-%setup -qn %name-%name-%version
-%patch -P 1 -P 2 -P 3 -p1
+%autosetup -p1 -n %name-%name-%version
 
 %build
 autoreconf -fiv
@@ -69,8 +64,6 @@ b="%buildroot"
 mv "$b/%_bindir"/* "$b/%_libexecdir/%name/"
 find "$b/%_libdir" -type f -name "*.la" -delete
 
-# Unconflict with other ircds.
-mv "$b/%_mandir/man8"/{ircd,charybdis-ircd}.8
 # Move config file samples/documentation out of the way
 mv "$b/%_sysconfdir/%name"/*.conf "$b/%_datadir/%name/"
 # Place some config file that will make it run out of the box on localhost
@@ -84,7 +77,7 @@ cat >"$b/%_unitdir/charybdis.service" <<-EOF
 	[Unit]
 	Description=Charybdis Inter Relay Chat server
 	[Service]
-	ExecStart=%_libexecdir/%name/ircd -foreground
+	ExecStart=%_libexecdir/%name/%name -foreground
 	User=charybdis
 	Group=charybdis
 	[Install]
@@ -116,19 +109,19 @@ systemd-tmpfiles --create %name.conf || :
 %service_del_postun %name.service
 
 %files
-%defattr(-,root,root)
 %attr(0750,root,charybdis) %dir %_sysconfdir/%name
 %attr(0640,root,charybdis) %config %_sysconfdir/%name/*
 %_sbindir/rc%name
 %_libexecdir/%name/
 %_libdir/%name/
-%_libdir/libratbox-charybdis.so
+%_libdir/libircd.so
+%_libdir/librb.so
 %_datadir/%name/
-%_mandir/man8/*.8*
 %_prefix/lib/tmpfiles.d/
 %_unitdir/*.service
 %attr(0750,charybdis,charybdis) %_localstatedir/log/%name/
 %attr(0750,charybdis,charybdis) %_localstatedir/lib/%name/
-%doc LICENSE NEWS.md
+%license LICENSE
+%doc NEWS.md
 
 %changelog

@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,11 @@ Release:        0
 Summary:        Library to handle network protocol transport in X
 License:        MIT
 Group:          Development/Libraries/X11
-Url:            http://xorg.freedesktop.org/
+URL:            https://xorg.freedesktop.org/
 Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
 Patch0:         p_xauth.diff
 Patch1:         n_unifdef-LBXPROXY_t-and-TEST_t.patch
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
 BuildRequires:  pkgconfig(xshmfence)
 # Package was named xorg-x11-xtrans-devel until 12.2
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(xshmfence)
 # X11R7.7 is in RC1, and xorg-x11-xtrans-devel was version 7.6
 Provides:       xorg-x11-xtrans-devel = 7.7
 Obsoletes:      xorg-x11-xtrans-devel < 7.7
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -45,7 +44,7 @@ libX11, libICE, the X font server, and related components.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0
 %patch1 -p1 -R
 
 %build
@@ -60,10 +59,11 @@ test -L usr/include/X11 && rm usr/include/X11
 exit 0
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %doc doc/xtrans.xml
 %{_includedir}/X11/Xtrans/
+%dir %{_datadir}/aclocal
 %{_datadir}/aclocal/xtrans.m4
 %{_datadir}/pkgconfig/xtrans.pc
 

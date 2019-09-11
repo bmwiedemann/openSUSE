@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest >= 3.6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 1.11.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python2-pathlib2
 BuildRequires:  sqlite3
 Requires:       python-Django
-Requires:       python-pytest >= 3.6
+Requires:       python-pytest
 BuildArch:      noarch
 %ifpython2
 Requires:       python-pathlib2

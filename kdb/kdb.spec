@@ -26,18 +26,18 @@ Group:          Productivity/Office/Other
 URL:            https://community.kde.org/KDb
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcoreaddons-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqld-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-base
 BuildRequires:  sqlite3-devel
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 %if 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
 %else
@@ -109,6 +109,9 @@ This package contains the SQLite3 driver for the Database connectivity and creat
   %kf5_makeinstall -C build
   %find_lang %{name} %{name}.lang --all-name --with-qt
 
+  # Contains bogus entries
+  rm -f %{buildroot}%{_libdir}/pkgconfig/KDb3.pc
+
 %post -n libKDb3-%{sover} -p /sbin/ldconfig
 %postun -n libKDb3-%{sover} -p /sbin/ldconfig
 
@@ -120,7 +123,7 @@ This package contains the SQLite3 driver for the Database connectivity and creat
 %license COPYING*
 %{_includedir}/KDb3/
 %{_libdir}/cmake/KDb3/
-%{_libdir}/pkgconfig/KDb3.pc
+#%%{_libdir}/pkgconfig/KDb3.pc
 %{_kf5_mkspecsdir}/qt_KDb3.pri
 %{_libdir}/libKDb3.so
 

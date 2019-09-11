@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Aug 23 20:24:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and unrealized future visions from descriptions.
+
+-------------------------------------------------------------------
+Wed Aug 21 09:36:48 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add davix-non-void-function.patch: Fix non-void function that
+  returns nothing, patch sent upstream.
+- Add davix-link-against-libdl.patch: Link against libdl; patch
+  taken from debian package build.
+
+-------------------------------------------------------------------
+Fri Aug 16 14:08:45 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

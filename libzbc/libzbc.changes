@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  2 08:10:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new release 5.8.2
+  * Fix SG IO header dxfer_len field to avoid failures of
+    vectored IOs with more than a single vector.
+  * Change error code returned by zbc_preadv() and zbc_pwritev()
+    from -EINVAL to -EIO in the case of an an unaligned IO
+    request. This change matches the kernel returned error value.
+  * New gzviewer tool to graphically display a device zone state.
+
+-------------------------------------------------------------------
 Fri Jun 28 07:10:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 5.8.0

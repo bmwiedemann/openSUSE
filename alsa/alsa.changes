@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 16:41:17 CEST 2019 - tiwai@suse.de
+
+- Disable LTO completely (boo#1149612);
+  the versioned symbols in alsa-lib doesn't seem work properly on
+  some apps
+
+-------------------------------------------------------------------
 Tue May 28 12:32:16 CEST 2019 - tiwai@suse.de
 
 - Remove hackish modprobe install scripts for auto-loading OSS and

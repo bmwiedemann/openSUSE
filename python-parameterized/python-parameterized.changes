@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:41:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use pytest 3.x series as newer use different syntax
+
+-------------------------------------------------------------------
 Fri Mar 15 13:34:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.0:

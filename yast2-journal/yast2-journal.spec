@@ -17,7 +17,7 @@
 
 
 Name:           yast2-journal
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/yast/yast-journal
 Summary:        YaST2 - Reading of systemd journal
@@ -32,9 +32,9 @@ BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-ruby-bindings >= 3.1.38
 #for install task
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # for tests
-BuildRequires:  rubygem(rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 # First version with Yast::UI.OpenUI
 BuildRequires:  libyui-ncurses >= 2.47.1
 # libyui-terminal

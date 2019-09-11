@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 08:46:15 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.5:
+  * remove 'modhash' - moved to mokutil package (jsc#SLE-6094)
+
+-------------------------------------------------------------------
 Mon Jul 15 11:58:07 UTC 2019 - mwilck@suse.com
 
 - Update to version 15.2.4:

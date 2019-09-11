@@ -21,16 +21,16 @@
 %define libname libQt5Svg5
 
 Name:           libqt5-qtsvg
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 SVG Library
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtsvg-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtsvg-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}

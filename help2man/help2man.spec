@@ -17,9 +17,9 @@
 
 
 Name:           help2man
-Version:        1.47.10
+Version:        1.47.11
 Release:        0
-Summary:        Create Simple Man Pages from --help Output
+Summary:        Script for generating man pages from --help output
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Doc Generators
 URL:            https://www.gnu.org/software/help2man/

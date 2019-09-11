@@ -18,10 +18,11 @@
 
 
 %define srcversion 5.2
-%define patchversion 5.2.8
+%define patchversion 5.2.13
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules none
+%define livepatch %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
@@ -63,9 +64,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.2.8
+Version:        5.2.13
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gbf37e83
+Release:        <RELEASE>.gacd8e88
 %else
 Release:        0
 %endif
@@ -170,10 +171,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-bf37e832d7a7b657aff6ae194b1fd62fe9a44f12
-Provides:       kernel-srchash-bf37e832d7a7b657aff6ae194b1fd62fe9a44f12
+Provides:       kernel-%build_flavor-base-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
+Provides:       kernel-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
 # END COMMON DEPS
-Provides:       %name-srchash-bf37e832d7a7b657aff6ae194b1fd62fe9a44f12
+Provides:       %name-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -1196,42 +1197,46 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
-%package livepatch
-Summary:        Metapackage to pull in matching kernel-livepatch package
+%if "%livepatch" != "" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y" && "%variant" == ""
+%if %livepatch == kgraft
+%define patch_package %{livepatch}-patch
+%else
+%define patch_package kernel-%{livepatch}
+%endif
+%package %{livepatch}
+Summary:        Metapackage to pull in matching %patch_package package
 Group:          System/Kernel
-Requires:       kernel-livepatch-%(echo %version-%source_rel | sed 'y/\./_/')-%build_flavor
+Requires:       %{patch_package}-%(echo %{version}-%{source_rel} | sed 'y/\./_/')-%{build_flavor}
 Provides:	kernel-default-kgraft = %version
 Provides:	kernel-xen-kgraft = %version
 Provides:       multiversion(kernel)
 Obsoletes:	kernel-default-kgraft < %version
 Obsoletes:	kernel-xen-kgraft < %version
 
-%description livepatch
-This is a metapackage that pulls in the matching kernel-livepatch package for a
+%description %{livepatch}
+This is a metapackage that pulls in the matching %patch_package package for a
 given kernel version. The advantage of the metapackage is that its name is
-static, unlike the kernel-livepatch-<kernel-version>-flavor package names.
+static, unlike the %{patch_package}-<kernel-version>-flavor package names.
 
-%files livepatch
+%files %{livepatch}
 # rpmlint complains about empty packages, so lets own something
 %defattr(-, root, root)
 %dir /lib/modules/%kernelrelease-%build_flavor
 %endif
 
-%if 0%{?klp_symbols}
-
-%package livepatch-devel
-Summary:	Kernel symbols file used during livepatch development
+%if 0%{?klp_symbols} && "%livepatch" != ""
+%package %{livepatch}-devel
+Summary:	Kernel symbols file used during kGraft patch development
 Group:		System/Kernel
 Provides:	klp-symbols = %version
 
-%description livepatch-devel
+%description %{livepatch}-devel
 This package brings a file named Symbols.list, which contains a list of all
 kernel symbols and its respective kernel object . This list is to be used by
 the klp-convert tool, which helps livepatch developers by enabling automatic
 symbol resolution.
 
-%files livepatch-devel
+%files %{livepatch}-devel
 %defattr(-, root, root)
 %dir %obj_install_dir
 %dir %obj_install_dir/%cpu_arch

@@ -36,9 +36,7 @@ BuildRequires:  libglade2-devel
 BuildRequires:  python-cairo-devel
 BuildRequires:  python-devel
 BuildRequires:  python-gobject2-devel
-BuildRequires:  python-numpy-devel
 Requires:       %{python_gtk_req}
-Requires:       python-numpy
 # for cross-distro compatibility:
 Provides:       pygtk2 = %{version}
 Provides:       python2-gtk = %{version}

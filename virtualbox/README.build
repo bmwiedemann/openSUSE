@@ -1,0 +1,45 @@
+Instructions for creating a separate VirtualBox project and building the packages
+
+Although it is possible to modify a project at the openSUSE Build System (OBS),
+I have found it to be more convenient to use the various osc commands to create a
+local copy, edit it on my own computer to fix any problems, and then push the result
+to OBS.
+
+A. Create a new sub-project:
+   1. Branch the package:
+	osc branch Virtualization virtualbox
+   2. Checkout the package using the "osc co" command listed
+
+B. Build the project:
+   1. Use "osc build" to build. This step is rather compute intensive and
+      takes about an hour on my Toshiba laptop with a dual-core Intel Core i7 CPU
+      with hyper-threading, 12 GB RAM, and an SSD.
+   2. The build results are stored in the /var/tmp/build-root tree. These files
+      can occupy a lot of disc space, particularly when one builds several flavors.
+      To keep from running out of space on the / partition, I mount /var/tmp on
+      a separate partition. At present, I have used about 43 GiB in that partition.
+   3. Special flavors:
+      When a new kernel is released, there may be several API changes that affect
+      builds of the kernel modules used by VirtualBox. In Factory, the project that
+      contains the latest kernels is "Kernel-HEAD-standard". To run a test build with
+      this kernel, use the command "osc build Kernel-HEAD-standard". When switching
+      between kernel projects, use of the "--clean" switch is advised, otherwise
+      strange "missing library" messages will result.
+   4. On occasion, there may be breakage in the build when there is an update with
+      python or Qt. Use the "--alternative-project=<xxx>" switch to force usage of
+      the revised component.
+
+C. Steps to take with a new release:
+   1. When Orable releases a new version, you will need to download then new tarball
+      from https://download.virtualbox.org/virtualbox/. While downloading the file, I
+      also get the new UserManual.pdf.
+   2. openSUSE makes some changes to the tarball by running the command
+      bash ./virtualbox-patch-source.sh <name of tarball just downloaded>
+      This command unpacks the tar file, makes some modifications to the source, and
+      recreates the tar file with "patched" in its name. Any further modifications
+      are made by patches that are applied during the build process. Do NOT make any
+      further changes to the tar file.
+   3. Edit the "Version" line near the start of virtualbox.spec to select the new version.
+   4. Use "osc rm <old version>" and "osc add <new version>" to get the new file into
+      osc. The local build will work without these changes, but the remote operations
+      will fail.`

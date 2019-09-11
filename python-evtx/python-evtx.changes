@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 22 14:11:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict to pytest3, newer releases do not work
+
+-------------------------------------------------------------------
 Wed Jun  5 12:55:10 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.6.1

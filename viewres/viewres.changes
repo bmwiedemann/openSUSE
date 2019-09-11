@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 26 10:15:11 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Pass -D_CONST_X_STRING to make libXt declare String as const char *
+  * Fix -Wsign-compare warnings
+  * Fix -Wshadow warnings
+
+-------------------------------------------------------------------
 Mon Mar  5 14:54:17 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.5

@@ -17,7 +17,7 @@
 
 
 Name:           tumbleweed-cli
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Command line interface for interacting with tumbleweed snapshots
 License:        GPL-2.0-only

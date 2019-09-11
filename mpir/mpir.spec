@@ -24,13 +24,12 @@ Release:        0
 Summary:        Multiprecision integer library derived from GMP
 License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://mpir.org/
+URL:            http://mpir.org/
 
 #Git-Clone:	git://github.com/wbhart/mpir
 #Git-Web:	https://github.com/wbhart/mpir
 Source:         http://mpir.org/%name-%version.tar.bz2
 Patch1:         gmp-noexec.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -67,7 +66,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       %lnamexx = %version
 Requires:       libstdc++-devel
-PreReq:         %install_info_prereq
+Requires(post): %install_info_prereq
+Requires(postun): %install_info_prereq
 
 %description -n libmpir-devel
 MPIR is an open source multiprecision integer library derived from version
@@ -81,14 +81,14 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libmpir.
 
 %prep
-%setup -qn mpir-3.0.0
-%patch -P 1 -p1
+%autosetup -p1 -n mpir-3.0.0
 
 %build
 # Update configure scripts to modern versions.
 autoreconf -fi
-export CFLAGS="%optflags -fexceptions"
-export CXXFLAGS="%optflags -fexceptions"
+%global _lto_cflags %nil
+export CFLAGS="%optflags -fexceptions -Wno-error=return-type"
+export CXXFLAGS="%optflags -fexceptions -Wno-error=return-type"
 # SLES11 %%configure contains --target=, but this is wrong to use.
 # Override with empty value to calm the scripts flagging uses of --target.
 %ifarch ppc64le
@@ -115,25 +115,18 @@ make check %{?_smp_mflags}
 %postun -n %lnamexx -p /sbin/ldconfig
 
 %post -n libmpir-devel
-%install_info --info-dir=%_infodir %_infodir/%name.info.gz
-%install_info --info-dir=%_infodir %_infodir/%name.info-1.gz
-%install_info --info-dir=%_infodir %_infodir/%name.info-2.gz
+%install_info --info-dir=%_infodir %_infodir/%name.info.gz %_infodir/%name.info-1.gz %_infodir/%name.info-2.gz
 
 %preun -n libmpir-devel
-%install_info_delete --info-dir=%_infodir %_infodir/%name.info.gz
-%install_info_delete --info-dir=%_infodir %_infodir/%name.info-1.gz
-%install_info_delete --info-dir=%_infodir %_infodir/%name.info-2.gz
+%install_info_delete --info-dir=%_infodir %_infodir/%name.info.gz %_infodir/%name.info-1.gz %_infodir/%name.info-2.gz
 
 %files -n %lname
-%defattr(-, root, root)
 %_libdir/libmpir.so.*
 
 %files -n %lnamexx
-%defattr(-, root, root)
 %_libdir/libmpirxx.so.*
 
 %files -n libmpir-devel
-%defattr(-, root, root)
 %doc README
 %license COPYING
 %_includedir/*.h

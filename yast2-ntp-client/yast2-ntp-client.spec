@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ntp-client
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        YaST2 - NTP Client Configuration
 License:        GPL-2.0-or-later
@@ -28,6 +28,8 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  augeas-lenses
 BuildRequires:  autoyast2-installation
+# Needed for /etc/cron.* ownership; those directories have special permission handling
+BuildRequires:  cron
 BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 # cwm/popup

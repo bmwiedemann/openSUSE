@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 24 16:21:55 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.7.1
+  You can find all issues related to this release on our Roadmap.
+  * Sneaky Solution for Sneaky Links
+    Usually we try to include only bugs in minor-releases. Sorry, 
+    bug-fixes, of course. But thanks to @winem_ we have also a 
+    little enhancement this time: Links in comments, notes, etc. 
+    are now highlighted as such.
+    - Highlight links in the notes of an object #3888
+  * Nobody's Perfect, Not Even Developers
+    We knew it. We saw it coming. And forgot about it. Some views, 
+    especially histories, showed an anarchic behavior since v2.7.0.
+    The change responsible for this has been undone and history's 
+    order is reestablished now.
+    - Default sort rules no longer work in 2.7.0 #3891
+  * Restrictions Gone Wild Cagey
+    A fix unfortunately caused restrictions using wildcards to show
+    no results anymore. This is now solved and such restrictions 
+    are as permissive as ever.
+    - Wildcard filters in chains broken #3886
+
+-------------------------------------------------------------------
 Tue Jul 30 22:31:29 UTC 2019 - ecsos@opensuse.org
 
 - Update to 2.7.0

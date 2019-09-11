@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 06:56:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * No changelog provided
+- Drop speexdsp-fixbuilds-774c87d.patch (merged)
+
+-------------------------------------------------------------------
 Mon Oct  2 13:26:56 UTC 2017 - mpluskal@suse.com
 
 - Some packaging cleanup with spec-cleaner

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 14 17:24:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.2.0
+  * GSUP: add inter-MSC handover related msgs and IEs
+  * NS: Add support for GPRS NS IP Sub-Network-Service (SNS)
+  * BSSMAP: add messages for inter-BSC and inter-MSC Handover
+  * Add VTY and CTRL port numbers for OsmoCBC (Cell Broadcast Centre)
+  * CBSP (Cell Broadcast Service Protocol; 3GPP TS 48.049) support
+  * Add Cell Broadcast related definitions from 3GPP TS 23.041
+  * Add MO-FALLBACK-VALUE SGsAP IE
+- Removed 0001-gsm_23_003.h-add-GSM23003_IMEI_NUM_DIGITS_NO_CHK.patch
+  (merged)
+
+-------------------------------------------------------------------
 Tue Feb 19 14:54:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:

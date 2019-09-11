@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:32:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add more py3.8 patches:
+  * 0001-py3.8-avoid-invalid-escapes.patch
+  * 0002-Skip-one-test-on-python3.8.patch
+- Remove patch obsoleted by above python38.patch
+
+-------------------------------------------------------------------
 Thu Jul  4 13:10:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.28.0-r1:

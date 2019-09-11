@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.7.1
+Version:        3.0.8
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,12 +51,6 @@ Patch1:         vlc-allow-deprecated-fribidi.patch
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch3:         fix-build-with-fdk-2.0.patch
-# PATCH-FIX-UPSTREAM vlc-CVE-2019-13962.patch -- Fix An Integer Underflow in MP4_EIA608_Convert()
-Patch4:         vlc-CVE-2019-13962.patch
-# PATCH-FIX-UPSTREAM vlc-CVE-2019-13602_1.patch -- mp4: fix integer underflow
-Patch5:         vlc-CVE-2019-13602_1.patch
-# PATCH-FIX-UPSTREAM vlc-CVE-2019-13602_2.patch -- mp4: fix integer underflow
-Patch6:         vlc-CVE-2019-13602_2.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM 0001-Fix-leaking-AvahiServiceResolver-in-the-error-paths.patch -- Fix some memleaks
@@ -136,7 +130,7 @@ BuildRequires:  pkgconfig(libavformat) >= 53.21.0
 BuildRequires:  pkgconfig(libavutil) >= 52.4.0
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 BuildRequires:  pkgconfig(libgme)
-BuildRequires:  pkgconfig(libmodplug) >= 0.8.4
+#BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
 BuildRequires:  pkgconfig(libmpeg2) > 0.3.2
 BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 BuildRequires:  pkgconfig(libnfs)
@@ -174,6 +168,9 @@ Conflicts:      %{conflicts}
 Obsoletes:      %{name}-gnome <= %{version}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(dav1d)
+%ifarch x86_64
+BuildRequires:  pkgconfig(libmfx)
+%endif
 %endif
 %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(srt)
@@ -384,9 +381,6 @@ default when `vlc` is invoked from an X session.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550
 %patch100 -p1
 %endif
@@ -442,7 +436,7 @@ autoreconf -fiv
    --enable-live555                     \
    --enable-lua                         \
    --enable-mad                         \
-   --enable-mod                         \
+   --disable-mod                        \
    --enable-ogg                         \
    --enable-optimizations               \
    --enable-postproc                    \
@@ -831,6 +825,9 @@ done
 %{_libdir}/vlc/plugins/codec/libcvdsub_plugin.so
 %if 0%{?suse_version} >= 1550
 %{_libdir}/vlc/plugins/codec/libdav1d_plugin.so
+%ifarch x86_64
+%{_libdir}/vlc/plugins/codec/libqsv_plugin.so
+%endif
 %endif
 %{_libdir}/vlc/plugins/codec/libddummy_plugin.so
 %{_libdir}/vlc/plugins/codec/libdvbsub_plugin.so
@@ -902,7 +899,7 @@ done
 %{_libdir}/vlc/plugins/demux/libimage_plugin.so
 %{_libdir}/vlc/plugins/demux/libmjpeg_plugin.so
 %{_libdir}/vlc/plugins/demux/libmkv_plugin.so
-%{_libdir}/vlc/plugins/demux/libmod_plugin.so
+#%{_libdir}/vlc/plugins/demux/libmod_plugin.so
 %{_libdir}/vlc/plugins/demux/libmp4_plugin.so
 %{_libdir}/vlc/plugins/demux/libmpgv_plugin.so
 %{_libdir}/vlc/plugins/demux/libnoseek_plugin.so

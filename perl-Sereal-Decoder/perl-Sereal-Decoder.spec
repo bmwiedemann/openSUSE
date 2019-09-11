@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sereal-Decoder
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sereal-Decoder
-Version:        4.005
+Version:        4.007
 Release:        0
 %define cpan_name Sereal-Decoder
 Summary:        Binary serialization module for Perl (decoder part)

@@ -1,0 +1,10 @@
+%obsolete_legacy_pattern() \
+%if 0%{?is_opensuse} \
+Provides:       patterns-openSUSE-%1 = %{version} \
+Obsoletes:      patterns-openSUSE-%1 < %{version} \
+%else \
+Provides:       patterns-sled-%1 = %{version} \
+Obsoletes:      patterns-sled-%1 < %{version} \
+Provides:       patterns-sles-%1 = %{version} \
+Obsoletes:      patterns-sles-%1 < %{version} \
+%endif

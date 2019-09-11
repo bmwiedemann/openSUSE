@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 23 13:02:45 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.5.1
+  - #626 - High CPU load with animated GIFs
+  - #683 - Build failuer on macOS
+  - #686 - Zoom lable adjustment
+  - #703 - non-glibc fix
+  - Lua compatibility
+
+-------------------------------------------------------------------
 Wed Jul 31 08:53:24 UTC 2019 - gutaper@gmail.com
 
 - Update to version 1.5

@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -36,6 +36,8 @@ Patch2:         linphoneqt-fix-qt-5.11.patch
 Patch3:         linphoneqt-qt-5.9-fix-buttons.patch
 # PATCH-FIX-OPENSUSE linphoneqt-fix-no-git.patch -- Fix building out-of-git.
 Patch4:         linphoneqt-fix-no-git.patch
+# PATCH-FIX-OPENSUSE fix-qm-generation.patch
+Patch5:         fix-qm-generation.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -81,12 +83,7 @@ SIP-based Web phones. With several codecs available, it can be used
 with high speed connections as well as 28k modems.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 cp %{SOURCE1} linphone.appdata.xml
 
 %build

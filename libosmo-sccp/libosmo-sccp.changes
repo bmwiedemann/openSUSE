@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 15 04:44:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.0
+  * OsmoSTP: enable statsd support
+  * osmo-stp: register VTY commands for talloc context introspection
+  * osmo-stp: expose root talloc context to the VTY code
+
+-------------------------------------------------------------------
 Mon Jan 28 23:21:43 UTC 2019 - mardnh@gmx.de
 
 - Update to new upstream release 1.0.0

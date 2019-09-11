@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 08:39:35 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 4.16
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.16  2019-09-04
+    - Updated DBD::Pg requirement to 3.7.4 due to certain JSON features not
+      working with older versions.
+
+-------------------------------------------------------------------
 Thu Jul 25 05:15:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.15

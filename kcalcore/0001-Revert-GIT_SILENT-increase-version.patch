@@ -11,11 +11,11 @@ lower version as well.
  CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 38a03e47a..f55f626a9 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -35,7 +35,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KCALCORE
+Index: kcalcore-19.08.1/CMakeLists.txt
+===================================================================
+--- kcalcore-19.08.1.orig/CMakeLists.txt	2019-08-25 15:02:23.000000000 +0200
++++ kcalcore-19.08.1/CMakeLists.txt	2019-09-06 08:27:56.794097979 +0200
+@@ -39,7 +39,7 @@
  ########### Find packages ###########
  find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Core Gui)
  
@@ -24,6 +24,3 @@ index 38a03e47a..f55f626a9 100644
  find_package(LibIcal ${LibIcal_MIN_VERSION})
  set_package_properties(LibIcal PROPERTIES TYPE REQUIRED)
  if(LibIcal_VERSION VERSION_GREATER "2.98")
--- 
-2.13.6
-

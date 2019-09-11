@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Fri Aug 16 07:37:30 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Addpkgconfig(uuid) BuildRequires: so far we relied on util-linux'
+  blkid to pull in uuid for us.
+
+-------------------------------------------------------------------
 Mon Jun 24 14:49:15 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add sanlock-lto-disable-fpie.patch in order to handle

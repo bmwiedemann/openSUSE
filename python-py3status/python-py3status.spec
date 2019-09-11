@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3status
-Version:        3.19
+Version:        3.20
 Release:        0
 Summary:        Extensible i3status wrapper written in python
 License:        BSD-3-Clause
@@ -27,10 +27,13 @@ URL:            https://github.com/ultrabug/py3status
 Source:         https://files.pythonhosted.org/packages/source/p/py3status/py3status-%{version}.tar.gz
 BuildRequires:  %{python_module gevent >= 1.1}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyudev >= 0.21.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Recommends:     python-gevent >= 1.1
+Recommends:     python-pyudev >= 0.21.0
 BuildArch:      noarch
 %ifpython3
 Provides:       py3status = %{version}

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-Accessor-Grouped
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Class-Accessor-Grouped
-Version:        0.10012
+Version:        0.10014
 Release:        0
 %define cpan_name Class-Accessor-Grouped
 Summary:        Lets you build groups of accessors
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Class-Accessor-Grouped/
-Source0:        https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         perl526.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::CBuilder) >= 0.27
+BuildRequires:  perl(Class::XSAccessor) >= 1.19
 BuildRequires:  perl(Module::Runtime) >= 0.012
+BuildRequires:  perl(Sub::Name) >= 0.05
 BuildRequires:  perl(Test::Exception) >= 0.310000
 BuildRequires:  perl(Test::More) >= 0.88
+Requires:       perl(Class::XSAccessor) >= 1.19
 Requires:       perl(Module::Runtime) >= 0.012
+Requires:       perl(Sub::Name) >= 0.05
 Recommends:     perl(Class::XSAccessor) >= 1.19
 Recommends:     perl(Sub::Name) >= 0.05
 %{perl_requires}
@@ -43,20 +45,19 @@ Recommends:     perl(Sub::Name) >= 0.05
 %description
 This class lets you build groups of accessors that will call different
 getters and setters. The documentation of this module still requires a lot
-of work (*volunteers welcome >.>*), but in the meantime you can refer to
+of work (*volunteers welcome >.>*), but in the meantime you can refer to at
 http://lo-f.at/glahn/2009/08/WritingPowerfulAccessorsForPerlClasses.html
 for more information.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

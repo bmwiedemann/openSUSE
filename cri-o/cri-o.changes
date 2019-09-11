@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:01:52 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add katacontainers as a recommended package, and include it as an
+  additional OCI runtime in the configuration.
+- Document the format of the [crio.runtime.runtimes] table entries,
+  and remove clutter from the current runc entry.
+
+-------------------------------------------------------------------
+Thu Sep  5 07:35:05 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.15.1:
+  * Bump container storage to v1.12.6
+  * Allow building with go1.10
+  * Allow default IP route to not be present
+  * Update libpod to the latest version
+  * Require crio-wipe for crio service file
+  * Disable crio-wipe in systemd by default
+  * Change default apparmor profile to actually contain the version
+
+-------------------------------------------------------------------
+Thu Aug 29 09:25:39 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update crio.conf to:
+  * set manage_network_ns_lifecycle per default to true
+
+-------------------------------------------------------------------
 Tue Aug  6 14:25:18 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update crio.conf to:

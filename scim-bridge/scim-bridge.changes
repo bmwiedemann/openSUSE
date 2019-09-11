@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 15:30:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop scim-bridge-qt4 for openSUSE Leap 15.2 and Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Aug  5 14:00:20 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop scim-bridge-<targettype> requires from baselibs.conf:

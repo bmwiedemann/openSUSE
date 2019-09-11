@@ -17,8 +17,10 @@ summary: Binary serialization module for Perl (encoder part)
 # sed on %{name}.files
 #license: SUSE-NonFree
 #skip_noarch: 1
-#custom_build: |-
-#./Build build flags=%{?_smp_mflags} --myflag
+custom_build: |
+  perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+  # Don't build with smp_flags!
+  make
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module

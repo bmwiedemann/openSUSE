@@ -7,8 +7,6 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  perl526.patch: -p1
 #  foo.patch: -p1
 #  bar.patch:
 #preamble: |-

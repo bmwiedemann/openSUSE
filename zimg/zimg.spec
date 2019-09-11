@@ -1,7 +1,7 @@
 #
 # spec file for package zimg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define         sover 2
 Name:           zimg
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        Scaling, colorspace conversion, and dithering library
 License:        WTFPL
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/sekrit-twc/zimg
-Source0:        https://github.com/sekrit-twc/zimg/archive/release-%{version}.tar.gz
+Source0:        zimg-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -54,10 +54,12 @@ The libzimg-devel package contains libraries and header files for
 developing applications that use libzimg%{sover}.
 
 %prep
-%setup -q -n zimg-release-%{version}
+%setup -q
 
 %build
 autoreconf -fiv
+# do not enable tests here — they make zimg slower and the install
+# rule is broken
 %configure \
   %ifarch x86_64 %{ix86}
   --enable-x86simd \
@@ -69,6 +71,21 @@ make %{?_smp_mflags} V=1
 %make_install
 rm -rf %{buildroot}%{_datadir}/doc/zimg
 find %{buildroot} -type f -name "*.la" -delete -print
+
+# test suite is broken on other platforms, upstream informed
+%ifarch x86_64
+%check
+make clean
+%configure \
+  %ifarch x86_64 %{ix86}
+  --enable-x86simd \
+  %endif
+  --disable-static \
+  --enable-unit-test
+make %{?_smp_mflags} V=1
+make %{?_smp_mflags} V=1 test/unit_test
+test/unit_test
+%endif
 
 %post -n libzimg%{sover} -p /sbin/ldconfig
 %postun -n libzimg%{sover} -p /sbin/ldconfig

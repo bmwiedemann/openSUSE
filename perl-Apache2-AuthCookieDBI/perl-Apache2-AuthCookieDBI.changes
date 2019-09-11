@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 18 05:02:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.18
+   see /usr/share/doc/packages/perl-Apache2-AuthCookieDBI/Changes
+
+  2.18 - Sat Aug 17 12:35:38 PDT 2019
+       - Fix https://github.com/matisse/Apache-AuthCookieDBI/issues/3
+         "DBI_CryptType crypt does not appear to work"
+         Changes by Ed Sabol https://github.com/esabol
+
+-------------------------------------------------------------------
 Mon Jun  3 11:30:50 UTC 2013 - coolo@suse.com
 
 - updated to 2.17

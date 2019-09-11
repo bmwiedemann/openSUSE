@@ -17,7 +17,7 @@
 
 
 Name:           yast2-kdump
-Version:        4.2.1
+Version:        4.2.4
 Release:        0
 Summary:        Configuration of kdump
 License:        GPL-2.0-only
@@ -28,8 +28,8 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
-BuildRequires:  rubygem(rspec)
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # Wizard::SetDesktopTitleAndIcon
 BuildRequires:  yast2 >= 2.21.22
 BuildRequires:  yast2-bootloader

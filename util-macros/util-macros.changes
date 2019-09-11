@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  8 11:01:27 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/aclocal: when we might switch to pkgconf instead
+  of pkg-config, nothing in the build root is 'accidentally' owning
+  this directory for us.
+
+-------------------------------------------------------------------
 Mon Mar  5 14:30:29 UTC 2018 - sndirsch@suse.com
 
 - update to release 1.19.2

@@ -1,0 +1,23 @@
+From e27b85622fcb1cc59e0fd4e7d630fc62f89dd225 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 28 May 2019 12:33:32 +0800
+Subject: [PATCH] Remove shebang from bash-completion/mokutil
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ data/mokutil | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/mokutil b/data/mokutil
+index 800b039..cf50606 100755
+--- a/data/mokutil
++++ b/data/mokutil
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++# mokutil(1) completion
+ 
+ _mokutil()
+ {
+-- 
+2.21.0
+

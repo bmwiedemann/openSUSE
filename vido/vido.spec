@@ -33,14 +33,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
+BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       youtube-dl
 Recommends:     %{name}-lang
 
 %description
-Download online videos from various sources including archive.org and
-much more.
+This tool downloads online videos from various sources including
+archive.org and others.
 
 %lang_package
 

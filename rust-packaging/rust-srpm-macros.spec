@@ -1,6 +1,7 @@
 #
 # spec file for package rust-srpm-macros
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2017, 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org>.
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
@@ -14,15 +15,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           rust-srpm-macros
-Version:        9
+Version:        10
 Release:        0
 Summary:        RPM macros for building Rust source packages
-Group:          Development/Languages/Rust
 License:        MIT
+Group:          Development/Languages/Rust
 URL:            https://pagure.io/fedora-rust/rust2rpm
 Source0:        https://releases.pagure.org/fedora-rust/rust2rpm/rust2rpm-%{version}.tar.xz
 

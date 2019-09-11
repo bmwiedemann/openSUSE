@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mouse
-Version:        2.5.7
+Version:        2.5.9
 Release:        0
 %define cpan_name Mouse
 Summary:        Moose minus the antlers

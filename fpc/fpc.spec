@@ -16,6 +16,13 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname fpc
+%if "%{flavor}" == ""
+%else
+%global psuffix -%{flavor}
+%endif
+
 %ifarch %arm
 # We use hardfloat on ARM
 %define fpcopt -dFPC_ARMHF -k--build-id -k-z -knoexecstack
@@ -52,19 +59,25 @@
 %endif
 %define stableversion 3.0.4
 
-Name:           fpc
+Name:           fpc%{?psuffix}
 Version:        %{fpcversion}
 Release:        0
+%if "%{flavor}" == ""
 Summary:        Free Pascal Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Languages/Other
+%else
+Summary:        Freepascal Compiler documentation
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Documentation/Other
+%endif
 Url:            https://www.freepascal.org/
 # Stable version
-Source:         %{name}build-%{stableversion}.tar.gz
+Source:         %{sname}build-%{stableversion}.tar.gz
 # Current stable version does not support aarch64, so use beta version
 # from ftp://ftp.freepascal.org/pub/fpc/snapshot/v31/source/
-Source2:        %{name}build.zip
-Source90:       %{name}-rpmlintrc
+Source2:        %{sname}build.zip
+Source90:       %{sname}-rpmlintrc
 Patch0:         update-fpcdocs.patch
 Patch1:         fpc-fix_aarch64.patch
 BuildRequires:  binutils
@@ -73,32 +86,29 @@ BuildRequires:  fdupes
 %endif
 BuildRequires:  fpc
 BuildRequires:  glibc-devel
-BuildRequires:  texlive
+%if "%{flavor}" == "doc"
 BuildRequires:  texlive-latex
-%if 0%{?suse_version} > 1220
-BuildRequires:  texlive-amsfonts
-BuildRequires:  texlive-courier
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-ec
-BuildRequires:  texlive-fancyhdr
-BuildRequires:  texlive-float
-BuildRequires:  texlive-helvetic
 BuildRequires:  texlive-makeindex
-BuildRequires:  texlive-mdwtools
-BuildRequires:  texlive-metafont
-BuildRequires:  texlive-ntgclass
-BuildRequires:  texlive-psnfss
-BuildRequires:  texlive-times
+BuildRequires:  texlive-pdftex
+BuildRequires:  tex(8r.enc)
+BuildRequires:  tex(a4.sty)
+BuildRequires:  tex(fancyhdr.sty)
+BuildRequires:  tex(float.sty)
+BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(pcrr8t.tfm)
+BuildRequires:  tex(ptmr8t.tfm)
+BuildRequires:  tex(phvr8t.tfm)
+BuildRequires:  tex(syntax.sty)
+BuildRequires:  tex(tabularx.sty)
+BuildRequires:  tex(times.sty)
 %endif
 %ifarch aarch64
 BuildRequires:  unzip
 %endif
 Requires:       binutils
-Requires:       gpm
-Requires:       ncurses
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc ppc64
 
+%if "%{flavor}" == ""
 %description
 Freepascal is a free 32/64bit Pascal Compiler. It comes with a run-time
 library and is fully compatible with Turbo Pascal 7.0 and nearly Delphi
@@ -108,13 +118,19 @@ contains commandline compiler and utils. Provided units are the runtime
 library (RTL), free component library (FCL) and the base and extra
 packages.
 
-%package doc
-Summary:        Freepascal Compiler - documentation and examples
-Group:          Documentation/Other
+%else
+%description
+The fpc-doc package contains the documentation PDF files.
 
-%description doc
-The fpc-doc package contains the documentation (in pdf format) and
-examples of Freepascal.
+%endif
+
+%package examples 
+Summary:        Freepascal Compiler examples
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description examples
+The fpc-examples package contains examples for Freepascal.
 
 %package src
 Summary:        Freepascal Compiler - sources
@@ -126,10 +142,10 @@ documentation or automatical-code generation purposes.
 
 %prep
 %ifnarch aarch64
-%setup -q -n %{name}build-%{stableversion}
+%setup -q -n %{sname}build-%{stableversion}
 %patch0 -p1
 %else
-%setup -Tcq -b2 -n %{name}build
+%setup -Tcq -b2 -n %{sname}build
 %patch1 -p1
 %endif
 
@@ -153,7 +169,11 @@ find fpc-src -name '*.o' | xargs rm -f
 rm -rf fpc-src/packages/extra/amunits
 rm -rf fpc-src/packages/extra/winunits
 
+# Inject reproducible date into PDF documentation
+date --date=@${SOURCE_DATE_EPOCH:-0} +'\date{%B %Y}' > fpcdocs/date.inc
+
 %build
+%if "%{flavor}" == ""
 STARTPP=%{ppcname}
 
 pushd fpcsrc
@@ -171,12 +191,15 @@ make %{?_smp_mflags} ide_all \
 %endif
 make %{?_smp_mflags} utils_all \
      FPC=${NEWPP} OPT='%{fpcopt} %{fpcdebugopt}'
-mv ../fpcdocs .
-make -C fpcdocs pdf FPC=${NEWPP}
 popd
+
+%else
+make -C fpcdocs pdf FPC=fpc
+%endif
 
 %install
 # Make available built binaries
+%if "%{flavor}" == ""
 export PATH=$PATH:%{buildroot}%{_bindir}
 pushd fpcsrc
 FPCDIR=
@@ -197,7 +220,6 @@ make packages_distinstall ${INSTALLOPTS}
 %ifnarch aarch64
 make ide_distinstall      ${INSTALLOPTS}
 %endif
-make -C fpcdocs pdfinstall ${INSTALLOPTS}
 popd
 
 pushd install
@@ -225,9 +247,9 @@ echo -e \
 -k--build-id" >> %{buildroot}%{_sysconfdir}/fpc.cfg
 
 # include the COPYING-information for the compiler/rtl/fcl in the documentation
-cp -a fpcsrc/compiler/COPYING.txt %{buildroot}%{_defaultdocdir}/%{name}/COPYING
-cp -a fpcsrc/rtl/COPYING.txt %{buildroot}%{_defaultdocdir}/%{name}/COPYING.rtl
-cp -a fpcsrc/rtl/COPYING.FPC %{buildroot}%{_defaultdocdir}/%{name}/COPYING.FPC
+install -m 644 -D fpcsrc/compiler/COPYING.txt %{buildroot}%{_licensedir}/%{name}/COPYING
+install -m 644 -D fpcsrc/rtl/COPYING.txt %{buildroot}%{_licensedir}/%{name}/COPYING.rtl
+install -m 644 -D fpcsrc/rtl/COPYING.FPC %{buildroot}%{_licensedir}/%{name}/COPYING.FPC
 
 mv %{buildroot}%{_defaultdocdir}/%{name}/../../%{name}-%{version}/ide/readme.ide %{buildroot}%{_defaultdocdir}/%{name}/readme.ide
 mv %{buildroot}%{_defaultdocdir}/%{name}/../../%{name}-%{version} %{buildroot}%{_defaultdocdir}/%{name}/examples
@@ -253,14 +275,21 @@ chmod 755 %{buildroot}%{_datadir}/fpcsrc/rtl/netware/convertimp
 %fdupes -s %{buildroot}%{_libdir}/%{name}
 %endif
 
+%else
+make -C fpcdocs pdfinstall \
+        FPC=fpc \
+        INSTALL_DOCDIR=%{buildroot}%{_defaultdocdir}/%{sname}
+%endif
+
+
+%if "%{flavor}" == ""
 %files
-%defattr(-,root,root,-)
+%license %{_licensedir}/%{name}
 %dir %{_defaultdocdir}/%{name}/
 %doc %{_defaultdocdir}/%{name}/NEWS
 %doc %{_defaultdocdir}/%{name}/README
 %doc %{_defaultdocdir}/%{name}/readme.ide
 %doc %{_defaultdocdir}/%{name}/faq*
-%doc %{_defaultdocdir}/%{name}/COPYING*
 %doc %{_mandir}/*/*
 %config(noreplace) %{_sysconfdir}/%{name}.cfg
 %config(noreplace) %{_sysconfdir}/fppkg.cfg
@@ -271,21 +300,20 @@ chmod 755 %{buildroot}%{_datadir}/fpcsrc/rtl/netware/convertimp
 %ifarch x86_64
 /usr/lib/%{name}/
 %endif
-%exclude %{_defaultdocdir}/%{name}/*.pdf
-%exclude %{_defaultdocdir}/%{name}/examples
-%exclude %{_datadir}/fpcsrc
 
-%files doc
-%defattr(-,root,root,-)
+%files examples
 %docdir %{_defaultdocdir}/%{name}
-%doc %{_defaultdocdir}/%{name}/*.pdf
 %dir %{_defaultdocdir}/%{name}/examples
 %doc %{_defaultdocdir}/%{name}/examples/*
-%exclude %{_datadir}/fpcsrc
 
 %files src
-%defattr(-,root,root,-)
 %dir %{_datadir}/fpcsrc
 %{_datadir}/fpcsrc/*
+
+%else
+%files
+%docdir %{_defaultdocdir}/%{sname}
+%doc %{_defaultdocdir}/%{sname}/*.pdf
+%endif
 
 %changelog

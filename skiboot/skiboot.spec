@@ -19,17 +19,13 @@
 %define build_firmware 0%{?is_opensuse} && !0%{?is_backports}
 
 Name:           skiboot
-Version:        6.2.2
+Version:        6.5
 Release:        0
 Summary:        Tools for the OpenPower platform
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/open-power/skiboot
 Source:         skiboot-%{version}.tar.gz
-Patch1:         libffs-fix-string-truncation.patch
-Patch2:         struct-p9_sbe_msg-doesn-t-need-to-be-packed.patch
-Patch3:         hdata-vpd-fix-printing-char-0x00.patch
-Patch4:         errorlog-Prevent-alignment-error-buiding-with-gcc9.patch
 BuildRequires:  libopenssl-devel
 BuildRequires:  linux-glibc-devel
 BuildRequires:  systemd-rpm-macros
@@ -73,7 +69,6 @@ services to the OS (Linux) on IBM Power and OpenPower systems.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %if %build_firmware

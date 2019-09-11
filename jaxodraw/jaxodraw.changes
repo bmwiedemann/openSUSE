@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 15:06:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the desktop categories and package group.
+- Use %suse_update_desktop_file
+
+-------------------------------------------------------------------
 Thu Feb  7 07:44:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Sanitize licenses

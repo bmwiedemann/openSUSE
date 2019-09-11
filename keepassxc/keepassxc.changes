@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  2 14:21:48 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable lto for keepassxc. It causes a build error.
+- Provide/Obsolete keepassx. Keepassx still depends on Qt4 and shall be
+  dropped shortly. (boo#1148401)
+
+-------------------------------------------------------------------
 Wed Jun 12 11:02:22 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.4.3

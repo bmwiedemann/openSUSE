@@ -46,6 +46,9 @@ More descriptive output for parametrized py.test tests.
 
 %prep
 %setup -q -n pytest-verbose-parametrize-%{version}
+# we can't do integration tests as py2 and py3 can be different versions
+# and the script simply calls $bindir/pytest
+rm tests/integration/test_verbose_parametrize.py
 
 %build
 %python_build

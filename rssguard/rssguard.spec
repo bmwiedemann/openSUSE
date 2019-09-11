@@ -57,6 +57,8 @@ It supports online feed synchronization.
 chmod -x resources/desktop/com.github.rssguard.appdata.xml
 
 %build
+# resources_big is not compatible with LTO
+%define _lto_cflags %{nil}
 %qmake5 PREFIX=%{_prefix} USE_WEBENGINE=true
 %make_jobs
 

@@ -1,7 +1,7 @@
 #
 # spec file for package gf2x
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,11 @@ Release:        0
 Summary:        Library for multiplication over the GF(2) field
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://gforge.inria.fr/projects/gf2x/
+URL:            https://gforge.inria.fr/projects/gf2x/
 
 # Caution: the filename does not matter - the ID (36934) determines which source you get.
 Source:         https://gforge.inria.fr/frs/download.php/36934/%name-%version.tar.gz
 Patch1:         0001-build-fix-version-info-for-libgf2x-after-ABI-break.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libtool
 
@@ -56,8 +55,7 @@ GF(2) binary field.
 This package contains the interface definitions for the gf2x library.
  
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -77,17 +75,14 @@ make check %{?_smp_mflags}
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post -n %lname -p /sbin/ldconfig
-
+%post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libgf2x-1.2.so
-%doc COPYING
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/gf2x*
 %_libdir/libgf2x.so
 

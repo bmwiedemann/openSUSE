@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  3 14:07:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.19.5:
+  * various fixes in scripts all around:
+    + See /usr/share/doc/packages/devscripts/changelog
+- Add conflicts on packages with the same binaries
+
+-------------------------------------------------------------------
 Tue Apr  2 14:08:49 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Fixed license tag as suggested by licensedigger.

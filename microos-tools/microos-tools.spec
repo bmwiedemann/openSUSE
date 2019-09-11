@@ -17,18 +17,15 @@
 
 
 Name:           microos-tools
-Version:        1.0+git20190611.6211f74
+Version:        1.0+git20190812.97ca0ee
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
-Source0:        microos-tools-%{version}.tar.xz
-Source1:        create_autoyast_profile.pl
+Source:         microos-tools-%{version}.tar.xz
 BuildRequires:  distribution-release
 Requires:       read-only-root-fs
-# for create_autoyast_prfile.pl
-Requires:       perl-JSON
 Conflicts:      systemd-coredump
 Obsoletes:      caasp-tools
 BuildArch:      noarch
@@ -44,9 +41,7 @@ Files, scripts and directories for openSUSE Kubic.
 %install
 cp -a {etc,usr} %{buildroot}
 mkdir -p %{buildroot}%{_sbindir}
-install %{SOURCE1} %{buildroot}%{_sbindir}/create_autoyast_profile
 mkdir -p %{buildroot}%{_mandir}/man8
-pod2man %{SOURCE1} > %{buildroot}%{_mandir}/man8/create_autoyast_profile.8
 
 %pre
 %service_add_pre setup-systemd-proxy-env.service
@@ -69,9 +64,7 @@ pod2man %{SOURCE1} > %{buildroot}%{_mandir}/man8/create_autoyast_profile.8
 %{_prefix}/lib/sysctl.d/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/btrfsQuota
-%{_sbindir}/create_autoyast_profile
 %{_sbindir}/setup-systemd-proxy-env
 %{_mandir}/man8/btrfsQuota.8%{?ext_man}
-%{_mandir}/man8/create_autoyast_profile.8%{?ext_man}
 
 %changelog

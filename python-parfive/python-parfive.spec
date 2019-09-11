@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,14 +21,14 @@
 Name:           python-parfive
 Version:        1.0.0
 Release:        0
-License:        MIT
 Summary:        A HTTP and FTP parallel file downloader
-Url:            https://parfive.readthedocs.io/
+License:        MIT
 Group:          Development/Languages/Python
+Url:            https://parfive.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/parfive/parfive-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -48,7 +49,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-A parallel file downloader using asyncio.
+Parfive is a library for downloading files, its objective is to
+provide an API for queuing files for download and then providing
+feedback to the user about the downloads in progress. It also
+provides an interface for inspecting any failed downloads.
 
 %prep
 %setup -q -n parfive-%{version}

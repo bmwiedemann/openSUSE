@@ -18,7 +18,7 @@
 
 %global pkg_name semigroups
 Name:           ghc-%{pkg_name}
-Version:        0.19
+Version:        0.19.1
 Release:        0
 Summary:        Anything that associates
 License:        BSD-3-Clause

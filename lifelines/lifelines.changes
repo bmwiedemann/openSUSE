@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 23 12:55:47 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Switch from LDFLAGS to LIBS to let configure find has_key() in libtinfo 
+
+-------------------------------------------------------------------
+Fri Aug 23 11:23:21 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to lifelines git version 3ad4571, which is the follower
+  of lifelines version 3.1.1 (bug boo#1146704)
+  * Removep patches
+    lifelines-3.0.59-funcptr.dif now upstream solved
+    lifelines-decl.patch now superfluous
+  * Port patches
+    lifelines-3.0.60-array.dif which becomes lifelines-3ad4571-array.dif
+    lifelines-3.0.62.dif which becomes lifelines-3ad4571.dif
+
+-------------------------------------------------------------------
 Mon Feb  6 18:16:48 UTC 2017 - dimstar@opensuse.org
 
 - Favor newer ncurses versions over older ones (e.g.

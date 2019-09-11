@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:32:08 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.d, as this is now part of cron which we don't
+  want to require
+
+-------------------------------------------------------------------
 Sun Feb 17 20:14:07 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
 
 - Update to 2.4.0

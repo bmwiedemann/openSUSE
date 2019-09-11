@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:05:06 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190810
+  + fix a few more coverity warnings.
+- Add ncurses patch 20190803
+  + improve loop limits in _nc_scroll_window() to handle a case where
+    the scrolled data is a pad which is taller than the window (patch
+    by Rob King).
+  + amend the change to screen, because tmux relies upon that entry
+    and does not support that feature (Debian #933572) -TD
+  + updated ms-terminal entry & notes -TD
+  + updated kitty entry & notes -TD
+  + updated alacritty+common entry & notes -TD
+  + use xterm+sl-twm for consistency -TD
+- Add ncurses patch 20190728
+  + fix a few more coverity warnings.
+  + more documentation updates based on tctest.
+- Add ncurses patch 20190727
+  + fix a few coverity warnings.
+  + documentation updates based on tctest.
+- Add ncurses patch 20190720
+  + fix a few warnings for gcc 4.x
+  + add some portability/historical details to the tic, toe and infocmp
+    manual pages.
+  + correct fix for broken link from terminfo(5) to tabs(1) manpage
+    (report by Sven Joachim).
+
+-------------------------------------------------------------------
+Fri Aug  2 08:15:42 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Mon Jul 15 11:40:20 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20190713

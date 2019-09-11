@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  6 21:04:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with CMake 3.15.1, https://github.com/nfs-ganesha/nfs-ganesha/issues/454
+  + add-missing-CheckSymbolExists-include.patch
+
+-------------------------------------------------------------------
 Mon May 13 11:27:11 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Version 2.8.dev.29+git.1557746732.251ace12d:

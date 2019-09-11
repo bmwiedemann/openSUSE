@@ -1,7 +1,7 @@
 #
 # spec file for package erfa
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           erfa
 %define lname	liberfa1
+Name:           erfa
 Version:        1.4.0
 Release:        0
 Summary:        Essential Routines for Fundamental Astronomy
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
-Url:            https://github.com/liberfa/erfa
+URL:            https://github.com/liberfa/erfa
 Source:         https://github.com/liberfa/erfa/releases/download/v%{version}/erfa-%{version}.tar.gz
 BuildRequires:  autoconf >= 2.68
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 ERFA is a C library containing key algorithms for astronomy, and is based on
@@ -72,12 +71,13 @@ applications that link statically to %{name}.
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./bootstrap.sh
 %configure
 make %{?_smp_mflags}
 
 %install
-%makeinstall
+%make_install
 # *.la should not be packaged (see packaging guidelines: static Libraries)
 rm %{buildroot}%{_libdir}/liberfa.la
 
@@ -85,19 +85,17 @@ rm %{buildroot}%{_libdir}/liberfa.la
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc INFO LICENSE README.rst
+%license LICENSE
+%doc INFO README.rst
 %{_libdir}/liberfa.so.1
 %{_libdir}/liberfa.so.1.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*.h
 %{_libdir}/liberfa.so
 %{_libdir}/pkgconfig/erfa.pc
 
 %files devel-static
-%defattr(-,root,root)
 %{_libdir}/liberfa.a
 
 %changelog

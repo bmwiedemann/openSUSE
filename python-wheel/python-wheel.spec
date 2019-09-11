@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-wheel%{psuffix}
-Version:        0.33.4
+Version:        0.33.6
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
@@ -41,6 +41,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module wheel >= %{version}}
 %endif

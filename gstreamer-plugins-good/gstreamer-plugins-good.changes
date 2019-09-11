@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 25 08:33:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gstreamer-plugins-good-fix-glibc-incompat.patch: v4l2: Fix
+  type compatibility issue with glibc 2.30.
+- Use make_build macro.
+
+-------------------------------------------------------------------
 Wed Jul  3 08:05:23 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Add missing pkgconfig(Qt5X11Extras) BuildRequires: Needed to

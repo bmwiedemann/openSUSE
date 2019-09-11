@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 13 10:23:13 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Add Recommends: texlive-todonotes (supported since version 2.2.0)
+- Add Recommends: texlive-fixme (supported since version 2.2.0)
+
+-------------------------------------------------------------------
 Thu Jul  4 15:12:50 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Add README.SUSE and refer to that in %description to explain

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  2 16:22:47 UTC 2019 - trenn@suse.de
+
+- Enable USB interface by explicit passing --enable-intf-usb (jira#SLE-7780)
+- Enable free interface by adding freeipmi-devel package to
+  build requires
+
+-------------------------------------------------------------------
 Wed Sep 26 07:49:44 UTC 2018 - trenn@suse.de
 
 - Update to latest git HEAD revision of 1.8.18 version

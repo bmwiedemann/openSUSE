@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep  7 15:57:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Bump SOVER as needed.
+
+-------------------------------------------------------------------
+Wed Aug 21 07:23:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.12.3352
+  * Add interface symbol and uniform symbol location auto mapping
+    for OpenGL shader.
+  * Handle SPIR-V type mismatch when constructing a composite.
+  * Implement GL_EXT_demote_to_helper_invocation.
+  * Avoid generating 8/16-bit constants when 8/16-bit arithmetic
+    extensions are not enabled.
+  * Add support for SPV_KHR_shader_clock.
+
+-------------------------------------------------------------------
+Fri Aug  2 07:00:29 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
 Fri Jun 28 07:50:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new snapshot 7.11.3276.git10 (4162de4)

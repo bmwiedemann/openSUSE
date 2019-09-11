@@ -17,16 +17,16 @@
 
 
 Name:           libqt5-qtlottie
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 Quick Lottie Addon
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtlottie-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtlottie-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
@@ -104,7 +104,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %license LICENSE.*
 %exclude %{_libqt5_includedir}/QtBodymovin/%%{so_version}
 %{_libqt5_includedir}/QtBodymovin
-#%%{_libqt5_libdir}/cmake/QtBodymovin
+%{_libqt5_libdir}/cmake/Qt5Bodymovin
 %{_libqt5_libdir}/libQt5Bodymovin.prl
 %{_libqt5_libdir}/libQt5Bodymovin.so
 #%%{_libqt5_libdir}/pkgconfig/Qt5Bodymovin.pc

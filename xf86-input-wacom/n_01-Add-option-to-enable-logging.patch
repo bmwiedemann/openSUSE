@@ -29,11 +29,11 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  tools/xsetwacom.c          | 10 ++++++++++
  11 files changed, 177 insertions(+), 3 deletions(-)
 
-Index: xf86-input-wacom-0.34.2/configure.ac
+Index: xf86-input-wacom-0.37.0/configure.ac
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/configure.ac
-+++ xf86-input-wacom-0.34.2/configure.ac
-@@ -87,6 +87,17 @@ if test "x$DEBUGGING" = xyes; then
+--- xf86-input-wacom-0.37.0.orig/configure.ac
++++ xf86-input-wacom-0.37.0/configure.ac
+@@ -88,6 +88,17 @@ if test "x$DEBUGGING" = xyes; then
         AC_DEFINE(DEBUG, 1, [Enable debugging code])
  fi
  
@@ -51,13 +51,13 @@ Index: xf86-input-wacom-0.34.2/configure.ac
  # Define a configure option for an alternate input module directory
  AC_ARG_WITH(xorg-module-dir,
              AS_HELP_STRING([--with-xorg-module-dir=DIR],
-Index: xf86-input-wacom-0.34.2/include/wacom-properties.h
+Index: xf86-input-wacom-0.37.0/include/wacom-properties.h
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/include/wacom-properties.h
-+++ xf86-input-wacom-0.34.2/include/wacom-properties.h
-@@ -111,6 +111,15 @@
- */
- #define WACOM_PROP_PRESSURE_RECAL "Wacom Pressure Recalibration"
+--- xf86-input-wacom-0.37.0.orig/include/wacom-properties.h
++++ xf86-input-wacom-0.37.0/include/wacom-properties.h
+@@ -114,6 +114,15 @@
+ /* 32 bit, 1 values */
+ #define WACOM_PROP_PANSCROLL_THRESHOLD "Wacom Panscroll Threshold"
  
 +/* 8 bit, values:
 +  Type                       bit
@@ -71,15 +71,14 @@ Index: xf86-input-wacom-0.34.2/include/wacom-properties.h
  /* The following are tool types used by the driver in WACOM_PROP_TOOL_TYPE
   * or in the 'type' field for XI1 clients. Clients may check for one of
   * these types to identify tool types.
-Index: xf86-input-wacom-0.34.2/man/wacom.man
+Index: xf86-input-wacom-0.37.0/man/wacom.man
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/man/wacom.man
-+++ xf86-input-wacom-0.34.2/man/wacom.man
-@@ -269,6 +269,25 @@ initial pressure reading may be unequal
- good pen. If the consecutive pressure readings are not higher than
+--- xf86-input-wacom-0.37.0.orig/man/wacom.man
++++ xf86-input-wacom-0.37.0/man/wacom.man
+@@ -278,6 +278,24 @@ good pen. If the consecutive pressure re
  the initial pressure by a threshold no button event will be generated.
  This option allows to disable the recalibration.
-+.TP 4
+ .TP 4
 +.B Option \fI"LogMask" \fI"number"\fP
 +bitmask that enables logging of a group of events.
 +.RS
@@ -97,20 +96,18 @@ Index: xf86-input-wacom-0.34.2/man/wacom.man
 +7
 +button high level
 +.PD
-+
- .RE
- .SH "TOUCH GESTURES"
- .SS Single finger (1FG)
-Index: xf86-input-wacom-0.34.2/man/xsetwacom.man
++.TP 4
+ .B Option \fI"PanScrollThreshold"\fP \fI"number"\fP
+ Specifies the distance the pen must move (in tablet units) before a
+ scroll event is generated when using the "pan" action. Smaller values
+Index: xf86-input-wacom-0.37.0/man/xsetwacom.man
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/man/xsetwacom.man
-+++ xf86-input-wacom-0.34.2/man/xsetwacom.man
-@@ -273,7 +273,24 @@ initial pressure reading may be unequal
- good pen. If the consecutive pressure readings are not higher than
+--- xf86-input-wacom-0.37.0.orig/man/xsetwacom.man
++++ xf86-input-wacom-0.37.0/man/xsetwacom.man
+@@ -282,6 +282,24 @@ good pen. If the consecutive pressure re
  the initial pressure by a threshold no button event will be generated.
  This option allows to disable the recalibration.  Default:  on
--
-+.TP
+ .TP
 +\fBLogMask\fR mask
 +bitmask that enables logging of a group of events.
 +.RS
@@ -128,13 +125,14 @@ Index: xf86-input-wacom-0.34.2/man/xsetwacom.man
 +7
 +button high level
 +.PD
- 
- .SH "AUTHORS"
- Peter Hutterer <peter.hutterer@redhat.com>
-Index: xf86-input-wacom-0.34.2/src/wcmCommon.c
++.TP
+ \fBPanScrollThreshold\fR distance
+ This specifies the distance the pen must move (in tablet units) before
+ a scroll event is generated when using the "pan" action. Smaller values
+Index: xf86-input-wacom-0.37.0/src/wcmCommon.c
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/src/wcmCommon.c
-+++ xf86-input-wacom-0.34.2/src/wcmCommon.c
+--- xf86-input-wacom-0.37.0.orig/src/wcmCommon.c
++++ xf86-input-wacom-0.37.0/src/wcmCommon.c
 @@ -27,6 +27,9 @@
  #include "wcmTouchFilter.h"
  #include <xkbsrv.h>
@@ -145,8 +143,8 @@ Index: xf86-input-wacom-0.34.2/src/wcmCommon.c
  
  
  struct _WacomDriverRec WACOM_DRIVER = {
-@@ -89,6 +92,35 @@ void set_absolute(InputInfoPtr pInfo, Bo
- 		priv->flags &= ~ABSOLUTE_FLAG;
+@@ -132,6 +135,35 @@ static void wcmPanscroll(WacomDevicePtr
+ 	*accumulated_y = wcmButtonPerNotch(priv, *accumulated_y, threshold, 4, 5);
  }
  
 +#ifdef LOGGING
@@ -181,9 +179,9 @@ Index: xf86-input-wacom-0.34.2/src/wcmCommon.c
  /*****************************************************************************
   * wcmSendButtons --
   *   Send button events by comparing the current button mask with the
-@@ -1469,6 +1501,9 @@ WacomCommonPtr wcmNewCommon(void)
- 	common->wcmRawSample = DEFAULT_SAMPLES;
+@@ -1552,6 +1584,9 @@ WacomCommonPtr wcmNewCommon(void)
  			/* number of raw data to be used to for filtering */
+ 	common->wcmPanscrollThreshold = 0;
  	common->wcmPressureRecalibration = 1;
 +#ifdef LOGGING
 +	common->LogMask = 0;
@@ -191,11 +189,11 @@ Index: xf86-input-wacom-0.34.2/src/wcmCommon.c
  	return common;
  }
  
-Index: xf86-input-wacom-0.34.2/src/wcmConfig.c
+Index: xf86-input-wacom-0.37.0/src/wcmConfig.c
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/src/wcmConfig.c
-+++ xf86-input-wacom-0.34.2/src/wcmConfig.c
-@@ -646,6 +646,10 @@ static int wcmPreInit(InputDriverPtr drv
+--- xf86-input-wacom-0.37.0.orig/src/wcmConfig.c
++++ xf86-input-wacom-0.37.0/src/wcmConfig.c
+@@ -653,6 +653,10 @@ static int wcmPreInit(InputDriverPtr drv
  
  	common->debugLevel = xf86SetIntOption(pInfo->options,
  					      "CommonDBG", common->debugLevel);
@@ -206,11 +204,11 @@ Index: xf86-input-wacom-0.34.2/src/wcmConfig.c
  	oldname = strdup(pInfo->name);
  
  	if (wcmIsHotpluggedDevice(pInfo))
-Index: xf86-input-wacom-0.34.2/src/wcmUSB.c
+Index: xf86-input-wacom-0.37.0/src/wcmUSB.c
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/src/wcmUSB.c
-+++ xf86-input-wacom-0.34.2/src/wcmUSB.c
-@@ -1138,6 +1138,31 @@ static int usbIdToType(int id)
+--- xf86-input-wacom-0.37.0.orig/src/wcmUSB.c
++++ xf86-input-wacom-0.37.0/src/wcmUSB.c
+@@ -1182,6 +1182,31 @@ static int usbIdToType(int id)
  	return type;
  }
  
@@ -242,10 +240,10 @@ Index: xf86-input-wacom-0.34.2/src/wcmUSB.c
  /**
   * Find the tool type (STYLUS_ID, etc.) based on the device_id.
   *
-Index: xf86-input-wacom-0.34.2/src/wcmXCommand.c
+Index: xf86-input-wacom-0.37.0/src/wcmXCommand.c
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/src/wcmXCommand.c
-+++ xf86-input-wacom-0.34.2/src/wcmXCommand.c
+--- xf86-input-wacom-0.37.0.orig/src/wcmXCommand.c
++++ xf86-input-wacom-0.37.0/src/wcmXCommand.c
 @@ -99,6 +99,9 @@ static Atom prop_tooltype;
  static Atom prop_btnactions;
  static Atom prop_product_id;
@@ -253,10 +251,10 @@ Index: xf86-input-wacom-0.34.2/src/wcmXCommand.c
 +#ifdef LOGGING
 +static Atom prop_logmask;
 +#endif
+ static Atom prop_panscroll_threshold;
  #ifdef DEBUG
  static Atom prop_debuglevels;
- #endif
-@@ -337,7 +340,10 @@ void InitWcmDeviceProperties(InputInfoPt
+@@ -343,7 +346,10 @@ void InitWcmDeviceProperties(InputInfoPt
  	values[0] = common->vendor_id;
  	values[1] = common->tablet_id;
  	prop_product_id = InitWcmAtom(pInfo->dev, XI_PROP_PRODUCT_ID, XA_INTEGER, 32, 2, values);
@@ -268,7 +266,7 @@ Index: xf86-input-wacom-0.34.2/src/wcmXCommand.c
  #ifdef DEBUG
  	values[0] = priv->debugLevel;
  	values[1] = common->debugLevel;
-@@ -951,6 +957,20 @@ int wcmSetProperty(DeviceIntPtr dev, Ato
+@@ -959,6 +965,20 @@ int wcmSetProperty(DeviceIntPtr dev, Ato
  			common->debugLevel = values[1];
  		}
  #endif
@@ -289,10 +287,10 @@ Index: xf86-input-wacom-0.34.2/src/wcmXCommand.c
  	} else if (property == prop_btnactions)
  	{
  		int nbuttons = priv->nbuttons < 4 ? priv->nbuttons : priv->nbuttons + 4;
-Index: xf86-input-wacom-0.34.2/src/xf86Wacom.h
+Index: xf86-input-wacom-0.37.0/src/xf86Wacom.h
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/src/xf86Wacom.h
-+++ xf86-input-wacom-0.34.2/src/xf86Wacom.h
+--- xf86-input-wacom-0.37.0.orig/src/xf86Wacom.h
++++ xf86-input-wacom-0.37.0/src/xf86Wacom.h
 @@ -69,6 +69,28 @@
  #define DBG(lvl, priv, ...)
  #endif
@@ -322,26 +320,25 @@ Index: xf86-input-wacom-0.34.2/src/xf86Wacom.h
  /******************************************************************************
   * WacomModule - all globals are packed in a single structure to keep the
   *               global namespaces as clean as possible.
-Index: xf86-input-wacom-0.34.2/src/xf86WacomDefs.h
+Index: xf86-input-wacom-0.37.0/src/xf86WacomDefs.h
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/src/xf86WacomDefs.h
-+++ xf86-input-wacom-0.34.2/src/xf86WacomDefs.h
-@@ -460,7 +460,9 @@ struct _WacomCommonRec
+--- xf86-input-wacom-0.37.0.orig/src/xf86WacomDefs.h
++++ xf86-input-wacom-0.37.0/src/xf86WacomDefs.h
+@@ -469,6 +469,9 @@ struct _WacomCommonRec
  	int wcmRawSample;	     /* Number of raw data used to filter an event */
  	int wcmPressureRecalibration; /* Determine if pressure recalibration of
  					 worn pens should be performed */
--
 +#ifdef LOGGING
-+	int LogMask;		     /* Mask to determine which event types to log. */
++	int LogMask;		      /* Mask to determine which event types to log. */
 +#endif
- 	int bufpos;                        /* position with buffer */
- 	unsigned char buffer[BUFFER_SIZE]; /* data read from device */
+ 	int wcmPanscrollThreshold;	/* distance pen must move to send a panscroll event */
  
-Index: xf86-input-wacom-0.34.2/tools/xsetwacom.c
+ 	int bufpos;                        /* position with buffer */
+Index: xf86-input-wacom-0.37.0/tools/xsetwacom.c
 ===================================================================
---- xf86-input-wacom-0.34.2.orig/tools/xsetwacom.c
-+++ xf86-input-wacom-0.34.2/tools/xsetwacom.c
-@@ -158,6 +158,16 @@ static param_t parameters[] =
+--- xf86-input-wacom-0.37.0.orig/tools/xsetwacom.c
++++ xf86-input-wacom-0.37.0/tools/xsetwacom.c
+@@ -159,6 +159,16 @@ static param_t parameters[] =
  		.arg_count = 1,
  	},
  	{
@@ -358,12 +355,12 @@ Index: xf86-input-wacom-0.34.2/tools/xsetwacom.c
  		.name = "Suppress",
  		.x11name = "Suppress",
  		.desc = "Number of points trimmed (default is 2). ",
-@@ -2974,7 +2984,7 @@ static void test_parameter_number(void)
+@@ -3028,7 +3038,7 @@ static void test_parameter_number(void)
  	 * deprecated them.
  	 * Numbers include trailing NULL entry.
  	 */
--	assert(ARRAY_SIZE(parameters) == 39);
-+	assert(ARRAY_SIZE(parameters) == 40);
+-	assert(ARRAY_SIZE(parameters) == 40);
++	assert(ARRAY_SIZE(parameters) == 41);
  	assert(ARRAY_SIZE(deprecated_parameters) == 17);
  }
  

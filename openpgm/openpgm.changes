@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 11:40:05 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add libpgm-5.2.122-configure-rdtsc-checking-chg.patch
+  same as https://github.com/steve-o/openpgm/pull/63
+
+-------------------------------------------------------------------
 Mon Jan 28 12:51:34 UTC 2019 - luca.boccassi@gmail.com
 
 - Backport patches from upstream to avoid adding a non-existing

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  4 15:02:41 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use the documented LLVM_ENABLE_RTTI to enable RTTI instead of
+  LLVM_REQUIRES_RTTI, which "is an internal flag that individual
+  targets can use to force RTTI". (boo#1139584)
+- Drop obsolete llvm-build-tests-with-rtti.patch.
+- Remove unneccesary dependencies:
+  * groff, bison and flex don't seem to be used.
+  * jsoncpp is no longer used since r338461.
+  * Don't recommend scan-{build,view} in clang (boo#1145444).
+  * Devel packages are only required in other devel packages,
+    when their headers are included in the installed headers.
+- Remove some duplicate BuildRequires.
+- Move libxml to the main package, since Clang also needs it.
+- Remove unused (since r268685) CMake flags LLVM_ENABLE_TIMESTAMPS.
+- Package gold linker plugin again.
+- Don't build libc++ and python3-clang anymore, because they come
+  from llvm8 now (boo#1145735).
+- Don't recommend scan-build and scan-view in clang. (boo#1145444)
+- Add versions to Provides/Conflicts except for files.
+- Fix installation of opt-viewer files when python3-clang is no
+  longer built.
+
+-------------------------------------------------------------------
+Tue Sep  3 12:24:13 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 build broken by last commit
+
+-------------------------------------------------------------------
 Mon Aug 12 18:28:28 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
 
 - Drop aarch64-disable-memorytest.patch: no longer needed. 

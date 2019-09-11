@@ -19,7 +19,7 @@
 %define so_ver	9
 
 Name:           gmmlib
-Version:        19.2.3
+Version:        19.2.4
 Release:        0
 Summary:        Intel Graphics Memory Management Library
 License:        MIT

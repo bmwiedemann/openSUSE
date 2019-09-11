@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:54:25 UTC 2019 - mchang@suse.com
+
+- Use %autosetup to automate patch application
+  * trustedgrub2.spec
+
+-------------------------------------------------------------------
+Fri Sep  6 08:18:53 UTC 2019 - mchang@suse.com
+
+- Fix GCC 9 build failure (bsc#1121208)
+  * 0001-cpio-Disable-gcc9-Waddress-of-packed-member.patch
+  * 0002-jfs-Disable-gcc9-Waddress-of-packed-member.patch
+  * 0003-hfs-Fix-gcc9-error-Waddress-of-packed-member.patch
+  * 0004-hfsplus-Fix-gcc9-error-with-Waddress-of-packed-membe.patch
+  * 0005-acpi-Fix-gcc9-error-Waddress-of-packed-member.patch
+  * 0006-usbtest-Disable-gcc9-Waddress-of-packed-member.patch
+  * 0007-chainloader-Fix-gcc9-error-Waddress-of-packed-member.patch
+  * 0008-efi-Fix-gcc9-error-Waddress-of-packed-member.patch
+
+-------------------------------------------------------------------
 Tue Jul 17 07:53:10 UTC 2018 - mchang@suse.com
 
 - Fix "no symbol table" error on new binutil, backport patches (bsc#1100984)

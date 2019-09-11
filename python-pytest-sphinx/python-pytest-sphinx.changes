@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Sep  6 18:20:35 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.2.2
+  * Add hack for handling mock style objects
+  * Add support for indented directives
+
+
+-------------------------------------------------------------------
+Thu Mar 21 01:44:43 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.2.1

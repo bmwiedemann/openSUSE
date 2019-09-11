@@ -16,16 +16,15 @@
 #
 
 
-%define major_version 1.14
 %define boost_min_version 1.56
 Name:           wesnoth
-Version:        1.14.6
+Version:        1.15.1
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        GPL-2.0-or-later AND EPL-1.0
 Group:          Amusements/Games/Strategy/Turn Based
-Url:            http://www.wesnoth.org
-Source:         http://downloads.sf.net/project/wesnoth/wesnoth-%{major_version}/wesnoth-%{version}/wesnoth-%{version}.tar.bz2
+URL:            http://www.wesnoth.org
+Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  dejavu
 BuildRequires:  fdupes
@@ -142,9 +141,9 @@ done
 
 %files
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.wesnoth.Wesnoth.desktop
 %{_datadir}/icons/hicolor/*/apps/wesnoth-icon.png
-%{_datadir}/metainfo/wesnoth.appdata.xml
+%{_datadir}/metainfo/org.wesnoth.Wesnoth.appdata.xml
 %{_mandir}/man*/wesnoth.*%{ext_man}
 %{_mandir}/*/man*/wesnoth.*%{ext_man}
 

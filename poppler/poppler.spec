@@ -1,7 +1,7 @@
 #
 # spec file for package poppler
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,11 @@
 
 Name:           poppler
 %define _name   poppler
-Version:        0.72.0
+Version:        0.79.0
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 83
+%define poppler_sover 89
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -174,7 +174,7 @@ export LD_LIBRARY_PATH=$(pwd)/build
 # This causes the build to fail
     #DENABLE_GTK_DOC=ON \
 %cmake\
-	-DENABLE_XPDF_HEADERS=ON \
+	-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
 	-DENABLE_ZLIB=ON \
 	-DENABLE_LIBCURL=ON \
 	-DBUILD_GTK_TESTS=OFF \
@@ -235,7 +235,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %files -n libpoppler%{poppler_sover}
 %defattr (-, root, root)
 %license COPYING COPYING3
-%doc AUTHORS ChangeLog NEWS README README-XPDF README.contributors
+%doc AUTHORS ChangeLog NEWS README.md README-XPDF README.contributors
 %{_libdir}/libpoppler.so.%{poppler_sover}*
 
 %files -n libpoppler-glib%{poppler_glib_sover}

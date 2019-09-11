@@ -18,8 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-Name:           python-setuptools
-Version:        41.0.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-setuptools%{psuffix}
+Version:        41.2.0
 Release:        0
 Summary:        Enhancements to distutils for building and distributing Python packages
 License:        Python-2.0 OR ZPL-2.0
@@ -35,8 +43,6 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-#!BuildIgnore:  python2-pyparsing
-#!BuildIgnore:  python3-pyparsing
 # needed for SLE
 Requires:       python
 Requires:       python-appdirs
@@ -46,11 +52,26 @@ Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module Paver}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyparsing >= 2.0.2}
+BuildRequires:  %{python_module pytest-fixture-config}
+BuildRequires:  %{python_module pytest-virtualenv}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= %{version}}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-futures
+%else
+#!BuildIgnore:  python-pyparsing
+#!BuildIgnore:  python2-pyparsing
+#!BuildIgnore:  python3-pyparsing
+%endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
 %endif
-# NOTE(saschpe): Distribute was merged into 0.7.x, so even though distribute
-# obsoletes setuptools < 0.6.45, current setuptools obsoletes distribute again
 %ifpython2
 Provides:       %{oldpython}-distribute = %{version}
 Obsoletes:      %{oldpython}-distribute < %{version}
@@ -81,15 +102,18 @@ sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %prepare_alternative easy_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
-# Can not run testsuite as this introduces build cycle
-#%%check
-#export LANG="en_US.UTF-8"
-#python setup.py ptr --addopts='-rxs'
+%check
+%if %{with test}
+%pytest
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative easy_install
 
@@ -105,5 +129,6 @@ sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
 %pycache_only %{python_sitelib}/__pycache__/easy_install.*
 %dir %{python_sitelib}/pkg_resources
 %{python_sitelib}/pkg_resources/*
+%endif
 
 %changelog

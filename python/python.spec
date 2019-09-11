@@ -173,8 +173,7 @@ Obsoletes:      python-tkinter
 Provides:       python2-tk = %{version}
 
 %description tk
-Python interface to Tk. Tk is the GUI toolkit that comes with Tcl. The
-"xrpm" package uses this Python interface.
+Python interface to Tk. Tk is the GUI toolkit that comes with Tcl.
 
 %package curses
 Summary:        Python Interface to the (N)Curses Library

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug  2 00:01:45 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.80
+  *way* too many changes to list here, for an overview, check:
+  https://wiki.blender.org/wiki/Reference/Release_Notes/2.80
+- specify CYCLES_CUDA_BINARIES_ARCH
+- adhere more closely to upstream release build options
+- add missing boost libs
+- use openjpeg2
+- use sndfile
+- enable openmp suppprt
+- define the supported cuda binary archs
+- clean up spec
+- remove patches, fixed upstream
+  - 0001-Added-extra-const-to-satisfy-the-strict-clang-versio.patch
+  - 0001-Cycles-Fix-bad-register-cast-in-sseb.patch
+  - 0001-Fix-PyRNA-class-registration-w-Python-3.7.patch
+  - 0008-fix_building_with_latest_versions_of_FFmpeg.patch
+  - 0001-Fix-for-GCC9-new-OpenMP-data-sharing.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 10:09:57 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Move the limit_build macro to the top of the build section to

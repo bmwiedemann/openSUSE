@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:20:49 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Build vst plugins without wine to fix factory build.
+- Build position independant executable.
+- Added patches from git to fix issues after release:
+  0001-Update-.mailmap-5037.patch
+  0001-Better-French-translations-in-the-menu-item-file-471.patch
+  0001-Fix-invalid-MIDI-Program-Change-decoding-5154.patch
+  0001-Make-splash-screen-text-white-5149.patch
+  0001-show-BBEditor-on-clicking-the-TrackLabelButton-5060.patch
+
+-------------------------------------------------------------------
+Mon Jun 17 13:50:38 UTC 2019 - stephan.barth@suse.com
+
+- rebased and renamed lmms-1.1.0-return.patch to lmms-1.2.0-return.patch
+- removed lmms-fluidsynth.patch which is now integrated upstream
+- Update to version 1.2.0:
+  * fix color profile error (#5019)
+  * DMG rebranding (#5013)
+  * Fix German translation
+  * Fixes #4996: Fix metadata when exporting multiple tracks (#5005)
+  * updated splash (#5002)
+  * MP3 export: initialize ID3 tag with id3tag_init
+  * Travis: fix macOS build due to the old default version of Node.js
+  * i18n: update template strings
+  * Bugfix - SampleTrack -> Play: Fix sample track not being played in the right place when it not played from the begining.
+  * Bugfix - SampleTrack -> Load & Save: Fix recorded sample track not being played correctly after saving and loading a project due to sample rate not getting saved in the project file.
+  * SampleBuffer -> Use processingSampleRate.
+  * i18n: update translations from Transifex
+  * SampleTrack: call requestChangesInModel before unref SampleBuffer (#4982)
+  * Fixes #4781: Don't disconnect LADSPA automation on export
+  * Extend ProjectJournal docs, thx to @DomClark
+  * Fix controller loading error on loading projects
+  * Nescaline and Freeboy - Better default sound (#4968)
+  * Fix race conditions in NotePlayHandleManager (#4966)
+  * fix hanging mouse in piano roll (#4822) (#4960)
+  * Fix invisible note editing handles when a note has detuning info
+  * Use extracted linuxdeployqt directly
+  * Don't draw note detuning info over the volume/panning area (#4965)
+  * Travis: fix a debootstrap error from missing keyrings
+  * Make more connections direct for automation (#4942)
+  * Record chords (#4938)
+  * Fix notes getting stuck under high CPU conditions (#4908)
+  * Allow build for Wayland w/o X11Extras, if VST off
+  * Use local cursor for TrackContentObjectView (#4918)
+  * Allow sample track TCOs to resize smaller than one bar (#4933)
+  * Don't try to connect to nonexistent controllers (#4939)
+  * [Equalizer] Bright analyzer colors, opacity increased (#4772)
+  * Travis: use carla instead of carla-git
+  * Fix empty editors after closing them and creating a new project (#4891)
+  * Allow new Zyn bank creation on Linux (#4905)
+  * TCO drag: Fix Ctrl+Drag crash
+  * Automation Editor: Don't accept drag events when there's no pattern
+  * Fix Blackman-Harris window formula (#4895)
+  * Fix layout of VstSyncData struct
+  * Don't show error when loading empty VeSTige instance
+  * Ensure VST windows show properly in taskbar
+  * Add VST always-on-top config option
+  * Avoid shallow clones in all Debian sid builds (#4888)
+  * Fix compilation on Qt4
+  * Fix zyn pitch on project load/export Closes #3451
+  * Fix #3926: QCursor in AFP
+  * Fix MidiJack crash on exit
+  * Sync Debian version (#4840)
+  * Blacklist $HOME as VST directory Closes #4854
+  * Disable soundio on macOS
+  * Fix AudioFileProcessor tooltip (#4868)
+  * Add /sbin to AppImage search path Closes #4846
+  * Fix DrumSynth sscanf (#4869)
+  * Add missing include
+  * Move apt_mingw_cache out of build directory (#4842)
+  * Add needed macOS shortcuts (#4851)
+  * Test deployment preparation in regular builds  (#4847)
+  * lmms_math: Fix build with musl
+  * Fix path to the LMMS binary in AppImage build script
+  * Bump version to 1.2.0-rc8
+  * AppImage: bundle JACK fallback library correctly
+  * i18n: pull from Transifex
+  * Bring back PortAudio support on Windows (#4770)
+  * Fix Bitinvader waveform cutoff behavior
+  * Ensure the restore button of a subwindow shows up correctly  (#4819)
+  * Move QT_X11_NO_NATIVE_MENUBAR to code (#4818)
+  * Fix Linux HiDPI handling
+  * Follow instructions from cartr/homebrew-qt4 (#4815)
+  * Don't let silent instruments wake up sleeping effects (#4792)
+  * Fix CI by reverting rpmalloc
+  * Disable built-in NaN handler through hidden setting (#4787)
+  * Fixes #4752: Update rpmalloc
+  * Fix address in doc/AUTHORS
+  * Fixes #4778: Update mailmap
+  * Increase forced clipping level
+  * MIDI import/export: map note volume and MIDI velocity with their full range (#4785)
+  * Pianoroll - Add checkpoint before moving notes
+  * Improve handling of nan/inf (#4743)
+  * Don't memcpy null pointer
+  * Fix file extension list in translations
+  * Link RemoteZynAddSubFx with -mwindows
+  * Enable VST sync by default
+  * Initialize peak controller last sample with base value fix (Stable 1.2) (#4699)
+  * Do not depend on Git history, use data from 2019-01-07 (#4763)
+  * Fix before_deploy (#4764)
+  * Fix left 1px lfo graph
+  * Fix builds on macOS Mojave 10.14 (#4767)
+  * Fix infinite MIDI note with VST made in Cabbage (LMMS#4380) (#4766)
+  * Keep off-grid position of TCOs on group moving (#4262)
+  * Add source build artifact (#4744)
+  * Don't render Automation tracks in the Beat/Bassline (#4747)
+  * FX autoquit disabled by default (#4378)
+  * Add Debian sid Clang build pass (#4735)
+  * Fix broken FxLine tool tips (#3321)
+  * Fix lost control links in copied automation patterns (#4723)
+  * Add Debian sid i386 build pass (#4727)
+  * Add Debian sid build pass (#4707)
+  * Support more than 62 simultaneous VST plugins for Qt<5.10
+  * Make ppqPos in VST sync sample accurate
+  * Fix occasional Sinnah hang
+  * Don't create MDI subwindow for VSTi without GUI
+  * New pixmap as per #4519 (#4708)
+  * Add initial Debian packaging for stable-1.2 (#4697)
+  * Handle automation on processing thread (#4692)
+  * Update TimeLineWidget 60 times per second (#4703)
+  * Fix song editor visualization after maximizing (#4698)
+  * Fix minor glitches with sample tracks (#4666)
+  * Allow building SF2 player with FluidSynth 2.x (#4678)
+  * Fix not saving some automations (#4632) (#4667)
+  * Don't quit CLI rendering when failed to load sample files
+  * Update name in mailmap
+  * Fix german locale ('<Strg> + Mittelklick')
+  * Fix unit tests for automation
+  * Ensure correct TCOs after cloning tracks into the BB editor
+  * Don't always treat empty long patterns as BB patterns
+  * Fix VST track cloning in Beat/Bassline editor
+  * Fix Carla detection in AppImage launcher script
+
+-------------------------------------------------------------------
 Sun Oct 28 11:24:10 UTC 2018 - Edgar Aichinger <edogawa@aon.at>
 
 - add lmms-fluidsynth.patch: backport upstream fix for fluidsynth API change

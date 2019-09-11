@@ -17,18 +17,19 @@
 #
 
 Name:           lammps
-Version:        20180605
-%define         uversion stable_5Jun2019
+Version:        20180807
+%define         uversion stable_7Aug2019
 Release:        0
 Summary:        Molecular Dynamics Simulator
 License:        GPL-2.0 and GPL-3.0+
 Group:          Productivity/Scientific/Chemistry
 Url:            http://lammps.sandia.gov
 Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-%define         tversion 827be7af84ca100d394ea1cf6d3bc49f6a8eef92
+%define         tversion d0394a77fa2b4b2d545a73ea092cf6de7616aac8
 Source1:        https://github.com/lammps/lammps-testing/archive/%{tversion}.tar.gz#/%{name}-testing-%{tversion}.tar.gz
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
+BuildRequires:  gcc-fortran
 BuildRequires:  libpng-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  openmpi-devel
@@ -37,7 +38,7 @@ BuildRequires:  fftw3-devel
 BuildRequires:  voro++-devel
 BuildRequires:  zlib-devel
 BuildRequires:  gsl-devel
-BuildRequires:  kim-api-devel
+BuildRequires:  kim-api-devel >= 2.1
 BuildRequires:  cmake
 BuildRequires:  opencl-headers
 BuildRequires:  ocl-icd-devel
@@ -148,6 +149,7 @@ source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
 %{cmake} \
   -C ../cmake/presets/all_on.cmake \
   -C ../cmake/presets/nolib.cmake \
+  -DBUILD_TOOLS=ON \
   -DBUILD_LIB=ON -DBUILD_MPI=ON -DPKG_PYTHON=ON \
   -DPKG_KIM=ON -DENABLE_TESTING=ON -DPKG_VORONOI=ON \
   -DPKG_GPU=ON -DGPU_API=OpenCL -DFFT=FFTW3 \
@@ -156,7 +158,7 @@ source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
   -DPKG_USER-INTEL=OFF \
 %endif  
   -DLAMMPS_TESTING_SOURCE_DIR=$(echo $PWD/../lammps-testing-*) ../cmake
-make %{?_smp_mflags}
+%make_jobs
 
 %install
 %cmake_install
@@ -175,7 +177,7 @@ LD_LIBRARY_PATH='%{buildroot}/%{_libdir}:%{_libdir}/mpi/gcc/openmpi/%{_lib}' mak
 %{_mandir}/man1/lmp.1.*
 %{_bindir}/msi2lmp
 %{_mandir}/man1/msi2lmp.1.*
-
+%{_bindir}/binary2txt
 
 %files -n liblammps0
 %defattr(-,root,root,-)

@@ -26,6 +26,12 @@ Summary(fr):    Interface graphique pour le langage R
 
 Url:            http://rkward.sourceforge.net/ 
 Source0:        %{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-compilation.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Another-missing-include-file.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Another-include-file-fix.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -72,6 +78,7 @@ intégration dans les suites bureautiques.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build -- -DNO_R_XML=1

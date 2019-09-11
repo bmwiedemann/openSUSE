@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  5 15:57:04 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 2.2.12:
+  * Switched khronos headers to OpenCL 2.2.
+  * Added OpenCL 2.2 support.
+- Update URL to GitHub repository since previous URL is not
+  accessible anymore.
+- Only suggest pocl instead of recommending it.
+- Add check section.
+
+-------------------------------------------------------------------
 Sat Jan 19 21:35:38 UTC 2019 - mardnh@gmx.de
 
 - Add missing Requires(post): update-alternatives

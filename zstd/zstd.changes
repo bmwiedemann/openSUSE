@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 07:25:49 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.4.3
+  * bug: Fix Dictionary Compression Ratio Regression (#1709)
+  * bug: Fix Buffer Overflow in v0.3 Decompression (#1722)
+  * build: Add support for IAR C/C++ Compiler for Arm (#1705)
+  * misc: Add NULL pointer check in util.c (#1706)
+
+-------------------------------------------------------------------
 Tue Jul 30 13:43:02 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add disk _constraints to fix ppc64le build

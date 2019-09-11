@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:18:42 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 4.7.3:
+  * Release 4.7.3
+  * Fix blocking of concurrent instances in PHP >7.2 (bug #703)
+  * setup Mongo authSource by ENV
+  * Reset table after changing DB
+  * Move <p> after a possible error
+  * Allow editing foreign keys pointing to tables in other database/schema (bug #694)
+  * MS SQL: Support foreign keys to other DB
+  * Do not display error for foreign keys to other databases
+  * Save bytes
+  * MSSQL: use textarea in edit form for Memo type (#357)
+  * MySQL: Support STORED GENERATED
+  * SQLite: Skip renaming when recreating table if not necessary
+  * SQLite: Preserve auto increment when recreating table
+  * SQLite: Allow setting auto increment for empty tables
+  * Remove extra space in alter table command
+  * SQLite: Handle error in altering table (bug #697)
+  * init mancave-hever design
+  * MySQL: Allow editing rows identified by negative floats (bug #695)
+  * added floating footer css for adminer-theme-mancave2-2.1.alpha
+  * Add a comment (bug #691)
+  * Use is_numeric()
+  * Support MariaDB virtual columns
+  * MySQL: Speed up displaying tables in large databases (bug #700)
+  * Support unquoted floats in export
+  * SQLite: Quote strings stored in integer columns in export (bug #696)
+  * MySQL: Skip editing generated columns
+  * Add AdminerLoginIp
+  * Close </ul> of logins
+
+-------------------------------------------------------------------
 Thu Jul 18 19:34:21 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 4.7.2:

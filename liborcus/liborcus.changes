@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug 23 07:23:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.1:
+  * minor bugfixes after the 0.15.0 was released
+- Remove merged patches
+  * fix-linking.patch
+  * 32bit.patch
+
+-------------------------------------------------------------------
+Fri Aug 16 10:27:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix building on SLE12
+- Add patches to fix 32bit build:
+  * fix-linking.patch
+  * 32bit.patch
+
+-------------------------------------------------------------------
+Thu Aug 15 21:40:35 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 0.15.0:
+  * Various performance improvements
+  * Multiple parser issues fixed
+  * Map and structure mode added to orcus-json
+  * Other improvements and fixes
+- bump required versions of mdds and libixion
+
+-------------------------------------------------------------------
 Thu Mar  7 14:22:33 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Add missing dependency on libboost_system-devel

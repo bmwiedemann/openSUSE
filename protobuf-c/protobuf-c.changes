@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 18 16:36:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.3.2
+  * Fix proto3 repeated scalar field default packing behavior
+  * Fix out-of-bounds read in scan_length_prefixed_data()
+- Remove protobuf-c-namespace.patch (merged)
+
+-------------------------------------------------------------------
 Fri Jun  7 13:45:12 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Add protobuf-c-namespace.patch to fix building with protobuf

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 28 02:02:23 UTC 2019 - psimons@suse.com
+
+- Update bifunctors to version 5.5.5.
+  5.5.5 [2019.08.27]
+  ------------------
+  * Add `Eq{1,2}`, `Ord{1,2}`, `Read{1,2}`, and `Show{1,2}` instances for data
+    types in the `Data.Bifunctor.*` module namespace where possible. The
+    operative phrase is "where possible" since many of these instances require
+    the use of `Eq2`/`Ord2`/`Read2`/`Show2`, which are not avaiable when
+    built against `transformers-0.4.*`.
+
+-------------------------------------------------------------------
 Tue Jun 11 14:29:08 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file for more accurate build dependencies.

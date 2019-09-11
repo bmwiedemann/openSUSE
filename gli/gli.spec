@@ -29,8 +29,8 @@ Source:         https://github.com/g-truc/%{name}/archive/%{version}.tar.gz#/%{n
 Patch1:         gli-cmake-config.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 BuildRequires:  glm-devel
+BuildRequires:  pkgconfig
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
@@ -46,16 +46,15 @@ GLI provides classes and functions to load image files (KTX and DDS),
 facilitate graphics APIs texture creation, compare textures, access texture
 texels, sample textures, convert textures, generate mipmaps, etc.
 
-This library works perfectly with OpenGL or Vulkan but it also ensures
-interoperability with other third party libraries and SDK. It is a good
+This library works with OpenGL or Vulkan but also ensures
+interoperability with other third-party libraries and SDKs. It is a
 candidate for software rendering (raytracing / rasterisation), image
-processing, image based software testing or any development context that
-requires a simple and convenient image library.
+processing, image-based software testing or any development context that
+requires an image library.
 
 %package        devel
-Summary:        Header only C++ image library for graphics software
+Summary:        Header-only C++ image library for graphics software
 Group:          Development/Libraries/C and C++
-Requires:       cmake
 
 %description    devel
 OpenGL Image (GLI) is a header only C++ image library for graphics software.
@@ -64,11 +63,11 @@ GLI provides classes and functions to load image files (KTX and DDS),
 facilitate graphics APIs texture creation, compare textures, access texture
 texels, sample textures, convert textures, generate mipmaps, etc.
 
-This library works perfectly with OpenGL or Vulkan but it also ensures
-interoperability with other third party libraries and SDK. It is a good
+This library works with OpenGL or Vulkan but also ensures
+interoperability with other third-party libraries and SDKs. It is a
 candidate for software rendering (raytracing / rasterisation), image
-processing, image based software testing or any development context that
-requires a simple and convenient image library.
+processing, image-based software testing or any development context that
+requires an image library.
 
 %package        doc
 Summary:        Documentation for GLI library

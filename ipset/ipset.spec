@@ -25,12 +25,13 @@
 %define ipset_build_kmp 0
 %endif
 Name:           ipset
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        Netfilter ipset administration utility
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://ipset.netfilter.org/
+URL:            http://ipset.netfilter.org/
+
 #Git-Clone:	git://git.netfilter.org/ipset
 #Git-Web:	http://git.netfilter.org/
 Source:         http://ipset.netfilter.org/%name-%version.tar.bz2
@@ -58,7 +59,7 @@ when matching an entry against a set.
 
 ipset can:
 * store multiple IP addresses or port numbers and match against the
-  collection by iptables at one swoop;
+  collection by iptables in one swoop;
 * dynamically update iptables rules against IP addresses or ports
   without performance penalty;
 * express complex IP address and ports based rulesets with one single

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 23 12:40:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.2.0
+  * The survey code has been re-enabled for this version: it sends
+    basic info about the operating system but no private data:
+    the number of CPU cores, the graphics card, and supported
+    OpenGL/Vulkan versions.
+  * Restored original vanilla behavior of Lost Souls' charging
+    attack.
+  * Exposed Append() method to ZScript dynamic array
+  * Fixed an inconsistency with missiles bouncing off actors.
+  * Added A_SoundPitch and an optional pitch parameter to
+    A_PlaySound and S_Sound.
+  * Attachable dynamic lights with ZScript or DECORATE.
+- Drop _service and gzdoom-wadsrc-extra.patch,
+  both unused since 4.1.3.
+
+-------------------------------------------------------------------
+Fri Aug 23 12:28:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Turn off LTO, it is broken. [boo#1142267]
+
+-------------------------------------------------------------------
 Sun Jun  9 11:31:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 4.1.3

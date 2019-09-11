@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sereal
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           perl-Sereal
-Version:        4.005
+Version:        4.007
 Release:        0
 %define cpan_name Sereal
-Summary:        Binary (de-)serialization module for Perl
+Summary:        Binary serialization module for Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
@@ -30,13 +30,13 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Sereal::Decoder) >= 4.005
-BuildRequires:  perl(Sereal::Encoder) >= 4.005
+BuildRequires:  perl(Sereal::Decoder) >= 4.007
+BuildRequires:  perl(Sereal::Encoder) >= 4.007
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 4.005
-Requires:       perl(Sereal::Encoder) >= 4.005
+Requires:       perl(Sereal::Decoder) >= 4.007
+Requires:       perl(Sereal::Encoder) >= 4.007
 %{perl_requires}
 
 %description
@@ -67,8 +67,7 @@ https://github.com/Sereal/Sereal/wiki/Sereal-Comparison-Graphs.
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-# Don't use smp_flags!
-make
+make %{?_smp_mflags}
 
 %check
 make test

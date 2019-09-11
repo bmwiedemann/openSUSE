@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           neofetch
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        CLI system information tool written in BASH
 License:        MIT

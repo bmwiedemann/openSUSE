@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  4 19:12:01 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.101.4:
+  * CVE-2019-12900: An out of bounds write in the NSIS bzip2
+    (boo#1149458)
+  * CVE-2019-12625: Introduce a configurable time limit to mitigate
+    zip bomb vulnerability completely. Default is 2 minutes,
+    configurable useing the clamscan --max-scantime and for clamd
+    using the MaxScanTime config option (boo#1144504)
+
+-------------------------------------------------------------------
 Tue Aug  6 15:34:08 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Update to version 0.101.3:

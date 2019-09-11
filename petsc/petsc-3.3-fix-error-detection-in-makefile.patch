@@ -1,15 +1,11 @@
----
- makefile |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 --- a/makefile
 +++ b/makefile
-@@ -32,7 +32,7 @@ all: chk_makej
+@@ -38,7 +38,7 @@
  	   ${OMAKE} PETSC_ARCH=${PETSC_ARCH} PETSC_DIR=${PETSC_DIR} all-legacy-local 2>&1 | tee -a ${PETSC_ARCH}/lib/petsc/conf/make.log \
                  | ${GREP} -v "has no symbols"; \
  	 fi
 -	@egrep -i "( error | error: |no such file or directory)" ${PETSC_ARCH}/lib/petsc/conf/make.log | tee ${PETSC_ARCH}/lib/petsc/conf/error.log > /dev/null
 +	@egrep -i "( error |: error: |no such file or directory)" ${PETSC_ARCH}/lib/petsc/conf/make.log | tee ${PETSC_ARCH}/lib/petsc/conf/error.log > /dev/null
- 	@if test -s ${PETSC_ARCH}/lib/petsc/conf/error.log; then \
+ 	+@if test -s ${PETSC_ARCH}/lib/petsc/conf/error.log; then \
             printf ${PETSC_TEXT_HILIGHT}"**************************ERROR*************************************\n" 2>&1 | tee -a ${PETSC_ARCH}/lib/petsc/conf/make.log; \
             echo "  Error during compile, check ${PETSC_ARCH}/lib/petsc/conf/make.log" 2>&1 | tee -a ${PETSC_ARCH}/lib/petsc/conf/make.log; \

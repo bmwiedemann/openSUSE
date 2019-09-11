@@ -1,7 +1,7 @@
 #
 # spec file for package smc-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  gcc-32bit
 %endif
 
 Name:           smc-tools
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0
@@ -75,11 +75,14 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %set_permissions %{_libdir}/libsmc-preload.so
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.smctools
+%{_bindir}/smc_dbg
 %{_bindir}/smc_pnet
 %{_bindir}/smc_run
+%ifarch s390 s390x
+%{_bindir}/smc_rnics
+%endif
 %{_bindir}/smcss
 %{_libdir}/libsmc-preload.so
 %if 0%{?have_32bit}
@@ -87,6 +90,9 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %endif
 %{_mandir}/man7/af_smc.7%{?ext_man}
 %{_mandir}/man8/smc_pnet.8%{?ext_man}
+%ifarch s390 s390x
+%{_mandir}/man8/smc_rnics.8%{?ext_man}
+%endif
 %{_mandir}/man8/smc_run.8%{?ext_man}
 %{_mandir}/man8/smcss.8%{?ext_man}
 

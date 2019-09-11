@@ -1,7 +1,7 @@
 #
 # spec file for package tiger-types
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,11 @@ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
 
 %description
-Tiger-types is a type arithmetic library for Java5.
+This library provides functions that perform type arithemtic over the
+type system of Java5. For example, one can compute that List<String>
+is a sub-type of Collection<String> but not Collection<Object>, you
+can compute the erasure of java.lang.reflect.Type, or you can
+determine the array component type T from A[T].
 
 %package javadoc
 Summary:        Javadoc for %{name}

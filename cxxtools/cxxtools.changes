@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 11:44:01 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- disable LTO as bypass boo#1148335
+
+-------------------------------------------------------------------
 Wed Jan 11 11:53:07 UTC 2017 - dmueller@suse.com
 
 - set atomictype to pthread for aarch64

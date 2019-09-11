@@ -19,7 +19,7 @@
 %define major 1
 %define libname lib%{name}%{major}
 Name:           zstd
-Version:        %{major}.4.2
+Version:        %{major}.4.3
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only

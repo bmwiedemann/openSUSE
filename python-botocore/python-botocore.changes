@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Thu Aug 22 13:02:51 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.12.213 (bsc#1146853, bsc#1146854)
+  * api-change:``forecast``: Update forecast client to latest version
+  * api-change:``forecastquery``: Update forecastquery client to latest version
+  * api-change:``personalize-runtime``: Update personalize-runtime client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+  * api-change:``rekognition``: Update rekognition client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``sqs``: Update sqs client to latest version
+- from version 1.12.212
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``transfer``: Update transfer client to latest version
+  * api-change:``appstream``: Update appstream client to latest version
+  * api-change:``alexaforbusiness``: Update alexaforbusiness client to latest version
+- from version 1.12.211
+  * api-change:``appmesh``: Update appmesh client to latest version
+  * api-change:``cur``: Update cur client to latest version
+- from version 1.12.210
+  * api-change:``robomaker``: Update robomaker client to latest version
+  * api-change:``emr``: Update emr client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.12.209
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``appmesh``: Update appmesh client to latest version
+  * api-change:``athena``: Update athena client to latest version
+  * api-change:``codecommit``: Update codecommit client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``storagegateway``: Update storagegateway client to latest version
+- from version 1.12.208
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.12.207
+  * api-change:``appsync``: Update appsync client to latest version
+- from version 1.12.206
+  * api-change:``autoscaling``: Update autoscaling client to latest version
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``application-autoscaling``: Update application-autoscaling client to latest version
+  * api-change:``rekognition``: Update rekognition client to latest version
+- from version 1.12.205
+  * api-change:``guardduty``: Update guardduty client to latest version
+  * api-change:``lex-runtime``: Update lex-runtime client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+  * api-change:``iot``: Update iot client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.12.204
+  * api-change:``lakeformation``: Update lakeformation client to latest version
+  * api-change:``opsworkscm``: Update opsworkscm client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+- from version 1.12.203
+  * api-change:``application-insights``: Update application-insights client to latest version
+- from version 1.12.202
+  * api-change:``batch``: Update batch client to latest version
+- from version 1.12.201
+  * api-change:``datasync``: Update datasync client to latest version
+  * api-change:``iot``: Update iot client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version  1.12.200
+  * api-change:``sts``: Update sts client to latest version
+  * enhancement:Credentials: Add support for a credential provider that
+    handles resolving credentials via STS AssumeRoleWithWebIdentity
+- from version 1.12.199
+  * api-change:``polly``: Update polly client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+  * api-change:``route53``: Update route53 client to latest version
+- from version 1.12.198
+  * bugfix:S3: Fix an issue that would cause S3 list_object_versions to
+    sometimes fail parsing responses with certain key values.
+  * api-change:``codecommit``: Update codecommit client to latest version
+- from version 1.12.197
+  * api-change:``ce``: Update ce client to latest version
+  * api-change:``greengrass``: Update greengrass client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``logs``: Update logs client to latest version
+  * api-change:``mediaconnect``: Update mediaconnect client to latest version
+  * api-change:``batch``: Update batch client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.12.196
+  * api-change:``medialive``: Update medialive client to latest version
+  * api-change:``ecr``: Update ecr client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.12.195
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``sts``: Update sts client to latest version
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+  * api-change:``glue``: Update glue client to latest version
+- from version 1.12.194
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``secretsmanager``: Update secretsmanager client to latest version
+- from version 1.12.193
+  * api-change:``mq``: Update mq client to latest version
+  * api-change:``shield``: Update shield client to latest version
+- from version 1.12.192
+  * bugfix:Dependency: Fixed dependency issue with broken docutils
+    aws/aws-cli`#4332 <https://github.com/boto/botocore/issues/4332>`__
+- from version 1.12.191
+  * api-change:``sqs``: Update sqs client to latest version
+  * api-change:``iotevents``: Update iotevents client to latest version
+- from version 1.12.190
+  * api-change:``comprehend``: Update comprehend client to latest version
+  * api-change:``codedeploy``: Update codedeploy client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.12.189
+  * api-change:``config``: Update config client to latest version
+  * api-change:``dms``: Update dms client to latest version
+  * api-change:``autoscaling``: Update autoscaling client to latest version
+- Refresh patches for new version
+  + hide_py_pckgmgmt.patch
+
+-------------------------------------------------------------------
 Tue Jul 16 06:11:18 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.12.188

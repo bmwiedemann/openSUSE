@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 9 20:06:57 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 4.1. See systemtap.spec for changelog
+- Remove systemtap-exporter files (built due to BuildRequires: python3-devel)
+
+-------------------------------------------------------------------
 Fri Aug  3 16:50:41 UTC 2018 - sschricker@suse.de
 
 - Upgrade to version 3.3:

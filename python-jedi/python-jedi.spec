@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jedi
-Version:        0.14.1
+Version:        0.15.1
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -54,7 +54,7 @@ implementation as a VIM plugin which uses Jedi's autocompletion.
 %prep
 %setup -q -n jedi-%{version}
 %patch0 -p1
-rm -Rf jedi/third_party 
+rm -Rf jedi/third_party
 
 %build
 %python_build

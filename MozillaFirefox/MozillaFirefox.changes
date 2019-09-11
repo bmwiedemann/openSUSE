@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Aug 30 20:49:11 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 68.1.0
+  MFSA 2019-26
+  * CVE-2019-11751 (bmo#1572838; Windows only)
+    Malicious code execution through command line parameters
+  * CVE-2019-11746 (bmo#1564449)
+    Use-after-free while manipulating video
+  * CVE-2019-11744 (bmo#1562033)
+    XSS by breaking out of title and textarea elements using innerHTML
+  * CVE-2019-11742 (bmo#1559715)
+    Same-origin policy violation with SVG filters and canvas to steal
+    cross-origin images
+  * CVE-2019-11736 (bmo#1551913, bmo#1552206; Windows only))
+    File manipulation and privilege escalation in Mozilla Maintenance Service
+  * CVE-2019-11753 (bmo#1574980; Windows only)
+    Privilege escalation with Mozilla Maintenance Service in custom
+    Firefox installation location
+  * CVE-2019-11752 (bmo#1501152)
+    Use-after-free while extracting a key value in IndexedDB
+  * CVE-2019-9812 (bmo#1538008, bmo#1538015)
+    Sandbox escape through Firefox Sync
+  * CVE-2019-11743 (bmo#1560495)
+    Cross-origin access to unload event attributes
+  * CVE-2019-11748 (bmo#1564588)
+    Persistence of WebRTC permissions in a third party context
+  * CVE-2019-11749 (bmo#1565374)
+    Camera information available without prompting using getUserMedia
+  * CVE-2019-11750 (bmo#1568397)
+    Type confusion in Spidermonkey
+  * CVE-2019-11738 (bmo#1452037)
+    Content security policy bypass through hash-based sources in directives
+  * CVE-2019-11747 (bmo#1564481)
+    'Forget about this site' removes sites from pre-loaded HSTS list
+  * CVE-2019-11735i (bmo#1561404,bmo#1561484,bmo#1568047,bmo#1561912,
+    bmo#1565744,bmo#1568858,bmo#1570358)
+    Memory safety bugs fixed in Firefox 69 and Firefox ESR 68.1
+  * CVE-2019-11740 (bmo#1563133,bmo#1573160)
+    Memory safety bugs fixed in Firefox 69, Firefox ESR 68.1, and Firefox ESR 60.9
+- switched package to ESR branch
+- added mozilla-bmo1568145.patch to make builds reproducible
+- removed upstreamed patch mozilla-gcc-internal-compiler-error.patch
+
+-------------------------------------------------------------------
+Sun Aug 18 17:29:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 68.0.2:
+  * Fixed a bug causing some special characters to be cut off from
+    the end of the search terms when searching from the URL bar
+    (bmo#1560228)
+  * Allow fonts to be loaded via file:// URLs when opening a page
+    locally (bmo#1565942)
+  * Printing emails from the Outlook web app no longer prints only
+    the header and footer (bmo#1567105)
+  * Fixed a bug causing some images not to be displayed on reload,
+    including on Google Maps (bmo# 1565542)
+  * Fixed an error when starting external applications configured
+    as URI handlers (bmo#1567614)
+  MFSA 2019-24 (boo#1145665)
+  * CVE-2019-11733: Stored passwords in 'Saved Logins' can be
+    copied without master password entry (bmo#1565780)
+- drop fix-build-after-y2038-changes-in-glibc.patch, upstream
+
+-------------------------------------------------------------------
+Fri Aug 16 16:49:24 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Fix crash when typing in the URL bar on ppc64le (bmo#1512162).
+  The upstream patch doesn't resolve the issue on TW, but compiling
+  with -O1 does. Do this until we have a proper fix.
+
+-------------------------------------------------------------------
 Thu Aug  1 14:25:02 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update build constraints to fix arm builds

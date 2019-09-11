@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tpm2.0-abrmd
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Intel's TCG Software Stack Access Broker & Resource Manager for TPM 2.0 chips
 License:        BSD-2-Clause

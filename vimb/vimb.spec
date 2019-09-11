@@ -35,7 +35,7 @@ plugin for Firefox, and has usage paradigms from the editor vim.
 %setup -q
 
 %build
-make %{?_smp_mflags}
+make %{?_smp_mflags} PREFIX=%{_prefix}
 
 %install
 %make_install PREFIX=%{_prefix}

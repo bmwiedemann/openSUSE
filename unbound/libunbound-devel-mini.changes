@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Aug 27 18:33:04 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.9.3
+
+Features:
+- PR #28: IPSet module, by Kevin Chou.  Created a module to support
+  the ipset that could add the domain's ip to a list easily.
+  Needs libmnl, and --enable-ipset and config it, doc/README.ipset.md.
+- Merge PR #6: Python module: support multiple instances
+- Merge PR #5: Python module: define constant MODULE_RESTART_NEXT
+- Merge PR #4: Python module: assign something useful to the
+  per-query data store 'qdata'
+- Introduce `-V` option to print the version number and build options.
+  Previously reported build options like linked libs and linked modules
+  are now moved from `-h` to `-V` as well for consistency.
+- PACKAGE_BUGREPORT now also includes link to GitHub issues.
+
+Bug Fixes:
+- Fix #39: In libunbound, leftover logfile is close()d unpredictably.
+- Fix for #24: Fix abort due to scan of auth zone masters using old
+  address from previous scan.
+- Fix to omit RRSIGs from addition to the ipset.
+- Fix to make unbound-control with ipset, remove unused variable,
+  use unsigned type because of comparison, and assign null instead
+  of compare with it.  Remade lex and yacc output.
+- make depend
+- Added documentation to the ipset files (for doxygen output).
+- Fix python dict reference and double free in config.
+- Fix memleak in unit test, reported from the clang 8.0 static analyzer.
+- For #45, check that 127.0.0.1 and ::1 are not used in unbound.conf
+  when do-not-query-localhost is turned on, or at default on,
+  unbound-checkconf prints a warning if it is found in forward-addr or
+  stub-addr statements.
+- Fix for possible assertion failure when answering respip CNAME from
+  cache.
+- Fix in respip addrtree selection. Absence of addr_tree_init_parents()
+  call made it impossible to go up the tree when the matching netmask is
+  too specific.
+- Fix #48: Unbound returns additional records on NODATA response,
+  if minimal-responses is enabled, also the additional for negative
+  responses is removed.
+- Fix #49: Set no renegotiation on the SSL context to stop client
+  session renegotiation.
+- Fix question section mismatch in local zone redirect.
+- Add verbose log message when auth zone file is written, at level 4.
+- Add hex print of trust anchor pointer to trust anchor file temp
+  name to make it unique, for libunbound created multiple contexts.
+- For #52 #53, second context does not close logfile override.
+- Fix #52 #53, fix for example fail program.
+- Fix to return after failed auth zone http chunk write.
+- Fix to remove unused test for task_probe existance.
+- Fix to timeval_add for remaining second in microseconds.
+- Check repinfo in worker_handle_request, if null, drop it.
+- Generate configlexer with newer flex.
+- Fix warning for unused variable for compilation without systemd.
+- Fix #59, when compiled with systemd support check that we can properly
+  communicate with systemd through the `NOTIFY_SOCKET`.
+- iana portlist updated.
+- Fix autotrust temp file uniqueness windows compile.
+- avoid warning about upcast on 32bit systems for autotrust.
+- escape commandline contents for -V.
+- Fix character buffer size in ub_ctx_hosts.
+- Option -V prints if TCP fastopen is available.
+- Fix unittest valgrind false positive uninitialised value report,
+  where if gcc 9.1.1 uses -O2 (but not -O1) then valgrind 3.15.0
+  issues an uninitialised value for the token buffer at the str2wire.c
+  rrinternal_get_owner() strcmp with the '@' value.  Rewritten to use
+  straight character comparisons removes the false positive.  Also
+  valgrinds --expensive-definedness-checks=yes can stop this false
+  positive.
+- Please doxygen's parser for "@" occurrence in doxygen comment.
+- Fixup contrib/fastrpz.patch
+- Remove warning about unknown cast-function-type warning pragma.
+- Document limitation of pidfile removal outside of chroot directory.
+- Fix log_dns_msg to log irrespective of minimal responses config.
+- Fix that pkg-config is setup before --enable-systemd needs it.
+
+-------------------------------------------------------------------
 Mon Jul 29 11:34:13 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update the Conflict in libunbound-devel-mini after the library

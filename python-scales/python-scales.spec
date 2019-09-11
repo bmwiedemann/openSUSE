@@ -1,7 +1,7 @@
 #
 # spec file for package python-scales
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://www.github.com/Cue/scales
 Source:         https://files.pythonhosted.org/packages/source/s/scales/scales-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/Cue/scales/master/LICENSE
+Patch0:         python38.patch
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -40,6 +41,7 @@ Statistic generator for python processes
 
 %prep
 %setup -q -n scales-%{version}
+%patch0 -p1
 cp %{SOURCE99} .
 
 %build

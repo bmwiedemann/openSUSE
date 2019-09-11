@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 22 18:28:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable LTO because it's broken.
+
+-------------------------------------------------------------------
+Sun Aug 18 16:29:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.23 [boo#1144068]
+  * Fixed a bug where POST_RECV_MESSAGE was not being triggered.
+  * Renamed root certificate bundle in gRPC-C++ pod.
+  * Increased lower bound on DNS re-resolution period to 30 seconds.
+  * Fixed a segfault when forking while using gevent.
+  * Added channel idleness support
+  * Added threadpool support
+
+-------------------------------------------------------------------
 Wed Jun  5 18:52:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.21.3

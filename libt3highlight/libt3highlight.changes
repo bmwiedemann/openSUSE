@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 19:43:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.4.8
+  * These releases fixes incorrect calls to free when validation of
+    highlight data failed.
+
+-------------------------------------------------------------------
 Mon Jan  7 13:21:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.4.6

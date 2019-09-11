@@ -17,7 +17,7 @@
 
 
 Name:           vapoursynth
-Version:        46
+Version:        47
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only AND OFL-1.1
@@ -31,7 +31,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
 BuildRequires:  pkgconfig(Magick++) >= 7.0
@@ -41,7 +40,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tesseract)
-BuildRequires:  pkgconfig(zimg)
+BuildRequires:  pkgconfig(zimg) >= 2.9.2
 
 %description
 VapourSynth is a library for video manipulation. It has a core

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:50:46 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.28.0:
+  * RAW datagrams in SAM
+  * Publishing encrypted LeaseSet2 with DH or PSH authentication
+  * Ability to disable battery optimization for Android
+  * Transport Network ID Check
+  * Set and handle published encrypted flag for LeaseSet2
+  * ReceiveID changes in the same stream
+  * "\r\n" command terminator in SAM
+  * Addressbook lines with signatures
+
+-------------------------------------------------------------------
 Thu Jul  4 21:55:21 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.27.0:

@@ -1,7 +1,7 @@
-Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginInternal.hpp
+Index: zynaddsubfx-3.0.5/DPF/distrho/src/DistrhoPluginInternal.hpp
 ===================================================================
---- zynaddsubfx-3.0.4.orig/DPF/distrho/src/DistrhoPluginInternal.hpp	2019-03-29 11:24:06.206811179 +0200
-+++ zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginInternal.hpp	2019-03-29 11:24:33.215930513 +0200
+--- zynaddsubfx-3.0.5.orig/DPF/distrho/src/DistrhoPluginInternal.hpp	2019-03-29 11:24:06.206811179 +0200
++++ zynaddsubfx-3.0.5/DPF/distrho/src/DistrhoPluginInternal.hpp	2019-03-29 11:24:33.215930513 +0200
 @@ -43,6 +43,7 @@ struct Plugin::PrivateData {
  #endif
  
@@ -55,10 +55,10 @@ Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginInternal.hpp
      uint32_t getParameterHints(const uint32_t index) const noexcept
      {
          DISTRHO_SAFE_ASSERT_RETURN(fData != nullptr && index < fData->parameterCount, 0x0);
-Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp
+Index: zynaddsubfx-3.0.5/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp
 ===================================================================
---- zynaddsubfx-3.0.4.orig/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp	2019-03-29 11:24:06.206811179 +0200
-+++ zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp	2019-03-29 11:24:33.215930513 +0200
+--- zynaddsubfx-3.0.5.orig/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp	2019-03-29 11:24:06.206811179 +0200
++++ zynaddsubfx-3.0.5/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp	2019-03-29 11:24:33.215930513 +0200
 @@ -331,7 +331,12 @@ public:
  
      int dssi_get_midi_controller_for_port(const ulong port) noexcept
@@ -73,10 +73,10 @@ Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLADSPA+DSSI.cpp
  
          if (midiCC == 0 || midiCC == 32 || midiCC >= 0x78)
              return DSSI_NONE;
-Index: zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLV2export.cpp
+Index: zynaddsubfx-3.0.5/DPF/distrho/src/DistrhoPluginLV2export.cpp
 ===================================================================
---- zynaddsubfx-3.0.4.orig/DPF/distrho/src/DistrhoPluginLV2export.cpp	2019-03-29 11:24:06.206811179 +0200
-+++ zynaddsubfx-3.0.4/DPF/distrho/src/DistrhoPluginLV2export.cpp	2019-03-29 11:24:33.215930513 +0200
+--- zynaddsubfx-3.0.5.orig/DPF/distrho/src/DistrhoPluginLV2export.cpp	2019-03-29 11:24:06.206811179 +0200
++++ zynaddsubfx-3.0.5/DPF/distrho/src/DistrhoPluginLV2export.cpp	2019-03-29 11:24:33.215930513 +0200
 @@ -1,6 +1,6 @@
  /*
   * DISTRHO Plugin Framework (DPF)

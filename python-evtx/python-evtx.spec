@@ -27,7 +27,7 @@ URL:            https://github.com/williballenthin/python-evtx
 Source:         https://github.com/williballenthin/python-evtx/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes

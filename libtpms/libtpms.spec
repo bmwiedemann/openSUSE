@@ -18,7 +18,7 @@
 
 %define lname libtpms0
 Name:           libtpms
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Library providing Trusted Platform Module (TPM) functionality
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ Url:            https://github.com/stefanberger/libtpms
 Source0:        https://github.com/stefanberger/libtpms/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  mozilla-nspr-devel
 BuildRequires:  openssl-devel

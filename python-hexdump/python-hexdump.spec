@@ -20,7 +20,7 @@
 Name:           python-hexdump
 Version:        3.3
 Release:        0
-Summary:        Dump Binary Data
+Summary:        Python tool to dump binary data
 License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/techtonik/hexdump/
@@ -34,7 +34,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-View/edit your binary with any text editor.
+This utility converts between the raw representation and a
+byte-based hexdump representation.
+
+The display is equivalent to the output of the `hexdump -C` command, but
+it requires a Python runtime.
 
 %prep
 %setup -q -c -n hexdump-%{version}

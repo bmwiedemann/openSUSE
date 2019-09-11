@@ -25,11 +25,11 @@ Group:          System/GUI/GNOME
 Url:            http://gobby.0x539.de/
 Source:         http://releases.0x539.de/sobby/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  glibmm2-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libavahi-glib-devel
 BuildRequires:  obby-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(libxml++-2.6)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

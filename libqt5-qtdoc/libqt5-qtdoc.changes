@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:04:03 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt.git/plain/dist/changes-5.13.1/?h=v5.13.1
+
+-------------------------------------------------------------------
+Thu Aug 29 14:21:56 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Explicitly BuildRequire libqt5-qttools and libqt5-qttools-doc, no
+  longer pulled in by libqt5-qttools-devel.
+
+-------------------------------------------------------------------
 Wed Jun 19 11:23:47 UTC 2019 - fabian@ritter-vogt.de
 
 - Update to 5.13.0:

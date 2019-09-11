@@ -30,10 +30,10 @@ Change-Id: Iac2c6810fa260ad214abde8db733793ac914acda
  crypto/cipher_extra/aead_test.cc | 20 +++++++++++++-------
  1 file changed, 13 insertions(+), 7 deletions(-)
 
-diff --git a/crypto/cipher_extra/aead_test.cc b/crypto/cipher_extra/aead_test.cc
-index fff7d4397..906a5acc0 100644
---- a/crypto/cipher_extra/aead_test.cc
-+++ b/crypto/cipher_extra/aead_test.cc
+Index: boringssl-20190523/crypto/cipher_extra/aead_test.cc
+===================================================================
+--- boringssl-20190523.orig/crypto/cipher_extra/aead_test.cc
++++ boringssl-20190523/crypto/cipher_extra/aead_test.cc
 @@ -29,6 +29,12 @@
  #include "../test/test_util.h"
  #include "../test/wycheproof_util.h"
@@ -89,6 +89,3 @@ index fff7d4397..906a5acc0 100644
    OPENSSL_memset(key, 'K', sizeof(key));
  
    bssl::ScopedEVP_AEAD_CTX ctx;
--- 
-2.21.0
-

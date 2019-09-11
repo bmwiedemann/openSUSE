@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:22:12 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.daily, as this is now part of cron and we
+  don' want to hard require cron.
+
+-------------------------------------------------------------------
 Wed Feb  6 09:04:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove useless -n of %prep.

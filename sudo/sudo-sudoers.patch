@@ -37,7 +37,7 @@ Index: sudo-1.8.14p3/plugins/sudoers/sudoers.in
 +Defaults secure_path="/usr/sbin:/usr/bin:/sbin:/bin"
 +Defaults env_reset
 +## Change env_reset to !env_reset in previous line to keep all environment variables
-+## Following list will no longer be nevessary after this change
++## Following list will no longer be necessary after this change
 +Defaults env_keep = "LANG LC_ADDRESS LC_CTYPE LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE LC_ATIME LC_ALL LANGUAGE LINGUAS XDG_SESSION_COOKIE"
 +## Comment out the preceding line and uncomment the following one if you need
 +## to use special input methods. This may allow users to compromise the root

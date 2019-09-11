@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep  5 22:21:03 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Add apparmor-abstractions as a required package for daemon
+  bsc#1142992
+
+-------------------------------------------------------------------
+Wed Sep  4 20:54:24 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.7.0
+  - Experimental split of libvirtd into separate daemons
+  - bsc#1145440, bsc#1145586
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    93c1d5fe-network-fix-ability-to-use-openvswitch-with-vlans.patch,
+    blockcopy-check-dst-identical-device.patch,
+    suse-libvirtd-service-xen.patch
+
+-------------------------------------------------------------------
 Thu Aug 15 19:54:20 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - network: fix ability to use openvswitch with vlans (bsc#1145651)

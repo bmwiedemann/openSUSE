@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(uuid)
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
 Recommends:     logrotate

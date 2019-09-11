@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 21 07:56:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 2019.5~git11
+  * Add builtin validation for SPV_NV_shader_sm_builtins
+  * Add transformation to replace a boolean constant with a
+    numeric comparison
+  * Add validation for Subgroup builtins
+  * Add replayer tool for spirv-fuzz
+  * Validate Volatile memory semantics bit
+  * Add validation for SPV_EXT_demote_to_helper_invocation
+  * Add 'copy object' transformation
+  * Add SPV_EXT_physical_storage_buffer to opt whitelists
+  * Add descriptor array scalar replacement
+
+-------------------------------------------------------------------
 Tue Jun  4 12:23:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new snapshot 2019.4~git33

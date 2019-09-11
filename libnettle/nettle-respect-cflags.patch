@@ -1,8 +1,8 @@
-Index: nettle-3.2/Makefile.in
+Index: nettle-3.5.1/Makefile.in
 ===================================================================
---- nettle-3.2.orig/Makefile.in
-+++ nettle-3.2/Makefile.in
-@@ -278,27 +278,27 @@ $(LIBHOGWEED_FORLINK): $(hogweed_OBJS) $
+--- nettle-3.5.1.orig/Makefile.in
++++ nettle-3.5.1/Makefile.in
+@@ -290,27 +290,27 @@ $(LIBHOGWEED_FORLINK): $(hogweed_OBJS) $
  # executable. Avoid object file targets to make it easy to run the
  # right compiler.
  aesdata$(EXEEXT_FOR_BUILD): aesdata.c
@@ -35,4 +35,4 @@ Index: nettle-3.2/Makefile.in
 +	$(CC_FOR_BUILD) $(CFLAGS) `test -f eccdata.c || echo '$(srcdir)/'`eccdata.c \
  	-o eccdata$(EXEEXT_FOR_BUILD)
  
- # desCore rules
+ eccparams$(EXEEXT_FOR_BUILD): eccparams.c

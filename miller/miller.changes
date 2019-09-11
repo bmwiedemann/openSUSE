@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Sep  1 06:34:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.5.0
+  * Positional indexing and other data-cleaning features
+    Features:
+  * The new positional-indexing feature resolves #236 from
+    @aborruso. You can now get the name of the 3rd field of each
+    record via $[[3]], and its value by $[[[3]]]. These are both
+    usable on either the left-hand or right-hand side of assignment
+    statements, so you can more easily do things like renaming
+    fields progrmatically within the DSL.
+  * There is a new capitalize DSL function, complementing the
+    already-existing toupper. This stems from #236.
+  * There is a new skip-trivial-records verb, resolving #197.
+    Similarly, there is a new remove-empty-columns verb, resolving
+    #206. Both are useful for data-cleaning use-cases.
+  * Another pair is #181 and #256. While Miller uses mmap
+    internally (and invisibily) to get approximately a 20%
+    performance boost over not using it, this can cause
+    out-of-memory issues with reading either large files, or too
+    many small ones. Now, Miller automatically avoids mmap in these
+    cases. You can still use --mmap or --no-mmap if you want manual
+    control of this.
+  * There is a new --ivar option for the nest verb which
+    complements the already-existing --evar. This is from #260
+    thanks to @jgreely.
+  * There is a new keystroke-saving urandrange DSL function:
+    urandrange(low, high) is the same as low + (high - low) *
+    urand().
+  * There is a new -v option for the cat verb which writes a
+    low-level record-structure dump to standard error.
+  * There is a new -N option for mlr which is a keystroke-saver
+    for --implicit-csv-header --headerless-csv-output.
+  Documentation:
+  * The new FAQ entry
+    http://johnkerl.org/miller/doc/faq.html#How_to_escape_'%3F'_in_re
+    gexes%3F resolves #203.
+  * The new FAQ entry
+    http://johnkerl.org/miller/doc/faq.html#How_can_I_filter_by_date%
+    3F resolves #208.
+  * #244 fixes a documentation issue while highlighting the need
+    for #241.
+  Bugfixes:
+  * There was a SEGV using nest within then-chains, fixed in
+    response to #220.
+  * Quotes and backslashes weren't being escaped in JSON output
+    with --jvquoteall; reported on #222.
+
+-------------------------------------------------------------------
 Mon Oct 15 07:23:57 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.4.0

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:46:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.38.2:
+  + build: Remove unnecessary argument.
+  + gif: Suppress last deprecation warning.
+  + tests:
+    - Disable deprecation warnings for GTimeVal.
+    - Add test for issue 95.
+    - Add test image for invalid XPM data.
+  + Disable deprecation warnings for GTimeVal.
+  + Use the monotonic clock instead of wall one.
+  + xpm:
+    - Fail when XPM file doesn't contain enough data.
+    - Simplify error path.
+    - Sanity check XPM file dimensions.
+
+-------------------------------------------------------------------
 Wed May  8 09:33:53 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5WaylandCompositor5
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtwayland-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtwayland-everywhere-src-5.13.1
 Name:           libqt5-qtwayland
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Qt 5 Wayland Addon
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
@@ -31,19 +31,11 @@ Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Don-t-crash-if-we-start-a-drag-without-dragFocus.patch
-# In 5.12 branch only, not merged to 5.13 yet
-Patch2:         0002-Client-Fix-stuttering-when-the-GUI-thread-is-busy.patch
 # Those aren't merged upstream yet
 # https://codereview.qt-project.org/c/qt/qtwayland/+/265999
 Patch3:         0003-Client-Don-t-send-fake-SurfaceCreated-Destroyed-even.patch
 # https://codereview.qt-project.org/c/qt/qtwayland/+/265998
 Patch4:         0004-Client-Make-handleUpdate-aware-of-exposure-changes.patch
-# https://codereview.qt-project.org/c/qt/qtwayland/+/265997
-Patch5:         0005-Client-Reset-frame-callback-timer-when-hiding-a-wind.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         0001-Fix-use-of-private-dependency.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       workaround-null-object.patch
 BuildRequires:  fdupes

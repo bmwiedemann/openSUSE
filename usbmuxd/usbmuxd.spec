@@ -12,34 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 Name:           usbmuxd
 Version:        1.1.0
 Release:        0
 Summary:        A socket daemon to multiplex connections from and to iOS devices
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Libraries
-Url:            http://cgit.sukimashita.com/usbmuxd.git
+URL:            https://cgit.sukimashita.com/usbmuxd.git
 Source:         http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
-BuildRequires:  libimobiledevice-devel >= 1.1.6
-BuildRequires:  libplist-devel >= 1.11
 BuildRequires:  libtool
-BuildRequires:  libusb-1_0-devel >= 1.0.3
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.1.6
+BuildRequires:  pkgconfig(libplist) >= 1.11
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.3
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       libusbmuxd4 >= 1.0.10
-%if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
-%endif
 Requires(pre):  shadow
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 %{?systemd_requires}
 
 %description
@@ -50,14 +47,16 @@ Usbmux is an encapsulation protocol (think IP, ATM, PPP) that allows
 multiplexing several conversations onto a single pair of wires.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure --with-udevrulesdir=%{_udevrulesdir} --with-systemdsystemunitdir=%{_unitdir}
-make %{?_smp_mflags}
+%configure \
+  --with-udevrulesdir=%{_udevrulesdir} \
+  --with-systemdsystemunitdir=%{_unitdir}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
@@ -69,7 +68,7 @@ exit 0
 %service_del_preun usbmuxd.service
 
 %post
-%{?udev_rules_update:%{udev_rules_update}}
+%{?udev_rules_update:%udev_rules_update}
 %service_add_post usbmuxd.service
 /sbin/ldconfig
 
@@ -78,9 +77,9 @@ exit 0
 /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING.GPLv2 COPYING.GPLv3 README
-%doc %{_mandir}/man1/usbmuxd.1%{?ext_man}
+%license COPYING.GPLv2 COPYING.GPLv3
+%doc AUTHORS README
+%{_mandir}/man1/usbmuxd.1%{?ext_man}
 %{_sbindir}/usbmuxd
 %{_sbindir}/rc%{name}
 %{_udevrulesdir}/39-usbmuxd.rules

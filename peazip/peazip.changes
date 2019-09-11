@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep  1 15:30:34 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.9.2
+  * improves authoring of existing archives, introducing support
+    for editing files in archives, for adding files to a specific
+    subfolder inside an existing archive and asking for
+    confirmation if items with same name exists in the archive.
+  * can now display remaining time for archiving / extraction
+    operations, and the new Windows packages improves managing
+    file associations and application's localization.
+
+-------------------------------------------------------------------
+Sun Aug 25 15:25:24 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.9.1
+  FILE MANAGER:
+  * Configure application and file associations link replicated
+    in Settings, Archive manager tab
+  * Fixes in editing files in archives
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Aug 18 16:51:33 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.9.0

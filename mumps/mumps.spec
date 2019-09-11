@@ -19,9 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mumps
-%define ver 5.1.2
+%define ver 5.2.1
 %define so_ver 5
 %define openblas_vers 0.3.6
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 %define _ver %(echo %{ver} | tr . _)
@@ -216,7 +217,7 @@ Name:           %{package_name}
 Version:        %{ver}
 Release:        0
 Url:            http://mumps.enseeiht.fr/
-Source0:        http://mumps.enseeiht.fr/MUMPS_%{version}.tar.gz#/%{pname}-%{version}.tar.bz2
+Source0:        http://mumps.enseeiht.fr/MUMPS_%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source1:        Makefile.inc
 Patch1:         Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
 %if %{without hpc}
@@ -532,6 +533,7 @@ install -m 644 PORD/include/* %{buildroot}%{my_incdir}/pord
 %endif
 install -m 755 examples/*simpletest %{buildroot}%{my_bindir}
 install -m 755 examples/c_example %{buildroot}%{my_bindir}
+install -m 755 examples/*_save_restore %{buildroot}%{my_bindir}
 
 %if %{with mpi}
  %if %{without hpc}
@@ -587,7 +589,7 @@ EOF
 %endif
 
 # Don't want binaries in docdir
-rm -rf examples/*.o examples/*simpletest examples/c_example examples/multiple_arithmetics_example
+rm -rf examples/*.o examples/*simpletest examples/*_save_restore examples/c_example examples/multiple_arithmetics_example
 
 %if !%{with mpi}
 %post -n %{libname} -p /sbin/ldconfig

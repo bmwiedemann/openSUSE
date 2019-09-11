@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  2 19:00:40 UTC 2019 - Adriaan Struys <amjsfw@gmail.com>
+
+- add obsolete for weechat-aspell
+
+-------------------------------------------------------------------
+Mon Sep  2 11:34:13 UTC 2019 - Adriaan Struys <amjsfw@gmail.com>
+
+- update to 2.5
+ * the "aspell" plugin has been renamed to "spell", a more generic term, because it supports aspell and also enchant
+ * add support of UNIX socket
+ * fix memory leaks
+ * more bugfixes and new options
+- change subpackage 'weechat-aspell' to 'weechat-spell' to reflect plugin namechange
+
+-------------------------------------------------------------------
 Mon Feb 25 11:58:23 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.4

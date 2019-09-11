@@ -1,4 +1,218 @@
 -------------------------------------------------------------------
+Wed Sep  4 12:15:46 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable build on aarch64
+
+-------------------------------------------------------------------
+Tue Sep  3 07:15:48 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20190523:
+  * Disable RDRAND on AMD chips before Zen.
+  * Always store early data tickets.
+  * Align PKCS12_parse closer to OpenSSL.
+  * Support PKCS#12 KeyBags.
+  * Support PKCS#8 blobs using PBES2 with HMAC-SHA256.
+  * Make EVP_PKEY_keygen work for Ed25519.
+  * Sync aesp8-ppc.pl with upstream.
+  * Update generate_build_files.py for SIKE.
+  * Fix the last casts in third_party/sike.
+  * Remove no-op casts around tt1.
+  * Define p503 with crypto_word_t, not uint64_t.
+  * Add support for SIKE/p503 post-quantum KEM
+  * tool: fix speed tests.
+  * Add an option to skip crypto_test_data.cc in GN too.
+  * Save and restore errors when ignoring ssl_send_alert result.
+  * Reject obviously invalid DSA parameters during signing.
+  * Make expect/expected flag and variable names match.
+  * clang-format Flag arrays in test_config.cc.
+  * Rename remnants of ticket_early_data_info.
+  * Enforce the ticket_age parameter for 0-RTT.
+  * Add SSL_get_early_data_reason.
+  * Remove implicit -on-resume for -expect-early-data-accept.
+  * Use weak symbols only on supported platforms
+  * Fix spelling in comments.
+  * Add functions for "raw" EVP_PKEY serializations.
+  * Remove stray underscores.
+  * Add a compatibility EVP_DigestFinalXOF function.
+  * Fix up EVP_DigestSign implementation for Ed25519.
+  * Check for errors when setting up X509_STORE_CTX.
+  * Convert a few more things from int to bool.
+  * Compute the delegated credentials length prefix with CBB.
+  * Convert the rest of ssl_test to GTest.
+  * Check for x18 usage in aarch64 assembly.
+  * Handle errors from close in perlasm scripts.
+  * Hold off flushing NewSessionTicket until write.
+  * Predeclare enums in base.h
+  * Require certificates under name constraints use SANs.
+  * Make X509_verify_cert_error_string thread-safe.
+  * Disable the common name fallback on *any* SAN list.
+  * Silently ignore X509_CHECK_FLAG_ALWAYS_CHECK_SUBJECT.
+  * Add X509_CHECK_FLAG_NEVER_CHECK_SUBJECT.
+  * Give ENGINE_free a return value.
+  * Output a ClientHello during handoff.
+  * Fix and test EVP_PKEY_CTX copying.
+  * Test copying an EVP_MD_CTX.
+  * Fix EVP_CIPHER_CTX_copy for AES-GCM.
+  * Check key sizes in AES_set_*_key.
+  * Add missing nonce_len check to aead_aes_gcm_siv_asm_open.
+  * Test AES-GCM-SIV with OPENSSL_SMALL.
+  * Handle CBB_cleanup on child CBBs more gracefully.
+  * Update third_party/googletest.
+  * Rename 'md' output parameter to 'out' and add bounds.
+  * Update other build tools.
+  * Update SDE to 8.35.0-2019-03-11.
+  * nit: Update references to draft-ietf-tls-subcerts.
+  * Support get versions with get_{min,max}_proto_version for context
+  * Update ImplDispatchTest for bsaes-x86_64 removal.
+  * Unwind the large_inputs hint in aes_ctr_set_key.
+  * Add an optimized x86_64 vpaes ctr128_f and remove bsaes.
+  * Add 16384 to the default bssl speed sizes.
+  * Rewrite BN_CTX.
+  * Save a temporary in BN_mod_exp_mont's w=1 case.
+  * Reject long inputs in c2i_ASN1_INTEGER.
+  * Harden the lower level parts of crypto/asn1 against overflows.
+  * Remove d2i_ASN1_UINTEGER.
+  * Drop some unused bsaes to aes_nohw dependencies.
+  * Adapt gcm_*_neon to aarch64.
+  * Patch out the aes_nohw fallback in bsaes_cbc_encrypt.
+  * Patch out the aes_nohw fallback in bsaes_ctr32_encrypt_blocks.
+  * Implement sk_find manually.
+  * Make vpaes-armv8.pl compatible with XOM.
+  * Support three-argument instructions on x86-64.
+  * Correct outdated comments
+  * Remove SSL_get_structure_sizes.
+  * Prefer vpaes over bsaes in AES-GCM-SIV and AES-CCM.
+  * Tell ASan about the OPENSSL_malloc prefix.
+  * modes/asm/ghash-armv4.pl: address "infixes are deprecated" warnings.
+  * Enable vpaes for aarch64, with CTR optimizations.
+  * Check in vpaes-armv8.pl from OpenSSL unused and unmodified.
+  * silence unused variable warnings when using OPENSSL_clear_free
+  * Handle NULL public key in |EC_KEY_set_public_key|.
+  * Add a 32-bit SSSE3 GHASH implementation.
+  * Also include abi_test.cc in ssl_test_files.
+  * Don't pull abi_test.cc into non-GTest targets.
+  * Update *_set_cert_cb documentation regarding resumption
+  * Add a reference for Linux ARM ABI.
+  * Remove __ARM_ARCH__ guard on gcm_*_v8.
+  * Fix bsaes-armv7.pl getting disabled by accident.
+  * Add an option to configure bssl speed chunk size.
+  * Appease GCC's uninitialized value warning.
+  * Set VPAES flags in x86-64 code.
+  * Enable vpaes for AES_* functions.
+  * Avoid double-dispatch with AES_* vs aes_nohw_*.
+  * Add uint64_t support in CBS and CBB.
+  * Clear out a bunch of -Wextra-semi warnings.
+  * Add compiled python files to .gitignore.
+  * Fix x86_64-xlate.pl comment regex.
+  * Add go 1.11 to go.mod.
+  * Remove STRICT_ALIGNMENT code from modes.
+  * Remove non-STRICT_ALIGNMENT code from xts.c.
+  * Patch XTS out of ARMv7 bsaes too.
+  * Remove stray prototype.
+  * Always define GHASH.
+  * Update delegated credentials to draft-03
+  * Use Windows symbol APIs in the unwind tester.
+  * Unwind RDRAND functions correctly on Windows.
+  * Patch out unused aesni-x86_64 functions.
+  * Add ABI tests for aesni-gcm-x86_64.pl.
+  * Add ABI tests for x86_64-mont5.pl.
+  * sync EVP_get_cipherbyname with EVP_do_all_sorted
+  * Hyperlink DOI to preferred resolver
+  * Remove stray semicolons.
+  * Remove separate default group list for servers.
+  * Enable all curves (inc CECPQ2) during fuzzing.
+  * Implement ABI testing for aarch64.
+  * Fix ABI error in bn_mul_mont on aarch64.
+  * Implement ABI testing for ARM.
+  * Fix the order of Windows unwind codes.
+  * Implement unwind testing for Windows.
+  * Tolerate spaces when parsing .type directives.
+  * runner: Don't generate an RSA key on startup.
+  * Don't use bsaes over vpaes for CTR-DRBG.
+  * perlasm/x86_64-xlate.pl: refine symbol recognition in .xdata.
+  * Add instructions for debugging on Android with gdb.
+  * Enforce key usage for RSA keys in TLS 1.2.
+  * Remove infra/config folder in master branch.
+  * Avoid SCT/OCSP extensions in SH on {Omit|Empty}Extensions
+  * Test and fix an ABI issue with small parameters.
+  * Add RSAZ ABI tests.
+  * Better document RSAZ and tidy up types.
+  * Add ABI testing for 32-bit x86.
+  * Add a very roundabout EC keygen API.
+  * Add some Node compatibility functions.
+  * Implement server support for delegated credentials.
+  * Add a constant-time pshufb-based GHASH implementation.
+  * Tweak some slightly fragile tests.
+  * Make 256-bit ciphers a preference for CECPQ2, not a requirement.
+  * Update comments around JDK11 workaround.
+  * Add a RelWithAsserts build configuration.
+  * Remove union from |SHA512_CTX|.
+  * Avoid unwind tests on libc functions.
+  * Don't pass NULL,0 to qsort.
+  * Fix signed left-shifts in curve25519.c.
+  * Add an option to build with UBSan.
+  * Fix undefined pointer casts in SHA-512 code.
+  * HRSS: flatten sample distribution.
+  * Add test of assembly code dispatch.
+  * Simplify HRSS mod3 circuits.
+  * Add SSL_OP_NO_RENEGOTIATION
+  * Rename Fiat include files to end in .h
+  * Switch to new fiat pipeline.
+  * Don't look for libunwind if cross-compiling.
+  * Mark some unmarked array sizes in curve25519.c.
+  * Revert "Fix protos_len size in SSL_set_alpn_protos and SSL_CTX_set_alpn_protos"
+  * Add ABI tests for GCM.
+  * Fix SSL_R_TOO_MUCH_READ_EARLY_DATA.
+  * Test CRYPTO_gcm128_tag in gcm_test.cc.
+  * Remove pointer cast in P-256 table.
+  * Ignore new fields in forthcoming Wycheproof tests.
+  * Fix RSAZ's OPENSSL_cleanse.
+  * Allow configuring QUIC method per-connection
+  * Fix header file for _byteswap_ulong and _byteswap_uint64 from MSVC CRT
+  * Add ABI tests for HRSS assembly.
+  * Add AES ABI tests.
+  * Move aes_nohw, bsaes, and vpaes prototypes to aes/internal.h.
+  * Add direction flag checking to CHECK_ABI.
+  * Add ABI tests for ChaCha20_ctr32.
+  * Add ABI tests for MD5.
+  * Refresh fuzzer corpus.
+  * Delete the variants/draft code.
+  * Update tools.
+  * Fix protos_len size in SSL_set_alpn_protos and SSL_CTX_set_alpn_protos
+  * Use handshake parameters to decide if cert/key are available
+  * Add ABI tests for bn_mul_mont.
+  * Add ABI tests for SHA*.
+  * Make pkg-config optional.
+  * Add DEPS rules to checkout Windows SDE.
+  * Add ABI tests for rdrand.
+  * Set NIDs for Blowfish and CAST.
+  * Add a CFI tester to CHECK_ABI.
+  * Fix some size_t to long casts.
+  * Add EVP_CIPHER support for Blowfish and CAST to decrepit.
+  * Be less clever with CHECK_ABI.
+  * Update SDE and add the Windows version.
+  * Remove pooling of PRNG state.
+  * Add EC_KEY_key2buf for OpenSSL compatibility
+  * Remove bundled copy of android-cmake.
+  * Clarify build requirements.
+  * Add EC_GROUP_order_bits for OpenSSL compatibility
+  * Annotate leaf functions with .cfi_{startproc,endproc}
+  * Fix beeu_mod_inverse_vartime CFI annotations and preamble.
+  * Fix CFI annotations in p256-x86_64-asm.pl.
+  * Add a comment about ecp_nistz256_point_add_affine's limitations.
+  * Refresh p256-x86_64_tests.txt.
+  * Fix some indentation nits.
+- Build using ninja
+- Update dependencies
+- Bump soversion
+- Limit building only to supported architectures
+
+-------------------------------------------------------------------
+Fri Aug 30 06:52:55 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Disable lto to fix build failure 
+
+-------------------------------------------------------------------
 Thu Apr 25 14:50:41 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Add patch which fixes build on aarch64.

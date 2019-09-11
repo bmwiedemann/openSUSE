@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 27 01:17:34 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Changelog and packaging cleanups
+- Fix download url
+
+-------------------------------------------------------------------
+Mon Aug 26 14:41:43 UTC 2019 - Mikhail Terekhov <termim@gmail.com>
+
+- Update to version 0.10
+  * remove no-rpath-prebuilt.patch - applied upstream
+  * Lots of bug fixes see https://github.com/NixOS/patchelf/commits/master
+
+-------------------------------------------------------------------
 Thu Nov 15 12:41:52 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

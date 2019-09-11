@@ -315,6 +315,7 @@ sed -i 's|SSL_DYNAMIC_ONLY=no|SSL_DYNAMIC_ONLY=yes|' erts/configure
 sed -i 's|WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs`|WX_LIBS="`$WX_CONFIG_WITH_ARGS --libs` -lGLU"|' lib/wx/configure || return 1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # we need build only 1.6 target for java
 # for SLE only
 %if 0%{?sles_version} >= 10 || 0%{?suse_version} >= 1110
@@ -340,11 +341,10 @@ export CXXFLAGS=$CFLAGS
 %endif
     --enable-shared-zlib
 # clean stalled files before rebuild them
-make %{?_smp_mflags} clean
-# should work up to at least -j8
-make %{?_smp_mflags}
+%make_build clean
+%make_build
 # to build the docs, just compiled erlang is required
-PATH=$PWD/bin:$PATH make %{?_smp_mflags} docs
+PATH=$PWD/bin:$PATH %make_build docs
 
 %install
 %if 0%{?sles_version} >= 10

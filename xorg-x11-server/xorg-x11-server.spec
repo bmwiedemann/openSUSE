@@ -246,6 +246,13 @@ Patch1502:      U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
 
 Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 
+# required for NVIDIA's PRIME render offload support
+Patch1601:      0001-xsync-Add-resource-inside-of-SyncCreate-export-SyncC.patch
+Patch1602:      0002-GLX-Add-a-per-client-vendor-mapping.patch
+Patch1603:      0003-GLX-Use-the-sending-client-for-looking-up-XID-s.patch
+Patch1604:      0004-GLX-Add-a-function-to-change-a-clients-vendor-list.patch
+Patch1605:      0005-GLX-Set-GlxServerExports-major-minor-Version.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -390,6 +397,13 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1502 -p1
 
 %patch1503 -p1
+
+# required for NVIDIA's PRIME render offload support
+%patch1601 -p1
+%patch1602 -p1
+%patch1603 -p1
+%patch1604 -p1
+%patch1605 -p1
 
 %build
 %define _lto_cflags %{nil}

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:36:23 UTC 2019 - pgajdos@suse.com
+
+- version update to 20190801 [bsc#1145185]
+  * Bugfixes
+  * Added Croatian translation
+  * Added user decompositions
+  * New graphic for the splash/about screen
+  * Images embedded in SFDs are now serialised as PNGs
+  * Both the Windows and Mac builds are now built with Python 3 instead of Python 2.
+  * The minimum supported version for the Mac build is now MacOS Sierra (10.12)
+  * FontForge no longer uses gnulib
+  * collab support has been removed
+  * Complete GDK support, enabled by default on Windows and Macintosh, from @jtanx.
+  * Enhanced UFO 3 support, with separate import/export paths for UFO 2 and UFO 3,
+    from @frank-trampe. See the technical bulletin here for more information.
+  * Improved feature file support, from @skef and @khaledhosny.
+  * WOFF2 support, from @jtanx.
+  * Unicode 12.1.0 support, from @JoesCat.
+  * Extended Python interfaces, from @skef.
+- modified patches
+  % fontforge-version.patch (refreshed)
+- deleted patches
+  - reproducible.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Aug  1 03:37:01 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to override font build dates (boo#1047218)

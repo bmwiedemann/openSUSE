@@ -47,7 +47,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.0.3+git14.0ff395c1
+Version:        2.0.5+git0.d905f49a
 Release:        0
 #
 #
@@ -157,7 +157,8 @@ make \
     USE_RELRO_NOW=1 \
     LIB="%{_lib}" \
     PREFIX="%{_prefix}" \
-    DEBUG_CFLAGS="%{optflags}"
+    EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o" \
+    DEBUG_CFLAGS="%{optflags}" V=1
 %if %{with systemd}
 make -C contrib/systemd  PREFIX="%{_prefix}"
 %endif

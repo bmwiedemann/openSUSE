@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 24 13:46:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.3
+  * Resize fixes for Nx1 sizes and the addition of non-opaque
+    alpha values for odd sizes.
+  * Lossless encode/decode performance improvements.
+  * Lossy compression performance improvement at low quality
+    levels with flat content.
+  * vwebp will now preserve the aspect ratio of images that
+    exceed monitor resolution by scaling the image to fit.
+
+-------------------------------------------------------------------
 Wed Jul  3 18:02:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.2:

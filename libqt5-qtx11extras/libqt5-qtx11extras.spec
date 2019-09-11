@@ -21,12 +21,12 @@
 %define libname libQt5X11Extras5
 
 Name:           libqt5-qtx11extras
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 %define base_name libqt5
-%define real_version 5.13.0
-%define so_version 5.13.0
-%define tar_version qtx11extras-everywhere-src-5.13.0
+%define real_version 5.13.1
+%define so_version 5.13.1
+%define tar_version qtx11extras-everywhere-src-5.13.1
 Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  7 21:17:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-vaapi-remove-gallium-from-white-list.patch: pluginutil:
+  Remove Mesa from drivers white list. The Mesa Gallium driver is
+  poorly tested currently, leading to bad user experience for AMD
+  users. The driver can be added back to the white list at runtime
+  using the GST_VAAPI_ALL_DRIVERS environment variable.
+
+-------------------------------------------------------------------
 Thu Jun 27 23:43:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gst-vaapi-fix-garbled-screen-totem.patch: Fix garbled video

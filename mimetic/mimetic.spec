@@ -19,7 +19,7 @@
 Name:           mimetic
 Version:        0.9.8
 Release:        0
-Summary:        A full featured C++ MIME library
+Summary:        A C++ MIME library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://www.codesink.org/mimetic_mime_library.html
@@ -28,38 +28,27 @@ Patch0:         signedness-fix.patch
 BuildRequires:  gcc-c++
 
 %description
-mimetic is an Email library (MIME) written in C++ designed to be easy to use and integrate but
-yet fast and efficient.
+mimetic is an Email library written in C++. It supports MIME.
 
-It has been built around the standard lib. This means that you'll not find yet another string class
-or list implementation and that you'll feel comfortable in using this library from the very first time.
-
-Most classes functionalities and behavior will be clear if you ever studied MIME and its components;
-if you don't know anything about Internet messages you'll probably want to read
-some RFCs to understand the topic and, therefore, easily use the library whose names,
-whenever possible, overlap terms adopted in the standard RFC documents.
-At the very least: RFC 822, RFC 2045 and RFC 2046.
+It has been built around the standard library; there are no custom
+string classes or list implementations. Class functionalities and
+behavior is modeled around MIME and the Internet message RFCs. See
+RFC 5322, 2045 and 2046 for terminology, etc.
 
 %package -n lib%{name}0
-Summary:        A full featured C++ MIME library
+Summary:        A C++ MIME library
+Group:          System/Libraries
 
 %description -n lib%{name}0
-mimetic is an Email library (MIME) written in C++ designed to be easy to use
-and integrate but yet fast and efficient.
-
-It has been built around the standard lib. This means that you'll not find yet
-another string class or list implementation and that you'll feel comfortable
-in using this library from the very first time.
-
-Most classes functionalities and behavior will be clear if you ever studied
-MIME and its components; if you don't know anything about Internet messages
-you'll probably want to read some RFCs to understand the topic and, therefore,
-easily use the library whose names, whenever possible, overlap terms adopted
-in the standard RFC documents. At the very least: RFC 822, RFC 2045 and RFC
+It has been built around the standard library; there are no custom
+string classes or list implementations. Class functionalities and
+behavior is modeled around MIME and the Internet message RFCs. See
+RFC 5322, 2045 and 2046 for terminology, etc.
 2046.
 
 %package -n lib%{name}-devel
 Summary:        Development files for %{name}
+Group:          Development/Libraries/C and C++
 Requires:       lib%{name}0 = %{version}
 
 %description -n lib%{name}-devel
@@ -85,13 +74,11 @@ make %{?_smp_mflags} check
 %postun -n lib%{name}0 -p /sbin/ldconfig
 
 %files -n lib%{name}0
-%defattr(0644,root,root,-)
 %license LICENSE
 %doc AUTHORS ChangeLog README
 %{_libdir}/lib%{name}.so.*
 
 %files -n lib%{name}-devel
-%defattr(0644,root,root,-)
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 

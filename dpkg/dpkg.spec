@@ -89,6 +89,7 @@ Libraries and header files for dpkg.
 %endif
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fvi
 export CFLAGS="%{optflags}"
 %configure \

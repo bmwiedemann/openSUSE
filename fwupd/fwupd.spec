@@ -37,6 +37,8 @@ URL:            https://fwupd.org/
 Source:         https://github.com/hughsie/%{name}/archive/%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
+# PATCH-FIX-UPSTRAEM fwupd-bsc1143905-hash-the-source-files.patch bsc#1143905
+Patch2:         fwupd-bsc1143905-hash-the-source-files.patch
 BuildRequires:  dejavu-fonts
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  gcab
@@ -143,6 +145,7 @@ the local machine.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 for file in $(grep -l %{_bindir}/env . -r); do
   sed -i "s|%{_bindir}/env python3|%{_bindir}/python3|" $file
 done

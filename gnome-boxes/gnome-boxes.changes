@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  6 21:00:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Don't steal input focus in "Download an OS" search.
+  + Populate shared folders while connecting to VM.
+  + Don't crash when taking screenshots with GL.
+  + Pass username and port to ssh connections.
+  + Avoid crashing in non-GNOME sessions.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat May 11 06:25:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package libfallocate
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Name:           libfallocate
 Version:        0.1.1
 Release:        0
 Summary:        Filesystem preallocation interface library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Filesystems
 Url:            http://libfallocate.sf.net/
 Source:         libfallocate-%{version}.tar.bz2
@@ -86,6 +86,7 @@ apps that want to use libfallocate statically.
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
 %configure
 make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"

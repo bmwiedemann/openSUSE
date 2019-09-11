@@ -31,26 +31,29 @@ BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules
 BuildRequires:  frameworkintegration-devel
 BuildRequires:  gtk2-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kdebase4-workspace-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
+BuildRequires:  kde4-filesystem
+BuildRequires:  kdebase4-workspace-devel
+%endif
 
 %description
 QtCurve is a set of widget styles available for Qt and GTK+.
@@ -71,15 +74,17 @@ Group:          System/GUI/KDE
 QtCurve is a set of widget styles available for Qt and GTK+.
 This package cointains library for common drawing routines.
 
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %package kde4
 Summary:        QtCurve style for KDE 4
 Group:          System/GUI/KDE
 Requires:       libqtcurve-utils2 = %{version}
-%kde4_runtime_requires
+%{kde4_runtime_requires}
 
 %description kde4
 This is the QtCurve style for KDE 4. QtCurve is a set of widget
 styles available for Qt and GTK+.
+%endif
 
 %package gtk2
 Summary:        QtCurve style for GTK+ 2
@@ -103,17 +108,16 @@ of widget styles available for Qt and GTK+.
 %patch0 -p1
 
 %build
- %cmake_kde4 -d build -- -DENABLE_QT5=ON -DQTC_QT5_ENABLE_KDE=ON
- %make_jobs
+%cmake_kf5 -d build -- -DLIB_INSTALL_DIR=%{_libdir}
+
+%make_jobs
 
 %install
-  pushd build
-  %make_install
-  popd
+%kf5_makeinstall -C build
+
 %if %{with lang}
-  %find_lang %{name}
+%find_lang %{name}
 %endif
-  %kde_post_install
 
 %post -n libqtcurve-utils2   -p /sbin/ldconfig
 %postun -n libqtcurve-utils2 -p /sbin/ldconfig
@@ -121,15 +125,16 @@ of widget styles available for Qt and GTK+.
 %postun -n libqtcurve-cairo1 -p /sbin/ldconfig
 
 %files -n libqtcurve-utils2
-%{_kde4_libdir}/libqtcurve-utils.so.*
+%{_libdir}/libqtcurve-utils.so.*
 # We don't need the devel symlink
-%exclude %{_kde4_libdir}/libqtcurve-utils.so
+%exclude %{_libdir}/libqtcurve-utils.so
 
 %files -n libqtcurve-cairo1
-%{_kde4_libdir}/libqtcurve-cairo.so.*
+%{_libdir}/libqtcurve-cairo.so.*
 # We don't need the devel symlink
-%exclude %{_kde4_libdir}/libqtcurve-cairo.so
+%exclude %{_libdir}/libqtcurve-cairo.so
 
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %files kde4
 %license COPYING
 %doc ChangeLog.md README.md TODO.md
@@ -142,6 +147,7 @@ of widget styles available for Qt and GTK+.
 %{_kde4_appsdir}/color-schemes/QtCurve.colors
 %{_kde4_appsdir}/color-schemes/QtCurveAgua.colors
 %{_kde4_appsdir}/kwin/qtcurve.desktop
+%endif
 
 %if %{with lang}
 %files lang -f qtcurve.lang
@@ -150,8 +156,8 @@ of widget styles available for Qt and GTK+.
 %files gtk2
 %license COPYING
 %doc ChangeLog.md README.md TODO.md
-%{_kde4_libdir}/gtk-2.0/*/engines/libqtcurve.*
-%{_kde4_datadir}/themes/QtCurve/
+%{_libdir}/gtk-2.0/*/engines/libqtcurve.*
+%{_datadir}/themes/QtCurve/
 
 %files qt5
 %license COPYING

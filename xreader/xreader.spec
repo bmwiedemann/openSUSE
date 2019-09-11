@@ -52,8 +52,10 @@ BuildRequires:  pkgconfig(sm) >= 1.0.0
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.4.3
 BuildRequires:  pkgconfig(xapp) >= 1.1.0
 BuildRequires:  pkgconfig(zlib)
-Requires:       %{name}-backends = %{version}
+# Only require pdf backend subpackage to make application more lightweight for Live media
+Requires:       %{name}-plugin-pdfdocument
 Recommends:     %{name}-lang
+Obsoletes:      %{name}-backends < %{version}
 Obsoletes:      caja-extension-%{name} < %{version}
 Obsoletes:      nemo-extension-%{name} < %{version}
 %glib2_gsettings_schema_requires
@@ -102,14 +104,6 @@ Obsoletes:      typelib-1_0-XreaderView-1_5_0 < %{version}
 Xreader is a document viewer capable of displaying multiple and
 single page document formats like PDF and Postscript.
 
-%package backends
-Summary:        XReader shared libraries (View and Document)
-Group:          System/Libraries
-
-%description backends
-Xreader is a document viewer capable of displaying multiple and
-single page document formats like PDF and Postscript.
-
 %package devel
 Summary:        X-Apps Document Reader development files
 Group:          Development/Libraries/C and C++
@@ -120,6 +114,51 @@ Requires:       %{typelib2} = %{version}
 %description devel
 Xreader is a document viewer capable of displaying multiple and
 single page document formats like PDF and Postscript.
+
+%package -n xreader-plugin-epubdocument
+Summary:        EPUB document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-epubdocument
+A plugin for Xreader to read EPUB documents.
+
+%package -n xreader-plugin-pdfdocument
+Summary:        PDF document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-pdfdocument
+A plugin for Xreader to read PDF documents.
+
+%package -n xreader-plugin-psdocument
+Summary:        PostScript document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-psdocument
+A plugin for Xreader to read PostScript documents.
+
+%package -n xreader-plugin-tiffdocument
+Summary:        TIFF document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-tiffdocument
+A plugin for Xreader to read TIFF documents.
+
+%package -n xreader-plugin-xpsdocument
+Summary:        XPS document support for Xreader
+Group:          Productivity/Office/Other
+Requires:       %{name}
+Supplements:    %{name}
+
+%description -n xreader-plugin-xpsdocument
+A plugin for Xreader to read XPS documents.
 
 %prep
 %autosetup
@@ -179,6 +218,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*
 %{_mandir}/man?/*.?%{?ext_man}
+# backends directory structure - backends go to their own packages
+%dir %{_libdir}/%{name}/%{sover}/backends
 
 %files lang -f %{name}.lang
 
@@ -204,9 +245,24 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gir-1.0/*.gir
 %{_libdir}/pkgconfig/*.pc
 
-%files backends
-%license COPYING
-%doc AUTHORS README
-%{_libdir}/%{name}/%{sover}/backends/
+%files -n xreader-plugin-epubdocument
+%{_libdir}/%{name}/%{sover}/backends/epubdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libepubdocument.so
+
+%files -n xreader-plugin-pdfdocument
+%{_libdir}/%{name}/%{sover}/backends/pdfdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libpdfdocument.so
+
+%files -n xreader-plugin-psdocument
+%{_libdir}/%{name}/%{sover}/backends/libpsdocument.so
+%{_libdir}/%{name}/%{sover}/backends/psdocument.xreader-backend
+
+%files -n xreader-plugin-tiffdocument
+%{_libdir}/%{name}/%{sover}/backends/tiffdocument.xreader-backend
+%{_libdir}/%{name}/%{sover}/backends/libtiffdocument.so
+
+%files -n xreader-plugin-xpsdocument
+%{_libdir}/%{name}/%{sover}/backends/libxpsdocument.so
+%{_libdir}/%{name}/%{sover}/backends/xpsdocument.xreader-backend
 
 %changelog

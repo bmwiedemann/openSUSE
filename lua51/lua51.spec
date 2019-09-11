@@ -1,7 +1,7 @@
 #
 # spec file for package lua51
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -116,6 +116,7 @@ cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_ver
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
 export LIBTOOL="libtool --quiet"
 make %{?_smp_mflags} -C src \
